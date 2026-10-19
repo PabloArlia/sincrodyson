@@ -1805,3 +1805,295 @@ window.sensores = [
 // Agregar las nuevas cartas al conjunto existente:
 window.modulos.push(...window.sensores);
 
+window.control = [
+  {
+    "nombre": "Control autónomo por IA",
+    "tipo": "control",
+    "puntos": "0 [PV]",
+    "copias": 4,
+    "discos": 1,
+    "bono": "1 [DP]",
+    "efecto": "Coloca un disco en una celda libre de [CT] Control de un área de soporte.",
+    "etapas": [
+      {
+        "m": {
+          "Si": 0,
+          "Cu": 0,
+          "Ti": 0,
+          "Nd": 2,
+          "Fe": 3
+        },
+        "o": {
+          "IS": 2,
+          "EM": 1,
+          "En": 6
+        }
+      },
+      {
+        "m": {
+          "Al": 8,
+          "Cu": 6,
+          "Er": 2,
+          "Gd": 1
+        },
+        "o": {
+          "IS": 2,
+          "IQ": 1,
+          "En": 5
+        }
+      },
+      {
+        "m": {
+          "Si": 6,
+          "Ti": 3,
+          "Nd": 1
+        },
+        "o": {
+          "IS": 2,
+          "EM": 1,
+          "En": 5,
+          "Tr": 3
+        }
+      }
+    ],
+    "destino": "completados"
+  },
+  {
+    "nombre": "Centro de supervisión orbital",
+    "tipo": "control",
+    "puntos": "0 [PV]",
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DP]",
+    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CT] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "etapas": [
+      {
+        "m": {
+          "Si": 0,
+          "Cu": 1,
+          "Al": 5,
+          "Nd": 1,
+          "Fe": 1
+        },
+        "o": {
+          "IS": 1,
+          "IE": 1,
+          "En": 3
+        }
+      },
+      {
+        "m": {
+          "Ti": 3,
+          "Cu": 4,
+          "Si": 4
+        },
+        "o": {
+          "IS": 1,
+          "IE": 1,
+          "En": 4,
+          "Tr": 2
+        }
+      }
+    ],
+    "destino": "completados"
+  },
+  {
+    "nombre": "Centro de regulación de potencia",
+    "tipo": "control",
+    "puntos": "0 [PV]",
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DP]",
+    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CT] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "etapas": [
+      {
+        "m": {
+          "Cu": 0,
+          "Al": 5,
+          "Si": 0,
+          "Gd": 1,
+          "Fe": 1
+        },
+        "o": {
+          "EM": 1,
+          "IS": 1,
+          "En": 3
+        }
+      },
+      {
+        "m": {
+          "Ti": 3,
+          "Cu": 5,
+          "Nd": 1
+        },
+        "o": {
+          "EM": 1,
+          "IS": 1,
+          "En": 4,
+          "Tr": 2
+        }
+      }
+    ],
+    "destino": "completados"
+  },
+  {
+    "nombre": "Centro de mantenimiento predictivo",
+    "tipo": "control",
+    "puntos": "0 [PV]",
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DP]",
+    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CT] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "etapas": [
+      {
+        "m": {
+          "Si": 0,
+          "Cu": 0,
+          "Al": 4,
+          "Ce": 1,
+          "Fe": 2
+        },
+        "o": {
+          "EM": 1,
+          "IQ": 1,
+          "En": 3
+        }
+      },
+      {
+        "m": {
+          "Ti": 2,
+          "Cu": 3,
+          "Nd": 1
+        },
+        "o": {
+          "EM": 1,
+          "IQ": 1,
+          "IS": 1,
+          "En": 4,
+          "Tr": 2
+        }
+      }
+    ],
+    "destino": "completados"
+  },
+  {
+    "nombre": "Centro de coordinación estructural",
+    "tipo": "control",
+    "puntos": "0 [PV]",
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DP]",
+    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CT] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "etapas": [
+      {
+        "m": {
+          "Fe": 2,
+          "Ti": 3,
+          "Al": 0,
+          "Cu": 0
+        },
+        "o": {
+          "IE": 1,
+          "EM": 1,
+          "En": 3
+        }
+      },
+      {
+        "m": {
+          "Si": 5,
+          "Cu": 4,
+          "Nd": 1
+        },
+        "o": {
+          "IE": 1,
+          "EM": 1,
+          "IS": 1,
+          "En": 4,
+          "Tr": 2
+        }
+      }
+    ],
+    "destino": "completados"
+  },
+  {
+    "nombre": "Centro de operaciones científicas",
+    "tipo": "control",
+    "puntos": "0 [PV]",
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DP]",
+    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CT] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "etapas": [
+      {
+        "m": {
+          "Ti": 3,
+          "Si": 0,
+          "Cu": 0,
+          "Ce": 1,
+          "Fe": 5
+        },
+        "o": {
+          "IQ": 1,
+          "IE": 1,
+          "En": 3
+        }
+      },
+      {
+        "m": {
+          "Al": 5,
+          "Er": 1,
+          "Si": 4
+        },
+        "o": {
+          "IQ": 1,
+          "IE": 1,
+          "En": 4,
+          "Tr": 2
+        }
+      }
+    ],
+    "destino": "completados"
+  },
+  {
+    "nombre": "Centro de mando de la esfera",
+    "tipo": "control",
+    "puntos": "0 [PV]",
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DP]",
+    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CT] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "etapas": [
+      {
+        "m": {
+          "Si": 0,
+          "Cu": 0,
+          "Al": 3,
+          "Nd": 1,
+          "Fe": 2
+        },
+        "o": {
+          "IS": 1,
+          "IQ": 1,
+          "En": 3
+        }
+      },
+      {
+        "m": {
+          "Ti": 2,
+          "Cu": 4,
+          "Ce": 1
+        },
+        "o": {
+          "IS": 1,
+          "IQ": 1,
+          "IE": 1,
+          "En": 4,
+          "Tr": 2
+        }
+      }
+    ],
+    "destino": "completados"
+  }
+];
+
+window.modulos.push(...window.control);
