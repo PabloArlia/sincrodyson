@@ -4,7 +4,7 @@ window.modulos = [
   {
     "nombre": "Batería de gravedad sólida",
     "tipo": "bateria",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+1 [BT]",
@@ -26,7 +26,7 @@ window.modulos = [
   {
     "nombre": "Batería de hidruro metálico",
     "tipo": "bateria",
-    "puntos": 1,
+    "puntos": "1 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+4 [BT]",
@@ -49,7 +49,7 @@ window.modulos = [
   {
     "nombre": "Banco de supercondensadores",
     "tipo": "bateria",
-    "puntos": 2,
+    "puntos": "2 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+3 [BT]",
@@ -73,7 +73,7 @@ window.modulos = [
   {
     "nombre": "Volante de inercia magnético",
     "tipo": "bateria",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+6 [BT]",
@@ -97,7 +97,7 @@ window.modulos = [
   {
     "nombre": "Acumulador térmico de grafito",
     "tipo": "bateria",
-    "puntos": 3,
+    "puntos": "3 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+3 [BT]",
@@ -122,7 +122,7 @@ window.modulos = [
   {
     "nombre": "Centro de blockchain",
     "tipo": "economia",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+18 [Di][RE]",
@@ -153,7 +153,7 @@ window.modulos = [
   {
     "nombre": "Estructura de fibra de carbono",
     "tipo": "estructura",
-    "puntos": 9,
+    "puntos": "9 [PV]",
     "copias": 1,
     "discos": 2,
     "bono": "2 [DS]",
@@ -186,7 +186,7 @@ window.modulos = [
   {
     "nombre": "Estructura de titanio",
     "tipo": "estructura",
-    "puntos": 9,
+    "puntos": "9 [PV]",
     "copias": 1,
     "discos": 2,
     "bono": "2 [DS]",
@@ -208,7 +208,7 @@ window.modulos = [
   {
     "nombre": "Estructura de acero reforzado",
     "tipo": "estructura",
-    "puntos": 5,
+    "puntos": "5 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DS]",
@@ -232,7 +232,7 @@ window.modulos = [
   {
     "nombre": "Estructura alveolar de aluminio",
     "tipo": "estructura",
-    "puntos": 6,
+    "puntos": "6 [PV]",
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
@@ -265,7 +265,7 @@ window.modulos = [
   {
     "nombre": "Estructura de vidrio metálico",
     "tipo": "estructura",
-    "puntos": 10,
+    "puntos": "10 [PV]",
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
@@ -301,7 +301,7 @@ window.modulos = [
   {
     "nombre": "Estructura de nanotubos de carbono",
     "tipo": "estructura",
-    "puntos": 25,
+    "puntos": "25 [PV]",
     "copias": 1,
     "discos": 5,
     "bono": "5 [DS]",
@@ -345,7 +345,7 @@ window.modulos = [
   {
     "nombre": "Paneles fotovoltaicos de película delgada",
     "tipo": "fotovoltaico",
-    "puntos": 5,
+    "puntos": "5 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DS]",
@@ -370,7 +370,7 @@ window.modulos = [
   {
     "nombre": "Paneles de silicio monocristalino",
     "tipo": "fotovoltaico",
-    "puntos": 12,
+    "puntos": "12 [PV]",
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
@@ -403,7 +403,7 @@ window.modulos = [
   {
     "nombre": "Células solares de perovskita",
     "tipo": "fotovoltaico",
-    "puntos": 10,
+    "puntos": "10 [PV]",
     "copias": 1,
     "discos": 4,
     "bono": "4 [DS]",
@@ -437,7 +437,7 @@ window.modulos = [
   {
     "nombre": "Sistema fotovoltaico de concentración",
     "tipo": "fotovoltaico",
-    "puntos": 15,
+    "puntos": "15 [PV]",
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
@@ -473,7 +473,7 @@ window.modulos = [
   {
     "nombre": "Células solares multiunión",
     "tipo": "fotovoltaico",
-    "puntos": 16,
+    "puntos": "16 [PV]",
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
@@ -507,7 +507,7 @@ window.modulos = [
   {
     "nombre": "Células solares de arseniuro de galio",
     "tipo": "fotovoltaico",
-    "puntos": 30,
+    "puntos": "30 [PV]",
     "copias": 1,
     "discos": 7,
     "bono": "7 [DS]",
@@ -552,7 +552,7 @@ window.modulos = [
   {
     "nombre": "Red HVDC de cobre",
     "tipo": "transmision",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DS]",
@@ -575,7 +575,7 @@ window.modulos = [
   {
     "nombre": "Red HVDC ultraligera",
     "tipo": "transmision",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 2,
     "bono": "2 [DS]",
@@ -599,7 +599,7 @@ window.modulos = [
   {
     "nombre": "Red superconductora criogénica",
     "tipo": "transmision",
-    "puntos": 15,
+    "puntos": "15 [PV]",
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
@@ -634,7 +634,7 @@ window.modulos = [
   {
     "nombre": "Superconductores de hidruros a alta presión",
     "tipo": "transmision",
-    "puntos": 20,
+    "puntos": "20 [PV]",
     "copias": 1,
     "discos": 6,
     "bono": "6 [DS]",
@@ -674,7 +674,7 @@ window.modulos = [
   {
     "nombre": "Transmisor láser de alta potencia",
     "tipo": "transmision",
-    "puntos": 24,
+    "puntos": "24 [PV]",
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS] 2 [DH]",
@@ -711,7 +711,7 @@ window.modulos = [
   {
     "nombre": "Radiadores térmicos de aluminio",
     "tipo": "refrigeracion",
-    "puntos": 1,
+    "puntos": "1 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DS]",
@@ -733,7 +733,7 @@ window.modulos = [
   {
     "nombre": "Red de tubos de calor",
     "tipo": "refrigeracion",
-    "puntos": 1,
+    "puntos": "1 [PV]",
     "copias": 1,
     "discos": 2,
     "bono": "2 [DS]",
@@ -756,7 +756,7 @@ window.modulos = [
   {
     "nombre": "Radiadores de nanotubos de carbono alineados",
     "tipo": "refrigeracion",
-    "puntos": 14,
+    "puntos": "14 [PV]",
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
@@ -792,7 +792,7 @@ window.modulos = [
   {
     "nombre": "Radiadores de grafeno multicapa",
     "tipo": "refrigeracion",
-    "puntos": 20,
+    "puntos": "20 [PV]",
     "copias": 1,
     "discos": 4,
     "bono": "4 [DS]",
@@ -827,7 +827,7 @@ window.modulos = [
   {
     "nombre": "Motor Stirling de concentración solar",
     "tipo": "refrigeracion",
-    "puntos": 12,
+    "puntos": "12 [PV]",
     "copias": 1,
     "discos": 6,
     "bono": "6 [DS]",
@@ -863,7 +863,7 @@ window.modulos = [
   {
     "nombre": "Antena parabólica de microondas",
     "tipo": "microondas",
-    "puntos": 4,
+    "puntos": "4 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DS] 2 [DH]",
@@ -887,7 +887,7 @@ window.modulos = [
   {
     "nombre": "Matriz de antenas en fase",
     "tipo": "microondas",
-    "puntos": 5,
+    "puntos": "5 [PV]",
     "copias": 1,
     "discos": 4,
     "bono": "4 [DS]",
@@ -922,7 +922,7 @@ window.modulos = [
   {
     "nombre": "Transmisor láser de haz estrecho",
     "tipo": "microondas",
-    "puntos": 20,
+    "puntos": "20 [PV]",
     "copias": 1,
     "discos": 5,
     "bono": "3-5 [DS]",
@@ -961,7 +961,7 @@ window.modulos = [
   {
     "nombre": "Paneles solares",
     "tipo": "generador",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+1 [PE]",
@@ -985,7 +985,7 @@ window.modulos = [
   {
     "nombre": "Generador de radioisótopos (RTG)",
     "tipo": "generador",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+1 [PE]",
@@ -1009,7 +1009,7 @@ window.modulos = [
   {
     "nombre": "Concentrador solar Stirling",
     "tipo": "generador",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+2 [PE]",
@@ -1043,7 +1043,7 @@ window.modulos = [
   {
     "nombre": "Central solar de ciclo Brayton",
     "tipo": "generador",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+4 [PE]",
@@ -1090,7 +1090,7 @@ window.modulos = [
   {
     "nombre": "Centro de telemarketing",
     "tipo": "mejora_soporte_externo",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+3 [Di] [MS]",
@@ -1112,7 +1112,7 @@ window.modulos = [
   {
     "nombre": "Centro de investigación y tecnología",
     "tipo": "mejora_soporte_externo",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+1 [CP] [MS]",
@@ -1135,7 +1135,7 @@ window.modulos = [
   {
     "nombre": "Centro de expedición de cráteres",
     "tipo": "mejora_soporte_externo",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+1 Fe [MS]",
@@ -1158,11 +1158,11 @@ window.modulos = [
   {
     "nombre": "Caminadoras",
     "tipo": "mejora_soporte_externo",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+1 [En] [MS]",
-    "efecto": "Cada ingeniero en Soporte externo obtiene 1 En en lugar de $1. La energía que exceda la capacidad de tus baterías se pierde. Coloca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
+    "efecto": "Cada ingeniero en Soporte externo obtiene 1 [En] Energia en lugar de $1. La energía que exceda la capacidad de tus baterías se pierde. Coloca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
     "destino": "mejora",
     "etapas": [
       {
@@ -1179,24 +1179,25 @@ window.modulos = [
     ]
   },
   {
-    "nombre": "Estacion",
+    "nombre": "Estacion de coordinacion Orbital",
     "tipo": "mejora_soporte_externo",
-    "puntos": 0,
+    "puntos": "1 [PV] / [EI]",
     "copias": 1,
     "discos": 0,
-    "bono": "+1 [En] [MS]",
-    "efecto": "Cada ingeniero en Soporte externo obtiene 1 En en lugar de $1. La energía que exceda la capacidad de tus baterías se pierde. Coloca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
+    "bono": "-$1 / [EI] [MS]",
+    "efecto": "Cada ingeniero en [SP] Soporte externo genera $1, como de costumbre. Debes pagar $1 por cada [EI] ingeniero anclado en la esfera de Dyson, de cualquier jugador. \nColoca esta carta a la derecha de tu área de [SP] Soporte externo. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente. \nAl final de la partida, esta carta otorga 1 [PV] por cada [EI] ingeniero anclado de cualquier jugador.",
     "destino": "mejora",
     "etapas": [
       {
         "m": {
-          "Fe": 3,
-          "Cu": 2,
-          "C": 2
+          "Ti": 5,
+          "Al": 3,
+          "Er": 1
         },
         "o": {
-          "IM": 1,
-          "En": 1
+          "IE": 2,
+          "En": 2,
+          "Tr": 2
         }
       }
     ]
@@ -1204,7 +1205,7 @@ window.modulos = [
   {
     "nombre": "Pasantía",
     "tipo": "recursoshumanos",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+1 [IQ] [CN]",
@@ -1222,7 +1223,7 @@ window.modulos = [
   {
     "nombre": "Programador de IA",
     "tipo": "recursoshumanos",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+3 [IS] [CN]",
@@ -1255,7 +1256,7 @@ window.modulos = [
   {
     "nombre": "Desregulación de sueldos",
     "tipo": "recursoshumanos",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "[TJ] [CN]",
@@ -1276,7 +1277,7 @@ window.modulos = [
   {
     "nombre": "Robots multipropósito",
     "tipo": "recursoshumanos",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "[IQ] [IE] [IS] [IM]",
@@ -1313,7 +1314,7 @@ window.modulos = [
   {
     "nombre": "Mercado negro",
     "tipo": "economia",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "[ME] [RE]",
@@ -1335,7 +1336,7 @@ window.modulos = [
   {
     "nombre": "Consorcio de minerales estratégicos",
     "tipo": "economia",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "[TJ] [ME] [RR]",
@@ -1367,7 +1368,7 @@ window.modulos = [
   {
     "nombre": "Hotel solar",
     "tipo": "economia",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+5 [Di] [RE]",
@@ -1399,7 +1400,7 @@ window.modulos = [
   {
     "nombre": "Centro de fusión nuclear",
     "tipo": "economia",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+X [En]",
@@ -1435,7 +1436,7 @@ window.modulos = [
   {
     "nombre": "Refinería de escoria por intercambio iónico",
     "tipo": "produccion",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+4 [RR]",
@@ -1467,7 +1468,7 @@ window.modulos = [
   {
     "nombre": "Laboratorio móvil",
     "tipo": "produccion",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "[RQ]",
@@ -1485,7 +1486,7 @@ window.modulos = [
   {
     "nombre": "Cohete de combustible sólido",
     "tipo": "produccion",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+2 [Tr]",
@@ -1517,7 +1518,7 @@ window.modulos = [
   {
     "nombre": "Catapulta electromagnética",
     "tipo": "produccion",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+5 [Tr] [RE]",
@@ -1562,7 +1563,7 @@ window.modulos = [
   {
     "nombre": "Propulsor láser",
     "tipo": "produccion",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+6 [Tr] [RE]",
@@ -1607,7 +1608,7 @@ window.modulos = [
   {
     "nombre": "Gancho orbital (Skyhook)",
     "tipo": "produccion",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 0,
     "bono": "+7 [Tr] [RE]",
@@ -1658,7 +1659,7 @@ window.sensores = [
   {
     "nombre": "Extensómetros de fibra óptica",
     "tipo": "sensores",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
@@ -1674,7 +1675,7 @@ window.sensores = [
   {
     "nombre": "Termografía infrarroja",
     "tipo": "sensores",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
@@ -1690,7 +1691,7 @@ window.sensores = [
   {
     "nombre": "Dosímetros de radiación",
     "tipo": "sensores",
-    "puntos": -10,
+    "puntos": "-10 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
@@ -1706,7 +1707,7 @@ window.sensores = [
   {
     "nombre": "Detectores de micrometeoritos",
     "tipo": "sensores",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
@@ -1722,7 +1723,7 @@ window.sensores = [
   {
     "nombre": "Analizadores de plasma solar",
     "tipo": "sensores",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
@@ -1742,7 +1743,7 @@ window.sensores = [
   {
     "nombre": "Red de interferometría láser",
     "tipo": "sensores",
-    "puntos": -7,
+    "puntos": "-7 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
@@ -1758,7 +1759,7 @@ window.sensores = [
   {
     "nombre": "Monitores de calidad eléctrica",
     "tipo": "sensores",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
@@ -1778,7 +1779,7 @@ window.sensores = [
   {
     "nombre": "Red de relojes atómicos de sincronización",
     "tipo": "sensores",
-    "puntos": 0,
+    "puntos": "0 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
