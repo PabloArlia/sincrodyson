@@ -1179,6 +1179,29 @@ window.modulos = [
     ]
   },
   {
+    "nombre": "Estacion",
+    "tipo": "mejora_soporte_externo",
+    "puntos": 0,
+    "copias": 1,
+    "discos": 0,
+    "bono": "+1 [En] [MS]",
+    "efecto": "Cada ingeniero en Soporte externo obtiene 1 En en lugar de $1. La energía que exceda la capacidad de tus baterías se pierde. Coloca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
+    "destino": "mejora",
+    "etapas": [
+      {
+        "m": {
+          "Fe": 3,
+          "Cu": 2,
+          "C": 2
+        },
+        "o": {
+          "IM": 1,
+          "En": 1
+        }
+      }
+    ]
+  },
+  {
     "nombre": "Pasantía",
     "tipo": "recursoshumanos",
     "puntos": 0,
