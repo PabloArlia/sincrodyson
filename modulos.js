@@ -157,7 +157,7 @@ window.modulos = [
     "copias": 1,
     "discos": 2,
     "bono": "2 [DS]",
-    "efecto": "Coloca un disco en 2 secciones distintas de Estructura de una misma zona. \nLuego gana $3",
+    "efecto": "Coloca un disco en 2 celdas distintas de [ES] Estructura de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -190,7 +190,7 @@ window.modulos = [
     "copias": 1,
     "discos": 2,
     "bono": "2 [DS]",
-    "efecto": "Coloca un disco en 2 secciones distintas de Estructura de una misma zona.",
+    "efecto": "Coloca un disco en 2 celdas distintas de [ES] Estructura de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -212,7 +212,7 @@ window.modulos = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DS]",
-    "efecto": "Coloca un disco en 1 sección de Estructura de una zona.",
+    "efecto": "Coloca un disco en 1 celda de [ES] Estructura de un cuadrante.",
     "etapas": [
       {
         "m": {
@@ -236,7 +236,7 @@ window.modulos = [
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
-    "efecto": "Coloca un disco en 3 secciones distintas de Estructura de una misma zona.",
+    "efecto": "Coloca un disco en 3 celdas distintas de [ES] Estructura de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -269,7 +269,7 @@ window.modulos = [
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
-    "efecto": "Coloca un disco en 3 secciones distintas de Estructura de una misma zona.",
+    "efecto": "Coloca un disco en 3 celdas distintas de [ES] Estructura de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -305,7 +305,7 @@ window.modulos = [
     "copias": 1,
     "discos": 5,
     "bono": "5 [DS]",
-    "efecto": "Coloca un disco en 5 secciones distintas de Estructura de una misma zona.",
+    "efecto": "Coloca un disco en 5 celdas distintas de [ES] Estructura de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -349,7 +349,7 @@ window.modulos = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DS]",
-    "efecto": "Coloca un disco en 1 sección fotovoltaica de una zona.",
+    "efecto": "Coloca un disco en 1 celda de [FV] Fotovoltaica de un cuadrante.",
     "etapas": [
       {
         "m": {
@@ -374,7 +374,7 @@ window.modulos = [
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
-    "efecto": "Coloca un disco en 3 secciones fotovoltaicas distintas de una misma zona.",
+    "efecto": "Coloca un disco en 3 celdas distintas de [FV] Fotovoltaica de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -407,7 +407,7 @@ window.modulos = [
     "copias": 1,
     "discos": 4,
     "bono": "4 [DS]",
-    "efecto": "Coloca un disco en 4 secciones fotovoltaicas distintas de una misma zona.",
+    "efecto": "Coloca un disco en 4 celdas distintas de [FV] Fotovoltaica de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -441,7 +441,7 @@ window.modulos = [
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
-    "efecto": "Coloca un disco en 3 secciones fotovoltaicas distintas de una misma zona.",
+    "efecto": "Coloca un disco en 3 celdas distintas de [FV] Fotovoltaica de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -477,7 +477,7 @@ window.modulos = [
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
-    "efecto": "Coloca un disco en 3 secciones fotovoltaicas distintas de una misma zona.",
+    "efecto": "Coloca un disco en 3 celdas distintas de [FV] Fotovoltaica de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -511,7 +511,7 @@ window.modulos = [
     "copias": 1,
     "discos": 7,
     "bono": "7 [DS]",
-    "efecto": "Coloca un disco en 7 secciones fotovoltaicas distintas de hasta dos zonas.",
+    "efecto": "Coloca un disco en 7 celdas distintas de [FV] Fotovoltaica de hasta dos cuadrantes.",
     "etapas": [
       {
         "m": {
@@ -556,7 +556,7 @@ window.modulos = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DS]",
-    "efecto": "Coloca 1 disco en una sección de Transmisión.",
+    "efecto": "Coloca un disco en 1 celda de [TS] Transmisión.",
     "etapas": [
       {
         "m": {
@@ -579,7 +579,7 @@ window.modulos = [
     "copias": 1,
     "discos": 2,
     "bono": "2 [DS]",
-    "efecto": "Coloca 2 discos en secciones distintas de Transmisión de una misma zona.",
+    "efecto": "Coloca un disco en 2 celdas distintas de [TS] Transmisión de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -603,7 +603,7 @@ window.modulos = [
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
-    "efecto": "Coloca 3 discos en secciones distintas de Transmisión de una misma zona. Cada disco debe ser adyacente a una sección de Refrigeración que ya tenga un disco.",
+    "efecto": "Coloca un disco en 3 celdas distintas de [TS] Transmisión de un mismo cuadrante. \nCada disco debe ser adyacente a una celda de [RF] Refrigeración que ya tenga un disco.",
     "etapas": [
       {
         "m": {
@@ -638,7 +638,7 @@ window.modulos = [
     "copias": 1,
     "discos": 6,
     "bono": "6 [DS]",
-    "efecto": "Coloca un discos en 3 secciones distintas de Transmisión de una misma zona. Después, coloca un disco en la seccion de Refrigeración adyacente a cada una de ellas.",
+    "efecto": "Coloca un disco en 3 celdas distintas de [TS] Transmisión de un mismo cuadrante. \nLuego, coloca un disco en 1 celda de [RF] Refrigeración adyacente a cada una de ellas.",
     "etapas": [
       {
         "m": {
@@ -678,7 +678,7 @@ window.modulos = [
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS] 2 [DH]",
-    "efecto": "En una zona sin discos de Transmisión, coloca discos en las secciones central y extremas, con beneficios normales de colocación. Después, coloca discos en las otras 2 secciones sin obtener bonificaciones de colocación.",
+    "efecto": "En un cuadrante sin discos en las celdas de [TS] Transmisión, coloca un disco en 3 celdas de [TS] Transmisión: la central y las dos extremas, con beneficios normales de colocación. Después, coloca un disco en las otras 2 celdas de [TS] Transmisión sin obtener bonificaciones de colocación.",
     "etapas": [
       {
         "m": {
@@ -715,7 +715,7 @@ window.modulos = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DS]",
-    "efecto": "Coloca 1 disco en una sección de Refrigeración.",
+    "efecto": "Coloca un disco en 1 celda de [RF] Refrigeración.",
     "etapas": [
       {
         "m": {
@@ -737,7 +737,7 @@ window.modulos = [
     "copias": 1,
     "discos": 2,
     "bono": "2 [DS]",
-    "efecto": "Coloca 2 discos en secciones distintas de Refrigeración de una misma zona.",
+    "efecto": "Coloca un disco en 2 celdas distintas de [RF] Refrigeración de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -760,7 +760,7 @@ window.modulos = [
     "copias": 1,
     "discos": 3,
     "bono": "3 [DS]",
-    "efecto": "Coloca 3 discos en secciones consecutivas de Refrigeración de una misma zona.",
+    "efecto": "Coloca un disco en 3 celdas consecutivas de [RF] Refrigeración de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -796,7 +796,7 @@ window.modulos = [
     "copias": 1,
     "discos": 4,
     "bono": "4 [DS]",
-    "efecto": "Coloca 4 discos en secciones distintas de Refrigeración de hasta 2 zonas.",
+    "efecto": "Coloca un disco en 4 celdas distintas de [RF] Refrigeración de hasta 2 cuadrantes.",
     "etapas": [
       {
         "m": {
@@ -831,7 +831,7 @@ window.modulos = [
     "copias": 1,
     "discos": 6,
     "bono": "6 [DS]",
-    "efecto": "Coloca 1 disco en Fotovoltaica, 1 en Refrigeración y 1 en Transmisión, todos en la misma sección, luego hazlo en otra seccion. \nSi en una seccion no entran los 3 discos se considera que no entra ninguno.",
+    "efecto": "Coloca un disco en 1 celda de [FV] Fotovoltaica, un disco en 1 celda de [RF] Refrigeración y un disco en 1 celda de [TS] Transmisión, todas de un mismo sector. Luego, repite en otro sector. \nSi en un sector no entran los 3 discos, se considera que no entra ninguno.",
     "etapas": [
       {
         "m": {
@@ -867,7 +867,7 @@ window.modulos = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DS] 2 [DH]",
-    "efecto": "Coloca 1 disco en Microondas. Después, coloca discos en las secciones adyacentes libres, sin obtener bonos de colocación por esos discos.",
+    "efecto": "Coloca 1 disco en [MO] Microondas. \nLuego, sin obtener bonos de colocación; coloca un disco en las celdas libres de [MO] Microondas adyacentes a la que colocaste inicialmente.",
     "etapas": [
       {
         "m": {
@@ -891,7 +891,7 @@ window.modulos = [
     "copias": 1,
     "discos": 4,
     "bono": "4 [DS]",
-    "efecto": "Coloca 1 disco en 4 secciones distintas de Microondas dos en una zona y dos en otra zona adyacente.",
+    "efecto": "Coloca un disco en 4 celdas distintas de [MO] Microondas: dos en un cuadrante y dos en otro cuadrante adyacente.",
     "etapas": [
       {
         "m": {
@@ -926,7 +926,7 @@ window.modulos = [
     "copias": 1,
     "discos": 5,
     "bono": "3-5 [DS]",
-    "efecto": "Coloca discos en todas las secciones libres de Microondas de una misma zona que tenga al menos 3 secciones libres.",
+    "efecto": "Coloca un disco en todas las celdas libres de [MO] Microondas de un mismo cuadrante que tenga al menos 3 celdas de [MO] Microondas libres.",
     "etapas": [
       {
         "m": {
@@ -965,7 +965,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+1 [PE]",
-    "efecto": "Aumenta en 1 tu producción de energía.",
+    "efecto": "Aumenta en 1 tu [PE] producción de energía.",
     "destino": "completados",
     "etapas": [
       {
@@ -980,8 +980,7 @@ window.modulos = [
           "En": 1
         }
       }
-    ],
-    "nota_balance": "Receta propuesta; producción +1 acordada."
+    ]
   },
   {
     "nombre": "Generador de radioisótopos (RTG)",
@@ -990,7 +989,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+1 [PE]",
-    "efecto": "Aumenta en 1 tu producción de energía.",
+    "efecto": "Aumenta en 1 tu [PE] producción de energía.",
     "destino": "completados",
     "etapas": [
       {
@@ -1005,8 +1004,7 @@ window.modulos = [
           "En": 2
         }
       }
-    ],
-    "nota_balance": "Receta propuesta; producción +1 acordada. No existe combustible nuclear específico."
+    ]
   },
   {
     "nombre": "Concentrador solar Stirling",
@@ -1015,7 +1013,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+2 [PE]",
-    "efecto": "Aumenta en 2 tu producción de energía.",
+    "efecto": "Aumenta en 2 tu [PE] producción de energía.",
     "destino": "completados",
     "etapas": [
       {
@@ -1040,8 +1038,7 @@ window.modulos = [
           "En": 2
         }
       }
-    ],
-    "nota_balance": "Receta propuesta; producción +2 acordada."
+    ]
   },
   {
     "nombre": "Central solar de ciclo Brayton",
@@ -1050,7 +1047,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+4 [PE]",
-    "efecto": "Aumenta en 4 tu producción de energía.",
+    "efecto": "Aumenta en 4 tu [PE] producción de energía.",
     "destino": "completados",
     "etapas": [
       {
@@ -1088,8 +1085,7 @@ window.modulos = [
           "En": 5
         }
       }
-    ],
-    "nota_balance": "Receta propuesta; +4 y tres etapas acordadas."
+    ]
   },
   {
     "nombre": "Centro de telemarketing",
@@ -1111,8 +1107,7 @@ window.modulos = [
           "En": 1
         }
       }
-    ],
-    "nota_balance": "Receta propuesta, revisar equilibrio."
+    ]
   },
   {
     "nombre": "Centro de investigación y tecnología",
@@ -1135,8 +1130,7 @@ window.modulos = [
           "En": 2
         }
       }
-    ],
-    "nota_balance": "Receta propuesta, revisar equilibrio."
+    ]
   },
   {
     "nombre": "Centro de expedición de cráteres",
@@ -1159,8 +1153,7 @@ window.modulos = [
           "En": 2
         }
       }
-    ],
-    "nota_balance": "Receta propuesta, revisar equilibrio."
+    ]
   },
   {
     "nombre": "Caminadoras",
@@ -1183,8 +1176,7 @@ window.modulos = [
           "En": 1
         }
       }
-    ],
-    "nota_balance": "Receta propuesta, revisar equilibrio."
+    ]
   },
   {
     "nombre": "Pasantía",
@@ -1193,7 +1185,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+1 [IQ] [CN]",
-    "efecto": "Coloca 1 IQ de la reserva en tus barracas sin gastar ninguna ficha de contratación. Si no hay IQ disponibles en la reserva, obtén 1 ficha de contratación.",
+    "efecto": "Coloca 1 [IQ] Ingeniero Químico de la reserva en tus barracas sin gastar ninguna ficha de contratación. Si no hay IQ disponibles en la reserva, obtén 1 [CN] ficha de contratación.",
     "destino": "completados",
     "etapas": [
       {
@@ -1211,7 +1203,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+3 [IS] [CN]",
-    "efecto": "Coloca hasta 3 IS de la reserva en tus barracas sin gastar fichas de contratación. Por cada IS no disponible, obtén 1 ficha de contratación.",
+    "efecto": "Coloca hasta 3 [IS] Ingeniero en Ssistemas en tus barracas sin gastar fichas de contratación. Por cada uno que no este disponible, obtén 1 [CN] ficha de contratación.",
     "destino": "completados",
     "etapas": [
       {
@@ -1235,8 +1227,7 @@ window.modulos = [
           "En": 2
         }
       }
-    ],
-    "nota_balance": "Receta de $37 propuesta; recompensa 3 IS acordada, revisar balance."
+    ]
   },
   {
     "nombre": "Desregulación de sueldos",
@@ -1245,7 +1236,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "[TJ] [CN]",
-    "efecto": "Cada jugador que tenga menos de 7 fichas de contratación obtiene 1 ficha de contratación. Ganas 1 PV por cada ficha de contratación efectivamente entregada, hasta un máximo de 3 PV.",
+    "efecto": "Cada jugador que tenga menos de 7 [CN] fichas de contratación obtiene 1 [CN]. Ganas 1 PV por cada [CN] efectivamente entregada, hasta un máximo de 3 PV.",
     "destino": "completados",
     "etapas": [
       {
@@ -1257,17 +1248,16 @@ window.modulos = [
           "En": 1
         }
       }
-    ],
-    "nota_balance": "Receta propuesta."
+    ]
   },
   {
-    "nombre": "Robots multipropósitos avanzados",
+    "nombre": "Robots multipropósito",
     "tipo": "recursoshumanos",
     "puntos": 0,
     "copias": 1,
     "discos": 0,
     "bono": "[IQ] [IE] [IS] [IM]",
-    "efecto": "Coloca hasta 4 ingenieros disponibles de la reserva en tus barracas sin gastar fichas de contratación; por cada ingeniero obtenido disminuye en 1 tu [PE].",
+    "efecto": "Coloca hasta 1 [IQ] Ingeniero Químico, 1 [IE] Ingeniero Electrónico, 1 [IS] Ingeniero en Ssistemas y 1 [IM] Ingeniero Mecánico de la reserva en tus barracas sin gastar fichas de contratación; por cada ingeniero obtenido disminuye en 1 tu [PE].",
     "destino": "completados",
     "etapas": [
       {
@@ -1295,8 +1285,7 @@ window.modulos = [
           "En": 5
         }
       }
-    ],
-    "nota_balance": "Dos etapas confirmadas; costos altos propuestos. Reducción de producción asumida permanente."
+    ]
   },
   {
     "nombre": "Mercado negro",
@@ -1318,8 +1307,7 @@ window.modulos = [
           "En": 1
         }
       }
-    ],
-    "nota_balance": "Receta propuesta; revisar precios y disponibilidad de reserva."
+    ]
   },
   {
     "nombre": "Consorcio de minerales estratégicos",
@@ -1328,7 +1316,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "[TJ] [ME] [RR]",
-    "efecto": "Cada jugador puede vender hasta 3 tierras raras a $15 cada una, independientemente del tipo. Ganas 1 PV por cada 2 tierras raras vendidas entre todos los jugadores, redondeando hacia abajo. Puedes volver a colocar el cubo en la etapa 1.",
+    "efecto": "Cada jugador puede vender hasta 3 [RR] tierras raras a $15 cada una, independientemente del tipo. \nGanas 1 PV por cada 2 [RR] vendidas entre todos los jugadores, redondeando hacia abajo. Puedes volver a colocar el cubo en la etapa 1.",
     "destino": "etapa:1",
     "etapas": [
       {
@@ -1351,8 +1339,7 @@ window.modulos = [
           "En": 2
         }
       }
-    ],
-    "nota_balance": "Dos etapas y receta propuestas; efecto confirmado."
+    ]
   },
   {
     "nombre": "Hotel solar",
@@ -1361,7 +1348,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+5 [Di] [RE]",
-    "efecto": "Elige: (1) Si hay menos de $5 sobre esta carta, coloca $1 de tu dinero sobre ella; o (2) cobra del banco $5 más $1 por cada $1 sobre esta carta. El dinero invertido permanece. \nEn ambos casos, puedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Elige: \n(1) Si hay menos de $5 sobre esta carta, coloca $1 de tu dinero sobre ella; o \n(2) cobra del banco $5 más $1 por cada $1 sobre esta carta. El dinero invertido permanece. \nEn ambos casos, puedes volver a colocar el cubo en la etapa 2.",
     "destino": "etapa:2",
     "etapas": [
       {
@@ -1384,8 +1371,7 @@ window.modulos = [
           "En": 2
         }
       }
-    ],
-    "nota_balance": "Receta propuesta; inversión máxima $5 y cobro máximo $10."
+    ]
   },
   {
     "nombre": "Centro de fusión nuclear",
@@ -1394,7 +1380,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+X [En]",
-    "efecto": "Todos los jugadores obtienen hasta 3 En, sin superar la capacidad de sus baterías. Ganas 1 PV por cada unidad de energía efectivamente obtenida entre todos los jugadores, hasta un máximo de 8 PV. Puedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Todos los jugadores obtienen hasta 3 [En] energia, sin superar la capacidad de sus [BT] baterías. Ganas 1 PV por cada unidad de energía efectivamente obtenida entre todos los jugadores, hasta un máximo de 8 PV. \nPuedes volver a colocar el cubo en la etapa 2.",
     "destino": "etapa:2",
     "etapas": [
       {
@@ -1430,7 +1416,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+4 [RR]",
-    "efecto": "Obtén de la reserva hasta 4 tierras raras presentes en yacimientos revelados (aun si no tienen licencias). Por cada yacimiento ajeno utilizado, paga $5 a su propietario; no puede negarse. Puedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Obtén de la reserva hasta 4 [RR] tierras raras presentes en yacimientos revelados (aun si no tienen [LE] licencias). Por cada yacimiento ajeno utilizado, paga $5 a su propietario; no puede negarse. Puedes volver a colocar el cubo en la etapa 2.",
     "destino": "etapa:2",
     "etapas": [
   {
@@ -1480,7 +1466,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+2 [Tr]",
-    "efecto": "Obtén 2 Tr de la reserva. Puedes devolver esta carta a tu mano.",
+    "efecto": "Obtén 2 [Tr] Transporte de la reserva. Puedes devolver esta carta a tu mano.",
     "destino": "mano",
     "etapas": [
       {
@@ -1512,7 +1498,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+5 [Tr] [RE]",
-    "efecto": "Obtén 5 Tr de la reserva. Puedes volver a colocar el cubo en la etapa 3.",
+    "efecto": "Obtén 5 [Tr] Transporte de la reserva. Puedes volver a colocar el cubo en la etapa 3.",
     "destino": "etapa:3",
     "etapas": [
       {
@@ -1557,7 +1543,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+6 [Tr] [RE]",
-    "efecto": "Obtén 6 Tr de la reserva. Puedes volver a colocar el cubo en la etapa 3.",
+    "efecto": "Obtén 6 [Tr] Transporte de la reserva. Puedes volver a colocar el cubo en la etapa 3.",
     "destino": "etapa:3",
     "etapas": [
       {
@@ -1602,7 +1588,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "+7 [Tr] [RE]",
-    "efecto": "Obtén 7 Tr de la reserva. Puedes volver a colocar el cubo en la etapa 3.",
+    "efecto": "Obtén 7 [Tr] Transporte de la reserva. Puedes volver a colocar el cubo en la etapa 3.",
     "destino": "etapa:3",
     "etapas": [
       {
@@ -1653,7 +1639,7 @@ window.sensores = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco de Sensores en 1 espacio libre de Sensores de un área de soporte. \nLuego, pierde 2 PV por cada sección de Estructura sin disco, considerando todas las zonas.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 2 PV por cada celda de [ES] Estructura sin disco, considerando todos los cuadrantes.",
     "etapas": [
       {
         "m": { "Si": 2, "Cu": 2, "C": 2 },
@@ -1669,7 +1655,7 @@ window.sensores = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco de Sensores en 1 espacio libre de Sensores de un área de soporte. \nLuego, pierde 1 PV por cada sección de Estructura y cada sección Fotovoltaica sin disco, considerando todas las zonas.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 1 PV por cada celda de [ES] Estructura y cada celda [FV] Fotovoltaica sin disco, considerando todos los cuadrantes.",
     "etapas": [
       {
         "m": { "Si": 3, "Cu": 2, "Al": 2 },
@@ -1685,7 +1671,7 @@ window.sensores = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco de Sensores en 1 espacio libre de Sensores de un área de soporte. \nLuego, pierde 12 PV por cada espacio de Mantenimiento sin disco en esa misma área de soporte.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 12 PV por cada espacio de [MN] Mantenimiento sin disco en esa misma área de soporte.",
     "etapas": [
       {
         "m": { "Si": 2, "Al": 2, "Ce": 1 },
@@ -1701,7 +1687,7 @@ window.sensores = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco de Sensores en 1 espacio libre de Sensores de un área de soporte. \nLuego, paga $10 por cada sección de Microondas sin disco, considerando todas las zonas. Puedes pagar parcialmente; por cada $10 que no puedas pagar, pierde 3 PV.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, paga $10 por cada celda de [MO] Microondas sin disco, considerando todos los cuadrantes. Puedes pagar parcialmente; por cada $10 que no puedas pagar, pierde 3 PV.",
     "etapas": [
       {
         "m": { "Fe": 2, "Cu": 2, "Si": 2 },
@@ -1717,7 +1703,7 @@ window.sensores = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco de Sensores en 1 espacio libre de un área de soporte junto con los ingenieros estructural y electromecánico de la última etapa. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [SN] Sensores de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": { "Ti": 4, "Cu": 7, "Si": 6, "Ce": 1 },
@@ -1737,7 +1723,7 @@ window.sensores = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco de Sensores en 1 espacio libre de Sensores de un área de soporte. \nLuego, pierde 7 PV por cada zona que no tenga un disco de Sensores en su área de soporte.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 7 PV por cada cuadrante que no tenga un disco en la celda de [SN] Sensores en su área de soporte.",
     "etapas": [
       {
         "m": { "Si": 3, "Cu": 2, "Er": 1 },
@@ -1753,7 +1739,7 @@ window.sensores = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco de Sensores en 1 espacio libre de Sensores de un área de soporte. \nLuego, pierde 2 PV por cada sección de Transmisión sin disco, considerando todas las zonas.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.  \nLuego, pierde 2 PV por cada celda de [TS] Transmisión sin disco, considerando todos los cuadrantes.",
     "etapas": [
       {
         "m": { "Cu": 3, "Si": 2 },
@@ -1773,18 +1759,18 @@ window.sensores = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco de Sensores en 1 espacio libre de Sensores de un área de soporte.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.",
     "etapas": [
       {
         "m": { "Si": 4, "Cu": 3, "Nd": 1 },
         "o": { "IS": 2, "En": 3 }
       },
       {
-        "m": { "Ti": 2, "Al": 3, "Er": 1, "Gd": 1 },
+        "m": { "Ti": 2, "Er": 1, "Gd": 1 },
         "o": { "IQ": 1, "IS": 2, "En": 4 }
       },
       {
-        "m": { "Si": 3, "Cu": 3, "Er": 1, "Nd": 1 },
+        "m": { "Cu": 3, "Er": 1, "Nd": 1 },
         "o": { "IQ": 1, "IS": 2, "En": 5, "Tr": 1 }
       }
     ],

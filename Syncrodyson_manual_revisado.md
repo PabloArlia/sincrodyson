@@ -61,7 +61,7 @@ Planificación se realiza simultáneamente. En Mercado y Ejecución se utiliza e
 
 Durante esta fase, cada jugador prepara sus proyectos, distribuye sus componentes y programa sus operaciones de mercado.
 
-Solo puede manipular las cartas de su mano y los componentes de su tablero personal. Como excepción, puede colocar o retirar licencias de los yacimientos de su zona de juego.
+Solo puede manipular las cartas de su mano y los componentes de su tablero personal. Como excepción, puede colocar o retirar licencias de los yacimientos de su cuadrante de juego.
 
 ### Asignar licencias a yacimientos
 
@@ -205,7 +205,7 @@ Los PV impresos en los proyectos completados se cuentan al final de la partida, 
 
 ### Ingenieros anclados
 
-Algunos proyectos requieren dejar ingenieros anclados en la esfera. La carta los indica con el icono de un ingeniero parado sobre un disco. Esos ingenieros no vuelven a las barracas: se colocan junto con el disco en la sección o área de soporte correspondiente y permanecen anclados allí.
+Algunos proyectos requieren dejar ingenieros anclados en la esfera. La carta los indica con el icono de un ingeniero parado sobre un disco. Esos ingenieros no vuelven a las barracas: se colocan junto con el disco en la celda o área de soporte correspondiente y permanecen anclados allí.
 
 Al final de la partida, cada ingeniero anclado resta PV al jugador cuyo disco está junto a él. La penalización por ingeniero depende del total de ingenieros anclados entre todos los jugadores, según la tabla de la sección «Fin de partida y puntuación».
 
@@ -217,7 +217,7 @@ Los PV impresos en los proyectos completados se cuentan al final de la partida, 
 
 | Símbolo | Destino | Procedimiento |
 | --- | --- | --- |
-| `[CM]` | Proyectos completados | Coloca la carta en tu zona de proyectos completados y retira el cubo. No volverá a usarse antes del conteo final. |
+| `[CM]` | Proyectos completados | Coloca la carta en tu cuadrante de proyectos completados y retira el cubo. No volverá a usarse antes del conteo final. |
 | `[MA]` | Volver a la mano | Devuelve la carta a tu mano. No dará puntos al final de la partida, pero puedes volver a construirla desde la primera etapa y pagar de nuevo sus requisitos. Si lo prefieres, puedes agregarla a proyectos completados como si tuviera destino `[CM]`. |
 | `[RE]` | Repetible | Devuelve el cubo a la etapa indicada y deja la carta en su espacio de proyecto. Para activar otra vez el efecto «Al completar», vuelve a completar las etapas pendientes. Si lo prefieres, puedes ignorar este destino y tratar la carta como un `[CM]` normal. |
 | `[MS]` | Mejora de soporte externo | Coloca la carta a la derecha de tu área de Soporte externo; entra en vigor inmediatamente. Si ya hay otra `[MS]` activa allí, muévela a proyectos completados. La nueva mejora queda activa. |
@@ -228,28 +228,28 @@ Si un proyecto completado indica colocar uno o más discos en la esfera de Dyson
 
 Los discos indicados se colocan uno por uno. Cada colocación se resuelve por completo, incluidos sus bonos y pagos, antes de colocar el siguiente disco. El disco recién colocado siempre cuenta para los bonos.
 
-### Colocar discos en las secciones
+### Colocar discos en las celdas
 
-Cada espacio de capa de una sección admite un único disco, independientemente de quién sea su dueño. Por cada disco que deba colocarse y no pueda, el jugador descarta ese disco y pierde 5 PV.
+Cada celda es la posición de una capa dentro de un sector y admite un único disco, independientemente de quién sea su dueño. Por cada disco que deba colocarse y no pueda, el jugador descarta ese disco y pierde 5 PV.
 
-Después de colocar un disco en una sección:
+Después de colocar un disco en una celda:
 
-- El jugador que lo colocó gana 1 PV por cada disco presente en esa sección, de cualquier jugador.
-- Cada jugador cobra $2 por cada disco propio presente en esa sección.
-- Cada jugador cobra $3 por cada disco propio presente en el área de soporte de la zona correspondiente.
+- El jugador que lo colocó gana 1 PV por cada disco presente en ese sector, de cualquier jugador.
+- Cada jugador cobra $2 por cada disco propio presente en ese sector.
+- Cada jugador cobra $3 por cada disco propio presente en el área de soporte del cuadrante correspondiente.
 
-Una vez cobrados los bonos, se comprueba la capa de estructura de esa sección. Si está vacía, el jugador que acaba de colocar el disco paga $5 al banco por acarreo. Puede recurrir a préstamos para afrontar este pago.
+Una vez cobrados los bonos, se comprueba la capa de estructura de ese sector. Si está vacía, el jugador que acaba de colocar el disco paga $5 al banco por acarreo. Puede recurrir a préstamos para afrontar este pago.
 
 ### Colocar discos en las áreas de soporte
 
-Cada zona dispone de un área de soporte con capacidad para un disco de control, uno de sensores y dos de mantenimiento.
+Cada cuadrante dispone de un área de soporte con capacidad para un disco de control, uno de sensores y dos de mantenimiento.
 
 Por cada disco que deba colocarse y no pueda, el jugador descarta ese disco y pierde 5 PV.
 
 Después de colocar un disco en un área de soporte:
 
-- El jugador que lo colocó gana 1 PV por cada dos discos presentes en toda la zona, redondeando hacia arriba. Se cuentan los discos de todos los jugadores, tanto en las secciones como en el área de soporte.
-- Cada jugador cobra $1 por cada disco propio presente en toda esa zona, contando las secciones y el área de soporte.
+- El jugador que lo colocó gana 1 PV por cada dos discos presentes en todo el cuadrante, redondeando hacia arriba. Se cuentan los discos de todos los jugadores, tanto en los sectores como en el área de soporte.
+- Cada jugador cobra $1 por cada disco propio presente en todo ese cuadrante, contando los sectores y el área de soporte.
 
 ## 4. Mantenimiento
 
@@ -346,7 +346,7 @@ Con cuatro o más jugadores, el segundo puesto obtiene la mitad de los PV del ob
 
 Los empates son generosos: todos los jugadores empatados reciben la totalidad de los puntos correspondientes al puesto. Si dos o más jugadores empatan en primer puesto, no se otorgan puntos por segundo puesto.
 
-Especialista se puntúa por capa e Integrador por sección, respectivamente.
+Especialista se puntúa por capa e Integrador por sector, respectivamente.
 
 Gana el jugador con más PV. Si hay empate, gana quien tenga más dinero sobrante. Si el empate persiste, gana quien conserve la ficha de orden de número más bajo.
 
