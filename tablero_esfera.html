@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Syncrodyson · Esfera de Dyson</title>
+<style>
+:root{font-family:Arial,Helvetica,sans-serif;color:#202723;background:white;font-synthesis:none;--ink:#28343a;--green:#277347;--line:#aeb8b2;--pale:#f4f6f3;--blue:#4d7b9b;--gold:#d39d35;--purple:#725487;--red:#b54b4b}
+*{box-sizing:border-box}body{margin:0;padding:18px}
+.toolbar{width:min(100%,420mm);margin:0 auto 14px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;background:var(--ink);color:#fff;border-radius:7px}
+.toolbar h1{font-size:17px;margin:0;letter-spacing:.04em}button{border:0;border-radius:5px;background:#70b684;color:#15221b;padding:10px 16px;font-weight:bold;cursor:pointer}
+ .poster{position:relative;width:637.5mm;height:420mm;margin:0 auto;background:white;border:1.2mm solid var(--ink);border-radius:3mm;padding:25mm;box-shadow:0 3px 14px #0002}
+.board-content{height:100%;display:grid;grid-template-columns:350mm 1fr;gap:10mm}
+.board-left{min-width:0;min-height:0}
+.score-track{position:absolute;inset:0;display:grid;grid-template-columns:repeat(30,minmax(0,1fr));grid-template-rows:repeat(22,minmax(0,1fr));pointer-events:none}
+.score-cell{display:flex;align-items:center;justify-content:center;border:.35mm solid var(--ink);font-size:16pt;font-weight:bold;background:white}
+.score-cell.milestone{background:white}.score-cell.start{background:white;color:var(--ink)}.score-cell small{font-size:8pt;margin-left:2mm}
+.reference{min-width:0;display:flex;flex-direction:column;gap:6mm;padding:2mm 0}
+.reference h1{font-size:20pt;letter-spacing:.06em;margin:0}.reference h2{font-size:13pt;margin:0 0 3mm;color:var(--ink)}
+.score-offsets{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm}.score-offset{height:22mm;border:.6mm solid var(--ink);border-radius:2mm;display:flex;align-items:center;justify-content:center;font-size:20pt;font-weight:bold;background:white}
+.reference table{width:100%;border-collapse:collapse;background:white;font-size:11pt;line-height:1.25}.reference th,.reference td{padding:2.5mm;border:.3mm solid var(--line);text-align:left;vertical-align:top}.reference th{width:36%;font-weight:bold;background:white}
+.reference p{font-size:10pt;line-height:1.3;margin:2mm 0 0}.reference .note{padding:3mm;border-left:1mm solid var(--ink);background:white}
+.reference .no-space{font-size:14pt;line-height:1.35;padding:3mm;border:.5mm solid var(--ink);border-radius:1mm;background:white}
+.anchored-table thead th{width:50%}.anchored-table td:last-child{text-align:center;font-weight:bold}
+.title{display:flex;align-items:center;justify-content:space-between;border-bottom:.5mm solid var(--ink);padding:0 1mm 2mm}.title strong{font-size:19pt;letter-spacing:.08em}.title span{font-size:9pt;font-weight:bold;color:#52605b}
+.main{position:relative;height:100%;min-height:0;overflow:hidden}.sphere-panel{position:absolute;width:350mm;height:350mm;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center}.sphere{display:block;width:100%;height:100%}.sphere circle,.sphere line{fill:none;stroke:#78837c;stroke-width:1.4}.sphere .major{stroke:var(--ink);stroke-width:2.6}.sphere .number{font:700 17px Arial,sans-serif;fill:var(--ink);stroke:none;text-anchor:middle;dominant-baseline:middle}.sphere .layer-icon{stroke:none}.sphere .zone-label{font:900 18px Arial,sans-serif;fill:var(--ink);stroke:white;stroke-width:4;paint-order:stroke;letter-spacing:.7px;text-anchor:middle;dominant-baseline:middle}
+.zone{position:absolute;width:70mm;height:auto;padding:2.5mm;border:1mm solid #000;border-radius:3.5mm;background:white;display:flex;flex-direction:column;gap:1.2mm;z-index:1}.zone-a{left:2mm;top:2mm}.zone-b{right:2mm;top:2mm}.zone-c{right:2mm;bottom:2mm}.zone-d{left:2mm;bottom:2mm}.zone h2{margin:0;text-align:center;color:var(--ink);font-size:9pt;letter-spacing:.06em;text-transform:uppercase}.zone-slots{min-height:0;flex:none;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,13mm);gap:.7mm}.support-slot{height:100%;align-self:center;border:.3mm dashed #aab3ac;border-radius:1mm;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3mm;font-size:5.5pt;color:#66716a;text-align:center}.support-icon{width:7mm;height:7mm;object-fit:contain}
+.glossary{min-height:0;padding:3mm 2mm 0;border-top:.6mm solid var(--ink)}.glossary h2{margin:0 0 3mm;text-align:center;font-size:11pt;letter-spacing:.06em;text-transform:uppercase}.glossary-items{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}.glossary-item{display:flex;align-items:center;gap:2mm;font-size:10pt;font-weight:bold}.glossary-item img{width:8mm;height:8mm;object-fit:contain;flex:none}
+.print-page{width:420mm;height:297mm;margin:0 auto;display:grid;place-items:center;background:white}
+.poster{zoom:0.6588235294;margin:0}
+@page{size:A3 landscape;margin:0}
+@media print{body{padding:0;background:white}.toolbar{display:none}.print-page{margin:0;break-inside:avoid}.poster{box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media screen and (max-width:1000px){body{overflow-x:auto}.print-page{margin-left:0;margin-right:0}}
+</style>
+</head>
+<body>
+<header class="toolbar"><h1>ESFERA DE DYSON · TABLERO DE JUEGO</h1><button onclick="window.print()">Imprimir / guardar PDF</button></header>
+<div class="print-page"><main class="poster">
+ <nav class="score-track" id="score-track" aria-label="Recorrido de puntuación de 0 a 99, en sentido horario"></nav>
+ <div class="board-content"><div class="board-left">
+ <section class="main">
+  <article class="zone zone-a"><h2>Zona Alfa - soporte</h2><div class="zone-slots"><div class="support-slot"><img class="support-icon" src="./iconos/CO-control.svg" alt=""></div><div class="support-slot"><img class="support-icon" src="./iconos/SN-sensores.svg" alt=""></div><div class="support-slot"><img class="support-icon" src="./iconos/MN-mantenimiento.svg" alt=""></div><div class="support-slot"><img class="support-icon" src="./iconos/MN-mantenimiento.svg" alt=""></div></div></article>
+  <article class="zone zone-b"><h2>Zona Beta - soporte</h2><div class="zone-slots"><div class="support-slot"><img class="support-icon" src="./iconos/CO-control.svg" alt=""></div><div class="support-slot"><img class="support-icon" src="./iconos/SN-sensores.svg" alt=""></div><div class="support-slot"><img class="support-icon" src="./iconos/MN-mantenimiento.svg" alt=""></div><div class="support-slot"><img class="support-icon" src="./iconos/MN-mantenimiento.svg" alt=""></div></div></article>
+  <div class="sphere-panel"><svg class="sphere" id="sphere" viewBox="-62 -62 1124 1124" role="img" aria-label="Esfera de Dyson con veinte secciones y cuatro zonas"></svg></div>
+  <article class="zone zone-c"><h2>Zona Gamma - soporte</h2><div class="zone-slots"><div class="support-slot"><img class="support-icon" src="./iconos/CO-control.svg" alt=""></div><div class="support-slot"><img class="support-icon" src="./iconos/SN-sensores.svg" alt=""></div><div class="support-slot"><img class="support-icon" src="./iconos/MN-mantenimiento.svg" alt=""></div><div class="support-slot"><img class="support-icon" src="./iconos/MN-mantenimiento.svg" alt=""></div></div></article>
+  <article class="zone zone-d"><h2>Zona Delta - soporte</h2><div class="zone-slots"><div class="support-slot"><img class="support-icon" src="./iconos/CO-control.svg" alt=""></div><div class="support-slot"><img class="support-icon" src="./iconos/SN-sensores.svg" alt=""></div><div class="support-slot"><img class="support-icon" src="./iconos/MN-mantenimiento.svg" alt=""></div><div class="support-slot"><img class="support-icon" src="./iconos/MN-mantenimiento.svg" alt=""></div></div></article>
+ </section>
+
+ </div>
+ <aside class="reference">
+  <h1>SYNCRODYSON</h1>
+  <section><h2>Vueltas de puntuación</h2><div class="score-offsets"><div class="score-offset">−50</div><div class="score-offset">0</div><div class="score-offset">+50</div><div class="score-offset">+100</div></div></section>
+  <section><h2>Colocar discos en las secciones</h2>
+   <table aria-label="Bonos por colocar en secciones"><tbody>
+    <tr><th>Quien coloca</th><td>+1 PV por cada disco en esa sección.</td></tr>
+    <tr><th>Cada jugador</th><td>$2 por disco propio en esa sección.<br>$3 por disco propio en el soporte de esa zona.</td></tr>
+    <tr><th>Acarreo</th><td>Si Estructura queda vacía: quien coloca paga $5.</td></tr>
+   </tbody></table>
+  </section>
+  <section><h2>Colocar discos en las áreas de soporte</h2>
+   <table aria-label="Bonos por colocar en soporte"><tbody>
+    <tr><th>Quien coloca</th><td>+1 PV por cada 2 discos en toda la zona, redondeando hacia arriba.</td></tr>
+    <tr><th>Cada jugador</th><td>$1 por disco propio en toda la zona.</td></tr>
+    <tr><th>Capacidad</th><td>1 Control · 1 Sensores · 2 Mantenimiento.</td></tr>
+   </tbody></table>
+  </section>
+  <p class="note">El disco recién colocado cuenta. Se cuentan los discos de todos los jugadores para los PV. En toda la zona se incluyen secciones y soporte.</p>
+  <p class="no-space"><b>Sin espacio:</b> descarta el disco y pierde 5 PV. Resuelve cada disco por completo antes de colocar el siguiente.</p>
+  <section><h2>Personal anclado · fin de partida</h2>
+   <table class="anchored-table" aria-label="Penalización por personal anclado"><thead><tr><th>Total anclado entre todos los jugadores</th><th>Penalización por ingeniero</th></tr></thead><tbody>
+    <tr><td>1–2</td><td>−1 PV</td></tr>
+    <tr><td>3–5</td><td>−2 PV</td></tr>
+    <tr><td>6–7</td><td>−3 PV</td></tr>
+    <tr><td>8–9</td><td>−4 PV</td></tr>
+    <tr><td>10 o más</td><td>−5 PV</td></tr>
+   </tbody></table>
+   <p>Cada jugador pierde PV por los ingenieros anclados junto a sus propios discos.</p>
+  </section>
+ <section class="glossary">
+  <h2>Glosario de iconos</h2>
+  <div class="glossary-items">
+   <div class="glossary-item"><img src="./iconos/ES-estructura.svg" alt=""><span>Estructura</span></div>
+   <div class="glossary-item"><img src="./iconos/FV-fotovoltaico.svg" alt=""><span>Fotovoltaica</span></div>
+   <div class="glossary-item"><img src="./iconos/TS-transmision.svg" alt=""><span>Transmisión</span></div>
+   <div class="glossary-item"><img src="./iconos/RF-refrigeracion.svg" alt=""><span>Refrigeración</span></div>
+   <div class="glossary-item"><img src="./iconos/MO-microondas.svg" alt=""><span>Microondas</span></div>
+   <div class="glossary-item"><img src="./iconos/CO-control.svg" alt=""><span>Control</span></div>
+   <div class="glossary-item"><img src="./iconos/SN-sensores.svg" alt=""><span>Sensores</span></div>
+   <div class="glossary-item"><img src="./iconos/MN-mantenimiento.svg" alt=""><span>Mantenimiento</span></div>
+  </div>
+ </section>
+ </aside></div>
+</main></div>
+<script>
+const track=document.getElementById('score-track'),scorePositions=[];
+for(let col=1;col<=30;col++)scorePositions.push([col,1]);
+for(let row=2;row<=22;row++)scorePositions.push([30,row]);
+for(let col=29;col>=1;col--)scorePositions.push([col,22]);
+for(let row=21;row>=2;row--)scorePositions.push([1,row]);
+scorePositions.forEach(([col,row],score)=>{
+ const cell=document.createElement('div');
+ cell.className='score-cell'+(score===0?' start':score%5===0?' milestone':'');
+ cell.style.gridColumn=col;cell.style.gridRow=row;cell.textContent=score;
+ if(score===0){const arrow=document.createElement('small');arrow.textContent='\u2192';cell.append(arrow)}
+ track.append(cell);
+});
+// Ajuste moderado: punto medio entre anchos iguales y superficies iguales.
+const svg=document.getElementById('sphere'),ns='http://www.w3.org/2000/svg',cx=500,cy=500,rings=Array.from({length:6},(_,i)=>(135+i*70+Math.sqrt(135**2+i*(485**2-135**2)/5))/2),icons=['ES-estructura.svg','FV-fotovoltaico.svg','TS-transmision.svg','RF-refrigeracion.svg','MO-microondas.svg'];
+function node(name,attrs={}){const el=document.createElementNS(ns,name);for(const [k,v] of Object.entries(attrs))el.setAttribute(k,v);return el}
+for(let i=0;i<rings.length;i++)svg.append(node('circle',{cx,cy,r:rings[i],class:i===0||i===rings.length-1?'major':''}));
+function polar(deg,r){const a=deg*Math.PI/180;return{x:cx+Math.cos(a)*r,y:cy+Math.sin(a)*r}}
+const zones=[{name:'Alfa',start:180,end:270,sweep:1},{name:'Beta',start:270,end:360,sweep:1},{name:'Gamma',start:90,end:0,sweep:0},{name:'Delta',start:180,end:90,sweep:0}],defs=node('defs');
+for(let i=0;i<zones.length;i++){const zone=zones[i],a=polar(zone.start,105),b=polar(zone.end,105);defs.append(node('path',{id:`arc-${i}`,d:`M${a.x} ${a.y} A105 105 0 0 ${zone.sweep} ${b.x} ${b.y}`}))}
+svg.append(defs);
+for(let i=0;i<zones.length;i++){const zone=zones[i],label=node('text',{class:'zone-label'}),path=node('textPath',{href:`#arc-${i}`,'startOffset':'50%'});path.innerHTML=zone.name;label.append(path);svg.append(label)}
+for(let s=0;s<20;s++){
+ const angle=-Math.PI/2+s*Math.PI/10,midAngle=angle+Math.PI/20,ux=Math.cos(angle),uy=Math.sin(angle),outer=500;
+ const isZoneEdge=s%5===0,lineStart=isZoneEdge?103:rings[0],lineEnd=isZoneEdge?525:outer;
+ svg.append(node('line',{x1:cx+ux*lineStart,y1:cy+uy*lineStart,x2:cx+ux*lineEnd,y2:cy+uy*lineEnd,class:isZoneEdge?'major':''}));
+ const label=node('text',{x:cx+Math.cos(midAngle)*525,y:cy+Math.sin(midAngle)*525,class:'number'});label.textContent=String(s+1).padStart(2,'0');svg.append(label);
+ for(let layer=0;layer<5;layer++){
+  const r=(rings[layer]+rings[layer+1])/2,x=cx+Math.cos(midAngle)*r,y=cy+Math.sin(midAngle)*r;
+  svg.append(node('image',{x:x-10,y:y-10,width:20,height:20,href:`./iconos/${icons[layer]}`,class:'layer-icon'}));
+ }
+}
+svg.append(node('image',{x:cx-54,y:cy-54,width:108,height:108,href:'./iconos/SO-sol.svg'}));
+</script>
+</body>
+</html>
+
+
+
+
+
+

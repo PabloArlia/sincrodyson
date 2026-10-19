@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30">
+  <style>
+    .figura { fill: #58aa59; stroke: #222; stroke-width: .8; stroke-linejoin: round; }
+    #sin-color:target ~ .figura { fill: #fff; }
+  </style>
+  <g id="sin-color"/>
+  <g class="figura">
+    <circle cx="12" cy="5" r="4.2"/>
+    <path d="M7.5 11 Q12 10 16.5 11 L23 18 L20 22 L16.7 19 L19.5 29 H13.4 L12 23 L10.6 29 H4.5 L7.3 19 L4 22 L1 18 Z"/>
+  </g>
+</svg>
