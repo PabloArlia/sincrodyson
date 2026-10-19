@@ -1813,19 +1813,17 @@ window.control = [
     "copias": 4,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco en una celda libre de [CT] Control de un área de soporte.",
+    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte.",
     "etapas": [
       {
         "m": {
-          "Si": 0,
-          "Cu": 0,
-          "Ti": 0,
           "Nd": 2,
-          "Fe": 3
+          "Fe": 3,
+          "Gd": 1
         },
         "o": {
           "IS": 2,
-          "EM": 1,
+          "IE": 1,
           "En": 6
         }
       },
@@ -1833,8 +1831,7 @@ window.control = [
         "m": {
           "Al": 8,
           "Cu": 6,
-          "Er": 2,
-          "Gd": 1
+          "Er": 2
         },
         "o": {
           "IS": 2,
@@ -1850,7 +1847,6 @@ window.control = [
         },
         "o": {
           "IS": 2,
-          "EM": 1,
           "En": 5,
           "Tr": 3
         }
@@ -1865,13 +1861,11 @@ window.control = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CT] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco y el ingeniero de la ultima etapa en una celda libre de [CO] Control de un área de soporte. \nLuego pierde 8 PV por cada celda de [SN] Sensores sin disco. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Si": 0,
-          "Cu": 1,
-          "Al": 5,
+          "Al": 2,
           "Nd": 1,
           "Fe": 1
         },
@@ -1883,15 +1877,14 @@ window.control = [
       },
       {
         "m": {
-          "Ti": 3,
-          "Cu": 4,
+          "Ti": 2,
+          "Cu": 1,
           "Si": 4
         },
         "o": {
-          "IS": 1,
-          "IE": 1,
+          "SX": 1,
           "En": 4,
-          "Tr": 2
+          "Tr": 1
         }
       }
     ],
@@ -1900,22 +1893,20 @@ window.control = [
   {
     "nombre": "Centro de regulación de potencia",
     "tipo": "control",
-    "puntos": "0 [PV]",
+    "puntos": "10 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CT] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CO] Control de un área de soporte. \nLuego pierde 1 PV por cada celda de [ES] Estructura sin disco. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Cu": 0,
           "Al": 5,
-          "Si": 0,
           "Gd": 1,
           "Fe": 1
         },
         "o": {
-          "EM": 1,
+          "IM": 1,
           "IS": 1,
           "En": 3
         }
@@ -1928,7 +1919,7 @@ window.control = [
         },
         "o": {
           "EM": 1,
-          "IS": 1,
+          "SX": 1,
           "En": 4,
           "Tr": 2
         }
@@ -1943,18 +1934,16 @@ window.control = [
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CT] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Si": 0,
-          "Cu": 0,
           "Al": 4,
           "Ce": 1,
           "Fe": 2
         },
         "o": {
-          "EM": 1,
+          "IM": 1,
           "IQ": 1,
           "En": 3
         }
@@ -1967,8 +1956,8 @@ window.control = [
         },
         "o": {
           "EM": 1,
-          "IQ": 1,
-          "IS": 1,
+          "EQ": 1,
+          "SX": 1,
           "En": 4,
           "Tr": 2
         }
@@ -1977,37 +1966,33 @@ window.control = [
     "destino": "completados"
   },
   {
-    "nombre": "Centro de coordinación estructural",
+    "nombre": "Centro de coordinación integral",
     "tipo": "control",
-    "puntos": "0 [PV]",
+    "puntos": "10 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CT] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CO] Control de un área de soporte. \nLuego pierde 1 PV por cada celda sin disco (en la esfera y areas de soporte). \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
           "Fe": 2,
-          "Ti": 3,
-          "Al": 0,
-          "Cu": 0
+          "Cu": 2
         },
         "o": {
           "IE": 1,
-          "EM": 1,
+          "IM": 1,
           "En": 3
         }
       },
       {
         "m": {
           "Si": 5,
-          "Cu": 4,
-          "Nd": 1
+          "Cu": 3,
+          "Ti": 1
         },
         "o": {
-          "IE": 1,
-          "EM": 1,
-          "IS": 1,
+          "EE": 1,
           "En": 4,
           "Tr": 2
         }
@@ -2016,21 +2001,19 @@ window.control = [
     "destino": "completados"
   },
   {
-    "nombre": "Centro de operaciones científicas",
+    "nombre": "Centro de control remoto",
     "tipo": "control",
     "puntos": "0 [PV]",
     "copias": 1,
     "discos": 1,
-    "bono": "1 [DP]",
-    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CT] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "bono": "1 [DH]",
+    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte sin obtener bonos de colocacion. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Ti": 3,
-          "Si": 0,
-          "Cu": 0,
-          "Ce": 1,
-          "Fe": 5
+          "Ti": 2,
+          "Fe": 1,
+          "Nd": 1
         },
         "o": {
           "IQ": 1,
@@ -2040,9 +2023,9 @@ window.control = [
       },
       {
         "m": {
-          "Al": 5,
+          "Al": 3,
           "Er": 1,
-          "Si": 4
+          "Si": 3
         },
         "o": {
           "IQ": 1,
@@ -2055,18 +2038,16 @@ window.control = [
     "destino": "completados"
   },
   {
-    "nombre": "Centro de mando de la esfera",
+    "nombre": "Centro de control por mejora premanente",
     "tipo": "control",
-    "puntos": "0 [PV]",
+    "puntos": "-20 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DP]",
-    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CT] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco y el ingeniero de la ultima etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Si": 0,
-          "Cu": 0,
           "Al": 3,
           "Nd": 1,
           "Fe": 2
@@ -2074,21 +2055,18 @@ window.control = [
         "o": {
           "IS": 1,
           "IQ": 1,
-          "En": 3
+          "En": 2
         }
       },
       {
         "m": {
-          "Ti": 2,
-          "Cu": 4,
-          "Ce": 1
+          "Ti": 1,
+          "Cu": 4
         },
         "o": {
-          "IS": 1,
-          "IQ": 1,
-          "IE": 1,
-          "En": 4,
-          "Tr": 2
+          "SX": 1,
+          "En": 2,
+          "Tr": 1
         }
       }
     ],

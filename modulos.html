@@ -66,6 +66,9 @@ const recursos={Fe:['Hierro','#d84242'],Cu:['Cobre','#3977dc'],Si:['Silicio','#f
 const precios={Fe:1,Cu:3,Si:2,Ti:6,Al:3,C:1,Nd:8,Gd:8,Er:12,Ce:7,Tr:7};
 const operativos={IQ:'Ingeniero químico',IE:'Ingeniero estructural',IM:'Ingeniero electromecánico',IS:'Ingeniero de sistemas',En:'Energía',Tr:'Transporte'};
 const tiposIcono={
+ "sensores": "SN",
+ "control": "CO",
+ "mantenimiento": "MN",
  "bateria": "BT",
  "estructura": "ES",
  "fotovoltaico": "FV",
@@ -161,8 +164,8 @@ function operationTokens(id,n){
  const drawing=id==='Tr'?rocket:imagenIcono(id);
  const klass=id==='Tr'?'rocket':'meeple';
  if(id==='En')return `<span class="opgroup" title="${escapeHTML(operativos[id])}: ${n}" aria-label="${escapeHTML(operativos[id])}: ${n}"><span class="opicons">${Array.from({length:n},()=>`<span class="opicon energy">${energia}</span>`).join('')}</span></span>`;
- if(['IQ','IE','IM','IS'].includes(id))return `<span class="opgroup" title="${escapeHTML(operativos[id])}: ${n}" aria-label="${escapeHTML(operativos[id])}: ${n}"><span class="opicons">${Array.from({length:n},()=>`<span class="opicon meeple">${drawing}</span>`).join('')}</span></span>`;
- return `<span class="opgroup" title="${escapeHTML(operativos[id]||id)}: ${n}" aria-label="${escapeHTML(operativos[id]||id)}: ${n}"><span class="opicons"><span class="opicon ${klass}">${drawing}</span></span><span class="oplabel">${n}</span></span>`;
+ const nombre=escapeHTML(operativos[id]||catalogoIconos[id]?.nombre||id);
+ return `<span class="opgroup" title="${nombre}: ${n}" aria-label="${nombre}: ${n}"><span class="opicons">${Array.from({length:n},()=>`<span class="opicon ${klass}">${drawing}</span>`).join('')}</span></span>`;
 }
 function costoModulo(m){return m.etapas.reduce((total,e)=>total+Object.entries(e.m||{}).reduce((s,[id,n])=>s+n*(precios[id]||0),0)+Object.entries(e.o||{}).reduce((s,[id,n])=>s+n*(id==='En'?1:id==='Tr'?7:3),0),0);}
 function iconoDestino(d){
