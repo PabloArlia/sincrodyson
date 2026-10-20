@@ -179,8 +179,7 @@ function iconoDestino(d){
 }
 function render(m){
  const puntos=typeof m.puntos==='number'?`${m.puntos} [PV]`:String(m.puntos??'0 [PV]');
- const puntosFijos=puntos.match(/^\s*(-?\d+(?:\.\d+)?)\s*\[PV\]\s*$/);
- const costo=costoModulo(m),etapas=m.etapas.length,base=puntosFijos?Number(puntosFijos[1])+3*(m.discos||0):null;
+ const costo=costoModulo(m),etapas=m.etapas.length,base=Number.isFinite(m.puntos_aprox)?m.puntos_aprox+3*(m.discos||0)+9*(m.disco_soporte||0):null;
  const insignia=renderBono(m.bono);
  const coef=base?((costo*Math.pow(1.7,etapas))/base).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
  return `<article class="card"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div><div class="name">${escapeHTML(m.nombre)}</div><div class="type">${escapeHTML(m.tipo==='recursoshumanos'?'Recursos humanos':m.tipo.replaceAll('_',' '))}</div></div><div class="card-score">${renderBono(puntos)}${insignia}</div></header>
