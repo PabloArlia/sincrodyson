@@ -2454,6 +2454,43 @@ window.mantenimiento = [
     }
   ],
   "destino": "completados"
+},
+{
+  "nombre": "Detección y ablación láser de micrometeoritos",
+  "tipo": "mantenimiento",
+  "puntos": "0 [PV]",
+  "puntos_aprox": 9,
+  "copias": 1,
+  "discos": 3,
+  "bono": "3 [DP]",
+  "disco_soporte": 1,
+  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un cuadrante y 1 disco en una celda libre de [MO] Microondas de cada uno de los dos cuadrantes adyacentes. Ancla 1 [EM] y 1 [IS] en los discos colocados de Microondas.\nConsulta la pérdida de puntos por personal anclado.",
+  "etapas": [
+    {
+      "m": {
+        "Si": 3,
+        "Cu": 4,
+        "Nd": 2
+      },
+      "o": {
+        "En": 3
+      }
+    },
+    {
+      "m": {
+        "Ti": 1,
+        "Al": 3,
+        "Er": 1
+      },
+      "o": {
+        "EM": 1,
+        "IS": 1,
+        "En": 2,
+        "Tr": 2
+      }
+    }
+  ],
+  "destino": "completados"
 }
 
 ];
