@@ -208,6 +208,7 @@ Los PV impresos en los proyectos completados se cuentan al final de la partida, 
 Algunos proyectos requieren dejar ingenieros anclados en la esfera. La carta los indica con el icono de un ingeniero parado sobre un disco. Esos ingenieros no vuelven a las barracas: se colocan junto con el disco en la celda o área de soporte correspondiente y permanecen anclados allí.
 
 Al final de la partida, cada ingeniero anclado resta PV al jugador cuyo disco está junto a él. La penalización por ingeniero depende del total de ingenieros anclados entre todos los jugadores, según la tabla de la sección «Fin de partida y puntuación».
+Si un proyecto con ingenieros anclados en su ultima etapa no coloca disco los ingeneiero asignados vuelven a las barracas del jugador.
 
 ### Resolución y destino de las cartas de proyecto
 
@@ -228,7 +229,7 @@ Si un proyecto completado indica colocar uno o más discos en la esfera de Dyson
 
 Los discos indicados se colocan uno por uno. Cada colocación se resuelve por completo, incluidos sus bonos y pagos, antes de colocar el siguiente disco. El disco recién colocado siempre cuenta para los bonos.
 
-### Colocar discos en las celdas
+#### Colocar discos en las celdas
 
 Cada celda es la posición de una capa dentro de un sector y admite un único disco, independientemente de quién sea su dueño. Por cada disco que deba colocarse y no pueda, el jugador descarta ese disco y pierde 5 PV.
 
@@ -240,13 +241,7 @@ Después de colocar un disco en una celda:
 
 Una vez cobrados los bonos, se comprueba la capa de estructura de ese sector. Si está vacía, el jugador que acaba de colocar el disco paga $5 al banco por acarreo. Puede recurrir a préstamos para afrontar este pago.
 
-### Quitar discos `[QD]`
-
-Cuando un efecto obliga a quitar un disco `[QD]`, el jugador debe retirar el disco indicado; no puede elegir conservarlo. Después de retirarlo, pierde 1 PV por cada celda que todavía tenga un disco en el mismo sector del que lo quitó, contando los discos de todos los jugadores.
-
-Si el efecto exige quitar un disco para colocar otro y no es posible retirar el disco requerido, no se coloca el nuevo disco y el jugador pierde 5 PV por no poder colocarlo. La retirada no concede bonos de colocación.
-
-### Colocar discos en las áreas de soporte
+#### Colocar discos en las áreas de soporte
 
 Cada cuadrante dispone de un área de soporte con capacidad para un disco de control, uno de sensores y dos de mantenimiento.
 
@@ -256,6 +251,17 @@ Después de colocar un disco en un área de soporte:
 
 - El jugador que lo colocó gana 1 PV por cada dos discos presentes en todo el cuadrante, redondeando hacia arriba. Se cuentan los discos de todos los jugadores, tanto en los sectores como en el área de soporte.
 - Cada jugador cobra $1 por cada disco propio presente en todo ese cuadrante, contando los sectores y el área de soporte.
+
+#### Quitar discos `[QD]`
+
+Cuando un efecto obliga a quitar un disco `[QD]`, el jugador debe retirar el disco indicado; no puede elegir conservarlo. Después de retirarlo, pierde 1 PV por cada celda que todavía tenga un disco en el mismo sector del que lo quitó, contando los discos de todos los jugadores.
+
+Si el efecto exige quitar un disco para colocar otro y no es posible retirar el disco requerido o no se puede colocar el otro, no se retira ni coloca ningun disco y el jugador pierde 5 PV por no poder colocarlo. 
+
+#### No colocacion de discos
+
+Si un jugador NO PUDO colocar un disco por cualqueir razon pierde 5 PV y puede colcoar la carta en su mazo de poryectos completados o descartarla pero no recupera ningunod e los recursos utilizados.
+Si un proyecto con ingenieros anclados en su ultima etapa no coloca disco los ingeneiero asignados vuelven a las barracas del jugador.
 
 ## 4. Mantenimiento
 

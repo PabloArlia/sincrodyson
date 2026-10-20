@@ -1185,7 +1185,7 @@ window.modulos = [
     "copias": 1,
     "discos": 0,
     "bono": "-$1 / [EI] [MS]",
-    "efecto": "Cada ingeniero en [SP] Soporte externo genera $1, como de costumbre. Debes pagar $1 por cada [EI] ingeniero anclado en la esfera de Dyson, de cualquier jugador. \nColoca esta carta a la derecha de tu área de [SP] Soporte externo. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente. \nAl final de la partida, esta carta otorga 1 [PV] por cada [EI] ingeniero anclado de cualquier jugador.",
+    "efecto": "Cada ingeniero en [SP] Soporte externo genera $1, como de costumbre. Debes pagar $1 por cada [EI] ingeniero anclado en la esfera de Dyson, de cualquier jugador. \nColoca esta carta a la derecha de tu área de [SP] Soporte externo. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente. \n[FJ] gana 1 [PV] por cada [EI] ingeniero anclado de cualquier jugador.",
     "destino": "mejora",
     "etapas": [
       {
@@ -2083,11 +2083,11 @@ window.mantenimiento = [
     "puntos": "-1 [PV] / [NO] [ES]",
     "copias": 1,
     "discos": 1,
-    "bono": "[QD] [ES] +1 [DS]",
-    "efecto": "[QD] Retira un disco de cualquier celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento.\n[FJ] Pierde 1 PV por cada celda de [ES] Estructura sin disco.",
+    "bono": "1 [DP] + [QD][ES] ",
+    "efecto": "[QD] Retira un disco de cualquier celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Pierde 1 [PV] por cada celda de [ES] Estructura sin disco.",
     "etapas": [
       { "m": { "Fe": 2, "Ti": 2 }, "o": { "IE": 1 } },
-      { "m": { "Fe": 1, "Cu": 2 }, "o": { "EE": 1, "Tr": 1 } }
+      { "m": { "Fe": 1, "Cu": 2 }, "o": { "ES":1, "EE": 1, "Tr": 1 } }
     ],
     "destino": "completados"
   }
