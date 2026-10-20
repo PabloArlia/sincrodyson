@@ -240,6 +240,12 @@ Después de colocar un disco en una celda:
 
 Una vez cobrados los bonos, se comprueba la capa de estructura de ese sector. Si está vacía, el jugador que acaba de colocar el disco paga $5 al banco por acarreo. Puede recurrir a préstamos para afrontar este pago.
 
+### Quitar discos `[QD]`
+
+Cuando un efecto obliga a quitar un disco `[QD]`, el jugador debe retirar el disco indicado; no puede elegir conservarlo. Después de retirarlo, pierde 1 PV por cada celda que todavía tenga un disco en el mismo sector del que lo quitó, contando los discos de todos los jugadores.
+
+Si el efecto exige quitar un disco para colocar otro y no es posible retirar el disco requerido, no se coloca el nuevo disco y el jugador pierde 5 PV por no poder colocarlo. La retirada no concede bonos de colocación.
+
 ### Colocar discos en las áreas de soporte
 
 Cada cuadrante dispone de un área de soporte con capacidad para un disco de control, uno de sensores y dos de mantenimiento.
