@@ -2075,3 +2075,22 @@ window.control = [
 ];
 
 window.modulos.push(...window.control);
+
+window.mantenimiento = [
+  {
+    "nombre": "Red de túneles de servicio",
+    "tipo": "mantenimiento",
+    "puntos": "-1 [PV] / [NO] [ES]",
+    "copias": 1,
+    "discos": 1,
+    "bono": "[QD] [ES] +1 [DS]",
+    "efecto": "[QD] Retira un disco de cualquier celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento.\n[FJ] Pierde 1 PV por cada celda de [ES] Estructura sin disco.",
+    "etapas": [
+      { "m": { "Fe": 2, "Ti": 2 }, "o": { "IE": 1 } },
+      { "m": { "Fe": 1, "Cu": 2 }, "o": { "EE": 1, "Tr": 1 } }
+    ],
+    "destino": "completados"
+  }
+];
+
+window.modulos.push(...window.mantenimiento);
