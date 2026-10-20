@@ -2406,7 +2406,55 @@ window.mantenimiento = [
   ],
   "destino": "completados"
 }
-
+,
+{
+  "nombre": "Anticipación y blindaje de llamaradas solares",
+  "tipo": "mantenimiento",
+  "puntos": "-2 [PV] / [NO] [ES]",
+  "puntos_aprox": 19,
+  "copias": 1,
+  "discos": 2,
+  "bono": "2 [DP]",
+  "disco_soporte": 1,
+  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento y 1 disco en una celda libre de [ES] Estructura, en dos cuadrantes opuestos (Norte-Sur o Este-Oeste).\n[FJ] Pierde 2 [PV] por cada celda de [ES] Estructura sin disco, considerando todos los cuadrantes.",
+  "etapas": [
+    {
+      "m": {
+        "Gd": 3,
+        "Cu": 4,
+        "Si": 4
+      },
+      "o": {
+        "En": 4
+      }
+    },
+    {
+      "m": {
+        "Ti": 6,
+        "Al": 6,
+        "Er": 1
+      },
+      "o": {
+        "En": 1
+      }
+    },
+    {
+      "m": {
+        "Ti": 4,
+        "Cu": 4,
+        "Nd": 2
+      },
+      "o": {
+        "IE": 1,
+        "EM": 1,
+        "IS": 1,
+        "En": 2,
+        "Tr": 2
+      }
+    }
+  ],
+  "destino": "completados"
+}
 
 ];
 
