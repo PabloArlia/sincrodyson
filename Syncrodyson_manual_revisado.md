@@ -254,7 +254,7 @@ Después de colocar un disco en un área de soporte:
 
 #### Quitar discos `[QD]`
 
-Cuando un efecto obliga a quitar un disco `[QD]`, el jugador debe retirar el disco indicado; no puede elegir conservarlo. Después de retirarlo, pierde 1 PV por cada celda que todavía tenga un disco en el mismo sector del que lo quitó, contando los discos de todos los jugadores.
+Cuando un efecto obliga a quitar un disco `[QD]`, el jugador debe retirar un disco suyo que cumpla con el requerimiento indicado; no puede elegir conservarlo. Después de retirarlo, pierde 1 PV por cada celda que todavía tenga un disco en el mismo sector del que lo quitó, contando los discos de todos los jugadores.
 
 Si el efecto exige quitar un disco para colocar otro y no es posible retirar el disco requerido o no se puede colocar el otro, no se retira ni coloca ningun disco y el jugador pierde 5 PV por no poder colocarlo. 
 

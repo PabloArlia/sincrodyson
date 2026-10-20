@@ -1202,6 +1202,26 @@ window.modulos = [
       }
     ]
   },
+{
+  "nombre": "Reemplazo por asistente robótico autónomo",
+  "tipo": "recursoshumanos",
+  "puntos": "0 [PV]",
+  "copias": 1,
+  "discos": 0,
+  "bono": "",
+  "efecto": "Retira un [EI] ingeniero anclado de cualquier celda y colócalo en tu reserva.\nLuego entrega esta carta al jugador de tu derecha, que la incorpora a su mano sin coste.",
+  "etapas": [
+    {
+      "m": { "Ti": 2, "Cu": 1, "Si": 2 },
+      "o": {}
+    },
+    {
+      "m": { "Cu": 2, "Nd": 1, "Si": 2 },
+      "o": { "IS": 1, "En": 1, "Tr": 1 }
+    }
+  ],
+  "destino": "especial"
+},
   {
     "nombre": "Pasantía",
     "tipo": "recursoshumanos",
@@ -2001,13 +2021,13 @@ window.control = [
     "destino": "completados"
   },
   {
-    "nombre": "Centro de control remoto",
+    "nombre": "Control remoto por teletransportación cuántica",
     "tipo": "control",
     "puntos": "0 [PV]",
     "copias": 1,
     "discos": 1,
     "bono": "1 [DH]",
-    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte sin obtener bonos de colocacion. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte sin obtener bonos de colocacion.",
     "etapas": [
       {
         "m": {
@@ -2071,6 +2091,43 @@ window.control = [
       }
     ],
     "destino": "completados"
+  },
+  {
+    "nombre": "Centro de calibracion retroactiva",
+    "tipo": "control",
+    "puntos": "-1 [PV] / [NO] [MO]",
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DP] + [QD][MO]",
+    "efecto": "[QD] Retira un disco de cualquier celda de [MO] Microondas para colocar un disco en una celda libre de [CO] Control en el area de soporte del mismo cuadrante.\n[FJ] Pierde 1 [PV] por cada celda de [MO] Microondas sin disco.",
+    "etapas": [
+      {
+        "m": {
+          "Al": 3,
+          "Nd": 2,
+          "Fe": 2
+        },
+        "o": {
+          "IS": 2,
+          "IQ": 1,
+          "En": 2
+        }
+      },
+      {
+        "m": {
+          "Ti": 1,
+          "Si": 4,
+          "Ce": 1
+        },
+        "o": {
+          "MO": 1,
+          "IS": 1,
+          "En": 2,
+          "Tr": 1
+        }
+      }
+    ],
+    "destino": "completados"
   }
 ];
 
@@ -2083,14 +2140,99 @@ window.mantenimiento = [
     "puntos": "-1 [PV] / [NO] [ES]",
     "copias": 1,
     "discos": 1,
-    "bono": "1 [DP] + [QD][ES] ",
-    "efecto": "[QD] Retira un disco de cualquier celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Pierde 1 [PV] por cada celda de [ES] Estructura sin disco.",
+    "bono": "1 [DP] + [QD][ES]",
+    "efecto": "[QD] Retira un disco de cualquier celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Pierde 1 [PV] por cada celda de [ES] Estructura sin disco. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
-      { "m": { "Fe": 2, "Ti": 2 }, "o": { "IE": 1 } },
-      { "m": { "Fe": 1, "Cu": 2 }, "o": { "ES":1, "EE": 1, "Tr": 1 } }
+      { "m": { "Fe": 2, "Ti": 4 }, "o": { "IE": 1 } },
+      { "m": { "Fe": 1, "Cu": 2 }, "o": { "ES":1, "EE": 2, "Tr": 2 } }
     ],
     "destino": "completados"
+  },
+  {
+    "nombre": "Brigada de propulsión iónica",
+    "tipo": "mantenimiento",
+    "puntos": "-1 [PV] / [NO] [FV]",
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DP] + [QD][FV]",
+    "efecto": "[QD] Retira un disco de cualquier celda de [FV] Fotovoltaica para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Pierde 1 [PV] por cada celda de [FV] Fotovoltaica sin disco. \nConsulta la pérdida de puntos por personal anclado.",
+    "etapas": [
+      { "m": { "Fe": 2, "Ti": 2 }, "o": { "IE": 1 } },
+      { "m": { "Al": 1, "Cu": 2 }, "o": { "FV":1, "EE": 3, "Tr": 1 } }
+    ],
+    "destino": "completados"
+  },
+  {
+    "nombre": "Gimnasio y spa de gravedad zero",
+    "tipo": "mantenimiento",
+    "puntos": "+2 [PV] / [EI]",
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DH]",
+    "efecto": "Colocar un disco en una celda libre de [MN] Mantenimiento sin cobrar los bonos por colocacion.\n[FJ] Gana 2 [PV] por [EI] Ingeniero Anclado de cualquier jugador.",
+     "etapas": [
+    {
+      "m": { "Ti": 8, "Al": 6, "Fe": 5 },
+      "o": { "IE": 2, "IS": 1, "IQ": 1 }
+    },
+    {
+      "m": { "Ti": 5, "Cu": 8, "Si": 4 },
+      "o": { "En": 6 }
+    },
+    {
+      "m": { "Al": 6, "Er": 3, "Ti": 1 },
+      "o": { "Tr": 5 }
+    }
+  ],
+    "destino": "completados"
+  },
+  
+{
+  "nombre": "Jardines bioclimáticos inteligentes",
+  "tipo": "mantenimiento",
+  "puntos": "5 [PV]",
+  "copias": 1,
+  "discos": 1,
+  "bono": "1 [DH]",
+  "efecto": "Coloca un disco en una celda libre de [MN] Mantenimiento sin cobrar bonos de colocación.\nLuego retira hasta 4 [EI] ingenieros anclados de cualquier número de celdas y devuélvelos a la reserva de ingenieros correspondiente.",
+  "etapas": [
+    {
+      "m": { "Ti": 4, "Al": 5, "Si": 4 },
+      "o": { "IE": 1, "IQ": 1 }
+    },
+    {
+      "m": { "Cu": 4, "Nd": 2, "Si": 2 },
+      "o": { "En": 4 }
+    },
+    {
+      "m": { "Al": 4, "Er": 1, "Ti": 2 },
+      "o": { "Tr": 4 }
+    }
+  ],
+  "destino": "completados"
+},
+  {
+    "nombre": "Aditivo de nanobots microactuadores",
+    "tipo": "mantenimiento",
+    "puntos": "-1 [PV] / [NO] [RF]",
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DP] + [QD][RF]",
+    "efecto": "[QD] Retira un disco de cualquier celda de [RF] Refrigerante para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Pierde 1 [PV] por cada celda de [RF] Refrigerante sin disco. \nConsulta la pérdida de puntos por personal anclado.",
+    
+"etapas": [
+  {
+    "m": { "Si": 2, "Cu": 2, "Nd": 1 },
+    "o": { "IE": 1 }
+  },
+  {
+    "m": { "Al": 2, "Si": 2 },
+    "o": { "RF": 1, "EQ": 1, "Tr": 3 }
   }
+],
+    "destino": "completados"
+  }
+
 ];
 
 window.modulos.push(...window.mantenimiento);
