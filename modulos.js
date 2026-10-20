@@ -2338,8 +2338,8 @@ window.mantenimiento = [
 {
   "nombre": "Jardines bioclimáticos inteligentes",
   "tipo": "mantenimiento",
-  "puntos": "5 [PV]",
-  "puntos_aprox": 5,
+  "puntos": "20 [PV]",
+  "puntos_aprox": 16+20,
   "copias": 1,
   "discos": 0,
   "bono": "1 [DH]",
@@ -2348,15 +2348,11 @@ window.mantenimiento = [
   "etapas": [
     {
       "m": { "Ti": 4, "Al": 5, "Si": 4 },
-      "o": { "IE": 1, "IQ": 1 }
+      "o": { "IE": 1, "IQ": 1, "En": 4 }
     },
     {
-      "m": { "Cu": 4, "Nd": 2, "Si": 2 },
-      "o": { "En": 4 }
-    },
-    {
-      "m": { "Al": 4, "Er": 1, "Ti": 2 },
-      "o": { "Tr": 4 }
+      "m": { "Cu": 4, "Nd": 2, "Si": 2 , "Er": 1, "Ti": 2},
+      "o": { "IE": 1, "IQ": 1, "En": 4, "Tr": 3 }
     }
   ],
   "destino": "completados"
@@ -2364,13 +2360,13 @@ window.mantenimiento = [
   {
     "nombre": "Aditivo de nanobots microactuadores",
     "tipo": "mantenimiento",
-    "puntos": "-1 [PV] / [NO] [RF]",
-    "puntos_aprox": null,
+    "puntos": "+1 [PV] / [RF]",
+    "puntos_aprox": 15-3,
     "copias": 1,
     "discos": -1,
     "bono": "1 [DP] + [QD][RF]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de cualquier celda de [RF] Refrigerante para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Pierde 1 [PV] por cada celda de [RF] Refrigerante sin disco. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "[QD] Retira un disco de cualquier celda de [RF] Refrigerante para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Gana 1 [PV] por cada celda de [RF] Refrigerante Estructura con un disco de cualquier jugador. \nConsulta la pérdida de puntos por personal anclado.",
     
 "etapas": [
   {
@@ -2378,7 +2374,7 @@ window.mantenimiento = [
     "o": { "IE": 1 }
   },
   {
-    "m": { "Al": 2, "Si": 2 },
+    "m": { "Al": 2, "Si": 2,"Ce": 2 },
     "o": { "RF": 1, "EQ": 1, "Tr": 3 }
   }
 ],
@@ -2387,8 +2383,8 @@ window.mantenimiento = [
 {
   "nombre": "Núcleo de estabilización multifísica",
   "tipo": "mantenimiento",
-  "puntos": "5 [PV]",
-  "puntos_aprox": 5,
+  "puntos": "15 [PV]",
+  "puntos_aprox": 15,
   "copias": 1,
   "discos": -3,
   "bono": "1 [DP] + 3[QD]",
@@ -2408,67 +2404,57 @@ window.mantenimiento = [
 }
 ,
 {
-  "nombre": "Anticipación y blindaje de llamaradas solares",
+  "nombre": "Anticipación y blindaje anti llamaradas solares",
   "tipo": "mantenimiento",
-  "puntos": "-2 [PV] / [NO] [ES]",
-  "puntos_aprox": 19,
+  "puntos": "-1 [PV] / [NO] [ES]",
+  "puntos_aprox": -6-5,
   "copias": 1,
   "discos": 2,
-  "bono": "2 [DP]",
-  "disco_soporte": 1,
-  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento y 1 disco en una celda libre de [ES] Estructura, en dos cuadrantes opuestos (Norte-Sur o Este-Oeste).\n[FJ] Pierde 2 [PV] por cada celda de [ES] Estructura sin disco, considerando todos los cuadrantes.",
-  "etapas": [
-    {
-      "m": {
-        "Gd": 3,
-        "Cu": 4,
-        "Si": 4
-      },
-      "o": {
-        "En": 4
-      }
+  "bono": "2 [DP] 2 [DS]",
+  "disco_soporte": 2,
+  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento y 1 disco en una celda libre de [ES] Estructura, en dos cuadrantes no adyacentes.\n[FJ] Pierde 1 [PV] por cada celda de [ES] Estructura sin disco, considerando todos los cuadrantes.",
+  
+"etapas": [
+  {
+    "m": {
+      "Gd": 1,
+      "Cu": 2,
+      "Si": 4
     },
-    {
-      "m": {
-        "Ti": 6,
-        "Al": 6,
-        "Er": 1
-      },
-      "o": {
-        "En": 1
-      }
-    },
-    {
-      "m": {
-        "Ti": 4,
-        "Cu": 4,
-        "Nd": 2
-      },
-      "o": {
-        "IE": 1,
-        "EM": 1,
-        "IS": 1,
-        "En": 2,
-        "Tr": 2
-      }
+    "o": {
+      "En": 4
     }
-  ],
+  },
+  {
+    "m": {
+      "Ti": 3,
+      "Al": 1,
+      "Nd": 1
+    },
+    "o": {
+      "EM": 1,
+      "SX": 1,
+      "Tr": 2
+    }
+  }
+],
+
   "destino": "completados"
 },
 {
   "nombre": "Detección y ablación láser de micrometeoritos",
   "tipo": "mantenimiento",
-  "puntos": "0 [PV]",
-  "puntos_aprox": 9,
+  "puntos": "1 [PV] / [MO]",
+  "puntos_aprox": 15-6,
   "copias": 1,
-  "discos": 3,
-  "bono": "3 [DP]",
+  "discos": 2,
+  "bono": "1 [DP] 2 [DS]",
   "disco_soporte": 1,
-  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un cuadrante y 1 disco en una celda libre de [MO] Microondas de cada uno de los dos cuadrantes adyacentes. Ancla 1 [EM] y 1 [IS] en los discos colocados de Microondas.\nConsulta la pérdida de puntos por personal anclado.",
+  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un cuadrante y 1 disco en una celda libre de [MO] Microondas de cada uno de los dos cuadrantes adyacentes. [FJ] Gana 1 [PV] por cada celda de [ES] Estructura con un disco de cualquier jugador.\nConsulta la pérdida de puntos por personal anclado.",
   "etapas": [
     {
       "m": {
-        "Si": 3,
+        "Si": 5,
         "Cu": 4,
         "Nd": 2
       },
@@ -2480,12 +2466,11 @@ window.mantenimiento = [
       "m": {
         "Ti": 1,
         "Al": 3,
-        "Er": 1
+        "Er": 2
       },
       "o": {
         "EM": 1,
-        "IS": 1,
-        "En": 2,
+        "SX": 1,
         "Tr": 2
       }
     }

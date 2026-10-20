@@ -24,7 +24,7 @@ Entreguen a cada jugador:
 
 Con las seis cartas de proyecto se realiza un draft. Todos eligen simultáneamente una carta, la conservan y pasan las restantes al jugador de su derecha. Este procedimiento se repite hasta que se hayan elegido todas las cartas.
 
-Después del draft, cada jugador elige tres ingenieros. Puede elegir varios del mismo tipo. Además, puede gastar parte de sus $20 iniciales para comprar recursos de la reserva general al precio de mercado.
+Después del draft, cada jugador elige tres ingenieros. Puede elegir varios del mismo tipo. Además, puede gastar parte de sus \$20 iniciales para comprar recursos de la reserva general al precio de mercado.
 
 Las fichas de contrato se colocan en su área del tablero personal, ocupando los lugares más a la derecha posible. Cada jugador comienza con un total de trece elementos entre sus cuatro ingenieros y sus nueve contratos.
 
@@ -139,7 +139,7 @@ Si no dispone de suficientes recursos para cumplir una venta, debe vender todos 
 
 ### Compra y venta de proyectos
 
-La carta de proyectos permite comprar cartas del mazo por $3 cada una o vender cartas de la mano por $2 cada una. Los proyectos vendidos se colocan en el descarte.
+La carta de proyectos permite comprar cartas del mazo por \$3 cada una o vender cartas de la mano por \$2 cada una. Los proyectos vendidos se colocan en el descarte.
 
 Cuando el mazo de proyectos se agota, se mezcla su descarte para formar un nuevo mazo.
 
@@ -201,14 +201,9 @@ Un proyecto avanza al activarse si tiene asignados todos los recursos e ingenier
 
 Si no hay una etapa siguiente, el proyecto se completa. El jugador resuelve su efecto «Al completar» y determina el destino de la carta según las reglas siguientes.
 
+***PAUSA DE EMERGENCIA***, un jugador puede no activar un poryecto con todos los recursos en su etapa actual. Pierde 1PV y esa activacion se salta.
+
 Los PV impresos en los proyectos completados se cuentan al final de la partida, no al completarlos.
-
-### Ingenieros anclados
-
-Algunos proyectos requieren dejar ingenieros anclados en la esfera. La carta los indica con el icono de un ingeniero parado sobre un disco. Esos ingenieros no vuelven a las barracas: se colocan junto con el disco en la celda o área de soporte correspondiente y permanecen anclados allí.
-
-Al final de la partida, cada ingeniero anclado resta PV al jugador cuyo disco está junto a él. La penalización por ingeniero depende del total de ingenieros anclados entre todos los jugadores, según la tabla de la sección «Fin de partida y puntuación».
-Si un proyecto con ingenieros anclados en su ultima etapa no coloca disco los ingeneiero asignados vuelven a las barracas del jugador.
 
 ### Resolución y destino de las cartas de proyecto
 
@@ -223,6 +218,15 @@ Los PV impresos en los proyectos completados se cuentan al final de la partida, 
 | `[RE]` | Repetible | Devuelve el cubo a la etapa indicada y deja la carta en su espacio de proyecto. Para activar otra vez el efecto «Al completar», vuelve a completar las etapas pendientes. Si lo prefieres, puedes ignorar este destino y tratar la carta como un `[CM]` normal. |
 | `[MS]` | Mejora de soporte externo | Coloca la carta a la derecha de tu área de Soporte externo; entra en vigor inmediatamente. Si ya hay otra `[MS]` activa allí, muévela a proyectos completados. La nueva mejora queda activa. |
 | `[DE]` | Destino especial o condicional | Sigue la instrucción de la carta. Si ofrece varias opciones, elige una, salvo que indique expresamente lo contrario. Si el efecto transfiere la carta, entrégala al jugador indicado; la incorpora a su mano sin pagar su costo de adquisición y debe cumplir sus etapas para construirla. |
+
+
+### Ingenieros anclados
+
+Algunos proyectos requieren dejar ingenieros anclados en la esfera. La carta los indica con el icono de un ingeniero parado sobre un disco. Esos ingenieros no vuelven a las barracas: se colocan junto con cualquier disco colocado por el proyecto en la celda o área de soporte correspondiente y permanecen anclados allí.
+
+Al final de la partida, cada ingeniero anclado resta PV al jugador cuyo disco está junto a él. La penalización por ingeniero depende del total de ingenieros anclados entre todos los jugadores, según la tabla de la sección «Fin de partida y puntuación».
+Si un proyecto con ingenieros anclados en su última etapa no coloca ningún disco, aplica la regla de [No colocación de discos](#no-colocación-de-discos).
+
 ### Colocación de discos
 
 Si un proyecto completado indica colocar uno o más discos en la esfera de Dyson, el jugador coloca los discos indicados. Transporte (Tr) es un recurso y se utiliza según los requisitos de los proyectos; no se paga un costo monetario de transporte al colocar discos.
@@ -231,7 +235,7 @@ Los discos indicados se colocan uno por uno. Cada colocación se resuelve por co
 
 #### Colocar discos en las celdas
 
-Cada celda es la posición de una capa dentro de un sector y admite un único disco, independientemente de quién sea su dueño. Por cada disco que deba colocarse y no pueda, el jugador descarta ese disco y pierde 5 PV.
+Cada celda es la posición de una capa dentro de un sector y admite un único disco, independientemente de quién sea su dueño. Si no se puede colocar un disco, consulta [No colocación de discos](#no-colocación-de-discos).
 
 Después de colocar un disco en una celda:
 
@@ -245,7 +249,7 @@ Una vez cobrados los bonos, se comprueba la capa de estructura de ese sector. Si
 
 Cada cuadrante dispone de un área de soporte con capacidad para un disco de control, uno de sensores y dos de mantenimiento.
 
-Por cada disco que deba colocarse y no pueda, el jugador descarta ese disco y pierde 5 PV.
+Si no se puede colocar un disco, consulta [No colocación de discos](#no-colocación-de-discos).
 
 Después de colocar un disco en un área de soporte:
 
@@ -256,12 +260,15 @@ Después de colocar un disco en un área de soporte:
 
 Cuando un efecto obliga a quitar un disco `[QD]`, el jugador debe retirar un disco suyo que cumpla con el requerimiento indicado; no puede elegir conservarlo. Después de retirarlo, pierde 1 PV por cada celda que todavía tenga un disco en el mismo sector del que lo quitó, contando los discos de todos los jugadores.
 
-Si el efecto exige quitar un disco para colocar otro y no es posible retirar el disco requerido o no se puede colocar el otro, no se retira ni coloca ningun disco y el jugador pierde 5 PV por no poder colocarlo. 
+Si el efecto exige quitar un disco para colocar otro y no es posible retirar el disco requerido o colocar el nuevo disco, no se retira ni coloca ningún disco. Consulta [No colocación de discos](#no-colocación-de-discos).
 
-#### No colocacion de discos
+#### No colocación de discos
 
-Si un jugador NO PUDO colocar un disco por cualqueir razon pierde 5 PV y puede colcoar la carta en su mazo de poryectos completados o descartarla pero no recupera ningunod e los recursos utilizados.
-Si un proyecto con ingenieros anclados en su ultima etapa no coloca disco los ingeneiero asignados vuelven a las barracas del jugador.
+***PAUSA DE EMERGENCIA***, un jugador puede no activar un poryecto con todos los recursos en su etapa actual. Pierde 1PV y esa activacion se salta.
+
+Por cada disco que deba colocar y no pueda, por cualquier razón, el jugador pierde 2 PV. Puede colocar la carta en su mazo de proyectos completados o descartarla, pero no recupera ninguno de los recursos utilizados.
+
+Si un proyecto con ingenieros anclados en su última etapa no coloca ningún disco, los ingenieros asignados vuelven a las barracas del jugador. Además de la penalización por los discos no colocados, el jugador pierde 3 PV por cada uno de esos ingenieros.
 
 ## 4. Mantenimiento
 
