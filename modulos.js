@@ -2640,6 +2640,80 @@ window.mantenimiento = [
     }
   ],
   "destino": "completados"
+},
+{
+  "id": "P083",
+  "nombre": "Centro de mantenimiento tradicional",
+  "tipo": "mantenimiento",
+  "puntos": "0 [PV]",
+  "puntos_aprox": -9,
+  "copias": 4,
+  "discos": 0,
+  "bono": "1 [DP]",
+  "disco_soporte": 1,
+  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un área de soporte, junto con los 3 ingenieros anclados de la última etapa.\nConsulta la pérdida de puntos por personal anclado.",
+  "etapas": [
+    {
+      "m": {
+        "Fe": 4,
+        "Ti": 2
+      },
+      "o": {
+        "AE": 1,
+        "AM": 1,
+        "AS": 1,
+        "Tr": 2
+      }
+    }
+  ],
+  "destino": "completados"
+},
+{
+  "id": "P084",
+  "nombre": "Urbanización de lujo interna",
+  "tipo": "mantenimiento",
+  "puntos": "0 [PV]",
+  "puntos_aprox": 0,
+  "copias": 1,
+  "discos": 0,
+  "bono": "",
+  "disco_soporte": 0,
+  "efecto": "Cada jugador, incluido tú, puede pagarte $5 para colocar 1 ingeniero anclado de cualquier especialidad en esta carta (máximo 1 por jugador por ronda).\nSi hay 4 o más ingenieros en esta carta, [QD] retira 1 disco propio de una celda de [ES] Estructura o [FV] Fotovoltaico de cualquier cuadrante y devuelve 4 ingenieros de esta carta a las reservas de sus respectivos propietarios.\nNo puedes descartar esta carta mientras tenga ingenieros anclados ni moverlos durante la fase de Planificación.",
+  "etapas": [
+    {
+      "m": {
+        "Fe": 8,
+        "Al": 6,
+        "Ti": 4,
+        "Cu": 5
+      },
+      "o": {
+        "IE": 2,
+        "IM": 1,
+        "En": 4
+      }
+    },
+    {
+      "m": {
+        "Ti": 5,
+        "Si": 8,
+        "Nd": 2,
+        "Er": 1
+      },
+      "o": {
+        "IE": 1,
+        "IS": 2,
+        "En": 5
+      }
+    },
+    {
+      "m": {},
+      "o": {
+        "En": 1
+      }
+    }
+  ],
+  "destino": "etapa:3"
 }
 ];
 
