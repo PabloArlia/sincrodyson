@@ -1,4 +1,7 @@
 # SYNCRODYSON
+
+Una esfera de Dyson es una megaestructura concebida para rodear una estrella y aprovechar su energía a escala colosal, una idea que el físico Freeman Dyson desarrolló en 1960. Durante generaciones, construirla fue el sueño de una humanidad confinada a su mundo de origen. Hizo falta unir pueblos, agotar fortunas y consagrar millones de vidas a una obra que parecía imposible. Finalmente, la humanidad logró cosechar la luz del Sol. Pero incluso aquella conquista tiene un límite: la población sigue creciendo, los mundos habitados se multiplican y la energía de nuestra estrella ya no alcanza. Ahora, un puñado de corporaciones ha sido enviado a una estrella distante para levantar una nueva esfera y abrir el camino a quienes deberán dejar atrás el sistema solar. Entre sus manos llevan los planos de una nueva civilización; frente a ellas arde el astro que deberán dominar.
+
 ## Reglamento
 
 En Syncrodyson, cada jugador dirige una organización dedicada a la construcción de una esfera de Dyson. Para contribuir a esta obra deberá explotar yacimientos, gestionar recursos, contratar ingenieros y completar proyectos. Sus decisiones de planificación determinarán tanto sus operaciones en el mercado como el orden en el que podrá actuar.
