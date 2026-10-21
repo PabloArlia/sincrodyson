@@ -2452,7 +2452,7 @@ window.mantenimiento = [
   "etapas": [
     {
       "m": { "Cu": 2, "Gd": 1, "Fe": 1 },
-      "o": { "IS": 1, "AI":2, "En":2 }
+      "o": { "IS": 1, "IE":2, "En":2 }
     },
     {
       "m": { "Ti": 1, "Al": 1 },
@@ -2538,7 +2538,109 @@ window.mantenimiento = [
   ],
   "destino": "completados"
 }
-
+,
+{
+  "id": "P080",
+  "nombre": "Plataforma de reparaciones sobre rieles",
+  "tipo": "mantenimiento",
+  "puntos": "10 [PV]",
+  "puntos_aprox": 10-3-6,
+  "copias": 1,
+  "discos": 2,
+  "bono": "2 [DP]",
+  "disco_soporte": 2,
+  "efecto": "Coloca un disco en cada una de las 2 celdas libres de [MN] Mantenimiento de una misma área de soporte y los ingenieros de la última etapa junto a cualquiera de ellos.\nLuego pierde 1 [PI] por cada celda ocupada de [ES] Estructura en ese cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
+  "etapas": [
+    {
+      "m": {
+        "Fe": 8,
+        "Al": 3,
+        "Ti": 4
+      },
+      "o": {
+        "IE": 2,
+        "En": 3
+      }
+    },
+    {
+      "m": {
+        "Fe": 3,
+        "Cu": 6,
+        "Nd": 1
+      },
+      "o": {
+        "Tr": 2,
+        "AE": 2
+      }
+    }
+  ],
+  "destino": "completados"
+},{
+  "id": "P081",
+  "nombre": "Drones de inspección autónoma",
+  "tipo": "mantenimiento",
+  "puntos": "2 [PV]",
+  "puntos_aprox": 2,
+  "copias": 1,
+  "discos": 0,
+  "bono": "1 [DP]",
+  "disco_soporte": 1,
+  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un área de soporte.",
+  "etapas": [
+    {
+      "m": {
+        "Fe": 3,
+        "Al": 2,
+        "Si": 3
+      },
+      "o": {
+        "En": 2,
+        "IM": 1
+      }
+    },
+    {
+      "m": {
+        "Cu": 3,
+        "Ti": 2,
+        "C": 2
+      },
+      "o": {
+        "En": 1,
+        "Tr": 1,
+        "IS": 1
+      }
+    }
+  ],
+  "destino": "completados"
+},{
+  "id": "P082",
+  "nombre": "Ascensores de mantenimiento radial",
+  "tipo": "mantenimiento",
+  "puntos": "0 [PV]",
+  "puntos_aprox": "-3",
+  "copias": 1,
+  "discos": -2,
+  "bono": "2 [DP]",
+  "disco_soporte": 2,
+  "efecto": "[QD] Retira un disco de cualquier celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante. Repite este procedimiento en un cuadrante distinto y coloca los ingenieros de la última etapa junto a cualquiera de ellos. Si el mapa tiene 3 cuadrantes o más, ambos cuadrantes no pueden ser adyacentes.\nConsulta la pérdida de puntos por personal anclado.",
+  "etapas": [
+    {
+      "m": {
+        "Fe": 4,
+        "Al": 3,
+        "Cu": 3,
+        "Ti": 2,
+        "Si": 3
+      },
+      "o": {
+        "En": 3,
+        "Tr": 2,
+        "AE": 2
+      }
+    }
+  ],
+  "destino": "completados"
+}
 ];
 
 window.modulos.push(...window.mantenimiento);
