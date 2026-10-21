@@ -1889,7 +1889,7 @@ window.sensores = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.\n[FJ] Pierde 1 [PV] por cada [NC] nivel de [RF] Refrigerante sin disco.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.\n[FJ] Pierde 2 [PV] por cada [NC] nivel de [TS] Transmisión sin disco.",
     "etapas": [
       {
         "m": { "Cu": 2, "Al": 2, "Si": 2 },
@@ -1933,13 +1933,13 @@ window.control = [
   {
     "nombre": "Control autónomo por IA",
     "tipo": "control",
-    "puntos": "+1 [PV] [/] [NC]",
+    "puntos": "+2 [PV] [/] [NC]",
     "puntos_aprox": 40,
     "copias": 4,
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte.\n[FJ] Gana 1 [PV] por cada [NC] nivel de todas las capas [ES] [FV] [TS] [RF] [MO].",
+    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte.\n[FJ] Gana 2 [PV] por cada [NC] nivel de todas las capas [ES] [FV] [TS] [RF] [MO].",
    
 "etapas": [
   {
