@@ -19,8 +19,8 @@ Entreguen a cada jugador:
 - 9 fichas de contrato.
 - 3 dados verdes y 3 dados rojos.
 - $20.
-- 4 unidades de energía, que se colocan en las baterías.
-- 3 unidades de Transporte (Tr), cuyo valor básico es $7.
+- 4 unidades de [En] energía, que se colocan en las baterías.
+- 3 unidades de [Tr] Transporte, cuyo valor básico es $7.
 
 Con las seis cartas de proyecto se realiza un draft. Todos eligen simultáneamente una carta, la conservan y pasan las restantes al jugador de su derecha. Este procedimiento se repite hasta que se hayan elegido todas las cartas.
 
