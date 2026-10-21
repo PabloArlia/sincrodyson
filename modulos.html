@@ -4,11 +4,11 @@
 button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .sheet{display:grid;grid-template-columns:repeat(3,63mm);gap:5mm;justify-content:center}
 .card{width:63mm;height:88mm;background:white;border:1px solid #222;border-radius:2mm;padding:2.5mm;display:flex;flex-direction:column;overflow:hidden;break-inside:avoid}
-.heading{display:flex;align-items:center;gap:2mm;border-bottom:1px solid #888;padding-bottom:1.5mm;min-height:12mm}
+.heading{display:flex;align-items:flex-start;gap:2mm;border-bottom:1px solid #888;padding-bottom:1.5mm;min-height:12mm}
 .module-icon{width:9mm;height:9mm;border:1px solid #222;border-radius:1mm;display:grid;place-items:center;flex-shrink:0}
 .module-icon svg,.module-icon img{width:7mm;height:7mm;stroke:#222;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .name{font-size:8.8pt;font-weight:800;line-height:1.08}.type{font-size:6pt;letter-spacing:.07em;text-transform:uppercase;margin-top:.6mm}
-.stages{flex:1;display:flex;flex-direction:column;gap:2mm;padding-top:2mm;min-height:0}
+.stages{flex:1;display:flex;flex-direction:column;gap:2mm;padding-top:2 mm;min-height:0}
 .stage{border:1px solid #aaa;border-radius:1mm;padding:1.6mm;flex:1;min-height:0}
 .stage-title{display:none}
 .items{display:flex;flex-direction:row;flex-wrap:nowrap;gap:1.6mm;align-items:center;min-height:7mm}
@@ -27,9 +27,10 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .card-score{display:flex;flex-direction:column;align-items:flex-end;gap:1mm;font-size:8pt;font-weight:800;white-space:nowrap}
 .card-bonus{display:inline-flex;align-items:center;gap:.5mm}
 .card-bonus img{width:5mm;height:5mm;object-fit:contain}
-.stages{flex:0 0 auto;display:grid;grid-auto-rows:1fr;padding-top:1mm;margin-bottom:1mm;min-height:min-content;gap:.8mm}
+/* Altura uniforme pausada: volver a grid-auto-rows:1fr para reactivarla. */
+.stages{flex:0 0 auto;display:grid;grid-auto-rows:auto;padding-top:1.2mm;margin-bottom:1mm;min-height:min-content;gap:1.2mm}
 .stage{position:relative;flex:0 0 auto;padding:2mm;min-height:min-content;display:grid;grid-template-columns:25mm minmax(0,1fr);column-gap:1mm;overflow:visible}
-.stage-title{position:absolute;top:-1mm;left:.7mm;padding:0 .5mm;background:white;font-size:5pt;line-height:1;margin:0}
+.stage-title{position:absolute;top:-0.75mm;left:.7mm;padding:0 .5mm;background:white;font-size:5pt;line-height:1;margin:0}
 .items{min-height:0;gap:.5mm;align-content:center}
 .resource-line{min-height:0;flex:0 0 auto}
 .coin{width:8mm;height:8mm;flex:0 0 8mm;font-size:6.3pt;box-shadow:none}
@@ -50,6 +51,7 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .footer-effect{font-size:8pt;line-height:1.15}
 .footer-effect .inline-icon{display:inline-block;vertical-align:middle;line-height:0}
 .footer-effect .inline-icon img{width:3.5mm;height:3.5mm;object-fit:contain}
+.card-bonus img.separator-bar{width:2mm}.footer-effect .inline-icon img.separator-bar{width:1.4mm}
 .footer-effect-wrap{display:flow-root}
 .footer-effect-wrap .destino{float:right;margin-left:1mm;margin-bottom:.5mm}
 .destino{position:relative}
@@ -90,6 +92,8 @@ function tokens(id,n){
 }
 const destinosIcono={completados:'CM',mano:'MA',mejora:'MS',especial:'DE',etapa:'RE'};
 const catalogoIconos={
+ '/':{nombre:'Por',archivo:'separador-barra.svg'},
+ NC:{nombre:'Nivel de cobertura',archivo:'NC-nivelcobertura.svg'},
  NO:{nombre:'Celda sin disco',archivo:'NO-sin-disco.svg'},
  QD:{nombre:'Quitar disco',archivo:'QD-quitar-disco.svg'},
  FJ:{nombre:'Fin del juego',archivo:'FJ-fin-juego.svg'},
@@ -112,6 +116,7 @@ const catalogoIconos={
  DE:{nombre:'Destino especial',archivo:'DE-destino-especial.svg'},
  Fe:{nombre:'Hierro',archivo:'Fe-hierro.svg'},
  PV:{nombre:'Puntos de victoria',archivo:'PV-punto-victoria.svg'},
+ PI:{nombre:'Puntos inmediatos',archivo:'PI-puntos-inmediatos.svg'},
  BT:{nombre:'Capacidad de batería',archivo:'BT-bateria.svg'},
  DS:{nombre:'Discos',archivo:'DS-disco.svg'},
  DP:{nombre:'Disco de soporte',archivo:'DP-disco-soporte.svg'},
@@ -141,13 +146,13 @@ const catalogoIconos={
 function imagenIcono(id){
  if(!Object.hasOwn(catalogoIconos,id))return '';
  const variante=['IQ','IE','IM','IS','EI','EQ','EM','EE','SX'].includes(id)&&!document.getElementById('colors').checked?'#sin-color':'';
- return `<img src="./iconos/${catalogoIconos[id].archivo}${variante}" alt="" aria-hidden="true">`;
+ return `<img${id==='/'?' class="separator-bar"':''} src="./iconos/${catalogoIconos[id].archivo}${variante}" alt="" aria-hidden="true">`;
 }
 const rocket=imagenIcono('Tr');
 const energia=imagenIcono('En');
 const bateria=imagenIcono('BT');
 function renderBono(bono){
- const partes=String(bono??'').split(/(\[[A-Za-z]{2}\])/g);
+ const partes=String(bono??'').split(/(\[(?:[A-Za-z]{2}|\/)\])/g);
  const etiqueta=partes.map(p=>Object.hasOwn(catalogoIconos,p.slice(1,-1))&&p.startsWith('[')?catalogoIconos[p.slice(1,-1)].nombre:p).join(' ');
  const contenido=partes.map(p=>{
   const id=p.startsWith('[')&&p.endsWith(']')?p.slice(1,-1):'';
@@ -156,7 +161,7 @@ function renderBono(bono){
  return contenido?`<span class="card-bonus" title="${escapeHTML(etiqueta)}" aria-label="${escapeHTML(etiqueta)}">${contenido}</span>`:'';
 }
 function renderEfecto(texto){
- return String(texto??'').split(/(\[[A-Za-z]{2}\])/g).map(parte=>{
+ return String(texto??'').split(/(\[(?:[A-Za-z]{2}|\/)\])/g).map(parte=>{
   const id=parte.startsWith('[')&&parte.endsWith(']')?parte.slice(1,-1):'';
   if(!Object.hasOwn(catalogoIconos,id))return escapeHTML(parte).replace(/\\n|\r\n?|\n/g,'<br>');
   const nombre=escapeHTML(catalogoIconos[id].nombre);

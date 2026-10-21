@@ -5,16 +5,16 @@ window.modulos = [
     "nombre": "Batería de gravedad sólida",
     "tipo": "bateria",
     "puntos": "0 [PV]",
-    "puntos_aprox": 0,
+    "puntos_aprox": 1,
     "copias": 1,
     "discos": 0,
     "bono": "+1 [BT]",
     "disco_soporte": 0,
-    "efecto": "Aumenta en 1 tu energía máxima",
+    "efecto": "Aumenta en 1 la energía máxima de tus [BT] Baterías.",
     "etapas": [
       {
         "m": {
-          "Fe": 5,
+          "Fe": 2,
           "Cu": 1,
           "Si": 2
         },
@@ -29,19 +29,20 @@ window.modulos = [
     "nombre": "Batería de hidruro metálico",
     "tipo": "bateria",
     "puntos": "1 [PV]",
-    "puntos_aprox": 1,
+    "puntos_aprox": 4,
     "copias": 1,
     "discos": 0,
     "bono": "+4 [BT]",
     "disco_soporte": 0,
-    "efecto": "Aumenta en 4 tu energía máxima",
+    "efecto": "Aumenta en 4 la energía máxima de tus [BT] Baterías.",
     "etapas": [
       {
         "m": {
           "Fe": 2,
-          "Cu": 2,
+          "Cu": 3,
           "Ce": 1,
-          "Al": 2
+          "Al": 2,
+          "Gd": 2
         },
         "o": {
           "IM": 1
@@ -54,12 +55,12 @@ window.modulos = [
     "nombre": "Banco de supercondensadores",
     "tipo": "bateria",
     "puntos": "2 [PV]",
-    "puntos_aprox": 2,
+    "puntos_aprox": 3,
     "copias": 1,
     "discos": 0,
     "bono": "+3 [BT]",
     "disco_soporte": 0,
-    "efecto": "Aumenta en 3 tu energía máxima",
+    "efecto": "Aumenta en 3 la energía máxima de tus [BT] Baterías.",
     "etapas": [
       {
         "m": {
@@ -80,12 +81,12 @@ window.modulos = [
     "nombre": "Volante de inercia magnético",
     "tipo": "bateria",
     "puntos": "0 [PV]",
-    "puntos_aprox": 0,
+    "puntos_aprox": 6,
     "copias": 1,
     "discos": 0,
     "bono": "+6 [BT]",
     "disco_soporte": 0,
-    "efecto": "Aumenta en 6 tu energía máxima",
+    "efecto": "Aumenta en 6 la energía máxima de tus [BT] Baterías.",
     "etapas": [
       {
         "m": {
@@ -111,7 +112,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+3 [BT]",
     "disco_soporte": 0,
-    "efecto": "Aumenta en 3 tu energía máxima",
+    "efecto": "Aumenta en 3 la energía máxima de tus [BT] Baterías.",
     "etapas": [
       {
         "m": {
@@ -999,6 +1000,7 @@ window.modulos = [
         "o": {
           "IQ": 1,
           "IE": 1,
+          "IS": 1,
           "IM": 1,
           "En": 4
         }
@@ -1012,7 +1014,6 @@ window.modulos = [
         "o": {
           "IE": 1,
           "IM": 1,
-          "IS": 1,
           "En": 4,
           "Tr": 3
         }
@@ -1023,8 +1024,8 @@ window.modulos = [
   {
     "nombre": "Paneles solares",
     "tipo": "generador",
-    "puntos": "0 [PV]",
-    "puntos_aprox": 0,
+    "puntos": "1 [PV]",
+    "puntos_aprox": 2,
     "copias": 1,
     "discos": 0,
     "bono": "+1 [PE]",
@@ -1049,8 +1050,8 @@ window.modulos = [
   {
     "nombre": "Generador de radioisótopos (RTG)",
     "tipo": "generador",
-    "puntos": "0 [PV]",
-    "puntos_aprox": 0,
+    "puntos": "1 [PV]",
+    "puntos_aprox": 3,
     "copias": 1,
     "discos": 0,
     "bono": "+1 [PE]",
@@ -1062,7 +1063,8 @@ window.modulos = [
         "m": {
           "Ti": 1,
           "Cu": 2,
-          "Ce": 1
+          "Ce": 1,
+          "Nd": 1
         },
         "o": {
           "IQ": 1,
@@ -1075,13 +1077,13 @@ window.modulos = [
   {
     "nombre": "Concentrador solar Stirling",
     "tipo": "generador",
-    "puntos": "0 [PV]",
-    "puntos_aprox": 0,
+    "puntos": "4 [PV]",
+    "puntos_aprox": 7,
     "copias": 1,
     "discos": 0,
-    "bono": "+2 [PE]",
+    "bono": "+3 [PE]",
     "disco_soporte": 0,
-    "efecto": "Aumenta en 2 tu [PE] producción de energía.",
+    "efecto": "Aumenta en 3 tu [PE] producción de energía.",
     "destino": "completados",
     "etapas": [
       {
@@ -1111,13 +1113,13 @@ window.modulos = [
   {
     "nombre": "Central solar de ciclo Brayton",
     "tipo": "generador",
-    "puntos": "0 [PV]",
-    "puntos_aprox": 0,
+    "puntos": "10 [PV]",
+    "puntos_aprox": 5+10,
     "copias": 1,
     "discos": 0,
-    "bono": "+4 [PE]",
+    "bono": "+5 [PE]",
     "disco_soporte": 0,
-    "efecto": "Aumenta en 4 tu [PE] producción de energía.",
+    "efecto": "Aumenta en 5 tu [PE] producción de energía.",
     "destino": "completados",
     "etapas": [
       {
@@ -1135,24 +1137,15 @@ window.modulos = [
         "m": {
           "Si": 4,
           "Nd": 1,
-          "Cu": 2
-        },
-        "o": {
-          "IM": 2,
-          "IQ": 1,
-          "En": 4
-        }
-      },
-      {
-        "m": {
+          "Cu": 2,
           "Ti": 2,
           "Al": 3,
           "Ce": 1
         },
         "o": {
           "IM": 2,
-          "IS": 1,
-          "En": 5
+          "IQ": 1,
+          "En": 4
         }
       }
     ]
@@ -1166,7 +1159,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+3 [Di] [MS]",
     "disco_soporte": 0,
-    "efecto": "Cada ingeniero en Soporte externo genera $3 en lugar de $1. Coloca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
+    "efecto": "Cada ingeniero en Soporte externo genera $3 en lugar de $1. \nColoca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
     "destino": "mejora",
     "etapas": [
       {
@@ -1190,7 +1183,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+1 [CP] [MS]",
     "disco_soporte": 0,
-    "efecto": "Cada ingeniero en Soporte externo obtiene 1 carta de proyecto en lugar de $1. Coloca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
+    "efecto": "Cada ingeniero en Soporte externo obtiene 1 carta de proyecto en lugar de $1. \nColoca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
     "destino": "mejora",
     "etapas": [
       {
@@ -1215,7 +1208,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+1 Fe [MS]",
     "disco_soporte": 0,
-    "efecto": "Cada ingeniero en Soporte externo obtiene 1 Fe en lugar de $1. Coloca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
+    "efecto": "Cada ingeniero en Soporte externo obtiene 1 Fe en lugar de $1. \nColoca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
     "destino": "mejora",
     "etapas": [
       {
@@ -1240,7 +1233,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+1 [En] [MS]",
     "disco_soporte": 0,
-    "efecto": "Cada ingeniero en Soporte externo obtiene 1 [En] Energia en lugar de $1. La energía que exceda la capacidad de tus baterías se pierde. Coloca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
+    "efecto": "Cada ingeniero en Soporte externo obtiene 1 [En] Energia en lugar de $1. La energía que exceda la capacidad de tus baterías se pierde. \nColoca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
     "destino": "mejora",
     "etapas": [
       {
@@ -1313,7 +1306,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+1 [IQ] [CN]",
     "disco_soporte": 0,
-    "efecto": "Coloca 1 [IQ] Ingeniero Químico de la reserva en tus barracas sin gastar ninguna ficha de contratación. Si no hay IQ disponibles en la reserva, obtén 1 [CN] ficha de contratación.",
+    "efecto": "Coloca 1 [IQ] Ingeniero Químico de la reserva en tus barracas sin gastar ninguna ficha de contratación. Si no hay [IQ] disponibles en la reserva, obtén 1 [CN] ficha de contratación.",
     "destino": "completados",
     "etapas": [
       {
@@ -1368,7 +1361,7 @@ window.modulos = [
     "discos": 0,
     "bono": "[TJ] [CN]",
     "disco_soporte": 0,
-    "efecto": "Cada jugador que tenga menos de 7 [CN] fichas de contratación obtiene 1 [CN]. Ganas 1 PV por cada [CN] efectivamente entregada, hasta un máximo de 3 PV.",
+    "efecto": "Cada jugador que tenga menos de 7 [CN] fichas de contratación obtiene 1 [CN]. Ganas 1 [PI] por cada [CN] efectivamente entregada, hasta un máximo de 3 [PI].",
     "destino": "completados",
     "etapas": [
       {
@@ -1454,7 +1447,7 @@ window.modulos = [
     "discos": 0,
     "bono": "[TJ] [ME] [RR]",
     "disco_soporte": 0,
-    "efecto": "Cada jugador puede vender hasta 3 [RR] tierras raras a $15 cada una, independientemente del tipo. \nGanas 1 PV por cada 2 [RR] vendidas entre todos los jugadores, redondeando hacia abajo. Puedes volver a colocar el cubo en la etapa 1.",
+    "efecto": "Cada jugador puede vender hasta 3 [RR] tierras raras a $15 cada una, independientemente del tipo. \nGanas 1 [PI] por cada 2 [RR] vendidas entre todos los jugadores, redondeando hacia abajo. Puedes volver a colocar el cubo en la etapa 1.",
     "destino": "etapa:1",
     "etapas": [
       {
@@ -1522,7 +1515,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+X [En]",
     "disco_soporte": 0,
-    "efecto": "Todos los jugadores obtienen hasta 3 [En] energia, sin superar la capacidad de sus [BT] baterías. Ganas 1 PV por cada unidad de energía efectivamente obtenida entre todos los jugadores, hasta un máximo de 8 PV. \nPuedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Todos los jugadores obtienen hasta 3 [En] energia, sin superar la capacidad de sus [BT] baterías. Ganas 1 [PI] por cada unidad de energía efectivamente obtenida entre todos los jugadores, hasta un máximo de 8 [PI]. \nPuedes volver a colocar el cubo en la etapa 2.",
     "destino": "etapa:2",
     "etapas": [
       {
@@ -1609,32 +1602,23 @@ window.modulos = [
     "nombre": "Cohete de combustible sólido",
     "tipo": "produccion",
     "puntos": "0 [PV]",
-    "puntos_aprox": 0,
+    "puntos_aprox": 3,
     "copias": 1,
     "discos": 0,
-    "bono": "+2 [Tr]",
+    "bono": "+3 [Tr]",
     "disco_soporte": 0,
-    "efecto": "Obtén 2 [Tr] Transporte de la reserva. Puedes devolver esta carta a tu mano.",
+    "efecto": "Obtén 3 [Tr] Transporte de la reserva. Puedes devolver esta carta a tu mano.",
     "destino": "mano",
     "etapas": [
       {
         "m": {
           "Fe": 3,
-          "Al": 2
+          "Al": 2,
+          "C": 3
         },
         "o": {
           "IM": 1,
           "En": 1
-        }
-      },
-      {
-        "m": {
-          "Al": 3,
-          "C": 4
-        },
-        "o": {
-          "IQ": 1,
-          "En": 2
         }
       }
     ]
@@ -1653,12 +1637,12 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 5,
-          "Cu": 4,
-          "Al": 3
+          "Fe": 3,
+          "Cu": 3,
+          "Al": 2
         },
         "o": {
-          "IE": 2,
+          "IE": 1,
           "En": 3
         }
       },
@@ -1669,9 +1653,9 @@ window.modulos = [
           "Si": 3
         },
         "o": {
-          "IM": 2,
+          "IM": 1,
           "IS": 1,
-          "En": 4
+          "En": 3
         }
       },
       {
@@ -1680,8 +1664,8 @@ window.modulos = [
           "Si": 1
         },
         "o": {
-          "IM": 2,
-          "En": 5
+          "IM": 1,
+          "En": 3
         }
       }
     ]
@@ -1705,7 +1689,7 @@ window.modulos = [
           "Er": 1
         },
         "o": {
-          "IE": 2,
+          "IM": 1,
           "En": 4
         }
       },
@@ -1716,15 +1700,13 @@ window.modulos = [
           "Nd": 1
         },
         "o": {
-          "IM": 2,
+          "IM": 1,
           "IS": 1,
           "En": 4
         }
       },
       {
         "m": {
-          "Si": 2,
-          "Cu": 2
         },
         "o": {
           "IS": 2,
@@ -1795,7 +1777,7 @@ window.sensores = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 2 PV por cada celda de [ES] Estructura sin disco en el mismo cuadrante.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 2 [PI] por cada celda de [ES] Estructura sin disco en el mismo cuadrante.",
     "etapas": [
       {
         "m": { "Si": 5, "Cu": 2, "C": 4 },
@@ -1813,7 +1795,7 @@ window.sensores = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 1 PV por cada celda de [ES] Estructura y cada celda [FV] Fotovoltaica sin disco en el mismo cuadrante.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 1 [PI] por cada celda de [ES] Estructura y cada celda [FV] Fotovoltaica sin disco en el mismo cuadrante.",
     "etapas": [
       {
         "m": { "Si": 3, "Cu": 2,"Nd": 1 },
@@ -1831,7 +1813,7 @@ window.sensores = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 6 PV por cada espacio de [MN] Mantenimiento sin disco en esa misma área de soporte.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 6 [PI] por cada espacio de [MN] Mantenimiento sin disco en esa misma área de soporte.",
     "etapas": [
       {
         "m": { "Si": 2, "Al": 2, "Ce": 1 },
@@ -1889,7 +1871,7 @@ window.sensores = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 2 PV por cada cuadrante que no tenga un disco en la celda de [SN] Sensores en su área de soporte.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 2 [PI] por cada cuadrante que no tenga un disco en la celda de [SN] Sensores en su área de soporte.",
     "etapas": [
       {
         "m": { "Si": 3, "Cu": 2, "Er": 1 },
@@ -1901,13 +1883,13 @@ window.sensores = [
   {
     "nombre": "Monitores de calidad eléctrica",
     "tipo": "sensores",
-    "puntos": "-1 [PV] / [NO][TS]",
-    "puntos_aprox": -6,
+    "puntos": "-2 [PV] [/] [NC][TS]",
+    "puntos_aprox": -4,
     "copias": 1,
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.\n[FJ] Pierde 1 [PV] por cada celda de [RF] Refrigerante sin disco.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.\n[FJ] Pierde 1 [PV] por cada [NC] nivel de [RF] Refrigerante sin disco.",
     "etapas": [
       {
         "m": { "Cu": 2, "Al": 2, "Si": 2 },
@@ -1929,15 +1911,15 @@ window.sensores = [
     "etapas": [
       {
         "m": { "Si": 4, "Cu": 3, "Nd": 1 },
-        "o": { "IS": 2, "En": 3 }
+        "o": { "IS": 1, "En": 3 }
       },
       {
-        "m": { "Ti": 2, "Fe": 1, "Gd": 1 },
-        "o": { "IQ": 1, "IS": 2, "En": 4 }
+        "m": { "Ti": 1, "Fe": 1, "Gd": 1 },
+        "o": { "IQ": 1, "IS": 1, "En": 4 }
       },
       {
-        "m": { "Cu": 3, "Ti": 1, "Nd": 1 },
-        "o": { "IQ": 1, "IS": 2, "En": 5, "Tr": 1 }
+        "m": { "Cu": 3, "Nd": 1 },
+        "o": { "IQ": 1, "IS": 1, "En": 5, "Tr": 1 }
       }
     ],
     "destino": "completados"
@@ -1951,13 +1933,13 @@ window.control = [
   {
     "nombre": "Control autónomo por IA",
     "tipo": "control",
-    "puntos": "+1 [PV] / [DS]",
+    "puntos": "+1 [PV] [/] [NC]",
     "puntos_aprox": 40,
     "copias": 4,
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte.\n[FJ] Gana 1 [PV] por [DS] disco de cualquier jugador que haya en la esfera (no cuentan las áreas de soporte).",
+    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte.\n[FJ] Gana 1 [PV] por cada [NC] nivel de todas las capas [ES] [FV] [TS] [RF] [MO].",
    
 "etapas": [
   {
@@ -2004,7 +1986,7 @@ window.control = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco y el ingeniero de la ultima etapa en una celda libre de [CO] Control de un área de soporte. \nLuego gana 3 PV por cada celda de [SN] Sensores con un disco de cualqueir jugador. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco y el ingeniero de la ultima etapa en una celda libre de [CO] Control de un área de soporte. \nLuego gana 3 [PI] por cada celda de [SN] Sensores con un disco de cualqueir jugador. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2217,13 +2199,13 @@ window.control = [
   {
     "nombre": "Centro de calibracion retroactiva",
     "tipo": "control",
-    "puntos": "+1 [PV] / [MO]",
+    "puntos": "3 [PV] [/] [NC] [MO]",
     "puntos_aprox": 15,
     "copias": 1,
     "discos": -1,
     "bono": "1 [DP] + [QD][MO]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de cualquier celda de [MO] Microondas para colocar un disco en una celda libre de [CO] Control en el area de soporte del mismo cuadrante.\n[FJ] Gana 1 [PV] por cada celda de [MO] Microondas con un disco de cualquier jugador.",
+    "efecto": "[QD] Retira un disco de cualquier celda de [MO] Microondas para colocar un disco en una celda libre de [CO] Control en el area de soporte del mismo cuadrante.\n[FJ] Gana 3 [PV] por cada [NC] nivel de [MO] Microondas.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2261,13 +2243,13 @@ window.mantenimiento = [
   {
     "nombre": "Red de túneles de servicio",
     "tipo": "mantenimiento",
-    "puntos": "+1 [PV] / [ES]",
+    "puntos": "3 [PV] [/] [NC] [ES]",
     "puntos_aprox": 15-6,
     "copias": 1,
     "discos": -1,
     "bono": "1 [DP] + [QD][ES]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de cualquier celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Gana 1 [PV] por cada celda de [ES] Estructura con un disco de cualquier jugador.\nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "[QD] Retira un disco de cualquier celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Gana 3 [PV] por cada [NC] nivel de [ES] Estructura.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       { "m": { "Fe": 2, "Ti": 4 }, "o": { "IE": 1 } },
       { "m": { "Fe": 1, "Cu": 2 }, "o": { "ES":1, "EE": 2, "Tr": 2 } }
@@ -2360,13 +2342,13 @@ window.mantenimiento = [
   {
     "nombre": "Aditivo de nanobots microactuadores",
     "tipo": "mantenimiento",
-    "puntos": "+1 [PV] / [RF]",
+    "puntos": "3 [PV] [/] [NC] [RF]",
     "puntos_aprox": 15-3,
     "copias": 1,
     "discos": -1,
     "bono": "1 [DP] + [QD][RF]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de cualquier celda de [RF] Refrigerante para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Gana 1 [PV] por cada celda de [RF] Refrigerante Estructura con un disco de cualquier jugador. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "[QD] Retira un disco de cualquier celda de [RF] Refrigerante para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Gana 3 [PV] por cada [NC] nivel de [RF] Refrigerante.\nConsulta la pérdida de puntos por personal anclado.",
     
 "etapas": [
   {
@@ -2406,13 +2388,13 @@ window.mantenimiento = [
 {
   "nombre": "Anticipación y blindaje anti llamaradas solares",
   "tipo": "mantenimiento",
-  "puntos": "-1 [PV] / [NO] [ES]",
-  "puntos_aprox": -6-5,
+  "puntos": "-3 [PV] [/] [NC] [ES]",
+  "puntos_aprox": -6-6,
   "copias": 1,
   "discos": 2,
   "bono": "2 [DP] 2 [DS]",
   "disco_soporte": 2,
-  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento y 1 disco en una celda libre de [ES] Estructura, en dos cuadrantes no adyacentes.\n[FJ] Pierde 1 [PV] por cada celda de [ES] Estructura sin disco, considerando todos los cuadrantes.",
+  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento y 1 disco en una celda libre de [ES] Estructura, en dos cuadrantes distintos. Si el mapa tiene más de 3 cuadrantes, estos no pueden ser adyacentes.\n[FJ] Pierde 3 [PV] por cada nivel de [ES] Estructura sin disco.",
   
 "etapas": [
   {
@@ -2444,13 +2426,13 @@ window.mantenimiento = [
 {
   "nombre": "Detección y ablación láser de micrometeoritos",
   "tipo": "mantenimiento",
-  "puntos": "1 [PV] / [MO]",
+  "puntos": "3 [PV] [/] [NC] [MO]",
   "puntos_aprox": 15-6,
   "copias": 1,
   "discos": 2,
   "bono": "1 [DP] 2 [DS]",
   "disco_soporte": 1,
-  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un cuadrante y 1 disco en una celda libre de [MO] Microondas de cada uno de los dos cuadrantes adyacentes. [FJ] Gana 1 [PV] por cada celda de [ES] Estructura con un disco de cualquier jugador.\nConsulta la pérdida de puntos por personal anclado.",
+  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un area de soporte y un disco en 2 celdas libres de [MO] Microondas de otro cuadrante. \n[FJ] Gana 3 [PV] por cada [NC] nivel de cobertura de [ES] Estructura.\nConsulta la pérdida de puntos por personal anclado.",
   "etapas": [
     {
       "m": {

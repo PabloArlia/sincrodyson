@@ -22,6 +22,8 @@
 .reference p{font-size:10pt;line-height:1.3;margin:2mm 0 0}.reference .note{padding:3mm;border-left:1mm solid var(--ink);background:white}
 .reference .no-space{font-size:14pt;line-height:1.35;padding:3mm;border:.5mm solid var(--ink);border-radius:1mm;background:white}
 .anchored-table thead th{width:50%}.anchored-table td:last-child{text-align:center;font-weight:bold}
+.endgame-reference{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5mm}.endgame-reference>section{min-width:0}.coverage-table th,.coverage-table td{text-align:center}.coverage-table td:first-child{font-weight:bold}
+.endgame-reference thead th{height:21mm;vertical-align:middle}
 .title{display:flex;align-items:center;justify-content:space-between;border-bottom:.5mm solid var(--ink);padding:0 1mm 2mm}.title strong{font-size:19pt;letter-spacing:.08em}.title span{font-size:9pt;font-weight:bold;color:#52605b}
 .main{position:relative;height:100%;min-height:0;overflow:hidden}.sphere-panel{position:absolute;width:350mm;height:350mm;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center}.sphere{display:block;width:100%;height:100%}.sphere circle,.sphere line{fill:none;stroke:#78837c;stroke-width:1.4}.sphere .major{stroke:var(--ink);stroke-width:2.6}.sphere .number{font:700 17px Arial,sans-serif;fill:var(--ink);stroke:none;text-anchor:middle;dominant-baseline:middle}.sphere .layer-icon{stroke:none}.sphere .zone-label{font:900 18px Arial,sans-serif;fill:var(--ink);stroke:white;stroke-width:4;paint-order:stroke;letter-spacing:.7px;text-anchor:middle;dominant-baseline:middle}
 .zone{position:absolute;width:70mm;height:auto;padding:2.5mm;border:1mm solid #000;border-radius:3.5mm;background:white;display:flex;flex-direction:column;gap:1.2mm;z-index:1}.zone-a{left:2mm;top:2mm}.zone-b{right:2mm;top:2mm}.zone-c{right:2mm;bottom:2mm}.zone-d{left:2mm;bottom:2mm}.zone h2{margin:0;text-align:center;color:var(--ink);font-size:9pt;letter-spacing:.06em;text-transform:uppercase}.zone-slots{min-height:0;flex:none;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,13mm);gap:.7mm}.support-slot{height:100%;align-self:center;border:.3mm dashed #aab3ac;border-radius:1mm;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3mm;font-size:5.5pt;color:#66716a;text-align:center}.support-icon{width:7mm;height:7mm;object-fit:contain}
@@ -47,6 +49,7 @@
 
  </div>
  <aside class="reference">
+  <h1 style="text-align:center">SYNCRODYSON - MAPA SECUENCIA PRINCIPAL</h1>
   <section><h2><img style="vertical-align: middle;" src="./iconos/DS-disco.svg" alt="QD" width="26" height="26"> Colocar discos en las celdas</h2>
    <table aria-label="Bonos por colocar en celdas"><tbody>
     <tr><th>Quien coloca</th><td>+1 PV por cada disco en ese sector.</td></tr>
@@ -74,7 +77,8 @@
   <section class="no-space"><h2><strong><em>PAUSA DE EMERGENCIA</em></strong></h2>
    <p>Puedes elegir no activar un proyecto aunque tenga todos los recursos requeridos en su etapa actual. Pierde <b>1 PV</b> y salta esa activación.</p>
   </section>
-  <section><h2><img style="vertical-align: middle;" src="./iconos/EI-ingeniero-anclado.svg" alt="QD" width="26" height="26"> Personal anclado · fin de partida</h2>
+  <div class="endgame-reference">
+  <section><h2><img style="vertical-align: middle;" src="./iconos/EI-ingeniero-anclado.svg" alt="EI" width="26" height="26"> Personal anclado</h2>
    <table class="anchored-table" aria-label="Penalización por personal anclado"><thead><tr><th>Total anclado entre todos los jugadores</th><th>Penalización por ingeniero</th></tr></thead><tbody>
     <tr><td>1–2</td><td>−1 PV</td></tr>
     <tr><td>3–5</td><td>−2 PV</td></tr>
@@ -84,6 +88,17 @@
    </tbody></table>
    <p>Cada jugador pierde PV por los ingenieros anclados junto a sus discos.</p>
   </section>
+  <section><h2><img style="vertical-align: middle;" src="./iconos/NC-nivelcobertura.svg" alt="NC" width="26" height="26"> Cobertura por capa</h2>
+   <table class="coverage-table" aria-label="Nivel de cobertura según las celdas ocupadas de una capa"><thead><tr><th>Celdas ocupadas con un disco en la capa</th><th>Nivel</th></tr></thead><tbody>
+    <tr><td>0–3</td><td>1</td></tr>
+    <tr><td>4–7</td><td>2</td></tr>
+    <tr><td>8–11</td><td>3</td></tr>
+    <tr><td>12–15</td><td>4</td></tr>
+    <tr><td>16–20</td><td>5</td></tr>
+   </tbody></table>
+   <p>Cada capa tiene 20 celdas. Cuenta las celdas ocupadas de esa capa para determinar su nivel.</p>
+  </section>
+  </div>
  <section class="glossary">
   <h2>Glosario de iconos</h2>
   <div class="glossary-items">
