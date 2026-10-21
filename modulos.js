@@ -2,6 +2,7 @@
 // bono: texto e iconos entre corchetes, p. ej. "3 [DS]", "+3 [BT]", "+18 [Di][RE]".
 window.modulos = [
   {
+    "id": "P001",
     "nombre": "Batería de gravedad sólida",
     "tipo": "bateria",
     "puntos": "0 [PV]",
@@ -26,6 +27,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P002",
     "nombre": "Batería de hidruro metálico",
     "tipo": "bateria",
     "puntos": "1 [PV]",
@@ -52,6 +54,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P003",
     "nombre": "Banco de supercondensadores",
     "tipo": "bateria",
     "puntos": "2 [PV]",
@@ -78,6 +81,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P004",
     "nombre": "Volante de inercia magnético",
     "tipo": "bateria",
     "puntos": "0 [PV]",
@@ -104,6 +108,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P005",
     "nombre": "Acumulador térmico de grafito",
     "tipo": "bateria",
     "puntos": "3 [PV]",
@@ -131,6 +136,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P006",
     "nombre": "Centro de blockchain",
     "tipo": "economia",
     "puntos": "0 [PV]",
@@ -164,6 +170,7 @@ window.modulos = [
     "destino": "etapa:2"
   },
   {
+    "id": "P007",
     "nombre": "Estructura de fibra de carbono",
     "tipo": "estructura",
     "puntos": "9 [PV]",
@@ -199,6 +206,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P008",
     "nombre": "Estructura de titanio",
     "tipo": "estructura",
     "puntos": "9 [PV]",
@@ -223,6 +231,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P009",
     "nombre": "Estructura de acero reforzado",
     "tipo": "estructura",
     "puntos": "5 [PV]",
@@ -249,6 +258,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P010",
     "nombre": "Estructura alveolar de aluminio",
     "tipo": "estructura",
     "puntos": "6 [PV]",
@@ -284,6 +294,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P011",
     "nombre": "Estructura de vidrio metálico",
     "tipo": "estructura",
     "puntos": "10 [PV]",
@@ -322,6 +333,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P012",
     "nombre": "Estructura de nanotubos de carbono",
     "tipo": "estructura",
     "puntos": "25 [PV]",
@@ -368,6 +380,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P013",
     "nombre": "Paneles fotovoltaicos de película delgada",
     "tipo": "fotovoltaico",
     "puntos": "5 [PV]",
@@ -395,6 +408,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P014",
     "nombre": "Paneles de silicio monocristalino",
     "tipo": "fotovoltaico",
     "puntos": "12 [PV]",
@@ -430,6 +444,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P015",
     "nombre": "Células solares de perovskita",
     "tipo": "fotovoltaico",
     "puntos": "10 [PV]",
@@ -466,6 +481,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P016",
     "nombre": "Sistema fotovoltaico de concentración",
     "tipo": "fotovoltaico",
     "puntos": "15 [PV]",
@@ -504,6 +520,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P017",
     "nombre": "Células solares multiunión",
     "tipo": "fotovoltaico",
     "puntos": "16 [PV]",
@@ -540,6 +557,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P018",
     "nombre": "Células solares de arseniuro de galio",
     "tipo": "fotovoltaico",
     "puntos": "30 [PV]",
@@ -587,6 +605,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P019",
     "nombre": "Red HVDC de cobre",
     "tipo": "transmision",
     "puntos": "0 [PV]",
@@ -612,6 +631,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P020",
     "nombre": "Red HVDC ultraligera",
     "tipo": "transmision",
     "puntos": "0 [PV]",
@@ -638,6 +658,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P021",
     "nombre": "Red superconductora criogénica",
     "tipo": "transmision",
     "puntos": "15 [PV]",
@@ -675,6 +696,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P022",
     "nombre": "Superconductores de hidruros a alta presión",
     "tipo": "transmision",
     "puntos": "20 [PV]",
@@ -717,6 +739,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P023",
     "nombre": "Transmisor láser de alta potencia",
     "tipo": "transmision",
     "puntos": "24 [PV]",
@@ -756,6 +779,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P024",
     "nombre": "Radiadores térmicos de aluminio",
     "tipo": "refrigeracion",
     "puntos": "1 [PV]",
@@ -780,6 +804,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P025",
     "nombre": "Red de tubos de calor",
     "tipo": "refrigeracion",
     "puntos": "1 [PV]",
@@ -805,6 +830,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P026",
     "nombre": "Radiadores de nanotubos de carbono alineados",
     "tipo": "refrigeracion",
     "puntos": "14 [PV]",
@@ -843,6 +869,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P027",
     "nombre": "Radiadores de grafeno multicapa",
     "tipo": "refrigeracion",
     "puntos": "20 [PV]",
@@ -880,6 +907,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P028",
     "nombre": "Motor Stirling de concentración solar",
     "tipo": "refrigeracion",
     "puntos": "12 [PV]",
@@ -918,6 +946,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P029",
     "nombre": "Antena parabólica de microondas",
     "tipo": "microondas",
     "puntos": "4 [PV]",
@@ -944,6 +973,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P030",
     "nombre": "Matriz de antenas en fase",
     "tipo": "microondas",
     "puntos": "5 [PV]",
@@ -981,6 +1011,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P031",
     "nombre": "Transmisor láser de haz estrecho",
     "tipo": "microondas",
     "puntos": "20 [PV]",
@@ -1022,6 +1053,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P032",
     "nombre": "Paneles solares",
     "tipo": "generador",
     "puntos": "1 [PV]",
@@ -1048,6 +1080,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P033",
     "nombre": "Generador de radioisótopos (RTG)",
     "tipo": "generador",
     "puntos": "1 [PV]",
@@ -1075,6 +1108,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P034",
     "nombre": "Concentrador solar Stirling",
     "tipo": "generador",
     "puntos": "4 [PV]",
@@ -1111,6 +1145,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P035",
     "nombre": "Central solar de ciclo Brayton",
     "tipo": "generador",
     "puntos": "10 [PV]",
@@ -1151,6 +1186,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P036",
     "nombre": "Centro de telemarketing",
     "tipo": "mejora_soporte_externo",
     "puntos": "0 [PV]",
@@ -1175,6 +1211,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P037",
     "nombre": "Centro de investigación y tecnología",
     "tipo": "mejora_soporte_externo",
     "puntos": "0 [PV]",
@@ -1200,6 +1237,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P038",
     "nombre": "Centro de expedición de cráteres",
     "tipo": "mejora_soporte_externo",
     "puntos": "0 [PV]",
@@ -1225,6 +1263,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P039",
     "nombre": "Caminadoras",
     "tipo": "mejora_soporte_externo",
     "puntos": "0 [PV]",
@@ -1233,7 +1272,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+1 [En] [MS]",
     "disco_soporte": 0,
-    "efecto": "Cada ingeniero en Soporte externo obtiene 1 [En] Energia en lugar de $1. La energía que exceda la capacidad de tus baterías se pierde. \nColoca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
+    "efecto": "Cada ingeniero en Soporte externo obtiene 1 [En] energía en lugar de $1. La energía que exceda la capacidad de tus baterías se pierde. \nColoca esta carta a la derecha de tu zona de [SP]. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente.",
     "destino": "mejora",
     "etapas": [
       {
@@ -1250,15 +1289,16 @@ window.modulos = [
     ]
   },
   {
-    "nombre": "Estacion de coordinacion Orbital",
+    "id": "P040",
+    "nombre": "Estación de coordinación orbital",
     "tipo": "mejora_soporte_externo",
-    "puntos": "1 [PV] / [EI]",
+    "puntos": "1 [PV] / [AI]",
     "puntos_aprox": null,
     "copias": 1,
     "discos": 0,
-    "bono": "-$1 / [EI] [MS]",
+    "bono": "-$1 / [AI] [MS]",
     "disco_soporte": 0,
-    "efecto": "Cada ingeniero en [SP] Soporte externo genera $1, como de costumbre. Debes pagar $1 por cada [EI] ingeniero anclado en la esfera de Dyson, de cualquier jugador. \nColoca esta carta a la derecha de tu área de [SP] Soporte externo. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente. \n[FJ] gana 1 [PV] por cada [EI] ingeniero anclado de cualquier jugador.",
+    "efecto": "Cada ingeniero en [SP] Soporte externo genera $1, como de costumbre. Debes pagar $1 por cada [AI] ingeniero anclado en la esfera de Dyson, de cualquier jugador. \nColoca esta carta a la derecha de tu área de [SP] Soporte externo. Si ya tienes otra [MS] activa allí, muévela a proyectos completados. Esta [MS] entra en vigor inmediatamente. \n[FJ] Gana 1 [PV] por cada [AI] ingeniero anclado de cualquier jugador.",
     "destino": "mejora",
     "etapas": [
       {
@@ -1276,7 +1316,8 @@ window.modulos = [
     ]
   },
 {
-  "nombre": "Reemplazo por asistente robótico autónomo",
+  "id": "P041",
+    "nombre": "Reemplazo por asistente robótico autónomo",
   "tipo": "recursoshumanos",
   "puntos": "0 [PV]",
   "puntos_aprox": 0,
@@ -1284,7 +1325,7 @@ window.modulos = [
   "discos": 0,
   "bono": "",
   "disco_soporte": 0,
-  "efecto": "Retira un [EI] ingeniero anclado de cualquier celda y colócalo en tu reserva.\nLuego entrega esta carta al jugador de tu derecha, que la incorpora a su mano sin coste.",
+  "efecto": "Retira un [AI] ingeniero anclado de cualquier celda y colócalo en tu reserva.\nLuego entrega esta carta al jugador de tu derecha, que la incorpora a su mano sin coste.",
   "etapas": [
     {
       "m": { "Ti": 2, "Cu": 1, "Si": 2 },
@@ -1298,6 +1339,7 @@ window.modulos = [
   "destino": "especial"
 },
   {
+    "id": "P042",
     "nombre": "Pasantía",
     "tipo": "recursoshumanos",
     "puntos": "0 [PV]",
@@ -1306,7 +1348,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+1 [IQ] [CN]",
     "disco_soporte": 0,
-    "efecto": "Coloca 1 [IQ] Ingeniero Químico de la reserva en tus barracas sin gastar ninguna ficha de contratación. Si no hay [IQ] disponibles en la reserva, obtén 1 [CN] ficha de contratación.",
+    "efecto": "Coloca 1 [IQ] ingeniero químico de la reserva en tus barracas sin gastar ninguna ficha de contratación. Si no hay [IQ] disponibles en la reserva, obtén 1 [CN] ficha de contratación.",
     "destino": "completados",
     "etapas": [
       {
@@ -1318,6 +1360,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P043",
     "nombre": "Programador de IA",
     "tipo": "recursoshumanos",
     "puntos": "0 [PV]",
@@ -1326,7 +1369,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+3 [IS] [CN]",
     "disco_soporte": 0,
-    "efecto": "Coloca hasta 3 [IS] Ingeniero en Ssistemas en tus barracas sin gastar fichas de contratación. Por cada uno que no este disponible, obtén 1 [CN] ficha de contratación.",
+    "efecto": "Coloca hasta 3 [IS] ingenieros en sistemas en tus barracas sin gastar fichas de contratación. Por cada uno que no esté disponible, obtén 1 [CN] ficha de contratación.",
     "destino": "completados",
     "etapas": [
       {
@@ -1353,6 +1396,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P044",
     "nombre": "Desregulación de sueldos",
     "tipo": "recursoshumanos",
     "puntos": "0 [PV]",
@@ -1376,6 +1420,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P045",
     "nombre": "Robots multipropósito",
     "tipo": "recursoshumanos",
     "puntos": "0 [PV]",
@@ -1384,7 +1429,7 @@ window.modulos = [
     "discos": 0,
     "bono": "[IQ] [IE] [IS] [IM]",
     "disco_soporte": 0,
-    "efecto": "Coloca hasta 1 [IQ] Ingeniero Químico, 1 [IE] Ingeniero Electrónico, 1 [IS] Ingeniero en Ssistemas y 1 [IM] Ingeniero Mecánico de la reserva en tus barracas sin gastar fichas de contratación; por cada ingeniero obtenido disminuye en 1 tu [PE].",
+    "efecto": "Coloca hasta 1 [IQ] ingeniero químico, 1 [IE] ingeniero estructural, 1 [IS] ingeniero en sistemas y 1 [IM] ingeniero electromecánico de la reserva en tus barracas sin gastar fichas de contratación; por cada ingeniero obtenido disminuye en 1 tu [PE].",
     "destino": "completados",
     "etapas": [
       {
@@ -1415,6 +1460,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P046",
     "nombre": "Mercado negro",
     "tipo": "economia",
     "puntos": "0 [PV]",
@@ -1439,6 +1485,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P047",
     "nombre": "Consorcio de minerales estratégicos",
     "tipo": "economia",
     "puntos": "0 [PV]",
@@ -1473,6 +1520,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P048",
     "nombre": "Hotel solar",
     "tipo": "economia",
     "puntos": "0 [PV]",
@@ -1507,6 +1555,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P049",
     "nombre": "Centro de fusión nuclear",
     "tipo": "economia",
     "puntos": "0 [PV]",
@@ -1515,7 +1564,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+X [En]",
     "disco_soporte": 0,
-    "efecto": "Todos los jugadores obtienen hasta 3 [En] energia, sin superar la capacidad de sus [BT] baterías. Ganas 1 [PI] por cada unidad de energía efectivamente obtenida entre todos los jugadores, hasta un máximo de 8 [PI]. \nPuedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Todos los jugadores obtienen hasta 3 [En] energía, sin superar la capacidad de sus [BT] baterías. Ganas 1 [PI] por cada unidad de energía efectivamente obtenida entre todos los jugadores, hasta un máximo de 8 [PI]. \nPuedes volver a colocar el cubo en la etapa 2.",
     "destino": "etapa:2",
     "etapas": [
       {
@@ -1545,6 +1594,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P050",
     "nombre": "Refinería de escoria por intercambio iónico",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -1579,6 +1629,7 @@ window.modulos = [
 ]
   },
   {
+    "id": "P051",
     "nombre": "Laboratorio móvil",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -1599,6 +1650,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P052",
     "nombre": "Cohete de combustible sólido",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -1624,6 +1676,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P053",
     "nombre": "Catapulta electromagnética",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -1671,6 +1724,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P054",
     "nombre": "Propulsor láser",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -1716,6 +1770,7 @@ window.modulos = [
     ]
   },
   {
+    "id": "P055",
     "nombre": "Gancho orbital (Skyhook)",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -1769,6 +1824,7 @@ window.modulos = [
 
 window.sensores = [
   {
+    "id": "P056",
     "nombre": "Extensómetros de fibra óptica",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -1787,6 +1843,7 @@ window.sensores = [
     "destino": "completados"
   },
   {
+    "id": "P057",
     "nombre": "Termografía infrarroja",
     "tipo": "sensores",
     "puntos": "1 [PV]",
@@ -1805,6 +1862,7 @@ window.sensores = [
     "destino": "completados"
   },
   {
+    "id": "P058",
     "nombre": "Dosímetros de radiación",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -1823,6 +1881,7 @@ window.sensores = [
     "destino": "completados"
   },
   {
+    "id": "P059",
     "nombre": "Detectores de micrometeoritos",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -1841,6 +1900,7 @@ window.sensores = [
     "destino": "completados"
   },
   {
+    "id": "P060",
     "nombre": "Analizadores de plasma solar",
     "tipo": "sensores",
     "puntos": "25 [PV]",
@@ -1849,7 +1909,7 @@ window.sensores = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [SN] Sensores de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco y los ingenieros de la última etapa en una celda libre de [SN] Sensores de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": { "Ti": 4, "Cu": 7, "Si": 6 },
@@ -1857,12 +1917,13 @@ window.sensores = [
       },
       {
         "m": { "Al": 3, "Nd": 1, "Gd": 1 },
-        "o": { "EE": 1, "EM": 1, "En": 5, "Tr": 3 }
+        "o": { "AE": 1, "AM": 1, "En": 5, "Tr": 3 }
       }
     ],
     "destino": "completados"
   },
   {
+    "id": "P061",
     "nombre": "Red de interferometría láser",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -1881,6 +1942,7 @@ window.sensores = [
     "destino": "completados"
   },
   {
+    "id": "P062",
     "nombre": "Monitores de calidad eléctrica",
     "tipo": "sensores",
     "puntos": "-2 [PV] [/] [NC][TS]",
@@ -1889,7 +1951,7 @@ window.sensores = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.\n[FJ] Pierde 2 [PV] por cada [NC] nivel de [TS] Transmisión sin disco.",
+    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.\n[FJ] Pierde 2 [PV] por cada [NC] nivel de cobertura que falte para alcanzar el máximo de 5 en [TS] Transmisión.",
     "etapas": [
       {
         "m": { "Cu": 2, "Al": 2, "Si": 2 },
@@ -1899,6 +1961,7 @@ window.sensores = [
     "destino": "completados"
   },
   {
+    "id": "P063",
     "nombre": "Red de relojes atómicos de sincronización",
     "tipo": "sensores",
     "puntos": "30 [PV]",
@@ -1931,6 +1994,7 @@ window.modulos.push(...window.sensores);
 
 window.control = [
   {
+    "id": "P064",
     "nombre": "Control autónomo por IA",
     "tipo": "control",
     "puntos": "+2 [PV] [/] [NC]",
@@ -1978,6 +2042,7 @@ window.control = [
     "destino": "completados"
   },
   {
+    "id": "P065",
     "nombre": "Centro de supervisión orbital",
     "tipo": "control",
     "puntos": "0 [PV]",
@@ -1986,7 +2051,7 @@ window.control = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco y el ingeniero de la ultima etapa en una celda libre de [CO] Control de un área de soporte. \nLuego gana 3 [PI] por cada celda de [SN] Sensores con un disco de cualqueir jugador. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco y el ingeniero de la última etapa en una celda libre de [CO] Control de un área de soporte. \nLuego gana 3 [PI] por cada celda de [SN] Sensores con un disco de cualquier jugador. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2007,7 +2072,7 @@ window.control = [
           "Si": 4
         },
         "o": {
-          "SX": 1,
+          "AS": 1,
           "En": 4,
           "Tr": 1
         }
@@ -2016,6 +2081,7 @@ window.control = [
     "destino": "completados"
   },
   {
+    "id": "P066",
     "nombre": "Centro de regulación de potencia",
     "tipo": "control",
     "puntos": "20 [PV]",
@@ -2024,7 +2090,7 @@ window.control = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco y los ingenieros de la última etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2045,8 +2111,8 @@ window.control = [
           "Nd": 1
         },
         "o": {
-          "EM": 1,
-          "SX": 1,
+          "AM": 1,
+          "AS": 1,
           "En": 4,
           "Tr": 2
         }
@@ -2055,6 +2121,7 @@ window.control = [
     "destino": "completados"
   },
   {
+    "id": "P067",
     "nombre": "Centro de mantenimiento predictivo",
     "tipo": "control",
     "puntos": "20 [PV]",
@@ -2063,7 +2130,7 @@ window.control = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco y los ingenieros de la última etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2084,9 +2151,9 @@ window.control = [
           "Nd": 1
         },
         "o": {
-          "EM": 1,
-          "EQ": 1,
-          "SX": 1,
+          "AM": 1,
+          "AQ": 1,
+          "AS": 1,
           "En": 4,
           "Tr": 2
         }
@@ -2095,6 +2162,7 @@ window.control = [
     "destino": "completados"
   },
   {
+    "id": "P068",
     "nombre": "Centro de coordinación integral",
     "tipo": "control",
     "puntos": "10 [PV]",
@@ -2103,7 +2171,7 @@ window.control = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco y los ingenieros de la ultima etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado. \n[FJ] Gana 1 [PV] por cada [DP] disco de cualquier jugador en cualquier area de soporte.",
+    "efecto": "Coloca un disco y los ingenieros de la última etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado. \n[FJ] Gana 1 [PV] por cada [DP] disco de cualquier jugador en cualquier área de soporte.",
     "etapas": [
       {
         "m": {
@@ -2123,7 +2191,7 @@ window.control = [
           "Ti": 1
         },
         "o": {
-          "EE": 1,
+          "AE": 1,
           "En": 4,
           "Tr": 2
         }
@@ -2132,6 +2200,7 @@ window.control = [
     "destino": "completados"
   },
   {
+    "id": "P069",
     "nombre": "Control remoto por teletransportación cuántica",
     "tipo": "control",
     "puntos": "10 [PV]",
@@ -2140,7 +2209,7 @@ window.control = [
     "discos": 1,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte y un disco en una celda libre de [MO] Microondas del mismo cuadrante",
+    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte y un disco en una celda libre de [MO] Microondas del mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -2171,7 +2240,8 @@ window.control = [
     "destino": "completados"
   },
   {
-    "nombre": "Centro de control por mejora premanente",
+    "id": "P070",
+    "nombre": "Centro de control por mejora permanente",
     "tipo": "control",
     "puntos": "-2 [PV]",
     "puntos_aprox": -2-3,
@@ -2179,7 +2249,7 @@ window.control = [
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco y el ingeniero de la ultima etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco y el ingeniero de la última etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2188,7 +2258,7 @@ window.control = [
           "Cu": 4
         },
         "o": {
-          "SX": 1,
+          "AS": 1,
           "En": 1,
           "Tr": 1
         }
@@ -2197,7 +2267,8 @@ window.control = [
     "destino": "completados"
   },
   {
-    "nombre": "Centro de calibracion retroactiva",
+    "id": "P071",
+    "nombre": "Centro de calibración retroactiva",
     "tipo": "control",
     "puntos": "3 [PV] [/] [NC] [MO]",
     "puntos_aprox": 15,
@@ -2205,7 +2276,7 @@ window.control = [
     "discos": -1,
     "bono": "1 [DP] + [QD][MO]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de cualquier celda de [MO] Microondas para colocar un disco en una celda libre de [CO] Control en el area de soporte del mismo cuadrante.\n[FJ] Gana 3 [PV] por cada [NC] nivel de [MO] Microondas.\nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "[QD] Retira un disco de cualquier celda de [MO] Microondas para colocar un disco en una celda libre de [CO] Control en el área de soporte del mismo cuadrante.\n[FJ] Gana 3 [PV] por cada [NC] nivel de [MO] Microondas.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2241,6 +2312,7 @@ window.modulos.push(...window.control);
 
 window.mantenimiento = [
   {
+    "id": "P072",
     "nombre": "Red de túneles de servicio",
     "tipo": "mantenimiento",
     "puntos": "3 [PV] [/] [NC] [ES]",
@@ -2249,14 +2321,15 @@ window.mantenimiento = [
     "discos": -1,
     "bono": "1 [DP] + [QD][ES]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de cualquier celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Gana 3 [PV] por cada [NC] nivel de [ES] Estructura.\nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "[QD] Retira un disco de cualquier celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\n[FJ] Gana 3 [PV] por cada [NC] nivel de [ES] Estructura.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       { "m": { "Fe": 2, "Ti": 4 }, "o": { "IE": 1 } },
-      { "m": { "Fe": 1, "Cu": 2 }, "o": { "ES":1, "EE": 2, "Tr": 2 } }
+      { "m": { "Fe": 1, "Cu": 2 }, "o": { "ES":1, "AE": 2, "Tr": 2 } }
     ],
     "destino": "completados"
   },
   {
+    "id": "P073",
     "nombre": "Brigada de propulsión iónica",
     "tipo": "mantenimiento",
     "puntos": "5 [PV]",
@@ -2265,23 +2338,24 @@ window.mantenimiento = [
     "discos": -1,
     "bono": "1 [DP] + [QD][FV]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de cualquier celda de [FV] Fotovoltaica para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "[QD] Retira un disco de cualquier celda de [FV] Fotovoltaica para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       { "m": { "Fe": 2, "Ti": 2 }, "o": { "IE": 1 } },
-      { "m": { "Al": 1, "Cu": 2 }, "o": { "FV":1, "EE": 3, "Tr": 1 } }
+      { "m": { "Al": 1, "Cu": 2 }, "o": { "FV":1, "AE": 3, "Tr": 1 } }
     ],
     "destino": "completados"
   },
   {
-    "nombre": "Gimnasio y spa de gravedad zero",
+    "id": "P074",
+    "nombre": "Gimnasio y spa de gravedad cero",
     "tipo": "mantenimiento",
-    "puntos": "+3 [PV] / [EI]",
+    "puntos": "+3 [PV] / [AI]",
     "puntos_aprox": 30,
     "copias": 1,
     "discos": 0,
     "bono": "1 [DH]",
     "disco_soporte": 0,
-    "efecto": "Colocar un disco en una celda libre de [MN] Mantenimiento sin cobrar los bonos por colocacion.\n[FJ] Gana 3 [PV] por [EI] Ingeniero Anclado de cualquier jugador.",
+    "efecto": "Coloca un disco en una celda libre de [MN] Mantenimiento sin cobrar los bonos por colocación.\n[FJ] Gana 3 [PV] por [AI] ingeniero anclado de cualquier jugador.",
     
 "etapas": [
   {
@@ -2318,7 +2392,8 @@ window.mantenimiento = [
   },
   
 {
-  "nombre": "Jardines bioclimáticos inteligentes",
+  "id": "P075",
+    "nombre": "Jardines bioclimáticos inteligentes",
   "tipo": "mantenimiento",
   "puntos": "20 [PV]",
   "puntos_aprox": 16+20,
@@ -2326,7 +2401,7 @@ window.mantenimiento = [
   "discos": 0,
   "bono": "1 [DH]",
   "disco_soporte": 0,
-  "efecto": "Coloca un disco en una celda libre de [MN] Mantenimiento sin cobrar bonos de colocación.\nLuego retira hasta 4 [EI] ingenieros anclados de cualquier número de celdas y devuélvelos a la reserva de ingenieros correspondiente.",
+  "efecto": "Coloca un disco en una celda libre de [MN] Mantenimiento sin cobrar bonos de colocación.\nLuego retira hasta 4 [AI] ingenieros anclados de cualquier número de celdas y devuélvelos a la reserva de ingenieros correspondiente.",
   "etapas": [
     {
       "m": { "Ti": 4, "Al": 5, "Si": 4 },
@@ -2340,6 +2415,7 @@ window.mantenimiento = [
   "destino": "completados"
 },
   {
+    "id": "P076",
     "nombre": "Aditivo de nanobots microactuadores",
     "tipo": "mantenimiento",
     "puntos": "3 [PV] [/] [NC] [RF]",
@@ -2348,7 +2424,7 @@ window.mantenimiento = [
     "discos": -1,
     "bono": "1 [DP] + [QD][RF]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de cualquier celda de [RF] Refrigerante para colocar un disco en una celda libre de [MN] Mantenimiento en el area de soporte del mismo cuadrante.\n[FJ] Gana 3 [PV] por cada [NC] nivel de [RF] Refrigerante.\nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "[QD] Retira un disco de cualquier celda de [RF] Refrigeración para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\n[FJ] Gana 3 [PV] por cada [NC] nivel de [RF] Refrigeración.\nConsulta la pérdida de puntos por personal anclado.",
     
 "etapas": [
   {
@@ -2357,13 +2433,14 @@ window.mantenimiento = [
   },
   {
     "m": { "Al": 2, "Si": 2,"Ce": 2 },
-    "o": { "RF": 1, "EQ": 1, "Tr": 3 }
+    "o": { "RF": 1, "AQ": 1, "Tr": 3 }
   }
 ],
     "destino": "completados"
   },
 {
-  "nombre": "Núcleo de estabilización multifísica",
+  "id": "P077",
+    "nombre": "Núcleo de estabilización multifísica",
   "tipo": "mantenimiento",
   "puntos": "15 [PV]",
   "puntos_aprox": 15,
@@ -2371,11 +2448,11 @@ window.mantenimiento = [
   "discos": -3,
   "bono": "1 [DP] + 3[QD]",
   "disco_soporte": 1,
-  "efecto": "[QD] Retira un disco de [ES] Estructura, uno de [TS] Transmisión y uno de [RF] Refrigeración de una misma sección para colocar un disco en una celda libre de [MN] Mantenimiento del mismo cuadrante.",
+  "efecto": "[QD] Retira un disco de [ES] Estructura, uno de [TS] Transmisión y uno de [RF] Refrigeración de un mismo sector para colocar un disco en una celda libre de [MN] Mantenimiento del mismo cuadrante.",
   "etapas": [
     {
       "m": { "Cu": 2, "Gd": 1, "Fe": 1 },
-      "o": { "IS": 1, "EI":2, "En":2 }
+      "o": { "IS": 1, "AI":2, "En":2 }
     },
     {
       "m": { "Ti": 1, "Al": 1 },
@@ -2386,7 +2463,8 @@ window.mantenimiento = [
 }
 ,
 {
-  "nombre": "Anticipación y blindaje anti llamaradas solares",
+  "id": "P078",
+    "nombre": "Anticipación y blindaje contra llamaradas solares",
   "tipo": "mantenimiento",
   "puntos": "-3 [PV] [/] [NC] [ES]",
   "puntos_aprox": -6-6,
@@ -2394,7 +2472,7 @@ window.mantenimiento = [
   "discos": 2,
   "bono": "2 [DP] 2 [DS]",
   "disco_soporte": 2,
-  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento y 1 disco en una celda libre de [ES] Estructura, en dos cuadrantes distintos. Si el mapa tiene más de 3 cuadrantes, estos no pueden ser adyacentes.\n[FJ] Pierde 3 [PV] por cada nivel de [ES] Estructura sin disco.",
+  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento y 1 disco en una celda libre de [ES] Estructura, del mismo cuadrante y luego haz lo mismo en otro cuadrante. Si el mapa tiene más de 3 cuadrantes, estos no pueden ser adyacentes.\n[FJ] Pierde 3 [PV] por cada [NC] nivel de cobertura que falte para alcanzar el máximo de 5 en [ES] Estructura.",
   
 "etapas": [
   {
@@ -2414,8 +2492,8 @@ window.mantenimiento = [
       "Nd": 1
     },
     "o": {
-      "EM": 1,
-      "SX": 1,
+      "AM": 1,
+      "AS": 1,
       "Tr": 2
     }
   }
@@ -2424,7 +2502,8 @@ window.mantenimiento = [
   "destino": "completados"
 },
 {
-  "nombre": "Detección y ablación láser de micrometeoritos",
+  "id": "P079",
+    "nombre": "Detección y ablación láser de micrometeoritos",
   "tipo": "mantenimiento",
   "puntos": "3 [PV] [/] [NC] [MO]",
   "puntos_aprox": 15-6,
@@ -2432,7 +2511,7 @@ window.mantenimiento = [
   "discos": 2,
   "bono": "1 [DP] 2 [DS]",
   "disco_soporte": 1,
-  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un area de soporte y un disco en 2 celdas libres de [MO] Microondas de otro cuadrante. \n[FJ] Gana 3 [PV] por cada [NC] nivel de cobertura de [ES] Estructura.\nConsulta la pérdida de puntos por personal anclado.",
+  "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un área de soporte y un disco en cada una de 2 celdas libres de [MO] Microondas de otro cuadrante. \n[FJ] Gana 3 [PV] por cada [NC] nivel de cobertura de [MO] Microondas.\nConsulta la pérdida de puntos por personal anclado.",
   "etapas": [
     {
       "m": {
@@ -2451,8 +2530,8 @@ window.mantenimiento = [
         "Er": 2
       },
       "o": {
-        "EM": 1,
-        "SX": 1,
+        "AM": 1,
+        "AS": 1,
         "Tr": 2
       }
     }

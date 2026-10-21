@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 44">
-  <title>Eliminar ingeniero estructural</title>
+  <title>Ingeniero estructural anclado</title>
   <style>
     .figura { fill: #f0d54d; stroke: #222; stroke-width: .8; stroke-linejoin: round; }
     #sin-color:target ~ .figura { fill: #fff; }

@@ -7,7 +7,8 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .heading{display:flex;align-items:flex-start;gap:2mm;border-bottom:1px solid #888;padding-bottom:1.5mm;min-height:12mm}
 .module-icon{width:9mm;height:9mm;border:1px solid #222;border-radius:1mm;display:grid;place-items:center;flex-shrink:0}
 .module-icon svg,.module-icon img{width:7mm;height:7mm;stroke:#222;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.name{font-size:8.8pt;font-weight:800;line-height:1.08}.type{font-size:6pt;letter-spacing:.07em;text-transform:uppercase;margin-top:.6mm}
+.name{font-size:8.8pt;font-weight:800;line-height:1.08}.card-id{margin-right:1mm;font-weight:bold;letter-spacing:0}
+.type{font-size:6pt;letter-spacing:.07em;text-transform:uppercase;margin-top:.6mm}
 .stages{flex:1;display:flex;flex-direction:column;gap:2mm;padding-top:2 mm;min-height:0}
 .stage{border:1px solid #aaa;border-radius:1mm;padding:1.6mm;flex:1;min-height:0}
 .stage-title{display:none}
@@ -66,7 +67,7 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 <script>
 const recursos={Fe:['Hierro','#d84242'],Cu:['Cobre','#3977dc'],Si:['Silicio','#f0d54d'],Ti:['Titanio','#58a85c'],Al:['Aluminio','#292929'],C:['Carbono','#fff'],Nd:['Neodimio','#e345ad'],Gd:['Gadolinio','#42c5c1'],Er:['Erbio','#ec933c'],Ce:['Cerio','#94623d']};
 const precios={Fe:1,Cu:3,Si:2,Ti:6,Al:3,C:1,Nd:8,Gd:8,Er:12,Ce:7,Tr:7};
-const operativos={IQ:'Ingeniero químico',IE:'Ingeniero estructural',IM:'Ingeniero electromecánico',IS:'Ingeniero de sistemas',En:'Energía',Tr:'Transporte'};
+const operativos={IQ:'Ingeniero químico',IE:'Ingeniero estructural',IM:'Ingeniero electromecánico',IS:'Ingeniero en sistemas',En:'Energía',Tr:'Transporte'};
 const tiposIcono={
  "sensores": "SN",
  "control": "CO",
@@ -120,17 +121,17 @@ const catalogoIconos={
  BT:{nombre:'Capacidad de batería',archivo:'BT-bateria.svg'},
  DS:{nombre:'Discos',archivo:'DS-disco.svg'},
  DP:{nombre:'Disco de soporte',archivo:'DP-disco-soporte.svg'},
- EI:{nombre:'Ingeniero anclado',archivo:'EI-ingeniero-anclado.svg'},
- EQ:{nombre:'Eliminar ingeniero químico',archivo:'EQ-eliminar-quimico.svg'},
- EM:{nombre:'Eliminar ingeniero electromecánico',archivo:'EM-eliminar-electromecanico.svg'},
- EE:{nombre:'Eliminar ingeniero estructural',archivo:'EE-eliminar-estructural.svg'},
- SX:{nombre:'Eliminar ingeniero de sistemas',archivo:'SX-eliminar-sistemas.svg'},
+ AI:{nombre:'Ingeniero anclado',archivo:'AI-ingeniero-anclado.svg'},
+ AQ:{nombre:'Ingeniero químico anclado',archivo:'AQ-ingeniero-quimico-anclado.svg'},
+ AM:{nombre:'Ingeniero electromecánico anclado',archivo:'AM-ingeniero-electromecanico-anclado.svg'},
+ AE:{nombre:'Ingeniero estructural anclado',archivo:'AE-ingeniero-estructural-anclado.svg'},
+ AS:{nombre:'Ingeniero en sistemas anclado',archivo:'AS-ingeniero-sistemas-anclado.svg'},
  DH:{nombre:'Disco hueco',archivo:'DH-disco-hueco.svg'},
  En:{nombre:'Energía',archivo:'En-energia.svg'},
  IQ:{nombre:'Ingeniero químico',archivo:'IQ-ingeniero-quimico.svg'},
  IE:{nombre:'Ingeniero estructural',archivo:'IE-ingeniero-estructural.svg'},
  IM:{nombre:'Ingeniero electromecánico',archivo:'IM-ingeniero-electromecanico.svg'},
- IS:{nombre:'Ingeniero de sistemas',archivo:'IS-ingeniero-sistemas.svg'},
+ IS:{nombre:'Ingeniero en sistemas',archivo:'IS-ingeniero-sistemas.svg'},
  Di:{nombre:'Dinero',archivo:'Di-dinero.svg'},
  RE:{nombre:'Repetible',archivo:'RE-repetible.svg'},
  Tr:{nombre:'Transporte',archivo:'Tr-transporte.svg'},
@@ -145,7 +146,7 @@ const catalogoIconos={
 };
 function imagenIcono(id){
  if(!Object.hasOwn(catalogoIconos,id))return '';
- const variante=['IQ','IE','IM','IS','EI','EQ','EM','EE','SX'].includes(id)&&!document.getElementById('colors').checked?'#sin-color':'';
+ const variante=['IQ','IE','IM','IS','AI','AQ','AM','AE','AS'].includes(id)&&!document.getElementById('colors').checked?'#sin-color':'';
  return `<img${id==='/'?' class="separator-bar"':''} src="./iconos/${catalogoIconos[id].archivo}${variante}" alt="" aria-hidden="true">`;
 }
 const rocket=imagenIcono('Tr');
@@ -187,7 +188,7 @@ function render(m){
  const costo=costoModulo(m),etapas=m.etapas.length,base=Number.isFinite(m.puntos_aprox)?m.puntos_aprox+3*(m.discos||0)+9*(m.disco_soporte||0):null;
  const insignia=renderBono(m.bono);
  const coef=base?((costo*Math.pow(1.7,etapas))/base).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
- return `<article class="card"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div><div class="name">${escapeHTML(m.nombre)}</div><div class="type">${escapeHTML(m.tipo==='recursoshumanos'?'Recursos humanos':m.tipo.replaceAll('_',' '))}</div></div><div class="card-score">${renderBono(puntos)}${insignia}</div></header>
+ return `<article class="card" data-card-id="${escapeHTML(m.id)}"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div><div class="name">${escapeHTML(m.nombre)}</div><div class="type"><span class="card-id">${escapeHTML(m.id)}</span>${escapeHTML(m.tipo==='recursoshumanos'?'Recursos humanos':m.tipo.replaceAll('_',' '))}</div></div><div class="card-score">${renderBono(puntos)}${insignia}</div></header>
  <section class="stages">${m.etapas.map((e,i)=>`<div class="stage" title="Etapa ${i+1} de ${m.etapas.length}"><div class="stage-title">ETAPA ${i+1}</div><div class="items">${Object.entries(e.m||{}).map(([id,n])=>tokens(id,n)).join('')}</div><div class="operatives"><div class="crew-line">${Object.entries(e.o||{}).filter(([id])=>id!=='En').map(([id,n])=>operationTokens(id,n)).join('')}</div><div class="energy-line">${e.o?.En?operationTokens('En',e.o.En):''}</div></div></div>`).join('')}</section>
  <footer class="footer"><div class="footer-main"><div class="footer-cost">Costo <strong>$${costo}</strong><div>Coef. ${coef}</div></div></div><div class="footer-effect-wrap">${iconoDestino(m.destino||'completados')}<div class="footer-effect"><strong>Al completar:</strong> ${renderEfecto(m.efecto||'Sin efecto adicional')}</div></div></footer></article>`;
 }

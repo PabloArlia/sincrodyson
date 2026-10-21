@@ -393,9 +393,33 @@ Especialista se puntúa por capa e Integrador por sector, respectivamente.
 
 Gana el jugador con más PV. Si hay empate, gana quien tenga más dinero sobrante. Si el empate persiste, gana quien conserve la ficha de orden de número más bajo.
 
-## Glosario de cartas
+## Explicación de cartas
 
-**Laboratorio móvil:** al completar, elige entre colocar la carta en proyectos completados o pagar $6 para obtener 4 reactivos a elección y entregarla al jugador de tu izquierda, que la incorpora a su mano sin costo.
-
-**Robots multipropósitos avanzados:** si tu producción de energía es menor que 4, obtén $10 y coloca la carta en proyectos completados. De lo contrario, disminuye en 4 tu producción de energía, obtén los ingenieros indicados o las fichas de contrato correspondientes y entrega la carta al jugador de tu derecha, que la incorpora a su mano sin costo.
-
+- P021
+- P022: ver P021
+- P023
+- P028
+- P029: ver P023
+- P041: ver P051
+- P042
+- P043: ver P042
+- P045
+- P048
+- P050
+- P051
+- P059
+- P060
+- P065: ver P060
+- P066: ver P060
+- P067: ver P060
+- P068: ver P060
+- P070: ver P060
+- P071
+- P072: ver P060 y P071
+- P073: ver P060 y P071
+- P074: ver P023
+- P075: ver P023
+- P076: ver P060 y P071
+- P077: ver P071
+- P078: ver P060
+- P079: ver P060
