@@ -28,7 +28,7 @@ Después del draft, cada jugador elige tres ingenieros. Puede elegir varios del 
 
 Las fichas de contrato se colocan en su área del tablero personal, ocupando los lugares más a la derecha posible. Cada jugador comienza con un total de trece elementos entre sus cuatro ingenieros y sus nueve contratos.
 
-Los yacimientos se mantienen ocultos hasta que su dueño les asigne licencias. Cada jugador puede consultar sus propios yacimientos en cualquier momento.
+Los yacimientos se mantienen ocultos hasta que su dueño los revele. Cada jugador puede consultar sus propios yacimientos en cualquier momento.
 
 Una vez terminada la preparación, comienza la primera ronda.
 
@@ -36,9 +36,9 @@ Una vez terminada la preparación, comienza la primera ronda.
 
 ### Tablero personal
 
-El tablero personal dispone de tres espacios de ejecución, ocupados por refinerías o proyectos. También incluye el almacén de recursos, las baterías, las barracas, el área de contratos, el área de licencias, Soporte externo y cinco espacios para programar operaciones de mercado.
+El tablero personal dispone de cuatro espacios de ejecución, ocupados por refinerías o proyectos. También incluye el almacén de recursos, las baterías, las barracas, el área de contratos, el área de licencias, Soporte externo y cinco espacios para programar operaciones de mercado.
 
-Los recursos no asignados a proyectos o refinerías se guardan en el almacén. La energía no asignada se guarda exclusivamente en las baterías; cualquier excedente que no pueda almacenarse se descarta. Durante Mercado, la energía comprada también puede asignarse directamente a proyectos, como se explica en esa fase. Los ingenieros disponibles permanecen en las barracas, salvo que estén asignados a otra tarea.
+Los recursos no asignados a proyectos o refinerías se guardan en el almacén. La energía no asignada se guarda exclusivamente en las baterías; cualquier excedente que no pueda almacenarse se descarta. Los ingenieros disponibles permanecen en las barracas, salvo que estén asignados a otra tarea.
 
 ### Valores y límites
 
@@ -65,7 +65,7 @@ Solo puede manipular las cartas de su mano y los componentes de su tablero perso
 
 ### Asignar licencias a yacimientos
 
-Durante Planificación, el jugador puede colocar o retirar licencias de sus yacimientos. Conserva siempre seis licencias entre las disponibles en su tablero y las asignadas. Para poder utilizar un yacimiento, debe asignarle la cantidad de licencias indicada en su carta.
+Durante Planificación, el jugador puede colocar o retirar licencias de sus yacimientos revelados. Conserva siempre seis licencias entre las disponibles en su tablero y las asignadas. Para poder utilizar un yacimiento, debe asignarle la cantidad completa de licencias indicada en su carta.
 
 ### Preparar proyectos y asignar componentes
 
@@ -147,13 +147,11 @@ Cuando el mazo de proyectos se agota, se mezcla su descarte para formar un nuevo
 
 Para contratar ingenieros se utiliza la carta del tipo correspondiente con uno o dos dados verdes, cuyo valor total indica la cantidad que se contratará. Cada ingeniero tiene un costo fijo de contratación indicado en el tablero de mercado. Por cada ingeniero contratado, el jugador paga ese costo y entrega una ficha de contrato u otro ingeniero de sus barracas.
 
-Para despedir ingenieros se utiliza la misma carta con dados rojos. Solo pueden despedirse ingenieros de las barracas. Por cada ingeniero entregado se recupera una ficha de contrato, pero no se recibe dinero ni se recupera el costo de contratación. Si la cantidad indicada por los dados supera los ingenieros de ese tipo disponibles en sus barracas, el jugador despide todos los que pueda y pierde 3 PV.
+Para despedir ingenieros se utiliza la misma carta con dados rojos. Solo pueden despedirse ingenieros de las barracas o del soporte externo. Por cada ingeniero entregado se recupera una ficha de contrato, pero no se recibe dinero ni se recupera el costo de contratación. Si la cantidad indicada por los dados supera los ingenieros de ese tipo disponibles en sus barracas, el jugador despide todos los que pueda de ese tipo y pierde 3 PV.
 
 Las fichas de contrato se colocan lo más a la derecha posible en su área de contratos.
 
-Cada ingeniero se asigna inmediatamente al contratarlo: puede enviarse a un proyecto, a las barracas o al área de Soporte externo. Antes de contratar al siguiente, se vuelve a comprobar la disponibilidad y, si no quedan ingenieros de ese tipo en la reserva, qué jugador tiene más de ese tipo sin asignar a proyectos.
-
-Si no quedan ingenieros del tipo solicitado en la reserva, debe entregar uno el jugador que tenga más ingenieros de ese tipo sin asignar a proyectos. A cambio recibe una ficha de contrato. El ingeniero entregado se utiliza para resolver la contratación. Esta regla también puede afectar al propio jugador que está contratando.
+Cada ingeniero se asigna inmediatamente al contratarlo: puede enviarse a un proyecto, a las barracas o al área de Soporte externo. Antes de contratar al siguiente, se vuelve a comprobar la disponibilidad. Si no quedan ingenieros del tipo solicitado en la reserva, debe entregar uno el jugador que tenga más ingenieros de ese tipo sin asignar a proyectos. A cambio recibe una ficha de contrato. El ingeniero entregado se utiliza para resolver la contratación. Esta regla también puede afectar al propio jugador que está contratando.
 
 En caso de empate, el jugador que contrata elige cuál de los jugadores empatados entrega el ingeniero.
 
