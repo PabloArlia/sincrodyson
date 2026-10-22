@@ -1944,7 +1944,47 @@ window.modulos = [
       }
     ],
     "destino": "completados"
-  },
+  },{
+  "id": "P085",
+  "nombre": "Micromembranas adaptativas",
+  "tipo": "refrigeracion",
+  "puntos": "0 [PV]",
+  "puntos_carta": 0,
+  "puntos_capas": 0,
+  "puntos_ingenieros": 0,
+  "puntos_otros": 0,
+  "copias": 1,
+  "discos": 4,
+  "bono": "4 [DS]",
+  "disco_soporte": 0,
+  "efecto": "Coloca 1 disco en una celda libre de [RF] Refrigeración y otro en una celda libre de [MO] Microondas de un mismo sector. Repite el procedimiento en otro sector de un cuadrante distinto. Si el mapa tiene más de 3 cuadrantes, los cuadrantes elegidos no pueden ser adyacentes.",
+  "etapas": [
+    {
+      "m": {
+        "Si": 4,
+        "Al": 3,
+        "Fe": 3
+      },
+      "o": {
+        "IM": 1,
+        "En": 2
+      }
+    },
+    {
+      "m": {
+        "Ti": 1,
+        "Cu": 1,
+        "Nd": 1
+      },
+      "o": {
+        "IS": 1,
+        "En": 1,
+        "Tr": 2
+      }
+    }
+  ],
+  "destino": "completados"
+},
 
   // Microondas
   {
@@ -2062,7 +2102,44 @@ window.modulos = [
       }
     ],
     "destino": "completados"
-  },
+  },{
+  "nombre": "Fábrica de blindaje exterior",
+    "id": "P089",
+  "tipo": "microondas",
+  "puntos": "0 [PV]",
+  "puntos_carta": 0,
+  "puntos_capas": 0,
+  "puntos_ingenieros": 0,
+  "puntos_otros": 0,
+  "copias": 3,
+  "discos": 1,
+  "bono": "1 [DS] [RE]",
+  "disco_soporte": 0,
+  "efecto": "Si el nivel de [NC] cobertura de la capa [MO] Microondas es 2 o más, coloca 1 disco en una celda libre de [MO] Microondas de cualquier cuadrante. Puedes volver a colocar el cubo en la etapa 2.",
+  "etapas": [
+    {
+      "m": {
+        "Fe": 2,
+        "Ti": 1
+      },
+      "o": {
+        "IE": 1,
+        "En": 2
+      }
+    },
+    {
+      "m": {
+        "Fe": 5,
+        "Ti": 2
+      },
+      "o": {
+        "IE": 1,
+        "En": 2
+      }
+    }
+  ],
+  "destino": "etapa:2"
+},
 
   // Sensores
   {

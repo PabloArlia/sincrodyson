@@ -11,7 +11,7 @@ body{margin:0;padding:18px}
 .toolbar{width:min(100%,287mm);margin:0 auto 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 h1{font-size:20px;margin:0;letter-spacing:.06em}
 button{border:0;border-radius:5px;background:#263a35;color:white;padding:10px 16px;font-weight:bold;cursor:pointer}
-.board{width:287mm;height:200mm;margin:0 auto;background:#fafaf7;border:1.3mm solid #263238;border-radius:3mm;padding:3mm;display:grid;grid-template-rows:64mm 55mm 1fr;gap:2mm;box-shadow:0 3px 14px #0002}
+.board{width:287mm;height:200mm;margin:0 auto;background:#fafaf7;border:1.3mm solid #263238;border-radius:3mm;padding:3mm;display:grid;grid-template-rows:64mm 55mm minmax(0,1fr) 26mm;gap:2mm;box-shadow:0 3px 14px #0002}
 .board-head{display:flex;align-items:center;gap:3mm;border-bottom:.45mm solid #263238;padding:0 1mm 1.5mm}
 .brand{font-size:20pt;font-weight:900;letter-spacing:.13em;white-space:nowrap}
 .brand-mark{display:inline-grid;place-items:center;width:8mm;height:8mm;border:1.1mm solid #263238;border-radius:50%;margin:0 .4mm;position:relative;font-size:0;vertical-align:middle}
@@ -68,6 +68,7 @@ button{border:0;border-radius:5px;background:#263a35;color:white;padding:10px 16
 .prospect-price{font-size:24pt;font-weight:900;margin-top:1mm}
 .section .section-head,.transport .section-head,.reagents .section-head,.rare-section .section-head{background:#fff;color:#263238}
 .section .section-head img{filter:none}
+.turn-order{flex-direction:row;align-items:stretch}.turn-order .section-head{height:auto;min-height:0;flex:0 0 45mm;justify-content:center;text-align:center}.turn-order-area{flex:1;min-width:0;margin:2mm;border:.35mm dashed #7d8982;border-radius:2mm;background:#fafbf9}
 @page{size:A4 landscape;margin:5mm}
 @media print{body{padding:0;background:white}.toolbar{display:none}.board{margin:0;width:287mm;height:200mm;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 @media screen and (max-width:1100px){body{overflow-x:auto}.board{margin-left:0;margin-right:0}}
@@ -87,6 +88,7 @@ button{border:0;border-radius:5px;background:#263a35;color:white;padding:10px 16
   <section class="section"><div class="section-head"><img class="project-head-icon" src="./iconos/CP-carta-proyecto.svg" alt="">Proyectos</div><div class="offer-grid"><div class="offer"><img class="offer-icon" src="./iconos/CP-carta-proyecto.svg" alt="CP"><span class="offer-label">Compra</span><span class="offer-price">$3</span></div><div class="offer"><img class="offer-icon" src="./iconos/CP-carta-proyecto.svg" alt="CP"><span class="offer-label">Venta</span><span class="offer-price">$2</span></div></div></section>
   <section class="section"><div class="section-head"><img src="./iconos/YA-yacimientos.svg" alt="">Yacimientos</div><div class="prospect"><img src="./iconos/YA-yacimientos.svg" alt=""><div><div class="prospect-label">Prospección</div><div class="prospect-price">$7</div></div></div></section>
  </div>
+ <section class="section turn-order" aria-label="Espacio para las fichas de orden de turno"><div class="section-head">Orden de turno</div><div class="turn-order-area" aria-label="Fichas de orden disponibles"></div></section>
 </main>
 <script>
 const common=[
