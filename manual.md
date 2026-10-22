@@ -154,13 +154,17 @@ Para despedir ingenieros se utiliza la misma carta con dados rojos. Solo pueden 
 
 Las fichas de contrato se colocan lo más a la derecha posible en su área de contratos.
 
-Cada ingeniero se asigna inmediatamente al contratarlo: puede enviarse a un proyecto, a las barracas o al área de Soporte externo. Antes de contratar al siguiente, se vuelve a comprobar la disponibilidad. Si no quedan ingenieros del tipo solicitado en la reserva, debe entregar uno el jugador que tenga más ingenieros de ese tipo sin asignar a proyectos. A cambio recibe una ficha de contrato. El ingeniero entregado se utiliza para resolver la contratación. Esta regla también puede afectar al propio jugador que está contratando.
+Cada ingeniero se asigna inmediatamente al contratarlo: puede enviarse a un proyecto, a las barracas o al área de Soporte externo. Antes de contratar al siguiente, se vuelve a comprobar la disponibilidad.
 
-En caso de empate, el jugador que contrata elige cuál de los jugadores empatados entrega el ingeniero.
+Si no quedan ingenieros del tipo solicitado en la reserva, se aplica el siguiente orden:
 
-Si todos los ingenieros de ese tipo están asignados a proyectos, la acción termina. Solo se paga por los ingenieros que efectivamente se hayan contratado.
+1. **Intercambio con la esfera:** si hay un ingeniero del tipo solicitado anclado en la esfera y un ingeniero de otro tipo disponible en la reserva, se intercambian. El ingeniero de la reserva queda anclado en el mismo lugar, junto al mismo disco, y el ingeniero liberado se utiliza para resolver la contratación.
+2. **Tomar de otro jugador:** si no puede realizarse ese intercambio, debe entregar uno el jugador que tenga más ingenieros del tipo solicitado entre sus barracas y su área de Soporte externo. A cambio recibe una ficha de contrato. Esta regla también puede afectar al propio jugador que está contratando. En caso de empate, el jugador que contrata elige cuál de los empatados entrega el ingeniero.
+3. **Fin de la contratación:** si tampoco hay ingenieros disponibles por esa vía, la acción termina.
 
-El jugador debe contratar toda la cantidad indicada por sus dados, salvo que la acción termine porque todos los ingenieros de ese tipo estén asignados a proyectos o porque no pueda pagar. La contratación sigue siendo obligatoria aunque deba entregar y volver a contratar sus propios ingenieros, pagando nuevamente el costo correspondiente.
+Solo se paga por los ingenieros efectivamente contratados. El intercambio con la esfera no modifica el costo habitual de contratación ni la obligación de entregar una ficha de contrato u otro ingeniero de las barracas.
+
+El jugador debe contratar toda la cantidad indicada por sus dados, salvo que no pueda obtener más ingenieros por las vías anteriores o no pueda pagar. La contratación sigue siendo obligatoria aunque deba entregar y volver a contratar sus propios ingenieros, pagando nuevamente el costo correspondiente.
 
 ### Prospectar
 
