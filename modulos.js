@@ -18,9 +18,9 @@ window.modulos = [
     "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
-    "bono": "+20 [Di][RE]",
+    "bono": "+10 [Di][RE]",
     "disco_soporte": 0,
-    "efecto": "Gana $20. Puedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Gana $10. Puedes volver a colocar el cubo en la etapa 2.",
     "etapas": [
       {
         "m": {
@@ -167,7 +167,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+X [En]",
     "disco_soporte": 0,
-    "efecto": "Todos los jugadores obtienen hasta 3 [En] energía, sin superar la capacidad de sus [BT] baterías. Ganas 1 [PI] por cada unidad de energía efectivamente obtenida entre todos los jugadores, hasta un máximo de 8 [PI]. \nPuedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Todos los jugadores obtienen hasta 3 [En] energía, sin superar la capacidad de sus [BT] baterías, no pueden negarse. Ganas 1 [PI] por cada 2 [En] energía efectivamente obtenida entre todos los jugadores redondeado hacia arriba, hasta un máximo de 4 [PI]. \nPuedes volver a colocar el cubo en la etapa 2.",
     "destino": "etapa:2",
     "etapas": [
       {
@@ -266,7 +266,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+3 [IS] [CN]",
     "disco_soporte": 0,
-    "efecto": "Coloca hasta 3 [IS] ingenieros en sistemas en tus barracas sin gastar fichas de contratación. Por cada uno que no esté disponible, obtén 1 [CN] ficha de contratación. Por cada ingeniero obtenido disminuye en 1 tu [PE] en 1.",
+    "efecto": "Coloca hasta 3 [IS] ingenieros en sistemas en tus barracas sin gastar fichas de contratación. Por cada uno que no esté disponible, obtén 1 [CN] ficha de contratación. Por cada ingeniero y ficha obtenido disminuye en 1 tu [PE] en 1.",
     "destino": "completados",
     "etapas": [
       {
@@ -407,6 +407,67 @@ window.modulos = [
   },
 
   // Producción
+  {
+    "id": "P090",
+    "nombre": "Oficina de diseño",
+    "tipo": "produccion",
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 0,
+    "bono": "? [CP]",
+    "disco_soporte": 0,
+    "efecto": "Todos los jugadores (incluso tu) pueden pagarte $3 para descartar cualquier cnatidad de [CP] cartas de proyecto de su mano y obtener 1 [CP] carta de proyecto de la reserva por cada carta descartada. Por cada jugador que los haga obtienes 1 [PI]. \n Puedes volver a colocar el cubo en la etapa 2.",
+    "destino": "etapa:2",
+    "etapas": [
+      {
+        "m": {
+          "Fe": 4,
+          "Cu": 2,
+          "Si": 2
+        },
+        "o": {
+          "IE": 1,
+          "En": 2
+        }
+      },
+      {
+        "m": {},
+        "o": {
+          "IQ": 1,
+          "IS": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "P091",
+    "nombre": "Incubadora de proyectos",
+    "tipo": "produccion",
+    "puntos": "1 [PV]",
+    "puntos_carta": 1,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 3,
+    "discos": 0,
+    "bono": "? [CP]",
+    "disco_soporte": 0,
+    "efecto": "Roba 1 [CP] carta de proyecto de la reserva por cada jugador, dale una a cada oponente y conserva la otra.\nPuedes devolver esta carta a tu mano.",
+    "destino": "mano",
+    "etapas": [
+      {
+        "m": {},
+        "o": {
+          "IS": 1,
+          "En": 1
+        }
+      }
+    ]
+  },
   {
     "id": "P050",
     "nombre": "Refinería de escoria por intercambio iónico",
@@ -3226,7 +3287,7 @@ window.modulos = [
     "puntos_capas": 0,
     "puntos_ingenieros": -12,
     "puntos_otros": 0,
-    "copias": 4,
+    "copias": 5,
     "discos": 0,
     "bono": "1 [DP]",
     "disco_soporte": 1,

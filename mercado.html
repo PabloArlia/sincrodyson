@@ -11,8 +11,8 @@ body{margin:0;padding:18px}
 .toolbar{width:min(100%,287mm);margin:0 auto 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 h1{font-size:20px;margin:0;letter-spacing:.06em}
 button{border:0;border-radius:5px;background:#263a35;color:white;padding:10px 16px;font-weight:bold;cursor:pointer}
-.board{width:287mm;height:200mm;margin:0 auto;background:#fafaf7;border:1.3mm solid #263238;border-radius:3mm;padding:3mm;display:grid;grid-template-rows:64mm 55mm minmax(0,1fr) 26mm;gap:2mm;box-shadow:0 3px 14px #0002}
-.board-head{display:flex;align-items:center;gap:3mm;border-bottom:.45mm solid #263238;padding:0 1mm 1.5mm}
+.board{width:287mm;height:200mm;margin:0 auto;background:#fafaf7;border:1.3mm solid #263238;border-radius:3mm;padding:3mm;display:grid;grid-template-columns:minmax(0,1fr) 60mm;grid-template-rows:64mm 55mm minmax(0,1fr) 24mm;gap:2mm;box-shadow:0 3px 14px #0002}
+.basics{grid-column:1 / -1}.middle,.lower{grid-column:1}.board-head{display:flex;align-items:center;gap:3mm;border-bottom:.45mm solid #263238;padding:0 1mm 1.5mm}
 .brand{font-size:20pt;font-weight:900;letter-spacing:.13em;white-space:nowrap}
 .brand-mark{display:inline-grid;place-items:center;width:8mm;height:8mm;border:1.1mm solid #263238;border-radius:50%;margin:0 .4mm;position:relative;font-size:0;vertical-align:middle}
 .brand-mark:before{content:"";position:absolute;inset:-1.9mm;border:1mm dashed #263238;border-radius:50%}
@@ -36,10 +36,10 @@ button{border:0;border-radius:5px;background:#263a35;color:white;padding:10px 16
 .item-title img{width:8mm;height:8mm;object-fit:contain;flex-shrink:0}
 .item-name{display:flex;flex-direction:column;align-items:flex-start;gap:0}
 .item-name small{font-size:5.5pt;font-weight:600;color:#59615e;text-transform:uppercase;letter-spacing:.035em}
-.reagents .item-title{gap:.6mm;font-size:8pt}
+.reagents .item-title{gap:.6mm;font-size:10pt}
 .reagents .item-title img{width:6mm;height:6mm}
 .reagents .item-name{min-width:0}
-.reagents .item-name small{font-size:4.6pt;white-space:normal;line-height:1.05}
+.reagents .item-name small{font-size:6pt;white-space:normal;line-height:1.05}
 .item-code{font-size:8pt}
 .price-list{min-height:0;display:grid;grid-template-rows:repeat(5,minmax(0,1fr));gap:.5mm;padding-top:.8mm}
 .price-row{min-height:0;display:grid;grid-template-columns:9mm minmax(0,1fr);align-items:center;gap:1mm;border-bottom:.2mm solid #ececea}
@@ -68,7 +68,8 @@ button{border:0;border-radius:5px;background:#263a35;color:white;padding:10px 16
 .prospect-price{font-size:24pt;font-weight:900;margin-top:1mm}
 .section .section-head,.transport .section-head,.reagents .section-head,.rare-section .section-head{background:#fff;color:#263238}
 .section .section-head img{filter:none}
-.turn-order{flex-direction:row;align-items:stretch}.turn-order .section-head{height:auto;min-height:0;flex:0 0 45mm;justify-content:center;text-align:center}.turn-order-area{flex:1;min-width:0;margin:2mm;border:.35mm dashed #7d8982;border-radius:2mm;background:#fafbf9}
+.turn-order{grid-column:1;grid-row:4;align-items:stretch;flex-direction:row}.turn-order .section-head{width:40mm;flex:none}.turn-order .section-head{height:auto;min-height:12mm;justify-content:center;text-align:center;padding:2mm;font-size:9pt;line-height:1.25}.turn-order-area{flex:1;min-width:0;margin:2mm;border:.35mm dashed #7d8982;border-radius:2mm;background:#fafbf9}
+.phases{grid-column:2;grid-row:2 / 5}.phases .section-head{justify-content:center;padding:0 1mm;font-size:12pt}.phase-list{margin:0;padding:1.5mm;list-style:none;display:flex;flex-direction:column;justify-content:space-between;gap:1mm;flex:1;font-size:12pt;line-height:1.2}.phase-list li+li{border-top:.2mm solid #d0d2ce;padding-top:1mm}.phase-list strong{display:block;font-size:12pt;margin-bottom:.4mm}
 @page{size:A4 landscape;margin:5mm}
 @media print{body{padding:0;background:white}.toolbar{display:none}.board{margin:0;width:287mm;height:200mm;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 @media screen and (max-width:1100px){body{overflow-x:auto}.board{margin-left:0;margin-right:0}}
@@ -88,6 +89,7 @@ button{border:0;border-radius:5px;background:#263a35;color:white;padding:10px 16
   <section class="section"><div class="section-head"><img class="project-head-icon" src="./iconos/CP-carta-proyecto.svg" alt="">Proyectos</div><div class="offer-grid"><div class="offer"><img class="offer-icon" src="./iconos/CP-carta-proyecto.svg" alt="CP"><span class="offer-label">Compra</span><span class="offer-price">$3</span></div><div class="offer"><img class="offer-icon" src="./iconos/CP-carta-proyecto.svg" alt="CP"><span class="offer-label">Venta</span><span class="offer-price">$2</span></div></div></section>
   <section class="section"><div class="section-head"><img src="./iconos/YA-yacimientos.svg" alt="">Yacimientos</div><div class="prospect"><img src="./iconos/YA-yacimientos.svg" alt=""><div><div class="prospect-label">Prospección</div><div class="prospect-price">$7</div></div></div></section>
  </div>
+ <section class="section phases" aria-label="Resumen de las fases de la ronda"><div class="section-head">Fases</div><ol class="phase-list"><li><strong>1. Planificación</strong>Preparar proyectos y programar el mercado.</li><li><strong>2. Mercado</strong>Resolver las 5 posiciones en orden de turno.</li><li><strong>3. Ejecución</strong>Activar proyectos o refinerias en espacios 1, 2, 3 y 4 en orden de turno.</li><li><strong>4. Mantenimiento</strong>liquidar Préstamos, cobrar soporte externo y pagar licencias, contratos y energía. Comprobar fin<br/>+4 cartas y draft<br/>generar energía<br/> compra energia y transporte.</li></ol></section>
  <section class="section turn-order" aria-label="Espacio para las fichas de orden de turno"><div class="section-head">Orden de turno</div><div class="turn-order-area" aria-label="Fichas de orden disponibles"></div></section>
 </main>
 <script>
