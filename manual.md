@@ -21,15 +21,15 @@ Entreguen a cada jugador:
 - 6 licencias de excavación.
 - 9 fichas de contrato.
 - 3 dados verdes y 3 dados rojos.
-- $20.
+- $40.
 - 4 unidades de [En] energía, que se colocan en las baterías.
 - 3 unidades de [Tr] Transporte, cuyo valor básico es $7.
 
 Con las seis cartas de proyecto se realiza un draft. Todos eligen simultáneamente una carta, la conservan y pasan las restantes al jugador de su derecha. Este procedimiento se repite hasta que se hayan elegido todas las cartas.
 
-Después del draft, cada jugador elige tres ingenieros. Puede elegir varios del mismo tipo. Además, puede gastar parte de sus \$20 iniciales para comprar recursos de la reserva general al precio de mercado.
+Después del draft, cada jugador elige tres ingenieros. Puede elegir varios del mismo tipo. Además, puede gastar parte de sus \$40 iniciales para comprar recursos de la reserva general al precio de mercado.
 
-Las fichas de contrato se colocan en su área del tablero personal, ocupando los lugares más a la derecha posible. Cada jugador comienza con un total de trece elementos entre sus cuatro ingenieros y sus nueve contratos.
+Las fichas de contrato se colocan en su área del tablero personal, ocupando los lugares más a la derecha posible. Cada jugador comienza con un total de doce elementos entre sus tres ingenieros y sus nueve contratos.
 
 Los yacimientos se mantienen ocultos hasta que su dueño los revele. Cada jugador puede consultar sus propios yacimientos en cualquier momento.
 
