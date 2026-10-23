@@ -275,6 +275,8 @@ Después de colocar un disco en un área de soporte:
 
 Cuando un efecto obliga a quitar un disco `[QD]`, el jugador debe retirar un disco suyo que cumpla con el requerimiento indicado; no puede elegir conservarlo. Después de retirarlo, pierde 1 PV por cada celda que todavía tenga un disco en el mismo sector del que lo quitó, contando los discos de todos los jugadores. Si el disco retirado estaba en una capa de la esfera, actualiza el indicador de cobertura correspondiente si es necesario.
 
+Si hay ingenieros anclados en la celda de la que se retira el disco, deben trasladarse a otra celda que contenga un disco del mismo jugador que era dueño del disco retirado. Si no existe ninguna celda que cumpla esta condición, los ingenieros se devuelven a la reserva general.
+
 Si el efecto exige quitar un disco para colocar otro y no es posible retirar el disco requerido o colocar el nuevo disco, no se retira ni coloca ningún disco. Consulta [No colocación de discos](#no-colocación-de-discos).
 
 #### No colocación de discos
