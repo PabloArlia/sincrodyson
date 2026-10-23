@@ -12,6 +12,8 @@ El objetivo es terminar la partida con la mayor cantidad de puntos de victoria (
 
 Coloquen en el centro de la mesa el tablero de la esfera, el tablero de mercado y las reservas generales. Preparen los mazos de proyectos y de yacimientos y dejen espacio para sus respectivos descartes. Coloquen recursos en los espacios del mercado marcados en negro.
 
+Mezclen las cartas de evento con las 12 cartas de subvención para formar el mazo de ronda. Dejen espacio para las cartas resueltas y expongan la primera carta, que se resolverá en Mantenimiento de la primera ronda. Coloquen el indicador de fin de partida en 60 PV.
+
 Cada jugador toma su tablero personal. En el área de orden se colocan tantas fichas como jugadores haya, numeradas consecutivamente desde el 1.
 
 Entreguen a cada jugador:
@@ -289,7 +291,7 @@ Si un proyecto con ingenieros anclados en su última etapa no coloca ningún dis
 
 ## 4. Mantenimiento
 
-La fase de Mantenimiento se resuelve en este orden: préstamos, ingresos de Soporte externo, costos de mantenimiento, comprobación del fin de partida, draft de proyectos, generación de energía, compra de energía y compra de Transporte por despacho urgente.
+La fase de Mantenimiento se resuelve en este orden: préstamos, ingresos de Soporte externo, costos de mantenimiento, resolución de la carta de ronda, comprobación del fin de partida y, si la partida continúa, exposición de la carta de la siguiente ronda, draft de proyectos, generación de energía, compra de energía y compra de Transporte por despacho urgente.
 
 ### Préstamos
 
@@ -311,9 +313,19 @@ Cada jugador paga la suma de los siguientes valores de su tablero:
 
 Estos costos se pagan antes de generar o comprar energía nueva.
 
+### Resolución de la carta de ronda
+
+Resuelvan la carta expuesta para esta ronda. Si es una carta de evento, apliquen primero su ajuste de mercado y luego su efecto. Si es una subvención, cada jugador cobra $10 + $2 por cada carta de subvención que haya salido, incluida la actual, + $2 por cada disco propio en la esfera (sector o área de soporte). Después de pagar la subvención, reduzcan en 5 PV la meta de fin de partida moviendo su indicador.
+
+La meta comienza en 60 PV y se reduce de forma acumulativa: tras una subvención es 55 PV; tras seis, 30 PV; tras las doce, 0 PV. La reducción no resta PV a los jugadores ni termina la partida hasta la comprobación siguiente. Mantengan las subvenciones resueltas visibles para contar sus monedas.
+
 ### Comprobación del fin de partida
 
-Antes de devolver las fichas de orden, se comprueba si algún jugador tiene 30 PV o más. Si al menos uno alcanza esa cantidad, la partida termina inmediatamente y se pasa a la puntuación final. Las fichas de orden se conservan para resolver posibles empates. No se realizan los pasos restantes de la fase.
+Antes de devolver las fichas de orden, se comprueba si algún jugador alcanza o supera la meta vigente indicada por el marcador de fin de partida. Si al menos uno la alcanza, la partida termina inmediatamente y se pasa a la puntuación final. Las fichas de orden se conservan para resolver posibles empates. No se realizan los pasos restantes de la fase.
+
+### Exposición de la siguiente carta de ronda
+
+Si la partida continúa, expongan la siguiente carta del mazo de ronda. Queda visible durante la ronda siguiente y se resolverá en su fase de Mantenimiento.
 
 ### Draft de proyectos
 
@@ -347,7 +359,7 @@ Durante Mantenimiento se paga $1 por conservar cada préstamo o $6 por cancelarl
 
 ## Fin de partida y puntuación
 
-La partida termina durante la comprobación de fin de partida de Mantenimiento si uno o más jugadores tienen al menos 30 PV. Alcanzar esa cantidad activa el final, pero el ganador se determina después de realizar la puntuación final.
+La partida termina durante la comprobación de fin de partida de Mantenimiento si uno o más jugadores alcanzan o superan la meta vigente: 60 PV menos 5 PV por cada subvención resuelta. Alcanzar esa meta activa el final, pero el ganador se determina después de realizar la puntuación final.
 
 Cada jugador suma a sus PV acumulados:
 

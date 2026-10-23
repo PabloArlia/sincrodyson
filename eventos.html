@@ -54,10 +54,12 @@ h3{font-size:7pt;margin:0 0 1.2mm}
 .subsidy .heading{border-bottom:0}
 .subsidy-art{flex:1;display:grid;place-items:center;border-bottom:1px solid #555;margin-bottom:3mm}
 .big-coin{width:34mm;height:34mm}
+.subsidy-art .big-coin{width:24mm;height:24mm}
 .subsidy-text{text-align:center;min-height:29mm;padding:0 2mm;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2mm}
 .formula{display:flex;align-items:center;justify-content:center;gap:1mm;font-size:12pt;font-weight:800}
 .formula img,.formula .big-coin{width:6mm;height:6mm;object-fit:contain}
-.subsidy-text p{font-size:10pt;line-height:1.3;margin:0}
+.subsidy-text p{font-size:9pt;line-height:1.2;margin:0}
+.subsidy-text .end-rule{font-size:8pt;border-top:1px solid #aaa;padding-top:1.5mm}
 @page{size:A4 portrait;margin:8mm}
 @media screen and (max-width:760px){.sheet{grid-template-columns:repeat(2,63mm)}}
 @media screen and (max-width:510px){.sheet{grid-template-columns:63mm}}
@@ -111,8 +113,9 @@ const cards=[
  {id:"E12",title:"Crisis de microprocesadores",up:["C","Er","H₂SO₄"],down:["Si","Gd","HCl"],effect:"Cada jugador puede entregar 5 Si y 1 Ce para ganar $20."},
  {id:"E13",title:"Planos especiales",up:["Fe","Cu","H₂SO₄"],down:["Si","Al","HCl"],effect:"Cada jugador puede tomar 1 [CP] carta de proyecto y sumarla a su mano."},
  {id:"E14",title:"Envío de prefabricados",up:["Si","Al","HCl"],down:["Fe","Cu","H₂SO₄"],effect:"Cada jugador puede pagar el costo de las etapas anteriores de 1 [CP] carta de proyecto de su mano para colocarla inmediatamente en su tablero en su última etapa. Debe completar esa etapa normalmente."},
- {id:"E15",title:"Cobertura sobre los anclados",up:["Ti","Nd","Ce"],down:["C","Gd","Er"],effect:"Cada jugador pierde [PI] según la tabla de penalización por ingenieros anclados, calculada en este momento."},
- {id:"E16",title:"Lluvia de voluntarios",up:["C","Gd","Er"],down:["Ti","Nd","Ce"],effect:"Cada jugador puede devolver a la reserva hasta 2 ingenieros anclados [AI] de secciones o áreas de soporte."}
+ {id:"E15",title:"Cobertura sobre los anclados",up:["Ti","Nd","Ce"],down:["C","Gd","Er"],effect:"Cada jugador pierde [PI] según la tabla de penalización por ingenieros anclados, calculada en este momento como si fuera el find e al partida."},
+ {id:"E16",title:"Lluvia de voluntarios",up:["C","Gd","Er"],down:["Ti","Nd","Ce"],effect:"Cada jugador puede devolver a la reserva hasta 2 ingenieros anclados [AI] de sectores o áreas de soporte."},
+ ...Array.from({length:8},(_,i)=>({id:`S${String(i+5).padStart(2,'0')}`,subsidy:true}))
 ];
 function icon(file){return `<img src="./iconos/${file}.svg" alt="">`}
 const effectIcons={
@@ -151,7 +154,7 @@ function market(card){return `<div class="market">
 function footer(card){return `<footer class="card-foot"><span>SYNCRODYSON</span><span>${card.id}</span></footer>`}
 function coin(){return `<svg class="big-coin" viewBox="0 0 120 120" role="img" aria-label="Gran moneda"><circle cx="60" cy="60" r="55" fill="#efd27c" stroke="#453c22" stroke-width="3"/><circle cx="60" cy="60" r="46" fill="#fae8ac" stroke="#9b7c32" stroke-width="2"/><path d="M78 36H52c-20 0-20 24 0 24h16c20 0 20 24 0 24H42M60 25v70" fill="none" stroke="#453c22" stroke-width="7" stroke-linecap="round"/></svg>`}
 function render(card){
- if(card.subsidy)return `<article class="card subsidy" aria-label="${card.id} · Subvención"><header class="heading"><div><h2>Subvención</h2><div class="type">Ingreso para todos los jugadores</div></div></header><div class="subsidy-art">${coin()}</div><div class="subsidy-text"><div class="formula" aria-hidden="true">$10 + $2 / ${coin()} + $2 / ${icon('DS-disco')}</div><p>Cada jugador cobra <strong>$10 + $2 por cada carta de subsidio con moneda que haya salido + $2 por cada disco en la esfera</strong> (sector o área de soporte).</p></div>${footer(card)}</article>`;
+ if(card.subsidy)return `<article class="card subsidy" aria-label="${card.id} · Subvención"><header class="heading"><div><h2>Subvención</h2><div class="type">Ingreso para todos los jugadores</div></div></header><div class="subsidy-art">${coin()}</div><div class="subsidy-text"><div class="formula" aria-hidden="true">$10 + $2 / ${coin()} + $2 / ${icon('DS-disco')}</div><p>Cada jugador cobra <strong>$10 + $2 por cada subvención que haya salido (incluida esta) + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong> (inicial: 60 PV). Comprueba el final en Mantenimiento.</p></div>${footer(card)}</article>`;
  return `<article class="card" aria-label="${card.id} · Ajustar el mercado · ${card.title}"><header class="heading">${icon('ME-mercado')}<div><h2>Ajustar el mercado</h2><div class="type">Ajuste de mercado + evento</div></div></header><section class="market-half" aria-label="Ajuste de mercado">${market(card)}<div class="legend"><span><i class="swatch up">▲</i>2 filas superiores</span><span><i class="swatch down">▼</i>2 filas inferiores</span></div></section><section class="event-half"><div class="event-label">${icon('DE-destino-especial')}<h3>${card.title}</h3></div><p class="event-effect">${renderEffect(card.effect)}</p></section>${footer(card)}</article>`;
 }
 document.getElementById('sheet').innerHTML=cards.map(render).join('');
