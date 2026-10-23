@@ -157,7 +157,8 @@ function render(card){
  if(card.subsidy)return `<article class="card subsidy" aria-label="${card.id} · Subvención"><header class="heading"><div><h2>Subvención</h2><div class="type">Ingreso para todos los jugadores</div></div></header><div class="subsidy-art">${coin()}</div><div class="subsidy-text"><div class="formula" aria-hidden="true">$10 + $2 / ${coin()} + $2 / ${icon('DS-disco')}</div><p>Cada jugador cobra <strong>$10 + $2 por cada subvención que haya salido (incluida esta) + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong> (inicial: 60 PV). Comprueba el final en Mantenimiento.</p></div>${footer(card)}</article>`;
  return `<article class="card" aria-label="${card.id} · Ajustar el mercado · ${card.title}"><header class="heading">${icon('ME-mercado')}<div><h2>Ajustar el mercado</h2><div class="type">Ajuste de mercado + evento</div></div></header><section class="market-half" aria-label="Ajuste de mercado">${market(card)}<div class="legend"><span><i class="swatch up">▲</i>2 filas superiores</span><span><i class="swatch down">▼</i>2 filas inferiores</span></div></section><section class="event-half"><div class="event-label">${icon('DE-destino-especial')}<h3>${card.title}</h3></div><p class="event-effect">${renderEffect(card.effect)}</p></section>${footer(card)}</article>`;
 }
-document.getElementById('sheet').innerHTML=cards.map(render).join('');
+const orderedCards=[...cards.filter(c=>c.subsidy),...cards.filter(c=>!c.subsidy)];
+document.getElementById('sheet').innerHTML=orderedCards.map(render).join('');
 document.getElementById('summary').textContent=`${cards.length} cartas: ${cards.filter(c=>!c.subsidy).length} de evento y ${cards.filter(c=>c.subsidy).length} de subvención`;
 </script>
 </body>
