@@ -1159,6 +1159,32 @@ window.modulos = [
 
   // Estructura
   {
+    "id": "P092",
+    "nombre": "Micelio estructural",
+    "tipo": "estructura",
+    "puntos": "1 [PV]",
+    "puntos_carta": 1,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 4,
+    "bono": "[RE] [DS] [ES]",
+    "disco_soporte": 0,
+    "efecto": "Coloca aquí 1 Fe de la reserva por cada ingeniero [AI] anclado en la esfera, de todos los jugadores e incluido el soporte. Luego puedes gastar 10 Fe de esta carta para colocar 1 disco en [ES] Estructura, con sus reglas normales (máximo 1 por activación). Conserva el Fe sobrante. Puedes volver a colocar el cubo en la etapa 2. Mientras esté en etapa 2, solo pueden entrar o salir recursos mediante este efecto.",
+    "etapas": [
+      {
+        "m": { "Ti": 1, "Cu": 2,"C": 3, "Si": 2, "Al":1  },
+        "o": { "IE": 1, "IQ": 2, "Tr": 1, "En": 2 }
+      },
+      {
+        "m": {},
+        "o": {"En": 2}
+      }
+    ],
+    "destino": "etapa:2"
+  },
+  {
     "id": "P007",
     "nombre": "Estructura de fibra de carbono",
     "tipo": "estructura",
@@ -1167,7 +1193,7 @@ window.modulos = [
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
-    "copias": 3,
+    "copias": 2,
     "discos": 2,
     "bono": "2 [DS]",
     "disco_soporte": 0,
@@ -1206,7 +1232,7 @@ window.modulos = [
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
-    "copias": 4,
+    "copias": 3,
     "discos": 2,
     "bono": "2 [DS]",
     "disco_soporte": 0,
@@ -1234,7 +1260,7 @@ window.modulos = [
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
-    "copias": 6,
+    "copias": 4,
     "discos": 1,
     "bono": "1 [DS]",
     "disco_soporte": 0,

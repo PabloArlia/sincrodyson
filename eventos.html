@@ -1,165 +1,601 @@
 <!doctype html>
 <html lang="es">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Syncrodyson · Eventos</title>
-<style>
-*{box-sizing:border-box}
-body{font-family:Arial,Helvetica,sans-serif;background:#f3f3f3;color:#202723;margin:0;padding:16px}
-.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 auto 16px;max-width:199mm}
-button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
-.toolbar small{font-size:12px;line-height:1.4}
-.sheet{display:grid;grid-template-columns:repeat(3,63mm);gap:5mm;justify-content:center}
-.card{width:63mm;height:88mm;background:white;border:1px solid #222;border-radius:2mm;padding:2mm;display:flex;flex-direction:column;overflow:hidden;break-inside:avoid}
-.heading{display:flex;align-items:center;gap:1.5mm;border-bottom:1px solid #888;padding-bottom:1.5mm;min-height:10mm;flex-shrink:0}
-.heading img{width:7mm;height:7mm;object-fit:contain}
-h2{font-size:9pt;line-height:1.1;margin:0}
-.type{font-size:5.5pt;letter-spacing:.07em;text-transform:uppercase;margin-top:.7mm}
-.market-half{padding:1.5mm 0 2mm}
-h3{font-size:7pt;margin:0 0 1.2mm}
-.market{display:grid;gap:1mm}
-.panel{border:.25mm solid #59645f;border-radius:.8mm;padding:.7mm;min-width:0}
-.panel-title{font-weight:bold;text-transform:uppercase;font-size:4.1pt;letter-spacing:.02em;margin-bottom:.7mm;white-space:nowrap}
-.basic-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
-.lower-grid{display:grid;grid-template-columns:4fr 1.15fr 2fr;gap:.8mm}
-.rare-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-.reagent-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-.resource{min-width:0;padding:0 .45mm;border-right:.15mm solid #d0d2ce}
-.resource:last-child{border-right:0}
-.resource-title{height:4mm;display:flex;align-items:center;justify-content:center;gap:.2mm;font-size:4.8pt;font-weight:bold;white-space:nowrap}
-.resource-title svg,.resource-title img{width:2.8mm;height:2.8mm;object-fit:contain;flex-shrink:0}
-.resource-title.chemical{font-size:4pt}
-.price-row{height:2.1mm;display:flex;gap:.25mm;align-items:center;padding:0 .15mm;border-bottom:.1mm solid #e3e6e3}
-.price{font-size:3.8pt;font-weight:bold;min-width:2.2mm}
-.slots{display:flex;flex:1;gap:.22mm}
-.slot{display:block;flex:1;height:1.45mm;border:.12mm solid #78837d;border-radius:.3mm;background:#fff}
-.price-row.up{background:#bce8c2;color:#184e29}
-.price-row.down{background:#f3c3bf;color:#7a2520}
-.price-row.up .slot{background:#83cf91;border-color:#387a46}
-.price-row.down .slot{background:#eb9991;border-color:#a0463d}
-.legend{display:flex;justify-content:space-between;gap:1mm;font-size:5.2pt;margin-top:1.2mm}
-.legend span{display:flex;align-items:center;gap:.6mm}
-.swatch{width:2mm;height:2mm;border:1px solid;display:inline-grid;place-items:center;font-size:4pt;font-style:normal}
-.swatch.up{background:#bce8c2;border-color:#387a46}.swatch.down{background:#f3c3bf;border-color:#a0463d}
-.event-half{border-top:1px solid #555;padding-top:2mm;flex:1;display:flex;flex-direction:column;min-height:0}
-.event-label{display:flex;align-items:center;gap:1mm}
-.event-label img{width:5mm;height:5mm}
-.event-label h3{margin:0;font-size:8pt}
-.event-effect{font-size:8pt;line-height:1.3;margin:2mm 0 0}
-.event-effect img{width:4mm;height:4mm;object-fit:contain;vertical-align:middle}
-.pending{border:.25mm dashed #a2aaa4;border-radius:1mm;flex:1;display:flex;align-items:center;justify-content:center;gap:2mm;margin:1.5mm 0;font-size:8pt;color:#657068}
-.pending img{width:7mm;height:7mm;opacity:.55}
-.card-foot{display:flex;justify-content:space-between;font-size:5pt;letter-spacing:.06em;color:#59645f;margin-top:1mm}
-.subsidy .heading{border-bottom:0}
-.subsidy-art{flex:1;display:grid;place-items:center;border-bottom:1px solid #555;margin-bottom:3mm}
-.big-coin{width:34mm;height:34mm}
-.subsidy-art .big-coin{width:24mm;height:24mm}
-.subsidy-text{text-align:center;min-height:29mm;padding:0 2mm;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2mm}
-.formula{display:flex;align-items:center;justify-content:center;gap:1mm;font-size:12pt;font-weight:800}
-.formula img,.formula .big-coin{width:6mm;height:6mm;object-fit:contain}
-.subsidy-text p{font-size:9pt;line-height:1.2;margin:0}
-.subsidy-text .end-rule{font-size:8pt;border-top:1px solid #aaa;padding-top:1.5mm}
-@page{size:A4 portrait;margin:8mm}
-@media screen and (max-width:760px){.sheet{grid-template-columns:repeat(2,63mm)}}
-@media screen and (max-width:510px){.sheet{grid-template-columns:63mm}}
-@media print{body{background:white;padding:0}.toolbar{display:none}.sheet{grid-template-columns:repeat(3,63mm);gap:3mm}.card{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Syncrodyson · Eventos</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f3f3;
+            color: #202723;
+            margin: 0;
+            padding: 16px
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0 auto 16px;
+            max-width: 199mm
+        }
+
+        button {
+            background: white;
+            border: 1px solid #333;
+            padding: 8px 12px;
+            cursor: pointer
+        }
+
+        .toolbar small {
+            font-size: 12px;
+            line-height: 1.4
+        }
+
+        .sheet {
+            display: grid;
+            grid-template-columns: repeat(3, 63mm);
+            gap: 5mm;
+            justify-content: center
+        }
+
+        .card {
+            width: 63mm;
+            height: 88mm;
+            background: white;
+            border: 1px solid #222;
+            border-radius: 2mm;
+            padding: 2mm;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            break-inside: avoid
+        }
+
+        .heading {
+            display: flex;
+            align-items: center;
+            gap: 1.5mm;
+            border-bottom: 1px solid #888;
+            padding-bottom: 1.5mm;
+            min-height: 10mm;
+            flex-shrink: 0
+        }
+
+        .heading img {
+            width: 7mm;
+            height: 7mm;
+            object-fit: contain
+        }
+
+        h2 {
+            font-size: 9pt;
+            line-height: 1.1;
+            margin: 0
+        }
+
+        .type {
+            font-size: 5.5pt;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            margin-top: .7mm
+        }
+
+        .market-half {
+            padding: 1.5mm 0 2mm
+        }
+
+        h3 {
+            font-size: 7pt;
+            margin: 0 0 1.2mm
+        }
+
+        .market {
+            display: grid;
+            gap: 1mm
+        }
+
+        .panel {
+            border: .25mm solid #59645f;
+            border-radius: .8mm;
+            padding: .7mm;
+            min-width: 0
+        }
+
+        .panel-title {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 4.1pt;
+            letter-spacing: .02em;
+            margin-bottom: .7mm;
+            white-space: nowrap
+        }
+
+        .basic-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr))
+        }
+
+        .lower-grid {
+            display: grid;
+            grid-template-columns: 4fr 1.15fr 2fr;
+            gap: .8mm
+        }
+
+        .rare-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr))
+        }
+
+        .reagent-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr))
+        }
+
+        .resource {
+            min-width: 0;
+            padding: 0 .45mm;
+            border-right: .15mm solid #d0d2ce
+        }
+
+        .resource:last-child {
+            border-right: 0
+        }
+
+        .resource-title {
+            height: 4mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .2mm;
+            font-size: 4.8pt;
+            font-weight: bold;
+            white-space: nowrap
+        }
+
+        .resource-title svg,
+        .resource-title img {
+            width: 2.8mm;
+            height: 2.8mm;
+            object-fit: contain;
+            flex-shrink: 0
+        }
+
+        .resource-title.chemical {
+            font-size: 4pt
+        }
+
+        .price-row {
+            height: 2.1mm;
+            display: flex;
+            gap: .25mm;
+            align-items: center;
+            padding: 0 .15mm;
+            border-bottom: .1mm solid #e3e6e3
+        }
+
+        .price {
+            font-size: 3.8pt;
+            font-weight: bold;
+            min-width: 2.2mm
+        }
+
+        .slots {
+            display: flex;
+            flex: 1;
+            gap: .22mm
+        }
+
+        .slot {
+            display: block;
+            flex: 1;
+            height: 1.45mm;
+            border: .12mm solid #78837d;
+            border-radius: .3mm;
+            background: #fff
+        }
+
+        .price-row.up {
+            background: #bce8c2;
+            color: #184e29
+        }
+
+        .price-row.down {
+            background: #f3c3bf;
+            color: #7a2520
+        }
+
+        .price-row.up .slot {
+            background: #83cf91;
+            border-color: #387a46
+        }
+
+        .price-row.down .slot {
+            background: #eb9991;
+            border-color: #a0463d
+        }
+
+        .legend {
+            display: flex;
+            justify-content: space-between;
+            gap: 1mm;
+            font-size: 5.2pt;
+            margin-top: 1.2mm
+        }
+
+        .legend span {
+            display: flex;
+            align-items: center;
+            gap: .6mm
+        }
+
+        .swatch {
+            width: 2mm;
+            height: 2mm;
+            border: 1px solid;
+            display: inline-grid;
+            place-items: center;
+            font-size: 4pt;
+            font-style: normal
+        }
+
+        .swatch.up {
+            background: #bce8c2;
+            border-color: #387a46
+        }
+
+        .swatch.down {
+            background: #f3c3bf;
+            border-color: #a0463d
+        }
+
+        .event-half {
+            border-top: 1px solid #555;
+            padding-top: 2mm;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0
+        }
+
+        .event-label {
+            display: flex;
+            align-items: center;
+            gap: 1mm
+        }
+
+        .event-label img {
+            width: 5mm;
+            height: 5mm
+        }
+
+        .event-label h3 {
+            margin: 0;
+            font-size: 8pt
+        }
+
+        .event-effect {
+            font-size: 8pt;
+            line-height: 1.3;
+            margin: 2mm 0 0
+        }
+
+        .event-effect img {
+            width: 4mm;
+            height: 4mm;
+            object-fit: contain;
+            vertical-align: middle
+        }
+
+        .standalone-text {
+            flex: 1;
+            min-height: 0;
+            font-size: 8pt;
+            line-height: 1.2
+        }
+
+        .standalone-text p {
+            margin: 2mm 0 0
+        }
+
+        .standalone-text img {
+            width: 3.5mm;
+            height: 3.5mm;
+            object-fit: contain;
+            vertical-align: middle
+        }
+
+        .pending {
+            border: .25mm dashed #a2aaa4;
+            border-radius: 1mm;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2mm;
+            margin: 1.5mm 0;
+            font-size: 8pt;
+            color: #657068
+        }
+
+        .pending img {
+            width: 7mm;
+            height: 7mm;
+            opacity: .55
+        }
+
+        .card-foot {
+            display: flex;
+            justify-content: space-between;
+            font-size: 5pt;
+            letter-spacing: .06em;
+            color: #59645f;
+            margin-top: 1mm
+        }
+
+        .subsidy .heading {
+            border-bottom: 0
+        }
+
+        .subsidy-art {
+            flex: 1;
+            display: grid;
+            place-items: center;
+            border-bottom: 1px solid #555;
+            margin-bottom: 3mm
+        }
+
+        .big-coin {
+            width: 34mm;
+            height: 34mm
+        }
+
+        .subsidy-art .big-coin {
+            width: 24mm;
+            height: 24mm
+        }
+
+        .subsidy-text {
+            text-align: center;
+            min-height: 29mm;
+            padding: 0 2mm;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2mm
+        }
+
+        .formula {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1mm;
+            font-size: 12pt;
+            font-weight: 800
+        }
+
+        .formula img,
+        .formula .big-coin {
+            width: 6mm;
+            height: 6mm;
+            object-fit: contain
+        }
+
+        .subsidy-text p {
+            font-size: 9pt;
+            line-height: 1.2;
+            margin: 0
+        }
+
+        .subsidy-text .end-rule {
+            font-size: 8pt;
+            border-top: 1px solid #aaa;
+            padding-top: 1.5mm
+        }
+
+        @page {
+            size: A4 portrait;
+            margin: 8mm
+        }
+
+        @media screen and (max-width:760px) {
+            .sheet {
+                grid-template-columns: repeat(2, 63mm)
+            }
+        }
+
+        @media screen and (max-width:510px) {
+            .sheet {
+                grid-template-columns: 63mm
+            }
+        }
+
+        /* Desplazar cada carta al imprimir conserva nueve cartas por hoja. */
+        @media print {
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                background: white
+            }
+
+            .toolbar {
+                display: none
+            }
+
+            .sheet {
+                display: block;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                font-size: 0
+            }
+
+            .sheet>.card {
+                display: inline-flex;
+                position: relative;
+                top: 4mm;
+                vertical-align: top;
+                width: 63mm;
+                height: 88mm;
+                margin: 1.5mm .75mm;
+                font-size: 16px;
+                text-align: left;
+                break-inside: avoid;
+                page-break-inside: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact
+            }
+        }
+    </style>
 </head>
+
 <body>
-<div class="toolbar">
- <button type="button" onclick="window.print()">Imprimir / guardar PDF</button>
- <small>Cartas de 63 × 88 mm · <span id="summary"></span><br>Eventos con efectos e iconos.</small>
-</div>
-<main class="sheet" id="sheet" aria-label="Cartas de evento y subvención"></main>
-<script>
-// Doce materiales: seis se ajustan en cada carta. El transporte es una referencia.
-const basics=[
- {id:'Fe',name:'Hierro',color:'#111',prices:[2,1,1,1,1]},
- {id:'Cu',name:'Cobre',color:'#3977dc',prices:[5,4,3,2,2]},
- {id:'Si',name:'Silicio',color:'#f0d54d',prices:[3,3,2,2,1]},
- {id:'Ti',name:'Titanio',color:'#58a85c',prices:[9,8,6,5,3]},
- {id:'Al',name:'Aluminio',color:'#292929',prices:[5,4,3,2,2]},
- {id:'C',name:'Carbono',color:'#fff',prices:[2,1,1,1,1]}
-];
-const rares=[
- {id:'Nd',name:'Neodimio',color:'#e345ad',prices:[14,12,9,7,5]},
- {id:'Gd',name:'Gadolinio',color:'#42c5c1',prices:[9,8,6,5,3]},
- {id:'Er',name:'Erbio',color:'#ec933c',prices:[9,8,6,5,3]},
- {id:'Ce',name:'Cerio',color:'#94623d',prices:[9,8,6,5,3]}
-];
-const reagents=[
- {id:'H₂SO₄',name:'Ácido sulfúrico',prices:[5,4,3,2,2]},
- {id:'HCl',name:'Ácido clorhídrico',prices:[5,4,3,2,2]}
-];
-// Pares complementarios: cada material recibe tantas marcas verdes como rojas.
-// Los eventos se agregan en pares con ajustes complementarios del mercado.
-const cards=[
- {id:'E01',title:'Reconocimiento público',up:['Fe','Si','Nd'],down:['Ti','Er','HCl'],effect:'El jugador con más discos en la capa de estructura [ES] gana 2 [PI] y $5.'},
- {id:'E02',title:'Reconocimiento público',up:['Cu','Al','Gd'],down:['C','Ce','H₂SO₄'],effect:'El jugador con más discos en la capa fotovoltaica [FV] gana 2 [PI] y $5.'},
- {id:'S01',subsidy:true},
- {id:'E03',title:'Reconocimiento público',up:['Ti','Er','HCl'],down:['Fe','Si','Nd'],effect:'El jugador con más discos en la capa de transmisión [TS] gana 2 [PI] y $5.'},
- {id:'E04',title:'Reconocimiento público',up:['C','Ce','H₂SO₄'],down:['Cu','Al','Gd'],effect:'El jugador con más discos en la capa de refrigeración [RF] gana 2 [PI] y $5.'},
- {id:'S02',subsidy:true},
- {id:'E05',title:'Producción estable',up:['Fe','Cu','Si'],down:['Ti','Al','C'],effect:'Cada jugador aumenta en 1 [PE] su producción de energía por cada sector con todas sus capas ocupadas por discos, en el que tenga al menos un disco propio.'},
- {id:'E06',title:'Nivelar los proyectos',up:['Ti','Al','C'],down:['Fe','Cu','Si'],effect:'El jugador con menos [PI] gana $10.'},
- {id:'S03',subsidy:true},
- {id:'E07',title:'Convoy de construcción',up:['Nd','Er','H₂SO₄'],down:['Gd','Ce','HCl'],effect:'El jugador con menos discos [DS] coloca un disco sin ganar bonos.'},
- {id:'E08',title:'Malfunción',up:['Gd','Ce','HCl'],down:['Nd','Er','H₂SO₄'],effect:'El jugador con más [PI] quita un disco [QD] a su elección y devuelve los ingenieros de esa celda a su barraca. En caso de empate, ninguno lo hace.'},
- {id:'S04',subsidy:true},
- {id:"E09",title:"Reconocimiento público",up:["Fe","Al","Ce"],down:["Cu","Ti","Nd"],effect:"El jugador con más discos en la capa de microondas [MO] gana 2 [PI] y $5."},
- {id:"E10",title:"Priorizar la precisión",up:["Cu","Ti","Nd"],down:["Fe","Al","Ce"],effect:"El jugador con más discos en las áreas de soporte de la esfera gana 2 [PI] y $5."},
- {id:"E11",title:"Suministros de construcción",up:["Si","Gd","HCl"],down:["C","Er","H₂SO₄"],effect:"Cada jugador recibe de la reserva 3 Fe, 2 Ti, 2 Al y 3 Si."},
- {id:"E12",title:"Crisis de microprocesadores",up:["C","Er","H₂SO₄"],down:["Si","Gd","HCl"],effect:"Cada jugador puede entregar 5 Si y 1 Ce para ganar $20."},
- {id:"E13",title:"Planos especiales",up:["Fe","Cu","H₂SO₄"],down:["Si","Al","HCl"],effect:"Cada jugador puede tomar 1 [CP] carta de proyecto y sumarla a su mano."},
- {id:"E14",title:"Envío de prefabricados",up:["Si","Al","HCl"],down:["Fe","Cu","H₂SO₄"],effect:"Cada jugador puede pagar el costo de las etapas anteriores de 1 [CP] carta de proyecto de su mano para colocarla inmediatamente en su tablero en su última etapa. Debe completar esa etapa normalmente."},
- {id:"E15",title:"Cobertura sobre los anclados",up:["Ti","Nd","Ce"],down:["C","Gd","Er"],effect:"Cada jugador pierde [PI] según la tabla de penalización por ingenieros anclados, calculada en este momento como si fuera el find e al partida."},
- {id:"E16",title:"Lluvia de voluntarios",up:["C","Gd","Er"],down:["Ti","Nd","Ce"],effect:"Cada jugador puede devolver a la reserva hasta 2 ingenieros anclados [AI] de sectores o áreas de soporte."},
- ...Array.from({length:8},(_,i)=>({id:`S${String(i+5).padStart(2,'0')}`,subsidy:true}))
-];
-function icon(file){return `<img src="./iconos/${file}.svg" alt="">`}
-const effectIcons={
- DS:['DS-disco','Disco'],
- QD:['QD-quitar-disco','Quitar disco'],
- PI:['PI-puntos-inmediatos','Puntos inmediatos'],
- PE:['PE-produccion-energia','Producción de energía'],
- ES:['ES-estructura','Estructura'],
- FV:['FV-fotovoltaico','Fotovoltaica'],
- TS:['TS-transmision','Transmisión'],
- RF:['RF-refrigeracion','Refrigeración'],
- MO:['MO-microondas','Microondas'],
- CP:['CP-carta-proyecto','Carta de proyecto'],
- AI:['AI-ingeniero-anclado','Ingeniero anclado']
-};
-function renderEffect(text){
- return text.split(/(\[[A-Z]{2}\])/g).map(part=>{
-  const entry=effectIcons[part.slice(1,-1)];
-  return part.startsWith('[')&&entry?`<img src="./iconos/${entry[0]}.svg" alt="${entry[1]}" title="${entry[1]}">`:part.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- }).join('');
-}
-function mineral(color){return `<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7 14 27 5l8 9-8 15-21 5Z" fill="${color}" stroke="#222" stroke-width="2"/><path d="m7 14 20 3 8-3M27 17v12" fill="none" stroke="#222" stroke-width="2"/></svg>`}
-function resource(item,count,card){
- const up=card.up.includes(item.id),down=card.down.includes(item.id);
- const label=up?' · dos filas superiores en verde':down?' · dos filas inferiores en rojo':'';
- const drawing=item.color?mineral(item.color):icon(item.id==='Tr'?'Tr-transporte':'RQ-reactivos');
- return `<div class="resource" aria-label="${item.name}${label}" title="${item.name}${label}"><div class="resource-title${item.id==='H₂SO₄'?' chemical':''}">${drawing}<span>${item.id}</span></div>${item.prices.map((price,i)=>`<div class="price-row${up&&i<2?' up':down&&i>2?' down':''}"><span class="price">$${price}</span><span class="slots">${'<i class="slot"></i>'.repeat(count)}</span></div>`).join('')}</div>`;
-}
-function market(card){return `<div class="market">
- <section class="panel"><div class="panel-title">Recursos básicos</div><div class="basic-grid">${basics.map(r=>resource(r,4,card)).join('')}</div></section>
+    <div class="toolbar">
+        <button type="button" onclick="window.print()">Imprimir / guardar PDF</button>
+        <small>Cartas de 63 × 88 mm · <span id="summary"></span><br>Eventos con efectos e iconos.</small>
+    </div>
+    <main class="sheet" id="sheet" aria-label="Cartas de evento y subvención"></main>
+    <script>
+        // Doce materiales: seis se ajustan en cada carta. El transporte es una referencia.
+        const basics = [
+            { id: 'Fe', name: 'Hierro', color: '#111', prices: [2, 1, 1, 1, 1] },
+            { id: 'Cu', name: 'Cobre', color: '#3977dc', prices: [5, 4, 3, 2, 2] },
+            { id: 'Si', name: 'Silicio', color: '#f0d54d', prices: [3, 3, 2, 2, 1] },
+            { id: 'Ti', name: 'Titanio', color: '#58a85c', prices: [9, 8, 6, 5, 3] },
+            { id: 'Al', name: 'Aluminio', color: '#292929', prices: [5, 4, 3, 2, 2] },
+            { id: 'C', name: 'Carbono', color: '#fff', prices: [2, 1, 1, 1, 1] }
+        ];
+        const rares = [
+            { id: 'Nd', name: 'Neodimio', color: '#e345ad', prices: [14, 12, 9, 7, 5] },
+            { id: 'Gd', name: 'Gadolinio', color: '#42c5c1', prices: [9, 8, 6, 5, 3] },
+            { id: 'Er', name: 'Erbio', color: '#ec933c', prices: [9, 8, 6, 5, 3] },
+            { id: 'Ce', name: 'Cerio', color: '#94623d', prices: [9, 8, 6, 5, 3] }
+        ];
+        const reagents = [
+            { id: 'H₂SO₄', name: 'Ácido sulfúrico', prices: [5, 4, 3, 2, 2] },
+            { id: 'HCl', name: 'Ácido clorhídrico', prices: [5, 4, 3, 2, 2] }
+        ];
+        // Cada ajuste de mercado marca tres materiales al alza y tres a la baja.
+        const cards = [
+            { id: 'E01', title: 'Reconocimiento público', up: ['Fe', 'Si', 'Nd'], down: ['Ti', 'Er', 'HCl'], effect: 'El jugador con más discos en la capa de estructura [ES] gana 2 [PI] y $5.' },
+            { id: 'E02', title: 'Reconocimiento público', up: ['Cu', 'Al', 'Gd'], down: ['C', 'Ce', 'H₂SO₄'], effect: 'El jugador con más discos en la capa fotovoltaica [FV] gana 2 [PI] y $5.' },
+            { id: 'S01', subsidy: true },
+            { id: 'E03', title: 'Reconocimiento público', up: ['Ti', 'Er', 'HCl'], down: ['Fe', 'Si', 'Nd'], effect: 'El jugador con más discos en la capa de transmisión [TS] gana 2 [PI] y $5.' },
+            { id: 'E04', title: 'Reconocimiento público', up: ['C', 'Ce', 'H₂SO₄'], down: ['Cu', 'Al', 'Gd'], effect: 'El jugador con más discos en la capa de refrigeración [RF] gana 2 [PI] y $5.' },
+            { id: 'S02', subsidy: true },
+            { id: 'E05', title: 'Producción estable', up: ['Fe', 'Cu', 'Si'], down: ['Ti', 'Al', 'C'], effect: 'Cada jugador aumenta en 1 [PE] su producción de energía por cada sector con todas sus capas ocupadas por discos, en el que tenga al menos un disco propio.' },
+            { id: 'E06', title: 'Nivelar los proyectos', up: ['Ti', 'Al', 'C'], down: ['Fe', 'Cu', 'Si'], effect: 'El jugador con menos [PI] gana $10.' },
+            { id: 'S03', subsidy: true },
+            { id: 'E07', title: 'Convoy de construcción', up: ['Nd', 'Er', 'H₂SO₄'], down: ['Gd', 'Ce', 'HCl'], effect: 'El jugador con menos discos [DS] coloca un disco sin ganar bonos.' },
+            { id: 'E08', title: 'Sabotaje', up: ['Gd', 'Ce', 'HCl'], down: ['Nd', 'Er', 'H₂SO₄'], effect: 'El jugador con más [PI] quita un disco [QD] a su elección y devuelve los ingenieros de esa celda a su barraca. En caso de empate, ninguno lo hace.' },
+            { id: 'S04', subsidy: true },
+            { id: "E09", title: "Reconocimiento público", up: ["Fe", "Al", "Ce"], down: ["Cu", "Ti", "Nd"], effect: "El jugador con más discos en la capa de microondas [MO] gana 2 [PI] y $5." },
+            { id: "E10", title: "Priorizar la precisión", up: ["Cu", "Ti", "Nd"], down: ["Fe", "Al", "Ce"], effect: "El jugador con más discos en las áreas de soporte de la esfera gana 2 [PI] y $5." },
+            { id: "E11", title: "Suministros de construcción", up: ["Si", "Gd", "HCl"], down: ["C", "Er", "H₂SO₄"], effect: "Cada jugador recibe de la reserva 3 Fe, 2 Ti, 2 Al y 3 Si." },
+            { id: "E12", title: "Crisis de microprocesadores", up: ["C", "Er", "H₂SO₄"], down: ["Si", "Gd", "HCl"], effect: "Cada jugador puede entregar 5 Si y 1 Ce para ganar $20." },
+            { id: "E13", title: "Planos especiales", up: ["Fe", "Cu", "H₂SO₄"], down: ["Si", "Al", "HCl"], effect: "Cada jugador puede tomar 1 [CP] carta de proyecto y sumarla a su mano." },
+            { id: "E14", title: "Envío de prefabricados", up: ["Si", "Al", "HCl"], down: ["Fe", "Cu", "H₂SO₄"], effect: "Cada jugador puede pagar el costo completo de 1 [CP] carta de proyecto de su mano para colocarla inmediatamente en su tablero en su última etapa. Debe completar esa etapa normalmente." },
+            { id: "E15", title: "Cobertura sobre los anclados", up: ["Ti", "Nd", "Ce"], down: ["C", "Gd", "Er"], effect: "Cada jugador pierde [PI] según la tabla de penalización por ingenieros anclados, calculada en este momento como si fuera el fin de al partida." },
+            { id: "E16", title: "Lluvia de voluntarios", up: ["C", "Gd", "Er"], down: ["Ti", "Nd", "Ce"], effect: "Cada jugador puede devolver a la reserva hasta 2 ingenieros anclados [AI] de sectores o áreas de soporte." },
+            { id: 'E17', title: 'Gran meteorito', catastrophe: true, effect: [
+                'Arroja un dado para elegir el cuadrante según los dados impresos en el mapa en juego. Si existe, arroja de nuevo para elegir uno de sus sectores del mismo modo. Si alguna tirada no corresponde a una ubicación, el evento termina sin efecto.',
+                'Retira todos los discos [QD] de las cinco capas del sector elegido.',
+                'Cada jugador gana 3 [PI] por cada disco propio retirado.',
+                'Si una celda pierde su disco y tiene ingenieros anclados [AI], devuelve esos ingenieros a las barracas de su dueño. Esta excepción reemplaza la regla de traslado o devolución a la reserva del manual.'
+            ] },
+            { id: 'E18', title: 'Llamarada solar', catastrophe: true, effect: [
+                'Arroja un dado para elegir el cuadrante según los dados impresos en el mapa en juego. Si existe, arroja de nuevo para elegir uno de sus sectores del mismo modo. Si alguna tirada no corresponde a una ubicación, el evento termina sin efecto.',
+                'Retira [QD] el disco de la celda fotovoltaica [FV] de ese sector y los de las dos celdas fotovoltaicas adyacentes, una a cada lado. Las adyacentes pueden estar en otro cuadrante.',
+                'Cada jugador gana 3 [PI] por cada disco propio retirado.',
+                'Si una celda pierde su disco y tiene ingenieros anclados [AI], devuelve esos ingenieros a las barracas de su dueño. Esta excepción reemplaza la regla de traslado o devolución a la reserva del manual.'
+            ] },
+            { id: 'E19', title: 'Malfunción', catastrophe: true, effect: [
+                'Arroja un dado para elegir el cuadrante según los dados impresos en el mapa en juego. Si existe, arroja de nuevo para elegir uno de sus sectores del mismo modo. Si alguna tirada no corresponde a una ubicación, el evento termina sin efecto.',
+                'Arroja un tercer dado para la capa: 1 Estructura [ES], 2 Fotovoltaica [FV], 3 Transmisión [TS], 4 Refrigeración [RF] o 5 Microondas [MO]. Con un 6, el evento termina sin efecto.',
+                'Retira el disco [QD] de la celda elegida. Su dueño gana 3 [PI]. Si la celda está vacía, no ocurre nada.',
+                'Los ingenieros anclados [AI] en esa celda vuelven a las barracas de su dueño. Esta excepción reemplaza la regla de traslado o devolución a la reserva del manual.'
+            ] },
+            { id: 'E20', title: 'Donaciones privadas para la construcción', standalone: true, effect: [
+                'Arroja un dado para el cuadrante y, si existe, otro para su sector, según los dados impresos en el mapa en juego. Si alguna tirada no corresponde a una ubicación, el evento termina sin efecto.',
+                'Arroja un tercer dado para la capa: 1 Estructura [ES], 2 Fotovoltaica [FV], 3 Transmisión [TS], 4 Refrigeración [RF] o 5 Microondas [MO]. Con un 6, el evento termina sin efecto.',
+                'Si la celda está vacía, el jugador con menos [PI] puede colocar allí un disco propio sin pagar recursos. Si hay empate, tiene la opción quien tenga la ficha de orden más baja.',
+                'Resuelve la colocación con sus bonos y pagos habituales. Si la celda ya contiene un disco, no ocurre nada.'
+            ] },
+            { id: 'E21', title: 'Actividad estelar favorable', standalone: true, effect: [
+                'Arroja un dado para elegir el cuadrante según los dados impresos en el mapa en juego. Si no existe un cuadrante con ese valor, el evento termina sin efecto.',
+                'Cada jugador recibe de la reserva 2 [En] energía por cada disco propio en la capa fotovoltaica [FV] de ese cuadrante.',
+                'Coloca la energía recibida en las baterías. Descarta cualquier cantidad que exceda su capacidad.'
+            ] },
+            { id: 'E22', title: 'Inspección excepcional', standalone: true, effect: [
+                'Arroja un dado para elegir el cuadrante según los dados impresos en el mapa en juego. Si existe, arroja de nuevo para elegir uno de sus sectores del mismo modo. Si alguna tirada no corresponde a una ubicación, el evento termina sin efecto.',
+                'Cada jugador cobra $3 del banco por cada disco propio en el sector elegido. Cuenta todas las capas de ese sector.'
+            ] },
+            { id: 'E23', title: 'Rescate de materiales', standalone: true, effect: [
+                'Arroja un dado para elegir el cuadrante según los dados impresos en el mapa en juego. Si no existe un cuadrante con ese valor, el evento termina sin efecto.',
+                'Cada jugador obtiene de la reserva dos recursos básicos a elección por cada disco propio en ese cuadrante. Cuenta los discos de sus sectores y de su área de soporte.',
+                'Elige libremente entre hierro, cobre, silicio, titanio, aluminio y carbono. Puedes repetir recursos. Coloca los recursos recibidos en tu almacén.'
+            ] },
+            { id: 'E24', title: 'Reestructuración de deuda', up: ['Fe', 'Cu', 'Si'], down: ['Ti', 'Al', 'C'], effect: 'Cada jugador que tenga al menos un préstamo puede descartar uno de sus préstamos sin pagar ningún costo.' },
+            ...Array.from({ length: 8 }, (_, i) => ({ id: `S${String(i + 5).padStart(2, '0')}`, subsidy: true }))
+        ];
+        function icon(file) { return `<img src="./iconos/${file}.svg" alt="">` }
+        const effectIcons = {
+            EN: ['En-energia', 'Energía'],
+            DS: ['DS-disco', 'Disco'],
+            QD: ['QD-quitar-disco', 'Quitar disco'],
+            PI: ['PI-puntos-inmediatos', 'Puntos inmediatos'],
+            PE: ['PE-produccion-energia', 'Producción de energía'],
+            ES: ['ES-estructura', 'Estructura'],
+            FV: ['FV-fotovoltaico', 'Fotovoltaica'],
+            TS: ['TS-transmision', 'Transmisión'],
+            RF: ['RF-refrigeracion', 'Refrigeración'],
+            MO: ['MO-microondas', 'Microondas'],
+            CP: ['CP-carta-proyecto', 'Carta de proyecto'],
+            AI: ['AI-ingeniero-anclado', 'Ingeniero anclado']
+        };
+        function renderEffect(text) {
+            return text.split(/(\[[A-Z]{2}\])/gi).map(part => {
+                const entry = effectIcons[part.slice(1, -1).toUpperCase()];
+                return part.startsWith('[') && entry ? `<img src="./iconos/${entry[0]}.svg" alt="${entry[1]}" title="${entry[1]}">` : part.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+            }).join('');
+        }
+        function mineral(color) { return `<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7 14 27 5l8 9-8 15-21 5Z" fill="${color}" stroke="#222" stroke-width="2"/><path d="m7 14 20 3 8-3M27 17v12" fill="none" stroke="#222" stroke-width="2"/></svg>` }
+        function resource(item, count, card) {
+            const up = card.up.includes(item.id), down = card.down.includes(item.id);
+            const label = up ? ' · dos filas superiores en verde' : down ? ' · dos filas inferiores en rojo' : '';
+            const drawing = item.color ? mineral(item.color) : icon(item.id === 'Tr' ? 'Tr-transporte' : 'RQ-reactivos');
+            return `<div class="resource" aria-label="${item.name}${label}" title="${item.name}${label}"><div class="resource-title${item.id === 'H₂SO₄' ? ' chemical' : ''}">${drawing}<span>${item.id}</span></div>${item.prices.map((price, i) => `<div class="price-row${up && i < 2 ? ' up' : down && i > 2 ? ' down' : ''}"><span class="price">$${price}</span><span class="slots">${'<i class="slot"></i>'.repeat(count)}</span></div>`).join('')}</div>`;
+        }
+        function market(card) {
+            return `<div class="market">
+ <section class="panel"><div class="panel-title">Recursos básicos</div><div class="basic-grid">${basics.map(r => resource(r, 4, card)).join('')}</div></section>
  <div class="lower-grid">
-  <section class="panel"><div class="panel-title">Tierras raras</div><div class="rare-grid">${rares.map(r=>resource(r,2,card)).join('')}</div></section>
-  <section class="panel"><div class="panel-title">Transp.</div>${resource({id:'Tr',name:'Transporte',prices:[11,9,7,5,4]},3,card)}</section>
-  <section class="panel"><div class="panel-title">Reactivos</div><div class="reagent-grid">${reagents.map(r=>resource(r,2,card)).join('')}</div></section>
+  <section class="panel"><div class="panel-title">Tierras raras</div><div class="rare-grid">${rares.map(r => resource(r, 2, card)).join('')}</div></section>
+  <section class="panel"><div class="panel-title">Transp.</div>${resource({ id: 'Tr', name: 'Transporte', prices: [11, 9, 7, 5, 4] }, 3, card)}</section>
+  <section class="panel"><div class="panel-title">Reactivos</div><div class="reagent-grid">${reagents.map(r => resource(r, 2, card)).join('')}</div></section>
  </div></div>`}
-function footer(card){return `<footer class="card-foot"><span>SYNCRODYSON</span><span>${card.id}</span></footer>`}
-function coin(){return `<svg class="big-coin" viewBox="0 0 120 120" role="img" aria-label="Gran moneda"><circle cx="60" cy="60" r="55" fill="#efd27c" stroke="#453c22" stroke-width="3"/><circle cx="60" cy="60" r="46" fill="#fae8ac" stroke="#9b7c32" stroke-width="2"/><path d="M78 36H52c-20 0-20 24 0 24h16c20 0 20 24 0 24H42M60 25v70" fill="none" stroke="#453c22" stroke-width="7" stroke-linecap="round"/></svg>`}
-function render(card){
- if(card.subsidy)return `<article class="card subsidy" aria-label="${card.id} · Subvención"><header class="heading"><div><h2>Subvención</h2><div class="type">Ingreso para todos los jugadores</div></div></header><div class="subsidy-art">${coin()}</div><div class="subsidy-text"><div class="formula" aria-hidden="true">$10 + $2 / ${coin()} + $2 / ${icon('DS-disco')}</div><p>Cada jugador cobra <strong>$10 + $2 por cada subvención que haya salido (incluida esta) + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong> (inicial: 60 PV). Comprueba el final en Mantenimiento.</p></div>${footer(card)}</article>`;
- return `<article class="card" aria-label="${card.id} · Ajustar el mercado · ${card.title}"><header class="heading">${icon('ME-mercado')}<div><h2>Ajustar el mercado</h2><div class="type">Ajuste de mercado + evento</div></div></header><section class="market-half" aria-label="Ajuste de mercado">${market(card)}<div class="legend"><span><i class="swatch up">▲</i>2 filas superiores</span><span><i class="swatch down">▼</i>2 filas inferiores</span></div></section><section class="event-half"><div class="event-label">${icon('DE-destino-especial')}<h3>${card.title}</h3></div><p class="event-effect">${renderEffect(card.effect)}</p></section>${footer(card)}</article>`;
-}
-const orderedCards=[...cards.filter(c=>c.subsidy),...cards.filter(c=>!c.subsidy)];
-document.getElementById('sheet').innerHTML=orderedCards.map(render).join('');
-document.getElementById('summary').textContent=`${cards.length} cartas: ${cards.filter(c=>!c.subsidy).length} de evento y ${cards.filter(c=>c.subsidy).length} de subvención`;
-</script>
+        function footer(card) { return `<footer class="card-foot"><span>SYNCRODYSON</span><span>${card.id}</span></footer>` }
+        function coin() { return `<svg class="big-coin" viewBox="0 0 120 120" role="img" aria-label="Gran moneda"><circle cx="60" cy="60" r="55" fill="#efd27c" stroke="#453c22" stroke-width="3"/><circle cx="60" cy="60" r="46" fill="#fae8ac" stroke="#9b7c32" stroke-width="2"/><path d="M78 36H52c-20 0-20 24 0 24h16c20 0 20 24 0 24H42M60 25v70" fill="none" stroke="#453c22" stroke-width="7" stroke-linecap="round"/></svg>` }
+        function render(card) {
+            if (card.standalone || card.catastrophe) return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2><div class="type">Evento</div></div></header><section class="standalone-text" aria-label="Efecto del evento">${card.effect.map(paragraph => `<p>${renderEffect(paragraph)}</p>`).join('')}</section>${footer(card)}</article>`;
+            if (card.subsidy) return `<article class="card subsidy" aria-label="${card.id} · Subvención"><header class="heading"><div><h2>Subvención</h2><div class="type">Ingreso para todos los jugadores</div></div></header><div class="subsidy-art">${coin()}</div><div class="subsidy-text"><div class="formula" aria-hidden="true">$10 + $2 / ${coin()} + $2 / ${icon('DS-disco')}</div><p>Cada jugador cobra <strong>$10 + $2 por cada subvención que haya salido (incluida esta) + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong> (inicial: 60 PV). Comprueba el final en Mantenimiento.</p></div>${footer(card)}</article>`;
+            return `<article class="card" aria-label="${card.id} · Ajustar el mercado · ${card.title}"><header class="heading">${icon('ME-mercado')}<div><h2>Ajustar el mercado</h2><div class="type">Ajuste de mercado + evento</div></div></header><section class="market-half" aria-label="Ajuste de mercado">${market(card)}<div class="legend"><span><i class="swatch up">▲</i>2 filas superiores</span><span><i class="swatch down">▼</i>2 filas inferiores</span></div></section><section class="event-half"><div class="event-label">${icon('EV-evento')}<h3>${card.title}</h3></div><p class="event-effect${card.catastrophe ? ' catastrophe' : ''}">${renderEffect(card.effect)}</p></section>${footer(card)}</article>`;
+        }
+        const orderedCards = [...cards.filter(c => c.subsidy), ...cards.filter(c => !c.subsidy)];
+        document.getElementById('sheet').innerHTML = orderedCards.map(render).join('');
+        document.getElementById('summary').textContent = `${cards.length} cartas: ${cards.filter(c => !c.subsidy).length} de evento y ${cards.filter(c => c.subsidy).length} de subvención`;
+    </script>
 </body>
+
 </html>

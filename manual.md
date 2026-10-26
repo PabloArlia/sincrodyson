@@ -45,6 +45,17 @@ El tablero personal dispone de cuatro espacios de ejecución, ocupados por refin
 
 Los recursos no asignados a proyectos o refinerías se guardan en el almacén. La energía no asignada se guarda exclusivamente en las baterías; cualquier excedente que no pueda almacenarse se descarta. Los ingenieros disponibles permanecen en las barracas, salvo que estén asignados a otra tarea.
 
+### Esfera y adyacencia
+
+La esfera se divide en cuatro cuadrantes, cada uno con cinco sectores. Cada sector tiene cinco celdas, una por capa. **Adyacente** significa que dos zonas del mismo tipo comparten un borde: no alcanza con que se toquen en una esquina o en un punto.
+
+- **Cuadrantes adyacentes:** son los que están uno junto al otro alrededor de la esfera y comparten una línea divisoria. Por ejemplo en el mapa secuencia principal Alpha es adyacente a Beta y Delta; no a Gamma, que está enfrente.
+- **Sectores adyacentes:** son los dos sectores inmediatamente contiguos, uno a cada lado. Pueden pertenecer a distintos cuadrantes. Los índices del tablero forman un recorrido circular: el sector 05 es adyacente al 04 y al 06; en el mapa de secuencia principal el 01 es adyacente al 20 y al 02.
+- **Celdas adyacentes dentro de un mismo sector:** son las de dos capas consecutivas que comparten un borde. Por ejemplo, la celda fotovoltaica es adyacente a la de Estructura y a la de Transmisión de ese sector.
+- **Celdas adyacentes entre sectores:** son las de una misma capa en dos sectores adyacentes, incluso si pertenecen a distintos cuadrantes. Las celdas de capas distintas y sectores distintos solo se tocan en una esquina y no son adyacentes.
+
+Si un efecto limita la adyacencia a una capa, solo se consideran las celdas de esa capa. Por ejemplo, si Llamarada solar afecta al sector 05, se retiran los discos de las celdas fotovoltaicas de los sectores 04, 05 y 06; no los de Estructura o Transmisión del sector 05. La adyacencia depende de las posiciones del tablero, aunque alguna esté vacía.
+
 ### Valores y límites
 
 Los precios de mercado, los costos de contratación, la generación gratuita de energía y las capacidades se consultan en los tableros correspondientes.
@@ -88,7 +99,7 @@ Cada jugador puede colocar hasta cinco cartas de mercado boca abajo en los espac
 
 - Un dado verde indica una compra.
 - Un dado rojo indica una venta.
-- El número del dado indica la cantidad de la operación.
+- El número del dado indica la cantidad de la operación, salvo en la compra de un proyecto por tipo, donde indica el tipo solicitado.
 
 Se pueden colocar dos dados sobre una misma carta, siempre que sean del mismo color. En ese caso, se suman sus valores.
 
@@ -147,6 +158,33 @@ Si no dispone de suficientes recursos para cumplir una venta, debe vender todos 
 La carta de proyectos permite comprar cartas del mazo por \$3 cada una o vender cartas de la mano por \$2 cada una. Los proyectos vendidos se colocan en el descarte.
 
 Cuando el mazo de proyectos se agota, se mezcla su descarte para formar un nuevo mazo.
+
+#### Compra de un proyecto por tipo
+
+La carta de mercado **Proyecto por tipo** permite comprar **una sola carta de proyecto por $5**. Se programa con uno o dos dados verdes: sus valores identifican el tipo solicitado, no la cantidad de cartas. Los dados se eligen al programar la acción y no se lanzan.
+
+| Dados verdes | Valor o suma | Tipo solicitado | Icono |
+| --- | --- | --- | --- |
+| 1 | 1 | Estructura | [ES] |
+| 1 | 2 | Fotovoltaico | [FV] |
+| 1 | 3 | Transmisión | [TS] |
+| 1 | 4 | Refrigeración | [RF] |
+| 1 | 5 | Microondas | [MO] |
+| 1 | 6 | Generación de energía | [PE] |
+| 2 | 2 | Sensores | [SN] |
+| 2 | 3 | Control | [CO] |
+| 2 | 4 | Mantenimiento | [MN] |
+| 2 | 5 | Economía | [EC] |
+| 2 | 6 | Recursos humanos | [RH] |
+| 2 | 7 | Producción | [PR] |
+| 2 | 8 | Batería | [BT] |
+| 2 | 9 | Mejora de soporte externo | [MS] |
+
+Con dos dados solo importa la **suma de ambos**, sin distinguir el orden. Las sumas 10, 11 y 12 no tienen tipo asignado y se saltea la compra asi como si se jugase con dados rojos.
+
+Al resolver la acción, el jugador paga $5. **El jugador a su derecha revela rápidamente cartas del mazo de proyectos hasta encontrar la primera del tipo solicitado**, identificado por el **icono de la esquina superior izquierda**. Entrega esa carta al comprador, que la añade a su mano, y mezcla todas las demás cartas reveladas con el resto del mazo. Las cartas no elegidas no van al descarte.
+
+Si se agota el mazo durante la búsqueda, se incorpora su descarte según la regla habitual y se continúa. Si no hay ninguna carta del tipo solicitado entre el mazo y el descarte, se mezclan de nuevo las cartas reveladas para formar el mazo y se devuelven los $5; no se obtiene ninguna carta. Si el jugador no puede pagar los $5, se aplica la regla de falta de dinero de Mercado: no obtiene la carta, pierde su dinero restante y cancela las operaciones pendientes con dados verdes.
 
 ### Contratación y despido de ingenieros
 
@@ -279,6 +317,8 @@ Cuando un efecto obliga a quitar un disco `[QD]`, el jugador debe retirar un dis
 
 Si hay ingenieros anclados en la celda de la que se retira el disco, deben trasladarse a otra celda que contenga un disco del mismo jugador que era dueño del disco retirado. Si no existe ninguna celda que cumpla esta condición, los ingenieros se devuelven a la reserva general.
 
+**Excepción — Gran meteorito, Llamarada solar y Malfunción:** los ingenieros anclados en las celdas cuyos discos se retiran por estos eventos vuelven a las barracas de su dueño, en lugar de trasladarse a otra celda o devolverse a la reserva general.
+
 Si el efecto exige quitar un disco para colocar otro y no es posible retirar el disco requerido o colocar el nuevo disco, no se retira ni coloca ningún disco. Consulta [No colocación de discos](#no-colocación-de-discos).
 
 #### No colocación de discos
@@ -315,7 +355,7 @@ Estos costos se pagan antes de generar o comprar energía nueva.
 
 ### Resolución de la carta de ronda
 
-Resuelvan la carta expuesta para esta ronda. Si es una carta de evento, apliquen primero su ajuste de mercado y luego su efecto. Si es una subvención, cada jugador cobra $10 + $2 por cada carta de subvención que haya salido, incluida la actual, + $2 por cada disco propio en la esfera (sector o área de soporte). Después de pagar la subvención, reduzcan en 5 PV la meta de fin de partida moviendo su indicador.
+Resuelvan la carta expuesta para esta ronda. Si es una carta de evento, apliquen primero su ajuste de mercado, si lo tiene, y luego su efecto. Las cartas sin ajuste de mercado solo resuelven su efecto de evento. Si es una subvención, cada jugador cobra $10 + $2 por cada carta de subvención que haya salido, incluida la actual, + $2 por cada disco propio en la esfera (sector o área de soporte). Después de pagar la subvención, reduzcan en 5 PV la meta de fin de partida moviendo su indicador.
 
 La meta comienza en 60 PV y se reduce de forma acumulativa: tras una subvención es 55 PV; tras seis, 30 PV; tras las doce, 0 PV. La reducción no resta PV a los jugadores ni termina la partida hasta la comprobación siguiente. Mantengan las subvenciones resueltas visibles para contar sus monedas.
 

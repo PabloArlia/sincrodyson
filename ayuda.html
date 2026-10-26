@@ -1,50 +1,611 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ayuda · Glosario</title><style>*{box-sizing:border-box}body{margin:0;padding:24px;background:#f3f4f2;color:#20282a;font-family:Arial,sans-serif}.page{max-width:1100px;margin:0 auto;background:#fff;border:1px solid #aeb5b2;border-radius:12px;padding:24px}.eyebrow{font-size:10pt;font-weight:700;letter-spacing:.08em;color:#53615d;margin:0 0 6px}h1{font-size:24pt;margin:0 0 8px}.intro{font-size:12pt;line-height:1.4;margin:0 0 20px;color:#4c5552}.glossary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.glossary-item{display:flex;align-items:flex-start;gap:12px;min-height:76px;padding:12px;border:1px solid #c8cecb;border-radius:8px}.glossary-item img{width:34px;height:34px;object-fit:contain;flex:none}.glossary-copy{min-width:0;flex:1}.glossary-item h2{font-size:13pt;line-height:1.15;margin:0 0 5px}.glossary-item h2 span{display:inline-block;min-width:28px;color:#56645e;font-weight:800}.description{min-height:18px;margin:0;color:#48524e;font-size:11pt;line-height:1.3}@media(max-width:700px){body{padding:10px}.page{padding:16px}.glossary{grid-template-columns:1fr}h1{font-size:20pt}}.glossary-item.sphere-term img{width:92px;height:92px}.sphere-term{align-items:center}@media(max-width:420px){.glossary-item.sphere-term img{width:76px;height:76px}}@media print{.glossary-item{break-inside:avoid}}</style></head><body><main class="page"><p class="eyebrow">SYNCRODYSON · AYUDA</p><h1>Glosario de iconos</h1><p class="intro">Conceptos, siglas e iconos del juego. En los diagramas de la esfera, la parte sombreada en verde identifica cada concepto.</p><section class="glossary">
-<article class="glossary-item sphere-term" data-term="celda"><img src="./iconos/esfera-celda.svg" alt="Esfera con una celda resaltada en verde"><div class="glossary-copy"><h2>Celda</h2><p class="description">Una posición para un disco, en el cruce de un sector y una capa. Cada celda admite un único disco.</p></div></article>
-<article class="glossary-item sphere-term" data-term="cuadrante"><img src="./iconos/esfera-cuadrante.svg" alt="Esfera con cuadrante resaltado en verde"><div class="glossary-copy"><h2>Cuadrante</h2><p class="description">Cada una de las 4 grandes divisiones de la esfera: Alpha, Beta, Gamma y Delta. Cada cuadrante contiene 5 sectores y 25 celdas.</p></div></article>
-<article class="glossary-item sphere-term" data-term="sector"><img src="./iconos/esfera-sector.svg" alt="Esfera con sector resaltado en verde"><div class="glossary-copy"><h2>Sector</h2><p class="description">Cada una de las 20 divisiones radiales de la esfera. Un sector atraviesa las 5 capas y contiene 5 celdas, una por capa.</p></div></article>
-<article class="glossary-item sphere-term" data-term="capa"><img src="./iconos/esfera-capa.svg" alt="Esfera con una capa resaltada en verde"><div class="glossary-copy"><h2>Capa</h2><p class="description">Cada uno de los 5 anillos de la esfera: Estructura, Fotovoltaica, Transmisión, Refrigeración y Microondas, desde el interior hacia afuera. Cada capa contiene 20 celdas.</p></div></article>
-<article class="glossary-item" data-code="BT"><img src="./iconos/BT-bateria.svg" alt="Bater&#237;a"><div class="glossary-copy"><h2><span>BT</span> Bater&#237;a</h2><p class="description">La energ&#237;a que no asignas a proyectos se guarda en las bater&#237;as, hasta alcanzar su capacidad. El excedente se descarta. En Mercado puedes asignar la energ&#237;a comprada directamente a un proyecto; en Mantenimiento, la energ&#237;a generada y comprada se guarda en las bater&#237;as.</p></div></article>
-<article class="glossary-item" data-code="CP"><img src="./iconos/CP-carta-proyecto.svg" alt="Carta de proyecto"><div class="glossary-copy"><h2><span>CP</span> Carta de proyecto</h2><p class="description">Las cartas de proyecto permiten construir nuevas partes de la esfera y potentes estructuras de apoyo. Puedes obtenerlas mediante draft o compr&#225;ndolas en el mercado.</p></div></article>
-<article class="glossary-item" data-code="CN"><img src="./iconos/CN-ficha-contratacion.svg" alt="Ficha de contrataci&#243;n"><div class="glossary-copy"><h2><span>CN</span> Contrataci&#243;n</h2><p class="description">Se usa para llevar el registro de cu&#225;ntos contratos de contrataci&#243;n pagaste. Si ninguna carta modifica ese valor, tus ingenieros m&#225;s las fichas de Contrataci&#243;n deben sumar 12.</p></div></article>
-<article class="glossary-item" data-code="CO"><img src="./iconos/CO-control.svg" alt="Control"><div class="glossary-copy"><h2><span>CO</span> Control</h2><p class="description">Cada cuadrante de soporte admite un disco de Control. Al colocar un disco en el soporte, quien lo coloca gana 1 PV por cada dos discos de todo el cuadrante, redondeando hacia arriba; cada jugador cobra $1 por cada disco propio de ese cuadrante.</p></div></article>
-<article class="glossary-item" data-code="DE"><img src="./iconos/DE-destino-especial.svg" alt="Destino especial"><div class="glossary-copy"><h2><span>DE</span> Destino especial</h2><p class="description">Indica un destino alternativo o condicional. Sigue la instrucci&#243;n de la carta; si ofrece varias opciones, elige una, salvo que indique expresamente lo contrario.</p></div></article>
-<article class="glossary-item" data-code="Di"><img src="./iconos/Di-dinero.svg" alt="Dinero"><div class="glossary-copy"><h2><span>Di</span> Dinero</h2><p class="description">Se usa para pagar compras y costos obligatorios, y para cobrar ventas e ingresos. Al final de la partida, cada $10 se convierten en 1 PV; el dinero sobrante sirve para desempatar.</p></div></article>
-<article class="glossary-item" data-code="DS"><img src="./iconos/DS-disco.svg" alt="Discos"><div class="glossary-copy"><h2><span>DS</span> Disco</h2><p class="description">Colocar discos en la esfera es una forma de obtener puntos y mostrar cu&#225;nto contribuiste a construir la estructura. En un sector, quien coloca gana 1 PV por cada disco presente y cada jugador cobra $2 por cada disco propio.</p></div></article>
-<article class="glossary-item" data-code="DP"><img src="./iconos/DP-disco-soporte.svg" alt="Disco de soporte"><div class="glossary-copy"><h2><span>DP</span> Disco de soporte</h2><p class="description">Disco destinado a las &#225;reas de soporte de la esfera: Control, Sensores y Mantenimiento. La base del icono lo distingue del disco DS.</p></div></article>
-<article class="glossary-item" data-code="DH"><img src="./iconos/DH-disco-hueco.svg" alt="Disco hueco"><div class="glossary-copy"><h2><span>DH</span> Disco hueco</h2><p class="description">Se coloca como un <b>[DS]</b> disco normal, pero no otorga puntos por colocaci&#243;n.</p></div></article>
-<article class="glossary-item" data-code="AQ"><img src="./iconos/AQ-ingeniero-quimico-anclado.svg" alt="Ingeniero qu&#237;mico anclado"><div class="glossary-copy"><h2><span>AQ</span> Ingeniero qu&#237;mico anclado</h2><p class="description">La figura del ingeniero qu&#237;mico (IQ) parado sobre un disco indica que se coloca ese ingeniero junto con un disco, seg&#250;n el efecto de la carta.</p></div></article>
-<article class="glossary-item" data-code="AM"><img src="./iconos/AM-ingeniero-electromecanico-anclado.svg" alt="Ingeniero electromec&#225;nico anclado"><div class="glossary-copy"><h2><span>AM</span> Ingeniero electromec&#225;nico anclado</h2><p class="description">La figura del ingeniero electromec&#225;nico (IM) parado sobre un disco indica que se coloca ese ingeniero junto con un disco, seg&#250;n el efecto de la carta.</p></div></article>
-<article class="glossary-item" data-code="EC"><img src="./iconos/EC-economia.svg" alt="Econom&#237;a"><div class="glossary-copy"><h2><span>EC</span> Econom&#237;a</h2><p class="description">Identifica proyectos de tipo Econom&#237;a. Sus cartas pueden modificar dinero, recursos u operaciones de mercado; consulta el efecto de cada proyecto para conocer sus reglas.</p></div></article>
-<article class="glossary-item" data-code="En"><img src="./iconos/En-energia.svg" alt="Energ&#237;a"><div class="glossary-copy"><h2><span>En</span> Energ&#237;a</h2><p class="description">Es un recurso que se asigna a las etapas de proyectos y refiner&#237;as. La energ&#237;a no asignada se guarda en las bater&#237;as; puedes comprarla en Mercado o durante Mantenimiento.</p></div></article>
-<article class="glossary-item" data-code="ES"><img src="./iconos/ES-estructura.svg" alt="Estructura"><div class="glossary-copy"><h2><span>ES</span> Estructura</h2><p class="description">Identifica las celdas de Estructura de la esfera. Si al colocar un disco la capa de estructura est&#225; vac&#237;a, quien lo coloca paga $5 al banco por acarreo.</p></div></article>
-<article class="glossary-item" data-code="FV"><img src="./iconos/FV-fotovoltaico.svg" alt="Fotovoltaico"><div class="glossary-copy"><h2><span>FV</span> Fotovoltaico</h2><p class="description">Identifica celdas fotovoltaicas de la esfera. Las cartas de proyecto indican en qu&#233; cuadrante puedes colocar discos de este tipo.</p></div></article>
-<article class="glossary-item" data-code="IM"><img src="./iconos/IM-ingeniero-electromecanico.svg" alt="Ingeniero electromec&#225;nico"><div class="glossary-copy"><h2><span>IM</span> Ingeniero electromec&#225;nico</h2><p class="description">Tipo de ingeniero que puedes contratar en Mercado y asignar a las etapas que lo requieren. Al activar un proyecto o refiner&#237;a, los ingenieros usados vuelven a las barracas.</p></div></article>
-<article class="glossary-item" data-code="IS"><img src="./iconos/IS-ingeniero-sistemas.svg" alt="Ingeniero en sistemas"><div class="glossary-copy"><h2><span>IS</span> Ingeniero en sistemas</h2><p class="description">Tipo de ingeniero que puedes contratar en Mercado y asignar a las etapas que lo requieren. Al activar un proyecto o refiner&#237;a, los ingenieros usados vuelven a las barracas.</p></div></article>
-<article class="glossary-item" data-code="IE"><img src="./iconos/IE-ingeniero-estructural.svg" alt="Ingeniero estructural"><div class="glossary-copy"><h2><span>IE</span> Ingeniero estructural</h2><p class="description">Tipo de ingeniero que puedes contratar en Mercado y asignar a las etapas que lo requieren. Al activar un proyecto o refiner&#237;a, los ingenieros usados vuelven a las barracas.</p></div></article>
-<article class="glossary-item" data-code="IQ"><img src="./iconos/IQ-ingeniero-quimico.svg" alt="Ingeniero qu&#237;mico"><div class="glossary-copy"><h2><span>IQ</span> Ingeniero qu&#237;mico</h2><p class="description">Tipo de ingeniero que puedes contratar en Mercado y asignar a las etapas que lo requieren. Al activar un proyecto o refiner&#237;a, los ingenieros usados vuelven a las barracas.</p></div></article>
-<article class="glossary-item" data-code="LE"><img src="./iconos/LE-licencias-excavacion.svg" alt="Licencias de excavaci&#243;n"><div class="glossary-copy"><h2><span>LE</span> Licencias de excavaci&#243;n</h2><p class="description">Las licencias se usan para activar yacimientos. No puedes extraer recursos de un yacimiento, aunque sea tuyo, si no tienes todas las LE que aparecen atenuadas en su carta.</p></div></article>
-<article class="glossary-item" data-code="MN"><img src="./iconos/MN-mantenimiento.svg" alt="Mantenimiento"><div class="glossary-copy"><h2><span>MN</span> Mantenimiento</h2><p class="description">Cada cuadrante de soporte admite hasta dos discos de Mantenimiento. Los discos de soporte cuentan para los bonos de todo el cuadrante al colocar nuevos discos.</p></div></article>
-<article class="glossary-item" data-code="MS"><img src="./iconos/MS-mejora-soporte-externo.svg" alt="Mejora de soporte externo"><div class="glossary-copy"><h2><span>MS</span> Mejora de soporte externo</h2><p class="description">Una mejora se coloca junto al &#225;rea de Soporte externo y entra en vigor de inmediato. Si ya hay otra mejora activa all&#237;, se mueve a proyectos completados. Cada carta indica c&#243;mo modifica el beneficio del soporte.</p></div></article>
-<article class="glossary-item" data-code="ME"><img src="./iconos/ME-mercado.svg" alt="Mercado"><div class="glossary-copy"><h2><span>ME</span> Mercado</h2><p class="description">La carta de Mercado permite programar compras y ventas de recursos y Transporte, contratar o despedir ingenieros, comprar o vender proyectos y prospectar yacimientos. Las operaciones se resuelven en el orden indicado por los dados.</p></div></article>
-<article class="glossary-item" data-code="MO"><img src="./iconos/MO-microondas.svg" alt="Microondas"><div class="glossary-copy"><h2><span>MO</span> Microondas</h2><p class="description">Identifica celdas de Microondas de la esfera. Las cartas de proyecto indican en qu&#233; cuadrante puedes colocar discos de este tipo.</p></div></article>
-<article class="glossary-item" data-code="PR"><img src="./iconos/PR-produccion.svg" alt="Producci&#243;n"><div class="glossary-copy"><h2><span>PR</span> Producci&#243;n</h2><p class="description">Identifica proyectos de tipo Producci&#243;n. Sus requisitos y efectos est&#225;n indicados en cada carta.</p></div></article>
-<article class="glossary-item" data-code="PE"><img src="./iconos/PE-produccion-energia.svg" alt="Producci&#243;n de energ&#237;a"><div class="glossary-copy"><h2><span>PE</span> Producci&#243;n de energ&#237;a</h2><p class="description">Indica cu&#225;nta energ&#237;a producen tus generadores. Durante Mantenimiento recibes esa cantidad de energ&#237;a; los bonos de las cartas aumentan este valor.</p></div></article>
-<article class="glossary-item" data-code="CM"><img src="./iconos/CM-completado.svg" alt="Proyectos completados"><div class="glossary-copy"><h2><span>CM</span> Proyectos completados</h2><p class="description">Las CP con este destino se agregan a tu mazo de proyectos completados despu&#233;s de resolver su efecto. No volver&#225;n a usarse hasta el conteo de puntos al final de la partida.</p></div></article>
-<article class="glossary-item" data-code="PV"><img src="./iconos/PV-punto-victoria.svg" alt="Puntos de victoria"><div class="glossary-copy"><h2><span>PV</span> Puntos de victoria</h2><p class="description">Miden tu progreso. Se obtienen durante la partida por efectos y por colocar discos; los proyectos completados y otros elementos tambi&#233;n pueden sumar PV al final.</p></div></article>
-<article class="glossary-item" data-code="RQ"><img src="./iconos/RQ-reactivos.svg" alt="Reactivos"><div class="glossary-copy"><h2><span>RQ</span> Reactivos qu&#237;micos</h2><p class="description">Reactivos que puedes gastar en una refiner&#237;a para obtener la tierra rara indicada por el yacimiento. Se usa HCl para Gd y Er, y H&#8322;SO&#8324; para Ce y Nd.</p></div></article>
-<article class="glossary-item" data-code="RH"><img src="./iconos/RH-recursos-humanos.svg" alt="Recursos humanos"><div class="glossary-copy"><h2><span>RH</span> Recursos humanos</h2><p class="description">Estas cartas de proyecto permiten contratar empleados alterando las reglas usuales del mercado laboral.</p></div></article>
-<article class="glossary-item" data-code="RI"><img src="./iconos/RI-refineria.svg" alt="Refiner&#237;a"><div class="glossary-copy"><h2><span>RI</span> Refiner&#237;a</h2><p class="description">Para activarla, asigna los recursos e ingenieros requeridos durante la fase de Planificaci&#243;n. Durante la fase de Ejecuci&#243;n, usa un yacimiento con todas sus licencias. Obtienes sus recursos b&#225;sicos; si gastas el reactivo indicado, tambi&#233;n obtienes su tierra rara. Luego reduces sus vetas en 1.</p></div></article>
-<article class="glossary-item" data-code="RF"><img src="./iconos/RF-refrigeracion.svg" alt="Refrigeraci&#243;n"><div class="glossary-copy"><h2><span>RF</span> Refrigeraci&#243;n</h2><p class="description">Identifica celdas de Refrigeraci&#243;n de la esfera. Las cartas de proyecto indican en qu&#233; cuadrante puedes colocar discos de este tipo.</p></div></article>
-<article class="glossary-item" data-code="RE"><img src="./iconos/RE-repetible.svg" alt="Repetible"><div class="glossary-copy"><h2><span>RE</span> Repetible</h2><p class="description">El destino repetible devuelve el cubo a la etapa indicada y deja la carta en su espacio de proyecto. Para activar otra vez su efecto «Al completar», vuelve a completar las etapas pendientes. Si lo prefieres, puedes ignorar este destino y tratar la carta como un <b>[CM]</b> normal.</p></div></article>
-<article class="glossary-item" data-code="SN"><img src="./iconos/SN-sensores.svg" alt="Sensores"><div class="glossary-copy"><h2><span>SN</span> Sensores</h2><p class="description">Cada cuadrante de soporte admite un disco de Sensores. Los discos de soporte cuentan para los bonos de todo el cuadrante al colocar nuevos discos.</p></div></article>
-<article class="glossary-item" data-code="SP"><img src="./iconos/SP-soporte-externo.svg" alt="Soporte externo"><div class="glossary-copy"><h2><span>SP</span> Soporte externo</h2><p class="description">Puedes asignar ingenieros a Soporte externo. Durante Mantenimiento, cada uno te da $1 y luego vuelve a las barracas. Una mejora activa puede cambiar el beneficio.</p></div></article>
-<article class="glossary-item" data-code="RR"><img src="./iconos/RR-tierra-rara.svg" alt="Tierra rara"><div class="glossary-copy"><h2><span>RR</span> Tierra rara</h2><p class="description">Son elementos qu&#237;micos estrat&#233;gicos para proyectos de tecnolog&#237;a de punta. Requieren reactivos especiales y procesos m&#225;s complejos que los minerales comunes. El yacimiento indica qu&#233; tierra rara puedes obtener; para extraerla, activa una refiner&#237;a con el reactivo requerido: Nd y Ce usan H&#8322;SO&#8324;; Gd y Er usan HCl.</p></div></article>
-<article class="glossary-item" data-code="TJ"><img src="./iconos/TJ-todos-los-jugadores.svg" alt="Todos los jugadores"><div class="glossary-copy"><h2><span>TJ</span> Todos los jugadores</h2><p class="description">El efecto se aplica a todos los jugadores, no solo a quien complet&#243; la carta. Sigue las cantidades y condiciones indicadas en el efecto.</p></div></article>
-<article class="glossary-item" data-code="TS"><img src="./iconos/TS-transmision.svg" alt="Transmisi&#243;n"><div class="glossary-copy"><h2><span>TS</span> Transmisi&#243;n</h2><p class="description">Identifica celdas de Transmisi&#243;n de la esfera. Las cartas de proyecto indican en qu&#233; cuadrante puedes colocar discos de este tipo.</p></div></article>
-<article class="glossary-item" data-code="Tr"><img src="./iconos/Tr-transporte.svg" alt="Transporte"><div class="glossary-copy"><h2><span>Tr</span> Transporte</h2><p class="description">Es un recurso que se compra y vende en Mercado y que requieren los proyectos que colocan discos en la esfera, porque hay que transportarlos hasta all&#237;. Su valor b&#225;sico es $7, pero puede variar.</p></div></article>
-<article class="glossary-item" data-code="MA"><img src="./iconos/MA-mano.svg" alt="Volver a la mano"><div class="glossary-copy"><h2><span>MA</span> Volver a la mano</h2><p class="description">Las CP con destino <b>[MA]</b> regresan a tu mano tras resolver su efecto. No dar&#225;n puntos al final de la partida, pero podr&#225;s construirlas de nuevo. Como alternativa, agr&#233;galas a proyectos completados como si tuvieran destino <b>[CM]</b>.</p></div></article>
-<article class="glossary-item" data-code="YA"><img src="./iconos/YA-yacimientos.svg" alt="Yacimientos"><div class="glossary-copy"><h2><span>YA</span> Yacimientos</h2><p class="description">Las cartas de yacimiento muestran los recursos, las vetas y las licencias necesarias para extraerlos. Asigna todas las licencias indicadas y activa una refiner&#237;a; cada activaci&#243;n reduce sus vetas en 1. Al llegar a 0, el yacimiento se agota y se descarta; recuperas obligatoriamente las LE asignadas.</p></div></article>
-<article class="glossary-item" data-code="AE"><img src="./iconos/AE-ingeniero-estructural-anclado.svg" alt="Ingeniero estructural anclado"><div class="glossary-copy"><h2><span>AE</span> Ingeniero estructural anclado</h2><p class="description">La figura del ingeniero parado sobre un disco indica que se coloca ese ingeniero junto con un disco, según el efecto de la carta.</p></div></article>
-<article class="glossary-item" data-code="AS"><img src="./iconos/AS-ingeniero-sistemas-anclado.svg" alt="Ingeniero en sistemas anclado"><div class="glossary-copy"><h2><span>AS</span> Ingeniero en sistemas anclado</h2><p class="description">La figura del ingeniero parado sobre un disco indica que se coloca ese ingeniero junto con un disco, según el efecto de la carta.</p></div></article>
-</section></main></body></html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ayuda · Glosario</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            padding: 24px;
+            background: #f3f4f2;
+            color: #20282a;
+            font-family: Arial, sans-serif
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid #aeb5b2;
+            border-radius: 12px;
+            padding: 24px
+        }
+
+        .eyebrow {
+            font-size: 10pt;
+            font-weight: 700;
+            letter-spacing: .08em;
+            color: #53615d;
+            margin: 0 0 6px
+        }
+
+        h1 {
+            font-size: 24pt;
+            margin: 0 0 8px
+        }
+
+        .intro {
+            font-size: 12pt;
+            line-height: 1.4;
+            margin: 0 0 20px;
+            color: #4c5552
+        }
+
+        .glossary {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .glossary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            min-height: 76px;
+            padding: 12px;
+            border: 1px solid #c8cecb;
+            border-radius: 8px
+        }
+
+        .glossary-item img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+            flex: none
+        }
+
+        .glossary-copy {
+            min-width: 0;
+            flex: 1
+        }
+
+        .glossary-item h2 {
+            font-size: 13pt;
+            line-height: 1.15;
+            margin: 0 0 5px
+        }
+
+        .glossary-item h2 span {
+            display: inline-block;
+            min-width: 28px;
+            color: #56645e;
+            font-weight: 800
+        }
+
+        .description {
+            min-height: 18px;
+            margin: 0;
+            color: #48524e;
+            font-size: 11pt;
+            line-height: 1.3
+        }
+
+        @media(max-width:700px) {
+            body {
+                padding: 10px
+            }
+
+            .page {
+                padding: 16px
+            }
+
+            .glossary {
+                grid-template-columns: 1fr
+            }
+
+            h1 {
+                font-size: 20pt
+            }
+        }
+
+        .glossary-item.sphere-term img {
+            width: 92px;
+            height: 92px
+        }
+
+        .sphere-term {
+            align-items: center
+        }
+
+        @media(max-width:420px) {
+            .glossary-item.sphere-term img {
+                width: 76px;
+                height: 76px
+            }
+        }
+
+        @media print {
+            .glossary-item {
+                break-inside: avoid
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <p class="eyebrow">SYNCRODYSON · AYUDA</p>
+        <h1>Glosario de iconos</h1>
+        <p class="intro">Conceptos, siglas e iconos del juego. En los diagramas de la esfera, la parte sombreada en
+            verde identifica cada concepto.</p>
+        <section class="glossary">
+            <article class="glossary-item sphere-term" data-term="celda"><img src="./iconos/esfera-celda.svg"
+                    alt="Esfera con una celda resaltada en verde">
+                <div class="glossary-copy">
+                    <h2>Celda</h2>
+                    <p class="description">Una posición para un disco, en el cruce de un sector y una capa. Cada celda
+                        admite un único disco.</p>
+                </div>
+            </article>
+            <article class="glossary-item sphere-term" data-term="cuadrante"><img src="./iconos/esfera-cuadrante.svg"
+                    alt="Esfera con cuadrante resaltado en verde">
+                <div class="glossary-copy">
+                    <h2>Cuadrante</h2>
+                    <p class="description">Cada una de las 4 grandes divisiones de la esfera: Alpha, Beta, Gamma y
+                        Delta. Cada cuadrante contiene 5 sectores y 25 celdas.</p>
+                </div>
+            </article>
+            <article class="glossary-item sphere-term" data-term="sector"><img src="./iconos/esfera-sector.svg"
+                    alt="Esfera con sector resaltado en verde">
+                <div class="glossary-copy">
+                    <h2>Sector</h2>
+                    <p class="description">Cada una de las 20 divisiones radiales de la esfera. Un sector atraviesa las
+                        5 capas y contiene 5 celdas, una por capa.</p>
+                </div>
+            </article>
+            <article class="glossary-item sphere-term" data-term="capa"><img src="./iconos/esfera-capa.svg"
+                    alt="Esfera con una capa resaltada en verde">
+                <div class="glossary-copy">
+                    <h2>Capa</h2>
+                    <p class="description">Cada uno de los 5 anillos de la esfera: Estructura, Fotovoltaica,
+                        Transmisión, Refrigeración y Microondas, desde el interior hacia afuera. Cada capa contiene 20
+                        celdas.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="BT"><img src="./iconos/BT-bateria.svg" alt="Bater&#237;a">
+                <div class="glossary-copy">
+                    <h2><span>BT</span> Bater&#237;a</h2>
+                    <p class="description">La energ&#237;a que no asignas a proyectos se guarda en las bater&#237;as,
+                        hasta alcanzar su capacidad. El excedente se descarta. En Mercado puedes asignar la energ&#237;a
+                        comprada directamente a un proyecto; en Mantenimiento, la energ&#237;a generada y comprada se
+                        guarda en las bater&#237;as.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="CP"><img src="./iconos/CP-carta-proyecto.svg"
+                    alt="Carta de proyecto">
+                <div class="glossary-copy">
+                    <h2><span>CP</span> Carta de proyecto</h2>
+                    <p class="description">Las cartas de proyecto permiten construir nuevas partes de la esfera y
+                        potentes estructuras de apoyo. Puedes obtenerlas mediante draft o compr&#225;ndolas en el
+                        mercado.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="CN"><img src="./iconos/CN-ficha-contratacion.svg"
+                    alt="Ficha de contrataci&#243;n">
+                <div class="glossary-copy">
+                    <h2><span>CN</span> Contrataci&#243;n</h2>
+                    <p class="description">Se usa para llevar el registro de cu&#225;ntos contratos de contrataci&#243;n
+                        pagaste. Si ninguna carta modifica ese valor, tus ingenieros m&#225;s las fichas de
+                        Contrataci&#243;n deben sumar 12.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="CO"><img src="./iconos/CO-control.svg" alt="Control">
+                <div class="glossary-copy">
+                    <h2><span>CO</span> Control</h2>
+                    <p class="description">Cada cuadrante de soporte admite un disco de Control. Al colocar un disco en
+                        el soporte, quien lo coloca gana 1 PV por cada dos discos de todo el cuadrante, redondeando
+                        hacia arriba; cada jugador cobra $1 por cada disco propio de ese cuadrante.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="DE"><img src="./iconos/DE-destino-especial.svg"
+                    alt="Destino especial">
+                <div class="glossary-copy">
+                    <h2><span>DE</span> Destino especial</h2>
+                    <p class="description">Indica un destino alternativo o condicional. Sigue la instrucci&#243;n de la
+                        carta; si ofrece varias opciones, elige una, salvo que indique expresamente lo contrario.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="Di"><img src="./iconos/Di-dinero.svg" alt="Dinero">
+                <div class="glossary-copy">
+                    <h2><span>Di</span> Dinero</h2>
+                    <p class="description">Se usa para pagar compras y costos obligatorios, y para cobrar ventas e
+                        ingresos. Al final de la partida, cada $10 se convierten en 1 PV; el dinero sobrante sirve para
+                        desempatar.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="DS"><img src="./iconos/DS-disco.svg" alt="Discos">
+                <div class="glossary-copy">
+                    <h2><span>DS</span> Disco</h2>
+                    <p class="description">Colocar discos en la esfera es una forma de obtener puntos y mostrar
+                        cu&#225;nto contribuiste a construir la estructura. En un sector, quien coloca gana 1 PV por
+                        cada disco presente y cada jugador cobra $2 por cada disco propio.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="DP"><img src="./iconos/DP-disco-soporte.svg"
+                    alt="Disco de soporte">
+                <div class="glossary-copy">
+                    <h2><span>DP</span> Disco de soporte</h2>
+                    <p class="description">Disco destinado a las &#225;reas de soporte de la esfera: Control, Sensores y
+                        Mantenimiento. La base del icono lo distingue del disco DS.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="DH"><img src="./iconos/DH-disco-hueco.svg" alt="Disco hueco">
+                <div class="glossary-copy">
+                    <h2><span>DH</span> Disco hueco</h2>
+                    <p class="description">Se coloca como un <b>[DS]</b> disco normal, pero no otorga puntos por
+                        colocaci&#243;n.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="AQ"><img src="./iconos/AQ-ingeniero-quimico-anclado.svg"
+                    alt="Ingeniero qu&#237;mico anclado">
+                <div class="glossary-copy">
+                    <h2><span>AQ</span> Ingeniero qu&#237;mico anclado</h2>
+                    <p class="description">La figura del ingeniero qu&#237;mico (IQ) parado sobre un disco indica que se
+                        coloca ese ingeniero junto con un disco, seg&#250;n el efecto de la carta.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="AM"><img src="./iconos/AM-ingeniero-electromecanico-anclado.svg"
+                    alt="Ingeniero electromec&#225;nico anclado">
+                <div class="glossary-copy">
+                    <h2><span>AM</span> Ingeniero electromec&#225;nico anclado</h2>
+                    <p class="description">La figura del ingeniero electromec&#225;nico (IM) parado sobre un disco
+                        indica que se coloca ese ingeniero junto con un disco, seg&#250;n el efecto de la carta.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="EC"><img src="./iconos/EC-economia.svg" alt="Econom&#237;a">
+                <div class="glossary-copy">
+                    <h2><span>EC</span> Econom&#237;a</h2>
+                    <p class="description">Identifica proyectos de tipo Econom&#237;a. Sus cartas pueden modificar
+                        dinero, recursos u operaciones de mercado; consulta el efecto de cada proyecto para conocer sus
+                        reglas.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="En"><img src="./iconos/En-energia.svg" alt="Energ&#237;a">
+                <div class="glossary-copy">
+                    <h2><span>En</span> Energ&#237;a</h2>
+                    <p class="description">Es un recurso que se asigna a las etapas de proyectos y refiner&#237;as. La
+                        energ&#237;a no asignada se guarda en las bater&#237;as; puedes comprarla en Mercado o durante
+                        Mantenimiento.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="ES"><img src="./iconos/ES-estructura.svg" alt="Estructura">
+                <div class="glossary-copy">
+                    <h2><span>ES</span> Estructura</h2>
+                    <p class="description">Identifica las celdas de Estructura de la esfera. Si al colocar un disco la
+                        capa de estructura est&#225; vac&#237;a, quien lo coloca paga $5 al banco por acarreo.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="FV"><img src="./iconos/FV-fotovoltaico.svg" alt="Fotovoltaico">
+                <div class="glossary-copy">
+                    <h2><span>FV</span> Fotovoltaico</h2>
+                    <p class="description">Identifica celdas fotovoltaicas de la esfera. Las cartas de proyecto indican
+                        en qu&#233; cuadrante puedes colocar discos de este tipo.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="IM"><img src="./iconos/IM-ingeniero-electromecanico.svg"
+                    alt="Ingeniero electromec&#225;nico">
+                <div class="glossary-copy">
+                    <h2><span>IM</span> Ingeniero electromec&#225;nico</h2>
+                    <p class="description">Tipo de ingeniero que puedes contratar en Mercado y asignar a las etapas que
+                        lo requieren. Al activar un proyecto o refiner&#237;a, los ingenieros usados vuelven a las
+                        barracas.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="IS"><img src="./iconos/IS-ingeniero-sistemas.svg"
+                    alt="Ingeniero en sistemas">
+                <div class="glossary-copy">
+                    <h2><span>IS</span> Ingeniero en sistemas</h2>
+                    <p class="description">Tipo de ingeniero que puedes contratar en Mercado y asignar a las etapas que
+                        lo requieren. Al activar un proyecto o refiner&#237;a, los ingenieros usados vuelven a las
+                        barracas.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="IE"><img src="./iconos/IE-ingeniero-estructural.svg"
+                    alt="Ingeniero estructural">
+                <div class="glossary-copy">
+                    <h2><span>IE</span> Ingeniero estructural</h2>
+                    <p class="description">Tipo de ingeniero que puedes contratar en Mercado y asignar a las etapas que
+                        lo requieren. Al activar un proyecto o refiner&#237;a, los ingenieros usados vuelven a las
+                        barracas.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="IQ"><img src="./iconos/IQ-ingeniero-quimico.svg"
+                    alt="Ingeniero qu&#237;mico">
+                <div class="glossary-copy">
+                    <h2><span>IQ</span> Ingeniero qu&#237;mico</h2>
+                    <p class="description">Tipo de ingeniero que puedes contratar en Mercado y asignar a las etapas que
+                        lo requieren. Al activar un proyecto o refiner&#237;a, los ingenieros usados vuelven a las
+                        barracas.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="LE"><img src="./iconos/LE-licencias-excavacion.svg"
+                    alt="Licencias de excavaci&#243;n">
+                <div class="glossary-copy">
+                    <h2><span>LE</span> Licencias de excavaci&#243;n</h2>
+                    <p class="description">Las licencias se usan para activar yacimientos. No puedes extraer recursos de
+                        un yacimiento, aunque sea tuyo, si no tienes todas las LE que aparecen atenuadas en su carta.
+                    </p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="MN"><img src="./iconos/MN-mantenimiento.svg" alt="Mantenimiento">
+                <div class="glossary-copy">
+                    <h2><span>MN</span> Mantenimiento</h2>
+                    <p class="description">Cada cuadrante de soporte admite hasta dos discos de Mantenimiento. Los
+                        discos de soporte cuentan para los bonos de todo el cuadrante al colocar nuevos discos.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="MS"><img src="./iconos/MS-mejora-soporte-externo.svg"
+                    alt="Mejora de soporte externo">
+                <div class="glossary-copy">
+                    <h2><span>MS</span> Mejora de soporte externo</h2>
+                    <p class="description">Una mejora se coloca junto al &#225;rea de Soporte externo y entra en vigor
+                        de inmediato. Si ya hay otra mejora activa all&#237;, se mueve a proyectos completados. Cada
+                        carta indica c&#243;mo modifica el beneficio del soporte.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="ME"><img src="./iconos/ME-mercado.svg" alt="Mercado">
+                <div class="glossary-copy">
+                    <h2><span>ME</span> Mercado</h2>
+                    <p class="description">La carta de Mercado permite programar compras y ventas de recursos y
+                        Transporte, contratar o despedir ingenieros, comprar o vender proyectos y prospectar
+                        yacimientos. Las operaciones se resuelven en el orden indicado por los dados.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="MO"><img src="./iconos/MO-microondas.svg" alt="Microondas">
+                <div class="glossary-copy">
+                    <h2><span>MO</span> Microondas</h2>
+                    <p class="description">Identifica celdas de Microondas de la esfera. Las cartas de proyecto indican
+                        en qu&#233; cuadrante puedes colocar discos de este tipo.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="PR"><img src="./iconos/PR-produccion.svg" alt="Producci&#243;n">
+                <div class="glossary-copy">
+                    <h2><span>PR</span> Producci&#243;n</h2>
+                    <p class="description">Identifica proyectos de tipo Producci&#243;n. Sus requisitos y efectos
+                        est&#225;n indicados en cada carta.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="PE"><img src="./iconos/PE-produccion-energia.svg"
+                    alt="Producci&#243;n de energ&#237;a">
+                <div class="glossary-copy">
+                    <h2><span>PE</span> Producci&#243;n de energ&#237;a</h2>
+                    <p class="description">Indica cu&#225;nta energ&#237;a producen tus generadores. Durante
+                        Mantenimiento recibes esa cantidad de energ&#237;a; los bonos de las cartas aumentan este valor.
+                    </p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="CM"><img src="./iconos/CM-completado.svg"
+                    alt="Proyectos completados">
+                <div class="glossary-copy">
+                    <h2><span>CM</span> Proyectos completados</h2>
+                    <p class="description">Las CP con este destino se agregan a tu mazo de proyectos completados
+                        despu&#233;s de resolver su efecto. No volver&#225;n a usarse hasta el conteo de puntos al final
+                        de la partida.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="PV"><img src="./iconos/PV-punto-victoria.svg"
+                    alt="Puntos de victoria">
+                <div class="glossary-copy">
+                    <h2><span>PV</span> Puntos de victoria</h2>
+                    <p class="description">Miden tu progreso. Se obtienen durante la partida por efectos y por colocar
+                        discos; los proyectos completados y otros elementos tambi&#233;n pueden sumar PV al final.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="RQ"><img src="./iconos/RQ-reactivos.svg" alt="Reactivos">
+                <div class="glossary-copy">
+                    <h2><span>RQ</span> Reactivos qu&#237;micos</h2>
+                    <p class="description">Reactivos que puedes gastar en una refiner&#237;a para obtener la tierra rara
+                        indicada por el yacimiento. Se usa HCl para Gd y Er, y H&#8322;SO&#8324; para Ce y Nd.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="RH"><img src="./iconos/RH-recursos-humanos.svg"
+                    alt="Recursos humanos">
+                <div class="glossary-copy">
+                    <h2><span>RH</span> Recursos humanos</h2>
+                    <p class="description">Estas cartas de proyecto permiten contratar empleados alterando las reglas
+                        usuales del mercado laboral.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="RI"><img src="./iconos/RI-refineria.svg" alt="Refiner&#237;a">
+                <div class="glossary-copy">
+                    <h2><span>RI</span> Refiner&#237;a</h2>
+                    <p class="description">Para activarla, asigna los recursos e ingenieros requeridos durante la fase
+                        de Planificaci&#243;n. Durante la fase de Ejecuci&#243;n, usa un yacimiento con todas sus
+                        licencias. Obtienes sus recursos b&#225;sicos; si gastas el reactivo indicado, tambi&#233;n
+                        obtienes su tierra rara. Luego reduces sus vetas en 1.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="RF"><img src="./iconos/RF-refrigeracion.svg"
+                    alt="Refrigeraci&#243;n">
+                <div class="glossary-copy">
+                    <h2><span>RF</span> Refrigeraci&#243;n</h2>
+                    <p class="description">Identifica celdas de Refrigeraci&#243;n de la esfera. Las cartas de proyecto
+                        indican en qu&#233; cuadrante puedes colocar discos de este tipo.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="RE"><img src="./iconos/RE-repetible.svg" alt="Repetible">
+                <div class="glossary-copy">
+                    <h2><span>RE</span> Repetible</h2>
+                    <p class="description">El destino repetible devuelve el cubo a la etapa indicada y deja la carta en
+                        su espacio de proyecto. Para activar otra vez su efecto «Al completar», vuelve a completar las
+                        etapas pendientes. Si lo prefieres, puedes ignorar este destino y tratar la carta como un
+                        <b>[CM]</b> normal.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="SN"><img src="./iconos/SN-sensores.svg" alt="Sensores">
+                <div class="glossary-copy">
+                    <h2><span>SN</span> Sensores</h2>
+                    <p class="description">Cada cuadrante de soporte admite un disco de Sensores. Los discos de soporte
+                        cuentan para los bonos de todo el cuadrante al colocar nuevos discos.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="SP"><img src="./iconos/SP-soporte-externo.svg"
+                    alt="Soporte externo">
+                <div class="glossary-copy">
+                    <h2><span>SP</span> Soporte externo</h2>
+                    <p class="description">Puedes asignar ingenieros a Soporte externo. Durante Mantenimiento, cada uno
+                        te da $1 y luego vuelve a las barracas. Una mejora activa puede cambiar el beneficio.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="RR"><img src="./iconos/RR-tierra-rara.svg" alt="Tierra rara">
+                <div class="glossary-copy">
+                    <h2><span>RR</span> Tierra rara</h2>
+                    <p class="description">Son elementos qu&#237;micos estrat&#233;gicos para proyectos de
+                        tecnolog&#237;a de punta. Requieren reactivos especiales y procesos m&#225;s complejos que los
+                        minerales comunes. El yacimiento indica qu&#233; tierra rara puedes obtener; para extraerla,
+                        activa una refiner&#237;a con el reactivo requerido: Nd y Ce usan H&#8322;SO&#8324;; Gd y Er
+                        usan HCl.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="TJ"><img src="./iconos/TJ-todos-los-jugadores.svg"
+                    alt="Todos los jugadores">
+                <div class="glossary-copy">
+                    <h2><span>TJ</span> Todos los jugadores</h2>
+                    <p class="description">El efecto se aplica a todos los jugadores, no solo a quien complet&#243; la
+                        carta. Sigue las cantidades y condiciones indicadas en el efecto.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="TS"><img src="./iconos/TS-transmision.svg" alt="Transmisi&#243;n">
+                <div class="glossary-copy">
+                    <h2><span>TS</span> Transmisi&#243;n</h2>
+                    <p class="description">Identifica celdas de Transmisi&#243;n de la esfera. Las cartas de proyecto
+                        indican en qu&#233; cuadrante puedes colocar discos de este tipo.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="Tr"><img src="./iconos/Tr-transporte.svg" alt="Transporte">
+                <div class="glossary-copy">
+                    <h2><span>Tr</span> Transporte</h2>
+                    <p class="description">Es un recurso que se compra y vende en Mercado y que requieren los proyectos
+                        que colocan discos en la esfera, porque hay que transportarlos hasta all&#237;. Su valor
+                        b&#225;sico es $7, pero puede variar.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="MA"><img src="./iconos/MA-mano.svg" alt="Volver a la mano">
+                <div class="glossary-copy">
+                    <h2><span>MA</span> Volver a la mano</h2>
+                    <p class="description">Las CP con destino <b>[MA]</b> regresan a tu mano tras resolver su efecto. No
+                        dar&#225;n puntos al final de la partida, pero podr&#225;s construirlas de nuevo. Como
+                        alternativa, agr&#233;galas a proyectos completados como si tuvieran destino <b>[CM]</b>.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="YA"><img src="./iconos/YA-yacimientos.svg" alt="Yacimientos">
+                <div class="glossary-copy">
+                    <h2><span>YA</span> Yacimientos</h2>
+                    <p class="description">Las cartas de yacimiento muestran los recursos, las vetas y las licencias
+                        necesarias para extraerlos. Asigna todas las licencias indicadas y activa una refiner&#237;a;
+                        cada activaci&#243;n reduce sus vetas en 1. Al llegar a 0, el yacimiento se agota y se descarta;
+                        recuperas obligatoriamente las LE asignadas.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="AE"><img src="./iconos/AE-ingeniero-estructural-anclado.svg"
+                    alt="Ingeniero estructural anclado">
+                <div class="glossary-copy">
+                    <h2><span>AE</span> Ingeniero estructural anclado</h2>
+                    <p class="description">La figura del ingeniero parado sobre un disco indica que se coloca ese
+                        ingeniero junto con un disco, según el efecto de la carta.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="AS"><img src="./iconos/AS-ingeniero-sistemas-anclado.svg"
+                    alt="Ingeniero en sistemas anclado">
+                <div class="glossary-copy">
+                    <h2><span>AS</span> Ingeniero en sistemas anclado</h2>
+                    <p class="description">La figura del ingeniero parado sobre un disco indica que se coloca ese
+                        ingeniero junto con un disco, según el efecto de la carta.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="EV"><img src="./iconos/EV-evento.svg"
+                    alt="Evento: planeta Tierra">
+                <div class="glossary-copy">
+                    <h2><span>EV</span> Evento</h2>
+                    <p class="description">Identifica el efecto de una carta de evento, que se resuelve durante
+                        Mantenimiento. Si la carta tiene un ajuste de mercado, se aplica antes del evento. Algunas
+                        cartas solo tienen efecto de evento.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="AI"><img src="./iconos/AI-ingeniero-anclado.svg"
+                    alt="Ingeniero anclado">
+                <div class="glossary-copy">
+                    <h2><span>AI</span> Ingeniero anclado</h2>
+                    <p class="description">Indica un ingeniero que permanece junto a un disco en la esfera. Al final
+                        de la partida genera la penalización por personal anclado. Al retirar su disco, aplica la
+                        regla del manual o la excepción indicada por la carta.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="FJ"><img src="./iconos/FJ-fin-juego.svg"
+                    alt="Fin de juego">
+                <div class="glossary-copy">
+                    <h2><span>FJ</span> Fin de juego</h2>
+                    <p class="description">El efecto se calcula durante la puntuación final, según las condiciones
+                        de la carta. Puede otorgar o restar PV; no se resuelve al completar el proyecto.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="NC"><img src="./iconos/NC-nivelcobertura.svg"
+                    alt="Nivel de cobertura">
+                <div class="glossary-copy">
+                    <h2><span>NC</span> Nivel de cobertura</h2>
+                    <p class="description">Es el nivel alcanzado por una capa según sus celdas ocupadas con discos
+                        de cualquier jugador. Se consulta en la tabla del mapa y se actualiza al colocar o retirar
+                        discos. Los discos de soporte no cuentan.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="NO"><img src="./iconos/NO-sin-disco.svg"
+                    alt="Celda sin disco">
+                <div class="glossary-copy">
+                    <h2><span>NO</span> Celda sin disco</h2>
+                    <p class="description">Se refiere a una celda de la esfera que no contiene ningún disco.
+                        Consulta la carta para saber qué capa, sector o cuadrante debe cumplir esa condición.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="PI"><img src="./iconos/PI-puntos-inmediatos.svg"
+                    alt="Puntos inmediatos">
+                <div class="glossary-copy">
+                    <h2><span>PI</span> Puntos inmediatos</h2>
+                    <p class="description">Son puntos de victoria que se ganan o pierden al resolver el efecto.
+                        Actualiza inmediatamente tu posición en el recorrido de puntuación.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="QD"><img src="./iconos/QD-quitar-disco.svg"
+                    alt="Quitar disco">
+                <div class="glossary-copy">
+                    <h2><span>QD</span> Quitar disco</h2>
+                    <p class="description">Retira un disco que cumpla los requisitos del efecto. Aplica las reglas
+                        de retirada, cobertura e ingenieros anclados del manual, salvo las excepciones expresas
+                        de la carta.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="SO"><img src="./iconos/SO-sol.svg" alt="Sol">
+                <div class="glossary-copy">
+                    <h2><span>SO</span> Sol</h2>
+                    <p class="description">Representa la estrella situada en el centro de la esfera de Dyson.
+                        Sirve como referencia visual del mapa.</p>
+                </div>
+            </article>
+            <article class="glossary-item" data-code="/"><img src="./iconos/separador-barra.svg" alt="Por">
+                <div class="glossary-copy">
+                    <h2><span>/</span> Por</h2>
+                    <p class="description">Relaciona una cantidad con aquello por lo que se obtiene o calcula.
+                        Por ejemplo, 3 PI / disco significa 3 puntos inmediatos por cada disco que cumpla la
+                        condición indicada.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
