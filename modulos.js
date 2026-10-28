@@ -8,6 +8,52 @@
 window.modulos = [
   // Proyectos iniciales: circulan obligatoriamente hacia la derecha.
   {
+    "id": "P064",
+    "nombre": "Control autónomo por IA",
+    "tipo": "control_sensores",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 0,
+    "bono": "1 [DP]",
+    "disco_soporte": 1,
+    "efecto": "Coloca 1 disco en una celda libre de [CO] Control o [SN] Sensores de un área de soporte.",
+    "etapas": [
+      {
+        "m": {
+          "Nd": 1,
+          "Fe": 3,
+          "Al": 4,
+          "Cu": 3,
+          "Si": 3
+        },
+        "o": {
+          "IS": 1,
+          "IE": 1,
+          "En": 3
+        }
+      },
+      {
+        "m": {
+          "Al": 4,
+          "Cu": 3,
+          "Er": 1,
+          "Si": 3,
+          "Ti": 2,
+        },
+        "o": {
+          "En": 5,
+          "Tr": 3
+        }
+      }
+    ],
+    "destino": "derecha"
+  },,
+  {
     "id": "P081",
     "nombre": "Drones de inspección autónoma",
     "tipo": "mantenimiento",
@@ -349,49 +395,7 @@ window.modulos = [
 
 
 
-  {
-    "id": "I12",
-    "nombre": "Instrumentación y mando",
-    "tipo": "sensores",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 0,
-    "bono": "2 [DP]",
-    "disco_soporte": 2,
-    "efecto": "Coloca 1 disco en una celda libre de [SN] Sensores y 1 disco en una celda libre de [CO] Control. Entrega esta carta al jugador de tu derecha.",
-    "etapas": [
-      {
-        "m": {
-          "Ti": 2,
-          "Cu": 2,
-          "Si": 3
-        },
-        "o": {
-          "IS": 1,
-          "En": 2,
-          "Tr": 1
-        }
-      },
-      {
-        "m": {
-          "Ti": 2,
-          "Cu": 2,
-          "Si": 3
-        },
-        "o": {
-          "IS": 1,
-          "En": 2,
-          "Tr": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
+
 
   // Economía
   {
@@ -2688,55 +2692,7 @@ window.modulos = [
   },
 
   // Control
-  {
-    "id": "P064",
-    "nombre": "Control autónomo por IA",
-    "tipo": "control",
-    "puntos": "+1 [PV] [/] [NC]",
-    "puntos_carta": 0,
-    "puntos_capas": 20,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 4,
-    "discos": 0,
-    "bono": "1 [DP]",
-    "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte.\n[FJ] Gana 2 [PV] por cada [NC] nivel de todas las capas [ES] [FV] [TS] [RF] [MO].",
-    "etapas": [
-      {
-        "m": {
-          "Nd": 1,
-          "Fe": 3,
-          "Gd": 1,
-          "Al": 4,
-          "Cu": 3,
-          "Si": 3
-        },
-        "o": {
-          "IS": 3,
-          "IE": 1,
-          "IQ": 1,
-          "En": 5
-        }
-      },
-      {
-        "m": {
-          "Al": 4,
-          "Cu": 3,
-          "Er": 1,
-          "Si": 3,
-          "Ti": 2,
-          "Nd": 1
-        },
-        "o": {
-          "IS": 2,
-          "En": 5,
-          "Tr": 3
-        }
-      }
-    ],
-    "destino": "completados"
-  },
+
   {
     "id": "P065",
     "nombre": "Centro de supervisión orbital",
