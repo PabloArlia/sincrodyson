@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS games (
+    code CHAR(8) CHARACTER SET ascii COLLATE ascii_bin NOT NULL PRIMARY KEY,
+    state MEDIUMTEXT NOT NULL,
+    version BIGINT UNSIGNED NOT NULL,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS commands (
+    game_code CHAR(8) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    actor_hash CHAR(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    request_id VARCHAR(80) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    payload_hash CHAR(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    PRIMARY KEY (game_code, actor_hash, request_id),
+    CONSTRAINT commands_game FOREIGN KEY (game_code) REFERENCES games(code) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS entry_requests (
+    request_id VARCHAR(80) CHARACTER SET ascii COLLATE ascii_bin NOT NULL PRIMARY KEY,
+    payload_hash CHAR(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    game_code CHAR(8) CHARACTER SET ascii COLLATE ascii_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

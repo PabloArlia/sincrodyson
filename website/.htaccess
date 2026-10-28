@@ -1,0 +1,46 @@
+# Apache 2.4 / compatible LiteSpeed. Upload this hidden file with the app.
+# mod_rewrite and AllowOverride must be enabled; do not wrap protection in IfModule.
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+ServerSignature Off
+LimitRequestBody 32768
+
+# Protect secrets, source, installation files and accidental backups.
+<FilesMatch "(?i)(^\.|^config\.php$|^error_log$|\.(?:env|ini|sql|log|md|bak|old|orig|save|swp|zip|tar|gz|sqlite|db)(?:\..*)?$|~$)">
+    Require all denied
+</FilesMatch>
+
+RewriteEngine On
+RewriteRule ^(?:src|database|bin)(?:/|$) - [F,END,NC]
+
+# Reject unexpected application methods and malformed Host values before redirecting.
+# Apache handles TRACE before .htaccess; the provider can disable it with TraceEnable Off.
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD|POST)$
+RewriteRule ^ - [F,END]
+RewriteCond %{HTTP_HOST} !^[A-Za-z0-9.-]+(?::[0-9]{1,5})?$
+RewriteRule ^ - [F,END]
+
+# Preserve bearer authentication under Apache/FastCGI.
+RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule ^ - [E=HTTP_AUTHORIZATION:%1]
+
+# A 308 keeps the method and body if a client submits an HTTP request.
+# Do not trust an arbitrary X-Forwarded-Proto header from the internet.
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=308,END,NE]
+
+# Only these entry points and static asset types are public.
+RewriteRule ^(?:index\.php|api\.php)?$ - [END]
+RewriteRule ^assets/.+\.(?:css|js|svg|png|jpe?g|webp|ico|woff2?|ttf)$ - [END,NC]
+RewriteRule ^ - [F,END]
+
+<IfModule mod_headers.c>
+    Header always unset X-Powered-By
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "no-referrer"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    # Applies to this hostname; deliberately does not include other subdomains.
+    Header always set Strict-Transport-Security "max-age=86400" "expr=%{HTTPS} == 'on'"
+</IfModule>

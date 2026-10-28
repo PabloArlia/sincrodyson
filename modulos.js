@@ -27,27 +27,22 @@ window.modulos = [
         "m": {
           "Nd": 1,
           "Fe": 3,
-          "Al": 4,
-          "Cu": 3,
-          "Si": 3
+          "Si": 2
         },
         "o": {
           "IS": 1,
-          "IE": 1,
-          "En": 3
+          "En": 2
         }
       },
       {
         "m": {
-          "Al": 4,
-          "Cu": 3,
-          "Er": 1,
-          "Si": 3,
-          "Ti": 2
+          "Al": 2,
+          "Cu": 1
         },
         "o": {
-          "En": 3,
-          "Tr": 3
+          "IS": 1,
+          "En": 1,
+          "Tr": 2
         }
       }
     ],
@@ -82,8 +77,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 3,
-          "Ti": 2,
+          "Cu": 2,
+          "Ti": 1,
           "C": 2
         },
         "o": {
@@ -113,7 +108,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 2,
+          "Fe": 1,
+          "Cu": 3,
           "Si": 1
         },
         "o": {
@@ -144,8 +140,9 @@ window.modulos = [
       {
         "m": {
           "Al": 4,
+          "Ti": 2,
           "C": 3,
-          "Si": 2
+          "Si": 3
         },
         "o": {
           "IM": 1,
@@ -174,8 +171,9 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 3,
+          "Al": 5,
           "Cu": 2,
+          "Ti": 1,
           "Si": 4
         },
         "o": {
@@ -204,8 +202,8 @@ window.modulos = [
     "efecto": "Coloca 1 disco en una celda libre de [MO] Microondas.\nDebes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
-        "m": {"Fe": 10, "C": 4, "Ti": 2, "Cu": 2},
-        "o": {"IE": 2, "En": 2, "Tr": 1}
+        "m": {"Fe": 3, "C": 2, "Ti": 1},
+        "o": {"IE": 1, "En": 2, "Tr": 1}
       }
     ],
     "destino": "derecha"
@@ -228,7 +226,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 3,
+          "Al": 4,
           "Cu": 1
         },
         "o": {
@@ -257,8 +255,10 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 3,
-          "Al": 4
+          "Cu": 6,
+          "Al": 3,
+          "Fe": 4,
+          "Si": 2
         },
         "o": {
           "IM": 2,
@@ -287,14 +287,13 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 3,
-          "Al": 4,
-          "Si": 3
+          "Cu": 2,
+          "Al": 1,
+          "Si": 2
         },
         "o": {
-          "IE": 1,
           "IM": 1,
-          "En": 2,
+          "En": 1,
           "Tr": 1
         }
       }
@@ -318,8 +317,8 @@ window.modulos = [
     "efecto": "Coloca 2 discos en celdas libres de [FV] fotovoltaico, en secciones distintas.\nDebes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
-        "m": {"Nd": 1, "Fe": 5, "Cu": 4},
-        "o": {"IQ": 1, "IM": 1, "En": 2, "Tr": 1}
+        "m": {"Nd": 1, "Fe": 4, "Cu": 4},
+        "o": {"IQ": 1, "IM": 1, "En": 2, "Tr": 2}
       }
     ],
     "destino": "derecha"
@@ -342,7 +341,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Ti": 9
+          "Ti": 4
         },
         "o": {
           "IE": 2,
@@ -371,13 +370,13 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 14,
-          "C": 6,
-          "Ti": 1
+          "Fe": 7,
+          "Al": 1,
+          "C": 3
         },
         "o": {
-          "IE": 2,
-          "En": 2,
+          "IE": 1,
+          "En": 1,
           "Tr": 1
         }
       }
@@ -732,13 +731,13 @@ window.modulos = [
     "puntos": "0 [PV]",
     "puntos_carta": 0,
     "puntos_capas": 0,
-    "puntos_ingenieros": 0,
+    "puntos_ingenieros": 9,
     "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
     "bono": "",
     "disco_soporte": 0,
-    "efecto": "Cada jugador (incluso tu) puede pagarte $5 para mover un [AI] ingeniero anclado de cualquier celda a esta carta\nMáximo uno por jugador por ronda.\nSi hay 4 o más ingenieros en esta carta, [QD] retira 1 disco propio de una celda de [ES] Estructura o [FV] Fotovoltaico y devuelve 4 ingenieros de esta carta a la reserva.\nNo puedes mover los ingeneiros de esta carta.",
+    "efecto": "Cada jugador (incluso tu) puede pagarte $7 para mover un [AI] ingeniero anclado de cualquier celda a esta carta\nMáximo uno por jugador por ronda.\nSi hay 4 o más ingenieros en esta carta, [QD] retira 1 disco propio de una celda de [ES] Estructura o [FV] Fotovoltaico y devuelve 4 ingenieros de esta carta a la reserva.\nNo puedes mover los ingeneiros de esta carta.",
     "etapas": [
       {
         "m": {

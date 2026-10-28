@@ -31,7 +31,7 @@
         }
 
         .toolbar {
-            width: min(100%, 420mm);
+            width: min(100%, 594mm);
             margin: 0 auto 14px;
             display: flex;
             align-items: center;
@@ -61,21 +61,22 @@
 
         .poster {
             position: relative;
-            width: 637.5mm;
+            width: 594mm;
             height: 420mm;
             margin: 0 auto;
             background: white;
             border: 1.2mm solid var(--ink);
             border-radius: 3mm;
-            padding: 25mm;
+            padding: 21mm;
             box-shadow: 0 3px 14px #0002
         }
 
         .board-content {
             height: 100%;
             display: grid;
-            grid-template-columns: 350mm 1fr;
-            gap: 10mm
+            grid-template-columns: 400mm 1fr;
+            grid-template-rows: minmax(0, 1fr);
+            gap: 8mm
         }
 
         .board-left {
@@ -120,7 +121,7 @@
             min-width: 0;
             display: flex;
             flex-direction: column;
-            gap: 6mm;
+            gap: 4mm;
             padding: 2mm 0
         }
 
@@ -152,7 +153,7 @@
 
         .glossary-items {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 3mm
         }
 
@@ -165,8 +166,8 @@
         }
 
         .glossary-item img {
-            width: 8mm;
-            height: 8mm;
+            width: 6mm;
+            height: 6mm;
             object-fit: contain;
             flex: none
         }
@@ -175,13 +176,13 @@
             width: 100%;
             border-collapse: collapse;
             background: white;
-            font-size: 11pt;
+            font-size: 10pt;
             line-height: 1.25
         }
 
         .reference th,
         .reference td {
-            padding: 2.5mm;
+            padding: 2mm;
             border: .3mm solid var(--line);
             text-align: left;
             vertical-align: top
@@ -225,7 +226,7 @@
 
         .endgame-reference {
             display: grid;
-            grid-template-columns: minmax(0, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 5mm
         }
 
@@ -272,8 +273,8 @@
 
         .sphere-panel {
             position: absolute;
-            width: 350mm;
-            height: 350mm;
+            width: 290mm;
+            height: 290mm;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
@@ -335,9 +336,9 @@
 
         .zone {
             position: absolute;
-            width: 70mm;
+            width: 94mm;
             height: auto;
-            padding: 2.5mm;
+            padding: 2mm;
             border: 1mm solid #000;
             border-radius: 3.5mm;
             background: white;
@@ -381,7 +382,7 @@
             flex: none;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: repeat(2, 13mm);
+            grid-template-rows: repeat(2, 10mm);
             gap: .7mm
         }
 
@@ -406,9 +407,36 @@
             object-fit: contain
         }
 
+        /* Medidas físicas a escala 1:1: Mini USA de 41 × 63 mm más holgura. */
+        .objective-slots {
+            display: grid;
+            grid-template-columns: repeat(2, 42mm);
+            gap: 2mm;
+            justify-content: center;
+            margin-top: 1mm;
+        }
+
+        .objective-slot {
+            width: 42mm;
+            height: 64mm;
+            border: .3mm dashed var(--line);
+            border-radius: 2mm;
+            display: grid;
+            place-content: center;
+            text-align: center;
+            color: #66716a;
+            font-size: 8pt;
+            line-height: 1.5;
+        }
+
+        .planet-table td { text-align: center; }
+        .endgame-reference table { font-size: 9pt; }
+        .endgame-reference th, .endgame-reference td { padding: 1.5mm; }
+        .endgame-reference h2 { font-size: 11pt; }
+
         .print-page {
-            width: 420mm;
-            height: 297mm;
+            width: 594mm;
+            height: 420mm;
             margin: 0 auto;
             display: grid;
             place-items: center;
@@ -416,12 +444,12 @@
         }
 
         .poster {
-            zoom: 0.6588235294;
+            zoom: 1;
             margin: 0
         }
 
         @page {
-            size: A3 landscape;
+            size: A2 landscape;
             margin: 0
         }
 
@@ -462,7 +490,7 @@
 
 <body>
     <header class="toolbar">
-        <h1>ESFERA DE DYSON · TABLERO DE JUEGO</h1><button onclick="window.print()">Imprimir / guardar PDF</button>
+        <h1>ESFERA DE DYSON · A2 · 594 × 420 mm · Imprimir al 100 %</h1><button onclick="window.print()">Imprimir / guardar PDF</button>
     </header>
     <div class="print-page">
         <main class="poster">
@@ -483,6 +511,10 @@
                                 <div class="support-slot"><img class="support-icon" src="./iconos/MN-mantenimiento.svg"
                                         alt=""></div>
                             </div>
+                            <div class="objective-slots" aria-label="Dos cartas de objetivos Mini USA">
+                                <div class="objective-slot">Objetivo 1<br>Mini USA · 41 × 63 mm</div>
+                                <div class="objective-slot">Objetivo 2<br>Mini USA · 41 × 63 mm</div>
+                            </div>
                         </article>
                         <article class="zone zone-b">
                             <h2>Cuadrante Beta - soporte</h2>
@@ -495,6 +527,10 @@
                                         alt=""></div>
                                 <div class="support-slot"><img class="support-icon" src="./iconos/MN-mantenimiento.svg"
                                         alt=""></div>
+                            </div>
+                            <div class="objective-slots" aria-label="Dos cartas de objetivos Mini USA">
+                                <div class="objective-slot">Objetivo 1<br>Mini USA · 41 × 63 mm</div>
+                                <div class="objective-slot">Objetivo 2<br>Mini USA · 41 × 63 mm</div>
                             </div>
                         </article>
                         <div class="sphere-panel"><svg class="sphere" id="sphere" viewBox="-62 -62 1124 1124" role="img"
@@ -511,6 +547,10 @@
                                 <div class="support-slot"><img class="support-icon" src="./iconos/MN-mantenimiento.svg"
                                         alt=""></div>
                             </div>
+                            <div class="objective-slots" aria-label="Dos cartas de objetivos Mini USA">
+                                <div class="objective-slot">Objetivo 1<br>Mini USA · 41 × 63 mm</div>
+                                <div class="objective-slot">Objetivo 2<br>Mini USA · 41 × 63 mm</div>
+                            </div>
                         </article>
                         <article class="zone zone-d">
                             <h2>Cuadrante Delta - soporte</h2>
@@ -523,6 +563,10 @@
                                         alt=""></div>
                                 <div class="support-slot"><img class="support-icon" src="./iconos/MN-mantenimiento.svg"
                                         alt=""></div>
+                            </div>
+                            <div class="objective-slots" aria-label="Dos cartas de objetivos Mini USA">
+                                <div class="objective-slot">Objetivo 1<br>Mini USA · 41 × 63 mm</div>
+                                <div class="objective-slot">Objetivo 2<br>Mini USA · 41 × 63 mm</div>
                             </div>
                         </article>
                     </section>
@@ -632,6 +676,22 @@
                                 </tbody>
                             </table>
                             <p>Cada jugador pierde PV por los ingenieros anclados junto a sus discos.</p>
+                        </section>
+                        <section>
+                            <h2>Símbolos planetarios</h2>
+                            <table class="planet-table" aria-label="Puntuación triangular por planeta">
+                                <thead><tr><th>Símbolos del mismo planeta</th><th>PV totales</th></tr></thead>
+                                <tbody>
+                                    <tr><td>0</td><td>0</td></tr>
+                                    <tr><td>1</td><td>1</td></tr>
+                                    <tr><td>2</td><td>3</td></tr>
+                                    <tr><td>3</td><td>6</td></tr>
+                                    <tr><td>4</td><td>10</td></tr>
+                                    <tr><td>5</td><td>15</td></tr>
+                                    <tr><td>6</td><td>21</td></tr>
+                                </tbody>
+                            </table>
+                            <p>PV = n × (n + 1) ÷ 2. Cuenta cada planeta por separado y suma sus PV. Incluye la carta inicial.</p>
                         </section>
                     </div>
                     <section class="glossary">

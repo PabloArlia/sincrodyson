@@ -1,5 +1,5 @@
 // Supuestos de balance; no modifican las reglas ni los puntos impresos.
-const supuestosBalance={puntosDisco:3,puntosSoporte:9,costoIngenieroAnclado:4,costoIngeniero:4,costoEnergia:2,costoTransporte:7,factorEtapa:1.7};
+const supuestosBalance={puntosDisco:3,puntosSoporte:9,costoIngenieroAnclado:4,costoIngeniero:4,costoEnergia:2,costoTransporte:7,factorEtapa:1.5};
 const codigosIngenieros=['II','IQ','IE','IM','IS','AE','AM','AQ','AS','AI','EE','EM','EQ','SX','EI'];
 function costoOperativo(id){
  if(id==='En')return supuestosBalance.costoEnergia;
@@ -41,7 +41,8 @@ function diagnosticoBalance(m,b){
   `Etapas: ${b.etapas}; factor: 1,7 ^ ${b.etapas} = ${numero(b.factor)}`,
   `Costo multiplicado por etapas: $${numero(b.costoAjustado)}`,
   '',
-  `Puntos de carta (fijos): ${numero(b.carta)}`,  `Puntos por ingenieros: ${numero(b.ingenieros)} (−${supuestosBalance.costoIngenieroAnclado} por anclado)`,
+  `Puntos de carta (fijos): ${numero(b.carta)}`,
+  `Puntos por ingenieros: ${numero(b.ingenieros)} (−${supuestosBalance.costoIngenieroAnclado} por anclado)`,
   `Otros puntos estimados: ${numero(b.otros)}`,
   `Puntos por discos de sector: ${numero(b.discos)} (${m.discos||0} × ${supuestosBalance.puntosDisco})`,
   `Puntos por discos de soporte: ${numero(b.soporte)} (${m.disco_soporte||0} × ${supuestosBalance.puntosSoporte})`,
