@@ -158,6 +158,7 @@ const catalogoIconos={
  PR:{nombre:"produccion",archivo:"PR-produccion.svg"}
 };
 function imagenIcono(id){
+ if(id==='DR')return '<span aria-hidden="true" style="font-size:17pt;line-height:1">⇥</span>';
  if(!Object.hasOwn(catalogoIconos,id))return '';
  const variante=['IQ','IE','IM','IS','AI','AQ','AM','AE','AS'].includes(id)&&!document.getElementById('colors').checked?'#sin-color':'';
  return `<img${id==='/'?' class="separator-bar"':''} src="./iconos/${catalogoIconos[id].archivo}${variante}" alt="" aria-hidden="true">`;
