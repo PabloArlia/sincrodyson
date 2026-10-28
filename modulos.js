@@ -8,6 +8,61 @@
 window.modulos = [
   // Proyectos iniciales: circulan obligatoriamente hacia la derecha.
   {
+    "id": "P013",
+    "nombre": "Paneles fotovoltaicos de película delgada",
+    "tipo": "fotovoltaico",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca un disco en 1 celda de [FV] Fotovoltaica de un cuadrante.",
+    "etapas": [
+      {
+        "m": {
+          "Cu": 3,
+          "Al": 4,
+          "Si": 3
+        },
+        "o": {
+          "IE": 1,
+          "IM": 1,
+          "En": 2,
+          "Tr": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },,
+  {
+    "id": "I04",
+    "nombre": "Celdas solares",
+    "tipo": "fotovoltaico",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 2 discos en celdas libres de [FV] fotovoltaico, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {"Nd": 1, "Fe": 5, "Cu": 4},
+        "o": {"IQ": 1, "IM": 1, "En": 2, "Tr": 1}
+      }
+    ],
+    "destino": "derecha"
+  },,
+  {
     "id": "P008",
     "nombre": "Estructura de titanio",
     "tipo": "estructura",
@@ -69,82 +124,8 @@ window.modulos = [
   },,
 
 
-  {
-    "id": "I03",
-    "nombre": "Paneles de captación",
-    "tipo": "fotovoltaico",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 2,
-    "bono": "2 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres de [FV] fotovoltaico, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
-    "etapas": [
-      {
-        "m": {
-          "Si": 3
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      },
-      {
-        "m": {
-          "Si": 4
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
-  {
-    "id": "I04",
-    "nombre": "Celdas solares",
-    "tipo": "fotovoltaico",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 2,
-    "bono": "2 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres de [FV] fotovoltaico, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
-    "etapas": [
-      {
-        "m": {
-          "Cu": 2,
-          "Fe": 1
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      },
-      {
-        "m": {
-          "Cu": 2,
-          "Fe": 1
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
+
+
   {
     "id": "I05",
     "nombre": "Emisores de microondas",
@@ -1812,37 +1793,7 @@ window.modulos = [
   },
 
   // Fotovoltaica
-  {
-    "id": "P013",
-    "nombre": "Paneles fotovoltaicos de película delgada",
-    "tipo": "fotovoltaico",
-    "puntos": "5 [PV]",
-    "puntos_carta": 5,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 4,
-    "discos": 1,
-    "bono": "1 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca un disco en 1 celda de [FV] Fotovoltaica de un cuadrante.",
-    "etapas": [
-      {
-        "m": {
-          "Cu": 3,
-          "Al": 4,
-          "Si": 3
-        },
-        "o": {
-          "IE": 1,
-          "IM": 1,
-          "En": 2,
-          "Tr": 1
-        }
-      }
-    ],
-    "destino": "completados"
-  },
+
   {
     "id": "P014",
     "nombre": "Paneles de silicio monocristalino",
