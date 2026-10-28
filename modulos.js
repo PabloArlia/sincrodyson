@@ -6,6 +6,464 @@
 // Los puntos por discos de sector y soporte se agregan aparte en balance.js.
 // Tipos sin puntos impresos primero; IDs y orden interno de cada tipo conservados.
 window.modulos = [
+  // Proyectos iniciales: circulan obligatoriamente hacia la derecha.
+  {
+    "id": "I01",
+    "nombre": "Armazón modular",
+    "tipo": "estructura",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 2 discos en celdas libres de [ES] estructura, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Fe": 7
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Fe": 7
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "I02",
+    "nombre": "Vigas de unión",
+    "tipo": "estructura",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 2 discos en celdas libres de [ES] estructura, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Al": 2
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Al": 3
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "I03",
+    "nombre": "Paneles de captación",
+    "tipo": "fotovoltaico",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 2 discos en celdas libres de [FV] fotovoltaico, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Si": 3
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Si": 4
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "I04",
+    "nombre": "Celdas solares",
+    "tipo": "fotovoltaico",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 2 discos en celdas libres de [FV] fotovoltaico, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Cu": 2
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Cu": 3
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "I05",
+    "nombre": "Emisores de microondas",
+    "tipo": "microondas",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 2 discos en celdas libres de [MO] microondas, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Cu": 2
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Cu": 3
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "I06",
+    "nombre": "Red de antenas",
+    "tipo": "microondas",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 2 discos en celdas libres de [MO] microondas, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Si": 3
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Si": 4
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "I07",
+    "nombre": "Circuitos térmicos",
+    "tipo": "refrigeracion",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 2 discos en celdas libres de [RF] refrigeracion, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Al": 2
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Al": 3
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "I08",
+    "nombre": "Radiadores orbitales",
+    "tipo": "refrigeracion",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 2 discos en celdas libres de [RF] refrigeracion, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Fe": 7
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Fe": 7
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "I09",
+    "nombre": "Red de transmisión",
+    "tipo": "transmision",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 2 discos en celdas libres de [TS] transmision, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Cu": 2
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Cu": 3
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "I10",
+    "nombre": "Conductores orbitales",
+    "tipo": "transmision",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 2 discos en celdas libres de [TS] transmision, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Si": 3
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Si": 4
+        },
+        "o": {
+          "IE": 1,
+          "En": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "I11",
+    "nombre": "Talleres de mantenimiento",
+    "tipo": "mantenimiento",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 0,
+    "bono": "2 [DP]",
+    "disco_soporte": 2,
+    "efecto": "Coloca 2 discos en celdas libres de [MN] Mantenimiento. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Ti": 2,
+          "Cu": 2,
+          "Si": 3
+        },
+        "o": {
+          "IE": 1,
+          "En": 2,
+          "Tr": 1
+        }
+      },
+      {
+        "m": {
+          "Ti": 2,
+          "Cu": 2,
+          "Si": 3
+        },
+        "o": {
+          "IE": 1,
+          "En": 2,
+          "Tr": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "I12",
+    "nombre": "Instrumentación y mando",
+    "tipo": "sensores",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 0,
+    "bono": "2 [DP]",
+    "disco_soporte": 2,
+    "efecto": "Coloca 1 disco en una celda libre de [SN] Sensores y 1 disco en una celda libre de [CO] Control. Entrega esta carta al jugador de tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Ti": 2,
+          "Cu": 2,
+          "Si": 3
+        },
+        "o": {
+          "IS": 1,
+          "En": 2,
+          "Tr": 1
+        }
+      },
+      {
+        "m": {
+          "Ti": 2,
+          "Cu": 2,
+          "Si": 3
+        },
+        "o": {
+          "IS": 1,
+          "En": 2,
+          "Tr": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+
   // Economía
   {
     "id": "P006",
