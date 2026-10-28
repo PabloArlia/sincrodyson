@@ -8,8 +8,8 @@
 window.modulos = [
   // Proyectos iniciales: circulan obligatoriamente hacia la derecha.
   {
-    "id": "I01",
-    "nombre": "Armazón modular",
+    "id": "P008",
+    "nombre": "Estructura de titanio",
     "tipo": "estructura",
     "inicial": true,
     "puntos": "0 [PV]",
@@ -21,32 +21,24 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS]",
     "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres de [ES] estructura, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas distintas de [ES] Estructura de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
-          "Fe": 7
+          "Ti": 9
         },
         "o": {
-          "IE": 1,
-          "En": 1
-        }
-      },
-      {
-        "m": {
-          "Fe": 7
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
+          "IE": 2,
+          "En": 2,
+          "Tr": 2
         }
       }
     ],
     "destino": "derecha"
-  },
+  },,
   {
-    "id": "I02",
-    "nombre": "Vigas de unión",
+    "id": "P009",
+    "nombre": "Estructura de acero reforzado",
     "tipo": "estructura",
     "inicial": true,
     "puntos": "0 [PV]",
@@ -55,34 +47,28 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 2,
-    "bono": "2 [DS]",
+    "discos": 1,
+    "bono": "1 [DS]",
     "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres de [ES] estructura, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
+    "efecto": "Coloca un disco en 1 celda de [ES] Estructura de un cuadrante.",
     "etapas": [
       {
         "m": {
-          "Al": 2,
-          "Fe": 1
+          "Fe": 14,
+          "C": 6,
+          "Ti": 1
         },
         "o": {
-          "IE": 1,
-          "En": 1
-        }
-      },
-      {
-        "m": {
-          "Al": 2,
-          "Fe": 1
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
+          "IE": 2,
+          "En": 2,
+          "Tr": 1
         }
       }
     ],
     "destino": "derecha"
-  },
+  },,
+
+
   {
     "id": "I03",
     "nombre": "Paneles de captación",
@@ -1691,64 +1677,8 @@ window.modulos = [
     ],
     "destino": "completados"
   },
-  {
-    "id": "P008",
-    "nombre": "Estructura de titanio",
-    "tipo": "estructura",
-    "puntos": "9 [PV]",
-    "puntos_carta": 9,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 3,
-    "discos": 2,
-    "bono": "2 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas distintas de [ES] Estructura de un mismo cuadrante.",
-    "etapas": [
-      {
-        "m": {
-          "Ti": 9
-        },
-        "o": {
-          "IE": 2,
-          "En": 2,
-          "Tr": 2
-        }
-      }
-    ],
-    "destino": "completados"
-  },
-  {
-    "id": "P009",
-    "nombre": "Estructura de acero reforzado",
-    "tipo": "estructura",
-    "puntos": "5 [PV]",
-    "puntos_carta": 5,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 4,
-    "discos": 1,
-    "bono": "1 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca un disco en 1 celda de [ES] Estructura de un cuadrante.",
-    "etapas": [
-      {
-        "m": {
-          "Fe": 14,
-          "C": 6,
-          "Ti": 1
-        },
-        "o": {
-          "IE": 2,
-          "En": 2,
-          "Tr": 1
-        }
-      }
-    ],
-    "destino": "completados"
-  },
+
+
   {
     "id": "P010",
     "nombre": "Estructura alveolar de aluminio",
