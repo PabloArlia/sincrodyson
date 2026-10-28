@@ -8,6 +8,121 @@
 window.modulos = [
   // Proyectos iniciales: circulan obligatoriamente hacia la derecha.
   {
+    "id": "P019",
+    "nombre": "Red HVDC de cobre",
+    "tipo": "transmision",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca un disco en 1 celda de [TS] Transmisión.",
+    "etapas": [
+      {
+        "m": {
+          "Cu": 2,
+          "Si": 1
+        },
+        "o": {
+          "IM": 1,
+          "En": 1,
+          "Tr": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },,
+  {
+    "id": "P020",
+    "nombre": "Red HVDC ultraligera",
+    "tipo": "transmision",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca un disco en 2 celdas distintas de [TS] Transmisión de un mismo cuadrante.",
+    "etapas": [
+      {
+        "m": {
+          "Al": 4,
+          "C": 3,
+          "Si": 2
+        },
+        "o": {
+          "IM": 1,
+          "En": 2,
+          "Tr": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },,
+  {
+    "id": "P029",
+    "nombre": "Antena parabólica de microondas",
+    "tipo": "microondas",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 2 discos en celdas libres y adyacentes de [MO] Microondas de un mismo cuadrante.",
+    "etapas": [
+      {
+        "m": {
+          "Al": 3,
+          "Cu": 2,
+          "Si": 4
+        },
+        "o": {
+          "IM": 1,
+          "En": 2,
+          "Tr": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },,
+  {
+    "id": "I05",
+    "nombre": "Blindaje compuesto",
+    "tipo": "microondas",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca 1 disco en una celda libre de [MO] Microondas.",
+    "etapas": [
+      {
+        "m": {"Fe": 10, "C": 4, "Ti": 2, "Cu": 2},
+        "o": {"IE": 2, "En": 2, "Tr": 1}
+      }
+    ],
+    "destino": "derecha"
+  },,
+  {
     "id": "P024",
     "nombre": "Radiadores térmicos de aluminio",
     "tipo": "refrigeracion",
@@ -185,160 +300,12 @@ window.modulos = [
 
 
 
-  {
-    "id": "I05",
-    "nombre": "Emisores de microondas",
-    "tipo": "microondas",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 2,
-    "bono": "2 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres de [MO] microondas, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
-    "etapas": [
-      {
-        "m": {
-          "Cu": 2,
-          "Fe": 1
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      },
-      {
-        "m": {
-          "Cu": 2,
-          "Fe": 1
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
-  {
-    "id": "I06",
-    "nombre": "Red de antenas",
-    "tipo": "microondas",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 2,
-    "bono": "2 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres de [MO] microondas, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
-    "etapas": [
-      {
-        "m": {
-          "Si": 3
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      },
-      {
-        "m": {
-          "Si": 4
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
 
 
-  {
-    "id": "I09",
-    "nombre": "Red de transmisión",
-    "tipo": "transmision",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 2,
-    "bono": "2 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres de [TS] transmision, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
-    "etapas": [
-      {
-        "m": {
-          "Cu": 2,
-          "Fe": 1
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      },
-      {
-        "m": {
-          "Cu": 2,
-          "Fe": 1
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
-  {
-    "id": "I10",
-    "nombre": "Conductores orbitales",
-    "tipo": "transmision",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 2,
-    "bono": "2 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres de [TS] transmision, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
-    "etapas": [
-      {
-        "m": {
-          "Si": 3
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      },
-      {
-        "m": {
-          "Si": 4
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
+
+
+
+
   {
     "id": "I11",
     "nombre": "Talleres de mantenimiento",
@@ -1993,65 +1960,8 @@ window.modulos = [
   },
 
   // Transmisión
-  {
-    "id": "P019",
-    "nombre": "Red HVDC de cobre",
-    "tipo": "transmision",
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 8,
-    "discos": 1,
-    "bono": "1 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca un disco en 1 celda de [TS] Transmisión.",
-    "etapas": [
-      {
-        "m": {
-          "Cu": 2,
-          "Si": 1
-        },
-        "o": {
-          "IM": 1,
-          "En": 1,
-          "Tr": 1
-        }
-      }
-    ],
-    "destino": "completados"
-  },
-  {
-    "id": "P020",
-    "nombre": "Red HVDC ultraligera",
-    "tipo": "transmision",
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 4,
-    "discos": 2,
-    "bono": "2 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas distintas de [TS] Transmisión de un mismo cuadrante.",
-    "etapas": [
-      {
-        "m": {
-          "Al": 4,
-          "C": 3,
-          "Si": 2
-        },
-        "o": {
-          "IM": 1,
-          "En": 2,
-          "Tr": 1
-        }
-      }
-    ],
-    "destino": "completados"
-  },
+
+
   {
     "id": "P021",
     "nombre": "Red superconductora criogénica",
@@ -2353,36 +2263,7 @@ window.modulos = [
 },
 
   // Microondas
-  {
-    "id": "P029",
-    "nombre": "Antena parabólica de microondas",
-    "tipo": "microondas",
-    "puntos": "4 [PV]",
-    "puntos_carta": 4,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 4,
-    "discos": 1,
-    "bono": "1 [DS] 2 [DH]",
-    "disco_soporte": 0,
-    "efecto": "Coloca 1 disco en [MO] Microondas. \nLuego, sin obtener bonos de colocación; coloca un disco en las celdas libres de [MO] Microondas adyacentes a la que colocaste inicialmente.",
-    "etapas": [
-      {
-        "m": {
-          "Al": 3,
-          "Cu": 2,
-          "Si": 4
-        },
-        "o": {
-          "IM": 1,
-          "En": 2,
-          "Tr": 1
-        }
-      }
-    ],
-    "destino": "completados"
-  },
+
   {
     "id": "P030",
     "nombre": "Matriz de antenas en fase",
