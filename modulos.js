@@ -8,6 +8,65 @@
 window.modulos = [
   // Proyectos iniciales: circulan obligatoriamente hacia la derecha.
   {
+    "id": "P024",
+    "nombre": "Radiadores térmicos de aluminio",
+    "tipo": "refrigeracion",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 1,
+    "bono": "1 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca un disco en 1 celda de [RF] Refrigeración.",
+    "etapas": [
+      {
+        "m": {
+          "Al": 3,
+          "Cu": 1
+        },
+        "o": {
+          "IM": 1,
+          "Tr": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },,
+  {
+    "id": "P025",
+    "nombre": "Red de tubos de calor",
+    "tipo": "refrigeracion",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 2,
+    "bono": "2 [DS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca un disco en 2 celdas distintas de [RF] Refrigeración de un mismo cuadrante.",
+    "etapas": [
+      {
+        "m": {
+          "Cu": 3,
+          "Al": 4
+        },
+        "o": {
+          "IM": 2,
+          "En": 1,
+          "Tr": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },,
+  {
     "id": "P013",
     "nombre": "Paneles fotovoltaicos de película delgada",
     "tipo": "fotovoltaico",
@@ -202,82 +261,8 @@ window.modulos = [
     ],
     "destino": "derecha"
   },
-  {
-    "id": "I07",
-    "nombre": "Circuitos térmicos",
-    "tipo": "refrigeracion",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 2,
-    "bono": "2 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres de [RF] refrigeracion, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
-    "etapas": [
-      {
-        "m": {
-          "Al": 2,
-          "Fe": 1
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      },
-      {
-        "m": {
-          "Al": 2,
-          "Fe": 1
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
-  {
-    "id": "I08",
-    "nombre": "Radiadores orbitales",
-    "tipo": "refrigeracion",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 2,
-    "bono": "2 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres de [RF] refrigeracion, en secciones distintas. Entrega esta carta al jugador de tu derecha.",
-    "etapas": [
-      {
-        "m": {
-          "Fe": 7
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      },
-      {
-        "m": {
-          "Fe": 7
-        },
-        "o": {
-          "IE": 1,
-          "En": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
+
+
   {
     "id": "I09",
     "nombre": "Red de transmisión",
@@ -2199,63 +2184,8 @@ window.modulos = [
   },
 
   // Refrigeración
-  {
-    "id": "P024",
-    "nombre": "Radiadores térmicos de aluminio",
-    "tipo": "refrigeracion",
-    "puntos": "1 [PV]",
-    "puntos_carta": 1,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 5,
-    "discos": 1,
-    "bono": "1 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca un disco en 1 celda de [RF] Refrigeración.",
-    "etapas": [
-      {
-        "m": {
-          "Al": 3,
-          "Cu": 1
-        },
-        "o": {
-          "IM": 1,
-          "Tr": 1
-        }
-      }
-    ],
-    "destino": "completados"
-  },
-  {
-    "id": "P025",
-    "nombre": "Red de tubos de calor",
-    "tipo": "refrigeracion",
-    "puntos": "1 [PV]",
-    "puntos_carta": 1,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 3,
-    "discos": 2,
-    "bono": "2 [DS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas distintas de [RF] Refrigeración de un mismo cuadrante.",
-    "etapas": [
-      {
-        "m": {
-          "Cu": 3,
-          "Al": 4
-        },
-        "o": {
-          "IM": 2,
-          "En": 1,
-          "Tr": 1
-        }
-      }
-    ],
-    "destino": "completados"
-  },
+
+
   {
     "id": "P026",
     "nombre": "Radiadores de nanotubos de carbono alineados",
