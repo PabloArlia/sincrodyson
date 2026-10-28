@@ -225,7 +225,7 @@
 
         .endgame-reference {
             display: grid;
-            grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+            grid-template-columns: minmax(0, 1fr);
             gap: 5mm
         }
 
@@ -233,36 +233,11 @@
             min-width: 0
         }
 
-        .reference .coverage-table {
-            table-layout: fixed
-        }
 
-        .reference .coverage-table th,
-        .reference .coverage-table td {
-            text-align: center;
-            vertical-align: middle;
-            padding: 2.5mm 1mm
-        }
 
-        .reference .coverage-table th {
-            width: 12%
-        }
 
-        .reference .coverage-table th:first-child {
-            width: 40%
-        }
 
-        .coverage-table td:first-child {
-            font-weight: bold
-        }
 
-        .coverage-table th img {
-            display: block;
-            width: 7mm;
-            height: 7mm;
-            object-fit: contain;
-            margin: auto
-        }
 
         .endgame-reference thead th {
             height: 21mm;
@@ -657,72 +632,6 @@
                                 </tbody>
                             </table>
                             <p>Cada jugador pierde PV por los ingenieros anclados junto a sus discos.</p>
-                        </section>
-                        <section>
-                            <h2><img style="vertical-align: middle;" src="./iconos/NC-nivelcobertura.svg" alt="NC"
-                                    width="26" height="26"> Cobertura por capa</h2>
-                            <table class="coverage-table"
-                                aria-label="Nivel de cobertura por capa según sus celdas ocupadas">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Celdas ocupadas con un disco en la capa</th>
-                                        <th scope="col"><img src="./iconos/ES-estructura.svg" alt="ES: Estructura"
-                                                title="Estructura"></th>
-                                        <th scope="col"><img src="./iconos/FV-fotovoltaico.svg" alt="FV: Fotovoltaica"
-                                                title="Fotovoltaica"></th>
-                                        <th scope="col"><img src="./iconos/TS-transmision.svg" alt="TS: Transmisión"
-                                                title="Transmisión"></th>
-                                        <th scope="col"><img src="./iconos/RF-refrigeracion.svg" alt="RF: Refrigeración"
-                                                title="Refrigeración"></th>
-                                        <th scope="col"><img src="./iconos/MO-microondas.svg" alt="MO: Microondas"
-                                                title="Microondas"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>0–3</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4–7</td>
-                                        <td>2</td>
-                                        <td>2</td>
-                                        <td>2</td>
-                                        <td>2</td>
-                                        <td>2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8–11</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>12–15</td>
-                                        <td>4</td>
-                                        <td>4</td>
-                                        <td>4</td>
-                                        <td>4</td>
-                                        <td>4</td>
-                                    </tr>
-                                    <tr>
-                                        <td>16–20</td>
-                                        <td>5</td>
-                                        <td>5</td>
-                                        <td>5</td>
-                                        <td>5</td>
-                                        <td>5</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p>Cada capa tiene 20 celdas. Cuenta las celdas ocupadas de esa capa para determinar su
-                                nivel.</p>
                         </section>
                     </div>
                     <section class="glossary">

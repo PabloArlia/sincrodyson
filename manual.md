@@ -292,16 +292,6 @@ Después de colocar un disco en una celda:
 
 Una vez cobrados los bonos, se comprueba la capa de estructura de ese sector. Si está vacía, el jugador que acaba de colocar el disco paga $5 al banco por acarreo. Puede recurrir a préstamos para afrontar este pago.
 
-Después de colocar el disco y resolver los beneficios y costos correspondientes, actualiza el nivel de cobertura de la capa si es necesario.
-
-#### Actualización del nivel de cobertura
-
-Cada capa de la esfera Dyson tiene un indicador que registra su nivel de cobertura. Después de colocar o retirar un disco de una capa, comprueba si es necesario actualizarlo.
-
-Cuenta las celdas ocupadas en esa capa, considerando todos los cuadrantes, y coloca su indicador en la fila correspondiente a esa cantidad en la tabla de cobertura impresa en el mapa. El nivel indicado en esa fila es el nivel de cobertura `[NC]` de la capa.
-
-Cada capa tiene su propio indicador. Los discos de las áreas de soporte no cuentan para este cálculo. El indicador puede avanzar o retroceder cuando cambia la cantidad de celdas ocupadas.
-
 #### Colocar discos en las áreas de soporte
 
 Cada cuadrante dispone de un área de soporte con capacidad para un disco de control, uno de sensores y dos de mantenimiento.
@@ -315,7 +305,7 @@ Después de colocar un disco en un área de soporte:
 
 #### Quitar discos `[QD]`
 
-Cuando un efecto obliga a quitar un disco `[QD]`, el jugador debe retirar un disco suyo que cumpla con el requerimiento indicado; no puede elegir conservarlo. Después de retirarlo, pierde 1 PV por cada celda que todavía tenga un disco en el mismo sector del que lo quitó, contando los discos de todos los jugadores. Si el disco retirado estaba en una capa de la esfera, actualiza el indicador de cobertura correspondiente si es necesario.
+Cuando un efecto obliga a quitar un disco `[QD]`, el jugador debe retirar un disco suyo que cumpla con el requerimiento indicado; no puede elegir conservarlo. Después de retirarlo, pierde 1 PV por cada celda que todavía tenga un disco en el mismo sector del que lo quitó, contando los discos de todos los jugadores.
 
 Si hay ingenieros anclados en la celda de la que se retira el disco, deben trasladarse a otra celda que contenga un disco del mismo jugador que era dueño del disco retirado. Si no existe ninguna celda que cumpla esta condición, los ingenieros se devuelven a la reserva general.
 
@@ -408,7 +398,7 @@ Cada jugador suma a sus PV acumulados:
 - Los PV por símbolos planetarios, según la progresión triangular de cada planeta.
 - Todos los PV impresos en sus proyectos completados.
 - La mitad de los PV de cada proyecto incompleto con al menos una etapa completada, redondeando hacia abajo por separado para cada carta.
-- Los PV ganados o perdidos por efectos de fin de juego `[FJ]` de las cartas, incluidos los que dependen de niveles de cobertura.
+- Los PV ganados o perdidos por efectos de fin de juego `[FJ]` de las cartas.
 
 A continuación convierte sus recursos en dinero según los valores de la tabla general de fin de juego. Cada ingeniero vale $3 y cada unidad de energía vale $1.
 
@@ -435,18 +425,6 @@ Al finalizar la partida, cada jugador cuenta por separado cuántos símbolos tie
 Para cantidades superiores se utiliza la misma regla: **PV = n × (n + 1) ÷ 2**, donde n es la cantidad de símbolos de ese planeta. Cada símbolo adicional suma tantos PV como la nueva cantidad de símbolos de ese planeta.
 
 Se suman los PV obtenidos en los ocho planetas. **No se elevan al cuadrado los símbolos repetidos ni se calcula una única colección combinada.**
-
-### Puntos por niveles de cobertura
-
-Al finalizar la partida, se resuelven los efectos de las cartas que otorgan o restan PV según los niveles de cobertura de la esfera Dyson. Consulta los indicadores de cobertura de las cinco capas en el mapa.
-
-- **Puntos por cobertura:** gana los PV indicados por cada nivel de cobertura alcanzado en la capa correspondiente.
-- **Penalizaciones por falta de cobertura:** pierde los PV indicados por cada nivel que falte para alcanzar el máximo de cobertura de esa capa.
-- **Efectos sobre varias capas:** suma los niveles de cobertura de las capas indicadas antes de calcular los PV.
-
-Cada capa tiene un máximo de 5 niveles de cobertura. Los niveles se consultan en la tabla impresa en el mapa y funcionan independientemente de la cantidad de cuadrantes utilizados. Se consideran los discos de todos los jugadores, salvo que una carta indique lo contrario.
-
-**Ejemplo:** si Estructura está en nivel 4, una carta que otorga 3 PV por nivel de Estructura proporciona 12 PV. Otra que penaliza con 3 PV por nivel faltante resta 3 PV, porque falta un nivel para alcanzar el máximo de 5.
 
 ### Penalización por personal anclados
 

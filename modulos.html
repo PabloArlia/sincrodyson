@@ -28,6 +28,8 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .heading{display:grid;grid-template-columns:9mm minmax(0,1fr) auto;gap:1.3mm;flex-shrink:0;padding-top:0;padding-bottom:1mm}
 .type{overflow-wrap:anywhere}
 .card-score{display:flex;flex-direction:column;align-items:flex-end;gap:1mm;font-size:8pt;font-weight:800;white-space:nowrap}
+.heading-bonus{grid-column:1 / -1;min-width:0;text-align:center;font-size:8pt;font-weight:800}
+.heading-bonus .card-bonus{display:flex;flex-wrap:wrap;justify-content:center;max-width:100%}
 .card-bonus{display:inline-flex;align-items:center;gap:.5mm}
 .card-bonus img{width:5mm;height:5mm;object-fit:contain}
 /* Altura uniforme pausada: volver a grid-auto-rows:1fr para reactivarla. */
@@ -80,7 +82,7 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 <script>
 const recursos={Fe:['Hierro','#d84242'],Cu:['Cobre','#3977dc'],Si:['Silicio','#f0d54d'],Ti:['Titanio','#58a85c'],Al:['Aluminio','#292929'],C:['Carbono','#fff'],Nd:['Neodimio','#e345ad'],Gd:['Gadolinio','#42c5c1'],Er:['Erbio','#ec933c'],Ce:['Cerio','#94623d']};
 const precios={Fe:1,Cu:3,Si:2,Ti:6,Al:3,C:1,Nd:8,Gd:8,Er:12,Ce:7,Tr:7};
-const operativos={IQ:'Ingeniero químico',IE:'Ingeniero estructural',IM:'Ingeniero electromecánico',IS:'Ingeniero en sistemas',En:'Energía',Tr:'Transporte'};
+const operativos={II:'Ingeniero genérico',IQ:'Ingeniero químico',IE:'Ingeniero estructural',IM:'Ingeniero electromecánico',IS:'Ingeniero en sistemas',En:'Energía',Tr:'Transporte'};
 const tiposIcono={
  "sensores": "SN",
  "control": "CO",
@@ -107,9 +109,11 @@ function tokens(id,n){
 }
 const destinosIcono={completados:'CM',mano:'MA',mejora:'MS',especial:'DE',derecha:'DR',etapa:'RE'};
 const catalogoIconos={
- '/':{nombre:'Por',archivo:'separador-barra.svg'},
- NC:{nombre:'Nivel de cobertura',archivo:'NC-nivelcobertura.svg'},
- NO:{nombre:'Celda sin disco',archivo:'NO-sin-disco.svg'},
+ QU:{nombre:'Cuadrante',archivo:'esfera-cuadrante.svg'},
+ SC:{nombre:'Sector',archivo:'esfera-sector.svg'},
+ '=':{nombre:'Igual',archivo:'igual.svg'},
+ '!=':{nombre:'Distinto',archivo:'distinto.svg'},
+ '/':{nombre:'Por',archivo:'separador-barra.svg'}, NO:{nombre:'Celda sin disco',archivo:'NO-sin-disco.svg'},
  QD:{nombre:'Quitar disco',archivo:'QD-quitar-disco.svg'},
  FJ:{nombre:'Fin del juego',archivo:'FJ-fin-juego.svg'},
  SN:{nombre:'Sensores',archivo:'SN-sensores.svg'},
@@ -143,6 +147,7 @@ const catalogoIconos={
  AS:{nombre:'Ingeniero en sistemas anclado',archivo:'AS-ingeniero-sistemas-anclado.svg'},
  DH:{nombre:'Disco hueco',archivo:'DH-disco-hueco.svg'},
  En:{nombre:'Energía',archivo:'En-energia.svg'},
+ II:{nombre:'Ingeniero genérico',archivo:'II-ingeniero.svg'},
  IQ:{nombre:'Ingeniero químico',archivo:'IQ-ingeniero-quimico.svg'},
  IE:{nombre:'Ingeniero estructural',archivo:'IE-ingeniero-estructural.svg'},
  IM:{nombre:'Ingeniero electromecánico',archivo:'IM-ingeniero-electromecanico.svg'},
@@ -163,14 +168,14 @@ function imagenIcono(id){
  if(id==='CS')return '<span class="icono-hibrido" title="Control / Sensores" aria-label="Control / Sensores"><img src="./iconos/CO-control.svg" alt=""><img src="./iconos/SN-sensores.svg" alt=""></span>';
  if(id==='DR')return '<span aria-hidden="true" style="font-size:17pt;line-height:1">⇥</span>';
  if(!Object.hasOwn(catalogoIconos,id))return '';
- const variante=['IQ','IE','IM','IS','AI','AQ','AM','AE','AS'].includes(id)&&!document.getElementById('colors').checked?'#sin-color':'';
+ const variante=['II','IQ','IE','IM','IS','AI','AQ','AM','AE','AS'].includes(id)&&!document.getElementById('colors').checked?'#sin-color':'';
  return `<img${id==='/'?' class="separator-bar"':''} src="./iconos/${catalogoIconos[id].archivo}${variante}" alt="" aria-hidden="true">`;
 }
 const rocket=imagenIcono('Tr');
 const energia=imagenIcono('En');
 const bateria=imagenIcono('BT');
 function renderBono(bono){
- const partes=String(bono??'').split(/(\[(?:[A-Za-z]{2}|\/)\])/g);
+ const partes=String(bono??'').split(/(\[(?:[A-Za-z]{2}|\/|!?=)\])/g);
  const etiqueta=partes.map(p=>Object.hasOwn(catalogoIconos,p.slice(1,-1))&&p.startsWith('[')?catalogoIconos[p.slice(1,-1)].nombre:p).join(' ');
  const contenido=partes.map(p=>{
   const id=p.startsWith('[')&&p.endsWith(']')?p.slice(1,-1):'';
@@ -179,7 +184,7 @@ function renderBono(bono){
  return contenido?`<span class="card-bonus" title="${escapeHTML(etiqueta)}" aria-label="${escapeHTML(etiqueta)}">${contenido}</span>`:'';
 }
 function renderEfecto(texto){
- return String(texto??'').split(/(\[(?:[A-Za-z]{2}|\/)\])/g).map(parte=>{
+ return String(texto??'').split(/(\[(?:[A-Za-z]{2}|\/|!?=)\])/g).map(parte=>{
   const id=parte.startsWith('[')&&parte.endsWith(']')?parte.slice(1,-1):'';
   if(!Object.hasOwn(catalogoIconos,id))return escapeHTML(parte).replace(/\\n|\r\n?|\n/g,'<br>');
   const nombre=escapeHTML(catalogoIconos[id].nombre);
@@ -206,7 +211,7 @@ function render(m){
  const insignia=renderBono(m.bono);
  const coef=Number.isFinite(balance.coef)?balance.coef.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
  const fueraRango=!Number.isFinite(balance.coef)||balance.coef<(m.inicial?12:10)||balance.coef>(m.inicial?13:11);
- return `<article class="card${m.inicial?' inicial':''}${fueraRango?' coef-fuera-rango':''}" data-card-id="${escapeHTML(m.id)}" tabindex="0" data-balance="${escapeHTML(diagnosticoBalance(m,balance))}"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div><div class="name">${escapeHTML(m.nombre)}</div><div class="type"><span class="card-id">${escapeHTML(m.id)}</span>${escapeHTML(m.tipo==='recursoshumanos'?'Recursos humanos':m.tipo.replaceAll('_',' '))}</div></div><div class="card-score">${renderBono(puntos)}${insignia}</div></header>
+ return `<article class="card${m.inicial?' inicial':''}${fueraRango?' coef-fuera-rango':''}" data-card-id="${escapeHTML(m.id)}" tabindex="0" data-balance="${escapeHTML(diagnosticoBalance(m,balance))}"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div><div class="name">${escapeHTML(m.nombre)}</div><div class="type"><span class="card-id">${escapeHTML(m.id)}</span>${escapeHTML(m.tipo==='recursoshumanos'?'Recursos humanos':m.tipo.replaceAll('_',' '))}</div></div><div class="card-score">${renderBono(puntos)}</div>${insignia?`<div class="heading-bonus">${insignia}</div>`:''}</header>
  <section class="stages">${m.etapas.map((e,i)=>`<div class="stage"><div class="stage-title">ETAPA ${i+1}</div><div class="items">${Object.entries(e.m||{}).map(([id,n])=>tokens(id,n)).join('')}</div><div class="operatives"><div class="crew-line">${Object.entries(e.o||{}).filter(([id])=>id!=='En').map(([id,n])=>operationTokens(id,n)).join('')}</div><div class="energy-line">${e.o?.En?operationTokens('En',e.o.En):''}</div></div></div>`).join('')}</section>
  <footer class="footer"><div class="footer-main"><div class="footer-cost">Costo <strong>$${costo}</strong><div>Coef. ${coef}</div></div></div><div class="footer-effect-wrap">${iconoDestino(m.destino||'completados')}<div class="footer-effect"><strong>Al completar:</strong> ${renderEfecto(m.efecto||'Sin efecto adicional')}</div></div></footer></article>`;
 }
