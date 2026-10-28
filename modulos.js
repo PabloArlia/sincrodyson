@@ -62,7 +62,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 2
+          "Al": 2,
+          "Fe": 1
         },
         "o": {
           "IE": 1,
@@ -71,7 +72,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Al": 3
+          "Al": 2,
+          "Fe": 1
         },
         "o": {
           "IE": 1,
@@ -136,7 +138,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 2
+          "Cu": 2,
+          "Fe": 1
         },
         "o": {
           "IE": 1,
@@ -145,7 +148,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 3
+          "Cu": 2,
+          "Fe": 1
         },
         "o": {
           "IE": 1,
@@ -173,7 +177,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 2
+          "Cu": 2,
+          "Fe": 1
         },
         "o": {
           "IE": 1,
@@ -182,7 +187,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 3
+          "Cu": 2,
+          "Fe": 1
         },
         "o": {
           "IE": 1,
@@ -247,7 +253,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 2
+          "Al": 2,
+          "Fe": 1
         },
         "o": {
           "IE": 1,
@@ -256,7 +263,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Al": 3
+          "Al": 2,
+          "Fe": 1
         },
         "o": {
           "IE": 1,
@@ -321,7 +329,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 2
+          "Cu": 2,
+          "Fe": 1
         },
         "o": {
           "IE": 1,
@@ -330,7 +339,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 3
+          "Cu": 2,
+          "Fe": 1
         },
         "o": {
           "IE": 1,
