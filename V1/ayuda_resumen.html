@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Syncrodyson · Ayuda resumida</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#e8e9e7;color:#202723;font:12pt/1.08 Arial,Helvetica,sans-serif}
+.toolbar{max-width:210mm;margin:20px auto;display:flex;gap:16px;align-items:center;justify-content:space-between;padding:0 10mm}
+.toolbar a{color:#277347}button{padding:10px 14px;border:0;border-radius:5px;background:#263a35;color:white;font:inherit;cursor:pointer}
+.page{width:210mm;min-height:297mm;margin:0 auto 24px;padding:10mm;background:white}
+.page-header{display:flex;justify-content:space-between;align-items:baseline;gap:3mm;border-bottom:.5mm solid #263a35;padding-bottom:2mm;margin-bottom:3mm}
+h1{font-size:16pt;line-height:1.1;margin:0}.page-header p{font-size:12pt;margin:0;white-space:nowrap}
+.columns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3mm}
+.column{min-width:0}.column h2{font-size:12pt;line-height:1.08;margin:0 0 2mm;padding-bottom:1mm;border-bottom:.3mm solid #263a35}
+.entry{padding:.1mm 0;border-bottom:.15mm solid #d8ded9;break-inside:avoid}
+.entry-heading{display:flex;gap:1mm;align-items:center}.entry img{width:5.5mm;height:5.5mm;object-fit:contain;flex:none}
+h3{font-size:12pt;line-height:1.05;margin:0;overflow-wrap:normal}.code{color:#53615d}
+.entry p{font-size:12pt;line-height:1.08;margin:.35mm 0 0}
+.page-footer{font-size:12pt;line-height:1.1;margin:3mm 0 0;border-top:.3mm solid #263a35;padding-top:2mm}
+@page{size:A4 portrait;margin:10mm}
+@media print{html,body{margin:0;padding:0;background:white}.toolbar{display:none}.page{position:relative;top:4mm;width:100%;min-height:0;margin:0;padding:0 5mm}.columns{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<nav class="toolbar"><a href="./ayuda.html">Ver ayuda completa</a><button type="button" onclick="window.print()">Imprimir resumen</button></nav>
+<main class="page">
+<header class="page-header"><h1>SYNCRODYSON · ICONOS</h1><p>Referencia rápida</p></header>
+<div class="columns"><section class="column"><h2>Mapa y capas</h2><article class="entry" data-icon="celda"><div class="entry-heading"><img src="./iconos/esfera-celda.svg" alt=""><h3>Celda</h3></div><p>Una posición para un disco.</p></article>
+<article class="entry" data-icon="cuadrante"><div class="entry-heading"><img src="./iconos/esfera-cuadrante.svg" alt=""><h3>Cuadrante</h3></div><p>Agrupa sectores y su soporte.</p></article>
+<article class="entry" data-icon="sector"><div class="entry-heading"><img src="./iconos/esfera-sector.svg" alt=""><h3>Sector</h3></div><p>Atraviesa las capas de la esfera.</p></article>
+<article class="entry" data-icon="capa"><div class="entry-heading"><img src="./iconos/esfera-capa.svg" alt=""><h3>Capa</h3></div><p>Anillo de celdas del mismo tipo.</p></article>
+<article class="entry" data-icon="ES"><div class="entry-heading"><img src="./iconos/ES-estructura.svg" alt=""><h3><span class="code">ES</span> Estructura</h3></div><p>Capa de base de la esfera.</p></article>
+<article class="entry" data-icon="FV"><div class="entry-heading"><img src="./iconos/FV-fotovoltaico.svg" alt=""><h3><span class="code">FV</span> Fotovoltaica</h3></div><p>Capa de captación de luz.</p></article>
+<article class="entry" data-icon="TS"><div class="entry-heading"><img src="./iconos/TS-transmision.svg" alt=""><h3><span class="code">TS</span> Transmisión</h3></div><p>Capa de transmisión.</p></article>
+<article class="entry" data-icon="RF"><div class="entry-heading"><img src="./iconos/RF-refrigeracion.svg" alt=""><h3><span class="code">RF</span> Refrigeración</h3></div><p>Capa de refrigeración.</p></article>
+<article class="entry" data-icon="MO"><div class="entry-heading"><img src="./iconos/MO-microondas.svg" alt=""><h3><span class="code">MO</span> Microondas</h3></div><p>Capa de microondas.</p></article>
+<article class="entry" data-icon="CO"><div class="entry-heading"><img src="./iconos/CO-control.svg" alt=""><h3><span class="code">CO</span> Control</h3></div><p>Soporte: un disco por cuadrante.</p></article>
+<article class="entry" data-icon="SN"><div class="entry-heading"><img src="./iconos/SN-sensores.svg" alt=""><h3><span class="code">SN</span> Sensores</h3></div><p>Soporte: un disco por cuadrante.</p></article>
+<article class="entry" data-icon="MN"><div class="entry-heading"><img src="./iconos/MN-mantenimiento.svg" alt=""><h3><span class="code">MN</span> Mantenimiento</h3></div><p>Soporte: dos discos por cuadrante.</p></article>
+<article class="entry" data-icon="SO"><div class="entry-heading"><img src="./iconos/SO-sol.svg" alt=""><h3><span class="code">SO</span> Sol</h3></div><p>Estrella central de la esfera.</p></article>
+<article class="entry" data-icon="NC"><div class="entry-heading"><img src="./iconos/NC-nivelcobertura.svg" alt=""><h3><span class="code">NC</span> Cobertura</h3></div><p>Nivel de una capa; consulta el mapa.</p></article></section>
+<section class="column"><h2>Cartas y efectos</h2><article class="entry" data-icon="CP"><div class="entry-heading"><img src="./iconos/CP-carta-proyecto.svg" alt=""><h3><span class="code">CP</span> Proyecto</h3></div><p>Carta que construyes por etapas.</p></article>
+<article class="entry" data-icon="CM"><div class="entry-heading"><img src="./iconos/CM-completado.svg" alt=""><h3><span class="code">CM</span> Completados</h3></div><p>Guarda la carta para puntuarla.</p></article>
+<article class="entry" data-icon="MA"><div class="entry-heading"><img src="./iconos/MA-mano.svg" alt=""><h3><span class="code">MA</span> A la mano</h3></div><p>Recupera la carta para reconstruirla.</p></article>
+<article class="entry" data-icon="RE"><div class="entry-heading"><img src="./iconos/RE-repetible.svg" alt=""><h3><span class="code">RE</span> Repetible</h3></div><p>Vuelve a la etapa indicada.</p></article>
+<article class="entry" data-icon="DE"><div class="entry-heading"><img src="./iconos/DE-destino-especial.svg" alt=""><h3><span class="code">DE</span> Destino especial</h3></div><p>Sigue el destino de la carta.</p></article>
+<article class="entry" data-icon="FJ"><div class="entry-heading"><img src="./iconos/FJ-fin-juego.svg" alt=""><h3><span class="code">FJ</span> Fin de juego</h3></div><p>Resuelve al puntuar la partida.</p></article>
+<article class="entry" data-icon="PV"><div class="entry-heading"><img src="./iconos/PV-punto-victoria.svg" alt=""><h3><span class="code">PV</span> Puntos de victoria</h3></div><p>Miden tu puntuación.</p></article>
+<article class="entry" data-icon="PI"><div class="entry-heading"><img src="./iconos/PI-puntos-inmediatos.svg" alt=""><h3><span class="code">PI</span> Puntos inmediatos</h3></div><p>Actualiza ahora tu puntuación.</p></article>
+<article class="entry" data-icon="DS"><div class="entry-heading"><img src="./iconos/DS-disco.svg" alt=""><h3><span class="code">DS</span> Disco</h3></div><p>Representa tu construcción.</p></article>
+<article class="entry" data-icon="DP"><div class="entry-heading"><img src="./iconos/DP-disco-soporte.svg" alt=""><h3><span class="code">DP</span> Disco de soporte</h3></div><p>Se coloca en un área de soporte.</p></article>
+<article class="entry" data-icon="DH"><div class="entry-heading"><img src="./iconos/DH-disco-hueco.svg" alt=""><h3><span class="code">DH</span> Disco hueco</h3></div><p>No da PV por colocación.</p></article>
+<article class="entry" data-icon="NO"><div class="entry-heading"><img src="./iconos/NO-sin-disco.svg" alt=""><h3><span class="code">NO</span> Celda sin disco</h3></div><p>Celda vacía de la esfera.</p></article>
+<article class="entry" data-icon="QD"><div class="entry-heading"><img src="./iconos/QD-quitar-disco.svg" alt=""><h3><span class="code">QD</span> Quitar disco</h3></div><p>Retira el disco; aplica sus reglas.</p></article>
+<article class="entry" data-icon="/"><div class="entry-heading"><img src="./iconos/separador-barra.svg" alt=""><h3><span class="code">/</span> Por</h3></div><p>Cantidad por cada elemento indicado.</p></article></section>
+<section class="column"><h2>Recursos y economía</h2><article class="entry" data-icon="Di"><div class="entry-heading"><img src="./iconos/Di-dinero.svg" alt=""><h3><span class="code">Di</span> Dinero</h3></div><p>Paga costos y recibe ingresos.</p></article>
+<article class="entry" data-icon="ME"><div class="entry-heading"><img src="./iconos/ME-mercado.svg" alt=""><h3><span class="code">ME</span> Mercado</h3></div><p>Compra y vende al precio vigente.</p></article>
+<article class="entry" data-icon="EV"><div class="entry-heading"><img src="./iconos/EV-evento.svg" alt=""><h3><span class="code">EV</span> Evento</h3></div><p>Se resuelve en Mantenimiento.</p></article>
+<article class="entry" data-icon="En"><div class="entry-heading"><img src="./iconos/En-energia.svg" alt=""><h3><span class="code">En</span> Energía</h3></div><p>Se almacena en las baterías.</p></article>
+<article class="entry" data-icon="PE"><div class="entry-heading"><img src="./iconos/PE-produccion-energia.svg" alt=""><h3><span class="code">PE</span> Generación</h3></div><p>Energía producida en Mantenimiento.</p></article>
+<article class="entry" data-icon="BT"><div class="entry-heading"><img src="./iconos/BT-bateria.svg" alt=""><h3><span class="code">BT</span> Batería</h3></div><p>Capacidad para guardar energía.</p></article>
+<article class="entry" data-icon="Tr"><div class="entry-heading"><img src="./iconos/Tr-transporte.svg" alt=""><h3><span class="code">Tr</span> Transporte</h3></div><p>Recurso para construir en la esfera.</p></article>
+<article class="entry" data-icon="PR"><div class="entry-heading"><img src="./iconos/PR-produccion.svg" alt=""><h3><span class="code">PR</span> Producción</h3></div><p>Tipo de proyecto productivo.</p></article>
+<article class="entry" data-icon="RI"><div class="entry-heading"><img src="./iconos/RI-refineria.svg" alt=""><h3><span class="code">RI</span> Refinería</h3></div><p>Actívala para extraer recursos.</p></article>
+<article class="entry" data-icon="YA"><div class="entry-heading"><img src="./iconos/YA-yacimientos.svg" alt=""><h3><span class="code">YA</span> Yacimiento</h3></div><p>Indica recursos, vetas y licencias.</p></article>
+<article class="entry" data-icon="LE"><div class="entry-heading"><img src="./iconos/LE-licencias-excavacion.svg" alt=""><h3><span class="code">LE</span> Licencia</h3></div><p>Asigna las necesarias para extraer.</p></article>
+<article class="entry" data-icon="RQ"><div class="entry-heading"><img src="./iconos/RQ-reactivos.svg" alt=""><h3><span class="code">RQ</span> Reactivos</h3></div><p>Se consumen al extraer tierras raras.</p></article>
+<article class="entry" data-icon="RR"><div class="entry-heading"><img src="./iconos/RR-tierra-rara.svg" alt=""><h3><span class="code">RR</span> Tierra rara</h3></div><p>Nd, Gd, Er o Ce.</p></article>
+<article class="entry" data-icon="EC"><div class="entry-heading"><img src="./iconos/EC-economia.svg" alt=""><h3><span class="code">EC</span> Economía</h3></div><p>Tipo de proyecto económico.</p></article></section>
+<section class="column"><h2>Personal y soporte</h2><article class="entry" data-icon="IE"><div class="entry-heading"><img src="./iconos/IE-ingeniero-estructural.svg" alt=""><h3><span class="code">IE</span> Estructural</h3></div><p>Ingeniero para proyectos.</p></article>
+<article class="entry" data-icon="IM"><div class="entry-heading"><img src="./iconos/IM-ingeniero-electromecanico.svg" alt=""><h3><span class="code">IM</span> Electromecánico</h3></div><p>Ingeniero para proyectos.</p></article>
+<article class="entry" data-icon="IQ"><div class="entry-heading"><img src="./iconos/IQ-ingeniero-quimico.svg" alt=""><h3><span class="code">IQ</span> Químico</h3></div><p>Ingeniero para proyectos.</p></article>
+<article class="entry" data-icon="IS"><div class="entry-heading"><img src="./iconos/IS-ingeniero-sistemas.svg" alt=""><h3><span class="code">IS</span> Sistemas</h3></div><p>Ingeniero para proyectos.</p></article>
+<article class="entry" data-icon="AI"><div class="entry-heading"><img src="./iconos/AI-ingeniero-anclado.svg" alt=""><h3><span class="code">AI</span> Ing. anclado</h3></div><p>Permanece junto a un disco.</p></article>
+<article class="entry" data-icon="AE"><div class="entry-heading"><img src="./iconos/AE-ingeniero-estructural-anclado.svg" alt=""><h3><span class="code">AE</span> Estructural anclado</h3></div><p>Permanece con un disco.</p></article>
+<article class="entry" data-icon="AM"><div class="entry-heading"><img src="./iconos/AM-ingeniero-electromecanico-anclado.svg" alt=""><h3><span class="code">AM</span> Electromec. anclado</h3></div><p>Permanece con un disco.</p></article>
+<article class="entry" data-icon="AQ"><div class="entry-heading"><img src="./iconos/AQ-ingeniero-quimico-anclado.svg" alt=""><h3><span class="code">AQ</span> Químico anclado</h3></div><p>Permanece con un disco.</p></article>
+<article class="entry" data-icon="AS"><div class="entry-heading"><img src="./iconos/AS-ingeniero-sistemas-anclado.svg" alt=""><h3><span class="code">AS</span> Sistemas anclado</h3></div><p>Permanece con un disco.</p></article>
+<article class="entry" data-icon="RH"><div class="entry-heading"><img src="./iconos/RH-recursos-humanos.svg" alt=""><h3><span class="code">RH</span> Recursos humanos</h3></div><p>Tipo de proyecto de personal.</p></article>
+<article class="entry" data-icon="CN"><div class="entry-heading"><img src="./iconos/CN-ficha-contratacion.svg" alt=""><h3><span class="code">CN</span> Contratación</h3></div><p>Ficha que entregas al contratar.</p></article>
+<article class="entry" data-icon="SP"><div class="entry-heading"><img src="./iconos/SP-soporte-externo.svg" alt=""><h3><span class="code">SP</span> Soporte externo</h3></div><p>Asigna ingenieros para obtener ingresos.</p></article>
+<article class="entry" data-icon="MS"><div class="entry-heading"><img src="./iconos/MS-mejora-soporte-externo.svg" alt=""><h3><span class="code">MS</span> Mejora de soporte</h3></div><p>Modifica el beneficio del soporte externo.</p></article>
+<article class="entry" data-icon="TJ"><div class="entry-heading"><img src="./iconos/TJ-todos-los-jugadores.svg" alt=""><h3><span class="code">TJ</span> Todos los jugadores</h3></div><p>El efecto alcanza a todos.</p></article></section></div>
+<p class="page-footer">Las cartas y el manual detallan las condiciones y excepciones.</p>
+</main>
+</body>
+</html>

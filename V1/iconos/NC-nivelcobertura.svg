@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" stroke="#222" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>Nivel de cobertura</title>
+  <path d="M9 32 31 8" stroke-width="4"/>
+  <circle cx="10.5" cy="10.5" r="6.5" fill="#fff"/>
+  <path d="M10.5 10.5V4a6.5 6.5 0 0 1 6.5 6.5Z" fill="#277347"/>
+  <path d="M10.5 10.5v6.5m0-6.5H4" stroke-width="1.1"/>
+  <circle cx="29.5" cy="29.5" r="6.5" fill="#277347"/>
+  <path d="M29.5 29.5V23a6.5 6.5 0 0 1 6.5 6.5Z" fill="#fff"/>
+  <path d="M29.5 29.5V36m0-6.5H23" stroke-width="1.1"/>
+</svg>

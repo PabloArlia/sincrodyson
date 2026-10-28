@@ -1,0 +1,51 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Syncrodyson · Objetivos</title><style>
+:root{font-family:Arial,Helvetica,sans-serif;color:#232b27}*{box-sizing:border-box}body{margin:0;background:#fff}header{background:#e8e9e7;padding:24px max(18px,4vw);color:#242c27}header h1{font-size:26px;margin:0 0 10px}header p{margin:0;font-size:15px;line-height:1.5}.toolbar{background:#e8e9e7;padding:0 max(18px,4vw) 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}.toolbar label{font-size:13px}.edit{width:52px;padding:5px}button{background:#223e33;color:white;border:0;border-radius:6px;padding:12px 22px;font-size:15px;font-weight:700;cursor:pointer}.note{padding:14px max(18px,4vw);font-size:12px;color:#5b665f}.sheet{width:190mm;margin:20px auto;background:white;padding:0;text-align:center;font-size:0}.sheet .card{display:inline-flex;vertical-align:top;margin:1.5mm;font-size:16px;text-align:center}.card{width:41mm;height:63mm;background:#fff;border:1px solid #7b8980;border-radius:2.5mm;display:flex;flex-direction:column;align-items:center;position:relative;break-inside:avoid;overflow:hidden;padding:3.5mm 2.4mm 3mm;text-align:center}.brand{font-size:7px;font-weight:800;letter-spacing:1.4px}.line{height:1px;background:#3f594b;width:9mm;margin:3mm auto 2.5mm}.type{font-size:7px;letter-spacing:1.5px;color:#6b746d}.spacer{height:10mm;flex-shrink:0}.name{font-size:13px;line-height:1.05;font-weight:800;margin:0 0 2mm;overflow-wrap:anywhere}.description{font-size:8.1px;line-height:1.24;flex:1;display:flex;align-items:center;justify-content:center;max-width:35mm}.bottom{width:100%;border-top:1px solid #d3dad4;padding-top:1.6mm}.points{font-size:14px;font-weight:800}.runner{font-size:6.6px;line-height:1.2;color:#59655c;margin-top:1mm}@page{size:A4 portrait;margin:10mm}@media(max-width:560px){header h1{font-size:22px}}@media print{html,body{margin:0;padding:0;background:white}header,.toolbar,.note{display:none!important}.sheet{display:block;width:100%;margin:0;padding:0;text-align:center;font-size:0}.sheet .card{display:inline-flex;position:relative;top:4mm;vertical-align:top;width:41mm;height:63mm;margin:1.5mm;font-size:16px;text-align:center;break-inside:avoid;page-break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media print{
+ .sheet .card-page{width:190mm;margin:0 auto;padding:0;break-inside:avoid;page-break-inside:avoid;break-after:page;page-break-after:always}
+ .sheet .card-page:last-child{break-after:auto;page-break-after:auto}
+ .sheet .card-row{display:block;height:66mm;margin:0;padding:0;white-space:nowrap;break-inside:avoid;page-break-inside:avoid}
+ .sheet .card{white-space:normal}
+}</style></head><body><header><h1>SYNCRODYSON · Cartas de objetivo</h1><p>Mini USA · 41 × 63 mm · Generador imprimible</p></header><div class="toolbar"><label>PV Humilde <input class="edit" type="number" min="1" value="12" data-score="Humilde"></label><label>PV Productor <input class="edit" type="number" min="1" value="4" data-score="Productor"></label><label>PV Estructural <input class="edit" type="number" min="1" value="4" data-score="Estructural"></label><button onclick="window.print()">Imprimir / Guardar PDF</button></div><div class="note">Empates: todos reciben los puntos completos del puesto. Si hay empate en primer puesto, no hay segundo. Segundo puesto solo con 4+ jugadores.</div><main class="sheet" id="sheet"></main><script>
+const cards=[
+{name:'Colaborador',desc:'Más discos en la esfera. No cuentan las áreas de soporte.',pv:10,second:true},
+{name:'Especialista',desc:'Por cada capa: quien tenga más discos en esa capa gana 2 PV.',pv:2,unit:'por capa',second:false},
+{name:'Integrador',desc:'Por cada sector con todas las capas ocupadas por discos de un mismo jugador: ese jugador gana 3 PV.',pv:3,unit:'por sector',second:false},
+{name:'Confiable',desc:'Más discos en áreas de soporte. No cuentan los discos de los sectores.',pv:8,second:true},
+{name:'Humilde',desc:'Menos discos en un cuadrante, entre jugadores con al menos un disco en ese cuadrante. Cero no cuenta.',pv:12,second:true,editable:true},
+{name:'Eficiente',desc:'Más discos en el cuadrante que tenga menos discos totales entre todos los jugadores.',pv:10,second:true},
+{name:'Diverso',desc:'El jugador que tenga más discos en su cuadrante menos ocupado.',pv:5,second:true},
+{name:'Productor',desc:'Más discos en la capa fotovoltaica (paneles).',pv:4,second:true,editable:true},
+{name:'Estructural',desc:'Más discos en la capa estructural.',pv:4,second:true,editable:true},
+{name:'Exhibicionista',desc:'Más discos en la capa de microondas.',pv:4,second:true},
+{name:'Precavido',desc:'Más discos en la capa de refrigeración.',pv:4,second:true},
+{name:'Coordinador',desc:'Más discos en la capa de control y transmisión.',pv:4,second:true},
+{name:'Acumulador',desc:'El jugador con más recursos en su almacén.',pv:6,second:true},
+{name:'Proyectista',desc:'El jugador con mayor cantidad de cartas de proyecto completadas.',pv:5,second:true},
+{name:'Decorador',desc:'Más puntos de victoria en cartas de mejora de soporte externo.',pv:5,second:true},
+{name:'Innovador',desc:'Más puntos de victoria en cartas de tecnología completadas.',pv:5,second:true},
+{name:'Transportista',desc:'Más cartas de proyectos de transporte completadas.',pv:5,second:true},
+{name:'Energético',desc:'El jugador con mayor capacidad de baterías.',pv:5,second:true},
+{name:'Pulidor de joyas',desc:'El jugador con más tierras raras en su almacén.',pv:7,second:true},
+{name:'Magnate',desc:'El jugador con más dinero al finalizar la partida.',pv:7,second:true}
+];
+const colors=['#3d7a62','#3f77c8','#cc8c36','#568b92','#a35c9a','#537e59','#b46e42','#d5aa37','#66798e'];
+function organizeObjectivePages(){
+ const sheet=document.getElementById('sheet');
+ const cards=Array.from(sheet.children);
+ const pages=document.createDocumentFragment();
+ for(let start=0;start<cards.length;start+=16){
+  const page=document.createElement('section');
+  page.className='card-page';
+  for(let rowStart=start;rowStart<Math.min(start+16,cards.length);rowStart+=4){
+   const row=document.createElement('div');
+   row.className='card-row';
+   cards.slice(rowStart,Math.min(rowStart+4,start+16)).forEach(card=>row.appendChild(card));
+   page.appendChild(row);
+  }
+  pages.appendChild(page);
+ }
+ sheet.replaceChildren(pages);
+}
+function render(){document.getElementById('sheet').innerHTML=cards.map((c,i)=>{let pv=c.pv;let runner=c.second?`4+ jugadores · 2.º: ${Math.max(1,Math.floor(pv/2))} PV`:'Evaluar por '+(c.unit||'categoría');return `<article class="card" style="--accent:${colors[i]}"><div class="brand">SYNCRODYSON</div><div class="line"></div><div class="type">OBJETIVO</div><div class="spacer"></div><div class="name">${c.name}</div><div class="description">${c.desc}</div><div class="bottom"><div class="points">${pv} PV ${c.unit||''}</div><div class="runner">${runner}</div></div></article>`}).join('');organizeObjectivePages()}
+document.querySelectorAll('[data-score]').forEach(el=>el.addEventListener('input',()=>{let c=cards.find(x=>x.name===el.dataset.score);c.pv=Math.max(1,parseInt(el.value)||1);render()}));render();
+</script></body></html>
