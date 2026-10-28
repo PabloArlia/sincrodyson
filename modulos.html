@@ -3,6 +3,8 @@
 .toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
 button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .sheet{display:grid;grid-template-columns:repeat(3,63mm);gap:5mm;justify-content:center}
+.card.coef-fuera-rango{border:2px solid #d00000}
+.card.inicial .name{text-decoration:underline;text-underline-offset:2px}
 .card{width:63mm;height:88mm;background:white;border:1px solid #222;border-radius:2mm;padding:2.5mm;display:flex;flex-direction:column;overflow:hidden;break-inside:avoid}
 .heading{display:flex;align-items:flex-start;gap:2mm;border-bottom:1px solid #888;padding-bottom:1.5mm;min-height:12mm}
 .module-icon{width:9mm;height:9mm;border:1px solid #222;border-radius:1mm;display:grid;place-items:center;flex-shrink:0}
@@ -101,7 +103,7 @@ function tokens(id,n){
  const ink=['Al','Ce','Nd','Cu','Ti','Er'].includes(id)&&document.getElementById('colors').checked?'#fff':'#111';
  return `<span class="resource-line"><span class="coin" style="--c:${color};--ink:${ink}" title="${n} ${escapeHTML(recursos[id]?.[0]||id)}">${n} ${id}</span></span>`;
 }
-const destinosIcono={completados:'CM',mano:'MA',mejora:'MS',especial:'DE',etapa:'RE'};
+const destinosIcono={completados:'CM',mano:'MA',mejora:'MS',especial:'DE',derecha:'DR',etapa:'RE'};
 const catalogoIconos={
  '/':{nombre:'Por',archivo:'separador-barra.svg'},
  NC:{nombre:'Nivel de cobertura',archivo:'NC-nivelcobertura.svg'},
@@ -124,6 +126,7 @@ const catalogoIconos={
  CM:{nombre:'Proyecto completado',archivo:'CM-completado.svg'},
  MA:{nombre:'Vuelve a la mano',archivo:'MA-mano.svg'},
  MS:{nombre:'Mejora de soporte externo',archivo:'MS-mejora-soporte-externo.svg'},
+ DR:{nombre:'Pasar a la mano del jugador de la derecha',archivo:'DR-pasar-derecha.svg'},
  DE:{nombre:'Destino especial',archivo:'DE-destino-especial.svg'},
  Fe:{nombre:'Hierro',archivo:'Fe-hierro.svg'},
  PV:{nombre:'Puntos de victoria',archivo:'PV-punto-victoria.svg'},
@@ -188,7 +191,7 @@ function operationTokens(id,n){
 }
 function costoModulo(m){return m.etapas.reduce((total,e)=>total+Object.entries(e.m||{}).reduce((s,[id,n])=>s+n*(precios[id]||0),0)+Object.entries(e.o||{}).reduce((s,[id,n])=>s+n*costoOperativo(id),0),0);}
 function iconoDestino(d){
- const title=d==='completados'?'Proyecto completado':d==='mano'?'Vuelve a la mano':d==='mejora'?'Mejora de soporte externo':d==='especial'?'Destino especial o condicional':d?.startsWith('etapa:')?'Vuelve a la etapa '+d.split(':')[1]:'Proyecto completado';
+ const title=d==='completados'?'Proyecto completado':d==='mano'?'Vuelve a la mano':d==='mejora'?'Mejora de soporte externo':d==='derecha'?'Pasa al jugador de la derecha':d==='especial'?'Destino especial o condicional':d?.startsWith('etapa:')?'Vuelve a la etapa '+d.split(':')[1]:'Proyecto completado';
  const id=d?.startsWith('etapa:')?destinosIcono.etapa:(Object.hasOwn(destinosIcono,d)?destinosIcono[d]:destinosIcono.completados);
  const numero=d?.startsWith('etapa:')?`<small>${escapeHTML(d.split(':')[1])}</small>`:'';
  return `<span class="destino" title="${escapeHTML(title)}" aria-label="${escapeHTML(title)}">${imagenIcono(id)}${numero}</span>`;
@@ -198,7 +201,8 @@ function render(m){
  const balance=balanceModulo(m),costo=balance.costo;
  const insignia=renderBono(m.bono);
  const coef=Number.isFinite(balance.coef)?balance.coef.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
- return `<article class="card" data-card-id="${escapeHTML(m.id)}" tabindex="0" data-balance="${escapeHTML(diagnosticoBalance(m,balance))}"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div><div class="name">${escapeHTML(m.nombre)}</div><div class="type"><span class="card-id">${escapeHTML(m.id)}</span>${escapeHTML(m.tipo==='recursoshumanos'?'Recursos humanos':m.tipo.replaceAll('_',' '))}</div></div><div class="card-score">${renderBono(puntos)}${insignia}</div></header>
+ const fueraRango=!Number.isFinite(balance.coef)||balance.coef<(m.inicial?12:10)||balance.coef>(m.inicial?13:11);
+ return `<article class="card${m.inicial?' inicial':''}${fueraRango?' coef-fuera-rango':''}" data-card-id="${escapeHTML(m.id)}" tabindex="0" data-balance="${escapeHTML(diagnosticoBalance(m,balance))}"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div><div class="name">${escapeHTML(m.nombre)}</div><div class="type"><span class="card-id">${escapeHTML(m.id)}</span>${escapeHTML(m.tipo==='recursoshumanos'?'Recursos humanos':m.tipo.replaceAll('_',' '))}</div></div><div class="card-score">${renderBono(puntos)}${insignia}</div></header>
  <section class="stages">${m.etapas.map((e,i)=>`<div class="stage"><div class="stage-title">ETAPA ${i+1}</div><div class="items">${Object.entries(e.m||{}).map(([id,n])=>tokens(id,n)).join('')}</div><div class="operatives"><div class="crew-line">${Object.entries(e.o||{}).filter(([id])=>id!=='En').map(([id,n])=>operationTokens(id,n)).join('')}</div><div class="energy-line">${e.o?.En?operationTokens('En',e.o.En):''}</div></div></div>`).join('')}</section>
  <footer class="footer"><div class="footer-main"><div class="footer-cost">Costo <strong>$${costo}</strong><div>Coef. ${coef}</div></div></div><div class="footer-effect-wrap">${iconoDestino(m.destino||'completados')}<div class="footer-effect"><strong>Al completar:</strong> ${renderEfecto(m.efecto||'Sin efecto adicional')}</div></div></footer></article>`;
 }
