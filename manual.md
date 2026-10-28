@@ -18,6 +18,8 @@ Cada jugador toma su tablero personal. En el área de orden se colocan tantas fi
 
 Entreguen a cada jugador:
 
+- 1 carta inicial de símbolo planetario, repartida al azar.
+
 - 6 cartas de proyecto.
 - 4 cartas de yacimiento al azar.
 - 6 licencias de excavación.
@@ -403,6 +405,7 @@ La partida termina durante la comprobación de fin de partida de Mantenimiento s
 
 Cada jugador suma a sus PV acumulados:
 
+- Los PV por símbolos planetarios, según la progresión triangular de cada planeta.
 - Todos los PV impresos en sus proyectos completados.
 - La mitad de los PV de cada proyecto incompleto con al menos una etapa completada, redondeando hacia abajo por separado para cada carta.
 - Los PV ganados o perdidos por efectos de fin de juego `[FJ]` de las cartas, incluidos los que dependen de niveles de cobertura.
@@ -412,6 +415,26 @@ A continuación convierte sus recursos en dinero según los valores de la tabla 
 Puede cancelar los préstamos que conserve pagando $6 por cada uno. Cada préstamo que quede pendiente resta 2 PV adicionales al punto perdido al tomarlo.
 
 Finalmente, cada $10 se convierten en 1 PV. El dinero sobrante se conserva para los desempates.
+
+### Puntuación por símbolos planetarios
+
+Hay ocho símbolos planetarios: Zeus, Hera, Poseidón, Atenea, Apolo, Hestia, Hades y Deméter. Cada jugador comienza la partida con una carta que otorga un símbolo planetario.
+
+Al finalizar la partida, cada jugador cuenta por separado cuántos símbolos tiene de cada planeta, incluyendo su carta inicial, las cartas planetarias reclamadas y los símbolos obtenidos mediante otros efectos o proyectos. **Cada planeta puntúa según una progresión triangular**, no cuadrática: con 1 símbolo obtiene 1 PV; con 2, 3 PV; con 3, 6 PV; con 4, 10 PV; con 5, 15 PV; y con 6, 21 PV.
+
+| Símbolos de un mismo planeta | PV totales |
+| --- | --- |
+| 0 | 0 |
+| 1 | 1 |
+| 2 | 3 |
+| 3 | 6 |
+| 4 | 10 |
+| 5 | 15 |
+| 6 | 21 |
+
+Para cantidades superiores se utiliza la misma regla: **PV = n × (n + 1) ÷ 2**, donde n es la cantidad de símbolos de ese planeta. Cada símbolo adicional suma tantos PV como la nueva cantidad de símbolos de ese planeta.
+
+Se suman los PV obtenidos en los ocho planetas. **No se elevan al cuadrado los símbolos repetidos ni se calcula una única colección combinada.**
 
 ### Puntos por niveles de cobertura
 
