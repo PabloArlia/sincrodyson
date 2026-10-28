@@ -8,6 +8,48 @@
 window.modulos = [
   // Proyectos iniciales: circulan obligatoriamente hacia la derecha.
   {
+    "id": "P081",
+    "nombre": "Drones de inspección autónoma",
+    "tipo": "mantenimiento",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 0,
+    "bono": "1 [DP]",
+    "disco_soporte": 1,
+    "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un área de soporte.",
+    "etapas": [
+      {
+        "m": {
+          "Fe": 3,
+          "Al": 2,
+          "Si": 3
+        },
+        "o": {
+          "En": 2,
+          "IM": 1
+        }
+      },
+      {
+        "m": {
+          "Cu": 3,
+          "Ti": 2,
+          "C": 2
+        },
+        "o": {
+          "En": 1,
+          "Tr": 1,
+          "IS": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },,
+  {
     "id": "P019",
     "nombre": "Red HVDC de cobre",
     "tipo": "transmision",
@@ -306,49 +348,7 @@ window.modulos = [
 
 
 
-  {
-    "id": "I11",
-    "nombre": "Talleres de mantenimiento",
-    "tipo": "mantenimiento",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 0,
-    "bono": "2 [DP]",
-    "disco_soporte": 2,
-    "efecto": "Coloca 2 discos en celdas libres de [MN] Mantenimiento. Entrega esta carta al jugador de tu derecha.",
-    "etapas": [
-      {
-        "m": {
-          "Ti": 2,
-          "Cu": 2,
-          "Si": 3
-        },
-        "o": {
-          "IE": 1,
-          "En": 2,
-          "Tr": 1
-        }
-      },
-      {
-        "m": {
-          "Ti": 2,
-          "Cu": 2,
-          "Si": 3
-        },
-        "o": {
-          "IE": 1,
-          "En": 2,
-          "Tr": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
+
   {
     "id": "I12",
     "nombre": "Instrumentación y mando",
@@ -3391,47 +3391,7 @@ window.modulos = [
     ],
     "destino": "completados"
   },
-  {
-    "id": "P081",
-    "nombre": "Drones de inspección autónoma",
-    "tipo": "mantenimiento",
-    "puntos": "2 [PV]",
-    "puntos_carta": 2,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 2,
-    "discos": 0,
-    "bono": "1 [DP]",
-    "disco_soporte": 1,
-    "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un área de soporte.",
-    "etapas": [
-      {
-        "m": {
-          "Fe": 3,
-          "Al": 2,
-          "Si": 3
-        },
-        "o": {
-          "En": 2,
-          "IM": 1
-        }
-      },
-      {
-        "m": {
-          "Cu": 3,
-          "Ti": 2,
-          "C": 2
-        },
-        "o": {
-          "En": 1,
-          "Tr": 1,
-          "IS": 1
-        }
-      }
-    ],
-    "destino": "completados"
-  },
+
   {
     "id": "P082",
     "nombre": "Ascensores de mantenimiento radial",
