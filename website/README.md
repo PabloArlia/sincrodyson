@@ -80,7 +80,7 @@ El servidor integrado de PHP ignora `.htaccess`: usalo solamente en loopback par
 
 ## Qué incluye
 
-- Crear una sala, entrar por código alfanumérico de ocho caracteres o QR y comenzar cuando haya al menos dos jugadores. Hasta 12 por sala.
+- Crear una sala, entrar por código alfanumérico de ocho caracteres o QR y comenzar con un solo jugador o en grupo. Hasta 12 por sala.
 - Escanear el QR de otra sala reemplaza el acceso local anterior y une automáticamente al jugador con el mismo nombre. Si es su primera visita o el nombre está ocupado, se muestra el formulario de ingreso. Escanear la sala actual conserva el jugador existente. La partida anterior no se elimina del servidor.
 - Saldo inicial configurable; por defecto $40 por jugador.
 - Clave privada de recuperación, sin cuentas ni contraseñas. Se guarda en el navegador y se puede copiar para recuperar el jugador en otro teléfono. El código de sala solo permite entrar durante la preparación; no da acceso a otro jugador.

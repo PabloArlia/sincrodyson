@@ -99,7 +99,6 @@ final class Game
             case 'start':
                 self::phase($s, 'lobby');
                 if (!$host) throw new GameError('Solo el anfitrión puede iniciar.', 403);
-                if (count($s['players']) < 2) throw new GameError('Se necesitan al menos dos jugadores.');
                 $s['round'] = 1; $s['phase'] = 'planning';
                 break;
             case 'plan':

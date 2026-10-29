@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="#fff" stroke="#222" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>Oponente</title>
+  <circle cx="15" cy="10" r="5"/>
+  <path d="M6 32v-8a9 9 0 0 1 18 0v8Z"/>
+  <path d="M22 20h15m-5-5 5 5-5 5M6 36h18" fill="none"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="#fff" stroke="#222" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>Adyacente</title>
+  <path d="M4 10h16v20H4Z"/>
+  <path d="M20 10h16v20H20Z" fill="#ddd"/>
+  <path d="M20 10v20" stroke-width="3.4"/>
+</svg>
