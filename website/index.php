@@ -29,6 +29,5 @@ require_once __DIR__ . '/src/http.php';
 </div>
 <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
 <dialog id="share-dialog" aria-labelledby="share-title"><div class="dialog-body"><div class="d-flex justify-content-between align-items-center mb-3"><h2 id="share-title" class="m-0">Invitar a la partida</h2><button class="btn btn-icon" data-action="close-dialog" aria-label="Cerrar">×</button></div><div id="share-content"></div></div></dialog>
-<dialog id="recovery-dialog" aria-labelledby="recovery-title"><div class="dialog-body"><div class="d-flex justify-content-between align-items-center mb-3"><h2 id="recovery-title" class="m-0">Tu acceso personal</h2><button class="btn btn-icon" data-action="close-dialog" aria-label="Cerrar">×</button></div><p>Guardá esta clave para recuperar tu jugador en otro teléfono. Es privada: quien la tenga puede actuar por vos.</p><label class="form-label" for="recovery-key">Clave personal</label><textarea id="recovery-key" class="form-control font-monospace mb-3" readonly rows="4"></textarea><button class="btn btn-primary w-100" data-action="copy-recovery">Copiar clave</button></div></dialog>
 </body>
 </html>

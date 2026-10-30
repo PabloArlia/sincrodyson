@@ -17,7 +17,6 @@
   let restoring = !!session && !invitationPending;
   const replacedSession = invitationPending ? session : null;
   let draft = {}, dirty = false, draftRound = null, noticeTimer, connection = false;
-  let recoveryWanted = false;
   function storage(name, value) {
     try {
       if(value === null) localStorage.removeItem(name);
@@ -60,7 +59,6 @@
       draftRound = s.round;
     } else if (!dirty) draft = {...me.orders};
     render();
-    if (recoveryWanted) { recoveryWanted = false; showRecovery(); }
   }
   async function poll(force = false) {
     // Skipping a tick must not stop synchronization for the rest of the visit.
@@ -97,7 +95,7 @@
     busy = true;
     try { storage(pendingKey, pending); render(); await execute(pending); }
     catch(e) {
-      if (e.status && e.status < 500) { storage(pendingKey, null); recoveryWanted = false; }
+      if (e.status && e.status < 500) { storage(pendingKey, null); }
       notify(e.name === 'AbortError' ? 'La respuesta tardó demasiado. Reintentá la acción pendiente.' : e.message, true);
     } finally { busy = false; render(); schedule(); }
   }
@@ -120,13 +118,13 @@
     ${session ? `<div class="alert alert-info"><div>Tu partida <strong class="room-code">${esc(session.code)}</strong> sigue guardada. <button class="btn btn-sm ms-2" data-action="refresh">Reconectar</button></div></div>` : ''}
     <div class="row g-4"><div class="col-md-6"><form class="card h-100" id="create-form"><div class="card-body"><div class="eyebrow mb-2">01 / Nueva mesa</div><h2 class="card-title mb-3">Crear una partida</h2><label class="form-label" for="create-name">Tu nombre</label><input id="create-name" name="name" class="form-control mb-3" placeholder="¿Cómo te llamás?" maxlength="40" required autocomplete="nickname"><label class="form-label" for="initial-cash">Dinero inicial por jugador</label><div class="input-group mb-3"><span class="input-group-text">$</span><input id="initial-cash" name="cash" type="number" min="0" max="1000000" step="0.01" value="40" class="form-control" required></div><button class="btn btn-primary w-100" ${busy?'disabled':''}>Crear partida</button></div></form></div>
     <div class="col-md-6"><form class="card h-100" id="join-form"><div class="card-body"><div class="eyebrow mb-2">02 / Ya hay una mesa</div><h2 class="card-title mb-3">Unirme con código</h2><label class="form-label" for="join-name">Tu nombre</label><input id="join-name" name="name" class="form-control mb-3" maxlength="40" required autocomplete="nickname" placeholder="Tu nombre en la mesa"><label class="form-label" for="join-code">Código de partida</label><input id="join-code" name="code" class="form-control room-code text-uppercase mb-3" maxlength="8" minlength="8" required value="${esc(invite)}" placeholder="ABCD2345" autocomplete="off" autocapitalize="characters" spellcheck="false"><button class="btn w-100" ${busy?'disabled':''}>Entrar a la sala</button></div></form></div></div>
-    <details class="mt-4"><summary class="text-secondary">Recuperar mi jugador con una clave personal</summary><form id="recover-form" class="mt-3"><label class="form-label" for="recover-key">Clave personal completa</label><input id="recover-key" name="recovery" class="form-control mb-2" required placeholder="CÓDIGO:clave personal" autocomplete="off"><button class="btn">Recuperar acceso</button></form></details></div>`;
+    </div>`;
   }
   function me() { return game.players.find(p => p.id === game.me); }
   function person(id) { return game.players.find(p => p.id === id); }
   const isHost = () => game.host === game.me;
   function navigationMenu() {
-    return `<details id="game-menu" class="game-menu"><summary class="btn menu-summary"><span aria-hidden="true">☰</span> Menú</summary><div class="game-menu-panel"><nav aria-label="Secciones de la partida"><button class="game-menu-item ${tab==='market'?'active':''}" data-tab="market" ${tab==='market'?'aria-current="page"':''}>Mercado</button><button class="game-menu-item ${tab==='account'?'active':''}" data-tab="account" ${tab==='account'?'aria-current="page"':''}>Caja y deudas</button><button class="game-menu-item ${tab==='activity'?'active':''}" data-tab="activity" ${tab==='activity'?'aria-current="page"':''}>Registro público</button></nav><div class="game-menu-code"><span class="eyebrow">Código de partida</span><strong class="room-code">${esc(game.code)}</strong></div><button class="game-menu-item" data-action="share">Invitar jugadores · QR y enlace</button><button class="game-menu-item" data-action="recovery">Mi acceso personal</button><div class="game-menu-divider"></div><button class="game-menu-item" data-action="refresh">Actualizar ahora</button><button class="game-menu-item" data-action="leave">Cambiar de partida</button></div></details>`;
+    return `<details id="game-menu" class="game-menu"><summary class="btn menu-summary"><span aria-hidden="true">☰</span> Menú</summary><div class="game-menu-panel"><nav aria-label="Secciones de la partida"><button class="game-menu-item ${tab==='market'?'active':''}" data-tab="market" ${tab==='market'?'aria-current="page"':''}>Mercado</button><button class="game-menu-item ${tab==='account'?'active':''}" data-tab="account" ${tab==='account'?'aria-current="page"':''}>Caja y deudas</button><button class="game-menu-item ${tab==='activity'?'active':''}" data-tab="activity" ${tab==='activity'?'aria-current="page"':''}>Registro público</button></nav><div class="game-menu-code"><span class="eyebrow">Código de partida</span><strong class="room-code">${esc(game.code)}</strong></div><button class="game-menu-item" data-action="share">Invitar jugadores · QR y enlace</button><div class="game-menu-divider"></div><button class="game-menu-item" data-action="refresh">Actualizar ahora</button><button class="game-menu-item" data-action="leave">Cambiar de partida</button></div></details>`;
   }
   function gameView() {
     const p = me();
@@ -179,7 +177,7 @@
     return `<form id="settle-form" class="card liquidation mb-4"><div class="card-header"><div><div class="eyebrow mb-1">Todos fiscalizan · ${s.index+1} de ${s.order.length}</div><h2 class="card-title">Liquida ${esc(p.name)}</h2></div><span class="badge bg-blue-lt ms-auto">Turno ${s.index+1}</span></div><div class="card-body"><p class="text-secondary small">Entregá las ventas al banco y tomá las compras. Las unidades que no puedas entregar quedan como deuda; el cobro de la venta se mantiene.</p>${Object.entries(p.orders).length?Object.entries(p.orders).map(([rid,q])=>`<div class="trade-row"><div><strong>${q>0?'Recibe':'Entrega'} ${Math.abs(q)} ${esc(game.catalog[rid].name)}</strong><div class="text-secondary small">${money(s.prices[rid])} por unidad · ${q>0?'paga':'cobra'} ${money(Math.abs(q)*s.prices[rid])}</div></div>${q<0&&can?`<div class="debt-input"><label class="form-label small" for="missing-${rid}">No entrega</label><input id="missing-${rid}" name="missing-${rid}" type="number" min="0" max="${-q}" step="1" value="0" class="form-control" inputmode="numeric"></div>`:''}</div>`).join(''):'<p>Sin compras ni ventas en esta ronda.</p>'}<div class="d-flex justify-content-between align-items-center mt-3"><div><div class="text-secondary small">Movimiento de caja</div><strong class="fs-2 ${total<0?'money-negative':'money-positive'}">${total>=0?'Cobra':'Paga'} ${money(Math.abs(total))}</strong></div><div class="text-end"><div class="text-secondary small">Saldo después</div><strong class="fs-2">${money(p.cash+total)}</strong></div></div>${can?`<button class="btn btn-primary w-100 mt-4" ${busy?'disabled':''}>Confirmar entregas y liquidación${id!==game.me?' como anfitrión':''}</button>`:`<div class="alert alert-info mt-3 mb-0">Esperando la confirmación de ${esc(p.name)} o del anfitrión.</div>`}</div></form>`;
   }
   function execution() {
-    return `<div class="card mb-4"><div class="card-body"><div class="eyebrow mb-2">${game.phase==='finished'?'Registro final':'Mercado liquidado'}</div><h2>${game.phase==='finished'?'La partida terminó':'Ahora se ejecutan los proyectos'}</h2><p class="text-secondary">Los cobros y pagos del tablero se cargan en Caja y deudas.</p><div class="d-flex flex-wrap gap-2">${game.settlement.order.map((id,i)=>`<span class="badge bg-blue-lt">${i+1}. ${esc(person(id).name)}</span>`).join('')}</div>${isHost()&&game.phase==='execution'?`<button class="btn btn-primary mt-3" data-command="maintenance" ${busy?'disabled':''}>Ir a Mantenimiento</button>`:''}</div></div>`;
+    return `<div class="card mb-4"><div class="card-body"><div class="eyebrow mb-2">${game.phase==='finished'?'Registro final':'Mercado liquidado'}</div><h2>${game.phase==='finished'?'La partida terminó':'Ahora se ejecutan los proyectos'}</h2><p class="text-secondary">${game.phase==='execution'?'Registrá acá los cobros y pagos a la reserva o las transferencias a otros jugadores.':'Consultá los saldos y movimientos en Caja y deudas y en el Registro público.'}</p><div class="d-flex flex-wrap gap-2">${game.settlement.order.map((id,i)=>`<span class="badge bg-blue-lt">${i+1}. ${esc(person(id).name)}</span>`).join('')}</div>${isHost()&&game.phase==='execution'?`<button class="btn btn-primary mt-3" data-command="maintenance" ${busy?'disabled':''}>Ir a Mantenimiento</button>`:''}</div></div>${game.phase==='execution'?cashForm():''}`;
   }
   function maintenanceChoice() {
     const saved=readLocal('syncrodyson-maintenance-'+game.code);
@@ -219,15 +217,19 @@
     }
     $('#maintenance-total').textContent=signed(maintenanceAmount(choice));
   }
-  function account() {
+  function cashForm() {
     const p=me(), allowed=['lobby','planning','execution','maintenance'].includes(game.phase);
+    const others=game.players.filter(x=>x.id!==p.id);
+    return `<form id="cash-form" class="card mb-4"><div class="card-header"><h2 class="card-title">Registrar dinero del tablero</h2></div><div class="card-body"><p class="text-secondary small">Ingresos, contratación, proyectos, eventos o correcciones. Todo queda visible en el registro público.</p><label class="form-label" for="cash-kind">Movimiento</label><select id="cash-kind" name="kind" class="form-select mb-3" ${allowed?'':'disabled'}><option value="income">Cobro de la reserva</option><option value="expense">Pago a la reserva</option>${others.map(x=>`<option value="transfer:${esc(x.id)}">Transferir a ${esc(x.name)}</option>`).join('')}</select><label class="form-label" for="cash-amount">Importe ($)</label><input id="cash-amount" name="amount" type="number" min="0.01" max="1000000" step="0.01" inputmode="decimal" class="form-control mb-3" required ${allowed?'':'disabled'}><button class="btn btn-primary w-100" ${!allowed||busy||readLocal(pendingKey)?'disabled':''}>Registrar movimiento</button>${!allowed?'<p class="small text-secondary mt-2 mb-0">La caja se habilita fuera de la liquidación y antes de finalizar la partida.</p>':''}</div></form>`;
+  }
+  function account() {
+    const p=me();
     const debtValue=Object.entries(p.debts).reduce((a,[rid,q])=>a+q*game.catalog[rid].max,Math.max(0,-p.cash));
-    return `<div class="account-grid"><div><form id="cash-form" class="card"><div class="card-header"><h2 class="card-title">Registrar dinero del tablero</h2></div><div class="card-body"><p class="text-secondary small">Ingresos, contratación, proyectos, eventos o correcciones. Todo queda visible en el registro público.</p><label class="form-label" for="cash-kind">Movimiento</label><select id="cash-kind" name="kind" class="form-select mb-3" ${allowed?'':'disabled'}><option value="income">Cobro del banco</option><option value="expense">Pago al banco</option><option value="transfer">Pago a otro jugador</option></select><label class="form-label" for="cash-amount">Importe ($)</label><input id="cash-amount" name="amount" type="number" min="0.01" max="1000000" step="0.01" inputmode="decimal" class="form-control mb-3" required ${allowed?'':'disabled'}><label class="form-label" for="cash-reason">Motivo</label><input id="cash-reason" name="reason" maxlength="40" class="form-control mb-3" required placeholder="Ej.: contratación de ingenieros" ${allowed?'':'disabled'}><div id="transfer-target" hidden><label class="form-label" for="cash-to">Destinatario</label><select id="cash-to" name="to" class="form-select mb-3">${game.players.filter(x=>x.id!==p.id).map(x=>`<option value="${x.id}">${esc(x.name)}</option>`).join('')}</select></div><button class="btn btn-primary w-100" ${!allowed||busy?'disabled':''}>Registrar movimiento</button>${!allowed?'<p class="small text-secondary mt-2 mb-0">La caja se habilita fuera de la liquidación y antes de finalizar la partida.</p>':''}</div></form></div><div><div class="card mb-3"><div class="card-header"><h2 class="card-title">Tus deudas</h2></div><div class="card-body"><div class="d-flex justify-content-between"><span>Descubierto monetario</span><strong>${money(Math.max(0,-p.cash))}</strong></div>${Object.entries(p.debts).map(([rid,q])=>`<form class="repay-form debt-row" data-resource="${rid}"><div><strong>${q} ${esc(game.catalog[rid].name)}</strong><div class="small text-secondary">Valor máximo: ${money(q*game.catalog[rid].max)}</div></div><div class="d-flex gap-2"><label class="visually-hidden" for="repay-${rid}">Unidades a devolver de ${esc(game.catalog[rid].name)}</label><input id="repay-${rid}" name="qty" type="number" min="1" max="${q}" value="${q}" step="1" class="form-control" style="width:75px" required><button class="btn btn-sm" ${!['planning','execution','maintenance'].includes(game.phase)||busy?'disabled':''}>Entregar</button></div></form>`).join('')}<hr><div class="d-flex justify-content-between"><span>Valor penalizable actual</span><strong>${money(debtValue)}</strong></div><p class="text-secondary small mt-3 mb-0">Con esta deuda perderías <strong>${Math.floor(debtValue/500)} PV</strong> al terminar el próximo mercado. Se suma el descubierto y los recursos pendientes a precio máximo. Entregar recursos no mueve dinero ni devuelve PV perdidos.</p></div></div></div></div>`;
+    return `<div class="account-grid"><div>${cashForm()}</div><div><div class="card mb-3"><div class="card-header"><h2 class="card-title">Tus deudas</h2></div><div class="card-body"><div class="d-flex justify-content-between"><span>Descubierto monetario</span><strong>${money(Math.max(0,-p.cash))}</strong></div>${Object.entries(p.debts).map(([rid,q])=>`<form class="repay-form debt-row" data-resource="${rid}"><div><strong>${q} ${esc(game.catalog[rid].name)}</strong><div class="small text-secondary">Valor máximo: ${money(q*game.catalog[rid].max)}</div></div><div class="d-flex gap-2"><label class="visually-hidden" for="repay-${rid}">Unidades a devolver de ${esc(game.catalog[rid].name)}</label><input id="repay-${rid}" name="qty" type="number" min="1" max="${q}" value="${q}" step="1" class="form-control" style="width:75px" required><button class="btn btn-sm" ${!['planning','execution','maintenance'].includes(game.phase)||busy?'disabled':''}>Entregar</button></div></form>`).join('')}<hr><div class="d-flex justify-content-between"><span>Valor penalizable actual</span><strong>${money(debtValue)}</strong></div><p class="text-secondary small mt-3 mb-0">Con esta deuda perderías <strong>${Math.floor(debtValue/500)} PV</strong> al terminar el próximo mercado. Se suma el descubierto y los recursos pendientes a precio máximo. Entregar recursos no mueve dinero ni devuelve PV perdidos.</p></div></div></div></div>`;
   }
   function activity() {
     return `<div class="card"><div class="card-header"><h2 class="card-title">Movimientos de toda la mesa</h2><button class="btn btn-sm ms-auto" data-action="export">Exportar registro</button></div><div class="table-responsive"><table class="table table-vcenter ledger-table mb-0"><thead><tr><th>Ronda</th><th>Jugador</th><th>Motivo</th><th class="text-end">Movimiento</th></tr></thead><tbody>${[...game.ledger].reverse().map(l=>`<tr><td>${l.round||'Inicio'}</td><td>${esc(person(l.player)?.name)}</td><td>${esc(l.reason)}${l.by&&l.by!==l.player?`<div class="small text-secondary">Confirmó ${esc(person(l.by)?.name)}</div>`:''}${l.debtValue!==undefined?`<div class="small text-secondary">Deuda valorada: ${money(l.debtValue)}</div>`:''}${l.maintenance?`<div class="small text-secondary">Yacimientos ${signed(l.maintenance.mines)} / Barracas ${signed(-l.maintenance.barracks)} / Soporte ${signed(l.maintenance.supportIncome)}</div>`:''}${l.units?`<div class="small text-secondary">${Object.entries(l.units).map(([r,q])=>`${q} ${esc(r)}`).join(' · ')}</div>`:''}${l.missing&&Object.keys(l.missing).length?`<div class="small money-negative">Pendiente: ${Object.entries(l.missing).map(([r,q])=>`${q} ${esc(r)}`).join(' · ')}</div>`:''}</td><td class="text-end ${l.amount<0||l.pv<0?'money-negative':l.amount>0?'money-positive':''}">${l.pv!==undefined?l.pv+' PV':signed(l.amount)}</td></tr>`).join('')}</tbody></table></div></div>`;
   }
-  function showRecovery() { $('#recovery-key').value=session.code+':'+session.token; $('#recovery-dialog').showModal(); }
   function showShare() {
     const url=new URL(location.pathname,location.origin); url.searchParams.set('join',game.code);
     let qr=''; try { const code=qrcode(0,'M'); code.addData(url.href); code.make(); qr=`<div class="qr">${code.createSvgTag({scalable:true,margin:2})}</div>`; } catch { qr='<p>El enlace es demasiado largo para generar el QR.</p>'; }
@@ -265,7 +267,7 @@
   });
   document.addEventListener('change',e=>{
     if(e.target.closest('#maintenance-form')) updateMaintenanceChoice();
-    if(e.target.id==='cash-kind') $('#transfer-target').hidden=e.target.value!=='transfer';
+
   });
   document.addEventListener('submit',async e=>{
     e.preventDefault(); if(busy) return;
@@ -274,24 +276,21 @@
     if(f.id==='create-form'||f.id==='join-form') {
       const data={name:values.name}; const action=f.id==='create-form'?'create':'join';
       if(action==='create') data.cash=Math.round(Number(values.cash)*100); else data.code=values.code.toUpperCase().trim();
-      recoveryWanted=true; await act(action,data,random());
-    } else if(f.id==='recover-form') {
-      const match=values.recovery.trim().match(/^([A-Z2-9]{8}):([a-f0-9]{64})$/i);
-      if(!match) return notify('La clave debe tener el formato CÓDIGO:clave personal.',true);
-      session={code:match[1].toUpperCase(),token:match[2].toLowerCase()};storage(key,session); game=null;restoring=true;render(); await poll(true);
+      await act(action,data,random());
     } else if(f.id==='maintenance-form') {
       await act('maintain',{mines:Number(values.mines),barracks:Number(values.barracks),support:Number(values.support)});
     } else if(f.id==='settle-form') {
       const missing={}; for(const [k,v] of Object.entries(values)) if(k.startsWith('missing-')&&Number(v)) missing[k.slice(8)]=Number(v);
       const player=game.settlement.order[game.settlement.index];
-      if(Object.keys(missing).length&&!confirm('Las unidades no entregadas quedarán en deuda y pueden restar PV. ¿Confirmás?')) return;
       await act('settle',{missing,player});
     } else if(f.id==='cash-form') {
       const amount=Math.round(Number(values.amount)*100);
-      if(!confirm(`${values.kind==='income'?'Registrar cobro de':'Registrar pago de'} ${money(amount)}: ${values.reason}. ¿Confirmás?`)) return;
-      await act(values.kind==='transfer'?'transfer':'cash',{amount:values.kind==='expense'?-amount:amount,reason:values.reason,to:values.to});
+      const transfer=values.kind.startsWith('transfer:');
+      const recipient=transfer?person(values.kind.slice('transfer:'.length)):null;
+      if(transfer&&(!recipient||recipient.id===game.me)) return notify('Elegí otro jugador para transferir.',true);
+      await act(transfer?'transfer':'cash',{amount:values.kind==='expense'?-amount:amount,
+        reason:transfer?'Transferencia entre jugadores':values.kind==='income'?'Cobro de la reserva':'Pago a la reserva',to:recipient?.id});
     } else if(f.classList.contains('repay-form')) {
-      if(!confirm(`¿Entregaste ${values.qty} unidades de ${game.catalog[f.dataset.resource].name} al banco?`)) return;
       await act('repay',{units:{[f.dataset.resource]:Number(values.qty)}});
     }
   });
@@ -314,22 +313,17 @@
     }
     if(b.dataset.tab) { tab=b.dataset.tab; render(); return; }
     if(b.dataset.command) {
-      if(b.dataset.command==='next'&&!confirm('¿Terminaron el mantenimiento y los eventos? Se abrirá la siguiente planificación.')) return;
-      if(b.dataset.command==='maintenance'&&!confirm('¿Terminaron todos la ejecución? Se abrirá Mantenimiento.')) return;
       await act(b.dataset.command); return;
     }
     switch(b.dataset.action) {
       case 'pass': case 'save-plan': { const orders=collectOrders(); if(orders!==null) await act(b.dataset.action==='pass'?'pass':'plan',{orders}); break; }
       case 'refresh': await poll(true); break;
       case 'share': showShare(); break;
-      case 'recovery': showRecovery(); break;
-      case 'copy-recovery': await copy($('#recovery-key').value); break;
       case 'copy-invite': await copy($('#invite-url').value); break;
       case 'close-dialog': b.closest('dialog').close(); break;
-      case 'finish': if(confirm('¿Finalizar la partida? El registro y los saldos se conservarán para consulta.')) await act('finish'); break;
+      case 'finish': await act('finish'); break;
       case 'leave':
         if(readLocal(pendingKey)) return notify('Primero resolvé la acción pendiente.',true);
-        if(!confirm('Guardá tu clave personal antes de cambiar de partida. ¿La tenés guardada?')) return;
         storage(key,null); session=null; game=null; tab='market';invitationPending=false; history.replaceState(null,'',location.pathname); render(); break;
       case 'retry':
         if(busy) return; busy=true; render();
@@ -369,7 +363,6 @@
     if(!invitationPending) return;
     if(name) {
       if(replacedSession) replacedSession.name=name;
-      recoveryWanted=true;
       await act('join',{code:inviteCode,name},random());
     } else { $('#connection-text').textContent='Invitación recibida';schedule(); }
   }

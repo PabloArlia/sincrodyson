@@ -9,10 +9,11 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .heading{display:grid;grid-template-columns:11mm minmax(0,1fr) auto;column-gap:1.5mm;flex-shrink:0;align-items:start}
 .module-icon{grid-row:1 / 3;width:11mm;height:10mm;border:1px solid #222;border-radius:1mm;display:grid;place-items:center}
 .module-icon img,.module-icon svg{width:9mm;height:8mm;object-fit:contain}
-.name{font-size:12pt;font-weight:800;line-height:1.05}
+.name{width:300px;font-size:12pt;font-weight:800;line-height:1.05}
 .type{font-size:10pt;text-transform:uppercase;margin-top:.5mm}.card-id{font-weight:bold;margin-right:1mm}
-.card-score{font-size:14pt;font-weight:800;white-space:nowrap}
-.heading-bonus{grid-column:2 / -1;text-align:center;font-size:10pt;font-weight:800}
+.card-score{font-size:14pt;font-weight:800;white-space:nowrap;text-align:right}
+.heading-bonus{text-align:right;font-size:10pt;font-weight:800;white-space:normal}
+.heading-bonus .card-bonus{justify-content:flex-end}
 .card-bonus{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5mm;max-width:100%}
 .card-bonus img{width:5mm;height:5mm;object-fit:contain}.card-bonus .bonus-break{flex-basis:100%;height:0}
 .card-bonus img.separator-bar{width:2mm}
@@ -146,7 +147,7 @@ function renderBono(bono){
  const etiqueta=partes.map(p=>Object.hasOwn(catalogoIconos,p.slice(1,-1))&&p.startsWith('[')?catalogoIconos[p.slice(1,-1)].nombre:p).join(' ');
  const contenido=partes.map(p=>{
   const id=p.startsWith('[')&&p.endsWith(']')?p.slice(1,-1):'';
-  return Object.hasOwn(catalogoIconos,id)?imagenIcono(id):escapeHTML(p).replace(/\\n|\r\n?|\n/g,'<span class="bonus-break" aria-hidden="true"></span>');
+  return Object.hasOwn(catalogoIconos,id)?imagenIcono(id):escapeHTML(p).replace(/\\n|\r\n?|\n/g,' Y ');
  }).join('');
  return contenido?`<span class="card-bonus" title="${escapeHTML(etiqueta)}" aria-label="${escapeHTML(etiqueta)}">${contenido}</span>`:'';
 }
@@ -178,7 +179,7 @@ function render(m){
  const insignia=renderBono(m.bono);
  const coef=Number.isFinite(balance.coef)?balance.coef.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
  const fueraRango=!Number.isFinite(balance.coef)||balance.coef<(m.inicial?12:7)||balance.coef>(m.inicial?13:9);
- return `<article class="card${m.etapas.length>2?' many-stages':''}${m.inicial?' inicial':''}${fueraRango?' coef-fuera-rango':''}" data-card-id="${escapeHTML(m.id)}" tabindex="0" data-balance="${escapeHTML(diagnosticoBalance(m,balance))}"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div><div class="name">${escapeHTML(m.nombre)}</div><div class="type"><span class="card-id">${escapeHTML(m.id)}</span>${escapeHTML(m.tipo==='recursoshumanos'?'Recursos humanos':m.tipo.replaceAll('_',' '))}</div></div><div class="card-score">${renderBono(puntos)}</div>${insignia?`<div class="heading-bonus">${insignia}</div>`:''}</header>
+ return `<article class="card${m.etapas.length>2?' many-stages':''}${m.inicial?' inicial':''}${fueraRango?' coef-fuera-rango':''}" data-card-id="${escapeHTML(m.id)}" tabindex="0" data-balance="${escapeHTML(diagnosticoBalance(m,balance))}"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div><div class="name">${escapeHTML(m.nombre)}</div><div class="type"><span class="card-id">${escapeHTML(m.id)}</span>${escapeHTML(m.tipo==='recursoshumanos'?'Recursos humanos':m.tipo.replaceAll('_',' '))}</div></div><div class="card-score">${renderBono(puntos)}${insignia?`<div class="heading-bonus">${insignia}</div>`:''}</div></header>
  <section class="stages" style="--stage-count:${m.etapas.length}">${m.etapas.map((e,i)=>`<div class="stage"><div class="stage-title">ETAPA ${i+1}</div><div class="items">${Object.entries(e.m||{}).map(([id,n])=>tokens(id,n)).join('')}</div><div class="crew-line">${Object.entries(e.o||{}).filter(([id])=>id!=='En').map(([id,n])=>operationTokens(id,n)).join('')}${e.o?.En?operationTokens('En',e.o.En):''}</div></div>`).join('')}</section>
  <footer class="footer"><div class="footer-main"><div class="footer-cost">Costo <strong>$${costo}</strong><div>Coef. ${coef}</div></div></div><div class="footer-effect-wrap">${iconoDestino(m.destino||'completados')}<div class="footer-effect"><strong>Al completar:</strong> ${renderEfecto(m.efecto||'Sin efecto adicional')}</div></div></footer></article>`;
 }
