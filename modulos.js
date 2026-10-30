@@ -750,7 +750,7 @@ window.modulos = [
     "discos": 0,
     "bono": "-4 [AI] [RE] [=] [OP] +7 [Di]",
     "disco_soporte": 0,
-    "efecto": "[QD] Retira 1 disco propio de una celda de [ES] Estructura o [FV] Fotovoltaico y devuelve hasta 4 [AI] ingenieros anclados a la reserva. \nOtros jugadores pueden ofrecete $7 para que quites sus ingenieros (si aceptas es vinculante).\nPuedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "[QD] Retira uno de tus discos de una celda de [ES] Estructura o [FV] Fotovoltaico y devuelve hasta 4 [AI] ingenieros anclados a la reserva. \nOtros jugadores pueden ofrecete $7 para que quites sus ingenieros (si aceptas es vinculante).\nPuedes volver a colocar el cubo en la etapa 2.",
     "etapas": [
       {
         "m": {
@@ -1584,7 +1584,7 @@ window.modulos = [
     "discos": 2,
     "bono": "1[QD][RF] + 3 [DS][TS] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "[QD] Retira un disco de cualquier celda de [RF] Refrigeración y coloca un disco en 3 celdas libres de [TS] Transmisión del mismo cuadrante de donde la quitaste.",
+    "efecto": "[QD] Retira uno de tus discos de una celda de [RF] Refrigeración y coloca un disco en 3 celdas libres de [TS] Transmisión del mismo cuadrante de donde la quitaste.",
     "etapas": [
       {
         "m": {
@@ -2542,7 +2542,7 @@ window.modulos = [
     "discos": -1,
     "bono": "1 [DP][CO] + [QD][MO] [=][QU]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de cualquier celda de [MO] Microondas para colocar un disco en una celda libre de [CO] Control en el área de soporte del mismo cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "[QD] Retira uno de tus discos de una celda de [MO] Microondas para colocar un disco en una celda libre de [CO] Control en el área de soporte del mismo cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2587,7 +2587,7 @@ window.modulos = [
     "discos": -1,
     "bono": "1 [DP][MN] + [QD][ES] [=][QU]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de cualquier celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "[QD] Retira uno de tus discos de una celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2625,7 +2625,7 @@ window.modulos = [
     "discos": -1,
     "bono": "1 [DP][MN] + [QD][FV] \n +2 [PI] [SI][ES][=][QU]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de cualquier celda de [FV] Fotovoltaica para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\nLuego gana 2 [PI] por cada celda de [ES] Estructura con un disco en el mimso cuadrante. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "[QD] Retira uno de tus discos de una celda de [FV] Fotovoltaica para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\nLuego gana 2 [PI] por cada celda de [ES] Estructura con un disco en el mimso cuadrante. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2746,7 +2746,7 @@ window.modulos = [
     "discos": -1,
     "bono": "1 [DP][MN] + [QD][ES] \n +3[PI] [/] [SI][RF] [=][QU]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de cualquier celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\nLuego gana 3[PI] por cada celda de [RF] Refrigeración con un disco \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "[QD] Retira uno de tus discos de una celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\nLuego gana 3[PI] por cada celda de [RF] Refrigeración con un disco \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2786,7 +2786,7 @@ window.modulos = [
     "discos": -3,
     "bono": "1 [DP][MN] + [QD][ES] + [QD][TS] + [QD][RF]",
     "disco_soporte": 1,
-    "efecto": "[QD] Retira un disco de [ES] Estructura, uno de [TS] Transmisión y uno de [RF] Refrigeración de un mismo sector para colocar un disco en una celda libre de [MN] Mantenimiento del mismo cuadrante.",
+    "efecto": "[QD] Retira uno de tus discos de cada una de las capas [ES] Estructura, [TS] Transmisión y [RF] Refrigeración de un mismo sector para colocar un disco en una celda libre de [MN] Mantenimiento del mismo cuadrante.",
     "etapas": [
       {
         "m": {
