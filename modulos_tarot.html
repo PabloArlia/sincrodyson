@@ -1,0 +1,223 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Syncrodyson — proyectos tarot</title><style>
+*{box-sizing:border-box}body{font-family:Arial,sans-serif;background:#f3f3f3;color:#111;margin:0;padding:16px}
+.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
+.sheet{display:grid;grid-template-columns:repeat(3,64mm);gap:5mm 1mm;justify-content:center}
+.card.coef-fuera-rango{border:2px solid #d00000}
+.card.inicial .name{text-decoration:underline;text-underline-offset:2px}
+.card{width:64mm;height:120mm;background:white;border:1px solid #222;border-radius:2mm;padding:2.5mm;display:flex;flex-direction:column;overflow:hidden;break-inside:avoid}
+.heading{display:flex;align-items:flex-start;gap:2mm;border-bottom:1px solid #888;padding-bottom:1.5mm;min-height:12mm}
+.module-icon{width:9mm;height:9mm;border:1px solid #222;border-radius:1mm;display:grid;place-items:center;flex-shrink:0}
+.module-icon svg,.module-icon img{width:7mm;height:7mm;stroke:#222;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.name{font-size:11.44pt;font-weight:800;line-height:1.08}.card-id{margin-right:1mm;font-weight:bold;letter-spacing:0}
+.type{font-size:7.8pt;letter-spacing:.07em;text-transform:uppercase;margin-top:.6mm}
+.stages{flex:1;display:flex;flex-direction:column;gap:2mm;padding-top:2 mm;min-height:0}
+.stage{border:1px solid #aaa;border-radius:1mm;padding:1.6mm;flex:1;min-height:0}
+.stage-title{display:none}
+.items{display:flex;flex-direction:row;flex-wrap:nowrap;gap:1.6mm;align-items:center;min-height:7mm}
+.resource-line{display:flex;align-items:center;gap:.6mm;min-height:6mm;white-space:nowrap}
+.resource-name{display:none}
+.coins{display:flex;flex-wrap:nowrap;gap:.6mm;align-items:center}
+.coin{width:9.5mm;height:9.5mm;border-radius:50%;border:1px solid #333;display:inline-flex;align-items:center;justify-content:center;background:var(--c,#fff);color:var(--ink,#111);font-size:9.1pt;font-weight:800;white-space:nowrap;box-shadow:1px 1px 0 #aaa}
+.coin.small{width:8.2mm;height:8.2mm;font-size:8.32pt}
+.operatives{display:flex;flex-wrap:wrap;gap:1.5mm 2.2mm;margin-top:1.6mm;align-items:center}
+ .opgroup{display:flex;align-items:center;gap:.8mm;white-space:nowrap}.oplabel{font-size:7.8pt;font-weight:bold}.opicons{display:flex;gap:.35mm;align-items:center}.opicon{width:4.6mm;height:5.7mm;display:inline-flex;align-items:center;justify-content:center}.opicon svg,.opicon img{width:100%;height:100%;stroke:#222;stroke-width:.8;fill:var(--meeple-color,#ddd);stroke-linejoin:round}.opicon.meeple{width:5mm;height:6mm}.opicon.battery svg{fill:#fff}.opicon.battery{width:4mm;height:5.5mm}
+.footer{border-top:1px solid #333;margin-top:2mm;padding-top:1.5mm;min-height:15mm;display:flex;flex-direction:column;justify-content:center;gap:1mm}
+.footer-main{display:flex;justify-content:space-between;align-items:center;gap:2mm}.footer-score{font-size:14.3pt;font-weight:800}.footer-cost{text-align:right;font-size:9.1pt;line-height:1.25;white-space:nowrap}.footer-cost strong{font-size:10pt}.footer-effect{font-size:9.1pt;line-height:1.13;flex:1;min-width:0;overflow-wrap:anywhere}.footer-effect-wrap{display:flex;align-items:flex-end;gap:1mm}.destino{width:8mm;height:8mm;flex:0 0 8mm;border:1px solid #333;border-radius:1mm;display:grid;place-items:center;font-size:19.5pt;font-weight:bold;line-height:1}.destino small{font-size:7.8pt}.stage{overflow:hidden}.stages{gap:1mm}.stage-title{display:block;font-size:7.8pt;font-weight:bold;color:#555;margin-bottom:.7mm}.footer{min-height:17mm}.footer-cost{white-space:normal}.name{font-size:10.79pt}.footer-score{font-size:11.7pt}.card{padding:2mm}.items{flex-wrap:wrap;gap:.7mm}.coin{width:8.5mm;height:8.5mm;font-size:8.19pt}.operatives{gap:.7mm 1.3mm}.opicon{width:4mm;height:5mm}.opicon.meeple{width:4.2mm;height:5.2mm}.opicon.battery{width:3.6mm;height:5mm}.footer-main{gap:1mm}
+/* Todas las etapas usan las mismas medidas, sin reducir sus fichas. */
+.heading{display:grid;grid-template-columns:9mm minmax(0,1fr) auto;gap:1.3mm;flex-shrink:0;padding-top:0;padding-bottom:1mm}
+.type{overflow-wrap:anywhere}
+.card-score{display:flex;flex-direction:column;align-items:flex-end;gap:1mm;font-size:10pt;font-weight:800;white-space:nowrap}
+.heading-bonus{grid-column:1 / -1;min-width:0;text-align:center;font-size:10pt;font-weight:800}
+.heading-bonus .card-bonus{display:flex;flex-wrap:wrap;justify-content:center;max-width:100%}
+.card-bonus{display:inline-flex;flex-wrap:wrap;align-items:center;gap:.5mm}
+.card-bonus .bonus-break{flex-basis:100%;height:0}
+.card-bonus img{width:5mm;height:5mm;object-fit:contain}
+/* Altura uniforme pausada: volver a grid-auto-rows:1fr para reactivarla. */
+.stages{flex:0 0 auto;display:grid;grid-auto-rows:auto;padding-top:1.2mm;margin-bottom:1mm;min-height:min-content;gap:1.2mm}
+.stage{position:relative;flex:0 0 auto;padding:2mm;min-height:min-content;display:grid;grid-template-columns:minmax(0,1fr);gap:1mm;overflow:visible}
+.stage-title{position:absolute;top:-0.75mm;left:.7mm;padding:0 .5mm;background:white;font-size:6.5pt;line-height:1;margin:0}
+.items{display:flex;flex-wrap:wrap;min-height:0;gap:.5mm;align-items:center;align-content:center}
+.resource-line{min-height:0;flex:0 0 auto}
+.coin{width:10mm;height:10mm;flex:0 0 10mm;font-size:8pt;box-shadow:none}
+.operatives{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;margin:0;gap:1mm;min-width:0}
+.crew-line,.energy-line{display:flex;flex-wrap:nowrap;align-items:center;gap:.4mm;min-height:6mm}
+.crew-line{gap:.25mm}
+.crew-line .opicons{gap:.2mm}
+.crew-line:empty,.energy-line:empty{display:none}
+.opgroup{gap:.3mm;flex:0 0 auto}
+.oplabel{font-size:9.1pt}
+.opicon,.opicon.meeple,.opicon.battery,.opicon.rocket{width:auto;height:10mm;flex:0 0 auto}
+.opicon svg,.opicon img{width:auto;height:100%;display:block}
+.energy-line .opicons{gap:.1mm}
+.opicon.energy{width:auto;height:8mm;flex:0 0 auto}
+.footer{min-height:0;flex-shrink:0;margin-top:auto;padding-top:1mm;gap:.6mm}
+.footer-main{justify-content:flex-end}
+.footer-cost{font-size:7.8pt;white-space:nowrap}
+.footer-cost div{display:inline;margin-left:2mm}
+.footer-effect{font-size:10pt;line-height:1.15}
+.footer-effect .inline-icon{display:inline-block;vertical-align:middle;line-height:0}
+.footer-effect .inline-icon img{width:3.5mm;height:3.5mm;object-fit:contain}
+.card-bonus img.separator-bar{width:2mm}.footer-effect .inline-icon img.separator-bar{width:1.4mm}
+.footer-effect-wrap{display:flow-root}
+.footer-effect-wrap .destino{float:right;margin-left:1mm;margin-bottom:.5mm}
+.destino{position:relative}
+.destino img{width:6mm;height:6mm;object-fit:contain}
+.destino small{position:absolute;right:.3mm;bottom:.2mm;background:white;padding:0 .3mm}
+.footer-effect{position:relative}
+.footer-effect strong{position:absolute;top:-2mm;left:0;padding:0 .5mm;background:white;font-size:6.5pt;line-height:1;font-weight:bold;text-transform:uppercase;color:#555}
+.card[data-card-id="P092"] .stage{padding:1.3mm}
+.card[data-card-id="P092"] .footer-effect{font-size:9.1pt;line-height:1.12}
+@page{size:A4 portrait;margin:8mm}
+/* A4 con 8 mm de margen: 194 × 281 mm útiles, seis cartas tarot de 64 × 120 mm por hoja, con 1 mm entre columnas. */
+@media print{
+ html,body{margin:0;padding:0;background:white}
+ .toolbar{display:none}
+ .sheet{display:block;width:100%;margin:0;padding:0;text-align:center;font-size:0}
+ .sheet>.card:not(:nth-child(3n)){margin-right:1mm}
+ .sheet>.card{display:inline-flex;position:relative;top:4mm;vertical-align:top;width:64mm;height:120mm;margin:1.5mm 0;font-size:16px;text-align:left;break-inside:avoid;page-break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.balance-tooltip{position:fixed;z-index:1000;width:360px;max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);overflow:auto;padding:14px 16px;border:1px solid #78877e;border-radius:8px;background:#fff;color:#17221b;box-shadow:0 6px 24px #0003;font:12px/1.45 Arial,sans-serif;white-space:pre-line;pointer-events:none}.balance-tooltip[hidden]{display:none}@media print{.balance-tooltip{display:none!important}}
+.cards-summary{position:fixed;top:70px;right:12px;z-index:50;width:152px;max-height:calc(100vh - 82px);overflow:auto;padding:6px 8px;background:#fff;border:1px solid #aab5ad;border-radius:6px;box-shadow:0 3px 12px #0002;font:12px/1.2 Arial,sans-serif}.summary-row{display:flex;align-items:center;gap:3px;padding:3px 0;white-space:nowrap}.summary-icon,.summary-icon img{display:block;width:19px;height:19px;object-fit:contain}.summary-total{border-top:1px solid #c8d0ca;margin-top:3px;padding-top:6px;font-weight:bold}@media print{.cards-summary{display:none!important}}
+ .icono-hibrido{position:relative;display:inline-block;width:100%;height:100%;min-width:24px;min-height:24px;overflow:hidden;vertical-align:middle}.icono-hibrido img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain}.icono-hibrido img:first-child{clip-path:inset(0 50% 0 0)}.icono-hibrido img:nth-child(2){clip-path:inset(0 0 0 50%)}.icono-hibrido:after{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid currentColor;transform:translateX(-.5px)}
+</style></head><body><div class="toolbar"><button onclick="window.print()">Imprimir / guardar PDF</button><label><input id="colors" type="checkbox" checked> has</label><label><input id="show-copies" type="checkbox"> Mostrar copias</label><small>Cartas tarot de 64 × 120 mm · datos editables en <code>modulos</code></small></div>
+    <aside class="cards-summary" id="cards-summary" aria-label="Cantidad de cartas por tipo"></aside><main class="sheet" id="sheet"></main><script src="./modulos.js"></script><script src="./balance.js"></script>
+<script>
+const recursos={Fe:['Hierro','#d84242'],Cu:['Cobre','#3977dc'],Si:['Silicio','#f0d54d'],Ti:['Titanio','#58a85c'],Al:['Aluminio','#292929'],C:['Carbono','#fff'],Nd:['Neodimio','#e345ad'],Gd:['Gadolinio','#42c5c1'],Er:['Erbio','#ec933c'],Ce:['Cerio','#94623d']};
+const precios={Fe:1,Cu:3,Si:2,Ti:6,Al:3,C:1,Nd:8,Gd:8,Er:12,Ce:7,Tr:7};
+const operativos={II:'Ingeniero genérico',IQ:'Ingeniero químico',IE:'Ingeniero estructural',IM:'Ingeniero electromecánico',IS:'Ingeniero en sistemas',En:'Energía',Tr:'Transporte'};
+const tiposIcono={
+ "sensores": "SN",
+ "control": "CO",
+ "control_sensores": "CS",
+ "mantenimiento": "MN",
+ "bateria": "BT",
+ "estructura": "ES",
+ "fotovoltaico": "FV",
+ "transmision": "TS",
+ "refrigeracion": "RF",
+ "microondas": "MO",
+ "generador": "PE",
+ "economia": "EC",
+ "recursoshumanos": "RH",
+ "produccion": "PR",
+ "mejora_soporte_externo": "MS"
+};
+function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function tokens(id,n){
+ let color=recursos[id]?.[1]||'#fff';
+ if(!document.getElementById('colors').checked)color='#fff';
+ const ink=['Al','Ce','Nd','Cu','Ti','Er'].includes(id)&&document.getElementById('colors').checked?'#fff':'#111';
+ return `<span class="resource-line"><span class="coin" style="--c:${color};--ink:${ink}" title="${n} ${escapeHTML(recursos[id]?.[0]||id)}">${n} ${id}</span></span>`;
+}
+const destinosIcono={completados:'CM',mano:'MA',mejora:'MS',especial:'DE',derecha:'DR',etapa:'RE'};
+const catalogoIconos={
+ QU:{nombre:'Cuadrante',archivo:'esfera-cuadrante.svg'},
+ SC:{nombre:'Sector',archivo:'esfera-sector.svg'},
+ '=':{nombre:'Igual',archivo:'igual.svg'},
+ '!=':{nombre:'Distinto',archivo:'distinto.svg'},
+ '/':{nombre:'Por',archivo:'separador-barra.svg'}, NO:{nombre:'Celda sin disco',archivo:'NO-sin-disco.svg'},
+ QD:{nombre:'Quitar disco',archivo:'QD-quitar-disco.svg'},
+ FJ:{nombre:'Fin del juego',archivo:'FJ-fin-juego.svg'},
+ SN:{nombre:'Sensores',archivo:'SN-sensores.svg'},
+ CO:{nombre:'Control',archivo:'CO-control.svg'},
+ MN:{nombre:'Mantenimiento',archivo:'MN-mantenimiento.svg'},
+ LE:{nombre:'Licencias de excavación',archivo:'LE-licencias-excavacion.svg'},
+ YA:{nombre:'Yacimientos',archivo:'YA-yacimientos.svg'},
+ RQ:{nombre:'Reactivos químicos',archivo:'RQ-reactivos.svg'},
+ RR:{nombre:'Tierra rara',archivo:'RR-tierra-rara.svg'},
+ ME:{nombre:'Mercado',archivo:'ME-mercado.svg'},
+ TJ:{nombre:'Todos los jugadores',archivo:'TJ-todos-los-jugadores.svg'},
+ CN:{nombre:'Ficha de contratación',archivo:'CN-ficha-contratacion.svg'},
+ CP:{nombre:'Carta de proyecto',archivo:'CP-carta-proyecto.svg'},
+ SP:{nombre:'Soporte externo',archivo:'SP-soporte-externo.svg'},
+ PE:{nombre:'Producción de energía',archivo:'PE-produccion-energia.svg'},
+ CM:{nombre:'Proyecto completado',archivo:'CM-completado.svg'},
+ MA:{nombre:'Vuelve a la mano',archivo:'MA-mano.svg'},
+ MS:{nombre:'Mejora de soporte externo',archivo:'MS-mejora-soporte-externo.svg'},
+ DR:{nombre:'Pasar a la mano del jugador de la derecha',archivo:'DR-pasar-derecha.svg'},
+ DE:{nombre:'Destino especial',archivo:'DE-destino-especial.svg'},
+ Fe:{nombre:'Hierro',archivo:'Fe-hierro.svg'},
+ PV:{nombre:'Puntos de victoria',archivo:'PV-punto-victoria.svg'},
+ PI:{nombre:'Puntos inmediatos',archivo:'PI-puntos-inmediatos.svg'},
+ BT:{nombre:'Capacidad de batería',archivo:'BT-bateria.svg'},
+ DS:{nombre:'Discos',archivo:'DS-disco.svg'},
+ DP:{nombre:'Disco de soporte',archivo:'DP-disco-soporte.svg'},
+ AI:{nombre:'Ingeniero anclado',archivo:'AI-ingeniero-anclado.svg'},
+ AQ:{nombre:'Ingeniero químico anclado',archivo:'AQ-ingeniero-quimico-anclado.svg'},
+ AM:{nombre:'Ingeniero electromecánico anclado',archivo:'AM-ingeniero-electromecanico-anclado.svg'},
+ AE:{nombre:'Ingeniero estructural anclado',archivo:'AE-ingeniero-estructural-anclado.svg'},
+ AS:{nombre:'Ingeniero en sistemas anclado',archivo:'AS-ingeniero-sistemas-anclado.svg'},
+ DH:{nombre:'Disco hueco',archivo:'DH-disco-hueco.svg'},
+ En:{nombre:'Energía',archivo:'En-energia.svg'},
+ II:{nombre:'Ingeniero genérico',archivo:'II-ingeniero.svg'},
+ IQ:{nombre:'Ingeniero químico',archivo:'IQ-ingeniero-quimico.svg'},
+ IE:{nombre:'Ingeniero estructural',archivo:'IE-ingeniero-estructural.svg'},
+ IM:{nombre:'Ingeniero electromecánico',archivo:'IM-ingeniero-electromecanico.svg'},
+ IS:{nombre:'Ingeniero en sistemas',archivo:'IS-ingeniero-sistemas.svg'},
+ Di:{nombre:'Dinero',archivo:'Di-dinero.svg'},
+ RE:{nombre:'Repetible',archivo:'RE-repetible.svg'},
+ Tr:{nombre:'Transporte',archivo:'Tr-transporte.svg'},
+ ES:{nombre:"estructura",archivo:"ES-estructura.svg"},
+ FV:{nombre:"fotovoltaico",archivo:"FV-fotovoltaico.svg"},
+ TS:{nombre:'Transmisión',archivo:'TS-transmision.svg'},
+ RF:{nombre:"refrigeracion",archivo:"RF-refrigeracion.svg"},
+ MO:{nombre:"microondas",archivo:"MO-microondas.svg"},
+ EC:{nombre:"economia",archivo:"EC-economia.svg"},
+ RH:{nombre:'Recursos humanos',archivo:'RH-recursos-humanos.svg'},
+ PR:{nombre:"produccion",archivo:"PR-produccion.svg"}
+};
+function imagenIcono(id){
+ if(id==='CS')return '<span class="icono-hibrido" title="Control / Sensores" aria-label="Control / Sensores"><img src="./iconos/CO-control.svg" alt=""><img src="./iconos/SN-sensores.svg" alt=""></span>';
+ if(id==='DR')return '<span aria-hidden="true" style="font-size:22.1pt;line-height:1">⇥</span>';
+ if(!Object.hasOwn(catalogoIconos,id))return '';
+ const variante=['II','IQ','IE','IM','IS','AI','AQ','AM','AE','AS'].includes(id)&&!document.getElementById('colors').checked?'#sin-color':'';
+ return `<img${id==='/'?' class="separator-bar"':''} src="./iconos/${catalogoIconos[id].archivo}${variante}" alt="" aria-hidden="true">`;
+}
+const rocket=imagenIcono('Tr');
+const energia=imagenIcono('En');
+const bateria=imagenIcono('BT');
+function renderBono(bono){
+ const partes=String(bono??'').split(/(\[(?:[A-Za-z]{2}|\/|!?=)\])/g);
+ const etiqueta=partes.map(p=>Object.hasOwn(catalogoIconos,p.slice(1,-1))&&p.startsWith('[')?catalogoIconos[p.slice(1,-1)].nombre:p).join(' ');
+ const contenido=partes.map(p=>{
+  const id=p.startsWith('[')&&p.endsWith(']')?p.slice(1,-1):'';
+  return Object.hasOwn(catalogoIconos,id)?imagenIcono(id):escapeHTML(p).replace(/\\n|\r\n?|\n/g,'<span class="bonus-break" aria-hidden="true"></span>');
+ }).join('');
+ return contenido?`<span class="card-bonus" title="${escapeHTML(etiqueta)}" aria-label="${escapeHTML(etiqueta)}">${contenido}</span>`:'';
+}
+function renderEfecto(texto){
+ return String(texto??'').split(/(\[(?:[A-Za-z]{2}|\/|!?=)\])/g).map(parte=>{
+  const id=parte.startsWith('[')&&parte.endsWith(']')?parte.slice(1,-1):'';
+  if(!Object.hasOwn(catalogoIconos,id))return escapeHTML(parte).replace(/\\n|\r\n?|\n/g,'<br>');
+  const nombre=escapeHTML(catalogoIconos[id].nombre);
+  return `<span class="inline-icon" role="img" title="${nombre}" aria-label="${nombre}">${imagenIcono(id)}</span>`;
+ }).join('');
+}
+function operationTokens(id,n){
+ const drawing=id==='Tr'?rocket:imagenIcono(id);
+ const klass=id==='Tr'?'rocket':'meeple';
+ if(id==='En')return `<span class="opgroup" title="${escapeHTML(operativos[id])}: ${n}" aria-label="${escapeHTML(operativos[id])}: ${n}"><span class="opicons">${Array.from({length:n},()=>`<span class="opicon energy">${energia}</span>`).join('')}</span></span>`;
+ const nombre=escapeHTML(operativos[id]||catalogoIconos[id]?.nombre||id);
+ return `<span class="opgroup" title="${nombre}: ${n}" aria-label="${nombre}: ${n}"><span class="opicons">${Array.from({length:n},()=>`<span class="opicon ${klass}">${drawing}</span>`).join('')}</span></span>`;
+}
+function costoModulo(m){return m.etapas.reduce((total,e)=>total+Object.entries(e.m||{}).reduce((s,[id,n])=>s+n*(precios[id]||0),0)+Object.entries(e.o||{}).reduce((s,[id,n])=>s+n*costoOperativo(id),0),0);}
+function iconoDestino(d){
+ const title=d==='completados'?'Proyecto completado':d==='mano'?'Vuelve a la mano':d==='mejora'?'Mejora de soporte externo':d==='derecha'?'Pasa al jugador de la derecha':d==='especial'?'Destino especial o condicional':d?.startsWith('etapa:')?'Vuelve a la etapa '+d.split(':')[1]:'Proyecto completado';
+ const id=d?.startsWith('etapa:')?destinosIcono.etapa:(Object.hasOwn(destinosIcono,d)?destinosIcono[d]:destinosIcono.completados);
+ const numero=d?.startsWith('etapa:')?`<small>${escapeHTML(d.split(':')[1])}</small>`:'';
+ return `<span class="destino" title="${escapeHTML(title)}" aria-label="${escapeHTML(title)}">${imagenIcono(id)}${numero}</span>`;
+}
+function render(m){
+ const puntos=typeof m.puntos==='number'?`${m.puntos} [PV]`:String(m.puntos??'0 [PV]');
+ const balance=balanceModulo(m),costo=balance.costo;
+ const insignia=renderBono(m.bono);
+ const coef=Number.isFinite(balance.coef)?balance.coef.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
+ const fueraRango=!Number.isFinite(balance.coef)||balance.coef<(m.inicial?12:7)||balance.coef>(m.inicial?13:9);
+ return `<article class="card${m.inicial?' inicial':''}${fueraRango?' coef-fuera-rango':''}" data-card-id="${escapeHTML(m.id)}" tabindex="0" data-balance="${escapeHTML(diagnosticoBalance(m,balance))}"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div><div class="name">${escapeHTML(m.nombre)}</div><div class="type"><span class="card-id">${escapeHTML(m.id)}</span>${escapeHTML(m.tipo==='recursoshumanos'?'Recursos humanos':m.tipo.replaceAll('_',' '))}</div></div><div class="card-score">${renderBono(puntos)}</div>${insignia?`<div class="heading-bonus">${insignia}</div>`:''}</header>
+ <section class="stages">${m.etapas.map((e,i)=>`<div class="stage"><div class="stage-title">ETAPA ${i+1}</div><div class="items">${Object.entries(e.m||{}).map(([id,n])=>tokens(id,n)).join('')}${Object.entries(e.o||{}).filter(([id])=>id!=='En').map(([id,n])=>operationTokens(id,n)).join('')}${e.o?.En?operationTokens('En',e.o.En):''}</div></div>`).join('')}</section>
+ <footer class="footer"><div class="footer-main"><div class="footer-cost">Costo <strong>$${costo}</strong><div>Coef. ${coef}</div></div></div><div class="footer-effect-wrap">${iconoDestino(m.destino||'completados')}<div class="footer-effect"><strong>Al completar:</strong> ${renderEfecto(m.efecto||'Sin efecto adicional')}</div></div></footer></article>`;
+}
+function draw(){const sheet=document.getElementById('sheet');if(!Array.isArray(window.modulos)){sheet.innerHTML='<p>No se cargó modulos.js. Guardá ambos archivos juntos.</p>';return;}const cartas=document.getElementById('show-copies').checked?window.modulos.flatMap(m=>Array.from({length:m.copias??1},()=>m)):window.modulos;sheet.innerHTML=cartas.map(render).join('');document.getElementById('cards-summary').innerHTML=renderResumenCartas(window.modulos)}
+document.getElementById('colors').addEventListener('change',draw);document.getElementById('show-copies').addEventListener('change',draw);draw();activarDiagnosticoBalance();
+</script></body></html>

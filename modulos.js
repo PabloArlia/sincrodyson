@@ -448,7 +448,7 @@ window.modulos = [
     ],
     "copias": 1,
     "discos": 0,
-    "bono": "[TJ] [ME] [RR]=15[Di] [=] +1 [PI][/]2[RR]",
+    "bono": "[TJ] [ME] [RR]=15[Di] [=] \n +1 [PI][/]2[RR]",
     "disco_soporte": 0,
     "efecto": "Cada jugador (incluso tu) puede vender hasta 3 [RR] tierras raras a $15 cada una, independientemente del tipo. \nGanas 1 [PI] por cada 2 [RR] vendidas entre todos los jugadores, redondeando hacia abajo. Puedes volver a colocar el cubo en la etapa 1.",
     "destino": "etapa:1",
@@ -1987,7 +1987,7 @@ window.modulos = [
     "puntos_otros": -2,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][SN] -1 [PI] [/] [NO] [ES] [=][QU]",
+    "bono": "1 [DP][SN] \n -1 [PI] [/] [NO] [ES] [=][QU]",
     "disco_soporte": 1,
     "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.\nLuego pierde 1 [PI] por cada celda de [ES] Estructura sin disco del cuadrante de esa area de soporte.",
     "etapas": [
@@ -2058,7 +2058,7 @@ window.modulos = [
     "puntos_otros": -5,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][SN] -5[PI] [/] [NO][MN] [=][QU]",
+    "bono": "1 [DP][SN] \n -5[PI] [/] [NO][MN] [=][QU]",
     "disco_soporte": 1,
     "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 5 [PI] por cada celda de [MN] Mantenimiento sin disco en esa misma área de soporte.",
     "etapas": [
@@ -2089,7 +2089,7 @@ window.modulos = [
     "puntos_otros": -2,
     "copias": 2,
     "discos": 0,
-    "bono": "1 [DP][SN] - 1[PI][/][NO][MO] [=][QU]",
+    "bono": "1 [DP][SN] \n -1[PI][/][NO][MO] [=][QU]",
     "disco_soporte": 1,
     "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego pierde 1 [PI] por cada celda de [MO] Microondas sin disco del cuadrante de esa aera de soporte.",
     "etapas": [
@@ -2163,7 +2163,7 @@ window.modulos = [
     "puntos_otros": -2,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][SN] -1 [PI] [NO][SN]",
+    "bono": "1 [DP][SN] \n -1 [PI] [NO][SN]",
     "disco_soporte": 1,
     "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 1 [PI] por cada cuadrante que no tenga un disco en la celda de [SN] Sensores en su área de soporte.",
     "etapas": [
@@ -2276,7 +2276,7 @@ window.modulos = [
     "puntos_otros": +6,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][CO] +3 [PI] [/][SI][SN]",
+    "bono": "1 [DP][CO] \n +3 [PI] [/][SI][SN]",
     "disco_soporte": 1,
     "efecto": "Coloca un disco y el ingeniero de la última etapa en una celda libre de [CO] Control de un área de soporte. \nLuego gana 3 [PI] por cada celda de [SN] Sensores con un disco de cualquier jugador. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
@@ -2599,7 +2599,7 @@ window.modulos = [
     "puntos_otros": 6,
     "copias": 3,
     "discos": -1,
-    "bono": "1 [DP][MN] + [QD][FV] +2 [PI] [SI][ES][=][QU]",
+    "bono": "1 [DP][MN] + [QD][FV] \n +2 [PI] [SI][ES][=][QU]",
     "disco_soporte": 1,
     "efecto": "[QD] Retira un disco de cualquier celda de [FV] Fotovoltaica para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\nLuego gana 2 [PI] por cada celda de [ES] Estructura con un disco en el mimso cuadrante. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
