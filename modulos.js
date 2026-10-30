@@ -128,7 +128,7 @@ window.modulos = [
     "discos": 1,
     "bono": "1 [DS][TS]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 1 celda de [TS] Transmisión.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 1 celda libre de [TS] Transmisión.\nDebes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -471,7 +471,7 @@ window.modulos = [
     "discos": 0,
     "bono": "[TJ] [ME] [RR]=15[Di] \n +1 [PI][/]2[RR]",
     "disco_soporte": 0,
-    "efecto": "Cada jugador (incluso tu) puede vender hasta 3 [RR] tierras raras a $15 cada una, independientemente del tipo. \nGanas 1 [PI] por cada 2 [RR] vendidas entre todos los jugadores, redondeando hacia abajo. Puedes volver a colocar el cubo en la etapa 1.",
+    "efecto": "Cada jugador (incluso tu) puede vender hasta 3 [RR] tierras raras a $15 cada una, independientemente del tipo. \nGanas 1 [PI] por cada 2 [RR] vendidas entre todos los jugadores, redondeando hacia abajo. \nPuedes volver a colocar el cubo en la etapa 1.",
     "destino": "etapa:1",
     "etapas": [
       {
@@ -877,7 +877,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+4 [Tr]",
     "disco_soporte": 0,
-    "efecto": "Obtén 4 [Tr] Transporte de la reserva. Puedes devolver esta carta a tu mano.",
+    "efecto": "Obtén 4 [Tr] Transporte de la reserva. \nPuedes devolver esta carta a tu mano.",
     "destino": "mano",
     "etapas": [
       {
@@ -906,7 +906,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+5 [Tr] [RE]",
     "disco_soporte": 0,
-    "efecto": "Obtén 5 [Tr] Transporte de la reserva. Puedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Obtén 5 [Tr] Transporte de la reserva. \nPuedes volver a colocar el cubo en la etapa 2.",
     "destino": "etapa:2",
     "etapas": [
       {
@@ -947,7 +947,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+6 [Tr] [RE]",
     "disco_soporte": 0,
-    "efecto": "Obtén 6 [Tr] Transporte de la reserva. Puedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Obtén 6 [Tr] Transporte de la reserva. \nPuedes volver a colocar el cubo en la etapa 2.",
     "destino": "etapa:2",
     "etapas": [
       {
@@ -985,7 +985,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+7 [Tr] [RE]",
     "disco_soporte": 0,
-    "efecto": "Obtén 7 [Tr] Transporte de la reserva. Puedes volver a colocar el cubo en la etapa 3.",
+    "efecto": "Obtén 7 [Tr] Transporte de la reserva. \nPuedes volver a colocar el cubo en la etapa 3.",
     "destino": "etapa:3",
     "etapas": [
       {
@@ -1168,7 +1168,7 @@ window.modulos = [
     "discos": 4,
     "bono": "1 [DS] [ES] [RE]",
     "disco_soporte": 0,
-    "efecto": "Coloca aquí 1 Fe de la reserva por cada ingeniero [AI] anclado en la esfera, de todos los jugadores e incluido el soporte. Luego puedes gastar 10 Fe de esta carta para colocar 1 disco en [ES] Estructura, con sus reglas normales (máximo 1 por activación). Conserva el Fe sobrante. Puedes volver a colocar el cubo en la etapa 2. Mientras esté en etapa 2, solo pueden entrar o salir recursos mediante este efecto.",
+    "efecto": "Coloca aquí 1 Fe de la reserva por cada ingeniero [AI] anclado en la esfera, de todos los jugadores e incluido el soporte. Luego puedes gastar 10 Fe de esta carta para colocar 1 disco en [ES] Estructura, con sus reglas normales (máximo 1 por activación). Conserva el Fe sobrante. \nPuedes volver a colocar el cubo en la etapa 2. Mientras esté en etapa 2, solo pueden entrar o salir recursos mediante este efecto.",
     "etapas": [
       {
         "m": { "Ti": 1, "Cu": 2,"C": 3, "Si": 2, "Al":1  },
@@ -1673,7 +1673,7 @@ window.modulos = [
     "discos": 3,
     "bono": "3 [DS][TS] + 2 [DH][TS] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas de [TS] Transmisión con beneficios normales de colocación. Después, coloca un disco en otras 2 celdas de [TS] Transmisión del mimso cuadrante sin obtener bonificaciones de colocación.\nLos discos sin bono restan puntos si no puedes colocarlos.",
+    "efecto": "Coloca un disco en 3 celdas de [TS] Transmisión con beneficios normales de colocación. Después, coloca un disco en otras 2 celdas de [TS] Transmisión del mimso cuadrante sin cobrar bonos de colocación.\nLos discos sin bono restan puntos si no puedes colocarlos.",
     "etapas": [
       {
         "m": {
@@ -1844,7 +1844,7 @@ window.modulos = [
   "discos": 5,
   "bono": "1 [DS][RF] 1 [DS][MO] [=][SC]",
   "disco_soporte": 0,
-  "efecto": "Coloca 1 disco en una celda libre de [RF] Refrigeración y otro en una celda libre de [MO] Microondas de un mismo sector. \nPuedes colocar el disco en la etapa 2",
+  "efecto": "Coloca 1 disco en una celda libre de [RF] Refrigeración y otro en una celda libre de [MO] Microondas de un mismo sector. \nPuedes volver a colocar el disco en la etapa 2",
   "etapas": [
     {
       "m": {
@@ -1973,7 +1973,7 @@ window.modulos = [
   "discos": 3,
   "bono": "1 [DS][MO] [RE]",
   "disco_soporte": 0,
-  "efecto": "Coloca 1 disco en una celda libre de [MO] Microondas de cualquier cuadrante. Puedes volver a colocar el cubo en la etapa 2.",
+  "efecto": "Coloca 1 disco en una celda libre de [MO] Microondas de cualquier cuadrante. \nPuedes volver a colocar el cubo en la etapa 2.",
   "etapas": [
     {
       "m": {
@@ -2658,7 +2658,7 @@ window.modulos = [
     "discos": 0,
     "bono": "1 [DH][MN]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en una celda libre de [MN] Mantenimiento sin cobrar los bonos por colocación.\n[FJ] Gana 2 [PV] por [AI] ingeniero anclado de cualquier jugador.",
+    "efecto": "Coloca un disco en una celda libre de [MN] Mantenimiento sin cobrar bonos por colocación.\n[FJ] Gana 2 [PV] por [AI] ingeniero anclado de cualquier jugador.",
     "etapas": [
       {
         "m": {
@@ -2766,7 +2766,7 @@ window.modulos = [
           "Ce": 2
         },
         "o": {
-          "RF": 1,
+          "ES": 1,
           "AQ": 1,
           "Tr": 3
         }
@@ -2831,7 +2831,7 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DP][MN] 2[DS][ES] [=]2[QU]",
     "disco_soporte": 2,
-    "efecto": "Coloca 1 disco en 2 celdas libres de [MN] Mantenimiento y 1 disco en 2 celdas libres de [ES] Estructura de dos cuadrantes, 2 discos en cada cuadrante. Si el mapa tiene más de 3 cuadrantes, estos no pueden ser adyacentes.",
+    "efecto": "Coloca 1 disco en 2 celdas libres de [MN] Mantenimiento y 1 disco en 2 celdas libres de [ES] Estructura de dos cuadrantes, 2 discos en cada cuadrante. Si el mapa tiene más de 3 cuadrantes, estos no pueden ser adyacentes.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2991,7 +2991,7 @@ window.modulos = [
     "discos": 0,
     "bono": "1 [DP][MN]",
     "disco_soporte": 1,
-    "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un área de soporte, junto con los 3 ingenieros anclados de la última etapa.\nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un área de soporte, junto con los ingenieros anclados de la última etapa.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
