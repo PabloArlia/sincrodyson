@@ -191,7 +191,7 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][MO] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres y adyacentes de [MO] Microondas de un mismo cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres y adyacentes de [MO] Microondas de un mismo cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -1843,7 +1843,7 @@ window.modulos = [
   "discos": 5,
   "bono": "1 [DS][RF] 1 [DS][MO] [=][SC]",
   "disco_soporte": 0,
-  "efecto": "Coloca 1 disco en una celda libre de [RF] Refrigeración y otro en una celda libre de [MO] Microondas de un mismo sector. \nPuedes volver a colocar el disco en la etapa 2.",
+  "efecto": "Coloca 1 disco en una celda libre de [RF] Refrigeración y otro en una celda libre de [MO] Microondas de un mismo sector. \nPuedes volver a colocar el cubo en la etapa 2.",
   "etapas": [
     {
       "m": {
