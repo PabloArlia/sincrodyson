@@ -159,7 +159,7 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][TS] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas distintas de [TS] Transmisión de un mismo cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [TS] Transmisión de un mismo cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -275,7 +275,7 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][RF] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas distintas de [RF] Refrigeración de un mismo cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [RF] Refrigeración de un mismo cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -338,7 +338,7 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][FV]",
     "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres de [FV] fotovoltaico, en secciones distintas.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca 2 discos en celdas libres de [FV] fotovoltaico.\nDebes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {"Nd": 1, "Fe": 4, "Cu": 4},
@@ -361,7 +361,7 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][ES] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas distintas de [ES] Estructura de un mismo cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [ES] Estructura de un mismo cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -769,8 +769,7 @@ window.modulos = [
       {
         "m": {},
         "o": {
-          "ES": 1,
-          "FV": 1,
+          "txt": "([ES][/][FV])",
           "En": 2
         }
       }
@@ -985,8 +984,8 @@ window.modulos = [
     "discos": 0,
     "bono": "+7 [Tr] [RE]",
     "disco_soporte": 0,
-    "efecto": "Obtén 7 [Tr] Transporte de la reserva. \nPuedes volver a colocar el cubo en la etapa 3.",
-    "destino": "etapa:3",
+    "efecto": "Obtén 7 [Tr] Transporte de la reserva. \nPuedes volver a colocar el cubo en la etapa 2.",
+    "destino": "etapa:2",
     "etapas": [
       {
         "m": {
@@ -1194,7 +1193,7 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][ES] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas distintas de [ES] Estructura de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 2 celdas libres de [ES] Estructura de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -1235,7 +1234,7 @@ window.modulos = [
     "discos": 3,
     "bono": "3 [DS][ES] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas distintas de [ES] Estructura de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 3 celdas libres de [ES] Estructura de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -1274,7 +1273,7 @@ window.modulos = [
     "discos": 3,
     "bono": "3 [DS][ES] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas distintas de [ES] Estructura de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 3 celdas libres de [ES] Estructura de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -1316,7 +1315,7 @@ window.modulos = [
     "discos": 5,
     "bono": "5 [DS][ES] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 5 celdas distintas de [ES] Estructura de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 5 celdas libres de [ES] Estructura de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -1369,7 +1368,7 @@ window.modulos = [
     "discos": 3,
     "bono": "3 [DS][FV] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas distintas de [FV] Fotovoltaica de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 3 celdas libres de [FV] Fotovoltaica de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -1408,7 +1407,7 @@ window.modulos = [
     "discos": 4,
     "bono": "4 [DS][FV] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 4 celdas distintas de [FV] Fotovoltaica de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 4 celdas libres de [FV] Fotovoltaica de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -1448,7 +1447,7 @@ window.modulos = [
     "discos": 3,
     "bono": "3 [DS][FV] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas distintas de [FV] Fotovoltaica de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 3 celdas libres de [FV] Fotovoltaica de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -1490,7 +1489,7 @@ window.modulos = [
     "discos": 3,
     "bono": "3 [DS][FV] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas distintas de [FV] Fotovoltaica de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 3 celdas libres de [FV] Fotovoltaica de un mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -1530,7 +1529,7 @@ window.modulos = [
     "discos": 7,
     "bono": "7 [DS][FV] [=] 2 [QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 7 celdas distintas de [FV] Fotovoltaica de hasta dos cuadrantes.",
+    "efecto": "Coloca un disco en 7 celdas libres de [FV] Fotovoltaica de hasta dos cuadrantes.",
     "etapas": [
       {
         "m": {
@@ -1585,7 +1584,7 @@ window.modulos = [
     "discos": 2,
     "bono": "1[QD][RF] + 3 [DS][TS] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "[QD] Retira un disco de cualquier celda de [RF] Refrigeración y coloca un disco en 3 celdas distintas de [TS] Transmisión del mismo cuadrante de donde la quitaste.",
+    "efecto": "[QD] Retira un disco de cualquier celda de [RF] Refrigeración y coloca un disco en 3 celdas libres de [TS] Transmisión del mismo cuadrante de donde la quitaste.",
     "etapas": [
       {
         "m": {
@@ -1627,7 +1626,7 @@ window.modulos = [
     "discos": 6,
     "bono": "3[DS][TS] [AD] 3 [DS][RF]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas distintas de [TS] Transmisión adyacentes. \nLuego, coloca un disco en 1 celda de [RF] Refrigeración adyacente a cada una de ellas.",
+    "efecto": "Coloca un disco en 3 celdas libres de [TS] Transmisión adyacentes. \nLuego, coloca un disco en 1 celda de [RF] Refrigeración adyacente a cada una de ellas.",
     "etapas": [
       {
         "m": {
@@ -1762,7 +1761,7 @@ window.modulos = [
     "discos": 4,
     "bono": "4 [DS][RF] [=] [QU] [/] 2[QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 4 celdas distintas de [RF] Refrigeración de hasta 2 cuadrantes.",
+    "efecto": "Coloca un disco en 4 celdas libres de [RF] Refrigeración de hasta 2 cuadrantes.",
     "etapas": [
       {
         "m": {
@@ -1844,7 +1843,7 @@ window.modulos = [
   "discos": 5,
   "bono": "1 [DS][RF] 1 [DS][MO] [=][SC]",
   "disco_soporte": 0,
-  "efecto": "Coloca 1 disco en una celda libre de [RF] Refrigeración y otro en una celda libre de [MO] Microondas de un mismo sector. \nPuedes volver a colocar el disco en la etapa 2",
+  "efecto": "Coloca 1 disco en una celda libre de [RF] Refrigeración y otro en una celda libre de [MO] Microondas de un mismo sector. \nPuedes volver a colocar el disco en la etapa 2.",
   "etapas": [
     {
       "m": {
@@ -1888,7 +1887,7 @@ window.modulos = [
     "discos": 4,
     "bono": "4 [DS][MO] [=][QU] [AD] [QU] ",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 4 celdas distintas de [MO] Microondas en dos cuadrantes adyacentes, por lo menos una en cada uno.",
+    "efecto": "Coloca un disco en 4 celdas libres de [MO] Microondas en dos cuadrantes adyacentes, por lo menos una en cada uno.",
     "etapas": [
       {
         "m": {
@@ -2658,7 +2657,7 @@ window.modulos = [
     "discos": 0,
     "bono": "1 [DH][MN]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en una celda libre de [MN] Mantenimiento sin cobrar bonos por colocación.\n[FJ] Gana 2 [PV] por [AI] ingeniero anclado de cualquier jugador.",
+    "efecto": "Coloca un disco en una celda libre de [MN] Mantenimiento sin cobrar bonos de colocación.\n[FJ] Gana 2 [PV] por [AI] ingeniero anclado de cualquier jugador.",
     "etapas": [
       {
         "m": {

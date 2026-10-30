@@ -160,13 +160,14 @@ function renderEfecto(texto){
  }).join('');
 }
 function operationTokens(id,n){
+ if(id==='txt')return `<span class="opgroup">${renderBono(n)}</span>`;
  const drawing=id==='Tr'?rocket:imagenIcono(id);
  const klass=id==='Tr'?'rocket':'meeple';
  if(id==='En')return `<span class="opgroup" title="${escapeHTML(operativos[id])}: ${n}" aria-label="${escapeHTML(operativos[id])}: ${n}"><span class="opicons">${Array.from({length:n},()=>`<span class="opicon energy">${energia}</span>`).join('')}</span></span>`;
  const nombre=escapeHTML(operativos[id]||catalogoIconos[id]?.nombre||id);
  return `<span class="opgroup" title="${nombre}: ${n}" aria-label="${nombre}: ${n}"><span class="opicons">${Array.from({length:n},()=>`<span class="opicon ${klass}">${drawing}</span>`).join('')}</span></span>`;
 }
-function costoModulo(m){return m.etapas.reduce((total,e)=>total+Object.entries(e.m||{}).reduce((s,[id,n])=>s+n*(precios[id]||0),0)+Object.entries(e.o||{}).reduce((s,[id,n])=>s+n*costoOperativo(id),0),0);}
+function costoModulo(m){return m.etapas.reduce((total,e)=>total+Object.entries(e.m||{}).reduce((s,[id,n])=>s+n*(precios[id]||0),0)+Object.entries(e.o||{}).filter(([id])=>id!=='txt').reduce((s,[id,n])=>s+n*costoOperativo(id),0),0);}
 function iconoDestino(d){
  const title=d==='completados'?'Proyecto completado':d==='mano'?'Vuelve a la mano':d==='mejora'?'Mejora de soporte externo':d==='derecha'?'Pasa al jugador de la derecha':d==='especial'?'Destino especial o condicional':d?.startsWith('etapa:')?'Vuelve a la etapa '+d.split(':')[1]:'Proyecto completado';
  const id=d?.startsWith('etapa:')?destinosIcono.etapa:(Object.hasOwn(destinosIcono,d)?destinosIcono[d]:destinosIcono.completados);

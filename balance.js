@@ -18,6 +18,7 @@ function balanceModulo(m){
  const costosOperativos={ingenieros:0,energia:0,transporte:0,otros:0};
  for(const etapa of m.etapas){
   for(const [id,n] of Object.entries(etapa.o||{})){
+   if(id==='txt')continue;
    if(id==='En')costosOperativos.energia+=n*costoOperativo(id);
    else if(id==='Tr')costosOperativos.transporte+=n*costoOperativo(id);
    else if(codigosIngenieros.includes(id))costosOperativos.ingenieros+=n*costoOperativo(id);
