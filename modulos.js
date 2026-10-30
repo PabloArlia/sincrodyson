@@ -434,7 +434,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+20 [Di][RE]",
     "disco_soporte": 0,
-    "efecto": "Gana $20. Puedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Gana $20. \nPuedes volver a colocar el cubo en la etapa 2.",
     "etapas": [
       {
         "m": {
@@ -466,10 +466,7 @@ window.modulos = [
     "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
-    "puntos_otros": null,
-    "balance_pendiente": [
-      "Los PI dependen de ventas y del número de repeticiones del proyecto."
-    ],
+    "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
     "bono": "[TJ] [ME] [RR]=15[Di] \n +1 [PI][/]2[RR]",
@@ -581,7 +578,7 @@ window.modulos = [
     "id": "P041",
     "nombre": "Reemplazo por asistente robótico autónomo",
     "tipo": "recursoshumanos",
-    "puntos": "0 [PV]",
+    "puntos": "1 [PV]",
     "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": +4,
@@ -753,7 +750,7 @@ window.modulos = [
     "discos": 0,
     "bono": "-4 [AI] [RE] [=] [OP] +7 [Di]",
     "disco_soporte": 0,
-    "efecto": "[QD] Retira 1 disco propio de una celda de [ES] Estructura o [FV] Fotovoltaico y devuelve hasta 4 [AI] ingenieros anclados a la reserva. \nOtros jugadores pueden ofrecete $7 para que quites sus ingenieros (si aceptas es vinculante).",
+    "efecto": "[QD] Retira 1 disco propio de una celda de [ES] Estructura o [FV] Fotovoltaico y devuelve hasta 4 [AI] ingenieros anclados a la reserva. \nOtros jugadores pueden ofrecete $7 para que quites sus ingenieros (si aceptas es vinculante).\nPuedes volver a colocar el cubo en la etapa 2.",
     "etapas": [
       {
         "m": {
@@ -772,11 +769,13 @@ window.modulos = [
       {
         "m": {},
         "o": {
+          "ES": 1,
+          "FV": 1,
           "En": 2
         }
       }
     ],
-    "destino": "etapa:3"
+    "destino": "etapa:2"
   },
 
   {
@@ -1029,7 +1028,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+2 [PE]",
     "disco_soporte": 0,
-    "efecto": "Aumenta en 1 tu [PE] producción de energía.\nPuedes devolver esta carta a tu mano.",
+    "efecto": "Aumenta en 2 tu [PE] producción de energía.\nPuedes devolver esta carta a tu mano.",
     "destino": "mano",
     "etapas": [
       {
@@ -1056,7 +1055,7 @@ window.modulos = [
     "puntos_otros": 2,
     "copias": 2,
     "discos": 0,
-    "bono": "+1 [PE]",
+    "bono": "+2 [PE]",
     "disco_soporte": 0,
     "efecto": "Aumenta en 2 tu [PE] producción de energía.",
     "destino": "completados",
@@ -1586,7 +1585,7 @@ window.modulos = [
     "discos": 2,
     "bono": "1[QD][RF] + 3 [DS][TS] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "[QD] Retira un disco de cualquier celda de [RF] Refrigeración y coloca un disco en 3 celdas distintas de [TS] Transmisión del mismo cuadrante de done la quitaste.",
+    "efecto": "[QD] Retira un disco de cualquier celda de [RF] Refrigeración y coloca un disco en 3 celdas distintas de [TS] Transmisión del mismo cuadrante de donde la quitaste.",
     "etapas": [
       {
         "m": {
@@ -1606,6 +1605,7 @@ window.modulos = [
           "Si": 2
         },
         "o": {
+          "RF": 1,
           "IM": 2,
           "En": 3,
           "Tr": 2
@@ -2138,10 +2138,10 @@ window.modulos = [
     "id": "P060",
     "nombre": "Analizadores de plasma solar",
     "tipo": "sensores",
-    "puntos": "25 [PV]",
-    "puntos_carta": 25,
+    "puntos": "20 [PV]",
+    "puntos_carta": 20,
     "puntos_capas": 0,
-    "puntos_ingenieros": -8,
+    "puntos_ingenieros": -4,
     "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
@@ -2156,7 +2156,7 @@ window.modulos = [
           "Si": 4
         },
         "o": {
-          "Im": 1,
+          "IM": 1,
           "IS": 1,
           "En": 2
         }
@@ -2422,10 +2422,10 @@ window.modulos = [
     "nombre": "Centro de coordinación integral",
     "tipo": "control",
     "puntos": "1 [PV] [/] [DP]",
-    "puntos_carta": 0,
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": -4,
-    "puntos_otros": 10,
+    "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
     "bono": "1 [DP][CO]",
@@ -2552,6 +2552,7 @@ window.modulos = [
           "Fe": 2
         },
         "o": {
+          "MO": 1,
           "IS": 2,
           "IQ": 1,
           "En": 2
@@ -2737,7 +2738,7 @@ window.modulos = [
     "id": "P076",
     "nombre": "Aditivo de nanobots microactuadores",
     "tipo": "mantenimiento",
-    "puntos": "0 [PV]",
+    "puntos": "10 [PV]",
     "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": -4,
