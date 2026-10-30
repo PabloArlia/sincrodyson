@@ -5,6 +5,30 @@
 // puntos_otros: null indica una estimación pendiente; 0 indica que no se suma otro efecto.
 // Los puntos por discos de sector y soporte se agregan aparte en balance.js.
 // Tipos sin puntos impresos primero; IDs y orden interno de cada tipo conservados.
+// PLANTILLA PARA NUEVAS CARTAS (ejemplo comentado; no se incorpora al juego):
+// {
+//   "id": "PXXX",                  // Identificador único
+//   "nombre": "Nombre del proyecto",
+//   "tipo": "microondas",         // Categoría de la carta
+//   "inicial": false,            // Opcional; true si es una carta inicial
+//   "puntos": "0 [PV]",          // Texto visible en la carta
+//   "puntos_carta": 0,           // PV impresos
+//   "puntos_capas": 0,           // PV estimados por efectos sobre capas
+//   "puntos_ingenieros": 0,      // Penalización estimada por anclados (-4 por ingeniero)
+//   "puntos_otros": 0,           // Otros efectos estimados; null si está pendiente
+//   "copias": 1,
+//   "discos": 1,                // Discos colocados en sectores (no en soporte)
+//   "bono": "1 [DP][MO] [RE]", // Iconos/texto visibles en la carta
+//   "disco_soporte": 0,         // Discos colocados en áreas de soporte
+//   "efecto": "Coloca 1 disco en [MO]. Puedes volver a colocar el cubo en la etapa 2.",
+//   "etapas": [                 // m = materiales; o = operativos, energía y transporte
+//     { "m": { "Fe": 3, "Ti": 1 }, "o": { "IE": 1, "En": 2 } },
+//     { "m": { "Fe": 7, "Ti": 2 }, "o": { "IE": 1, "En": 2 } }
+//   ],
+//   "destino": "etapa:2"       // O "completados", "mano", "derecha", etc.
+// },
+// Nota: balance.js calcula por separado el valor de discos y el costo por etapas.
+// -----------------------------------------------------------------------------
 window.modulos = [
   // Proyectos iniciales: circulan obligatoriamente hacia la derecha.
   {
