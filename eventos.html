@@ -467,15 +467,23 @@
         .event-effect{font-size:7.5pt;line-height:1.28}
         .standalone-text{font-size:7pt;line-height:1.2;overflow:hidden}
         .standalone-text p{margin:1.2mm 0}
-        .subsidy-art{margin-bottom:1mm}
-        .subsidy .big-coin{width:19mm;height:19mm}
-        .subsidy-text{min-height:0;gap:1mm;padding:0 1mm}
-        .subsidy-text p{font-size:7pt;line-height:1.2}
+        .subsidy{gap:1mm}
+        .subsidy .heading{height:6mm;min-height:6mm;flex:0 0 6mm;padding:0;justify-content:center}
+        .subsidy-art{height:12mm;min-height:12mm;flex:0 0 12mm;margin:0;border:0}
+        .subsidy .big-coin{width:12mm;height:12mm;display:block}
+        .subsidy-text{flex:1;min-height:0;gap:1mm;padding:0;justify-content:center}
+        .subsidy-text p{font-size:7pt;line-height:1.15}
+        .subsidy-text .end-rule{font-size:6.5pt;line-height:1.15;padding-top:1mm}
         .subsidy-text .formula{font-size:8pt}
+        .subsidy .card-foot{flex:none;margin-top:0}
         .planet-pair{display:flex;justify-content:space-around;gap:1mm;margin:4mm 0 3mm;font-weight:bold;font-size:8pt;text-align:center}
         .planet-pair span{border:1px solid #6b6f8b;border-radius:2mm;padding:2mm 1mm;flex:1;background:#f4f2fa}
         .planet-rule{font-size:7pt;line-height:1.3;margin:1mm 0}
         .planet-layer{font-weight:bold;text-align:center;font-size:8pt;border-bottom:1px solid #999;padding:1mm}
+        .card[hidden]{display:none!important}
+        .overflow-details{width:100%;font-size:12px;line-height:1.4}
+        .overflow-details summary{cursor:pointer}
+        .overflow-details ul{margin:6px 0;padding-left:20px}
         @media print{.sheet{grid-template-columns:repeat(4,41mm);gap:3mm}}
         @media screen and (max-width:760px){.sheet{grid-template-columns:repeat(3,41mm)}}
         @media screen and (max-width:510px){.sheet{grid-template-columns:repeat(2,41mm)}}
@@ -486,6 +494,7 @@
     <div class="toolbar">
         <button type="button" onclick="window.print()">Imprimir / guardar PDF</button>
         <small>Cartas de 41 × 63 mm · <span id="summary"></span><br>Eventos con efectos e iconos.</small>
+        <details class="overflow-details" id="overflow-details" hidden><summary id="overflow-summary"></summary><ul id="overflow-list"></ul></details>
     </div>
     <main class="sheet" id="sheet" aria-label="Cartas de evento y subvención"></main>
     <script>
@@ -615,13 +624,48 @@
         function render(card) {
 
             if(card.planet) return `<article class="card planet-event" aria-label="${card.id} · ${card.layer} · ${card.planets.join(' y ')}"><header class="heading">${icon('EV-evento')}<div><h2>Reclamo planetario</h2><div class="type">Evento de planeta</div></div></header><div class="planet-layer">Capa: ${card.layer}</div><div class="planet-pair"><span>${card.planets[0]}</span><span>${card.planets[1]}</span></div><p class="planet-rule">Lanza un dado y coloca esta carta en el cuadrante indicado.</p><p class="planet-rule">El primer jugador que coloque un disco en esta capa y cuadrante reclama la carta y sus dos símbolos.</p>${footer(card)}</article>`;
-            if (card.standalone || card.catastrophe) return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2><div class="type">Evento</div></div></header><section class="standalone-text" aria-label="Efecto del evento">${card.effect.map(paragraph => `<p>${renderEffect(paragraph)}</p>`).join('')}</section>${footer(card)}</article>`;
-            if (card.subsidy) return `<article class="card subsidy" aria-label="${card.id} · Subvención"><header class="heading"><div><h2>Subvención</h2><div class="type">Ingreso para todos los jugadores</div></div></header><div class="subsidy-art">${coin()}</div><div class="subsidy-text"><div class="formula" aria-hidden="true">$10 + $2 / ${icon('DS-disco')}</div><p>Cada jugador cobra <strong>$10 + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong> (inicial: 60 PV). Comprueba el final en Mantenimiento.</p></div>${footer(card)}</article>`;
-            return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2><div class="type">Evento</div></div></header><section class="event-half"><p class="event-effect">${renderEffect(card.effect)}</p></section>${footer(card)}</article>`;
+            if (card.standalone || card.catastrophe) return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="standalone-text" aria-label="Efecto del evento">${card.effect.map(paragraph => `<p>${renderEffect(paragraph)}</p>`).join('')}</section>${footer(card)}</article>`;
+            if (card.subsidy) return `<article class="card subsidy" aria-label="${card.id} · Subvención"><header class="heading"><div><h2>Subvención</h2></div></header><div class="subsidy-art">${coin()}</div><div class="subsidy-text"><div class="formula" aria-hidden="true">$10 + $2 / ${icon('DS-disco')}</div><p>Cada jugador cobra <strong>$10 + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong></p></div>${footer(card)}</article>`;
+            return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${renderEffect(card.effect)}</p></section>${footer(card)}</article>`;
         }
         const orderedCards = [...cards.filter(c => c.subsidy), ...cards.filter(c => !c.subsidy && !c.planet), ...cards.filter(c => c.planet)];
         document.getElementById('sheet').innerHTML = orderedCards.map(render).join('');
-        document.getElementById('summary').textContent = `${cards.length} cartas: ${cards.filter(c => !c.subsidy).length} de evento (incluidos ${cards.filter(c => c.planet).length} planetarios) y ${cards.filter(c => c.subsidy).length} de subvención`;
+        function exceedsCardSize(card) {
+            const rect = card.getBoundingClientRect(), style = getComputedStyle(card), tolerance = 1;
+            const bottom = rect.bottom - parseFloat(style.borderBottomWidth) - parseFloat(style.paddingBottom);
+            const right = rect.right - parseFloat(style.borderRightWidth) - parseFloat(style.paddingRight);
+            const left = rect.left + parseFloat(style.borderLeftWidth) + parseFloat(style.paddingLeft);
+            if (card.scrollHeight > card.clientHeight + tolerance || card.scrollWidth > card.clientWidth + tolerance) return true;
+            return [...card.querySelectorAll('*')].some(element => {
+                if (!(element instanceof HTMLElement)) return false;
+                const bounds = element.getBoundingClientRect();
+                if (!bounds.width || !bounds.height) return false;
+                return bounds.bottom > bottom + tolerance || bounds.right > right + tolerance || bounds.left < left - tolerance
+                    || (element.clientHeight > 0 && element.scrollHeight > element.clientHeight + tolerance)
+                    || (element.clientWidth > 0 && element.scrollWidth > element.clientWidth + tolerance);
+            });
+        }
+        function hideOversizedCards() {
+            const elements = [...document.querySelectorAll('#sheet > .card')];
+            elements.forEach(card => { card.hidden = false; });
+            const oversized = elements.filter(exceedsCardSize);
+            oversized.forEach(card => { card.hidden = true; });
+            const visible = elements.filter(card => !card.hidden);
+            document.getElementById('summary').textContent = `${visible.length} cartas visibles: ${visible.filter(card => !card.classList.contains('subsidy')).length} de evento y ${visible.filter(card => card.classList.contains('subsidy')).length} de subvención`;
+            document.getElementById('overflow-details').hidden = oversized.length === 0;
+            document.getElementById('overflow-summary').textContent = `${oversized.length} cartas ocultas porque exceden los 41 × 63 mm`;
+            document.getElementById('overflow-list').replaceChildren(...oversized.map(card => {
+                const item = document.createElement('li');
+                item.textContent = card.getAttribute('aria-label');
+                return item;
+            }));
+            document.documentElement.dataset.overflowChecked = 'true';
+        }
+        // Medir con las fuentes y los iconos cargados también detecta texto recortado por overflow:hidden.
+        Promise.all([
+            document.fonts.ready,
+            ...[...document.querySelectorAll('#sheet img')].map(img => img.decode().catch(() => {}))
+        ]).then(hideOversizedCards);
     </script>
 </body>
 
