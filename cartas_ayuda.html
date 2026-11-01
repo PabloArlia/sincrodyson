@@ -10,7 +10,7 @@ body{margin:0;padding:18px;background:#e8e9e7;color:#20282d;font-family:Arial,He
 .toolbar{max-width:760px;margin:0 auto 18px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .toolbar h1{font-size:14pt;margin:0}.toolbar p{font-size:10pt;margin:5px 0 0}
 button{padding:9px 14px;border:1px solid #20282d;border-radius:5px;background:white;font:inherit;cursor:pointer}
-.sheet{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:4mm}
+.sheet{display:grid;grid-template-columns:repeat(3,64mm);column-gap:1mm;row-gap:0;justify-content:center;align-items:start}
 .card{width:64mm;height:120mm;padding:2mm;border:1px solid #222;border-radius:2mm;background:white;display:flex;flex-direction:column;gap:1mm;break-inside:avoid;page-break-inside:avoid;font-size:8pt;line-height:1.15}
 .card-header{display:flex;align-items:center;justify-content:space-between;gap:2mm;border-bottom:1px solid #222;padding-bottom:1.3mm;flex:none}
 .eyebrow{font-size:6pt;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5mm;color:#555}
@@ -42,13 +42,13 @@ p{margin:0}strong{font-weight:800}
 @media print{
  html,body{margin:0;padding:0;background:white}
  .toolbar{display:none}
- .sheet{gap:2mm;justify-content:flex-start}
+ .sheet{column-gap:1mm;row-gap:0;justify-content:center}
  .card{print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
 </style>
 </head>
 <body>
-<header class="toolbar"><div><h1>Cartas de ayuda · Syncrodyson</h1><p>Tarot vertical · 64 × 120 mm · imprimir al 100 %.</p></div><button onclick="window.print()">Imprimir / guardar PDF</button></header>
+<header class="toolbar"><div><h1>Cartas de ayuda · Syncrodyson</h1><p>64 × 120 mm · 3 fases arriba y 3 bonos abajo · imprimir al 100 %.</p></div><button onclick="window.print()">Imprimir / guardar PDF</button></header>
 <main class="sheet">
  <article class="card phases-card">
   <header class="card-header"><div><div class="eyebrow">Syncrodyson · Ayuda de juego</div><h2>Fases de la ronda</h2></div><img class="header-icon" src="./iconos/RE-repetible.svg" alt=""></header>
@@ -58,13 +58,13 @@ p{margin:0}strong{font-weight:800}
   <section class="phase maintenance"><h3><span class="step">4</span> Mantenimiento · en este orden</h3><ol>
    <li><strong>Préstamos:</strong> $1 por conservar cada uno o $6 por cancelarlo.</li>
    <li><strong>Soporte externo:</strong> +$1 por ingeniero; luego vuelve a barracas.</li>
-   <li><strong>Paga mantenimiento:</strong> mayor costo descubierto en licencias + mayor en contratos + menor en energía.</li>
-   <li><strong>Revela un evento por jugador.</strong></li>
+   <li><strong>Paga mantenimiento:</strong> mayor costo descubierto en licencias + mayor en contratos.</li>
    <li><strong>Comprueba el final:</strong> si alguien alcanza la meta, termina y puntúen.</li>
+   <li><strong>Revela un evento por jugador.</strong></li>
    <li>Si continúa: devuelve las fichas de orden y haz <strong>draft de 4 proyectos</strong>, pasando a la derecha.</li>
-   <li><strong>Descarta la energía sobrante.</strong> Genera energía para la siguiente ronda → compra energía a $3 → compra Transporte urgente.</li>
+   <li><strong>Descarta la energía sobrante.</strong> Genera energía para la siguiente ronda.</li>
   </ol></section>
-  <footer class="card-note">La energía sobrante se descarta al final de cada ronda. Con préstamos, no programes dados verdes.</footer>
+  <footer class="card-note">Puedes comprar energía de emergencia y Transporte urgente en cualquier momento.</footer>
  </article>
  <article class="card bonuses-card">
   <header class="card-header"><div><div class="eyebrow">Syncrodyson · Ayuda de juego</div><h2>Bonos de colocación</h2></div><img class="header-icon" src="./iconos/DS-disco.svg" alt=""></header>
@@ -86,5 +86,14 @@ p{margin:0}strong{font-weight:800}
   <footer class="card-note"><strong>Capacidad:</strong> 1 disco por celda.</footer>
  </article>
 </main>
+<script>
+const sheet=document.querySelector('.sheet');
+const fases=sheet.querySelector('.phases-card');
+const bonos=sheet.querySelector('.bonuses-card');
+sheet.replaceChildren(
+ ...Array.from({length:3},()=>fases.cloneNode(true)),
+ ...Array.from({length:3},()=>bonos.cloneNode(true))
+);
+</script>
 </body>
 </html>

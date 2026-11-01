@@ -476,10 +476,12 @@
         .subsidy-text .end-rule{font-size:6.5pt;line-height:1.15;padding-top:1mm}
         .subsidy-text .formula{font-size:8pt}
         .subsidy .card-foot{flex:none;margin-top:0}
-        .planet-pair{display:flex;justify-content:space-around;gap:1mm;margin:4mm 0 3mm;font-weight:bold;font-size:8pt;text-align:center}
-        .planet-pair span{border:1px solid #6b6f8b;border-radius:2mm;padding:2mm 1mm;flex:1;background:#f4f2fa}
+        .planet-pair{display:flex;justify-content:space-around;gap:1mm;margin:.8mm 0;font-weight:bold;font-size:7.5pt;line-height:1.1;text-align:center;flex:none}
+        .planet-token{border:1px solid #6b6f8b;border-radius:2mm;padding:.7mm .5mm;flex:1;min-width:0;background:#f4f2fa;display:flex;flex-direction:column;align-items:center;gap:.3mm}
+        .planet-token svg{width:8mm;height:8mm;flex:none;fill:none;stroke:#222;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
         .planet-rule{font-size:7pt;line-height:1.3;margin:1mm 0}
-        .planet-layer{font-weight:bold;text-align:center;font-size:8pt;border-bottom:1px solid #999;padding:1mm}
+        .planet-layer{display:flex;align-items:center;justify-content:center;gap:.7mm;font-weight:bold;text-align:center;font-size:8pt;border-bottom:1px solid #999;padding:1mm}
+        .planet-layer img{width:4mm;height:4mm;object-fit:contain;flex:none}
         .card[hidden]{display:none!important}
         .overflow-details{width:100%;font-size:12px;line-height:1.4}
         .overflow-details summary{cursor:pointer}
@@ -497,6 +499,7 @@
         <details class="overflow-details" id="overflow-details" hidden><summary id="overflow-summary"></summary><ul id="overflow-list"></ul></details>
     </div>
     <main class="sheet" id="sheet" aria-label="Cartas de evento y subvención"></main>
+    <script src="./planetas.js"></script>
     <script>
         // Doce materiales: seis se ajustan en cada carta. El transporte es una referencia.
         const basics = [
@@ -621,9 +624,16 @@
  </div></div>`}
         function footer(card) { return `<footer class="card-foot"><span>SYNCRODYSON</span><span>${card.id}</span></footer>` }
         function coin() { return `<svg class="big-coin" viewBox="0 0 120 120" role="img" aria-label="Gran moneda"><circle cx="60" cy="60" r="55" fill="#efd27c" stroke="#453c22" stroke-width="3"/><circle cx="60" cy="60" r="46" fill="#fae8ac" stroke="#9b7c32" stroke-width="2"/><path d="M78 36H52c-20 0-20 24 0 24h16c20 0 20 24 0 24H42M60 25v70" fill="none" stroke="#453c22" stroke-width="7" stroke-linecap="round"/></svg>` }
+        const iconosCapasPlanetarias = {
+            'Estructura': 'ES-estructura',
+            'Fotovoltaica': 'FV-fotovoltaico',
+            'Transmisión': 'TS-transmision',
+            'Refrigeración': 'RF-refrigeracion',
+            'Microondas': 'MO-microondas'
+        };
         function render(card) {
 
-            if(card.planet) return `<article class="card planet-event" aria-label="${card.id} · ${card.layer} · ${card.planets.join(' y ')}"><header class="heading">${icon('EV-evento')}<div><h2>Reclamo planetario</h2><div class="type">Evento de planeta</div></div></header><div class="planet-layer">Capa: ${card.layer}</div><div class="planet-pair"><span>${card.planets[0]}</span><span>${card.planets[1]}</span></div><p class="planet-rule">Lanza un dado y coloca esta carta en el cuadrante indicado.</p><p class="planet-rule">El primer jugador que coloque un disco en esta capa y cuadrante reclama la carta y sus dos símbolos.</p>${footer(card)}</article>`;
+            if(card.planet) return `<article class="card planet-event" aria-label="${card.id} · ${card.layer} · ${card.planets.join(' y ')}"><header class="heading">${icon('EV-evento')}<div><h2>Reclamo planetario</h2><div class="type">Evento de planeta</div></div></header><div class="planet-layer">Capa: ${icon(iconosCapasPlanetarias[card.layer])}<span>${card.layer}</span></div><div class="planet-pair">${card.planets.map(nombre=>`<div class="planet-token"><svg viewBox="0 0 40 40" aria-hidden="true">${planetas.find(planeta=>planeta.nombre===nombre).simbolo}</svg><span>${nombre}</span></div>`).join('')}</div><p class="planet-rule">Lanza un dado y coloca esta carta en el cuadrante indicado.</p><p class="planet-rule">El primer jugador que coloque un disco en esta capa y cuadrante reclama la carta y sus dos símbolos.</p>${footer(card)}</article>`;
             if (card.standalone || card.catastrophe) return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="standalone-text" aria-label="Efecto del evento">${card.effect.map(paragraph => `<p>${renderEffect(paragraph)}</p>`).join('')}</section>${footer(card)}</article>`;
             if (card.subsidy) return `<article class="card subsidy" aria-label="${card.id} · Subvención"><header class="heading"><div><h2>Subvención</h2></div></header><div class="subsidy-art">${coin()}</div><div class="subsidy-text"><div class="formula" aria-hidden="true">$10 + $2 / ${icon('DS-disco')}</div><p>Cada jugador cobra <strong>$10 + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong></p></div>${footer(card)}</article>`;
             return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${renderEffect(card.effect)}</p></section>${footer(card)}</article>`;

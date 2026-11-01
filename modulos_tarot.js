@@ -544,7 +544,7 @@ window.modulos = [
     "discos": 0,
     "bono": "[TJ] +3 [En] [=] +1 [PI] [OP]",
     "disco_soporte": 0,
-    "efecto": "Todos los jugadores obtienen hasta 3 [En] energía, no pueden negarse. Ganas 1 [PI] por cada oponente hasta un maximo de 4 [PI]. \nPuedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Todos los jugadores obtienen 3 [En] energía, no pueden negarse. Ganas 1 [PI] por cada oponente hasta un maximo de 4 [PI]. \nPuedes volver a colocar el cubo en la etapa 2.",
     "destino": "etapa:2",
     "etapas": [
       {
@@ -2657,7 +2657,7 @@ window.modulos = [
     "id": "P074",
     "nombre": "Gimnasio y spa de gravedad cero",
     "tipo": "mantenimiento",
-    "puntos": "+2 [PV] [/] [AI]",
+    "puntos": "2 [PV] [/] [AI]",
     "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,

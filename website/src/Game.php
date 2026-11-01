@@ -9,6 +9,21 @@ final class GameError extends RuntimeException
 
 final class Game
 {
+    public static function tradeRules(): array
+    {
+        return [
+            'project-buy' => ['label' => 'Compra de proyectos', 'unitAmount' => -300],
+            'project-sell' => ['label' => 'Venta de proyectos', 'unitAmount' => 200],
+            'engineer-hire' => ['label' => 'Contratación de ingenieros', 'unitAmount' => -500],
+            'engineer-fire' => ['label' => 'Despido de ingenieros', 'unitAmount' => 0],
+        ];
+    }
+
+    public static function engineerTypes(): array
+    {
+        return ['IM' => 'Electromecánico', 'IQ' => 'Químico', 'IS' => 'En sistemas'];
+    }
+
     public static function maintenanceRules(): array
     {
         return ['mines' => [1500, 1000, 500, 0, -500, -1000],
@@ -159,6 +174,24 @@ final class Game
                 }
                 self::log($s, $p['id'], 0, 'Entrega de recursos pendientes', ['units' => $units]);
                 break;
+            case 'trade':
+                self::phase($s, 'planning', 'execution', 'maintenance');
+                if ($s['phase'] === 'planning' && $p['pass'] !== null) throw new GameError('Retirá tu pase antes de registrar operaciones.', 409);
+                $operation = $data['operation'] ?? null;
+                $rules = self::tradeRules();
+                if (!is_string($operation) || !isset($rules[$operation])) throw new GameError('Operación desconocida.');
+                $qty = self::integer($data['qty'] ?? null, 1, 1000000);
+                $rule = $rules[$operation];
+                $type = null;
+                if (str_starts_with($operation, 'engineer-')) {
+                    $type = $data['type'] ?? null;
+                    if (!is_string($type) || !isset(self::engineerTypes()[$type])) throw new GameError('Elegí un tipo de ingeniero válido.');
+                }
+                $amount = $qty * $rule['unitAmount'];
+                $p['cash'] += $amount;
+                self::log($s, $p['id'], $amount, $rule['label'],
+                    ['trade' => ['operation' => $operation, 'qty' => $qty, 'type' => $type, 'unitAmount' => $rule['unitAmount']]]);
+                break;
             case 'cash':
             case 'transfer':
                 self::phase($s, 'lobby', 'planning', 'execution', 'maintenance');
@@ -239,6 +272,8 @@ final class Game
     public static function view(array $s, int $actor): array
     {
         $s['maintenanceRules'] = self::maintenanceRules();
+        $s['tradeRules'] = self::tradeRules();
+        $s['engineerTypes'] = self::engineerTypes();
         $s['me'] = $s['players'][$actor]['id'];
         foreach ($s['players'] as $i => &$p) {
             unset($p['tokenHash']);

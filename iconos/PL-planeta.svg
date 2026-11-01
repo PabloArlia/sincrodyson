@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" stroke="#222" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>Planeta</title>
+  <circle cx="20" cy="20" r="12" fill="#fff"/>
+  <path d="M9 15c5 3 14 4 21 1M9 24c6 3 14 4 21 1"/>
+  <path d="M9 13C1 15 1 22 12 26s27 2 26-3c0-2-3-4-7-6"/>
+</svg>
