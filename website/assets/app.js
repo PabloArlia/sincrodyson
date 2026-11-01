@@ -110,7 +110,9 @@
     const scroll = window.scrollY;
     const menuWasOpen = $('#game-menu')?.open;
     $('#header-menu').innerHTML = game ? navigationMenu() : '';
+    document.body.classList.toggle('has-finance-bar', !!game);
     app.innerHTML = pendingBanner() + (game ? gameView() : restoring ? '<div class="card"><div class="card-body"><h2 class="card-title">Recuperando tu sala…</h2><p class="text-secondary mb-0">Estamos sincronizando la partida guardada.</p></div></div>' : welcome());
+    if(game) updateFinanceBar();
     if(menuWasOpen && $('#game-menu')) $('#game-menu').open=true;
     window.scrollTo(0, scroll);
   }
@@ -136,7 +138,36 @@
     ${!connection?'<div class="alert alert-warning sync-warning">Reconectando. Las acciones pendientes se pueden reintentar sin duplicarlas.</div>':''}
     <div class="top-stats"><div class="card"><div class="card-body"><div class="eyebrow">Tu saldo</div><div class="stat-value ${p.cash<0?'money-negative':''}">${money(p.cash)}</div></div></div><div class="card"><div class="card-body"><div class="eyebrow">PV por deudas</div><div class="stat-value ${p.lostPv?'money-negative':''}">−${p.lostPv} <span class="small">PV</span></div></div></div><div class="card"><div class="card-body"><div class="eyebrow">${game.phase==='maintenance'?'Mantenimientos':game.phase==='lobby'?'En la sala':'Pases recibidos'}</div><div class="stat-value">${game.phase==='maintenance'?Object.keys(game.maintenance?.results||{}).length:game.phase==='lobby'?game.players.length:game.players.filter(p=>p.pass!==null).length} <span class="text-secondary small">/ ${game.phase==='lobby'?12:game.players.length}</span></div></div></div></div>
     <div class="phase-steps mb-4"><span class="phase-step ${game.phase==='planning'?'active':''}">1. Planificar</span><span class="phase-step ${game.phase==='settlement'?'active':''}">2. Mercado</span><span class="phase-step ${game.phase==='execution'?'active':''}">3. Ejecutar</span><span class="phase-step ${game.phase==='maintenance'?'active':''}">4. Mantenimiento</span></div>
-    ${tab==='account'?account():tab==='activity'?activity():marketView()}`;
+    ${tab==='account'?account():tab==='activity'?activity():marketView()}${financeBar()}`;
+  }
+  function financeValues() {
+    const p=me(), entries=game.ledger.filter(entry=>entry.player===game.me);
+    let balance=game.round ? entries.filter(entry=>entry.round===game.round).reduce((total,entry)=>total+entry.amount,0) : 0;
+    const pendingMarket=game.phase==='planning'||(game.phase==='settlement'&&!game.settlement.results[game.me]);
+    if(pendingMarket) {
+      const editable=fixedTradeAllowed(), orders=editable?draft:p.orders, fixedOrders=editable?fixedDraft:p.fixedOrders;
+      for(const [id,qty] of Object.entries(orders||{})) {
+        const history=game.history[id];
+        const price=game.settlement?.prices[id]??history[history.length-1].price;
+        balance-=qty*price;
+      }
+      for(const [id,qty] of Object.entries(fixedOrders||{})) balance+=fixedTradeInfo(id,qty).amount;
+    }
+    const maintenance=[...entries].reverse().find(entry=>entry.maintenance)?.amount??0;
+    return {funds:p.cash,balance,maintenance};
+  }
+  function financeBar() {
+    return `<aside class="finance-bar" aria-label="Resumen de tus fondos"><div class="finance-bar-inner ${game.phase==='planning'?'has-action':''}">${[['funds','Fondos'],['balance','Balance (est)']].map(([id,label])=>`<div class="finance-stat"><span class="finance-label">${label}</span><strong data-finance="${id}"${id==='balance'?' title="Balance de la ronda; durante la planificaci\u00f3n se estima con los \u00faltimos precios."':''}></strong></div>`).join('')}${game.phase==='planning'?`<div class="finance-action">${passButton()}</div>`:''}</div></aside>`;
+  }
+  function updateFinanceBar() {
+    const values={...financeValues(),dividends:0};
+    for(const [id,value] of Object.entries(values)) {
+      const element=$('[data-finance="'+id+'"]');
+      if(!element) continue;
+      element.textContent=id==='dividends'?'0':id==='funds'?money(value):signed(value);
+      element.classList.toggle('money-positive',id!=='funds'&&value>0);
+      element.classList.toggle('money-negative',value<0);
+    }
   }
   function playersPanel() {
     const sorted = [...game.players].sort((a,b)=>(a.pass??Infinity)-(b.pass??Infinity));
@@ -162,6 +193,13 @@
     const total=qty===0?'Precio fijo':amount===0?'Sin devolución de dinero':`${amount<0?'Pagás':'Cobrás'} ${money(Math.abs(amount))}`;
     return {operation,amount,direction,total};
   }
+  function resourceIcon(id) {
+    const icons={IM:'IM-ingeniero-electromecanico.svg',IQ:'IQ-ingeniero-quimico.svg',IE:'IE-ingeniero-estructural.svg',IS:'IS-ingeniero-sistemas.svg',project:'CP-carta-proyecto.svg',En:'En-energia.svg',Tr:'Tr-transporte.svg',H2SO4:'RQ-reactivos.svg',HCl:'RQ-reactivos.svg'};
+    const colors={Fe:'#d84242',Cu:'#3977dc',Si:'#f0d54d',Ti:'#58a85c',Al:'#292929',C:'#fff',Nd:'#e345ad',Gd:'#42c5c1',Er:'#ec933c',Ce:'#94623d'};
+    const symbol=id==='project'?'CP':id==='H2SO4'?'H'+String.fromCharCode(8322)+'SO'+String.fromCharCode(8324):id;
+    const icon=icons[id]?`<img class="market-resource-icon" src="assets/icons/${icons[id]}" alt="">`:`<span class="market-resource-token" style="--token-color:${colors[id]||'#fff'};--token-ink:${['Al','Ce','Nd','Cu','Ti','Er'].includes(id)?'#fff':'#111'}" aria-hidden="true">${esc(symbol)}</span>`;
+    return icon;
+  }
   function fixedTradeRows() {
     if(!game.tradeRules) return '';
     const disabled=!fixedTradeAllowed() || busy || !!readLocal(pendingKey);
@@ -169,7 +207,7 @@
       const engineer=id!=='project', qty=(fixedTradeAllowed()?fixedDraft:me().fixedOrders)?.[id]||0, info=fixedTradeInfo(id,qty);
       const buy=-game.tradeRules[engineer?'engineer-hire':'project-buy'].unitAmount;
       const sell=game.tradeRules[engineer?'engineer-fire':'project-sell'].unitAmount;
-      return `<tr class="fixed-trade-row" style="--resource-color:${engineer?'#8eafff':'#de7ebe'}"><th scope="row"><span class="market-symbol">${engineer?esc(id):'PR'}</span><span class="market-resource-name">${esc(name)}</span></th><td><span class="market-fixed-price">${engineer?'Contratar':'Comprar'} <strong>${money(buy)}</strong></span><span class="market-fixed-price">${engineer?'Despedir':'Vender'} <strong>${money(sell)}</strong></span></td><td class="market-history"><span class="text-secondary small">Precio fijo</span><span class="fixed-trade-total" id="fixed-total-${id}">${qty?info.total:'—'}</span></td><td><div class="signed-order fixed-trade-order" data-fixed-id="${id}" data-side="${qty>0?'buy':qty<0?'sell':'none'}"><div class="quantity-stepper"><button type="button" class="btn step-button" data-fixed-step="-1" data-fixed-id="${id}" aria-label="Restar una unidad de ${esc(name)}" ${disabled?'disabled':''}>−</button><label class="visually-hidden" for="fixed-qty-${id}">Cantidad de ${esc(name)}: positivo ${engineer?'contrata':'compra'}, negativo ${engineer?'despide':'vende'}</label><input id="fixed-qty-${id}" data-fixed-qty="${id}" class="form-control signed-quantity" type="number" inputmode="decimal" min="-1000000" max="1000000" step="1" value="${qty}" required ${disabled?'disabled':''}><button type="button" class="btn step-button" data-fixed-step="1" data-fixed-id="${id}" aria-label="Sumar una unidad de ${esc(name)}" ${disabled?'disabled':''}>+</button></div><span class="order-direction" data-fixed-direction>${info.direction}</span></div></td></tr>`;
+      return `<tr class="fixed-trade-row" style="--resource-color:${engineer?({IM:'#e74c3c',IQ:'#2ecc71',IE:'#f1c40f'}[id]||'#8eafff'):'#de7ebe'}"><th scope="row"><span class="market-symbol">${engineer?esc(id):'CP'}</span><span class="market-resource-name">${esc(name)}</span></th><td><span class="market-price-line"><strong class="market-close">${money(buy)}</strong></span><span class="market-change text-secondary">${engineer?'Despedir':'Vender'} ${money(sell)}</span></td><td class="market-history"><span class="text-secondary small">Precio fijo</span></td><td><div class="signed-order fixed-trade-order" data-fixed-id="${id}" data-side="${qty>0?'buy':qty<0?'sell':'none'}">${fixedTradeAllowed()?`<div class="quantity-stepper"><button type="button" class="btn step-button" data-fixed-step="-1" data-fixed-id="${id}" aria-label="Restar una unidad de ${esc(name)}" ${disabled?'disabled':''}>−</button><label class="visually-hidden" for="fixed-qty-${id}">Cantidad de ${esc(name)}: positivo ${engineer?'contrata':'compra'}, negativo ${engineer?'despide':'vende'}</label><input id="fixed-qty-${id}" data-fixed-qty="${id}" class="form-control signed-quantity" type="number" inputmode="decimal" min="-1000000" max="1000000" step="1" value="${qty}" required ${disabled?'disabled':''}><button type="button" class="btn step-button" data-fixed-step="1" data-fixed-id="${id}" aria-label="Sumar una unidad de ${esc(name)}" ${disabled?'disabled':''}>+</button></div>`:`<strong class="settled-quantity">${qty>0?'+':''}${qty}</strong>`}<span class="order-direction" data-fixed-direction>${info.direction}</span></div></td></tr>`;
     }).join('');
   }
   function updateTradeTotal(control) {
@@ -179,13 +217,16 @@
     const info=fixedTradeInfo(id,valid?qty:0);
     control.dataset.side=valid?(qty>0?'buy':qty<0?'sell':'none'):'none';
     control.querySelector('[data-fixed-direction]').textContent=valid?info.direction:'Cantidad inválida';
-    $('#fixed-total-'+id).textContent=valid?(qty?info.total:'—'):'Indicá una cantidad entera.';
     try { persistDraft(); } catch(err) { notify(err.message,true); }
+    updateFinanceBar();
   }
   function planningPanel() {
     if (game.phase!=='planning') return `<div class="card mb-3"><div class="card-body"><div class="eyebrow mb-2">Agente externo</div><p class="text-secondary small mb-0">Compra el excedente y vende lo que falta. Sin inventario ni límite de unidades. Los precios se acercan al nominal cuando baja la presión.</p></div></div>`;
+    return '';
+  }
+  function passButton() {
     const passed = me().pass!==null, disabled = busy || !!readLocal(pendingKey);
-    return `<button class="btn ${passed?'':'btn-primary'} w-100 mb-3" ${passed?'data-command="unpass"':'data-action="pass"'} ${disabled?'disabled':''}>${passed?'Retirar mi pase':'Guardar y pasar'}</button>`;
+    return `<button class="btn ${passed?'':'btn-primary'} w-100" ${passed?'data-command="unpass"':'data-action="pass"'} ${disabled?'disabled':''}>${passed?'Retirar mi pase':'Guardar y pasar'}</button>`;
   }
   function spark(r, history) {
     const h = history.slice(-3), low = r.min, high = Math.max(low+100,r.max);
@@ -203,7 +244,7 @@
     const editable=game.phase==='planning'&&me().pass===null;
     const disabled=busy||!!readLocal(pendingKey);
     const q=editable?(draft[r.id]||0):(me().orders[r.id]||0);
-    return `<tr style="--resource-color:${r.color}"><th scope="row"><span class="market-symbol">${esc(r.id==='H2SO4'?'H₂SO₄':r.id)}</span><span class="market-resource-name">${esc(r.name)}</span></th><td><span class="market-price-line"><strong class="market-close">${money(last)}</strong> <span class="market-nominal">(r ${money(r.nominal)})</span></span><span class="market-change ${delta>0?'money-positive':delta<0?'money-negative':'text-secondary'}">${delta>0?'↗':delta<0?'↘':'→'} ${money(Math.abs(delta))}</span></td><td class="market-history">${spark(r,h)}</td><td><div class="signed-order" data-order="${r.id}" data-side="${q>0?'buy':q<0?'sell':'none'}">${editable?`<div class="quantity-stepper"><button type="button" class="btn step-button" data-step="-1" data-resource="${r.id}" aria-label="Restar una unidad de ${esc(r.name)}" ${disabled?'disabled':''}>−</button><label class="visually-hidden" for="qty-${r.id}">Cantidad de ${esc(r.name)}: negativo vende, positivo compra</label><input id="qty-${r.id}" data-qty="${r.id}" class="form-control signed-quantity" type="number" inputmode="decimal" min="-1000000" max="1000000" step="1" value="${q}" ${disabled?'disabled':''}><button type="button" class="btn step-button" data-step="1" data-resource="${r.id}" aria-label="Sumar una unidad de ${esc(r.name)}" ${disabled?'disabled':''}>+</button></div>`:`<strong class="settled-quantity">${q>0?'+':''}${q}</strong>`}<span id="side-${r.id}" class="order-direction">${q>0?'Compra':q<0?'Venta':'—'}</span></div></td></tr>`;
+    return `<tr style="--resource-color:${r.color}"><th scope="row"><span class="market-symbol">${esc(r.id)}</span><span class="market-resource-name">${esc(r.name)}</span></th><td><span class="market-price-line"><strong class="market-close">${money(last)}</strong> <span class="market-nominal">(r ${money(r.nominal)})</span></span><span class="market-change ${delta>0?'money-positive':delta<0?'money-negative':'text-secondary'}">${delta>0?'↗':delta<0?'↘':'→'} ${money(Math.abs(delta))}</span></td><td class="market-history">${spark(r,h)}</td><td><div class="signed-order" data-order="${r.id}" data-side="${q>0?'buy':q<0?'sell':'none'}">${editable?`<div class="quantity-stepper"><button type="button" class="btn step-button" data-step="-1" data-resource="${r.id}" aria-label="Restar una unidad de ${esc(r.name)}" ${disabled?'disabled':''}>−</button><label class="visually-hidden" for="qty-${r.id}">Cantidad de ${esc(r.name)}: negativo vende, positivo compra</label><input id="qty-${r.id}" data-qty="${r.id}" class="form-control signed-quantity" type="number" inputmode="decimal" min="-1000000" max="1000000" step="1" value="${q}" ${disabled?'disabled':''}><button type="button" class="btn step-button" data-step="1" data-resource="${r.id}" aria-label="Sumar una unidad de ${esc(r.name)}" ${disabled?'disabled':''}>+</button></div>`:`<strong class="settled-quantity">${q>0?'+':''}${q}</strong>`}<span id="side-${r.id}" class="order-direction">${q>0?'Compra':q<0?'Venta':'—'}</span></div></td></tr>`;
   }
   function fixedOrderSummary(orders) {
     return Object.entries(orders || {}).map(([id,qty])=>{
@@ -211,10 +252,19 @@
       return `<div class="small text-secondary">${info.direction}: ${Math.abs(qty)} ${esc(name)} \u00b7 ${info.total}</div>`;
     }).join('');
   }
+  function fixedSettlementRows(orders) {
+    return Object.entries(orders||{}).map(([id,qty])=>{
+      const info=fixedTradeInfo(id,qty), engineer=id!=='project';
+      const name=engineer?'Ingeniero '+game.engineerTypes[id]:'Cartas de proyecto';
+      const rules=game.settlement.fixedRules||game.tradeRules;
+      const unitAmount=rules[info.operation].unitAmount;
+      return `<div class="trade-row"><div class="settlement-resource">${resourceIcon(id)}<div><strong>${esc(info.direction)} ${Math.abs(qty)} ${esc(name)}</strong><div class="text-secondary small">${money(Math.abs(unitAmount))} por unidad &middot; ${info.amount<0?'paga':info.amount>0?'cobra':'sin movimiento de dinero'}${info.amount?' '+money(Math.abs(info.amount)):''}</div></div></div></div>`;
+    }).join('');
+  }
   function settlement() {
     const s=game.settlement, id=s.order[s.index], p=person(id), can=id===game.me||isHost();
     const total=Object.entries(p.orders).reduce((a,[rid,q])=>a-q*s.prices[rid],0)+Object.entries(p.fixedOrders||{}).reduce((a,[id,q])=>a+fixedTradeInfo(id,q).amount,0);
-    return `<form id="settle-form" class="card liquidation mb-4"><div class="card-header"><div><div class="eyebrow mb-1">Todos fiscalizan · ${s.index+1} de ${s.order.length}</div><h2 class="card-title">Liquida ${esc(p.name)}</h2></div><span class="badge bg-blue-lt ms-auto">Turno ${s.index+1}</span></div><div class="card-body"><p class="text-secondary small">Entregá las ventas al banco y tomá las compras. Las unidades que no puedas entregar quedan como deuda; el cobro de la venta se mantiene.</p>${Object.entries(p.orders).length?Object.entries(p.orders).map(([rid,q])=>`<div class="trade-row"><div><strong>${q>0?'Recibe':'Entrega'} ${Math.abs(q)} ${esc(game.catalog[rid].name)}</strong><div class="text-secondary small">${money(s.prices[rid])} por unidad · ${q>0?'paga':'cobra'} ${money(Math.abs(q)*s.prices[rid])}</div></div>${q<0&&can?`<div class="debt-input"><label class="form-label small" for="missing-${rid}">No entrega</label><input id="missing-${rid}" name="missing-${rid}" type="number" min="0" max="${-q}" step="1" value="0" class="form-control" inputmode="numeric"></div>`:''}</div>`).join(''):Object.keys(p.fixedOrders||{}).length?'':'<p>Sin compras ni ventas en esta ronda.</p>'}${fixedOrderSummary(p.fixedOrders)}<div class="d-flex justify-content-between align-items-center mt-3"><div><div class="text-secondary small">Movimiento de caja</div><strong class="fs-2 ${total<0?'money-negative':'money-positive'}">${total>=0?'Cobra':'Paga'} ${money(Math.abs(total))}</strong></div><div class="text-end"><div class="text-secondary small">Saldo después</div><strong class="fs-2">${money(p.cash+total)}</strong></div></div>${can?`<button class="btn btn-primary w-100 mt-4" ${busy?'disabled':''}>Confirmar entregas y liquidación${id!==game.me?' como anfitrión':''}</button>`:`<div class="alert alert-info mt-3 mb-0">Esperando la confirmación de ${esc(p.name)} o del anfitrión.</div>`}</div></form>`;
+    return `<form id="settle-form" class="card liquidation mb-4"><div class="card-header"><div><h2 class="card-title">Liquidaci&#243;n ${esc(p.name)}</h2></div></div><div class="card-body"><p class="text-secondary small">Entregá las ventas al banco y tomá las compras. Las unidades que no puedas entregar quedan como deuda; el cobro de la venta se mantiene.</p>${Object.entries(p.orders).length?Object.entries(p.orders).map(([rid,q])=>`<div class="trade-row"><div class="settlement-resource">${resourceIcon(rid)}<div><strong>${q>0?'Recibe':'Entrega'} ${Math.abs(q)} ${esc(game.catalog[rid].name)}</strong><div class="text-secondary small">${money(s.prices[rid])} por unidad · ${q>0?'paga':'cobra'} ${money(Math.abs(q)*s.prices[rid])}</div></div></div>${q<0&&can?`<div class="debt-input"><label class="form-label small" for="missing-${rid}">No entrega</label><input id="missing-${rid}" name="missing-${rid}" type="number" min="0" max="${-q}" step="1" value="0" class="form-control" inputmode="numeric"></div>`:''}</div>`).join(''):Object.keys(p.fixedOrders||{}).length?'':'<p>Sin compras ni ventas en esta ronda.</p>'}${fixedSettlementRows(p.fixedOrders)}<div class="d-flex justify-content-between align-items-center mt-3"><div><div class="text-secondary small">Movimiento de caja</div><strong class="fs-2 ${total<0?'money-negative':'money-positive'}">${total>=0?'Cobra':'Paga'} ${money(Math.abs(total))}</strong></div><div class="text-end"><div class="text-secondary small">Saldo después</div><strong class="fs-2">${money(p.cash+total)}</strong></div></div>${can?`<button class="btn btn-primary w-100 mt-4" ${busy?'disabled':''}>Confirmar entregas y liquidación${id!==game.me?' como anfitrión':''}</button>`:`<div class="alert alert-info mt-3 mb-0">Esperando la confirmación de ${esc(p.name)} o del anfitrión.</div>`}</div></form>`;
   }
   function execution() {
     return `<div class="card mb-4"><div class="card-body"><div class="eyebrow mb-2">${game.phase==='finished'?'Registro final':'Mercado liquidado'}</div><h2>${game.phase==='finished'?'La partida terminó':'Ahora se ejecutan los proyectos'}</h2><p class="text-secondary">${game.phase==='execution'?'Registrá acá los cobros y pagos a la reserva o las transferencias a otros jugadores.':'Consultá los saldos y movimientos en Caja y deudas y en el Registro público.'}</p><div class="d-flex flex-wrap gap-2">${game.settlement.order.map((id,i)=>`<span class="badge bg-blue-lt">${i+1}. ${esc(person(id).name)}</span>`).join('')}</div>${isHost()&&game.phase==='execution'?`<button class="btn btn-primary mt-3" data-command="maintenance" ${busy?'disabled':''}>Ir a Mantenimiento</button>`:''}</div></div>${game.phase==='execution'?cashForm():''}`;
@@ -303,6 +353,7 @@
     const label=$('#side-'+id);
     if(label) label.textContent=qty>0?'Compra':qty<0?'Venta':'—';
     try { persistDraft(); } catch(err) { notify(err.message,true); }
+    updateFinanceBar();
   }
   document.addEventListener('input',e=>{
     const input=e.target;
