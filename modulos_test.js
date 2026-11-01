@@ -1,5 +1,5 @@
 // Syncrodyson — datos de proyectos. Las recetas nuevas no acordadas se identifican en nota_balance.
-// bono: texto e iconos entre corchetes, p. ej. "3 [DS]", "+3 [BT]", "+18 [Di][RE]".
+// bono: texto e iconos entre corchetes, p. ej. "3 [DS]", "+3 [En]", "+18 [Di][RE]".
 // Balance: suma puntos_carta + puntos_capas + puntos_ingenieros + puntos_otros.
 // puntos_ingenieros usa -4 por anclado; balance.js permite ajustar ese supuesto.
 // puntos_otros: null indica una estimación pendiente; 0 indica que no se suma otro efecto.

@@ -12,7 +12,7 @@ El objetivo es terminar la partida con la mayor cantidad de puntos de victoria (
 
 Coloquen en el centro de la mesa el tablero de la esfera, el tablero de mercado y las reservas generales. Preparen los mazos de proyectos y de yacimientos y dejen espacio para sus respectivos descartes. Coloquen recursos en los espacios del mercado marcados en negro.
 
-Mezclen las cartas de evento con las 12 cartas de subvención para formar el mazo de ronda. Dejen espacio para las cartas resueltas y expongan la primera carta, que se resolverá en Mantenimiento de la primera ronda. Coloquen el indicador de fin de partida en 60 PV.
+Mezclen las cartas de evento con las 12 cartas de subvención para formar el mazo de eventos. Dejen espacio para las cartas resueltas. Durante Mantenimiento se revela una carta por jugador, en lugar de dejar una carta expuesta por ronda. Coloquen el indicador de fin de partida en 60 PV.
 
 Cada jugador toma su tablero personal. En el área de orden se colocan tantas fichas como jugadores haya, numeradas consecutivamente desde el 1.
 
@@ -26,7 +26,7 @@ Entreguen a cada jugador:
 - 9 fichas de contrato.
 - 3 dados verdes y 3 dados rojos.
 - $40.
-- 4 unidades de [En] energía, que se colocan en las baterías.
+- 4 unidades de [En] energía disponibles para la primera ronda.
 - 3 unidades de [Tr] Transporte, cuyo valor básico es $7.
 
 Con las seis cartas de proyecto se realiza un draft. Todos eligen simultáneamente una carta, la conservan y pasan las restantes al jugador de su derecha. Este procedimiento se repite hasta que se hayan elegido todas las cartas.
@@ -43,9 +43,9 @@ Una vez terminada la preparación, comienza la primera ronda.
 
 ### Tablero personal
 
-El tablero personal dispone de cuatro espacios de ejecución, ocupados por refinerías o proyectos. También incluye el almacén de recursos, las baterías, las barracas, el área de contratos, el área de licencias, Soporte externo y cinco espacios para programar operaciones de mercado.
+El tablero personal dispone de cuatro espacios de ejecución, ocupados por refinerías o proyectos. También incluye el almacén de recursos, las barracas, el área de contratos, el área de licencias, Soporte externo y cinco espacios para programar operaciones de mercado.
 
-Los recursos no asignados a proyectos o refinerías se guardan en el almacén. La energía no asignada se guarda exclusivamente en las baterías; cualquier excedente que no pueda almacenarse se descarta. Los ingenieros disponibles permanecen en las barracas, salvo que estén asignados a otra tarea.
+Los recursos no asignados a proyectos o refinerías se guardan en el almacén. La energía disponible puede asignarse durante la ronda; toda la energía que sobre al final de la ronda se descarta. Los ingenieros disponibles permanecen en las barracas, salvo que estén asignados a otra tarea.
 
 ### Esfera y adyacencia
 
@@ -87,7 +87,7 @@ Durante Planificación, el jugador puede colocar o retirar licencias de sus yaci
 
 ### Preparar proyectos y asignar componentes
 
-El jugador puede colocar proyectos sobre sus refinerías. Para preparar la ejecución de un proyecto o refinería, puede asignar recursos del almacén, energía de las baterías e ingenieros de las barracas. También puede mover estos componentes entre proyectos.
+El jugador puede colocar proyectos sobre sus refinerías. Para preparar la ejecución de un proyecto o refinería, puede asignar recursos del almacén, energía disponible e ingenieros de las barracas. También puede mover estos componentes entre proyectos.
 
 **Importante:** los proyectos y las refinerías solo se ejecutan si tienen asignados todos los recursos necesarios para su etapa actual, excepto los que figuren como optativos. Proveer los recursos optativos permite obtener los beneficios adicionales indicados.
 
@@ -133,13 +133,13 @@ Si el mercado no contiene suficientes unidades, el jugador toma todas las dispon
 
 Si el mercado no contiene ninguna unidad de ese recurso al comenzar la compra, el jugador compra directamente de la reserva general al precio máximo del recurso.
 
-Los recursos comprados pueden asignarse inmediatamente a proyectos o colocarse en el almacén. La energía comprada puede asignarse directamente a proyectos, aunque las baterías estén llenas, o colocarse en las baterías. Cualquier excedente que no se asigne a proyectos ni entre en las baterías se descarta.
+Los recursos comprados pueden asignarse inmediatamente a proyectos o colocarse en el almacén. La energía comprada puede asignarse directamente a proyectos o mantenerse disponible durante la ronda. Toda la energía sobrante se descarta al final de la ronda.
 
 ### Venta de recursos
 
 El jugador cobra el precio actual del recurso multiplicado por la cantidad indicada por sus dados y entrega esa misma cantidad de unidades. Toda la venta utiliza el precio del recurso anterior a la operación.
 
-Solo pueden venderse recursos del almacén. La energía se vende desde las baterías.
+Solo pueden venderse recursos del almacén. La energía se vende de las unidades disponibles.
 
 Si los recursos entregados superan la capacidad del mercado, el excedente se devuelve a la reserva general. El jugador cobra igualmente por todas las unidades vendidas.
 
@@ -179,7 +179,6 @@ La carta de mercado **Proyecto por tipo** permite comprar **una sola carta de pr
 | 2 | 5 | Economía | [EC] |
 | 2 | 6 | Recursos humanos | [RH] |
 | 2 | 7 | Producción | [PR] |
-| 2 | 8 | Batería | [BT] |
 | 2 | 9 | Mejora de soporte externo | [MS] |
 
 Con dos dados solo importa la **suma de ambos**, sin distinguir el orden. Las sumas 10, 11 y 12 no tienen tipo asignado y se saltea la compra asi como si se jugase con dados rojos.
@@ -323,7 +322,7 @@ Si un proyecto con ingenieros anclados en su última etapa no coloca ningún dis
 
 ## 4. Mantenimiento
 
-La fase de Mantenimiento se resuelve en este orden: préstamos, ingresos de Soporte externo, costos de mantenimiento, resolución de la carta de ronda, comprobación del fin de partida y, si la partida continúa, exposición de la carta de la siguiente ronda, draft de proyectos, generación de energía, compra de energía y compra de Transporte por despacho urgente.
+La fase de Mantenimiento se resuelve en este orden: préstamos, ingresos de Soporte externo, costos de mantenimiento, revelación de un evento por jugador, resolución de las cartas reveladas y comprobación del fin de partida. Si la partida continúa, se realiza el draft de proyectos, se descarta la energía sobrante de la ronda, se genera la energía para la siguiente y se resuelven las compras de energía y de Transporte por despacho urgente.
 
 ### Préstamos
 
@@ -345,9 +344,13 @@ Cada jugador paga la suma de los siguientes valores de su tablero:
 
 Estos costos se pagan antes de generar o comprar energía nueva.
 
-### Resolución de la carta de ronda
+### Revelar un evento por jugador
 
-Resuelvan la carta expuesta para esta ronda. Si es una carta de evento, apliquen primero su ajuste de mercado, si lo tiene, y luego su efecto. Las cartas sin ajuste de mercado solo resuelven su efecto de evento. Si es una subvención, cada jugador cobra $10 + $2 por cada carta de subvención que haya salido, incluida la actual, + $2 por cada disco propio en la esfera (sector o área de soporte). Después de pagar la subvención, reduzcan en 5 PV la meta de fin de partida moviendo su indicador.
+Revelen del mazo una carta por cada jugador de la partida. Este paso reemplaza la antigua carta de ronda; no se deja otra carta expuesta para la ronda siguiente.
+
+### Resolver las cartas reveladas
+
+Resuelvan las cartas reveladas una por una. Si es una carta de evento, apliquen primero su ajuste de mercado, si lo tiene, y luego su efecto. Las cartas sin ajuste de mercado solo resuelven su efecto de evento. Si es una subvención, cada jugador cobra $10 + $2 por cada carta de subvención que haya salido, incluida la actual, + $2 por cada disco propio en la esfera (sector o área de soporte). Después de pagar la subvención, reduzcan en 5 PV la meta de fin de partida moviendo su indicador.
 
 La meta comienza en 60 PV y se reduce de forma acumulativa: tras una subvención es 55 PV; tras seis, 30 PV; tras las doce, 0 PV. La reducción no resta PV a los jugadores ni termina la partida hasta la comprobación siguiente. Mantengan las subvenciones resueltas visibles para contar sus monedas.
 
@@ -355,23 +358,19 @@ La meta comienza en 60 PV y se reduce de forma acumulativa: tras una subvención
 
 Antes de devolver las fichas de orden, se comprueba si algún jugador alcanza o supera la meta vigente indicada por el marcador de fin de partida. Si al menos uno la alcanza, la partida termina inmediatamente y se pasa a la puntuación final. Las fichas de orden se conservan para resolver posibles empates. No se realizan los pasos restantes de la fase.
 
-### Exposición de la siguiente carta de ronda
-
-Si la partida continúa, expongan la siguiente carta del mazo de ronda. Queda visible durante la ronda siguiente y se resolverá en su fase de Mantenimiento.
-
 ### Draft de proyectos
 
 Si la partida continúa, todos devuelven sus fichas de orden al área correspondiente. Cada jugador roba cuatro cartas de proyecto y se realiza un nuevo draft: se elige una carta y se pasan las restantes a la derecha hasta elegirlas todas.
 
 ### Generación de energía
 
-Después del draft, cada jugador recibe la energía gratuita indicada por sus generadores en el tablero.
+Después del draft, cada jugador descarta toda la energía que le haya sobrado de la ronda. Luego recibe la energía gratuita indicada por sus generadores en el tablero, disponible para la ronda siguiente.
 
 ### Compra de energía
 
 Cada jugador puede comprar energía adicional por $3 la unidad. Esta posibilidad es independiente de las compras de energía realizadas en Mercado.
 
-Durante Mantenimiento, tanto la energía generada como la comprada se colocan en las baterías y no pueden asignarse directamente a proyectos. Cualquier cantidad que exceda su capacidad se descarta.
+La energía que sobra al final de una ronda se descarta antes de recibir la energía para la siguiente. La energía generada o comprada durante Mantenimiento queda disponible para la ronda siguiente y se asigna a proyectos durante Planificación.
 
 ### Compra de Transporte por despacho urgente
 

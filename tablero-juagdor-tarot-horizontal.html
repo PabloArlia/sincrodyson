@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Syncrodyson - Tablero de jugador - Tarot horizontal</title>
+<style>
+:root{font-family:Arial,Helvetica,sans-serif;color:#172027;background:#e8e9e7;--ink:#20282d;--line:#667078;--soft:#f8f8f5;--gold:#ffd66b}
+*{box-sizing:border-box}body{margin:0;padding:18px}.toolbar{width:min(100%,297mm);margin:0 auto 14px;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--ink);color:white;border-radius:6px}.toolbar h1{font-size:12pt;margin:0}button{border:0;border-radius:5px;padding:9px 14px;background:#70b684;font-size:12pt;font-weight:700;cursor:pointer}
+.board{width:297mm;height:210mm;margin:auto;padding:2mm;background:#fff;border:1mm solid var(--ink);border-radius:3mm;display:grid;grid-template-columns:repeat(4,63mm) minmax(0,1fr);grid-template-rows:7mm 48mm 88mm 1fr;gap:2.5mm;box-shadow:0 3px 14px #0002}
+.phases{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--ink);border-radius:2mm;overflow:hidden}.phases span{display:grid;place-items:center;font-size:15pt;font-weight:800;border-right:1px solid #555}.phases span:last-child{border:0}.phases span:nth-child(1){background:#fff1d6}.phases span:nth-child(2){background:#e4f1fa}.phases span:nth-child(3){background:#e2f4e4}.phases span:nth-child(4){background:#fae8e5}.phases span:nth-child(5){background:#f2eafa}
+.row{display:grid;gap:2.5mm;min-height:0}.top{grid-template-columns:.65fr 1.75fr .42fr;grid-column:1/-1;grid-row:2}.middle{grid-template-columns:repeat(3,1fr) 1.5fr}.bottom{grid-template-columns:2.8fr 1.27fr .46fr}.panel{min-width:0;min-height:0;border:.45mm solid #40484d;border-radius:2.2mm;padding:2.3mm;background:var(--soft);display:flex;flex-direction:column;overflow:hidden}.heading{display:flex;align-items:center;gap:2mm;margin:0 0 1.6mm;font-size:12pt;line-height:1.05;text-transform:uppercase}.heading img{width:9mm;height:9mm;object-fit:contain;flex:none}
+.license-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1mm;flex:1}.license{border:1px solid #9ba2a4;border-radius:1.5mm;display:grid;grid-template-rows:auto 1fr auto;justify-items:center;align-items:center;padding:1mm}.license b{font-size:12pt}.slot{width:10mm;height:9mm;border:1px solid #667078;border-radius:1mm;background:white}.price{padding:.7mm 1.6mm;border-radius:1.5mm;font-size:12pt;font-weight:800;white-space:nowrap}
+.hire-slots{display:grid;grid-template-columns:repeat(12,1fr);gap:.8mm;flex:1;min-height:0}.hire{display:flex;flex-direction:column;align-items:center;justify-content:space-around;border-right:1px solid #c4c8c8;font-size:12pt}.hire:last-child{border:0}.disc{width:9mm;height:9mm;border:1.3px solid #1a1d1e;border-radius:50%;background:#fff}.hire .price{font-size:12pt;padding:.5mm 1mm}.engineers{display:grid;grid-template-columns:repeat(4,1fr);gap:1mm;margin-top:1.5mm}.engineer{display:flex;align-items:center;gap:1mm;font-size:12pt;min-width:0}.engineer img{width:8mm;height:9mm;object-fit:contain}.engineer b{font-size:12pt}.engineer small{font-size:12pt;display:block;line-height:1.1}
+.support{align-items:center;text-align:center}.support .heading{font-size:12pt}.support-meeples{display:flex;justify-content:space-around;width:100%;margin:2mm 0}.support-meeples img{width:9mm;height:12mm;object-fit:contain;filter:grayscale(1);opacity:.7}.support .price{font-size:13pt;margin-top:auto}
+.refinery{padding:2mm}.refinery-title{display:flex;align-items:center;gap:1.5mm;margin:0 0 1.5mm}.refinery-title b{background:#22272a;color:#fff;border-radius:1.5mm;padding:1mm 2mm;font-size:13pt}.refinery-title strong{font-size:13pt;text-transform:uppercase}.factory{height:28mm;border:1px solid #aeb4b6;border-radius:1.5mm;background:linear-gradient(#fff,#f1f2ef);display:grid;place-items:center;position:relative}.factory::before{content:none}.refinery-icon{width:38mm;height:25mm;object-fit:contain}.factory-person{position:absolute;right:5mm;top:4mm;width:8mm;height:9mm;object-fit:contain}.factory-note{position:absolute;right:5mm;bottom:3mm;font-size:14pt}.req-title,.storage-title{font-size:12pt;text-align:center;text-transform:uppercase;border-top:1px solid #c1c5c6;margin-top:1.4mm;padding-top:1mm}.requirements{display:grid;grid-template-columns:repeat(3,1fr);gap:1mm;margin-top:1mm}.requirement{border:1px solid #abb1b3;border-radius:1.5mm;background:white;display:grid;grid-template-rows:1fr auto;justify-items:center;align-items:center;padding:.7mm;font-size:12pt}.requirement img{width:8mm;height:9mm;object-fit:contain}.requirement b{font-size:12pt}.resource-spaces{display:grid;grid-template-columns:repeat(5,1fr);gap:1mm;margin-top:1mm;flex:1}.resource-space{border:1px solid #aab0b1;border-radius:1mm;background:#fff}.generation{border:1px solid #aeb3b4;border-radius:1mm;background:white;padding:1mm;display:flex;flex-direction:column;justify-content:space-around}.generation h3{font-size:12pt;text-transform:uppercase;margin:0;text-align:center}.generation div{display:flex;align-items:center;gap:1mm;font-size:12pt}.generation .disc{width:7mm;height:7mm}.generation .active{background:#222}
+.storage{display:flex;flex-direction:column;grid-column:1/4;grid-row:4}.storage .heading{margin-bottom:1mm}.resource-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1mm;flex:1}.resource{display:grid;grid-template-rows:12mm auto 1fr;justify-items:center;align-items:center;border:1px solid #bcc0bf;border-radius:1.3mm;background:#fff;padding:.6mm;min-width:0}.gem{width:9mm;height:9mm;clip-path:polygon(50% 0,100% 28%,84% 83%,50% 100%,10% 79%,0 28%);background:var(--gem);border:1px solid #333;filter:drop-shadow(0 1px 1px #333)}.resource b{font-size:12pt}.resource small{font-size:12pt}.resource .slot{width:100%;height:11mm;align-self:end}.resource-symbol.reagent-symbol{background:#fff;border:0}.reagent-symbol img{width:8mm;height:8mm;object-fit:contain}.resource.reagent-resource small{white-space:nowrap}
+.reagents{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5mm;flex:1}.reagent{border:1px solid #aeb3b4;border-radius:1.5mm;background:white;display:flex;flex-direction:column;align-items:center;justify-content:space-around;padding:1mm;text-align:center}.reagent img{width:12mm;height:13mm;object-fit:contain}.reagent b{font-size:12pt}.reagent small{font-size:12pt}.reagent .slot{width:100%;height:13mm}
+.transport .heading{font-size:12pt}.transport-grid{display:grid;grid-template-columns:1fr 1fr;gap:1mm}.transport-slot{height:12mm;border:1px solid #aeb3b4;border-radius:1mm;background:white}.transport .urgent{margin-top:auto;text-align:center;border-top:1px dashed #888;padding-top:1.5mm;font-size:12pt}.transport .urgent .price{display:block;margin-top:1mm;font-size:12pt}
+.phases{grid-column:1/-1;grid-row:1;border:0;border-bottom:1px solid var(--ink);border-radius:0}.phases span:nth-child(n){background:#fff}.middle,.bottom{display:contents}.panel,.license,.license .slot,.slot,.factory,.requirement,.generation,.transport-slot,.resource,.reagent,.price{background-color:#fff}.panel,.factory{background:#fff}.license{border:0}.license .slot{width:13mm;height:13mm;border-radius:50%}.resource{grid-template-rows:12mm 10mm 1fr}.resource-symbol{width:10mm;height:10mm;border-radius:50%;display:grid;place-items:center;background:var(--gem);color:var(--ink-symbol,#fff);font-size:12pt;font-weight:800;border:1px solid #333}.resource small{font-size:12pt}.transport{grid-column:4;grid-row:4}.transport .heading{font-size:12pt}.transport-slot{height:12mm}.transport .urgent{font-size:12pt}.transport .urgent .price{font-size:13pt}.middle{align-items:center}.refinery-card{grid-row:3;width:63mm;height:88mm;flex:none;align-self:center;padding:2mm;border:1px solid #222;border-radius:2mm;background:#fff;display:flex;flex-direction:column;overflow:hidden}.refinery-card-heading{height:11mm;flex:none;display:grid;grid-template-columns:9mm minmax(0,1fr);align-items:center;gap:1.3mm;border-bottom:1px solid #888;padding-bottom:1mm}.refinery-card-icon{width:9mm;height:9mm;border:1px solid #222;border-radius:1mm;display:grid;place-items:center}.refinery-card-icon img{width:7mm;height:7mm;object-fit:contain}.refinery-card-title{display:flex;flex-direction:column;line-height:1.05}.refinery-card-title b{font-size:12pt}.refinery-card-title small{font-size:12pt;text-transform:uppercase;letter-spacing:.07em}.refinery-stages{display:grid;grid-template-rows:11mm 11mm;gap:1mm;padding-top:2mm}.refinery-stage{position:relative;min-height:11mm;border:1px solid #aaa;border-radius:1mm;padding:1mm;display:flex;align-items:center;overflow:visible}.refinery-stage-label{position:absolute;left:.7mm;top:-1.5mm;padding:0 .5mm;background:white;font-size:6pt;font-weight:700;line-height:1}.refinery-stage-ops{display:flex;align-items:center;gap:1.2mm}.refinery-stage-ops img{width:5mm;height:6mm;object-fit:contain}.refinery-stage-coin{width:11mm;height:8mm;display:grid;place-items:center;border:1px solid #333;border-radius:50%;font-size:12pt;font-weight:700;background:white}.refinery-effect{margin-top:auto;padding-top:1mm;border-top:1px solid #333;font-size:12pt;line-height:1.02;overflow-wrap:anywhere}.refinery-effect:before{content:'Al completar: ';font-weight:800;text-transform:uppercase;color:#555}.refinery-destination{float:right;position:relative;width:8mm;height:8mm;margin:0 0 .5mm 1mm;border:1px solid #333;border-radius:1mm;display:grid;place-items:center;background:white}.refinery-destination img{width:6mm;height:6mm;object-fit:contain}.refinery-destination small{position:absolute;right:.2mm;bottom:0;background:#fff;padding:0 .2mm;font-size:6pt;line-height:1}.middle .generation{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.4mm;padding:1mm;flex:none}.middle .generation h3,.middle .generation>b{grid-column:1/-1;text-align:center}.middle .generation h3{font-size:12pt}.middle .generation div{justify-content:center;gap:0}.middle .generation .disc{width:5.5mm;height:5.5mm;display:grid;place-items:center;font-size:12pt;color:#222}.middle .generation .active{background:#222;color:#fff}.middle>article.panel{grid-column:5;grid-row:3/5}.storage{grid-column:1/4;grid-row:4}.transport{grid-column:4;grid-row:4}.resource.reagent-resource{grid-template-rows:12mm 10mm 1fr}.resource.reagent-resource .resource-symbol{background:#fff;border:0}.resource.reagent-resource .resource-symbol img{width:8mm;height:8mm;object-fit:contain}.resource.reagent-resource small{white-space:nowrap}
+@page{size:A4 landscape;margin:5mm}@media print{html,body{margin:0;padding:0;background:white}.toolbar{display:none}.board{position:relative;top:4mm;margin:0;width:287mm;height:196mm;box-shadow:none;break-inside:avoid;page-break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}}@media screen and (max-width:1000px){body{overflow-x:auto}.board{margin-left:0}}
+</style>
+<style>
+.license .slot{display:grid;place-items:center;font-style:normal;font-size:12pt;font-weight:800;white-space:nowrap}
+.license-grid{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}
+.hire{justify-content:center}
+.hire .disc{width:11.5mm;height:11.5mm;display:grid;place-items:center;font-size:9pt;font-weight:800;font-style:normal;white-space:nowrap}
+.refinery-effect{font-size:8pt;line-height:1.15}
+.refinery-stage-coin{width:auto;height:auto;border:0;border-radius:0;background:transparent;font-size:0;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.refinery-stage-coin img{width:5mm;height:5mm;object-fit:contain}
+.middle .generation div{flex-direction:column}
+.middle .generation div img{width:5mm;height:6mm;object-fit:contain}
+.middle .generation .disc{border:0;background:transparent}
+.middle>article.panel .heading{flex-direction:column;justify-content:center;gap:.5mm;text-align:center;margin-bottom:1mm}
+.middle>article.panel .heading img{width:7mm;height:7mm}
+.bottom{display:grid;grid-column:1/-1;grid-row:4;grid-template-columns:2.5fr .8fr .7fr;gap:2.5mm;min-height:0}
+.storage,.transport{grid-column:auto;grid-row:auto}
+.middle>article.panel{grid-column:5;grid-row:3}
+.generation-panel .generation-track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5mm;flex:1;align-content:space-around;justify-items:center}
+.generation-panel .generation-track div{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3mm;font-size:12pt;font-weight:700}
+.generation-panel .generation-track img{width:7mm;height:7mm;object-fit:contain}
+.generation-panel .generation-value{font-size:12pt;border:0;background:transparent}
+.generation-panel .generation-track>b{grid-column:1/-1;text-align:center;font-size:12pt}
+.storage{grid-column:1;grid-row:1}
+.transport{grid-column:2;grid-row:1}
+.generation-panel{grid-column:3;grid-row:1}
+.resource small{max-width:100%;text-align:center;line-height:1;overflow-wrap:anywhere}
+.resource.reagent-resource small{white-space:normal;overflow-wrap:anywhere}
+.transport .urgent .price{border:0}
+.generation-panel .urgent{flex:none;margin-top:1mm;padding-top:1mm;border-top:1px dashed #888;text-align:center;font-size:12pt;line-height:1.1}.generation-panel .urgent .price{display:block;padding:0;margin-top:.5mm;font-size:12pt}.generation-panel .generation-track{min-height:0}
+.storage .resource-grid{grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}
+.storage .resource{grid-template-rows:auto auto;align-content:center;justify-items:center;gap:1mm;border:0}
+.highlight,.generation-value.active{background:#bfc5c9!important}
+.license .slot{background:#bfc5c9!important}.hire .disc.highlight,.hire:nth-child(n+5) .disc{background:#bfc5c9}
+.generation-panel .generation-value.active{width:7mm;height:7mm;display:grid;place-items:center;border-radius:50%}
+.generation-panel .generation-track img.energy-highlight{width:8.2mm;height:8.2mm;padding:.6mm;background:#bfc5c9;border-radius:50%}
+</style>
+<style>
+.board{grid-template-columns:repeat(4,minmax(0,1fr))}
+.phases{grid-template-columns:repeat(4,1fr)}
+.phases span{font-size:11pt}
+.hire-slots{grid-template-columns:repeat(15,minmax(0,1fr));gap:.6mm}
+.hire .disc{width:9.5mm;height:9.5mm;font-size:8pt}
+.refinery-card{justify-self:center}
+</style>
+<style>
+/* A4 apaisado: tres refinerias de 120 x 64 mm, a escala real. */
+.toolbar{width:min(100%,287mm)}
+.board{width:287mm;height:196.5mm;grid-template-columns:120mm 120mm minmax(0,1fr);grid-template-rows:57.5mm 64mm 64mm}
+.middle,.bottom{display:contents}
+.middle>.refinery-card:nth-child(1){grid-column:1;grid-row:2}
+.middle>.refinery-card:nth-child(2){grid-column:2;grid-row:2}
+.middle>.refinery-card:nth-child(3){grid-column:1;grid-row:3}
+.top{grid-row:1;grid-template-columns:83mm minmax(0,1fr)}
+.top>article:first-child{padding:1mm}
+.top>article:first-child .heading{font-size:12pt;height:9mm;flex:none;gap:1mm;margin-bottom:.5mm}
+.top>article:first-child .heading img{width:9mm;height:9mm}
+.top .license-grid{grid-template-columns:repeat(3,22mm);grid-template-rows:repeat(2,22mm);gap:1mm;flex:none;align-content:center;justify-content:center}
+.top .license{padding:0;display:grid;place-items:center}
+.top .license .slot,.top .hire .disc{width:22mm;height:22mm;min-width:22mm;min-height:22mm;flex:none;border-radius:50%;font-size:12pt}
+.top .barracks-layout{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 28mm;gap:2mm}
+.top .hire-slots{grid-template-columns:repeat(7,22mm);grid-template-rows:repeat(2,22mm);gap:1mm;justify-content:space-between;align-content:center;align-items:center}
+.top .hire{border:0}
+.top>article:nth-child(2){padding:1mm}
+.top>article:nth-child(2) .heading{font-size:12pt;height:6mm;flex:none;gap:1mm;margin-bottom:.5mm}
+.top>article:nth-child(2) .heading img{width:6mm;height:6mm}
+.top .engineers{grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(4,minmax(0,1fr));margin-top:0;gap:.5mm;align-items:center;border-left:1px solid #c4c8c8;padding-left:1mm}
+.top .engineer{gap:.5mm}
+.top .engineer>div{min-width:0;overflow-wrap:anywhere}
+.top .engineer img{width:6mm;height:8mm}
+.top .engineer b{font-size:8pt;line-height:1.05;display:block}
+.storage-energy{grid-column:2;grid-row:3;display:grid;grid-template-columns:64mm minmax(0,1fr);gap:2.5mm;min-height:0}
+.storage-energy>.storage{grid-column:1;grid-row:1}
+.middle>article.support{grid-column:3;grid-row:2;padding:1mm}
+.middle>article.support .heading{font-size:9pt;flex-direction:column;gap:1mm;justify-content:center;margin-bottom:1mm}
+.middle>article.support .heading img{width:7mm;height:7mm}
+.middle>article.support .support-meeples{display:grid;grid-template-columns:repeat(2,1fr);justify-items:center;gap:2mm;margin:auto 0}
+.middle>article.support .support-meeples img{width:8mm;height:10mm}
+.middle>article.support .price{font-size:9pt;padding:1mm 0}
+.bottom>.transport{grid-column:3;grid-row:3;padding:1mm}
+.storage-energy>.generation-panel{grid-column:2;grid-row:1;padding:1mm}
+.bottom>.transport .heading,.storage-energy>.generation-panel .heading{font-size:8pt;flex-direction:column;text-align:center;gap:.5mm;margin-bottom:1mm}
+.bottom>.transport .heading img,.storage-energy>.generation-panel .heading img{width:6mm;height:6mm}
+.storage-energy>.generation-panel .heading{flex-direction:row;font-size:9pt}
+.storage-energy>.generation-panel .heading img{width:8mm;height:8mm}
+.storage-energy>.generation-panel .generation-track{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:.5mm .3mm}
+.storage-energy>.generation-panel .generation-track div{flex-direction:row;width:auto;height:8mm;font-size:12pt;gap:.7mm;justify-self:stretch}
+.storage-energy>.generation-panel .generation-track img{width:8mm;height:8mm;min-width:8mm;min-height:8mm;flex:none;object-fit:contain}
+.storage-energy>.generation-panel .generation-track img.energy-highlight{width:8mm;height:8mm;padding:0}
+.storage-energy>.generation-panel .generation-value{position:static;background:white;font-size:12pt;font-weight:bold;line-height:1;padding:0}
+.storage-energy>.generation-panel .urgent,.bottom>.transport .urgent{font-size:8pt}
+.storage-energy>.generation-panel .urgent .price,.bottom>.transport .urgent .price{font-size:9pt}
+.storage-energy>.storage .heading{font-size:9pt}
+.storage-energy>.storage .resource-grid{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:.5mm}
+.storage-energy>.storage .resource{gap:.5mm;padding:0}
+.storage-energy>.storage .resource-symbol{width:8mm;height:8mm;font-size:10pt}
+.storage-energy>.storage .resource-symbol img{width:7mm;height:7mm}
+.storage-energy>.storage .resource small{font-size:8pt}
+.refinery-card{width:120mm;height:64mm;grid-row:3;align-self:center;padding:1.6mm;gap:1mm}
+.refinery-card-heading{height:auto;min-height:10mm;display:flex;align-items:center;gap:1.5mm;border-bottom:0;padding-bottom:0}
+.refinery-card-icon{width:11mm;height:10mm;flex:0 0 11mm}
+.refinery-card-icon img{width:9mm;height:8mm}
+.refinery-card-title{flex:1;min-width:0}
+.refinery-card-title b{font-size:12pt}
+.refinery-destination{float:none;flex:0 0 7mm;width:7mm;height:7mm;margin:0}
+.refinery-destination img{width:5mm;height:5mm}
+.refinery-destination small{font-size:8pt}
+.refinery-stages{flex:1;min-height:0;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(0,1fr);gap:1mm;padding-top:0}
+.refinery-stage{min-height:0;flex-direction:column;justify-content:center;align-items:center;padding:2mm 1mm 1mm;border-color:#777}
+.refinery-stage-label{top:-.75mm;font-size:6.5pt;color:#555}
+.refinery-stage-ops{justify-content:center;gap:.5mm}
+.refinery-stage-ops img{width:auto;height:10mm}
+.refinery-stage-ops img[alt="En"]{height:8mm}
+.refinery-stage-coin img{width:10mm;height:10mm}
+.refinery-effect{position:relative;flex-shrink:0;margin-top:1mm;padding-top:1.5mm;font-size:8pt;line-height:1.12;text-align:center}
+.refinery-effect:before{content:'Al completar:';position:absolute;top:-.75mm;left:.7mm;padding:0 .5mm;background:white;font-size:6.5pt;line-height:1;font-weight:bold}
+@page{size:A4 landscape;margin:5mm}
+@media print{.board{top:0;margin:0 auto;width:287mm;height:196.5mm}}
+</style>
+</head>
+<body>
+<header class="toolbar"><h1>TABLERO DE JUGADOR - TAROT HORIZONTAL - SYNCRODYSON</h1><button onclick="window.print()">Imprimir / guardar PDF</button></header>
+<main class="board">
+ <section class="row top">
+  <article class="panel"><h2 class="heading"><img src="./iconos/LE-licencias-excavacion.svg" alt="">Yacimientos</h2><div class="license-grid"><div class="license"><i class="slot">+15$</i></div><div class="license"><i class="slot">+10$</i></div><div class="license"><i class="slot">+5$</i></div><div class="license"><i class="slot">0$</i></div><div class="license"><i class="slot">-5$</i></div><div class="license"><i class="slot">-10$</i></div></div></article>
+  <article class="panel"><h2 class="heading"><img src="./iconos/CN-ficha-contratacion.svg" alt="">Barracas de ingenieros</h2><div class="barracks-layout"><div class="hire-slots"><div class="hire"><i class="disc">0$</i></div><div class="hire"><i class="disc">2$</i></div><div class="hire"><i class="disc">4$</i></div><div class="hire"><i class="disc highlight">6$</i></div><div class="hire"><i class="disc">8$</i></div><div class="hire"><i class="disc">10$</i></div><div class="hire"><i class="disc">13$</i></div><div class="hire"><i class="disc">15$</i></div><div class="hire"><i class="disc">18$</i></div><div class="hire"><i class="disc">20$</i></div><div class="hire"><i class="disc">23$</i></div><div class="hire"><i class="disc">25$</i></div><div class="hire"><i class="disc">30$</i></div><div class="hire"><i class="disc">33$</i></div></div><div class="engineers"><div class="engineer"><img src="./iconos/IE-ingeniero-estructural.svg" alt=""><div><b>Ingeniero Estructural</b></div></div><div class="engineer"><img src="./iconos/IM-ingeniero-electromecanico.svg" alt=""><div><b>Ingeniero Electromecánico</b></div></div><div class="engineer"><img src="./iconos/IQ-ingeniero-quimico.svg" alt=""><div><b>Ingeniero Quimico</b></div></div><div class="engineer"><img src="./iconos/IS-ingeniero-sistemas.svg" alt=""><div><b>Ingeniero en Sistemas</b></div></div></div></div></article>
+
+ </section>
+ <section class="row middle">
+  <article class="refinery-card"><header class="refinery-card-heading"><span class="refinery-card-icon"><img src="./iconos/RI-refineria.svg" alt=""></span><span class="refinery-card-title"><b>Refinería</b></span><span class="refinery-destination"><img src="./iconos/RE-repetible.svg" alt=""><small>1</small></span></header><div class="refinery-stages"><section class="refinery-stage"><span class="refinery-stage-label">ETAPA 1</span><div class="refinery-stage-ops"><img src="./iconos/IQ-ingeniero-quimico.svg" alt="IQ"><img src="./iconos/En-energia.svg" alt="En"><img src="./iconos/En-energia.svg" alt="En"></div></section><section class="refinery-stage"><span class="refinery-stage-label">OPCIONAL</span><span class="refinery-stage-coin"><img src="./iconos/RQ-reactivos.svg" alt="RQ"></span></section></div><footer class="refinery-effect">Procesa un yacimiento propio con las licencias necesarias. Obtén sus recursos básicos y, si gastas el reactivo indicado de esta carta, también su tierra rara. Reduce sus vetas en 1. Coloca todos los recursos ganados en el almacén o en proyectos activos. Puedes volver a colocar el cubo en la etapa 1.</footer></article>
+  <article class="refinery-card"><header class="refinery-card-heading"><span class="refinery-card-icon"><img src="./iconos/RI-refineria.svg" alt=""></span><span class="refinery-card-title"><b>Refinería</b></span><span class="refinery-destination"><img src="./iconos/RE-repetible.svg" alt=""><small>1</small></span></header><div class="refinery-stages"><section class="refinery-stage"><span class="refinery-stage-label">ETAPA 1</span><div class="refinery-stage-ops"><img src="./iconos/IQ-ingeniero-quimico.svg" alt="IQ"><img src="./iconos/En-energia.svg" alt="En"><img src="./iconos/En-energia.svg" alt="En"></div></section><section class="refinery-stage"><span class="refinery-stage-label">OPCIONAL</span><span class="refinery-stage-coin"><img src="./iconos/RQ-reactivos.svg" alt="RQ"></span></section></div><footer class="refinery-effect">Procesa un yacimiento propio con las licencias necesarias. Obtén sus recursos básicos y, si gastas el reactivo indicado de esta carta, también su tierra rara. Reduce sus vetas en 1. Coloca todos los recursos ganados en el almacén o en proyectos activos. Puedes volver a colocar el cubo en la etapa 1.</footer></article>
+  <article class="refinery-card"><header class="refinery-card-heading"><span class="refinery-card-icon"><img src="./iconos/RI-refineria.svg" alt=""></span><span class="refinery-card-title"><b>Refinería</b></span><span class="refinery-destination"><img src="./iconos/RE-repetible.svg" alt=""><small>1</small></span></header><div class="refinery-stages"><section class="refinery-stage"><span class="refinery-stage-label">ETAPA 1</span><div class="refinery-stage-ops"><img src="./iconos/IQ-ingeniero-quimico.svg" alt="IQ"><img src="./iconos/En-energia.svg" alt="En"><img src="./iconos/En-energia.svg" alt="En"></div></section><section class="refinery-stage"><span class="refinery-stage-label">OPCIONAL</span><span class="refinery-stage-coin"><img src="./iconos/RQ-reactivos.svg" alt="RQ"></span></section></div><footer class="refinery-effect">Procesa un yacimiento propio con las licencias necesarias. Obtén sus recursos básicos y, si gastas el reactivo indicado de esta carta, también su tierra rara. Reduce sus vetas en 1. Coloca todos los recursos ganados en el almacén o en proyectos activos. Puedes volver a colocar el cubo en la etapa 1.</footer></article>
+  <article class="panel support"><h2 class="heading"><img src="./iconos/SP-soporte-externo.svg" alt="">Soporte externo</h2><div class="support-meeples"><img src="./iconos/IE-ingeniero-estructural.svg" alt=""><img src="./iconos/IM-ingeniero-electromecanico.svg" alt=""><img src="./iconos/IQ-ingeniero-quimico.svg" alt=""><img src="./iconos/IS-ingeniero-sistemas.svg" alt=""></div><span class="price">+1$ / ingeniero</span></article>
+ </section>
+ <section class="row bottom">
+  <div class="storage-energy">
+  <article class="panel storage"><h2 class="heading">▣ Almacén general</h2><div class="resource-grid"><div class="resource"><span class="resource-symbol" style="--gem:#ed3b3d">Fe</span><small>Hierro</small></div><div class="resource"><span class="resource-symbol" style="--gem:#2490e5">Cu</span><small>Cobre</small></div><div class="resource"><span class="resource-symbol" style="--gem:#ffc233;--ink-symbol:#222">Si</span><small>Silicio</small></div><div class="resource"><span class="resource-symbol" style="--gem:#28a85a">Ti</span><small>Titanio</small></div><div class="resource"><span class="resource-symbol" style="--gem:#34383b">Al</span><small>Aluminio</small></div><div class="resource"><span class="resource-symbol" style="--gem:#fff;--ink-symbol:#222">C</span><small>Carbono</small></div><div class="resource"><span class="resource-symbol" style="--gem:#e72e98">Nd</span><small>Neodimio</small></div><div class="resource"><span class="resource-symbol" style="--gem:#28b8b0">Gd</span><small>Gadolinio</small></div><div class="resource"><span class="resource-symbol" style="--gem:#ef8c32">Er</span><small>Erbio</small></div><div class="resource"><span class="resource-symbol" style="--gem:#b47745">Ce</span><small>Cerio</small></div><div class="resource reagent-resource"><span class="resource-symbol"><img src="./iconos/RQ-reactivos.svg" alt="RQ"></span><small>H₂SO₄</small></div><div class="resource reagent-resource"><span class="resource-symbol"><img src="./iconos/RQ-reactivos.svg" alt="RQ"></span><small>HCl</small></div></div></article>
+  <article class="panel generation-panel"><h2 class="heading"><img src="./iconos/PE-produccion-energia.svg" alt="">Generación de energía</h2><div class="generation-track"><div><img src="./iconos/PE-produccion-energia.svg" alt="PE"><span class="generation-value">1</span></div><div><img src="./iconos/PE-produccion-energia.svg" alt="PE"><span class="generation-value">2</span></div><div><img src="./iconos/PE-produccion-energia.svg" alt="PE" class="energy-highlight"><span class="generation-value">3</span></div><div><img src="./iconos/PE-produccion-energia.svg" alt="PE"><span class="generation-value">4</span></div><div><img src="./iconos/PE-produccion-energia.svg" alt="PE"><span class="generation-value">5</span></div><div><img src="./iconos/PE-produccion-energia.svg" alt="PE"><span class="generation-value">6</span></div><div><img src="./iconos/PE-produccion-energia.svg" alt="PE"><span class="generation-value">7</span></div><div><img src="./iconos/PE-produccion-energia.svg" alt="PE"><span class="generation-value">8</span></div><div><img src="./iconos/PE-produccion-energia.svg" alt="PE"><span class="generation-value">9</span></div><div><img src="./iconos/PE-produccion-energia.svg" alt="PE"><span class="generation-value">10</span></div><div><img src="./iconos/PE-produccion-energia.svg" alt="PE"><span class="generation-value">11</span></div><div><img src="./iconos/PE-produccion-energia.svg" alt="PE"><span class="generation-value">12</span></div></div><div class="urgent">Energía de emergencia<span class="price">+1 En = 3$</span></div></article>
+  </div>
+ <article class="panel transport"><h2 class="heading"><img src="./iconos/Tr-transporte.svg" alt="">Reserva de transporte</h2><div class="transport-grid"><i class="transport-slot"></i><i class="transport-slot"></i><i class="transport-slot"></i><i class="transport-slot"></i></div><div class="urgent">Despacho urgente<span class="price">+1 Tr = 10$</span></div></article></section>
+</main>
+</body>
+</html>
+
+
+

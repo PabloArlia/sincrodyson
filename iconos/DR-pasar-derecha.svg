@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title>Pasar al jugador de la derecha</title>
+  <rect x="3" y="9" width="13" height="21" rx="2" fill="#fff"/>
+  <path d="M7 13h5M7 17h5"/>
+  <circle cx="30" cy="8" r="4" fill="#fff"/>
+  <path d="M23 34v-6a7 7 0 0 1 14 0v6Z" fill="#fff"/>
+  <path d="M19 18h17m-5-5 5 5-5 5" stroke-width="2.5"/>
+</svg>

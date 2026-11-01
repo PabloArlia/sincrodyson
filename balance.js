@@ -114,6 +114,6 @@ function resumenCartas(cartas){
 }
 function renderResumenCartas(cartas){
  const resumen=resumenCartas(cartas);
- const nombres={bateria:'Baterías',economia:'Economía',estructura:'Estructura',fotovoltaico:'Fotovoltaica',transmision:'Transmisión',refrigeracion:'Refrigeración',microondas:'Microondas',generador:'Generadores',mejora_soporte_externo:'Mejoras de soporte',recursoshumanos:'Recursos humanos',produccion:'Producción',sensores:'Sensores',control:'Control',mantenimiento:'Mantenimiento'};
+ const nombres={economia:'Economía',estructura:'Estructura',fotovoltaico:'Fotovoltaica',transmision:'Transmisión',refrigeracion:'Refrigeración',microondas:'Microondas',generador:'Generadores',mejora_soporte_externo:'Mejoras de soporte',recursoshumanos:'Recursos humanos',produccion:'Producción',sensores:'Sensores',control:'Control',mantenimiento:'Mantenimiento'};
  return resumen.tipos.map(t=>`<div class="summary-row" title="${escapeHTML(nombres[t.tipo]||t.tipo)}: ${t.discos} discos (copias × ${['sensores','control','mantenimiento'].includes(t.tipo)?'disco_soporte':'discos'})" aria-label="${escapeHTML(nombres[t.tipo]||t.tipo)}: ${t.total} cartas, ${t.unicas} únicas, ${t.discos} discos"><span class="summary-icon">${imagenIcono(tiposIcono[t.tipo]||'PR')}</span><span>: ${t.total} (${t.unicas}) &bull; ${t.discos}</span></div>`).join('')+`<div class="summary-row summary-total">Σ : ${resumen.total} (${resumen.unicas}) &bull; ${resumen.discos}</div>`;
 }

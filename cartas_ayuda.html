@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Syncrodyson · Cartas de ayuda</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:18px;background:#e8e9e7;color:#20282d;font-family:Arial,Helvetica,sans-serif}
+.toolbar{max-width:760px;margin:0 auto 18px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.toolbar h1{font-size:14pt;margin:0}.toolbar p{font-size:10pt;margin:5px 0 0}
+button{padding:9px 14px;border:1px solid #20282d;border-radius:5px;background:white;font:inherit;cursor:pointer}
+.sheet{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:4mm}
+.card{width:64mm;height:120mm;padding:2mm;border:1px solid #222;border-radius:2mm;background:white;display:flex;flex-direction:column;gap:1mm;break-inside:avoid;page-break-inside:avoid;font-size:8pt;line-height:1.15}
+.card-header{display:flex;align-items:center;justify-content:space-between;gap:2mm;border-bottom:1px solid #222;padding-bottom:1.3mm;flex:none}
+.eyebrow{font-size:6pt;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5mm;color:#555}
+h2{font-size:12pt;line-height:1.05;margin:0;text-transform:uppercase}
+.header-icon{width:7mm;height:7mm;object-fit:contain;flex:none}
+h3{font-size:8pt;margin:0 0 .7mm;text-transform:uppercase;display:flex;align-items:center;gap:1mm}
+.step{display:inline-grid;place-items:center;width:4mm;height:4mm;border:1px solid #222;border-radius:50%;font-size:8pt;flex:none}
+p{margin:0}strong{font-weight:800}
+.phase{flex:none}.phase p{margin-left:0}
+.phases-card{font-size:7.5pt;line-height:1.12}
+.maintenance{font-size:7pt;line-height:1.12}
+.maintenance ol{padding-left:5mm;margin:0;display:flex;flex-direction:column;gap:.4mm}
+.maintenance li{padding-left:0}
+.card-note{margin-top:auto;border-top:1px solid #aaa;padding-top:1mm;font-size:6.5pt;line-height:1.1}
+.bonuses-card{font-size:7.5pt;line-height:1.12}
+.bonus-section{position:relative;border:1px solid #999;border-radius:1mm;padding:2mm 1.5mm 1.5mm;margin-top:1mm}
+.bonus-section h3{position:absolute;top:-1.4mm;left:1mm;background:white;padding:0 .7mm;font-size:7pt;line-height:1}
+.bonus-title{display:flex;align-items:center;gap:1mm;font-size:10pt;font-weight:800;margin-bottom:1.5mm}
+.bonus-title img{width:7mm;height:7mm;object-fit:contain}
+.bonus-line{display:grid;grid-template-columns:12mm minmax(0,1fr);align-items:center;gap:1mm;margin-top:1mm}
+.amount{display:flex;align-items:center;justify-content:center;gap:.5mm;font-size:11pt;font-weight:800;white-space:nowrap}
+.amount img{width:4mm;height:4mm;object-fit:contain}
+.bonus-warning{margin-top:2mm;padding-top:1.5mm;border-top:1px dashed #999;font-size:7.5pt}
+.support-capacity{display:flex;justify-content:center;gap:2mm;margin-top:2mm;font-size:7pt}
+.support-capacity span{display:flex;align-items:center;gap:.5mm}
+.support-capacity img{width:4mm;height:4mm;object-fit:contain}
+.placement-rule{font-size:8pt;text-align:center;border-bottom:1px solid #aaa;padding-bottom:1mm}
+@page{size:A4 portrait;margin:8mm}
+@media print{
+ html,body{margin:0;padding:0;background:white}
+ .toolbar{display:none}
+ .sheet{gap:2mm;justify-content:flex-start}
+ .card{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<header class="toolbar"><div><h1>Cartas de ayuda · Syncrodyson</h1><p>Tarot vertical · 64 × 120 mm · imprimir al 100 %.</p></div><button onclick="window.print()">Imprimir / guardar PDF</button></header>
+<main class="sheet">
+ <article class="card phases-card">
+  <header class="card-header"><div><div class="eyebrow">Syncrodyson · Ayuda de juego</div><h2>Fases de la ronda</h2></div><img class="header-icon" src="./iconos/RE-repetible.svg" alt=""></header>
+  <section class="phase"><h3><span class="step">1</span> Planificaci&#243;n &#183; simult&#225;nea</h3><p>Asigna licencias y componentes a proyectos y Soporte externo.</p></section>
+  <section class="phase"><h3><span class="step">2</span> Mercado</h3><p>Resuelve operaciones.</p></section>
+  <section class="phase"><h3><span class="step">3</span> Ejecuci&#243;n</h3><p>Espacios <strong>1, 2 y 3</strong>; en cada uno, todos por orden. Con requisitos completos, activa la refiner&#237;a o avanza una etapa. Al completar, aplica efecto y destino.</p></section>
+  <section class="phase maintenance"><h3><span class="step">4</span> Mantenimiento · en este orden</h3><ol>
+   <li><strong>Préstamos:</strong> $1 por conservar cada uno o $6 por cancelarlo.</li>
+   <li><strong>Soporte externo:</strong> +$1 por ingeniero; luego vuelve a barracas.</li>
+   <li><strong>Paga mantenimiento:</strong> mayor costo descubierto en licencias + mayor en contratos + menor en energía.</li>
+   <li><strong>Revela un evento por jugador.</strong></li>
+   <li><strong>Comprueba el final:</strong> si alguien alcanza la meta, termina y puntúen.</li>
+   <li>Si continúa: devuelve las fichas de orden y haz <strong>draft de 4 proyectos</strong>, pasando a la derecha.</li>
+   <li><strong>Descarta la energía sobrante.</strong> Genera energía para la siguiente ronda → compra energía a $3 → compra Transporte urgente.</li>
+  </ol></section>
+  <footer class="card-note">La energía sobrante se descarta al final de cada ronda. Con préstamos, no programes dados verdes.</footer>
+ </article>
+ <article class="card bonuses-card">
+  <header class="card-header"><div><div class="eyebrow">Syncrodyson · Ayuda de juego</div><h2>Bonos de colocación</h2></div><img class="header-icon" src="./iconos/DS-disco.svg" alt=""></header>
+  <p class="placement-rule">Resuelve <strong>un disco por vez</strong>.<br>El disco recién colocado <strong>también cuenta</strong>.</p>
+  <section class="bonus-section"><h3>Colocar en una celda</h3>
+   <div class="bonus-title"><img src="./iconos/esfera-sector.svg" alt="">Sector</div>
+   <div class="bonus-line"><span class="amount">+1 <img src="./iconos/PV-punto-victoria.svg" alt="PV"></span><p><strong>Quien coloca</strong>, por cada disco del sector, de cualquier jugador.</p></div>
+   <div class="bonus-line"><span class="amount">+$2</span><p><strong>Cada jugador</strong>, por cada disco propio en ese sector.</p></div>
+   <div class="bonus-line"><span class="amount">+$3</span><p><strong>Cada jugador</strong>, por cada disco propio en el soporte de ese cuadrante.</p></div>
+   <p class="bonus-warning"><strong>Acarreo:</strong> después de cobrar, si la celda de Estructura de ese sector está vacía, quien colocó paga <strong>$5</strong> al banco.</p>
+  </section>
+  <section class="bonus-section"><h3>Colocar en un área de soporte</h3>
+   <div class="bonus-title"><img src="./iconos/esfera-cuadrante.svg" alt="">Cuadrante completo</div>
+   <div class="bonus-line"><span class="amount">+1 <img src="./iconos/PV-punto-victoria.svg" alt="PV"></span><p><strong>Quien coloca</strong>, por cada <strong>2 discos</strong> del cuadrante, <strong>redondeando hacia arriba</strong>.</p></div>
+   <div class="bonus-line"><span class="amount">+$1</span><p><strong>Cada jugador</strong>, por cada disco propio en todo el cuadrante.</p></div>
+   <p style="margin-top:1.5mm;font-size:7.5pt">Cuenta sectores y soporte, con discos de todos los jugadores para los PV.</p>
+
+  </section>
+  <footer class="card-note"><strong>Capacidad:</strong> 1 disco por celda.</footer>
+ </article>
+</main>
+</body>
+</html>
