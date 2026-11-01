@@ -21,7 +21,7 @@ final class Game
 
     public static function engineerTypes(): array
     {
-        return ['IM' => 'Electromecánico', 'IQ' => 'Químico', 'IS' => 'En sistemas'];
+        return ['IM' => 'Electromecánico', 'IQ' => 'Químico', 'IE' => 'Estructural', 'IS' => 'En sistemas'];
     }
 
     public static function maintenanceRules(): array
@@ -62,7 +62,7 @@ final class Game
     {
         return ['id' => bin2hex(random_bytes(8)), 'name' => self::name($name),
             'tokenHash' => hash('sha256', $token), 'cash' => $cash, 'lostPv' => 0,
-            'debts' => [], 'orders' => [], 'pass' => null];
+            'debts' => [], 'orders' => [], 'fixedOrders' => [], 'pass' => null];
     }
 
     public static function actor(array $s, string $token): int
@@ -106,6 +106,28 @@ final class Game
         return $out;
     }
 
+    private static function fixedOrders(mixed $input): array
+    {
+        if (!is_array($input)) throw new GameError('Órdenes inválidas.');
+        $out = [];
+        foreach ($input as $id => $qty) {
+            if ($id !== 'project' && !isset(self::engineerTypes()[$id])) throw new GameError('Proyecto o tipo de ingeniero desconocido.');
+            $qty = self::integer($qty, -1000000, 1000000);
+            if ($qty !== 0) $out[$id] = $qty;
+        }
+        return $out;
+    }
+
+    private static function fixedAmount(array $orders, array $rules): int
+    {
+        $amount = 0;
+        foreach ($orders as $id => $qty) {
+            $operation = $id === 'project' ? ($qty > 0 ? 'project-buy' : 'project-sell') : ($qty > 0 ? 'engineer-hire' : 'engineer-fire');
+            $amount += abs($qty) * $rules[$operation]['unitAmount'];
+        }
+        return $amount;
+    }
+
     public static function command(array &$s, int $actor, string $action, array $data): void
     {
         $p = &$s['players'][$actor];
@@ -120,7 +142,10 @@ final class Game
             case 'pass':
                 self::phase($s, 'planning');
                 if ($p['pass'] !== null) throw new GameError('Retirá tu pase antes de cambiar las órdenes.', 409);
-                $p['orders'] = self::orders($s, $data['orders'] ?? []);
+                $orders = self::orders($s, $data['orders'] ?? []);
+                $fixedOrders = self::fixedOrders($data['fixedOrders'] ?? []);
+                $p['orders'] = $orders;
+                $p['fixedOrders'] = $fixedOrders;
                 if ($action === 'pass') {
                     $p['pass'] = ++$s['passCounter'];
                     if (count(array_filter($s['players'], fn($x) => $x['pass'] !== null)) === count($s['players'])) self::closeMarket($s);
@@ -145,10 +170,11 @@ final class Game
                 }
                 $amount = 0;
                 foreach ($seller['orders'] as $rid => $qty) $amount -= $qty * $s['settlement']['prices'][$rid];
+                $amount += self::fixedAmount($seller['fixedOrders'] ?? [], $s['settlement']['fixedRules'] ?? self::tradeRules());
                 $seller['cash'] += $amount;
                 $s['settlement']['results'][$id] = ['amount' => $amount, 'balance' => $seller['cash'],
                     'missing' => $missing, 'confirmedBy' => $p['id']];
-                self::log($s, $id, $amount, 'Liquidación de mercado', ['orders' => $seller['orders'], 'missing' => $missing, 'by' => $p['id']]);
+                self::log($s, $id, $amount, 'Liquidación de mercado', ['orders' => $seller['orders'], 'fixedOrders' => $seller['fixedOrders'] ?? [], 'missing' => $missing, 'by' => $p['id']]);
                 ++$s['settlement']['index'];
                 if ($s['settlement']['index'] === count($s['players'])) {
                     foreach ($s['players'] as &$person) {
@@ -173,24 +199,6 @@ final class Game
                     if ($p['debts'][$rid] === 0) unset($p['debts'][$rid]);
                 }
                 self::log($s, $p['id'], 0, 'Entrega de recursos pendientes', ['units' => $units]);
-                break;
-            case 'trade':
-                self::phase($s, 'planning', 'execution', 'maintenance');
-                if ($s['phase'] === 'planning' && $p['pass'] !== null) throw new GameError('Retirá tu pase antes de registrar operaciones.', 409);
-                $operation = $data['operation'] ?? null;
-                $rules = self::tradeRules();
-                if (!is_string($operation) || !isset($rules[$operation])) throw new GameError('Operación desconocida.');
-                $qty = self::integer($data['qty'] ?? null, 1, 1000000);
-                $rule = $rules[$operation];
-                $type = null;
-                if (str_starts_with($operation, 'engineer-')) {
-                    $type = $data['type'] ?? null;
-                    if (!is_string($type) || !isset(self::engineerTypes()[$type])) throw new GameError('Elegí un tipo de ingeniero válido.');
-                }
-                $amount = $qty * $rule['unitAmount'];
-                $p['cash'] += $amount;
-                self::log($s, $p['id'], $amount, $rule['label'],
-                    ['trade' => ['operation' => $operation, 'qty' => $qty, 'type' => $type, 'unitAmount' => $rule['unitAmount']]]);
                 break;
             case 'cash':
             case 'transfer':
@@ -240,7 +248,7 @@ final class Game
                 if (count($s['maintenance']['results']) !== count($s['players'])) throw new GameError('Falta que todos confirmen su mantenimiento.');
                 if ($action === 'finish') { $s['phase'] = 'finished'; break; }
                 ++$s['round']; $s['phase'] = 'planning'; $s['passCounter'] = 0;
-                foreach ($s['players'] as &$person) { $person['pass'] = null; $person['orders'] = []; }
+                foreach ($s['players'] as &$person) { $person['pass'] = null; $person['orders'] = []; $person['fixedOrders'] = []; }
                 unset($person);
                 $s['settlement'] = null;
                 $s['maintenance'] = null;
@@ -265,7 +273,7 @@ final class Game
         }
         $ordered = $s['players'];
         usort($ordered, fn($a, $b) => $a['pass'] <=> $b['pass']);
-        $s['settlement'] = ['prices' => $prices, 'flows' => $flows, 'order' => array_column($ordered, 'id'), 'index' => 0, 'results' => []];
+        $s['settlement'] = ['prices' => $prices, 'flows' => $flows, 'fixedRules' => self::tradeRules(), 'order' => array_column($ordered, 'id'), 'index' => 0, 'results' => []];
         $s['phase'] = 'settlement';
     }
 
@@ -277,7 +285,8 @@ final class Game
         $s['me'] = $s['players'][$actor]['id'];
         foreach ($s['players'] as $i => &$p) {
             unset($p['tokenHash']);
-            if ($s['phase'] === 'planning' && $i !== $actor) unset($p['orders']);
+            $p['fixedOrders'] ??= [];
+            if ($s['phase'] === 'planning' && $i !== $actor) unset($p['orders'], $p['fixedOrders']);
         }
         unset($p);
         return $s;

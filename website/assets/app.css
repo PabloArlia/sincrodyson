@@ -121,6 +121,9 @@ button:disabled { cursor:default; }
 .signed-quantity { width:64px; min-width:0; padding:.4rem .1rem; text-align:center; font-size:16px; appearance:textfield; -moz-appearance:textfield; }
 .signed-quantity::-webkit-inner-spin-button,.signed-quantity::-webkit-outer-spin-button { -webkit-appearance:none; margin:0; }
 .order-direction { display:block; min-height:1rem; font-size:.72rem; margin-top:.3rem; color:var(--tblr-secondary-color); }
+.market-fixed-price { display:block; font-size:.72rem; }
+.market-fixed-price strong { display:block; white-space:nowrap; font-size:.85rem; }
+.fixed-trade-total { display:block; margin-top:.35rem; font-size:.72rem; }
 .signed-order[data-side="buy"] .signed-quantity,.signed-order[data-side="buy"] .order-direction,.signed-order[data-side="buy"] .settled-quantity { color:#71d5a4; }
 .signed-order[data-side="sell"] .signed-quantity,.signed-order[data-side="sell"] .order-direction,.signed-order[data-side="sell"] .settled-quantity { color:#ff8999; }
 @media(max-width:575px) {
