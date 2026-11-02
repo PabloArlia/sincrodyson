@@ -584,7 +584,7 @@
             ...Array.from({ length: 8 }, (_, i) => ({ id: `S${String(i + 5).padStart(2, '0')}`, subsidy: true }))
         ];
 
-        const planetCards = [["Estructura","Zeus","Hera"],["Estructura","Poseidón","Atenea"],["Estructura","Apolo","Hestia"],["Fotovoltaica","Hades","Deméter"],["Fotovoltaica","Zeus","Hades"],["Fotovoltaica","Hera","Deméter"],["Fotovoltaica","Poseidón","Atenea"],["Microondas","Zeus","Atenea"],["Microondas","Hera","Apolo"],["Microondas","Poseidón","Hestia"],["Refrigeración","Hades","Apolo"],["Refrigeración","Deméter","Hestia"],["Refrigeración","Zeus","Poseidón"],["Transmisión","Hera","Hestia"],["Transmisión","Atenea","Hades"],["Transmisión","Apolo","Deméter"]].map(([layer, planet1, planet2], i) => ({id:'P'+String(i+1).padStart(2,'0'),planet:true,layer,planets:[planet1,planet2]}));
+        const planetCards = [["Estructura","Zeus","Hera"],["Estructura","Poseidón","Atenea"],["Estructura","Apolo","Hestia"],["Fotovoltaica","Hades","Artemisa"],["Fotovoltaica","Zeus","Hades"],["Fotovoltaica","Hera","Artemisa"],["Fotovoltaica","Poseidón","Atenea"],["Microondas","Zeus","Atenea"],["Microondas","Hera","Apolo"],["Microondas","Poseidón","Hestia"],["Refrigeración","Hades","Apolo"],["Refrigeración","Artemisa","Hestia"],["Refrigeración","Zeus","Poseidón"],["Transmisión","Hera","Hestia"],["Transmisión","Atenea","Hades"],["Transmisión","Apolo","Artemisa"]].map(([layer, planet1, planet2], i) => ({id:'P'+String(i+1).padStart(2,'0'),planet:true,layer,planets:[planet1,planet2]}));
         cards.push(...planetCards);
         function icon(file) { return `<img src="./iconos/${file}.svg" alt="">` }
         const effectIcons = {
@@ -659,12 +659,13 @@
             const elements = [...document.querySelectorAll('#sheet > .card')];
             elements.forEach(card => { card.hidden = false; });
             const oversized = elements.filter(exceedsCardSize);
-            oversized.forEach(card => { card.hidden = true; });
+            oversized.forEach(card => { if (!card.classList.contains('planet-event')) card.hidden = true; });
             const visible = elements.filter(card => !card.hidden);
+            const hiddenOversized = oversized.filter(card => card.hidden);
             document.getElementById('summary').textContent = `${visible.length} cartas visibles: ${visible.filter(card => !card.classList.contains('subsidy')).length} de evento y ${visible.filter(card => card.classList.contains('subsidy')).length} de subvención`;
-            document.getElementById('overflow-details').hidden = oversized.length === 0;
-            document.getElementById('overflow-summary').textContent = `${oversized.length} cartas ocultas porque exceden los 41 × 63 mm`;
-            document.getElementById('overflow-list').replaceChildren(...oversized.map(card => {
+            document.getElementById('overflow-details').hidden = hiddenOversized.length === 0;
+            document.getElementById('overflow-summary').textContent = `${hiddenOversized.length} cartas ocultas porque exceden los 41 × 63 mm`;
+            document.getElementById('overflow-list').replaceChildren(...hiddenOversized.map(card => {
                 const item = document.createElement('li');
                 item.textContent = card.getAttribute('aria-label');
                 return item;
