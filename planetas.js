@@ -7,5 +7,5 @@ const planetas=[
  {nombre:'Apolo',simbolo:'<circle cx="20" cy="20" r="9"/><path d="M20 2v5m0 26v5M2 20h5m26 0h5M7 7l4 4m18 18 4 4M7 33l4-4m18-18 4-4"/>'},
  {nombre:'Hestia',simbolo:'<path d="M21 3c2 9 12 11 12 22a13 13 0 0 1-26 0c0-7 5-10 8-15 0 6 2 9 4 10 4-6 1-10 2-17Z"/><path d="M20 22c0 5-5 7-5 10a5 5 0 0 0 10 0c0-3-3-5-5-10Z"/>'},
  {nombre:'Hades',simbolo:'<path d="M20 37V19M11 4v10a9 9 0 0 0 18 0V4M7 9l4-5 4 5m10 0 4-5 4 5M14 36h12"/>'},
- {nombre:'Deméter',simbolo:'<path d="M20 37V5M20 29C10 29 7 25 7 20c8 0 13 4 13 9Zm0-9C11 20 8 16 8 11c7 0 12 4 12 9Zm0 4c10 0 13-4 13-9-8 0-13 4-13 9Zm0-9c9 0 12-4 12-9-7 0-12 4-12 9Z"/>'}
+ {nombre:'Artemisa',simbolo:'<path d="M20 37V5M20 29C10 29 7 25 7 20c8 0 13 4 13 9Zm0-9C11 20 8 16 8 11c7 0 12 4 12 9Zm0 4c10 0 13-4 13-9-8 0-13 4-13 9Zm0-9c9 0 12-4 12-9-7 0-12 4-12 9Z"/>'}
 ];
