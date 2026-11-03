@@ -338,7 +338,7 @@ Los ingenieros que ya estaban en las barracas no generan ingresos.
 
 Cada jugador resuelve los valores descubiertos de su tablero antes de generar o comprar energía nueva:
 
-- **Licencias de excavación:** aplica el valor más alto descubierto, respetando su signo. Un valor positivo es un ingreso que cobra del banco; un valor negativo es un costo que paga al banco; con $0 no cobra ni paga. Los valores impresos en el tablero, en su orden, son +$15, +$10, +$5, $0, −$5 y −$10. Si no hay ningún valor descubierto, no hay ingreso ni costo por licencias.
+- **Licencias de excavación:** aplica el valor más alto descubierto, respetando su signo. Un valor positivo es un ingreso que cobra del banco; un valor negativo es un costo que paga al banco; con $0 no cobra ni paga. Los valores impresos en el tablero, en su orden, son +$6, +$3, $0, −$5 y −$10. Si no hay ningún valor descubierto, no hay ingreso ni costo por licencias.
 - **Contratos:** paga el costo más alto descubierto. Los valores impresos en el tablero, en su orden, son $0, $2, $4, $6, $8, $10, $13, $15, $18, $20, $23, $25, $30 y $33.
 
 La energía no tiene un costo de mantenimiento por casillas descubiertas: el tablero actual utiliza un marcador de producción y la energía sobrante se descarta al final de la ronda. La compra opcional de energía se resuelve más adelante, por $3 la unidad.
