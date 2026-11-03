@@ -522,11 +522,11 @@
         ];
         // Cada ajuste de mercado marca tres materiales al alza y tres a la baja.
         const cards = [
-            { id: 'E01', title: 'Reconocimiento público', up: ['Fe', 'Si', 'Nd'], down: ['Ti', 'Er', 'HCl'], effect: 'Lanza un dado y coloca esta carta en el cuadrante indicado. El primer jugador que coloque un disco en la capa Estructura [ES] de ese cuadrante reclama esta carta y gana 5 [PI].' },
-            { id: 'E02', title: 'Reconocimiento público', up: ['Cu', 'Al', 'Gd'], down: ['C', 'Ce', 'H₂SO₄'], effect: 'Lanza un dado y coloca esta carta en el cuadrante indicado. El primer jugador que coloque un disco en la capa Fotovoltaica [FV] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E01', title: 'Reconocimiento público', up: ['Fe', 'Si', 'Nd'], down: ['Ti', 'Er', 'HCl'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso. El primer jugador que coloque un disco en la capa Estructura [ES] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E02', title: 'Reconocimiento público', up: ['Cu', 'Al', 'Gd'], down: ['C', 'Ce', 'H₂SO₄'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso. El primer jugador que coloque un disco en la capa Fotovoltaica [FV] de ese cuadrante reclama esta carta y gana 5 [PI].' },
             { id: 'S01', subsidy: true },
-            { id: 'E03', title: 'Reconocimiento público', up: ['Ti', 'Er', 'HCl'], down: ['Fe', 'Si', 'Nd'], effect: 'Lanza un dado y coloca esta carta en el cuadrante indicado. El primer jugador que coloque un disco en la capa Transmisión [TS] de ese cuadrante reclama esta carta y gana 5 [PI].' },
-            { id: 'E04', title: 'Reconocimiento público', up: ['C', 'Ce', 'H₂SO₄'], down: ['Cu', 'Al', 'Gd'], effect: 'Lanza un dado y coloca esta carta en el cuadrante indicado. El primer jugador que coloque un disco en la capa Refrigeración [RF] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E03', title: 'Reconocimiento público', up: ['Ti', 'Er', 'HCl'], down: ['Fe', 'Si', 'Nd'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso. El primer jugador que coloque un disco en la capa Transmisión [TS] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E04', title: 'Reconocimiento público', up: ['C', 'Ce', 'H₂SO₄'], down: ['Cu', 'Al', 'Gd'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso. El primer jugador que coloque un disco en la capa Refrigeración [RF] de ese cuadrante reclama esta carta y gana 5 [PI].' },
             { id: 'S02', subsidy: true },
             { id: 'E05', title: 'Producción estable', up: ['Fe', 'Cu', 'Si'], down: ['Ti', 'Al', 'C'], effect: 'Cada jugador aumenta en 1 [PE] su producción de energía por cada sector con todas sus capas ocupadas por discos, en el que tenga al menos un disco propio.' },
             { id: 'E06', title: 'Nivelar los proyectos', up: ['Ti', 'Al', 'C'], down: ['Fe', 'Cu', 'Si'], effect: 'El jugador con menos [PI] gana $10.' },
@@ -539,40 +539,40 @@
             { id: "E15", title: "Revisi?n del personal anclado", up: ["Ti", "Nd", "Ce"], down: ["C", "Gd", "Er"], effect: "Cada jugador pierde [PI] según la tabla de penalización por ingenieros anclados, calculada en este momento como si fuera el fin de al partida." },
             { id: "E16", title: "Lluvia de voluntarios", up: ["C", "Gd", "Er"], down: ["Ti", "Nd", "Ce"], effect: "Cada jugador puede devolver a la reserva hasta 2 ingenieros anclados [AI] de sectores o áreas de soporte." },
             { id: 'E17', title: 'Gran meteorito', catastrophe: true, effect: [
-                'Arroja un dado para elegir el cuadrante según los dados impresos en el mapa en juego. Si existe, arroja de nuevo para elegir uno de sus sectores del mismo modo. Si alguna tirada no corresponde a una ubicación, el evento termina sin efecto.',
+                'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
                 'Retira todos los discos [QD] de las cinco capas del sector elegido.',
                 'Cada jugador gana 3 [PI] por cada disco propio retirado.',
                 'Si una celda pierde su disco y tiene ingenieros anclados [AI], devuelve esos ingenieros a las barracas de su dueño. Esta excepción reemplaza la regla de traslado o devolución a la reserva del manual.'
             ] },
             { id: 'E18', title: 'Llamarada solar', catastrophe: true, effect: [
-                'Arroja un dado para elegir el cuadrante según los dados impresos en el mapa en juego. Si existe, arroja de nuevo para elegir uno de sus sectores del mismo modo. Si alguna tirada no corresponde a una ubicación, el evento termina sin efecto.',
+                'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
                 'Retira [QD] el disco de la celda fotovoltaica [FV] de ese sector y los de las dos celdas fotovoltaicas adyacentes, una a cada lado. Las adyacentes pueden estar en otro cuadrante.',
                 'Cada jugador gana 3 [PI] por cada disco propio retirado.',
                 'Si una celda pierde su disco y tiene ingenieros anclados [AI], devuelve esos ingenieros a las barracas de su dueño. Esta excepción reemplaza la regla de traslado o devolución a la reserva del manual.'
             ] },
             { id: 'E19', title: 'Malfunción', catastrophe: true, effect: [
-                'Arroja un dado para elegir el cuadrante según los dados impresos en el mapa en juego. Si existe, arroja de nuevo para elegir uno de sus sectores del mismo modo. Si alguna tirada no corresponde a una ubicación, el evento termina sin efecto.',
-                'Arroja un tercer dado para la capa: 1 Estructura [ES], 2 Fotovoltaica [FV], 3 Transmisión [TS], 4 Refrigeración [RF] o 5 Microondas [MO]. Con un 6, el evento termina sin efecto.',
+                'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
+                'Arroja otro dado para la capa: 1 Estructura [ES], 2 Fotovoltaica [FV], 3 Transmisión [TS], 4 Refrigeración [RF] o 5 Microondas [MO]. Con un 6, el evento termina sin efecto.',
                 'Retira el disco [QD] de la celda elegida. Su dueño gana 3 [PI]. Si la celda está vacía, no ocurre nada.',
                 'Los ingenieros anclados [AI] en esa celda vuelven a las barracas de su dueño. Esta excepción reemplaza la regla de traslado o devolución a la reserva del manual.'
             ] },
             { id: 'E20', title: 'Donaciones privadas para la construcción', standalone: true, effect: [
-                'Arroja un dado para el cuadrante y, si existe, otro para su sector, según los dados impresos en el mapa en juego. Si alguna tirada no corresponde a una ubicación, el evento termina sin efecto.',
-                'Arroja un tercer dado para la capa: 1 Estructura [ES], 2 Fotovoltaica [FV], 3 Transmisión [TS], 4 Refrigeración [RF] o 5 Microondas [MO]. Con un 6, el evento termina sin efecto.',
+                'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
+                'Arroja otro dado para la capa: 1 Estructura [ES], 2 Fotovoltaica [FV], 3 Transmisión [TS], 4 Refrigeración [RF] o 5 Microondas [MO]. Con un 6, el evento termina sin efecto.',
                 'Si la celda está vacía, el jugador con menos [PI] puede colocar allí un disco propio sin pagar recursos. Si hay empate, tiene la opción quien tenga la ficha de orden más baja.',
                 'Resuelve la colocación con sus bonos y pagos habituales. Si la celda ya contiene un disco, no ocurre nada.'
             ] },
             { id: 'E21', title: 'Actividad estelar favorable', standalone: true, effect: [
-                'Arroja un dado para elegir el cuadrante según los dados impresos en el mapa en juego. Si no existe un cuadrante con ese valor, el evento termina sin efecto.',
+                'Usa el cuadrante indicado en el reverso de esta carta.',
                 'Cada jugador recibe de la reserva 2 [En] energía por cada disco propio en la capa fotovoltaica [FV] de ese cuadrante.',
                 'La energía recibida queda disponible. Toda la energía que sobre al final de la ronda se descarta.'
             ] },
             { id: 'E22', title: 'Inspección excepcional', standalone: true, effect: [
-                'Arroja un dado para elegir el cuadrante según los dados impresos en el mapa en juego. Si existe, arroja de nuevo para elegir uno de sus sectores del mismo modo. Si alguna tirada no corresponde a una ubicación, el evento termina sin efecto.',
+                'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
                 'Cada jugador cobra $3 del banco por cada disco propio en el sector elegido. Cuenta todas las capas de ese sector.'
             ] },
             { id: 'E23', title: 'Rescate de materiales', standalone: true, effect: [
-                'Arroja un dado para elegir el cuadrante según los dados impresos en el mapa en juego. Si no existe un cuadrante con ese valor, el evento termina sin efecto.',
+                'Usa el cuadrante indicado en el reverso de esta carta.',
                 'Cada jugador obtiene de la reserva dos recursos básicos a elección por cada disco propio en ese cuadrante. Cuenta los discos de sus sectores y de su área de soporte.',
                 'Elige libremente entre hierro, cobre, silicio, titanio, aluminio y carbono. Puedes repetir recursos. Coloca los recursos recibidos en tu almacén.'
             ] },
@@ -628,7 +628,7 @@
         };
         function render(card) {
 
-            if(card.planet) return `<article class="card planet-event" aria-label="${card.id} · ${card.layer} · ${card.planets.join(' y ')}"><header class="heading">${icon('EV-evento')}<div><h2>Reclamo planetario</h2><div class="type">Evento de planeta</div></div></header><div class="planet-layer">Capa: ${icon(iconosCapasPlanetarias[card.layer])}<span>${card.layer}</span></div><div class="planet-pair">${card.planets.map(nombre=>`<div class="planet-token"><svg viewBox="0 0 40 40" aria-hidden="true">${planetas.find(planeta=>planeta.nombre===nombre).simbolo}</svg><span>${nombre}</span></div>`).join('')}</div><p class="planet-rule">Lanza un dado y coloca esta carta en el cuadrante indicado.</p><p class="planet-rule">El primer jugador que coloque un disco en esta capa y cuadrante reclama la carta y sus dos símbolos.</p>${footer(card)}</article>`;
+            if(card.planet) return `<article class="card planet-event" aria-label="${card.id} · ${card.layer} · ${card.planets.join(' y ')}"><header class="heading">${icon('EV-evento')}<div><h2>Reclamo planetario</h2><div class="type">Evento de planeta</div></div></header><div class="planet-layer">Capa: ${icon(iconosCapasPlanetarias[card.layer])}<span>${card.layer}</span></div><div class="planet-pair">${card.planets.map(nombre=>`<div class="planet-token"><svg viewBox="0 0 40 40" aria-hidden="true">${planetas.find(planeta=>planeta.nombre===nombre).simbolo}</svg><span>${nombre}</span></div>`).join('')}</div><p class="planet-rule">Coloca esta carta en el cuadrante indicado en su reverso.</p><p class="planet-rule">El primer jugador que coloque un disco en esta capa y cuadrante reclama la carta y sus dos símbolos.</p>${footer(card)}</article>`;
             if (card.standalone || card.catastrophe) return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="standalone-text" aria-label="Efecto del evento">${card.effect.map(paragraph => `<p>${renderEffect(paragraph)}</p>`).join('')}</section>${footer(card)}</article>`;
             if (card.subsidy) return `<article class="card subsidy" aria-label="${card.id} · Subvención"><header class="heading"><div><h2>Subvención</h2></div></header><div class="subsidy-art">${coin()}</div><div class="subsidy-text"><div class="formula" aria-hidden="true">$10 + $2 / ${icon('DS-disco')}</div><p>Cada jugador cobra <strong>$10 + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong></p></div>${footer(card)}</article>`;
             return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${renderEffect(card.effect)}</p></section>${footer(card)}</article>`;
