@@ -480,6 +480,7 @@
         .planet-token{border:1px solid #6b6f8b;border-radius:2mm;padding:.7mm .5mm;flex:1;min-width:0;background:#f4f2fa;display:flex;flex-direction:column;align-items:center;gap:.3mm}
         .planet-token svg{width:8mm;height:8mm;flex:none;fill:none;stroke:#222;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
         .planet-rule{font-size:7pt;line-height:1.3;margin:1mm 0}
+        .quadrant-instruction{font-size:6pt;font-weight:700;line-height:1.15;display:block;margin:0 0 2mm}
         .planet-layer{display:flex;align-items:center;justify-content:center;gap:.7mm;font-weight:bold;text-align:center;font-size:8pt;border-bottom:1px solid #999;padding:1mm}
         .planet-layer img{width:4mm;height:4mm;object-fit:contain;flex:none}
         .card[hidden]{display:none!important}
@@ -522,11 +523,11 @@
         ];
         // Cada ajuste de mercado marca tres materiales al alza y tres a la baja.
         const cards = [
-            { id: 'E01', title: 'Reconocimiento público', up: ['Fe', 'Si', 'Nd'], down: ['Ti', 'Er', 'HCl'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso. El primer jugador que coloque un disco en la capa Estructura [ES] de ese cuadrante reclama esta carta y gana 5 [PI].' },
-            { id: 'E02', title: 'Reconocimiento público', up: ['Cu', 'Al', 'Gd'], down: ['C', 'Ce', 'H₂SO₄'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso. El primer jugador que coloque un disco en la capa Fotovoltaica [FV] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E01', title: 'Reconocimiento público', up: ['Fe', 'Si', 'Nd'], down: ['Ti', 'Er', 'HCl'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Estructura [ES] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E02', title: 'Reconocimiento público', up: ['Cu', 'Al', 'Gd'], down: ['C', 'Ce', 'H₂SO₄'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Fotovoltaica [FV] de ese cuadrante reclama esta carta y gana 5 [PI].' },
             { id: 'S01', subsidy: true },
-            { id: 'E03', title: 'Reconocimiento público', up: ['Ti', 'Er', 'HCl'], down: ['Fe', 'Si', 'Nd'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso. El primer jugador que coloque un disco en la capa Transmisión [TS] de ese cuadrante reclama esta carta y gana 5 [PI].' },
-            { id: 'E04', title: 'Reconocimiento público', up: ['C', 'Ce', 'H₂SO₄'], down: ['Cu', 'Al', 'Gd'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso. El primer jugador que coloque un disco en la capa Refrigeración [RF] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E03', title: 'Reconocimiento público', up: ['Ti', 'Er', 'HCl'], down: ['Fe', 'Si', 'Nd'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Transmisión [TS] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E04', title: 'Reconocimiento público', up: ['C', 'Ce', 'H₂SO₄'], down: ['Cu', 'Al', 'Gd'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Refrigeración [RF] de ese cuadrante reclama esta carta y gana 5 [PI].' },
             { id: 'S02', subsidy: true },
             { id: 'E05', title: 'Producción estable', up: ['Fe', 'Cu', 'Si'], down: ['Ti', 'Al', 'C'], effect: 'Cada jugador aumenta en 1 [PE] su producción de energía por cada sector con todas sus capas ocupadas por discos, en el que tenga al menos un disco propio.' },
             { id: 'E06', title: 'Nivelar los proyectos', up: ['Ti', 'Al', 'C'], down: ['Fe', 'Cu', 'Si'], effect: 'El jugador con menos [PI] gana $10.' },
@@ -597,6 +598,8 @@
             AI: ['AI-ingeniero-anclado', 'Ingeniero anclado']
         };
         function renderEffect(text) {
+            const common = "Coloca esta carta en el cuadrante indicado en su reverso del mazo.";
+            if (text.startsWith(common)) return '<span class="quadrant-instruction">' + common + '</span>' + renderEffect(text.slice(common.length).trimStart());
             return text.split(/(\[[A-Z]{2}\])/gi).map(part => {
                 const entry = effectIcons[part.slice(1, -1).toUpperCase()];
                 return part.startsWith('[') && entry ? `<img src="./iconos/${entry[0]}.svg" alt="${entry[1]}" title="${entry[1]}">` : part.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -628,7 +631,7 @@
         };
         function render(card) {
 
-            if(card.planet) return `<article class="card planet-event" aria-label="${card.id} · ${card.layer} · ${card.planets.join(' y ')}"><header class="heading">${icon('EV-evento')}<div><h2>Reclamo planetario</h2><div class="type">Evento de planeta</div></div></header><div class="planet-layer">Capa: ${icon(iconosCapasPlanetarias[card.layer])}<span>${card.layer}</span></div><div class="planet-pair">${card.planets.map(nombre=>`<div class="planet-token"><svg viewBox="0 0 40 40" aria-hidden="true">${planetas.find(planeta=>planeta.nombre===nombre).simbolo}</svg><span>${nombre}</span></div>`).join('')}</div><p class="planet-rule">Coloca esta carta en el cuadrante indicado en su reverso.</p><p class="planet-rule">El primer jugador que coloque un disco en esta capa y cuadrante reclama la carta y sus dos símbolos.</p>${footer(card)}</article>`;
+            if(card.planet) return `<article class="card planet-event" aria-label="${card.id} · ${card.layer} · ${card.planets.join(' y ')}"><header class="heading">${icon('EV-evento')}<div><h2>Reclamo planetario</h2><div class="type">Evento de planeta</div></div></header><div class="planet-layer">Capa: ${icon(iconosCapasPlanetarias[card.layer])}<span>${card.layer}</span></div><div class="planet-pair">${card.planets.map(nombre=>`<div class="planet-token"><svg viewBox="0 0 40 40" aria-hidden="true">${planetas.find(planeta=>planeta.nombre===nombre).simbolo}</svg><span>${nombre}</span></div>`).join('')}</div><p class="planet-rule quadrant-instruction">Coloca esta carta en el cuadrante indicado en su reverso del mazo.</p><p class="planet-rule">El primer jugador que coloque un disco en esta capa y cuadrante reclama la carta y sus dos símbolos.</p>${footer(card)}</article>`;
             if (card.standalone || card.catastrophe) return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="standalone-text" aria-label="Efecto del evento">${card.effect.map(paragraph => `<p>${renderEffect(paragraph)}</p>`).join('')}</section>${footer(card)}</article>`;
             if (card.subsidy) return `<article class="card subsidy" aria-label="${card.id} · Subvención"><header class="heading"><div><h2>Subvención</h2></div></header><div class="subsidy-art">${coin()}</div><div class="subsidy-text"><div class="formula" aria-hidden="true">$10 + $2 / ${icon('DS-disco')}</div><p>Cada jugador cobra <strong>$10 + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong></p></div>${footer(card)}</article>`;
             return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${renderEffect(card.effect)}</p></section>${footer(card)}</article>`;
