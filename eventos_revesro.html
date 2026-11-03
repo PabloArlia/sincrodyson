@@ -10,12 +10,12 @@ body{font-family:Arial,Helvetica,sans-serif;background:#f3f3f3;color:#202723;mar
 .toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:190mm;margin:0 auto 16px}
 button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .sheet{display:grid;grid-template-columns:repeat(4,41mm);gap:3mm;justify-content:center}
-.card{width:41mm;height:63mm;background:#172d40;border:1px solid #222;border-radius:1.8mm;padding:2.2mm;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden;break-inside:avoid;color:#fff;position:relative}
-.card:before{content:"";position:absolute;inset:2mm;border:1px solid #c2b18a;border-radius:1mm;pointer-events:none}
+.card{width:41mm;height:63mm;background:#fff;border:1px solid #222;border-radius:1.8mm;padding:2.2mm;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden;break-inside:avoid;color:#111;position:relative}
+.card:before{content:"";position:absolute;inset:2mm;border:1px solid #555;border-radius:1mm;pointer-events:none}
 .brand{font-size:7pt;letter-spacing:.13em;font-weight:bold;margin-top:6mm;text-align:center}
-.die{width:23mm;height:23mm;border:1.2mm solid #f4f0e4;border-radius:4mm;background:#f4f0e4;display:grid;place-items:center;color:#172d40;box-shadow:0 0 0 .5mm #c2b18a}
-.die-number{font-size:44pt;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
-.caption{font-size:6pt;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6mm}
+.die{width:23mm;height:23mm;border:0;display:grid;place-items:center;color:#111}
+.die svg{width:23mm;height:23mm;display:block}.die rect{fill:#fff;stroke:#111;stroke-width:1.5}.die circle{fill:#111}
+.caption{font-size:9pt;font-weight:800;letter-spacing:.04em;margin-bottom:6mm;text-align:center}
 @page{size:A4 portrait;margin:8mm}
 @media print{
  html,body{margin:0;padding:0;background:#fff}
@@ -44,7 +44,10 @@ const ids=[
 ];
 document.getElementById('sheet').innerHTML=ids.map((id,i)=>{
  const number=(i%4)+1;
- return `<article class="card" aria-label="Reverso ${id}, dado ${number}"><div class="brand">SYNCRODYSON</div><div class="die" role="img" aria-label="Dado: ${number}"><span class="die-number">${number}</span></div><div class="caption">Evento</div></article>`;
+ const quadrant=['Alpha','Beta','Gamma','Delta'][number-1];
+ const pips={1:[[0,0]],2:[[-7,-7],[7,7]],3:[[-7,-7],[0,0],[7,7]],4:[[-7,-7],[7,-7],[-7,7],[7,7]]}[number];
+ const dieSvg=`<svg viewBox="-17 -17 34 34" role="img" aria-label="Dado ${number}"><rect x="-15" y="-15" width="30" height="30" rx="4"/>${pips.map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.4"/>`).join('')}</svg>`;
+ return `<article class="card" aria-label="Reverso ${id}, cuadrante ${quadrant}, dado ${number}"><div class="brand">SYNCRODYSON</div><div class="die" role="img" aria-label="Dado: ${number}">${dieSvg}</div><div class="caption">${quadrant}</div></article>`;
 }).join('');
 </script>
 </body>
