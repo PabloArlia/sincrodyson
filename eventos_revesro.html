@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Syncrodyson · Reversos de eventos Mini USA</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;background:#f3f3f3;color:#202723;margin:0;padding:16px}
+.toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:190mm;margin:0 auto 16px}
+button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
+.sheet{display:grid;grid-template-columns:repeat(4,41mm);gap:3mm;justify-content:center}
+.card{width:41mm;height:63mm;background:#172d40;border:1px solid #222;border-radius:1.8mm;padding:2.2mm;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden;break-inside:avoid;color:#fff;position:relative}
+.card:before{content:"";position:absolute;inset:2mm;border:1px solid #c2b18a;border-radius:1mm;pointer-events:none}
+.brand{font-size:7pt;letter-spacing:.13em;font-weight:bold;margin-top:6mm;text-align:center}
+.die{width:23mm;height:23mm;border:1.2mm solid #f4f0e4;border-radius:4mm;background:#f4f0e4;display:grid;place-items:center;color:#172d40;box-shadow:0 0 0 .5mm #c2b18a}
+.die-number{font-size:44pt;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+.caption{font-size:6pt;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6mm}
+@page{size:A4 portrait;margin:8mm}
+@media print{
+ html,body{margin:0;padding:0;background:#fff}
+ .toolbar{display:none}
+ .sheet{display:block;width:100%;margin:0;padding:0;text-align:center;font-size:0}
+ .sheet>.card{display:inline-flex;position:relative;top:4mm;vertical-align:top;width:41mm;height:63mm;margin:1.5mm .75mm;font-size:16px;text-align:left;break-inside:avoid;page-break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media screen and (max-width:760px){.sheet{grid-template-columns:repeat(3,41mm)}}
+@media screen and (max-width:510px){.sheet{grid-template-columns:repeat(2,41mm)}}
+</style>
+</head>
+<body>
+<div class="toolbar">
+ <button onclick="window.print()">Imprimir reversos</button>
+ <small>52 reversos · Mini USA 41 × 63 mm · misma posición y orden de impresión que eventos.html. Para impresión a doble cara, comprobar orientación y ajuste de la impresora.</small>
+</div>
+<main class="sheet" id="sheet" aria-label="Reversos de las cartas de evento"></main>
+<script>
+// 52 cartas: 12 subvenciones, 24 eventos y 16 planetarias.
+// Se asigna a cada reverso un resultado fijo de dado 1–4, 13 copias de cada uno.
+// El orden de los reversos coincide con el orden de eventos.html.
+const ids=[
+ ...Array.from({length:12},(_,i)=>'S'+String(i+1).padStart(2,'0')),
+ ...Array.from({length:24},(_,i)=>'E'+String(i+1).padStart(2,'0')),
+ ...Array.from({length:16},(_,i)=>'P'+String(i+1).padStart(2,'0'))
+];
+document.getElementById('sheet').innerHTML=ids.map((id,i)=>{
+ const number=(i%4)+1;
+ return `<article class="card" aria-label="Reverso ${id}, dado ${number}"><div class="brand">SYNCRODYSON</div><div class="die" role="img" aria-label="Dado: ${number}"><span class="die-number">${number}</span></div><div class="caption">Evento</div></article>`;
+}).join('');
+</script>
+</body>
+</html>
