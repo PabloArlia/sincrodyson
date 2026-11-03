@@ -20,7 +20,7 @@ Entreguen a cada jugador:
 
 - 1 carta inicial de símbolo planetario, repartida al azar.
 
-- 6 cartas de proyecto.
+- Cartas de proyecto hasta formar una mano de 6, según el reparto explicado a continuación.
 - 4 cartas de yacimiento al azar.
 - 6 licencias de excavación.
 - 9 fichas de contrato.
@@ -29,9 +29,9 @@ Entreguen a cada jugador:
 - 4 unidades de [En] energía disponibles para la primera ronda.
 - 3 unidades de [Tr] Transporte, cuyo valor básico es $7.
 
-Con las seis cartas de proyecto se realiza un draft. Todos eligen simultáneamente una carta, la conservan y pasan las restantes al jugador de su derecha. Este procedimiento se repite hasta que se hayan elegido todas las cartas.
+Antes de repartir los proyectos, separen todas las cartas de proyecto iniciales del resto del mazo. Mezclen las cartas iniciales y repártanlas todas entre los jugadores, una por una, procurando que las cantidades recibidas difieran como máximo en una carta. Después, mezclen el resto de los proyectos para formar el mazo. Cada jugador roba de ese mazo hasta tener un total de 6 cartas de proyecto en su mano, contando las iniciales recibidas. No se realiza un draft durante la preparación.
 
-Después del draft, cada jugador elige tres ingenieros. Puede elegir varios del mismo tipo. Además, puede gastar parte de sus \$40 iniciales para comprar recursos de la reserva general al precio de mercado.
+Después del reparto inicial de proyectos, cada jugador elige tres ingenieros. Puede elegir varios del mismo tipo. Además, puede gastar parte de sus \$40 iniciales para comprar recursos de la reserva general al precio de mercado.
 
 Las fichas de contrato se colocan en su área del tablero personal, ocupando los lugares más a la derecha posible. Cada jugador comienza con un total de doce elementos entre sus tres ingenieros y sus nueve contratos.
 
