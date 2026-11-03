@@ -31,13 +31,15 @@ Entreguen a cada jugador:
 
 Antes de repartir los proyectos, separen todas las cartas de proyecto iniciales del resto del mazo. Mezclen las cartas iniciales y repártanlas todas entre los jugadores, una por una, procurando que las cantidades recibidas difieran como máximo en una carta. Después, mezclen el resto de los proyectos para formar el mazo. Cada jugador roba de ese mazo hasta tener un total de 6 cartas de proyecto en su mano, contando las iniciales recibidas. No se realiza un draft durante la preparación.
 
-Después del reparto inicial de proyectos, cada jugador elige tres ingenieros. Puede elegir varios del mismo tipo. Además, puede gastar parte de sus \$40 iniciales para comprar recursos de la reserva general al precio de mercado.
+Después del reparto inicial de proyectos, cada jugador elige tres ingenieros. Puede elegir varios del mismo tipo. No se compran recursos durante la preparación: las compras se programan y resuelven normalmente durante las fases de Planificación y Mercado de la primera ronda.
 
 Las fichas de contrato se colocan en su área del tablero personal, ocupando los lugares más a la derecha posible. Cada jugador comienza con un total de doce elementos entre sus tres ingenieros y sus nueve contratos.
 
 Los yacimientos se mantienen ocultos hasta que su dueño los revele. Cada jugador puede consultar sus propios yacimientos en cualquier momento.
 
-Una vez terminada la preparación, comienza la primera ronda.
+Para terminar la preparación, revelen del mazo de eventos una carta por cada jugador y resuélvanlas una por una, siguiendo las mismas reglas de resolución de eventos y subvenciones de Mantenimiento. Los reclamos planetarios y los eventos de reconocimiento quedan disponibles en el cuadrante indicado para que puedan reclamarse desde la primera ronda. Las subvenciones se cobran y reducen la meta de fin de partida de la forma habitual. Esta revelación inicial no reemplaza la revelación de eventos durante el Mantenimiento de la primera ronda.
+
+Una vez resueltas estas cartas, comienza la Planificación de la primera ronda.
 
 ## Conceptos generales
 
