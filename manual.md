@@ -322,7 +322,7 @@ Si un proyecto con ingenieros anclados en su última etapa no coloca ningún dis
 
 ## 4. Mantenimiento
 
-La fase de Mantenimiento se resuelve en este orden: préstamos, ingresos de Soporte externo, costos de mantenimiento, revelación de un evento por jugador, resolución de las cartas reveladas y comprobación del fin de partida. Si la partida continúa, se realiza el draft de proyectos, se descarta la energía sobrante de la ronda, se genera la energía para la siguiente y se resuelven las compras de energía y de Transporte por despacho urgente.
+La fase de Mantenimiento se resuelve en este orden: préstamos, ingresos de Soporte externo, ingresos y costos de mantenimiento, revelación de un evento por jugador, resolución de las cartas reveladas y comprobación del fin de partida. Si la partida continúa, se realiza el draft de proyectos, se descarta la energía sobrante de la ronda, se genera la energía para la siguiente y se resuelven las compras de energía y de Transporte por despacho urgente.
 
 ### Préstamos
 
@@ -334,15 +334,14 @@ Cada ingeniero asignado a Soporte externo proporciona $1 a su dueño. Después d
 
 Los ingenieros que ya estaban en las barracas no generan ingresos.
 
-### Costos de mantenimiento
+### Ingresos y costos de mantenimiento
 
-Cada jugador paga la suma de los siguientes valores de su tablero:
+Cada jugador resuelve los valores descubiertos de su tablero antes de generar o comprar energía nueva:
 
-- El costo más alto descubierto en licencias.
-- El costo más alto descubierto en contratos.
-- El costo más bajo descubierto en energía.
+- **Licencias de excavación:** aplica el valor más alto descubierto, respetando su signo. Un valor positivo es un ingreso que cobra del banco; un valor negativo es un costo que paga al banco; con $0 no cobra ni paga. Los valores impresos en el tablero, en su orden, son +$15, +$10, +$5, $0, −$5 y −$10. Si no hay ningún valor descubierto, no hay ingreso ni costo por licencias.
+- **Contratos:** paga el costo más alto descubierto. Los valores impresos en el tablero, en su orden, son $0, $2, $4, $6, $8, $10, $13, $15, $18, $20, $23, $25, $30 y $33.
 
-Estos costos se pagan antes de generar o comprar energía nueva.
+La energía no tiene un costo de mantenimiento por casillas descubiertas: el tablero actual utiliza un marcador de producción y la energía sobrante se descarta al final de la ronda. La compra opcional de energía se resuelve más adelante, por $3 la unidad.
 
 ### Revelar un evento por jugador
 
