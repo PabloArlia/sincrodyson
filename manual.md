@@ -10,7 +10,9 @@ El objetivo es terminar la partida con la mayor cantidad de puntos de victoria (
 
 ## Preparación de la partida
 
-Coloquen en el centro de la mesa el tablero de la esfera, el tablero de mercado y las reservas generales. Preparen los mazos de proyectos y de yacimientos y dejen espacio para sus respectivos descartes. Coloquen recursos en los espacios del mercado marcados en negro.
+Coloquen en el centro de la mesa el tablero de la esfera y las reservas generales. Preparen los mazos de proyectos y de yacimientos y dejen espacio para sus respectivos descartes. El mercado y el dinero se gestionan con la aplicación web de Syncrodyson; no se utiliza el tablero físico de mercado.
+
+Una persona crea la sala como anfitrión, con $40 iniciales por jugador, y comparte el código o QR para que todos ingresen con su nombre. Antes de comenzar la primera Planificación, comprueben que están todos los jugadores y registren en la caja de la aplicación los cobros y pagos producidos durante la preparación. La aplicación prepara un historial inicial de precios mediante dos rondas simuladas que no afectan al dinero ni a los recursos de los jugadores.
 
 Mezclen las cartas de evento con las 12 cartas de subvención para formar el mazo de eventos. Dejen espacio para las cartas resueltas. Durante Mantenimiento se revela una carta por jugador, en lugar de dejar una carta expuesta por ronda. Coloquen el indicador de fin de partida en 60 PV.
 
@@ -24,7 +26,6 @@ Entreguen a cada jugador:
 - 4 cartas de yacimiento al azar.
 - 6 licencias de excavación.
 - 9 fichas de contrato.
-- 3 dados verdes y 3 dados rojos.
 - $40.
 - 4 unidades de [En] energía disponibles para la primera ronda.
 - 3 unidades de [Tr] Transporte, cuyo valor básico es $7.
@@ -45,7 +46,7 @@ Una vez resueltas estas cartas, comienza la Planificación de la primera ronda.
 
 ### Tablero personal
 
-El tablero personal dispone de cuatro espacios de ejecución, ocupados por refinerías o proyectos. También incluye el almacén de recursos, las barracas, el área de contratos, el área de licencias, Soporte externo y cinco espacios para programar operaciones de mercado.
+El tablero personal dispone de cuatro espacios de ejecución, ocupados por refinerías o proyectos. También incluye el almacén de recursos, las barracas, el área de contratos, el área de licencias y Soporte externo. Las operaciones de mercado se programan en la aplicación web.
 
 Los recursos no asignados a proyectos o refinerías se guardan en el almacén. La energía disponible puede asignarse durante la ronda; toda la energía que sobre al final de la ronda se descarta. Los ingenieros disponibles permanecen en las barracas, salvo que estén asignados a otra tarea.
 
@@ -62,7 +63,9 @@ Si un efecto limita la adyacencia a una capa, solo se consideran las celdas de e
 
 ### Valores y límites
 
-Los precios de mercado, los costos de contratación, la generación gratuita de energía y las capacidades se consultan en los tableros correspondientes.
+Los precios de los recursos se consultan en la aplicación web. Los proyectos cuestan $3 al comprarlos y se venden por $2; contratar un ingeniero cuesta $5 y despedirlo no genera ingresos. La generación de energía y las capacidades se consultan en los tableros correspondientes.
+
+El saldo monetario se lleva íntegramente en la aplicación. Registren allí los ingresos, pagos y transferencias que produzcan proyectos, discos, eventos y otras acciones del tablero. Los recursos, ingenieros, contratos, cartas y discos se manejan físicamente en la mesa. Los PV que muestra la aplicación corresponden a penalizaciones por deuda: el puntaje completo se lleva en el tablero.
 
 No existe un límite general de cartas en mano ni de cantidades acumuladas. Sí se aplican las capacidades y restricciones expresas de los tableros y las acciones.
 
@@ -75,7 +78,7 @@ La partida se desarrolla en rondas. Cada ronda consta de cuatro fases, que se re
 3. Ejecución.
 4. Mantenimiento.
 
-Planificación se realiza simultáneamente. En Mercado y Ejecución se utiliza el orden establecido por las fichas numeradas.
+Planificación se realiza simultáneamente. El orden en que los jugadores confirman su pase en la aplicación determina el orden de liquidación de Mercado y de Ejecución. Las fichas numeradas pueden utilizarse para representar en la mesa ese orden.
 
 ## 1. Planificación
 
@@ -99,101 +102,74 @@ Los ingenieros que se quieran destinar a obtener ingresos se colocan en Soporte 
 
 ### Programar operaciones de mercado
 
-Cada jugador puede colocar hasta cinco cartas de mercado boca abajo en los espacios superiores de su tablero. Sobre cada carta coloca un dado y elige el número que mostrará. Los dados no se lanzan.
+Cada jugador introduce en la aplicación sus órdenes secretas de compra o venta. Para cada recurso indica la cantidad total que quiere comprar o vender; no puede comprar y vender el mismo recurso en una misma ronda.
 
-- Un dado verde indica una compra.
-- Un dado rojo indica una venta.
-- El número del dado indica la cantidad de la operación, salvo en la compra de un proyecto por tipo, donde indica el tipo solicitado.
+No se utilizan cartas de mercado ni dados, y no se aplica el antiguo límite de cinco cartas o de tres dados de cada color. Se pueden programar operaciones sobre todos los recursos disponibles en la aplicación, incluidos Transporte y Energía.
 
-Se pueden colocar dos dados sobre una misma carta, siempre que sean del mismo color. En ese caso, se suman sus valores.
+En la misma planificación se indican las compras o ventas de proyectos y las contrataciones o despidos de ingenieros, por tipo. Estas operaciones tienen precios fijos y se confirman junto con las de recursos. Antes de confirmar, comprueben en la mesa las cartas, contratos e ingenieros necesarios.
 
-Un jugador que tenga uno o más préstamos no puede colocar dados verdes, aunque haya programado una venta para obtener dinero antes de la compra.
+La aplicación permite guardar el plan y modificarlo mientras el jugador no haya pasado. Las órdenes de los demás permanecen ocultas hasta el cierre.
 
-### Elegir el orden de juego
+### Pasar y determinar el orden de juego
 
-Cuando termina su planificación, el jugador toma la ficha de orden que prefiera entre las disponibles. Desde ese momento solo puede tocar las cartas de su mano y su ficha de orden.
+Cuando termina de preparar su tablero y sus órdenes, el jugador pulsa **Guardar y pasar**. Esa acción confirma su plan y le asigna una posición según el orden de pase. Desde ese momento solo puede tocar las cartas de su mano, salvo las entregas y asignaciones expresamente permitidas al liquidar Mercado.
 
-Si quiere modificar su planificación, debe devolver primero su ficha al área de orden. Cuando termine de hacer los cambios, toma una de las fichas que estén disponibles en ese momento.
+Mientras no se haya cerrado el mercado, puede retirar su pase para modificar las órdenes o la planificación del tablero. Al hacerlo pierde su prioridad; cuando vuelva a pasar obtiene una nueva posición.
 
-También puede devolver su ficha y tomar otra disponible sin modificar su planificación. Si dos jugadores intentan realizar este cambio al mismo tiempo, lo resuelve primero quien tenga la ficha de número más bajo.
-
-La fase termina cuando todos los jugadores tienen una ficha de orden.
+El último pase cierra el mercado automáticamente. Desde ese momento las órdenes son obligatorias y ya no se pueden modificar. El orden de pase se utiliza tanto para liquidar el mercado como para ejecutar proyectos y resolver los desempates que dependan del orden.
 
 ## 2. Mercado
 
-Las operaciones se resuelven por posición. Primero, el jugador con la ficha 1 revela y resuelve su primera carta; después lo hacen los demás en orden ascendente. Una vez resuelta la primera posición de todos los jugadores, se procede de la misma manera con la segunda y se continúa hasta la quinta.
+### Cierre y precio de las operaciones
 
-Cada carta se revela cuando le corresponde resolverse. Al finalizar la operación, el jugador recupera la carta y sus dados.
+Cuando todos han pasado, la aplicación reúne las compras y ventas y calcula un único precio final para cada recurso. Todos los jugadores compran y venden ese recurso al mismo precio durante esa ronda, independientemente de su posición.
 
-Las operaciones programadas son obligatorias: no se puede renunciar a una compra o venta una vez llegada su resolución.
+El precio depende del cierre anterior y del desequilibrio entre compras y ventas. Una demanda neta lo empuja hacia arriba y una oferta neta lo empuja hacia abajo, dentro de sus límites. Además, el precio tiende a acercarse al valor nominal: sin operaciones recorre un 20 % de la distancia hacia ese valor. La aplicación redondea los precios a centavos y muestra el historial; el precio final se conoce al cerrar el mercado.
 
-### Compra de recursos
+Un agente externo compra o vende toda la diferencia entre las órdenes. No hay stock limitado de mercado ni reparto por escasez: las compras se cubren aunque los demás jugadores no vendan suficientes unidades.
 
-El jugador paga el precio del recurso multiplicado por la cantidad indicada en los dados y toma esa cantidad del mercado. Para toda la operación se utiliza el precio que tenía el recurso antes de comenzar la compra.
+### Liquidación y entrega de componentes
 
-Si el mercado no contiene suficientes unidades, el jugador toma todas las disponibles y completa la cantidad desde la reserva general. Toda la compra se paga al precio del recurso anterior a la operación.
+La aplicación liquida un jugador por vez, según el orden de pase. El jugador activo o el anfitrión confirma sus entregas y operaciones. En ese mismo turno se liquidan recursos, proyectos e ingenieros, y el importe se registra automáticamente en su saldo. No registren además ese mismo movimiento mediante la caja.
 
-Si el mercado no contiene ninguna unidad de ese recurso al comenzar la compra, el jugador compra directamente de la reserva general al precio máximo del recurso.
+- Los recursos comprados se toman de la reserva general y pueden asignarse inmediatamente a proyectos o colocarse en el almacén.
+- Los recursos vendidos se entregan desde el almacén; la energía se entrega de las unidades disponibles, no de la asignada a proyectos.
+- Transporte se compra y vende como cualquier otro recurso.
+- La energía comprada puede asignarse a proyectos o mantenerse disponible durante la ronda. Toda la sobrante se descarta al final de la ronda.
 
-Los recursos comprados pueden asignarse inmediatamente a proyectos o colocarse en el almacén. La energía comprada puede asignarse directamente a proyectos o mantenerse disponible durante la ronda. Toda la energía sobrante se descarta al final de la ronda.
+Las operaciones comprometidas no se cancelan por falta de dinero. El saldo puede quedar negativo. Si un jugador no entrega todos los recursos vendidos, declara las unidades faltantes al confirmar la liquidación. Cobra la venta completa y esas unidades quedan como deuda de recursos. El agente externo cubre igualmente las compras de los demás jugadores.
 
-### Venta de recursos
+### Deudas y penalizaciones
 
-El jugador cobra el precio actual del recurso multiplicado por la cantidad indicada por sus dados y entrega esa misma cantidad de unidades. Toda la venta utiliza el precio del recurso anterior a la operación.
+Al terminar la última liquidación de cada Mercado, la aplicación calcula para cada jugador:
 
-Solo pueden venderse recursos del almacén. La energía se vende de las unidades disponibles.
+**Valor de deuda = saldo negativo en valor absoluto + recursos pendientes valorados a su precio máximo.**
 
-Si los recursos entregados superan la capacidad del mercado, el excedente se devuelve a la reserva general. El jugador cobra igualmente por todas las unidades vendidas.
+Por cada $5 completos de ese valor, el jugador pierde 1 PV. Se redondea hacia abajo: una deuda valorada en $14,99 resta 2 PV. La penalización se aplica una vez por ronda y vuelve a aplicarse después de cada Mercado mientras persista la deuda.
 
-### Compra y venta de Transporte
+Los ingresos reducen automáticamente el descubierto monetario. Para saldar recursos pendientes, el jugador entrega físicamente las unidades a la reserva y registra la devolución en la aplicación durante Planificación, Ejecución o Mantenimiento. Esa devolución no mueve dinero ni precios. Un saldo positivo no cancela automáticamente recursos pendientes, y saldar una deuda no devuelve los PV perdidos.
 
-Durante Mercado se puede comprar o vender Transporte (Tr), utilizando su carta con dados verdes o rojos. Las unidades se toman de la reserva de transporte o se devuelven a ella. Se aplican las mismas reglas de compra y venta que a los demás recursos, incluidas las cantidades indicadas por los dados y las consecuencias de no disponer de suficiente dinero o unidades para vender.
-
-### Falta de dinero o de recursos
-
-No se pueden tomar préstamos para pagar compras de Mercado.
-
-Si el jugador no dispone de dinero suficiente para completar una compra, debe comprar tantas unidades como pueda y perder todo el dinero que le sobre. Inmediatamente recupera en su mano todas las cartas que todavía tengan dados verdes, que ya no se resolverán durante esa fase.
-
-Si no dispone de suficientes recursos para cumplir una venta, debe vender todos los que tenga disponibles de ese tipo. Cobra únicamente por los recursos entregados y pierde 3 PV.
+El mercado web reemplaza los préstamos de $5, sus intereses y la prohibición de comprar con préstamos. No se utilizan esas reglas anteriores.
 
 ### Compra y venta de proyectos
 
-La carta de proyectos permite comprar cartas del mazo por \$3 cada una o vender cartas de la mano por \$2 cada una. Los proyectos vendidos se colocan en el descarte.
+En la fila de proyectos de la aplicación, cada jugador indica cuántas cartas compra o vende. Cada compra cuesta $3 y cada venta proporciona $2. Las cartas compradas se roban del mazo y las vendidas se eligen de la mano y se colocan en el descarte. Estas operaciones se resuelven durante la liquidación del jugador.
 
-Cuando el mazo de proyectos se agota, se mezcla su descarte para formar un nuevo mazo.
+Cuando el mazo se agota, se mezcla su descarte para formar un nuevo mazo.
 
 #### Compra de un proyecto por tipo
 
-La carta de mercado **Proyecto por tipo** permite comprar **una sola carta de proyecto por $5**. Se programa con uno o dos dados verdes: sus valores identifican el tipo solicitado, no la cantidad de cartas. Los dados se eligen al programar la acción y no se lanzan.
+Esta opción se resuelve en la mesa por $5, registrando el pago en la caja; la fila normal de proyectos de la aplicación corresponde únicamente a compras de cartas del mazo por $3. El jugador anuncia un tipo de proyecto, identificado por su icono de categoría.
 
-| Dados verdes | Valor o suma | Tipo solicitado | Icono |
-| --- | --- | --- | --- |
-| 1 | 1 | Estructura | [ES] |
-| 1 | 2 | Fotovoltaico | [FV] |
-| 1 | 3 | Transmisión | [TS] |
-| 1 | 4 | Refrigeración | [RF] |
-| 1 | 5 | Microondas | [MO] |
-| 1 | 6 | Generación de energía | [PE] |
-| 2 | 2 | Sensores | [SN] |
-| 2 | 3 | Control | [CO] |
-| 2 | 4 | Mantenimiento | [MN] |
-| 2 | 5 | Economía | [EC] |
-| 2 | 6 | Recursos humanos | [RH] |
-| 2 | 7 | Producción | [PR] |
-| 2 | 9 | Mejora de soporte externo | [MS] |
+El jugador a su derecha revela cartas del mazo hasta encontrar la primera del tipo solicitado y la entrega al comprador. Después mezcla las demás cartas reveladas con el resto del mazo, sin enviarlas al descarte.
 
-Con dos dados solo importa la **suma de ambos**, sin distinguir el orden. Las sumas 10, 11 y 12 no tienen tipo asignado y se saltea la compra asi como si se jugase con dados rojos.
-
-Al resolver la acción, el jugador paga $5. **El jugador a su derecha revela rápidamente cartas del mazo de proyectos hasta encontrar la primera del tipo solicitado**, identificado por el **icono de la esquina superior izquierda**. Entrega esa carta al comprador, que la añade a su mano, y mezcla todas las demás cartas reveladas con el resto del mazo. Las cartas no elegidas no van al descarte.
-
-Si se agota el mazo durante la búsqueda, se incorpora su descarte según la regla habitual y se continúa. Si no hay ninguna carta del tipo solicitado entre el mazo y el descarte, se mezclan de nuevo las cartas reveladas para formar el mazo y se devuelven los $5; no se obtiene ninguna carta. Si el jugador no puede pagar los $5, se aplica la regla de falta de dinero de Mercado: no obtiene la carta, pierde su dinero restante y cancela las operaciones pendientes con dados verdes.
+Si se agota el mazo, se incorpora su descarte según la regla habitual y se continúa la búsqueda. Si no existe ninguna carta del tipo solicitado, se mezclan de nuevo las reveladas y no se cobra la compra.
 
 ### Contratación y despido de ingenieros
 
-Para contratar ingenieros se utiliza la carta del tipo correspondiente con uno o dos dados verdes, cuyo valor total indica la cantidad que se contratará. Cada ingeniero tiene un costo fijo de contratación indicado en el tablero de mercado. Por cada ingeniero contratado, el jugador paga ese costo y entrega una ficha de contrato u otro ingeniero de sus barracas.
+Para contratar ingenieros se indica en la aplicación la cantidad y el tipo solicitado. Cada ingeniero cuesta $5. Por cada ingeniero contratado, el jugador paga ese costo y entrega una ficha de contrato u otro ingeniero de sus barracas.
 
-Para despedir ingenieros se utiliza la misma carta con dados rojos. Solo pueden despedirse ingenieros de las barracas o del soporte externo. Por cada ingeniero entregado se recupera una ficha de contrato, pero no se recibe dinero ni se recupera el costo de contratación. Si la cantidad indicada por los dados supera los ingenieros de ese tipo disponibles en sus barracas, el jugador despide todos los que pueda de ese tipo y pierde 3 PV.
+Para despedir ingenieros se indica una cantidad de venta en la fila de su tipo. Solo pueden despedirse ingenieros de las barracas o del soporte externo. Por cada ingeniero entregado se recupera una ficha de contrato, pero no se recibe dinero ni se recupera el costo de contratación. Si la cantidad programada supera los ingenieros de ese tipo disponibles en sus barracas, el jugador despide todos los que pueda de ese tipo y pierde 3 PV.
 
 Las fichas de contrato se colocan lo más a la derecha posible en su área de contratos.
 
@@ -205,17 +181,17 @@ Si no quedan ingenieros del tipo solicitado en la reserva, se aplica el siguient
 2. **Tomar de otro jugador:** si no puede realizarse ese intercambio, debe entregar uno el jugador que tenga más ingenieros del tipo solicitado entre sus barracas y su área de Soporte externo. A cambio recibe una ficha de contrato. Esta regla también puede afectar al propio jugador que está contratando. En caso de empate, el jugador que contrata elige cuál de los empatados entrega el ingeniero.
 3. **Fin de la contratación:** si tampoco hay ingenieros disponibles por esa vía, la acción termina.
 
-Solo se paga por los ingenieros efectivamente contratados. El intercambio con la esfera no modifica el costo habitual de contratación ni la obligación de entregar una ficha de contrato u otro ingeniero de las barracas.
+Solo se paga por los ingenieros efectivamente contratados. Si la aplicación liquidó más contrataciones de las que pudieron resolverse físicamente, registra en la caja la devolución de $5 por cada contratación no realizada, identificando el motivo. El intercambio con la esfera no modifica el costo habitual de contratación ni la obligación de entregar una ficha de contrato u otro ingeniero de las barracas.
 
-El jugador debe contratar toda la cantidad indicada por sus dados, salvo que no pueda obtener más ingenieros por las vías anteriores o no pueda pagar. La contratación sigue siendo obligatoria aunque deba entregar y volver a contratar sus propios ingenieros, pagando nuevamente el costo correspondiente.
+El jugador debe contratar toda la cantidad programada, salvo que no pueda obtener más ingenieros por las vías anteriores. La falta de dinero se gestiona mediante descubierto, según las reglas del mercado web. La contratación sigue siendo obligatoria aunque deba entregar y volver a contratar sus propios ingenieros, pagando nuevamente el costo correspondiente.
 
 ### Prospectar
 
-La carta de yacimiento permite realizar una acción de prospección. Debe programarse con dados verdes. Si se revela con dados rojos, la acción es inválida y se saltea.
+La prospección se resuelve en la mesa: el jugador anuncia cuántas cartas quiere examinar, de 1 a 12, y registra su pago de $7 mediante la caja de la aplicación. No se programa como una orden de recurso.
 
-Si el jugador no puede pagar el costo de prospección o no quedan cartas en el mazo de yacimientos, se saltea la acción. En estos casos no se aplica la penalización por compra incompleta ni se cancelan las demás operaciones con dados verdes.
+Si no quedan cartas en el mazo de yacimientos, la acción no está disponible. El pago se registra únicamente cuando se realiza la prospección.
 
-El jugador paga el costo fijo de prospección impreso en el tablero y roba tantas cartas de yacimiento como indiquen sus dados, sin superar las disponibles en el mazo. Si quedan menos cartas que la cantidad indicada, toma todas las restantes.
+El jugador paga $7 y roba la cantidad de cartas de yacimiento anunciada, sin superar las disponibles en el mazo. Si quedan menos cartas que la cantidad indicada, toma todas las restantes.
 
 Después de revisar todas las cartas que ha robado, el jugador conserva una para sí.
 
@@ -223,9 +199,6 @@ Si quedan cartas, entrega una al jugador que tenga menos yacimientos entre quien
 
 Cuando el mazo de yacimientos se agota, la acción deja de estar disponible. El descarte de yacimientos no se vuelve a mezclar.
 
-### Farol
-
-La carta de farol no produce ningún efecto. Al revelarla, se ignoran sus dados y se saltea la operación.
 
 ## 3. Ejecución
 
@@ -291,7 +264,7 @@ Después de colocar un disco en una celda:
 - Cada jugador cobra $2 por cada disco propio presente en ese sector.
 - Cada jugador cobra $3 por cada disco propio presente en el área de soporte del cuadrante correspondiente.
 
-Una vez cobrados los bonos, se comprueba la capa de estructura de ese sector. Si está vacía, el jugador que acaba de colocar el disco paga $5 al banco por acarreo. Puede recurrir a préstamos para afrontar este pago.
+Una vez cobrados los bonos, se comprueba la capa de estructura de ese sector. Si está vacía, el jugador que acaba de colocar el disco paga $5 al banco por acarreo. Registra el pago en la caja de la aplicación; si no tiene dinero suficiente, su saldo queda en descubierto.
 
 #### Colocar discos en las áreas de soporte
 
@@ -324,21 +297,17 @@ Si un proyecto con ingenieros anclados en su última etapa no coloca ningún dis
 
 ## 4. Mantenimiento
 
-La fase de Mantenimiento se resuelve en este orden: préstamos, ingresos de Soporte externo, ingresos y costos de mantenimiento, revelación de un evento por jugador, resolución de las cartas reveladas y comprobación del fin de partida. Si la partida continúa, se realiza el draft de proyectos, se descarta la energía sobrante de la ronda, se genera la energía para la siguiente y se resuelven las compras de energía y de Transporte por despacho urgente.
-
-### Préstamos
-
-Al comienzo de la fase, el jugador debe resolver cada uno de sus préstamos. Por cada préstamo puede pagar $1 para conservarlo o $6 para cancelarlo y devolverlo. Si no dispone de dinero para pagar los intereses obligatorios de sus préstamos, debe tomar nuevos préstamos para cubrirlos. Los préstamos tomados durante Mantenimiento no pagan intereses en esa misma fase.
+La fase de Mantenimiento se resuelve en este orden: ingresos de Soporte externo, ingresos y costos de mantenimiento, revelación de un evento por jugador, resolución de las cartas reveladas y comprobación del fin de partida. El anfitrión abre la fase en la aplicación al terminar la Ejecución; cada jugador confirma allí sus valores de mantenimiento, que se registran una sola vez por ronda. Si la partida continúa, se realiza el draft de proyectos, se descarta la energía sobrante de la ronda, se genera la energía para la siguiente y se resuelven las compras de energía y de Transporte por despacho urgente.
 
 ### Soporte externo
 
-Cada ingeniero asignado a Soporte externo proporciona $1 a su dueño. Después de cobrar, esos ingenieros se trasladan a las barracas.
+Cada ingeniero asignado a Soporte externo proporciona $1 a su dueño. Indica su cantidad en el mantenimiento de la aplicación para que el ingreso se incluya en el total; no lo registres de nuevo como un cobro separado. Después de cobrar, esos ingenieros se trasladan a las barracas.
 
 Los ingenieros que ya estaban en las barracas no generan ingresos.
 
 ### Ingresos y costos de mantenimiento
 
-Cada jugador resuelve los valores descubiertos de su tablero antes de generar o comprar energía nueva:
+Cada jugador resuelve los valores descubiertos de su tablero antes de generar o comprar energía nueva. El total incluye licencias, contratos y Soporte externo y se registra una sola vez. Si los valores mostrados en la aplicación no coinciden con el tablero y las reglas vigentes, registra en la caja la diferencia con un motivo que identifique la corrección:
 
 - **Licencias de excavación:** aplica el valor más alto descubierto, respetando su signo. Un valor positivo es un ingreso que cobra del banco; un valor negativo es un costo que paga al banco; con $0 no cobra ni paga. Los valores impresos en el tablero, en su orden, son +$6, +$3, $0, −$5 y −$10. Si no hay ningún valor descubierto, no hay ingreso ni costo por licencias.
 - **Contratos:** paga el costo más alto descubierto. Los valores impresos en el tablero, en su orden, son $0, $2, $4, $6, $8, $10, $13, $15, $18, $20, $23, $25, $30 y $33.
@@ -351,17 +320,17 @@ Revelen del mazo una carta por cada jugador de la partida. Este paso reemplaza l
 
 ### Resolver las cartas reveladas
 
-Resuelvan las cartas reveladas una por una. Si es una carta de evento, apliquen primero su ajuste de mercado, si lo tiene, y luego su efecto. Las cartas sin ajuste de mercado solo resuelven su efecto de evento. Si es una subvención, cada jugador cobra $10 + $2 por cada carta de subvención que haya salido, incluida la actual, + $2 por cada disco propio en la esfera (sector o área de soporte). Después de pagar la subvención, reduzcan en 5 PV la meta de fin de partida moviendo su indicador.
+Resuelvan las cartas reveladas una por una y registren sus cobros y pagos mediante la caja. Los precios de recursos los calcula exclusivamente el mercado web; no se aplican los antiguos movimientos de stock o filas de precio impresos en los eventos. Si es una subvención, cada jugador cobra $10 + $2 por cada carta de subvención que haya salido, incluida la actual, + $2 por cada disco propio en la esfera (sector o área de soporte). Después de pagar la subvención, reduzcan en 5 PV la meta de fin de partida moviendo su indicador.
 
 La meta comienza en 60 PV y se reduce de forma acumulativa: tras una subvención es 55 PV; tras seis, 30 PV; tras las doce, 0 PV. La reducción no resta PV a los jugadores ni termina la partida hasta la comprobación siguiente. Mantengan las subvenciones resueltas visibles para contar sus monedas.
 
 ### Comprobación del fin de partida
 
-Antes de devolver las fichas de orden, se comprueba si algún jugador alcanza o supera la meta vigente indicada por el marcador de fin de partida. Si al menos uno la alcanza, la partida termina inmediatamente y se pasa a la puntuación final. Las fichas de orden se conservan para resolver posibles empates. No se realizan los pasos restantes de la fase.
+Antes de abrir la siguiente ronda en la aplicación, se comprueba si algún jugador alcanza o supera la meta vigente indicada por el marcador de fin de partida. Si al menos uno la alcanza, la partida termina inmediatamente y se pasa a la puntuación final. Se conserva el orden de pase de la ronda para resolver posibles empates. No se realizan los pasos restantes de la fase.
 
 ### Draft de proyectos
 
-Si la partida continúa, todos devuelven sus fichas de orden al área correspondiente. Cada jugador roba cuatro cartas de proyecto y se realiza un nuevo draft: se elige una carta y se pasan las restantes a la derecha hasta elegirlas todas.
+Si la partida continúa, cada jugador roba cuatro cartas de proyecto y se realiza un nuevo draft: se elige una carta y se pasan las restantes a la derecha hasta elegirlas todas. Después de completar los pasos restantes de Mantenimiento, el anfitrión abre la ronda siguiente en la aplicación; el nuevo orden se determinará al pasar durante Planificación.
 
 ### Generación de energía
 
@@ -381,14 +350,6 @@ El precio del despacho urgente está pendiente de definir.
 
 Una vez terminadas estas compras, comienza la Planificación de la siguiente ronda.
 
-## Préstamos: reglas generales
-
-Los préstamos nunca pueden tomarse voluntariamente. Se utilizan cuando el jugador debe afrontar un pago obligatorio y no dispone de dinero suficiente. Las compras de Mercado no permiten préstamos.
-
-Cada préstamo proporciona $5 y hace perder inmediatamente 1 PV a quien lo toma.
-
-Durante Mantenimiento se paga $1 por conservar cada préstamo o $6 por cancelarlo. Los préstamos tomados durante esa fase no pagan intereses hasta el siguiente Mantenimiento. Mientras tenga uno o más préstamos, el jugador no puede programar operaciones con dados verdes.
-
 ## Fin de partida y puntuación
 
 La partida termina durante la comprobación de fin de partida de Mantenimiento si uno o más jugadores alcanzan o superan la meta vigente: 60 PV menos 5 PV por cada subvención resuelta. Alcanzar esa meta activa el final, pero el ganador se determina después de realizar la puntuación final.
@@ -402,7 +363,7 @@ Cada jugador suma a sus PV acumulados:
 
 A continuación convierte sus recursos en dinero según los valores de la tabla general de fin de juego. Cada ingeniero vale $3 y cada unidad de energía vale $1.
 
-Puede cancelar los préstamos que conserve pagando $6 por cada uno. Cada préstamo que quede pendiente resta 2 PV adicionales al punto perdido al tomarlo.
+Descuenta del puntaje las penalizaciones por deuda acumuladas en la aplicación, si todavía no las habías aplicado al marcador de PV. Se cuentan una sola vez; no se aplica la antigua penalización final por préstamos.
 
 Finalmente, cada $10 se convierten en 1 PV. El dinero sobrante se conserva para los desempates.
 
@@ -450,7 +411,7 @@ Los empates son generosos: todos los jugadores empatados reciben la totalidad de
 
 Especialista se puntúa por capa e Integrador por sector, respectivamente.
 
-Gana el jugador con más PV. Si hay empate, gana quien tenga más dinero sobrante. Si el empate persiste, gana quien conserve la ficha de orden de número más bajo.
+Gana el jugador con más PV. Si hay empate, gana quien tenga más dinero sobrante. Si el empate persiste, gana quien haya pasado antes en la última ronda.
 
 ## Explicación de cartas
 
