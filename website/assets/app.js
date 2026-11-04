@@ -3,7 +3,10 @@
   const $ = (s) => document.querySelector(s);
   const app = $('#app');
   const esc = (v) => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const money = v => '$' + (v / 100).toLocaleString('es-AR', {minimumFractionDigits:2, maximumFractionDigits:2});
+  const money = v => {
+    const cents=Math.floor((Math.abs(Math.round(v*200))+100)/200);
+    return (v<0?'−':'')+'$'+(cents/100).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  };
   const signed = v => (v > 0 ? '+' : v < 0 ? '−' : '') + money(Math.abs(v));
   const random = (n = 32) => Array.from(crypto.getRandomValues(new Uint8Array(n)), b => b.toString(16).padStart(2,'0')).join('');
   const key = 'syncrodyson-session-v1';
@@ -17,6 +20,7 @@
   let restoring = !!session && !invitationPending;
   const replacedSession = invitationPending ? session : null;
   let fixedDraft = {};
+  let stockDraft = {};
   let draft = {}, dirty = false, draftRound = null, noticeTimer, connection = false;
   function storage(name, value) {
     try {
@@ -58,9 +62,23 @@
         ? saved.orders : {...me.orders};
       fixedDraft = s.phase === 'planning' && saved?.round === s.round && saved?.player === s.me && me.pass === null
         ? {...saved.fixedOrders} : {...me.fixedOrders};
-      dirty = s.phase === 'planning' && (JSON.stringify(draft) !== JSON.stringify(me.orders) || JSON.stringify(fixedDraft) !== JSON.stringify(me.fixedOrders || {}));
+      stockDraft = s.options?.stockMarket && s.phase === 'planning' && saved?.round === s.round && saved?.player === s.me && me.pass === null
+        ? {...saved.stockOrders} : {...me.stockOrders};
+      dirty = s.phase === 'planning' && (JSON.stringify(draft) !== JSON.stringify(me.orders) || JSON.stringify(fixedDraft) !== JSON.stringify(me.fixedOrders || {}) || JSON.stringify(stockDraft) !== JSON.stringify(me.stockOrders || {}));
       draftRound = s.round;
-    } else if (!dirty) { draft = {...me.orders}; fixedDraft = {...me.fixedOrders}; }
+    } else if (!dirty) { draft = {...me.orders}; fixedDraft = {...me.fixedOrders}; stockDraft = {...me.stockOrders}; }
+    if(s.stock && s.phase==='planning' && me.pass===null) {
+      const normalized={}; let remaining=s.stock.round.buyAllowed[s.me]?10:0;
+      for(const [id,value] of Object.entries(stockDraft)) {
+        if(!s.stock.companies[id]||!Number.isInteger(value)) continue;
+        const held=s.stock.holdings[id]?.[s.me]||0;
+        const qty=Math.max(-held,Math.min(remaining,value));
+        if(qty) normalized[id]=qty;
+        remaining-=Math.max(0,qty);
+      }
+      if(JSON.stringify(normalized)!==JSON.stringify(stockDraft)) dirty=true;
+      stockDraft=normalized;
+    }
     render();
   }
   async function poll(force = false) {
@@ -121,7 +139,7 @@
     if (invite) return `<div class="welcome"><div class="welcome-decoration"><div class="eyebrow mb-3">Invitación a la mesa</div><h1>Unite a la partida<br><span class="room-code">${esc(invite)}</span></h1><p class="lead mt-3">${busy?'Entrando a la sala…':'Ingresá tu nombre para sumarte a esta sala.'}</p></div><form class="card" id="join-form"><div class="card-body"><h2 class="card-title">Unirme a ${esc(invite)}</h2><label class="form-label" for="join-name">Tu nombre</label><input id="join-name" name="name" class="form-control mb-3" maxlength="40" required autocomplete="nickname" placeholder="Tu nombre en la mesa" value="${esc(replacedSession?.name||'')}"><input type="hidden" name="code" value="${esc(invite)}"><button class="btn btn-primary w-100" ${busy?'disabled':''}>Entrar a esta sala</button></div></form></div>`;
     return `<div class="welcome"><div class="welcome-decoration"><div class="eyebrow mb-3">La economía de una nueva estrella</div><h1>Tu próximo movimiento<br>empieza en el mercado.</h1><p class="lead mt-3">Planeá tus operaciones. Pasá para fijar tu turno. El mercado revela el precio cuando todos están listos.</p></div>
     ${session ? `<div class="alert alert-info"><div>Tu partida <strong class="room-code">${esc(session.code)}</strong> sigue guardada. <button class="btn btn-sm ms-2" data-action="refresh">Reconectar</button></div></div>` : ''}
-    <div class="row g-4"><div class="col-md-6"><form class="card h-100" id="create-form"><div class="card-body"><div class="eyebrow mb-2">01 / Nueva mesa</div><h2 class="card-title mb-3">Crear una partida</h2><label class="form-label" for="create-name">Tu nombre</label><input id="create-name" name="name" class="form-control mb-3" placeholder="¿Cómo te llamás?" maxlength="40" required autocomplete="nickname"><label class="form-label" for="initial-cash">Dinero inicial por jugador</label><div class="input-group mb-3"><span class="input-group-text">$</span><input id="initial-cash" name="cash" type="number" min="0" max="1000000" step="0.01" value="40" class="form-control" required></div><button class="btn btn-primary w-100" ${busy?'disabled':''}>Crear partida</button></div></form></div>
+    <div class="row g-4"><div class="col-md-6"><form class="card h-100" id="create-form"><div class="card-body"><div class="eyebrow mb-2">01 / Nueva mesa</div><h2 class="card-title mb-3">Crear una partida</h2><label class="form-label" for="create-name">Tu nombre</label><input id="create-name" name="name" class="form-control mb-3" placeholder="¿Cómo te llamás?" maxlength="40" required autocomplete="nickname"><label class="form-label" for="initial-cash">Dinero inicial por jugador</label><div class="input-group mb-3"><span class="input-group-text">$</span><input id="initial-cash" name="cash" type="number" min="0" max="1000000" step="0.01" value="40" class="form-control" required></div><label class="form-check mb-3"><input class="form-check-input" type="checkbox" name="stockMarket"><span class="form-check-label">Activar mercado burs&#225;til</span></label><button class="btn btn-primary w-100" ${busy?'disabled':''}>Crear partida</button></div></form></div>
     <div class="col-md-6"><form class="card h-100" id="join-form"><div class="card-body"><div class="eyebrow mb-2">02 / Ya hay una mesa</div><h2 class="card-title mb-3">Unirme con código</h2><label class="form-label" for="join-name">Tu nombre</label><input id="join-name" name="name" class="form-control mb-3" maxlength="40" required autocomplete="nickname" placeholder="Tu nombre en la mesa"><label class="form-label" for="join-code">Código de partida</label><input id="join-code" name="code" class="form-control room-code text-uppercase mb-3" maxlength="8" minlength="8" required value="${esc(invite)}" placeholder="ABCD2345" autocomplete="off" autocapitalize="characters" spellcheck="false"><button class="btn w-100" ${busy?'disabled':''}>Entrar a la sala</button></div></form></div></div>
     </div>`;
   }
@@ -134,7 +152,7 @@
   function gameView() {
     const p = me();
     const phases = {lobby:'Sala de espera',planning:'Planificación',settlement:'Mercado',execution:'Ejecución',maintenance:'Mantenimiento',finished:'Partida finalizada'};
-    return `<div class="page-header m-0 mb-3"><div><div class="eyebrow">${game.round ? 'Ronda '+game.round : 'Preparación'} / ${esc(p.name)}</div>${game.phase!=='planning'?`<h1 class="page-title mt-1">${phases[game.phase]}</h1>`:''}</div></div>
+    return `<div class="page-header m-0 mb-3"><div><div class="eyebrow">${game.round ? 'Ronda '+game.round : 'Preparación'} / ${esc(p.name)}${game.options?.stockMarket?' / Bolsa activada':''}</div>${game.phase!=='planning'?`<h1 class="page-title mt-1">${phases[game.phase]}</h1>`:''}</div></div>
     ${!connection?'<div class="alert alert-warning sync-warning">Reconectando. Las acciones pendientes se pueden reintentar sin duplicarlas.</div>':''}
     <div class="top-stats"><div class="card"><div class="card-body"><div class="eyebrow">Tu saldo</div><div class="stat-value ${p.cash<0?'money-negative':''}">${money(p.cash)}</div></div></div><div class="card"><div class="card-body"><div class="eyebrow">PV por deudas</div><div class="stat-value ${p.lostPv?'money-negative':''}">−${p.lostPv} <span class="small">PV</span></div></div></div><div class="card"><div class="card-body"><div class="eyebrow">${game.phase==='maintenance'?'Mantenimientos':game.phase==='lobby'?'En la sala':'Pases recibidos'}</div><div class="stat-value">${game.phase==='maintenance'?Object.keys(game.maintenance?.results||{}).length:game.phase==='lobby'?game.players.length:game.players.filter(p=>p.pass!==null).length} <span class="text-secondary small">/ ${game.phase==='lobby'?12:game.players.length}</span></div></div></div></div>
     <div class="phase-steps mb-4"><span class="phase-step ${game.phase==='planning'?'active':''}">1. Planificar</span><span class="phase-step ${game.phase==='settlement'?'active':''}">2. Mercado</span><span class="phase-step ${game.phase==='execution'?'active':''}">3. Ejecutar</span><span class="phase-step ${game.phase==='maintenance'?'active':''}">4. Mantenimiento</span></div>
@@ -152,6 +170,9 @@
         balance-=qty*price;
       }
       for(const [id,qty] of Object.entries(fixedOrders||{})) balance+=fixedTradeInfo(id,qty).amount;
+      if(game.stock && game.phase==='planning') {
+        for(const [id,qty] of Object.entries(editable?stockDraft:p.stockOrders||{})) balance-=qty*game.stock.round.prices[id];
+      }
     }
     const maintenance=[...entries].reverse().find(entry=>entry.maintenance)?.amount??0;
     return {funds:p.cash,balance,maintenance};
@@ -178,9 +199,64 @@
     }).join('')}</div></div>`;
   }
   function marketView() {
-    if(game.phase==='maintenance') return `<div class="market-layout"><div>${maintenance()}${resourceGroups()}</div><aside class="market-sidebar"><div class="sticky-panel">${playersPanel()}</div></aside></div>`;
+    if(game.phase==='maintenance') return `<div class="market-layout"><div>${maintenance()}${stockPanel()}${resourceGroups()}</div><aside class="market-sidebar"><div class="sticky-panel">${playersPanel()}</div></aside></div>`;
     if (game.phase==='lobby') return `<div class="row g-4"><div class="col-md-7"><div class="card"><div class="card-body p-4"><div class="eyebrow mb-2">Todo empieza con una mesa</div><h2>Jugá solo o invitá a otros jugadores</h2><p class="text-secondary">Podés iniciar con un solo jugador. Para jugar acompañado, compartí el código o el QR desde Menú antes de comenzar.</p>${isHost()?`<button class="btn btn-primary" data-command="start" ${busy?'disabled':''}>Iniciar partida</button>`:'<span class="text-secondary">Esperando al anfitrión…</span>'}</div></div><div class="card mt-3"><div class="card-body"><h3>Dos cierres antes de empezar</h3><p class="text-secondary mb-0">El mercado ya tiene dos rondas simuladas. Los precios conservarán su historia durante la partida. El último cierre orienta tus decisiones; el precio de tus órdenes se conoce al pasar todos.</p></div></div></div><div class="col-md-5">${playersPanel()}</div></div>`;
-    return `<div class="market-layout"><div>${game.phase==='settlement'?settlement():game.phase==='execution'||game.phase==='finished'?execution():''}${game.phase!=='planning'?'<div class="mb-3"><h2 class="mb-1">Precios de cierre</h2><p class="text-secondary mb-0 small">Un mismo precio para todos. El agente externo cubre las diferencias.</p></div>':''}${resourceGroups()}</div><aside class="market-sidebar"><div class="sticky-panel">${planningPanel()}${playersPanel()}</div></aside></div>`;
+    return `<div class="market-layout"><div>${game.phase==='settlement'?settlement():game.phase==='execution'||game.phase==='finished'?execution():''}${stockPanel()}${game.phase!=='planning'?'<div class="mb-3"><h2 class="mb-1">Precios de cierre</h2><p class="text-secondary mb-0 small">Un mismo precio para todos. El agente externo cubre las diferencias.</p></div>':''}${resourceGroups()}</div><aside class="market-sidebar"><div class="sticky-panel">${planningPanel()}${playersPanel()}</div></aside></div>`;
+  }
+  function stockPanel() {
+    if(!game.stock) return '';
+    const stock=game.stock, r=stock.round, own=stock.companies[game.me];
+    const ownShares=stock.holdings[game.me]?.[game.me]||0;
+    const due=own.expectation?own.price*(400-ownShares)/200:0;
+    return `<section class="stock-panel mb-3" aria-label="Resumen burs&#225;til"><div class="stock-summary"><span>${r.maintenance?'Pr&#243;xima ronda &#183; ':''}PV exigidos <strong>${own.requiredPv}</strong></span><span>Dividendos a pagar (est) <strong>${money(due)}</strong></span></div>
+      ${fixedTradeAllowed()&&!r.buyAllowed[game.me]?'<p class="small text-secondary mt-2">Comenzaste con saldo negativo: solo pod&#233;s vender acciones esta ronda.</p>':''}
+      ${r.market?stockRoundResult(r):''}
+      ${stock.history.some(entry=>entry.round!==r.round)?`<details class="mt-2"><summary>Historial burs&#225;til</summary>${stock.history.filter(entry=>entry.round!==r.round).slice().reverse().map(entry=>stockRoundResult(entry)).join('')}</details>`:''}</section>`;
+  }
+  function stockOrderMaximum(id) {
+    if(!game.stock.round.buyAllowed[game.me]) return 0;
+    const otherBuys=Object.entries(stockDraft).reduce((total,[company,qty])=>total+(company!==id?Math.max(0,qty):0),0);
+    return Math.max(0,10-otherBuys);
+  }
+  function stockRows() {
+    if(!game.stock) return '';
+    const editable=fixedTradeAllowed(), orders=editable?stockDraft:me().stockOrders||{};
+    const disabled=busy||!!readLocal(pendingKey);
+    return Object.entries(game.stock.companies).map(([id,c])=>{
+      const held=game.stock.holdings[id]?.[game.me]||0, qty=orders[id]||0, max=editable?stockOrderMaximum(id):0;
+      const history=c.priceHistory.slice(-3);
+      while(history.length<3) history.unshift(history[0]);
+      const delta=history[2].price-history[1].price, name=person(id).name;
+      const chart={min:50,max:Math.max(300,...history.map(point=>point.price)),nominal:300,color:'#68a8ff'};
+      return `<tr class="stock-trade-row" style="--resource-color:#68a8ff"><th scope="row"><span class="market-symbol">AC</span><span class="market-resource-name">${esc(name)}</span></th><td><span class="market-price-line"><strong class="market-close">${money(c.price)}</strong></span><span class="market-change ${delta>0?'money-positive':delta<0?'money-negative':'text-secondary'}">${delta>0?'&#8599;':delta<0?'&#8600;':'&#8594;'} ${money(Math.abs(delta))}</span></td><td class="market-history">${spark(chart,history)}</td><td><div class="signed-order" data-stock-order="${id}" data-side="${qty>0?'buy':qty<0?'sell':'none'}">${editable?`<div class="quantity-stepper"><button type="button" class="btn step-button" data-stock-step="-1" data-stock-id="${id}" aria-label="Restar una acci&#243;n de ${esc(name)}" ${disabled||qty<=-held?'disabled':''}>&#8722;</button><label class="visually-hidden" for="stock-qty-${id}">Acciones de ${esc(name)}: positivo compra, negativo vende</label><input id="stock-qty-${id}" class="form-control signed-quantity" type="number" inputmode="numeric" step="1" min="${-held}" max="${max}" value="${esc(qty)}" data-stock-qty="${id}" required ${disabled?'disabled':''}><button type="button" class="btn step-button" data-stock-step="1" data-stock-id="${id}" aria-label="Sumar una acci&#243;n de ${esc(name)}" ${disabled||qty>=max?'disabled':''}>+</button></div>`:`<strong class="settled-quantity">${qty>0?'+':''}${qty}</strong>`}<span class="order-direction" data-stock-direction>${qty>0?'Compra':qty<0?'Venta':'&#8212;'}</span></div></td></tr>`;
+    }).join('');
+  }
+  function refreshStockLimits() {
+    for(const input of app.querySelectorAll('[data-stock-qty]')) {
+      const id=input.dataset.stockQty, max=stockOrderMaximum(id), qty=Number(input.value);
+      input.max=String(max);
+      const control=input.closest('[data-stock-order]');
+      control.dataset.side=qty>0?'buy':qty<0?'sell':'none';
+      control.querySelector('[data-stock-direction]').textContent=qty>0?'Compra':qty<0?'Venta':String.fromCharCode(8212);
+      control.querySelector('[data-stock-step="1"]').disabled=busy||!!readLocal(pendingKey)||qty>=max;
+      control.querySelector('[data-stock-step="-1"]').disabled=busy||!!readLocal(pendingKey)||qty<=Number(input.min);
+    }
+  }
+  function stockRoundResult(r) {
+    const names={exempt:'Sin expectativa',missed:'Incumple PV',unpaid:'Impaga dividendos',met:'Cumple',exceeded:'Supera'};
+    return `<div class="stock-round-result"><h3 class="card-title mt-3">Operaciones bursátiles · ronda ${r.round}</h3><div class="stock-scroll"><table class="table table-sm"><thead><tr><th>Jugador</th><th>Empresa</th><th>Solicitadas</th><th>Ejecutadas</th><th>Precio</th><th>Movimiento</th></tr></thead><tbody>${r.market.trades.length?r.market.trades.map(t=>`<tr><td>${esc(person(t.player).name)}</td><td>${esc(person(t.company).name)}</td><td>${t.requested>0?'+':''}${t.requested}</td><td>${t.qty>0?'+':''}${t.qty}</td><td>${money(t.price)}</td><td class="${t.amount<0?'money-negative':'money-positive'}">${signed(t.amount)}</td></tr>`).join(''):'<tr><td colspan="6">Sin operaciones bursátiles.</td></tr>'}</tbody></table></div>
+      ${r.maintenance?`<h3 class="card-title">Resultados de mantenimiento · ronda ${r.round}</h3><div class="stock-scroll"><table class="table table-sm"><thead><tr><th>Empresa</th><th>PV exigidos / obtenidos</th><th>Resultado</th><th>Dividendos exigidos / pagados / recibidos</th><th>Ajuste / PV finales</th><th>Cotización nueva</th><th>Próxima ronda</th></tr></thead><tbody>${Object.entries(r.maintenance.results).map(([id,result])=>`<tr><th scope="row">${esc(person(id).name)}</th><td>${result.requiredPv} / ${result.gainedPv}</td><td>${names[result.status]}</td><td>${money(result.dueUnits/200)} / ${money(result.paidUnits/200)} / ${money(result.receivedUnits/200)}</td><td>${result.pvDelta>0?'+':''}${result.pvDelta} / ${result.finalPv} PV</td><td>${money(result.newPrice)}</td><td>Expectativa ${result.nextExpectation}<br>Demanda ${result.nextDemand}<br>Objetivo +${result.nextRequiredPv} PV</td></tr>`).join('')}</tbody></table></div><p class="small text-secondary">Los pagos y cobros ya están aplicados a la caja. Aplicá el ajuste bursátil de PV al puntaje de tu tablero.</p>`:game.phase==='maintenance'?'<p class="text-secondary small">El resultado bursátil se calcula cuando todos confirman su mantenimiento y sus PV.</p>':''}</div>`;
+  }
+  function updateStockOrder(input) {
+    if(!fixedTradeAllowed()||busy||readLocal(pendingKey)) return;
+    const id=input.dataset.stockQty, value=Number(input.value);
+    if(input.value.trim()===''||!Number.isInteger(value)) return;
+    const qty=Math.max(Number(input.min),Math.min(stockOrderMaximum(id),value));
+    input.value=String(qty);
+    if(qty) stockDraft[id]=qty; else delete stockDraft[id];
+    refreshStockLimits();
+    try { persistDraft(); } catch(err) { notify(err.message,true); }
+    updateFinanceBar();
   }
   function fixedTradeAllowed() {
     return game.phase==='planning' && me().pass===null;
@@ -237,7 +313,7 @@
     return `<svg class="sparkline" viewBox="0 0 200 50" role="img" aria-label="${esc(desc)}"><line x1="0" x2="200" y1="${nominalY}" y2="${nominalY}" stroke="#71839b" stroke-dasharray="3 4" opacity=".5"/><polyline points="${points}" fill="none" stroke="${r.color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>${h.map((v,i)=>`<circle cx="${8+i*92}" cy="${y(v.price)}" r="3" fill="${r.color}"/>`).join('')}</svg><div class="chart-labels">${h.map(v=>`<span>${money(v.price)}</span>`).join('')}</div>`;
   }
   function resourceGroups() {
-    return `<div class="card market-table-card"><table class="table table-vcenter market-table mb-0"><colgroup><col class="market-resource-col"><col class="market-price-col"><col class="market-chart-col"><col class="market-order-col"></colgroup><thead><tr><th scope="col">Recurso</th><th scope="col">Precio</th><th scope="col">Historial</th><th scope="col" class="text-center">Cantidad</th></tr></thead><tbody>${Object.values(game.catalog).map(resourceRow).join('')}${fixedTradeRows()}</tbody></table></div><p class="text-secondary small mt-2">Proyectos e ingenieros: positivo compra o contrata; negativo vende o despide. Se guardan con Guardar y pasar y se liquidan junto con los recursos. Los componentes se manejan en la mesa.</p>`;
+    return `<div class="card market-table-card"><table class="table table-vcenter market-table mb-0"><colgroup><col class="market-resource-col"><col class="market-price-col"><col class="market-chart-col"><col class="market-order-col"></colgroup><thead><tr><th scope="col">Recurso</th><th scope="col">Precio</th><th scope="col">Historial</th><th scope="col" class="text-center">Cantidad</th></tr></thead><tbody>${Object.values(game.catalog).map(resourceRow).join('')}${fixedTradeRows()}${stockRows()}</tbody></table></div><p class="text-secondary small mt-2">Proyectos e ingenieros: positivo compra o contrata; negativo vende o despide. Se guardan con Guardar y pasar y se liquidan junto con los recursos. Los componentes se manejan en la mesa.</p>`;
   }
   function resourceRow(r) {
     const h=game.history[r.id], last=h[h.length-1].price, delta=last-h[h.length-2].price;
@@ -287,16 +363,17 @@
   }
   function maintenance() {
     const rules=game.maintenanceRules,choice=maintenanceChoice();
-    const result=game.maintenance.results[game.me],complete=Object.keys(game.maintenance.results).length===game.players.length;
+    const result=game.maintenance.results[game.me],complete=Object.keys(game.maintenance.results).length===game.players.length&&(!game.stock||!!game.stock.round.maintenance);
     const disabled=busy||!!readLocal(pendingKey);
     const supportValues=Array.from({length:15},(_,i)=>i);
-    return `${result?`<div class="card mb-3"><div class="card-body"><h2 class="card-title">Mantenimiento registrado</h2><strong class="fs-2 ${result.amount<0?'money-negative':'money-positive'}">${signed(result.amount)}</strong></div></div>`:`<form id="maintenance-form" class="card mb-3"><div class="card-body">${maintenanceTrack('mines','Yacimientos','YA-yacimientos.svg',rules.mines,choice.mines,disabled)}${maintenanceTrack('barracks','Barracas · contratos','CN-ficha-contratacion.svg',rules.barracks,choice.barracks,disabled)}${maintenanceTrack('support','Soporte externo · ingenieros','SP-soporte-externo.svg',supportValues,choice.support,disabled)}<button type="button" class="btn btn-sm mb-3" data-action="more-support" ${disabled?'disabled':''}>Más ingenieros</button><div class="d-flex justify-content-between align-items-center mb-3"><span>Total</span><strong id="maintenance-total" class="fs-2">${signed(maintenanceAmount(choice))}</strong></div><button class="btn btn-primary w-100" ${disabled?'disabled':''}>Confirmar mantenimiento</button></div></form>`}${isHost()?`<div class="d-flex flex-wrap gap-2"><button class="btn btn-primary" data-command="next" ${!complete||disabled?'disabled':''}>Abrir ronda ${game.round+1}</button><button class="btn" data-action="finish" ${!complete||disabled?'disabled':''}>Finalizar partida</button></div>`:''}`;
+    return `${result?`<div class="card mb-3"><div class="card-body"><h2 class="card-title">Mantenimiento registrado</h2><strong class="fs-2 ${result.amount<0?'money-negative':'money-positive'}">${signed(result.amount)}</strong></div></div>`:`<form id="maintenance-form" class="card mb-3"><div class="card-body">${game.stock?`<label class="form-label" for="maintenance-pv">Puntaje actual del tablero (PV)</label><input id="maintenance-pv" name="pv" type="number" min="-1000000" max="1000000" step="1" inputmode="numeric" class="form-control mb-2" value="${esc(choice.pv??'')}" required ${disabled?'disabled':''}><p class="small text-secondary mb-3">Incluí las penalizaciones por deudas y los ajustes bursátiles anteriores. No incluyas el premio o penalización bursátil de esta ronda. Puntaje al comenzar: ${game.stock.round.basePv[game.me]} PV.</p>`:''}${game.stock?maintenanceTrack('support','Soporte externo','SP-soporte-externo.svg',supportValues,choice.support,disabled):''}${maintenanceTrack('mines','Yacimientos','YA-yacimientos.svg',rules.mines,choice.mines,disabled)}${maintenanceTrack('barracks','Barracas · contratos','CN-ficha-contratacion.svg',rules.barracks,choice.barracks,disabled)}${!game.stock?maintenanceTrack('support','Soporte externo · ingenieros','SP-soporte-externo.svg',supportValues,choice.support,disabled):''}<button type="button" class="btn btn-sm mb-3" data-action="more-support" ${disabled?'disabled':''}>Más ingenieros</button><div class="d-flex justify-content-between align-items-center mb-3"><span>Total</span><strong id="maintenance-total" class="fs-2">${signed(maintenanceAmount(choice))}</strong></div><button class="btn btn-primary w-100" ${disabled?'disabled':''}>Confirmar mantenimiento</button></div></form>`}${isHost()?`<div class="d-flex flex-wrap gap-2"><button class="btn btn-primary" data-command="next" ${!complete||disabled?'disabled':''}>Abrir ronda ${game.round+1}</button><button class="btn" data-action="finish" ${!complete||disabled?'disabled':''}>Finalizar partida</button></div>`:''}`;
   }
   function updateMaintenanceChoice() {
     const form=$('#maintenance-form');
     if(!form) return;
     const data=new FormData(form),choice={mines:Number(data.get('mines')),barracks:Number(data.get('barracks')),support:Number(data.get('support'))};
     if(!Number.isInteger(choice.support)||choice.support<0||choice.support>14) return;
+    if(game.stock) choice.pv=data.get('pv');
     storage('syncrodyson-maintenance-'+game.code,{round:game.round,player:game.me,choice});
     for(const button of form.querySelectorAll('[data-maintenance-track]')) {
       const value=Number(button.dataset.value),selected=choice[button.dataset.maintenanceTrack];
@@ -308,9 +385,9 @@
     $('#maintenance-total').textContent=signed(maintenanceAmount(choice));
   }
   function cashForm() {
-    const p=me(), allowed=['lobby','planning','execution','maintenance'].includes(game.phase);
+    const p=me(), allowed=['lobby','planning','execution','maintenance'].includes(game.phase)&&!(game.stock&&game.phase==='maintenance');
     const others=game.players.filter(x=>x.id!==p.id);
-    return `<form id="cash-form" class="card mb-4"><div class="card-header"><h2 class="card-title">Registrar dinero del tablero</h2></div><div class="card-body"><p class="text-secondary small">Ingresos, contratación, proyectos, eventos o correcciones. Todo queda visible en el registro público.</p><label class="form-label" for="cash-kind">Movimiento</label><select id="cash-kind" name="kind" class="form-select mb-3" ${allowed?'':'disabled'}><option value="income">Cobro de la reserva</option><option value="expense">Pago a la reserva</option>${others.map(x=>`<option value="transfer:${esc(x.id)}">Transferir a ${esc(x.name)}</option>`).join('')}</select><label class="form-label" for="cash-amount">Importe ($)</label><input id="cash-amount" name="amount" type="number" min="0.01" max="1000000" step="0.01" inputmode="decimal" class="form-control mb-3" required ${allowed?'':'disabled'}><button class="btn btn-primary w-100" ${!allowed||busy||readLocal(pendingKey)?'disabled':''}>Registrar movimiento</button>${!allowed?'<p class="small text-secondary mt-2 mb-0">La caja se habilita fuera de la liquidación y antes de finalizar la partida.</p>':''}</div></form>`;
+    return `<form id="cash-form" class="card mb-4"><div class="card-header"><h2 class="card-title">Registrar dinero del tablero</h2></div><div class="card-body"><p class="text-secondary small">Ingresos, contratación, proyectos, eventos o correcciones. Todo queda visible en el registro público.</p><label class="form-label" for="cash-kind">Movimiento</label><select id="cash-kind" name="kind" class="form-select mb-3" ${allowed?'':'disabled'}><option value="income">Cobro de la reserva</option><option value="expense">Pago a la reserva</option>${others.map(x=>`<option value="transfer:${esc(x.id)}">Transferir a ${esc(x.name)}</option>`).join('')}</select><label class="form-label" for="cash-amount">Importe ($)</label><input id="cash-amount" name="amount" type="number" min="0.01" max="1000000" step="0.01" inputmode="decimal" class="form-control mb-3" required ${allowed?'':'disabled'}><button class="btn btn-primary w-100" ${!allowed||busy||readLocal(pendingKey)?'disabled':''}>Registrar movimiento</button>${!allowed?`<p class="small text-secondary mt-2 mb-0">${game.stock&&game.phase==='maintenance'?'La caja se reabre en la próxima ronda, después de resolver los dividendos.':'La caja se habilita fuera de la liquidación y antes de finalizar la partida.'}</p>`:''}</div></form>`;
   }
   function account() {
     const p=me();
@@ -318,7 +395,7 @@
     return `<div class="account-grid"><div>${cashForm()}</div><div><div class="card mb-3"><div class="card-header"><h2 class="card-title">Tus deudas</h2></div><div class="card-body"><div class="d-flex justify-content-between"><span>Descubierto monetario</span><strong>${money(Math.max(0,-p.cash))}</strong></div>${Object.entries(p.debts).map(([rid,q])=>`<form class="repay-form debt-row" data-resource="${rid}"><div><strong>${q} ${esc(game.catalog[rid].name)}</strong><div class="small text-secondary">Valor máximo: ${money(q*game.catalog[rid].max)}</div></div><div class="d-flex gap-2"><label class="visually-hidden" for="repay-${rid}">Unidades a devolver de ${esc(game.catalog[rid].name)}</label><input id="repay-${rid}" name="qty" type="number" min="1" max="${q}" value="${q}" step="1" class="form-control" style="width:75px" required><button class="btn btn-sm" ${!['planning','execution','maintenance'].includes(game.phase)||busy?'disabled':''}>Entregar</button></div></form>`).join('')}<hr><div class="d-flex justify-content-between"><span>Valor penalizable actual</span><strong>${money(debtValue)}</strong></div><p class="text-secondary small mt-3 mb-0">Con esta deuda perderías <strong>${Math.floor(debtValue/500)} PV</strong> al terminar el próximo mercado. Se suma el descubierto y los recursos pendientes a precio máximo. Entregar recursos no mueve dinero ni devuelve PV perdidos.</p></div></div></div></div>`;
   }
   function activity() {
-    return `<div class="card"><div class="card-header"><h2 class="card-title">Movimientos de toda la mesa</h2><button class="btn btn-sm ms-auto" data-action="export">Exportar registro</button></div><div class="table-responsive"><table class="table table-vcenter ledger-table mb-0"><thead><tr><th>Ronda</th><th>Jugador</th><th>Motivo</th><th class="text-end">Movimiento</th></tr></thead><tbody>${[...game.ledger].reverse().map(l=>`<tr><td>${l.round||'Inicio'}</td><td>${esc(person(l.player)?.name)}</td><td>${esc(l.reason)}${l.by&&l.by!==l.player?`<div class="small text-secondary">Confirmó ${esc(person(l.by)?.name)}</div>`:''}${l.debtValue!==undefined?`<div class="small text-secondary">Deuda valorada: ${money(l.debtValue)}</div>`:''}${fixedOrderSummary(l.fixedOrders)}${l.trade?`<div class="small text-secondary">${l.trade.qty} ${l.trade.type?'ingenieros · '+esc(game.engineerTypes[l.trade.type]):'cartas de proyecto'} · ${l.trade.unitAmount===0?'sin devolución de dinero':money(Math.abs(l.trade.unitAmount))+' por unidad'}</div>`:''}${l.maintenance?`<div class="small text-secondary">Yacimientos ${signed(l.maintenance.mines)} / Barracas ${signed(-l.maintenance.barracks)} / Soporte ${signed(l.maintenance.supportIncome)}</div>`:''}${l.units?`<div class="small text-secondary">${Object.entries(l.units).map(([r,q])=>`${q} ${esc(r)}`).join(' · ')}</div>`:''}${l.missing&&Object.keys(l.missing).length?`<div class="small money-negative">Pendiente: ${Object.entries(l.missing).map(([r,q])=>`${q} ${esc(r)}`).join(' · ')}</div>`:''}</td><td class="text-end ${l.amount<0||l.pv<0?'money-negative':l.amount>0?'money-positive':''}">${l.pv!==undefined?l.pv+' PV':signed(l.amount)}</td></tr>`).join('')}</tbody></table></div></div>`;
+    return `<div class="card"><div class="card-header"><h2 class="card-title">Movimientos de toda la mesa</h2><button class="btn btn-sm ms-auto" data-action="export">Exportar registro</button></div><div class="table-responsive"><table class="table table-vcenter ledger-table mb-0"><thead><tr><th>Ronda</th><th>Jugador</th><th>Motivo</th><th class="text-end">Movimiento</th></tr></thead><tbody>${[...game.ledger].reverse().map(l=>`<tr><td>${l.round||'Inicio'}</td><td>${esc(person(l.player)?.name)}</td><td>${esc(l.reason)}${l.by&&l.by!==l.player?`<div class="small text-secondary">Confirmó ${esc(person(l.by)?.name)}</div>`:''}${l.debtValue!==undefined?`<div class="small text-secondary">Deuda valorada: ${money(l.debtValue)}</div>`:''}${fixedOrderSummary(l.fixedOrders)}${l.stock?`<div class="small text-secondary">Empresa: ${esc(person(l.stock.company)?.name)}${l.stock.requested!==undefined?` · ${l.stock.qty} acciones de ${l.stock.requested} solicitadas · ${money(l.stock.price)} por acción`:''}${l.stock.result?` · ${l.stock.result.declaredPv} PV declarados → ${l.stock.result.finalPv} PV finales`:''}</div>`:''}${l.trade?`<div class="small text-secondary">${l.trade.qty} ${l.trade.type?'ingenieros · '+esc(game.engineerTypes[l.trade.type]):'cartas de proyecto'} · ${l.trade.unitAmount===0?'sin devolución de dinero':money(Math.abs(l.trade.unitAmount))+' por unidad'}</div>`:''}${l.maintenance?`<div class="small text-secondary">Yacimientos ${signed(l.maintenance.mines)} / Barracas ${signed(-l.maintenance.barracks)} / Soporte ${signed(l.maintenance.supportIncome)}</div>`:''}${l.units?`<div class="small text-secondary">${Object.entries(l.units).map(([r,q])=>`${q} ${esc(r)}`).join(' · ')}</div>`:''}${l.missing&&Object.keys(l.missing).length?`<div class="small money-negative">Pendiente: ${Object.entries(l.missing).map(([r,q])=>`${q} ${esc(r)}`).join(' · ')}</div>`:''}</td><td class="text-end ${l.amount<0||l.pv<0?'money-negative':l.amount>0?'money-positive':''}">${l.pv!==undefined?l.pv+' PV':signed(l.amount)}</td></tr>`).join('')}</tbody></table></div></div>`;
   }
   function showShare() {
     const url=new URL(location.pathname,location.origin); url.searchParams.set('join',game.code);
@@ -328,7 +405,7 @@
   }
   async function copy(text) { try { await navigator.clipboard.writeText(text); notify('Copiado.'); } catch { notify('Seleccioná y copiá el texto del campo.',true); } }
   function persistDraft() {
-    dirty=true; storage(draftKey(game.code), {round:game.round,player:game.me,orders:draft,fixedOrders:fixedDraft});
+    dirty=true; storage(draftKey(game.code), {round:game.round,player:game.me,orders:draft,fixedOrders:fixedDraft,stockOrders:stockDraft});
     const label=$('#draft-status'); if(label) label.textContent='Cambios guardados en este teléfono.';
   }
   function collectOrders() {
@@ -344,7 +421,15 @@
       if(!Number.isInteger(qty)||Math.abs(qty)>1000000) return null;
       if(qty) fixedDraft[input.dataset.fixedQty]=qty; else delete fixedDraft[input.dataset.fixedQty];
     }
-    return {orders:{...draft},fixedOrders:{...fixedDraft}};
+    if(game.stock) {
+      for(const input of app.querySelectorAll('[data-stock-qty]')) {
+        updateStockOrder(input);
+        if(!input.reportValidity()) return null;
+        const qty=Number(input.value);
+        if(qty) stockDraft[input.dataset.stockQty]=qty; else delete stockDraft[input.dataset.stockQty];
+      }
+    }
+    return {orders:{...draft},fixedOrders:{...fixedDraft},...(game.stock?{stockOrders:{...stockDraft}}:{})};
   }
   function updateOrder(id,qty) {
     if(qty) draft[id]=qty; else delete draft[id];
@@ -359,6 +444,8 @@
     const input=e.target;
     if(input.closest('.fixed-trade-order') && fixedTradeAllowed()) updateTradeTotal(input.closest('.fixed-trade-order'));
     if(input.id==='maintenance-support') updateMaintenanceChoice();
+    if(input.id==='maintenance-pv') updateMaintenanceChoice();
+    if(input.dataset.stockQty) updateStockOrder(input);
     if(input.dataset.qty&&game?.phase==='planning') {
       const n=Number(input.value); if(Number.isInteger(n)&&n>= -1000000&&n<=1000000) updateOrder(input.dataset.qty,n);
     }
@@ -374,10 +461,10 @@
     if(!f.reportValidity()) return;
     if(f.id==='create-form'||f.id==='join-form') {
       const data={name:values.name}; const action=f.id==='create-form'?'create':'join';
-      if(action==='create') data.cash=Math.round(Number(values.cash)*100); else data.code=values.code.toUpperCase().trim();
+      if(action==='create') { data.cash=Math.round(Number(values.cash)*100); data.stockMarket=values.stockMarket==='on'; } else data.code=values.code.toUpperCase().trim();
       await act(action,data,random());
     } else if(f.id==='maintenance-form') {
-      await act('maintain',{mines:Number(values.mines),barracks:Number(values.barracks),support:Number(values.support)});
+      await act('maintain',{mines:Number(values.mines),barracks:Number(values.barracks),support:Number(values.support),...(game.stock?{pv:Number(values.pv)}:{})});
     } else if(f.id==='settle-form') {
       const missing={}; for(const [k,v] of Object.entries(values)) if(k.startsWith('missing-')&&Number(v)) missing[k.slice(8)]=Number(v);
       const player=game.settlement.order[game.settlement.index];
@@ -402,6 +489,13 @@
       if(busy||game?.phase!=='maintenance'||game.maintenance.results[game.me]||readLocal(pendingKey)) return;
       $('#maintenance-'+b.dataset.maintenanceTrack).value=b.dataset.value;
       updateMaintenanceChoice();return;
+    }
+    if(b.dataset.stockStep) {
+      if(busy||!fixedTradeAllowed()||readLocal(pendingKey)) return;
+      const input=$('#stock-qty-'+b.dataset.stockId);
+      if(!input.reportValidity()) return;
+      input.value=String(Math.max(Number(input.min),Math.min(Number(input.max),Number(input.value)+Number(b.dataset.stockStep))));
+      updateStockOrder(input); return;
     }
     if(b.dataset.fixedStep) {
       if(busy || !fixedTradeAllowed() || readLocal(pendingKey)) return;

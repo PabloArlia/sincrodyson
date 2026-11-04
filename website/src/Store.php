@@ -68,8 +68,10 @@ final class Store
                 $q = $this->db->prepare('INSERT INTO entry_requests(request_id,payload_hash,game_code) VALUES(?,?,?)');
                 $q->execute([$request, $hash, $code]);
                 if ($action === 'create') {
+                    $stockMarket = $data['stockMarket'] ?? false;
+                    if (!is_bool($stockMarket)) throw new GameError('La opción de mercado bursátil debe ser verdadera o falsa.');
                     $s = Game::create($code, Game::name($data['name'] ?? ''), $token,
-                        Game::integer($data['cash'] ?? 4000, 0, 100000000));
+                        Game::integer($data['cash'] ?? 4000, 0, 100000000), $stockMarket);
                     $q = $this->db->prepare('INSERT INTO games(code,state,version) VALUES(?,?,?)');
                     $q->execute([$code, json_encode($s, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE), 1]);
                 } else {

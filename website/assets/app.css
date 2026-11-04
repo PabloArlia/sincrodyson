@@ -187,6 +187,13 @@ button:disabled { cursor:default; }
 
 .settlement-resource { display:flex; align-items:center; gap:12px; min-width:0; }
 .settlement-resource > div { min-width:0; }
+.stock-scroll { position:relative; overflow-x:auto; max-width:100%; }
+.stock-summary { display:flex; align-items:center; flex-wrap:wrap; gap:.4rem 1.5rem; font-size:.78rem; color:var(--tblr-secondary-color); }
+.stock-summary strong { display:inline; margin-left:.35rem; font-size:.9rem; color:var(--tblr-body-color); }
+.stock-round-result { border-top:1px solid var(--tblr-border-color); margin-top:1rem; }
+.stock-panel details:not([open]) > .stock-round-result { display:none; }
+.stock-round-result table { min-width:580px; font-size:.8rem; }
+.stock-round-result th,.stock-round-result td { white-space:normal; min-width:75px; }
 .market-resource-icon,.market-resource-token { width:36px; height:36px; flex:0 0 36px; }
 .market-resource-icon { object-fit:contain; }
 .market-resource-token { display:inline-flex; align-items:center; justify-content:center; border:1px solid #222; border-radius:50%; background:var(--token-color); color:var(--token-ink); font-size:.8rem; font-weight:800; }

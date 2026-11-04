@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 require_once __DIR__ . '/Market.php';
+require_once __DIR__ . '/StockMarket.php';
 
 final class GameError extends RuntimeException
 {
@@ -45,7 +46,7 @@ final class Game
         return $value;
     }
 
-    public static function create(string $code, string $name, string $token, int $cash = 4000): array
+    public static function create(string $code, string $name, string $token, int $cash = 4000, bool $stockMarket = false): array
     {
         $player = self::player($name, $token, $cash);
         $catalog = Market::catalog();
@@ -53,7 +54,8 @@ final class Game
         $s = ['code' => $code, 'version' => 1, 'phase' => 'lobby', 'round' => 0,
             'host' => $player['id'], 'players' => [$player], 'catalog' => $catalog,
             'seed' => $seed, 'history' => Market::warmup($catalog, $seed), 'passCounter' => 0,
-            'settlement' => null, 'markets' => [], 'ledger' => [], 'initialCash' => $cash];
+            'settlement' => null, 'markets' => [], 'ledger' => [], 'initialCash' => $cash,
+            'options' => ['stockMarket' => $stockMarket]];
         self::log($s, $player['id'], $cash, 'Saldo inicial');
         return $s;
     }
@@ -87,11 +89,18 @@ final class Game
         if (!in_array($s['phase'], $allowed, true)) throw new GameError('La fase cambió. Actualizá la pantalla.', 409);
     }
 
-    private static function log(array &$s, string $player, int $amount, string $reason, array $extra = []): void
+    private static function log(array &$s, string $player, int|float $amount, string $reason, array $extra = []): void
     {
+        if (StockMarket::enabled($s)) $extra['amountUnits'] = (int) round($amount * StockMarket::SCALE);
         $s['ledger'][] = ['id' => count($s['ledger']) + 1, 'round' => $s['round'],
             'player' => $player, 'amount' => $amount, 'reason' => $reason,
             'at' => gmdate('c')] + $extra;
+    }
+
+    private static function cashChange(array &$s, int $actor, int $cents): void
+    {
+        if (StockMarket::enabled($s) && isset($s['stock'])) StockMarket::credit($s, $actor, $cents * StockMarket::SCALE);
+        else $s['players'][$actor]['cash'] += $cents;
     }
 
     private static function orders(array $s, mixed $input): array
@@ -137,6 +146,7 @@ final class Game
                 self::phase($s, 'lobby');
                 if (!$host) throw new GameError('Solo el anfitrión puede iniciar.', 403);
                 $s['round'] = 1; $s['phase'] = 'planning';
+                if (StockMarket::enabled($s)) StockMarket::initialize($s);
                 break;
             case 'plan':
             case 'pass':
@@ -144,8 +154,10 @@ final class Game
                 if ($p['pass'] !== null) throw new GameError('Retirá tu pase antes de cambiar las órdenes.', 409);
                 $orders = self::orders($s, $data['orders'] ?? []);
                 $fixedOrders = self::fixedOrders($data['fixedOrders'] ?? []);
+                $stockOrders = StockMarket::orders($s, $actor, $data['stockOrders'] ?? []);
                 $p['orders'] = $orders;
                 $p['fixedOrders'] = $fixedOrders;
+                if (StockMarket::enabled($s)) $p['stockOrders'] = $stockOrders;
                 if ($action === 'pass') {
                     $p['pass'] = ++$s['passCounter'];
                     if (count(array_filter($s['players'], fn($x) => $x['pass'] !== null)) === count($s['players'])) self::closeMarket($s);
@@ -171,7 +183,7 @@ final class Game
                 $amount = 0;
                 foreach ($seller['orders'] as $rid => $qty) $amount -= $qty * $s['settlement']['prices'][$rid];
                 $amount += self::fixedAmount($seller['fixedOrders'] ?? [], $s['settlement']['fixedRules'] ?? self::tradeRules());
-                $seller['cash'] += $amount;
+                self::cashChange($s, $target, $amount);
                 $s['settlement']['results'][$id] = ['amount' => $amount, 'balance' => $seller['cash'],
                     'missing' => $missing, 'confirmedBy' => $p['id']];
                 self::log($s, $id, $amount, 'Liquidación de mercado', ['orders' => $seller['orders'], 'fixedOrders' => $seller['fixedOrders'] ?? [], 'missing' => $missing, 'by' => $p['id']]);
@@ -179,8 +191,12 @@ final class Game
                 if ($s['settlement']['index'] === count($s['players'])) {
                     foreach ($s['players'] as &$person) {
                         $value = max(0, -$person['cash']);
-                        foreach ($person['debts'] as $rid => $qty) $value += $qty * $s['catalog'][$rid]['max'];
-                        $penalty = intdiv($value, 500);
+                        $resourceDebt = 0;
+                        foreach ($person['debts'] as $rid => $qty) $resourceDebt += $qty * $s['catalog'][$rid]['max'];
+                        $value += $resourceDebt;
+                        $penalty = StockMarket::enabled($s)
+                            ? intdiv(max(0, -$person['cashUnits']) + $resourceDebt * StockMarket::SCALE, 500 * StockMarket::SCALE)
+                            : intdiv($value, 500);
                         $person['lostPv'] += $penalty;
                         self::log($s, $person['id'], 0, 'Penalización por deudas', ['pv' => -$penalty, 'debtValue' => $value]);
                     }
@@ -203,6 +219,7 @@ final class Game
             case 'cash':
             case 'transfer':
                 self::phase($s, 'lobby', 'planning', 'execution', 'maintenance');
+                if (StockMarket::enabled($s) && $s['phase'] === 'maintenance') throw new GameError('La caja se reabre al terminar el mantenimiento bursátil.', 409);
                 $amount = self::integer($data['amount'] ?? null, -100000000, 100000000);
                 if (!$amount) throw new GameError('El importe no puede ser cero.');
                 $reason = self::name($data['reason'] ?? '');
@@ -210,12 +227,12 @@ final class Game
                     if ($amount < 1) throw new GameError('La transferencia debe ser positiva.');
                     $other = array_search($data['to'] ?? '', array_column($s['players'], 'id'), true);
                     if ($other === false || $other === $actor) throw new GameError('Elegí otro jugador.');
-                    $p['cash'] -= $amount;
-                    $s['players'][$other]['cash'] += $amount;
+                    self::cashChange($s, $actor, -$amount);
+                    self::cashChange($s, $other, $amount);
                     self::log($s, $p['id'], -$amount, $reason, ['to' => $s['players'][$other]['id']]);
                     self::log($s, $s['players'][$other]['id'], $amount, $reason, ['from' => $p['id']]);
                 } else {
-                    $p['cash'] += $amount;
+                    self::cashChange($s, $actor, $amount);
                     self::log($s, $p['id'], $amount, $reason);
                 }
                 break;
@@ -232,26 +249,31 @@ final class Game
                 $mines = self::integer($data['mines'] ?? null, 0, count($rules['mines']) - 1);
                 $barracks = self::integer($data['barracks'] ?? null, 0, count($rules['barracks']) - 1);
                 $support = self::integer($data['support'] ?? null, 0, 14);
+                $pv = StockMarket::enabled($s) ? self::integer($data['pv'] ?? null, -1000000, 1000000) : null;
                 $amount = $rules['mines'][$mines] - $rules['barracks'][$barracks] + $support * $rules['supportPerEngineer'];
-                $p['cash'] += $amount;
+                self::cashChange($s, $actor, $amount);
                 $p['maintenanceChoice'] = compact('mines', 'barracks', 'support');
                 $result = ['amount' => $amount, 'balance' => $p['cash'],
                     'mines' => $rules['mines'][$mines], 'barracks' => $rules['barracks'][$barracks],
                     'support' => $support, 'supportIncome' => $support * $rules['supportPerEngineer']];
+                if (StockMarket::enabled($s)) $result['pv'] = $pv;
                 $s['maintenance']['results'][$p['id']] = $result;
                 self::log($s, $p['id'], $amount, 'Mantenimiento', ['maintenance' => $result]);
+                if (StockMarket::enabled($s) && count($s['maintenance']['results']) === count($s['players'])) StockMarket::closeMaintenance($s);
                 break;
             case 'next':
             case 'finish':
                 self::phase($s, 'maintenance');
                 if (!$host) throw new GameError('Solo el anfitrión puede avanzar la partida.', 403);
                 if (count($s['maintenance']['results']) !== count($s['players'])) throw new GameError('Falta que todos confirmen su mantenimiento.');
+                if (StockMarket::enabled($s) && $s['stock']['round']['maintenance'] === null) throw new GameError('Falta cerrar el mantenimiento bursátil.', 409);
                 if ($action === 'finish') { $s['phase'] = 'finished'; break; }
                 ++$s['round']; $s['phase'] = 'planning'; $s['passCounter'] = 0;
                 foreach ($s['players'] as &$person) { $person['pass'] = null; $person['orders'] = []; $person['fixedOrders'] = []; }
                 unset($person);
                 $s['settlement'] = null;
                 $s['maintenance'] = null;
+                if (StockMarket::enabled($s)) StockMarket::beginRound($s);
                 break;
             default: throw new GameError('Acción desconocida.', 404);
         }
@@ -274,6 +296,7 @@ final class Game
         $ordered = $s['players'];
         usort($ordered, fn($a, $b) => $a['pass'] <=> $b['pass']);
         $s['settlement'] = ['prices' => $prices, 'flows' => $flows, 'fixedRules' => self::tradeRules(), 'order' => array_column($ordered, 'id'), 'index' => 0, 'results' => []];
+        if (StockMarket::enabled($s)) StockMarket::closeMarket($s);
         $s['phase'] = 'settlement';
     }
 
@@ -286,7 +309,7 @@ final class Game
         foreach ($s['players'] as $i => &$p) {
             unset($p['tokenHash']);
             $p['fixedOrders'] ??= [];
-            if ($s['phase'] === 'planning' && $i !== $actor) unset($p['orders'], $p['fixedOrders']);
+            if ($s['phase'] === 'planning' && $i !== $actor) unset($p['orders'], $p['fixedOrders'], $p['stockOrders']);
         }
         unset($p);
         return $s;
