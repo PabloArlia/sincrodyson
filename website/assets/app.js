@@ -271,8 +271,8 @@
   }
   function maintenanceChoice() {
     const saved=readLocal('syncrodyson-maintenance-'+game.code);
-    const choice=saved?.round===game.round&&saved.player===game.me?saved.choice:me().maintenanceChoice||(saved?.player===game.me?saved.choice:{mines:3,barracks:0,support:0});
-    return {...choice,support:Math.max(0,Math.min(14,choice.support))};
+    const choice=saved?.round===game.round&&saved.player===game.me?saved.choice:me().maintenanceChoice||(saved?.player===game.me?saved.choice:{mines:2,barracks:0,support:0});
+    return {...choice,mines:Math.max(0,Math.min(game.maintenanceRules.mines.length-1,choice.mines)),support:Math.max(0,Math.min(14,choice.support))};
   }
   function maintenanceAmount(choice) {
     const rules=game.maintenanceRules;
