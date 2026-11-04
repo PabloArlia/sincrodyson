@@ -597,7 +597,7 @@ window.modulos = [
     "discos": 0,
     "bono": "-1 [AI] [=] +1 [II] +1 [PI]",
     "disco_soporte": 0,
-    "efecto": "Retira un [AI] ingeniero anclado de cualquier celda y colócalo en tus barracas.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Retira un [AI] ingeniero anclado de cualquier celda y colócalo en tus barracas, Leugo gana 1 [PI] punto.\nDebes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
