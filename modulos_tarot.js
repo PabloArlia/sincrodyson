@@ -1,5 +1,7 @@
 // Syncrodyson — datos de proyectos. Las recetas nuevas no acordadas se identifican en nota_balance.
 // bono: texto e iconos entre corchetes, p. ej. "3 [DS]", "+3 [En]", "+18 [Di][RE]".
+// Duplicación: materiales ajustados al incremento proporcional de PV totales, manteniendo
+// operativos y otros premios. Las decisiones especiales figuran bajo revisada en nota_duplicacion.
 // Balance: suma puntos_carta + puntos_capas + puntos_ingenieros + puntos_otros.
 // puntos_ingenieros usa -4 por anclado; balance.js permite ajustar ese supuesto.
 // puntos_otros: null indica una estimación pendiente; 0 indica que no se suma otro efecto.
@@ -8,6 +10,7 @@
 // PLANTILLA PARA NUEVAS CARTAS (ejemplo comentado; no se incorpora al juego):
 // {
 //   "id": "PXXX",                  // Identificador único
+//   "revisada": 0,                 // 0 = pendiente de revision; 1 = revisada
 //   "nombre": "Nombre del proyecto",
 //   "tipo": "microondas",         // Categoría de la carta
 //   "inicial": false,            // Opcional; true si es una carta inicial
@@ -20,7 +23,7 @@
 //   "discos": 1,                // Discos colocados en sectores (no en soporte)
 //   "bono": "1 [DP][MO] [RE]", // Iconos/texto visibles en la carta
 //   "disco_soporte": 0,         // Discos colocados en áreas de soporte
-//   "efecto": "Coloca 1 disco en [MO]. Puedes volver a colocar el cubo en la etapa 2.",
+//   "efecto": "Coloca un disco en 1 celda libre de [MO]. Puedes volver a colocar el cubo en la etapa 2.",
 //   "etapas": [                 // m = materiales; o = operativos, energía y transporte
 //     { "m": { "Fe": 3, "Ti": 1 }, "o": { "IE": 1, "En": 2 } },
 //     { "m": { "Fe": 7, "Ti": 2 }, "o": { "IE": 1, "En": 2 } }
@@ -33,6 +36,7 @@ window.modulos = [
   // Proyectos iniciales: circulan obligatoriamente hacia la derecha.
   {
     "id": "P064",
+    "revisada": 1,
     "nombre": "Control autónomo por IA",
     "tipo": "control_sensores",
     "inicial": true,
@@ -43,15 +47,16 @@ window.modulos = [
     "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][CO] [/] 1[DP][SN]",
-    "disco_soporte": 1,
-    "efecto": "Coloca 1 disco en una celda libre de [CO] Control o [SN] Sensores de un área de soporte.\nDebes darle esta carta al jugador a tu derecha.",
+    "bono": "2 [DP][CO] [/] 2[DP][SN]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [CO] Control o [SN] Sensores de una o varias áreas de soporte.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
           "Nd": 1,
-          "Fe": 3,
-          "Si": 2
+          "Fe": 6,
+          "Si": 5,
+          "Cu": 2
         },
         "o": {
           "IS": 1,
@@ -60,8 +65,9 @@ window.modulos = [
       },
       {
         "m": {
-          "Al": 2,
-          "Cu": 1
+          "Nd": 1,
+          "Al": 4,
+          "Cu": 3
         },
         "o": {
           "IS": 1,
@@ -74,6 +80,7 @@ window.modulos = [
   },
   {
     "id": "P081",
+    "revisada": 1,
     "nombre": "Drones de inspección autónoma",
     "tipo": "mantenimiento",
     "inicial": true,
@@ -84,15 +91,15 @@ window.modulos = [
     "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][MN]",
-    "disco_soporte": 1,
-    "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un área de soporte.\nDebes darle esta carta al jugador a tu derecha.",
+    "bono": "2 [DP][MN]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento de una o varias áreas de soporte.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
-          "Fe": 3,
-          "Al": 2,
-          "Si": 3
+          "Fe": 5,
+          "Al": 5,
+          "Si": 7
         },
         "o": {
           "En": 2,
@@ -101,13 +108,13 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 2,
-          "Ti": 1,
-          "C": 2
+          "Cu": 3,
+          "Ti": 2,
+          "C": 5
         },
         "o": {
           "En": 1,
-          "Tr": 1,
+          "Tr": 2,
           "IS": 1
         }
       }
@@ -116,38 +123,8 @@ window.modulos = [
   },
   {
     "id": "P019",
-    "nombre": "Red HVDC de cobre",
-    "tipo": "transmision",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 1,
-    "bono": "1 [DS][TS]",
-    "disco_soporte": 0,
-    "efecto": "Coloca un disco en 1 celda libre de [TS] Transmisión.\nDebes darle esta carta al jugador a tu derecha.",
-    "etapas": [
-      {
-        "m": {
-          "Fe": 1,
-          "Cu": 3,
-          "Si": 1
-        },
-        "o": {
-          "IM": 1,
-          "En": 1,
-          "Tr": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
-  {
-    "id": "P020",
-    "nombre": "Red HVDC ultraligera",
+    "revisada": 1,
+    "nombre": "Red de alto voltaje de cobre",
     "tipo": "transmision",
     "inicial": true,
     "puntos": "0 [PV]",
@@ -157,21 +134,53 @@ window.modulos = [
     "puntos_otros": 0,
     "copias": 1,
     "discos": 2,
-    "bono": "2 [DS][TS] [=][QU]",
+    "bono": "2 [DS][TS] [=]1[QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [TS] Transmisión de un mismo cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [TS] Transmisión del mismo cuadrante.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
-          "Al": 4,
-          "Ti": 2,
-          "C": 3,
-          "Si": 3
+          "Fe": 3,
+          "Cu": 5,
+          "Si": 2
+        },
+        "o": {
+          "IM": 1,
+          "En": 1,
+          "Tr": 2
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "P020",
+    "revisada": 1,
+    "nombre": "Red de alto voltaje ultraligera",
+    "tipo": "transmision",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 4,
+    "bono": "4 [DS][TS] [=<]2[QU]",
+    "disco_soporte": 0,
+    "efecto": "Coloca un disco en 4 celdas libres de [TS] Transmisión de hasta 2 cuadrantes distintos.\nLuego debes darle esta carta al jugador a tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Al": 8,
+          "Ti": 4,
+          "C": 5,
+          "Si": 5
         },
         "o": {
           "IM": 1,
           "En": 2,
-          "Tr": 1
+          "Tr": 2
         }
       }
     ],
@@ -179,7 +188,41 @@ window.modulos = [
   },
   {
     "id": "P029",
+    "revisada": 1,
     "nombre": "Antena parabólica de microondas",
+    "tipo": "microondas",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 4,
+    "bono": "4 [DS][MO][AD]",
+    "disco_soporte": 0,
+    "efecto": "Coloca un disco en 4 celdas libres y adyacentes de [MO] Microondas.\nLuego debes darle esta carta al jugador a tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Al": 8,
+          "Cu": 5,
+          "Ti": 1,
+          "Si": 8
+        },
+        "o": {
+          "IM": 1,
+          "En": 2,
+          "Tr": 2
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "I05",
+    "revisada": 1,
+    "nombre": "Blindaje compuesto",
     "tipo": "microondas",
     "inicial": true,
     "puntos": "0 [PV]",
@@ -191,42 +234,10 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][MO] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres y adyacentes de [MO] Microondas de un mismo cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MO] Microondas del mismo quadrante.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
-        "m": {
-          "Al": 5,
-          "Cu": 2,
-          "Ti": 1,
-          "Si": 4
-        },
-        "o": {
-          "IM": 1,
-          "En": 2,
-          "Tr": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
-  {
-    "id": "I05",
-    "nombre": "Blindaje compuesto",
-    "tipo": "microondas",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 1,
-    "bono": "1 [DS][MO]",
-    "disco_soporte": 0,
-    "efecto": "Coloca 1 disco en una celda libre de [MO] Microondas.\nDebes darle esta carta al jugador a tu derecha.",
-    "etapas": [
-      {
-        "m": {"Fe": 3, "C": 2, "Ti": 1},
+        "m": {"Fe": 8, "C": 8, "Ti": 2},
         "o": {"IE": 1, "En": 2, "Tr": 1}
       }
     ],
@@ -234,36 +245,8 @@ window.modulos = [
   },
   {
     "id": "P024",
+    "revisada": 1,
     "nombre": "Radiadores térmicos de aluminio",
-    "tipo": "refrigeracion",
-    "inicial": true,
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 0,
-    "copias": 1,
-    "discos": 1,
-    "bono": "1 [DS][RF]",
-    "disco_soporte": 0,
-    "efecto": "Coloca un disco en 1 celda de [RF] Refrigeración.\nDebes darle esta carta al jugador a tu derecha.",
-    "etapas": [
-      {
-        "m": {
-          "Al": 4,
-          "Cu": 1
-        },
-        "o": {
-          "IM": 1,
-          "Tr": 1
-        }
-      }
-    ],
-    "destino": "derecha"
-  },
-  {
-    "id": "P025",
-    "nombre": "Red de tubos de calor",
     "tipo": "refrigeracion",
     "inicial": true,
     "puntos": "0 [PV]",
@@ -275,14 +258,44 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][RF] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [RF] Refrigeración de un mismo cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [RF] Refrigeración del mismo quadrante.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
-          "Cu": 6,
-          "Al": 3,
-          "Fe": 4,
-          "Si": 2
+          "Al": 8,
+          "Cu": 3
+        },
+        "o": {
+          "IM": 1,
+          "Tr": 1
+        }
+      }
+    ],
+    "destino": "derecha"
+  },
+  {
+    "id": "P025",
+    "revisada": 1,
+    "nombre": "Red de tubos de calor",
+    "tipo": "refrigeracion",
+    "inicial": true,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 4,
+    "bono": "4 [DS][RF]",
+    "disco_soporte": 0,
+    "efecto": "Coloca un disco en 4 celdas libres de [RF] Refrigeración.\nLuego debes darle esta carta al jugador a tu derecha.",
+    "etapas": [
+      {
+        "m": {
+          "Cu": 10,
+          "Al": 7,
+          "Fe": 10,
+          "Si": 5
         },
         "o": {
           "IM": 2,
@@ -295,6 +308,7 @@ window.modulos = [
   },
   {
     "id": "P013",
+    "revisada": 1,
     "nombre": "Paneles fotovoltaicos de película delgada",
     "tipo": "fotovoltaico",
     "inicial": true,
@@ -304,16 +318,17 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 1,
-    "bono": "1 [DS][FV]",
+    "discos": 2,
+    "bono": "2 [DS][FV] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 1 celda de [FV] Fotovoltaica de un cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [FV] Fotovoltaica de un cuadrante.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
-          "Cu": 2,
-          "Al": 1,
-          "Si": 2
+          "Cu": 4,
+          "Al": 2,
+          "Fe": 4,
+          "Ce": 1
         },
         "o": {
           "IM": 1,
@@ -326,7 +341,8 @@ window.modulos = [
   },
   {
     "id": "I04",
-    "nombre": "Celdas solares",
+    "revisada": 1,
+    "nombre": "Celdas solares de silicio",
     "tipo": "fotovoltaico",
     "inicial": true,
     "puntos": "0 [PV]",
@@ -335,20 +351,21 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 2,
-    "bono": "2 [DS][FV]",
+    "discos": 4,
+    "bono": "4 [DS][FV] [=<]2[QU][AD]",
     "disco_soporte": 0,
-    "efecto": "Coloca 2 discos en celdas libres de [FV] fotovoltaico.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 4 celdas libres de [FV] fotovoltaico de hasta 2 cuadrantes distintos adyacenetes.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
-        "m": {"Nd": 1, "Fe": 4, "Cu": 4},
-        "o": {"IQ": 1, "IM": 1, "En": 2, "Tr": 2}
+        "m": {"Nd": 2, "Fe": 5, "Cu": 5, "Si": 8},
+        "o": {"IQ": 1, "IM": 1, "En": 2, "Tr": 3}
       }
     ],
     "destino": "derecha"
   },
   {
     "id": "P008",
+    "revisada": 1,
     "nombre": "Estructura de titanio",
     "tipo": "estructura",
     "inicial": true,
@@ -358,18 +375,19 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 2,
-    "bono": "2 [DS][ES] [=][QU]",
+    "discos": 4,
+    "bono": "4 [DS][ES]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [ES] Estructura de un mismo cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 4 celdas libres de [ES] Estructura.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
-          "Ti": 4
+          "Ti": 10,
+          "Al": 1
         },
         "o": {
           "IE": 2,
-          "En": 2,
+          "En": 1,
           "Tr": 2
         }
       }
@@ -378,6 +396,7 @@ window.modulos = [
   },
   {
     "id": "P009",
+    "revisada": 1,
     "nombre": "Estructura de acero reforzado",
     "tipo": "estructura",
     "inicial": true,
@@ -387,21 +406,21 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 1,
-    "bono": "1 [DS][ES]",
+    "discos": 2,
+    "bono": "2 [DS][ES][AD] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 1 celda de [ES] Estructura de un cuadrante.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [ES] Estructura adyasentes de un mismo cuadrante.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
-          "Fe": 7,
-          "Al": 1,
+          "Fe": 12,
+          "Al": 2,
           "C": 3
         },
         "o": {
           "IE": 1,
           "En": 1,
-          "Tr": 1
+          "Tr": 2
         }
       }
     ],
@@ -423,6 +442,7 @@ window.modulos = [
   // Economía
   {
     "id": "P006",
+    "revisada": 1,
     "nombre": "Centro de blockchain",
     "tipo": "economia",
     "puntos": "0 [PV]",
@@ -432,9 +452,9 @@ window.modulos = [
     "puntos_otros": 16,
     "copias": 1,
     "discos": 0,
-    "bono": "+20 [Di][RE]",
+    "bono": "+25 [Di][RE]",
     "disco_soporte": 0,
-    "efecto": "Gana $20. \nPuedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Gana $25. \nPuedes volver a colocar el cubo en la etapa 2.",
     "etapas": [
       {
         "m": {
@@ -460,6 +480,7 @@ window.modulos = [
   },
   {
     "id": "P047",
+    "revisada": 1,
     "nombre": "Consorcio de minerales estratégicos",
     "tipo": "economia",
     "puntos": "0 [PV]",
@@ -496,13 +517,14 @@ window.modulos = [
   },
   {
     "id": "P048",
+    "revisada": 10,
     "nombre": "Hotel solar",
     "tipo": "economia",
     "puntos": "0 [PV]",
     "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
-    "puntos_otros": 6,
+    "puntos_otros": 7,
     "copias": 1,
     "discos": 0,
     "bono": "+10 [Di] [RE]",
@@ -512,7 +534,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 3,
+          "Al": 4,
           "fe": 2,
           "Cu": 1
         },
@@ -533,13 +555,14 @@ window.modulos = [
   },
   {
     "id": "P049",
+    "revisada": 1,
     "nombre": "Centro de fusión nuclear",
     "tipo": "economia",
     "puntos": "20 [PV]",
     "puntos_carta": 20,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
-    "puntos_otros": 24,
+    "puntos_otros": 18,
     "copias": 1,
     "discos": 0,
     "bono": "[TJ] +3 [En] [=] +1 [PI] [OP]",
@@ -549,8 +572,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 5,
-          "Fe": 5,
+          "Cu": 4,
+          "Fe": 4,
           "Nd": 2
         },
         "o": {
@@ -563,8 +586,7 @@ window.modulos = [
       {
         "m": {
           "Ti": 2,
-          "Gd": 1,
-          "Al": 2
+          "Gd": 1
         },
         "o": {
           "IQ": 1,
@@ -586,6 +608,7 @@ window.modulos = [
   // Recursos humanos
   {
     "id": "P041",
+    "revisada": 1,
     "nombre": "Reemplazo por asistente robótico autónomo",
     "tipo": "recursoshumanos",
     "puntos": "1 [PV]",
@@ -597,7 +620,7 @@ window.modulos = [
     "discos": 0,
     "bono": "-1 [AI] [=] +1 [II] +1 [PI]",
     "disco_soporte": 0,
-    "efecto": "Retira un [AI] ingeniero anclado de cualquier celda y colócalo en tus barracas, Leugo gana 1 [PI] punto.\nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Retira un [AI] ingeniero anclado de cualquier celda y colócalo en tus barracas, Leugo gana 1 [PI] punto.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -617,6 +640,7 @@ window.modulos = [
   },
   {
     "id": "P042",
+    "revisada": 1,
     "nombre": "Pasantía",
     "tipo": "recursoshumanos",
     "puntos": "0 [PV]",
@@ -641,6 +665,7 @@ window.modulos = [
   },
   {
     "id": "P043",
+    "revisada": 1,
     "nombre": "Programador de IA",
     "tipo": "recursoshumanos",
     "puntos": "0 [PV]",
@@ -680,6 +705,7 @@ window.modulos = [
   },
   {
     "id": "P044",
+    "revisada": 1,
     "nombre": "Desregulación de sueldos",
     "tipo": "recursoshumanos",
     "puntos": "0 [PV]",
@@ -707,6 +733,7 @@ window.modulos = [
   },
   {
     "id": "P045",
+    "revisada": 1,
     "nombre": "Robots multipropósito",
     "tipo": "recursoshumanos",
     "puntos": "7 [PV]",
@@ -714,7 +741,7 @@ window.modulos = [
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 8,
-    "copias": 3,
+    "copias": 2,
     "discos": 0,
     "bono": "-4 [PE] + 4[II] [/] [CN]",
     "disco_soporte": 0,
@@ -749,6 +776,7 @@ window.modulos = [
   },
   {
     "id": "P084",
+    "revisada": 1,
     "nombre": "Urbanización de lujo interna",
     "tipo": "recursoshumanos",
     "puntos": "0 [PV]",
@@ -789,6 +817,7 @@ window.modulos = [
 
   {
     "id": "P091",
+    "revisada": 1,
     "nombre": "Incubadora de proyectos",
     "tipo": "produccion",
     "puntos": "1 [PV]",
@@ -814,6 +843,7 @@ window.modulos = [
   },
   {
     "id": "P050",
+    "revisada": 1,
     "nombre": "Refinería de escoria por intercambio iónico",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -851,6 +881,7 @@ window.modulos = [
   },
   {
     "id": "P051",
+    "revisada": 1,
     "nombre": "Laboratorio móvil",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -862,7 +893,7 @@ window.modulos = [
     "discos": 0,
     "bono": "-6[Di] +4[RQ]",
     "disco_soporte": 0,
-    "efecto": "Paga $6 para obtener 4 reactivos de tu elección. \nDebes darle esta carta al jugador a tu derecha.",
+    "efecto": "Paga $6 para obtener 4 reactivos de tu elección.\nLuego debes darle esta carta al jugador a tu derecha.",
     "destino": "derecha",
     "etapas": [
       {
@@ -874,36 +905,8 @@ window.modulos = [
     ]
   },
   {
-    "id": "P052",
-    "nombre": "Cohete de combustible sólido",
-    "tipo": "produccion",
-    "puntos": "0 [PV]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 4,
-    "copias": 6,
-    "discos": 0,
-    "bono": "+4 [Tr]",
-    "disco_soporte": 0,
-    "efecto": "Obtén 4 [Tr] Transporte de la reserva. \nPuedes devolver esta carta a tu mano.",
-    "destino": "mano",
-    "etapas": [
-      {
-        "m": {
-          "Fe": 3,
-          "Al": 1,
-          "C": 3
-        },
-        "o": {
-          "IM": 1,
-          "En": 1
-        }
-      }
-    ]
-  },
-  {
     "id": "P053",
+    "revisada": 1,
     "nombre": "Catapulta electromagnética",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -945,7 +948,8 @@ window.modulos = [
   },
   {
     "id": "P054",
-    "nombre": "Propulsor láser",
+    "revisada": 1,
+    "nombre": "Estación planetaria de propulsión por láser dirigido",
     "tipo": "produccion",
     "puntos": "0 [PV]",
     "puntos_carta": 0,
@@ -983,7 +987,8 @@ window.modulos = [
   },
   {
     "id": "P055",
-    "nombre": "Gancho orbital (Skyhook)",
+    "revisada": 1,
+    "nombre": "Gancho orbital",
     "tipo": "produccion",
     "puntos": "0 [PV]",
     "puntos_carta": 0,
@@ -1026,6 +1031,7 @@ window.modulos = [
   // Generadores
   {
     "id": "P032",
+    "revisada": 1,
     "nombre": "Paneles solares",
     "tipo": "generador",
     "puntos": "0 [PV]",
@@ -1055,6 +1061,7 @@ window.modulos = [
   },
   {
     "id": "P033",
+    "revisada": 1,
     "nombre": "Generador de radioisótopos (RTG)",
     "tipo": "generador",
     "puntos": "5 [PV]",
@@ -1085,6 +1092,7 @@ window.modulos = [
   },
   {
     "id": "P034",
+    "revisada": 1,
     "nombre": "Concentrador solar Stirling",
     "tipo": "generador",
     "puntos": "1 [PV]",
@@ -1123,6 +1131,7 @@ window.modulos = [
   },
   {
     "id": "P035",
+    "revisada": 1,
     "nombre": "Central solar de ciclo Brayton",
     "tipo": "generador",
     "puntos": "10 [PV]",
@@ -1166,10 +1175,11 @@ window.modulos = [
   // Estructura
   {
     "id": "P092",
+    "revisada": 1,
     "nombre": "Micelio estructural",
     "tipo": "estructura",
-    "puntos": "1 [PV]",
-    "puntos_carta": 1,
+    "puntos": "3 [PV]",
+    "puntos_carta": 3,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
@@ -1177,21 +1187,22 @@ window.modulos = [
     "discos": 4,
     "bono": "1 [DS] [ES] [RE]",
     "disco_soporte": 0,
-    "efecto": "Coloca aquí 1 Fe de la reserva por cada ingeniero [AI] anclado en la esfera, de todos los jugadores e incluido el soporte. Luego puedes gastar 10 Fe de esta carta para colocar 1 disco en [ES] Estructura, con sus reglas normales (máximo 1 por activación). Conserva el Fe sobrante. \nPuedes volver a colocar el cubo en la etapa 2. Mientras esté en etapa 2, solo pueden entrar o salir recursos mediante este efecto.",
+    "efecto": "Si hay 4 o más [AI] ingenieros anclados en la esfera, coloca un disco en 1 celda libre de [ES] Estructura.\Puedes volver a colocar el cubo en la etapa 2.",
     "etapas": [
       {
-        "m": { "Ti": 1, "Cu": 2,"C": 3, "Si": 2, "Al":1  },
-        "o": { "IE": 1, "IQ": 2, "Tr": 1, "En": 2 }
+        "m": { "Ti": 2, "C": 4, "Si": 2, "Al":2  },
+        "o": { "IE": 1, "IQ": 1, "Tr": 2, "En": 2 }
       },
       {
         "m": {},
-        "o": {"En": 2}
+        "o": {"IQ": 1, "En": 2}
       }
     ],
     "destino": "etapa:2"
   },
   {
     "id": "P007",
+    "revisada": 1,
     "nombre": "Estructura de fibra de carbono",
     "tipo": "estructura",
     "puntos": "9 [PV]",
@@ -1200,15 +1211,15 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 2,
-    "discos": 2,
-    "bono": "2 [DS][ES] [=][QU]",
+    "discos": 4,
+    "bono": "4 [DS][ES] [=<]2[QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [ES] Estructura de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 4 celdas libres de [ES] Estructura de hasta 2 cuadrantes distintos.",
     "etapas": [
       {
         "m": {
-          "C": 10,
-          "Fe": 2
+          "C": 22,
+          "Fe": 4
         },
         "o": {
           "IQ": 2,
@@ -1217,8 +1228,8 @@ window.modulos = [
       },
       {
         "m": {
-          "C": 7,
-          "Fe": 1
+          "C": 15,
+          "Fe": 2
         },
         "o": {
           "IQ": 2,
@@ -1233,6 +1244,7 @@ window.modulos = [
 
   {
     "id": "P010",
+    "revisada": 1,
     "nombre": "Estructura alveolar de aluminio",
     "tipo": "estructura",
     "puntos": "6 [PV]",
@@ -1241,15 +1253,15 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 3,
-    "discos": 3,
-    "bono": "3 [DS][ES] [=][QU]",
+    "discos": 6,
+    "bono": "6 [DS][ES][AD]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas libres de [ES] Estructura de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 6 celdas libres de [ES] Estructura adyacentes.",
     "etapas": [
       {
         "m": {
-          "Al": 4,
-          "Si": 2
+          "Al": 8,
+          "Si": 4
         },
         "o": {
           "IE": 1,
@@ -1258,7 +1270,7 @@ window.modulos = [
       },
       {
         "m": {
-          "Al": 2,
+          "Al": 6,
           "Ti": 1
         },
         "o": {
@@ -1272,35 +1284,37 @@ window.modulos = [
   },
   {
     "id": "P011",
+    "revisada": 1,
     "nombre": "Estructura de vidrio metálico",
     "tipo": "estructura",
-    "puntos": "10 [PV]",
-    "puntos_carta": 10,
+    "puntos": "5 [PV]",
+    "puntos_carta": 5,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 3,
-    "bono": "3 [DS][ES] [=][QU]",
+    "discos": 6,
+    "bono": "6 [DS][ES]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas libres de [ES] Estructura de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 6 celdas libres de [ES] Estructura.",
     "etapas": [
       {
         "m": {
-          "Fe": 6,
-          "Cu": 2,
-          "Si": 2
+          "Fe": 8,
+          "Cu": 3,
+          "Si": 4
         },
         "o": {
-          "IQ": 1,
+          "IQ": 2,
           "IE": 1,
           "En": 3
         }
       },
       {
         "m": {
+          "Fe": 8,
           "Ti": 1,
-          "Cu": 2
+          "Cu": 3
         },
         "o": {
           "IQ": 1,
@@ -1314,46 +1328,46 @@ window.modulos = [
   },
   {
     "id": "P012",
+    "revisada": 1,
     "nombre": "Estructura de nanotubos de carbono",
     "tipo": "estructura",
-    "puntos": "25 [PV]",
-    "puntos_carta": 25,
+    "puntos": "5 [PV]",
+    "puntos_carta": 5,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 5,
-    "bono": "5 [DS][ES] [=][QU]",
+    "discos": 8,
+    "bono": "8 [DS][ES]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 5 celdas libres de [ES] Estructura de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 8 celdas libres de [ES] Estructura.",
     "etapas": [
       {
         "m": {
-          "C": 5,
+          "C": 6,
           "Nd": 1
         },
         "o": {
-          "IQ": 2,
-          "En": 3
+          "IQ": 1,
+          "En": 2
         }
       },
       {
         "m": {
-          "C": 5,
-          "Al": 1
+          "C": 6,
+          "Al": 2
         },
         "o": {
           "IQ": 1,
+          "En": 2
+        }
+      },
+      {
+        "m": {
+          "C": 6
+        },
+        "o": {
           "IE": 1,
-          "En": 4
-        }
-      },
-      {
-        "m": {
-          "C": 5
-        },
-        "o": {
-          "IQ": 1,
           "IS": 1,
           "En": 3,
           "Tr": 2
@@ -1367,6 +1381,7 @@ window.modulos = [
 
   {
     "id": "P014",
+    "revisada": 1,
     "nombre": "Paneles de silicio monocristalino",
     "tipo": "fotovoltaico",
     "puntos": "12 [PV]",
@@ -1375,15 +1390,15 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 3,
-    "discos": 3,
-    "bono": "3 [DS][FV] [=][QU]",
+    "discos": 4,
+    "bono": "4 [DS][FV] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas libres de [FV] Fotovoltaica de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 4 celdas libres de [FV] Fotovoltaica del mismo cuadrante.",
     "etapas": [
       {
         "m": {
           "Si": 8,
-          "Al": 3
+          "Al": 5
         },
         "o": {
           "IQ": 1,
@@ -1392,8 +1407,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 3,
-          "Si": 2
+          "Si": 8,
+          "Cu": 5
         },
         "o": {
           "IM": 1,
@@ -1406,6 +1421,7 @@ window.modulos = [
   },
   {
     "id": "P015",
+    "revisada": 1,
     "nombre": "Células solares de perovskita",
     "tipo": "fotovoltaico",
     "puntos": "10 [PV]",
@@ -1414,16 +1430,16 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 4,
-    "bono": "4 [DS][FV] [=][QU]",
+    "discos": 8,
+    "bono": "8 [DS][FV] [=<]3[QU][AD]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 4 celdas libres de [FV] Fotovoltaica de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 8 celdas libres de [FV] Fotovoltaica de hasta 3 cuadrantes adyacentes.",
     "etapas": [
       {
         "m": {
-          "Si": 5,
-          "C": 6,
-          "Al": 3
+          "Si": 11,
+          "C": 12,
+          "Al": 6
         },
         "o": {
           "IQ": 2,
@@ -1432,8 +1448,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 3,
-          "Si": 2
+          "Cu": 6,
+          "Si": 4
         },
         "o": {
           "IM": 1,
@@ -1446,6 +1462,7 @@ window.modulos = [
   },
   {
     "id": "P016",
+    "revisada": 1,
     "nombre": "Sistema fotovoltaico de concentración",
     "tipo": "fotovoltaico",
     "puntos": "15 [PV]",
@@ -1454,16 +1471,16 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 3,
-    "bono": "3 [DS][FV] [=][QU]",
+    "discos": 5,
+    "bono": "1-5 [DS][FV] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas libres de [FV] Fotovoltaica de un mismo cuadrante.",
+    "efecto": "Coloca un disco en cada celda libre de [FV] Fotovoltaica de un cuadrante.",
     "etapas": [
       {
         "m": {
-          "Al": 5,
+          "Al": 7,
           "Ti": 1,
-          "Si": 3
+          "Si": 4
         },
         "o": {
           "IE": 1,
@@ -1473,8 +1490,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 3,
-          "Si": 3
+          "Cu": 5,
+          "Si": 5
         },
         "o": {
           "IE": 1,
@@ -1488,37 +1505,39 @@ window.modulos = [
   },
   {
     "id": "P017",
+    "revisada": 1,
     "nombre": "Células solares multiunión",
     "tipo": "fotovoltaico",
-    "puntos": "16 [PV]",
-    "puntos_carta": 16,
+    "puntos": "15 [PV]",
+    "puntos_carta": 15,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 3,
-    "discos": 3,
-    "bono": "3 [DS][FV] [=][QU]",
+    "discos": 4,
+    "bono": "4 [DS][FV][AD] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas libres de [FV] Fotovoltaica de un mismo cuadrante.",
+    "efecto": "Coloca un disco en 4 celdas libres de [FV] Fotovoltaica adyacentes de un cuadrante.",
     "etapas": [
       {
         "m": {
           "Si": 5,
-          "Cu": 3,
+          "Cu": 2,
           "Gd": 1
         },
         "o": {
-          "IQ": 2,
+          "IM": 1,
+          "IQ": 1,
           "En": 3
         }
       },
       {
         "m": {
-          "Ti": 1,
-          "Al": 2
+          "Ti": 2,
+          "Al": 4
         },
         "o": {
-          "IM": 2,
+          "IM": 1,
           "En": 3,
           "Tr": 2
         }
@@ -1528,18 +1547,19 @@ window.modulos = [
   },
   {
     "id": "P018",
+    "revisada": 1,
     "nombre": "Células solares de arseniuro de galio",
     "tipo": "fotovoltaico",
-    "puntos": "20 [PV]",
-    "puntos_carta": 20,
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 7,
-    "bono": "7 [DS][FV] [=] 2 [QU]",
+    "discos": 9,
+    "bono": "1-10 [DS][FV] [=<]2[QU][AD]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 7 celdas libres de [FV] Fotovoltaica de hasta dos cuadrantes.",
+    "efecto": "Coloca un disco en cada celda libre de [FV] Fotovoltaica de dos cuadrantes adyacentes.",
     "etapas": [
       {
         "m": {
@@ -1548,18 +1568,18 @@ window.modulos = [
         },
         "o": {
           "IQ": 2,
-          "En": 3
+          "En": 2
         }
       },
       {
         "m": {
-          "Ti": 1,
-          "Al": 2
+          "Al": 2,
+          "Nd": 1
         },
         "o": {
           "IQ": 1,
           "IM": 1,
-          "En": 3
+          "En": 2
         }
       },
       {
@@ -1568,8 +1588,7 @@ window.modulos = [
           "Cu": 2
         },
         "o": {
-          "IS": 1,
-          "En": 3,
+          "IM": 1,
           "Tr": 2
         }
       }
@@ -1582,10 +1601,11 @@ window.modulos = [
 
   {
     "id": "P021",
+    "revisada": 1,
     "nombre": "Red superconductora criogénica",
     "tipo": "transmision",
-    "puntos": "15 [PV]",
-    "puntos_carta": 15,
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
@@ -1593,28 +1613,18 @@ window.modulos = [
     "discos": 2,
     "bono": "1[QD][RF] + 3 [DS][TS] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "[QD] Retira uno de tus discos de una celda de [RF] Refrigeración y coloca un disco en 3 celdas libres de [TS] Transmisión del mismo cuadrante de donde la quitaste.",
+    "efecto": "[QD] Retira 1 de tus discos de celdas de [RF] Refrigeración y coloca un disco en 3 celdas libres de [TS] Transmisión del mismo cuadrante.",
     "etapas": [
       {
         "m": {
-          "Cu": 3,
-          "Gd": 1,
-          "Al": 2
+          "Cu": 5,
+          "Gd": 2,
+          "Al": 4,
+          "Si": 5
         },
         "o": {
           "IQ": 1,
           "IM": 1,
-          "En": 3
-        }
-      },
-      {
-        "m": {
-          "Cu": 2,
-          "Si": 2
-        },
-        "o": {
-          "RF": 1,
-          "IM": 2,
           "En": 3,
           "Tr": 2
         }
@@ -1624,45 +1634,46 @@ window.modulos = [
   },
   {
     "id": "P022",
+    "revisada": 1,
     "nombre": "Superconductores de hidruros a alta presión",
     "tipo": "transmision",
-    "puntos": "20 [PV]",
-    "puntos_carta": 20,
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 6,
-    "bono": "3[DS][TS] [AD] 3 [DS][RF]",
+    "discos": 8,
+    "bono": "4[DS][TS] [AD] 4 [DS][RF]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas libres de [TS] Transmisión adyacentes. \nLuego, coloca un disco en 1 celda de [RF] Refrigeración adyacente a cada una de ellas.",
+    "efecto": "Coloca un disco en 4 celdas libres de [TS] Transmisión adyacentes.\nLuego, coloca un disco en 1 celda de [RF] Refrigeración adyacente a cada una de ellas.",
     "etapas": [
       {
         "m": {
           "Ti": 1,
           "Ce": 1,
-          "Si": 4,
+          "Si": 8,
           "Cu": 1,
           "Al": 5
         },
         "o": {
           "IQ": 2,
-          "IM": 2,
-          "En": 4
+          "IM": 1,
+          "En": 2
         }
       },
       {
         "m": {
           "Gd": 1,
-          "Ti": 1,
+          "Ti": 2,
           "Nd": 1,
-          "Al": 2
+          "Al": 4
         },
         "o": {
           "IQ": 1,
           "IM": 1,
-          "En": 5,
-          "Tr": 3
+          "En": 2,
+          "Tr": 2
         }
       }
     ],
@@ -1670,29 +1681,30 @@ window.modulos = [
   },
   {
     "id": "P023",
+    "revisada": 1,
     "nombre": "Transmisor láser de alta potencia",
     "tipo": "transmision",
-    "puntos": "22 [PV]",
-    "puntos_carta": 22,
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 3,
-    "bono": "3 [DS][TS] + 2 [DH][TS] [=][QU]",
+    "discos": 6,
+    "bono": "6 [DS][TS] + 4 [DH][TS] [=] 2 [QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas de [TS] Transmisión con beneficios normales de colocación. Después, coloca un disco en otras 2 celdas de [TS] Transmisión del mimso cuadrante sin cobrar bonos de colocación.\nLos discos sin bono restan puntos si no puedes colocarlos.",
+    "efecto": "Coloca un disco en 6 celdas libres de [TS] Transmisión con beneficios normales de colocación. Después, coloca un disco en otras 4 celdas libres de [TS] Transmisión de los mismos dos cuadrantes sin cobrar bonos de colocación.\nLos discos sin bono restan puntos si no puedes colocarlos.",
     "etapas": [
       {
         "m": {
-          "Si": 4,
-          "Cu": 2,
-          "Er": 1
+          "Si": 6,
+          "Cu": 3,
+          "Er": 2
         },
         "o": {
-          "IE": 2,
+          "IE": 1,
           "IM": 1,
-          "En": 3
+          "En": 2
         }
       },
       {
@@ -1702,9 +1714,8 @@ window.modulos = [
           "Nd": 1
         },
         "o": {
-          "IE": 2,
-          "IS": 1,
-          "En": 3,
+          "IE": 1,
+          "En": 1,
           "Tr": 2
         }
       }
@@ -1717,24 +1728,25 @@ window.modulos = [
 
   {
     "id": "P026",
+    "revisada": 1,
     "nombre": "Radiadores de nanotubos de carbono alineados",
     "tipo": "refrigeracion",
-    "puntos": "14 [PV]",
-    "puntos_carta": 14,
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 2,
-    "discos": 3,
-    "bono": "3 [DS][RF] [AD]",
+    "discos": 6,
+    "bono": "6 [DS][RF] [AD]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 3 celdas adyacentes de [RF] Refrigeración.",
+    "efecto": "Coloca un disco en 6 celdas libres y adyacentes de [RF] Refrigeración.",
     "etapas": [
       {
         "m": {
-          "C": 10,
-          "Si": 3,
-          "Ce": 1
+          "C": 18,
+          "Si": 6,
+          "Ce": 2
         },
         "o": {
           "IQ": 2,
@@ -1744,8 +1756,8 @@ window.modulos = [
       },
       {
         "m": {
-          "C": 8,
-          "Al": 2
+          "C": 15,
+          "Al": 3
         },
         "o": {
           "IQ": 1,
@@ -1759,24 +1771,25 @@ window.modulos = [
   },
   {
     "id": "P027",
+    "revisada": 1,
     "nombre": "Radiadores de grafeno multicapa",
     "tipo": "refrigeracion",
-    "puntos": "20 [PV]",
-    "puntos_carta": 20,
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 4,
-    "bono": "4 [DS][RF] [=] [QU] [/] 2[QU]",
+    "discos": 8,
+    "bono": "8 [DS][RF] [=<]2[QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 4 celdas libres de [RF] Refrigeración de hasta 2 cuadrantes.",
+    "efecto": "Coloca un disco en 8 celdas libres de [RF] Refrigeración de hasta 2 cuadrantes.",
     "etapas": [
       {
         "m": {
-          "C": 12,
-          "Cu": 4,
-          "Gd": 1
+          "C": 10,
+          "Cu": 6,
+          "Gd": 2
         },
         "o": {
           "IQ": 2,
@@ -1786,7 +1799,7 @@ window.modulos = [
       {
         "m": {
           "C": 10,
-          "Al": 4
+          "Al": 7
         },
         "o": {
           "IQ": 2,
@@ -1800,24 +1813,25 @@ window.modulos = [
   },
   {
     "id": "P028",
+    "revisada": 1,
     "nombre": "Motor Stirling de concentración solar",
     "tipo": "refrigeracion",
-    "puntos": "12 [PV]",
-    "puntos_carta": 12,
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 2,
-    "discos": 6,
-    "bono": "2 [DS][FV] [AD] 2 [DS][RF] [AD] 2 [DS][TS]",
+    "discos": 12,
+    "bono": "4 [DS][FV] [AD] 4 [DS][RF] [AD] 4 [DS][TS]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas de [FV] Fotovoltaica, un disco en 2 celdas de [RF] Refrigeración y un disco en 2 celda de [TS] Transmisión, todos los discos deben ser adyacentesa toro disco colocado.",
+    "efecto": "Coloca un disco en 4 celdas libres de [FV] Fotovoltaica, un disco en 4 celdas libres de [RF] Refrigeración y un disco en 4 celdas libres de [TS] Transmisión; cada disco debe ser adyacente a otro disco colocado por este proyecto.",
     "etapas": [
       {
         "m": {
-          "Fe": 5,
-          "Cu": 3,
-          "Si": 3
+          "Fe": 12,
+          "Cu": 7,
+          "Si": 7
         },
         "o": {
           "IM": 2,
@@ -1826,9 +1840,9 @@ window.modulos = [
       },
       {
         "m": {
-          "Ti": 2,
-          "Al": 3,
-          "Ce": 1
+          "Ti": 4,
+          "Al": 7,
+          "Ce": 2
         },
         "o": {
           "IE": 1,
@@ -1841,6 +1855,7 @@ window.modulos = [
     "destino": "completados"
   },{
   "id": "P085",
+  "revisada": 1,
   "nombre": "Micromembranas adaptativas",
   "tipo": "refrigeracion",
   "puntos": "0 [PV]",
@@ -1849,16 +1864,16 @@ window.modulos = [
   "puntos_ingenieros": 0,
   "puntos_otros": 0,
   "copias": 1,
-  "discos": 5,
-  "bono": "1 [DS][RF] 1 [DS][MO] [=][SC]",
+  "discos": 10,
+  "bono": "2 [DS][RF] 2 [DS][MO] [=] 2 [SC]",
   "disco_soporte": 0,
-  "efecto": "Coloca 1 disco en una celda libre de [RF] Refrigeración y otro en una celda libre de [MO] Microondas de un mismo sector. \nPuedes volver a colocar el cubo en la etapa 2.",
+  "efecto": "Coloca un disco en 2 celdas libres de [RF] Refrigeración y un disco en 2 celdas libres de [MO] Microondas de los mismos dos sectores, uno de cada capa por sector.\nPuedes volver a colocar el cubo en la etapa 2.",
   "etapas": [
     {
       "m": {
-        "Si": 2,
-        "Al": 2,
-        "Fe": 3
+        "Si": 6,
+        "Al": 7,
+        "Fe": 9
       },
       "o": {
         "IM": 1,
@@ -1867,9 +1882,9 @@ window.modulos = [
     },
     {
       "m": {
-        "Fe": 1,
-        "Cu": 1,
-        "Nd": 1
+        "Fe": 3,
+        "Cu": 3,
+        "Nd": 3
       },
       "o": {
         "IS": 1,
@@ -1885,24 +1900,25 @@ window.modulos = [
 
   {
     "id": "P030",
+    "revisada": 1,
     "nombre": "Matriz de antenas en fase",
     "tipo": "microondas",
-    "puntos": "5 [PV]",
-    "puntos_carta": 5,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 3,
-    "discos": 4,
-    "bono": "4 [DS][MO] [=][QU] [AD] [QU] ",
+    "discos": 8,
+    "bono": "8 [DS][MO] [=][QU] [AD] [QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 4 celdas libres de [MO] Microondas en dos cuadrantes adyacentes, por lo menos una en cada uno.",
+    "efecto": "Coloca un disco en 8 celdas libres de [MO] Microondas en dos cuadrantes adyacentes.",
     "etapas": [
       {
         "m": {
-          "Al": 2,
-          "Cu": 2,
-          "Si": 2
+          "Al": 6,
+          "Cu": 3,
+          "Si": 6
         },
         "o": {
           "IM": 1,
@@ -1912,7 +1928,7 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 1
+          "Cu": 3
         },
         "o": {
           "IM": 1,
@@ -1926,6 +1942,7 @@ window.modulos = [
   },
   {
     "id": "P031",
+    "revisada": 1,
     "nombre": "Transmisor láser de haz estrecho",
     "tipo": "microondas",
     "puntos": "20 [PV]",
@@ -1934,16 +1951,16 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 2,
-    "discos": 5,
-    "bono": "3-5 [DS][MO] [=][QU]",
+    "discos": 10,
+    "bono": "2-10 [DS][MO] [=] 2 [QU][AD]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en todas las celdas libres de [MO] Microondas de un mismo cuadrante que tenga al menos 3 celdas de [MO] Microondas libres.",
+    "efecto": "Coloca un disco en todas las celdas libres de [MO] Microondas de dos cuadrantes distintos adyacentes",
     "etapas": [
       {
         "m": {
-          "Si": 5,
-          "Cu": 3,
-          "Er": 1
+          "Si": 9,
+          "Cu": 6,
+          "Er": 2
         },
         "o": {
           "IQ": 1,
@@ -1955,9 +1972,9 @@ window.modulos = [
       },
       {
         "m": {
-          "Ti": 2,
-          "Al": 3,
-          "Nd": 1
+          "Ti": 3,
+          "Al": 6,
+          "Nd": 2
         },
         "o": {
           "IE": 1,
@@ -1971,6 +1988,7 @@ window.modulos = [
   },{
   "nombre": "Fábrica de blindaje exterior",
     "id": "P089",
+    "revisada": 1,
   "tipo": "microondas",
   "puntos": "0 [PV]",
   "puntos_carta": 0,
@@ -1978,15 +1996,15 @@ window.modulos = [
   "puntos_ingenieros": 0,
   "puntos_otros": 0,
   "copias": 3,
-  "discos": 3,
-  "bono": "1 [DS][MO] [RE]",
+  "discos": 6,
+  "bono": "2 [DS][MO] [RE]",
   "disco_soporte": 0,
-  "efecto": "Coloca 1 disco en una celda libre de [MO] Microondas de cualquier cuadrante. \nPuedes volver a colocar el cubo en la etapa 2.",
+  "efecto": "Coloca un disco en 2 celdas libres de [MO] Microondas de cualquier cuadrante. \nPuedes volver a colocar el cubo en la etapa 2.",
   "etapas": [
     {
       "m": {
-        "Fe": 2,
-        "Ti": 1
+        "Fe": 5,
+        "Ti": 3
       },
       "o": {
         "IE": 1,
@@ -1995,8 +2013,8 @@ window.modulos = [
     },
     {
       "m": {
-        "Fe": 3,
-        "Ti": 1
+        "Fe": 9,
+        "Ti": 3
       },
       "o": {
         "IE": 1,
@@ -2010,6 +2028,7 @@ window.modulos = [
   // Sensores
   {
     "id": "P056",
+    "revisada": 1,
     "nombre": "Extensómetros de fibra óptica",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -2019,16 +2038,16 @@ window.modulos = [
     "puntos_otros": -2,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][SN] \n -1 [PI] [/] [NO] [ES] [=][QU]",
-    "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.\nLuego pierde 1 [PI] por cada celda de [ES] Estructura sin disco del cuadrante de esa area de soporte.",
+    "bono": "2 [DP][SN] \n -1 [PI] [/] [NO] [ES] [=][QU]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [SN] Sensores de dos áreas de soporte distintas.\nLuego pierde 1 [PI] por cada celda de [ES] Estructura sin disco en cada cuadrante donde colocaste un disco de soporte.",
     "etapas": [
       {
         "m": {
-          "Fe": 2,
-          "Si": 2,
-          "Cu": 3,
-          "C": 4
+          "Fe": 8,
+          "Si": 8,
+          "Cu": 11,
+          "C": 15
         },
         "o": {
           "IM": 1,
@@ -2041,24 +2060,25 @@ window.modulos = [
   },
   {
     "id": "P057",
+    "revisada": 1,
     "nombre": "Termografía infrarroja",
     "tipo": "sensores",
-    "puntos": "3 [PV]",
-    "puntos_carta": 3,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 2,
     "discos": 0,
-    "bono": "1 [DP][SN]",
-    "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.",
+    "bono": "2 [DP][SN]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [SN] Sensores de dos áreas de soporte distintas.",
     "etapas": [
       {
         "m": {
           "Si": 3,
           "Cu": 2,
-          "Nd": 1
+          "Nd": 3
         },
         "o": {
           "IM": 1,
@@ -2067,7 +2087,7 @@ window.modulos = [
       },
       {
         "m": {
-          "Si": 1
+          "Si": 3
         },
         "o": {
           "IM": 1,
@@ -2081,24 +2101,25 @@ window.modulos = [
   },
   {
     "id": "P058",
+    "revisada": 1,
     "nombre": "Dosímetros de radiación",
     "tipo": "sensores",
-    "puntos": "3   [PV]",
-    "puntos_carta": 3,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": -5,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][SN] \n -5[PI] [/] [NO][MN] [=][QU]",
-    "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 5 [PI] por cada celda de [MN] Mantenimiento sin disco en esa misma área de soporte.",
+    "bono": "2 [DP][SN] \n -5[PI] [/] [NO][MN] [=][QU]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [SN] Sensores de dos áreas de soporte distintas. \nLuego, pierde 5 [PI] por cada celda de [MN] Mantenimiento sin disco en cada cuadrante donde colocaste un disco de soporte.",
     "etapas": [
       {
         "m": {
-          "Si": 4,
-          "Al": 2,
-          "Ce": 1
+          "Si": 8,
+          "Al": 7,
+          "Ce": 3
         },
         "o": {
           "IQ": 1,
@@ -2112,6 +2133,7 @@ window.modulos = [
   },
   {
     "id": "P059",
+    "revisada": 1,
     "nombre": "Detectores de micrometeoritos",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -2123,11 +2145,11 @@ window.modulos = [
     "discos": 0,
     "bono": "1 [DP][SN] \n -1[PI][/][NO][MO] [=][QU]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego pierde 1 [PI] por cada celda de [MO] Microondas sin disco del cuadrante de esa aera de soporte.",
+    "efecto": "Coloca un disco en 1 celda libre de [SN] Sensores de un áreaa de soporte. \nLuego pierde 1 [PI] por cada celda de [MO] Microondas sin disco en cada cuadrante donde colocaste un disco de soporte.",
     "etapas": [
       {
         "m": {
-          "Fe": 2,
+          "Fe": 3,
           "Cu": 2,
           "Si": 2,
           "Nd": 1
@@ -2144,24 +2166,25 @@ window.modulos = [
   },
   {
     "id": "P060",
+    "revisada": 1,
     "nombre": "Analizadores de plasma solar",
     "tipo": "sensores",
-    "puntos": "20 [PV]",
-    "puntos_carta": 20,
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": -4,
     "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][SN]",
-    "disco_soporte": 1,
-    "efecto": "Coloca un disco y el ingeniero de la última etapa en una celda libre de [SN] Sensores de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "bono": "2 [DP][SN]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [SN] Sensores de dos áreas de soporte distintas. Coloca el ingeniero de la última etapa junto a cualquiera de los discos colocados. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
           "Ti": 2,
-          "Cu": 3,
-          "Si": 4
+          "Cu": 4,
+          "Si": 5
         },
         "o": {
           "IM": 1,
@@ -2186,10 +2209,11 @@ window.modulos = [
   },
   {
     "id": "P061",
+    "revisada": 1,
     "nombre": "Red de interferometría láser",
     "tipo": "sensores",
-    "puntos": "1 [PV]",
-    "puntos_carta": 1,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": -2,
@@ -2197,11 +2221,11 @@ window.modulos = [
     "discos": 0,
     "bono": "1 [DP][SN] \n -1 [PI] [NO][SN]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 1 [PI] por cada cuadrante que no tenga un disco en la celda de [SN] Sensores en su área de soporte.",
+    "efecto": "Coloca un disco en 1 celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 1 [PI] por cada cuadrante que no tenga un disco en la celda de [SN] Sensores en su área de soporte.",
     "etapas": [
       {
         "m": {
-          "Si": 3,
+          "Si": 2,
           "Cu": 2,
           "Er": 1
         },
@@ -2217,6 +2241,7 @@ window.modulos = [
   },
   {
     "id": "P062",
+    "revisada": 1,
     "nombre": "Monitores de calidad eléctrica",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -2229,22 +2254,32 @@ window.modulos = [
     ],
     "copias": 2,
     "discos": 0,
-    "bono": "1 [DP][SN]",
-    "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.",
+    "bono": "2 [DP][SN]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [SN] Sensores de dos áreas de soporte distintas.",
     "etapas": [
       {
         "m": {
           "Cu": 2,
           "Al": 2,
-          "Si": 2,
+          "Si": 1,
           "Ce": 1
         },
         "o": {
           "IM": 1,
+          "En": 2
+        }
+      },
+      {
+        "m": {
+          "Cu": 2,
+          "Fe": 2,
+          "Si": 6
+        },
+        "o": {
           "IS": 1,
           "En": 2,
-          "Tr": 1
+          "Tr": 2
         }
       }
     ],
@@ -2252,42 +2287,42 @@ window.modulos = [
   },
   {
     "id": "P063",
+    "revisada": 1,
     "nombre": "Red de relojes atómicos de sincronización",
     "tipo": "sensores",
-    "puntos": "15 [PV]",
-    "puntos_carta": 15,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][SN]",
-    "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [SN] Sensores de un área de soporte.",
+    "bono": "2 [DP][SN]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [SN] Sensores de dos áreas de soporte distintas.",
     "etapas": [
       {
         "m": {
-          "Ti": 1,
-          "Fe": 1,
+          "Al": 2,
           "Gd": 1,
-          "Cu": 3,
+          "Cu": 2,
           "Nd": 1
         },
         "o": {
           "IQ": 1,
           "IS": 1,
-          "En": 4
+          "En": 1
         }
       },
       {
         "m": {
-          "Cu": 3,
+          "Cu": 2,
           "Nd": 1
         },
         "o": {
           "IQ": 1,
           "IS": 1,
-          "En": 5,
+          "En": 1,
           "Tr": 1
         }
       }
@@ -2299,10 +2334,11 @@ window.modulos = [
 
   {
     "id": "P065",
+    "revisada": 1,
     "nombre": "Centro de supervisión orbital",
     "tipo": "control",
-    "puntos": "5 [PV]",
-    "puntos_carta": 5,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": -4,
     "puntos_otros": +6,
@@ -2310,29 +2346,27 @@ window.modulos = [
     "discos": 0,
     "bono": "1 [DP][CO] \n +3 [PI] [/][SI][SN]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco y el ingeniero de la última etapa en una celda libre de [CO] Control de un área de soporte. \nLuego gana 3 [PI] por cada celda de [SN] Sensores con un disco de cualquier jugador. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte. Coloca el ingeniero de la última etapa junto al disco colocado. \nLuego gana 3 [PI] por cada celda de [SN] Sensores con un disco de cualquier jugador. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Al": 1,
           "Nd": 1,
-          "Fe": 1
+          "Fe": 2
         },
         "o": {
           "IS": 1,
-          "IE": 1,
-          "En": 2
+          "En": 1
         }
       },
       {
         "m": {
-          "Ti": 2,
+          "Al": 1,
           "Cu": 1,
-          "Si": 4
+          "Si": 3
         },
         "o": {
           "AS": 1,
-          "En": 2,
+          "En": 1,
           "Tr": 1
         }
       }
@@ -2341,39 +2375,39 @@ window.modulos = [
   },
   {
     "id": "P066",
+    "revisada": 1,
     "nombre": "Centro de regulación de potencia",
     "tipo": "control",
-    "puntos": "20 [PV]",
-    "puntos_carta": 20,
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": -4,
     "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][CO]",
-    "disco_soporte": 1,
-    "efecto": "Coloca un disco y el ingeniero de la última etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "bono": "2 [DP][CO]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [CO] Control de dos áreas de soporte distintas. Coloca los ingenieros de la última etapa junto a cualquiera de los discos colocados. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Al": 2,
-          "Gd": 2,
-          "Fe": 1
+          "Al": 3,
+          "Gd": 1,
+          "Fe": 3
         },
         "o": {
-          "IM": 1,
-          "IS": 1,
+          "IM": 2,
           "En": 2
         }
       },
       {
         "m": {
-          "Ti": 3,
-          "Cu": 3,
+          "Ti": 2,
+          "Cu": 5,
           "Nd": 1
         },
         "o": {
-          "AM": 1,
+          "AM": 2,
           "En": 2,
           "Tr": 2
         }
@@ -2383,24 +2417,25 @@ window.modulos = [
   },
   {
     "id": "P067",
+    "revisada": 1,
     "nombre": "Centro de mantenimiento predictivo",
     "tipo": "control",
-    "puntos": "25 [PV]",
-    "puntos_carta": 25,
+    "puntos": "15 [PV]",
+    "puntos_carta": 15,
     "puntos_capas": 0,
     "puntos_ingenieros": -12,
     "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][CO]",
-    "disco_soporte": 1,
-    "efecto": "Coloca un disco y los ingenieros de la última etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "bono": "2 [DP][CO]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [CO] Control de dos áreas de soporte distintas. Coloca los ingenieros de la última etapa junto a cualquiera de los discos colocados. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Al": 2,
-          "Ce": 1,
-          "Fe": 2
+          "Al": 3,
+          "Ce": 2,
+          "Fe": 4
         },
         "o": {
           "IM": 1,
@@ -2410,9 +2445,6 @@ window.modulos = [
       },
       {
         "m": {
-          "Ti": 1,
-          "Cu": 3,
-          "Nd": 1
         },
         "o": {
           "AM": 1,
@@ -2427,6 +2459,7 @@ window.modulos = [
   },
   {
     "id": "P068",
+    "revisada": 1,
     "nombre": "Centro de coordinación integral",
     "tipo": "control",
     "puntos": "1 [PV] [/] [DP]",
@@ -2436,15 +2469,15 @@ window.modulos = [
     "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][CO]",
-    "disco_soporte": 1,
-    "efecto": "Coloca un disco y los ingenieros de la última etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado. \n[FJ] Gana 1 [PV] por cada [DP] disco de cualquier jugador en cualquier área de soporte.",
+    "bono": "2 [DP][CO]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [CO] Control de dos áreas de soporte distintas. Coloca el ingeniero de la última etapa junto a cualquiera de los discos colocados. \nConsulta la pérdida de puntos por personal anclado. \n[FJ] Gana 1 [PV] por cada [DP] disco de cualquier jugador en cualquier área de soporte.",
     "etapas": [
       {
         "m": {
-          "Fe": 5,
-          "Cu": 2,
-          "Er": 1
+          "Fe": 10,
+          "Cu": 6,
+          "Er": 2
         },
         "o": {
           "IE": 1,
@@ -2453,8 +2486,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 1,
-          "Al": 1
+          "Cu": 2,
+          "Al": 2
         },
         "o": {
           "AE": 1,
@@ -2467,6 +2500,7 @@ window.modulos = [
   },
   {
     "id": "P069",
+    "revisada": 1,
     "nombre": "Control remoto por teletransportación cuántica",
     "tipo": "control",
     "puntos": "10 [PV]",
@@ -2476,9 +2510,9 @@ window.modulos = [
     "puntos_otros": 0,
     "copias": 1,
     "discos": 3,
-    "bono": "1 [DP][CO] 3 [DS][MO] [=][QU]",
+    "bono": "1 [DP][CO] + 3 [DS][MO] [=] [QU]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte y un disco en 3 celdas libres de [MO] Microondas del mismo cuadrante.",
+    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soportey un disco en 3 celdas libres de [MO] Microondas del mismo cuadrante.",
     "etapas": [
       {
         "m": {
@@ -2495,9 +2529,9 @@ window.modulos = [
       },
       {
         "m": {
-          "Al": 4,
+          "Al": 3,
           "Er": 1,
-          "Si": 3
+          "Si": 2
         },
         "o": {
           "IQ": 1,
@@ -2511,6 +2545,7 @@ window.modulos = [
   },
   {
     "id": "P070",
+    "revisada": 1,
     "nombre": "Centro de control por mejora permanente",
     "tipo": "control",
     "puntos": "-1 [PV]",
@@ -2522,12 +2557,12 @@ window.modulos = [
     "discos": 0,
     "bono": "1 [DP][CO]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco y el ingeniero de la última etapa en una celda libre de [CO] Control de un área de soporte. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco en una celda libre de [CO] Control de un de soporte. Coloca el ingeniero de la última etapa junto al disco colocado. \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Al": 1,
-          "Fe": 3
+          "Al": 2,
+          "Fe": 4
         },
         "o": {
           "AS": 1,
@@ -2540,40 +2575,40 @@ window.modulos = [
   },
   {
     "id": "P071",
+    "revisada": 1,
     "nombre": "Centro de calibración retroactiva",
     "tipo": "control",
-    "puntos": "20 [PV]",
-    "puntos_carta": 20,
+    "puntos": "5 [PV]",
+    "puntos_carta": 5,
     "puntos_capas": 0,
-    "puntos_ingenieros": -4,
+    "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": -1,
-    "bono": "1 [DP][CO] + [QD][MO] [=][QU]",
-    "disco_soporte": 1,
-    "efecto": "[QD] Retira uno de tus discos de una celda de [MO] Microondas para colocar un disco en una celda libre de [CO] Control en el área de soporte del mismo cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
+    "discos": -2,
+    "bono": "2 [DP][CO] +2 [QD][MO] [=] 2[QU]",
+    "disco_soporte": 2,
+    "efecto": "[QD] Retira 2 de tus discos de celdas de [MO] Microondasde de dos cuadrantes distintos para colocar un disco en la celda de [CO] Control del área de soporte de cada uno de esos cuadrantes.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Al": 3,
-          "Nd": 2,
+          "Al": 2,
+          "Nd": 1,
           "Fe": 2
         },
         "o": {
-          "MO": 1,
-          "IS": 2,
+          "IS": 1,
           "IQ": 1,
           "En": 2
         }
       },
       {
         "m": {
-          "Si": 4,
-          "Ce": 2
+          "Si": 3,
+          "Ce": 1
         },
         "o": {
-          "MO": 1,
-          "AS": 1,
+          "MO": 2,
+          "IS": 1,
           "En": 2,
           "Tr": 1
         }
@@ -2585,6 +2620,7 @@ window.modulos = [
   // Mantenimiento
   {
     "id": "P072",
+    "revisada": 1,
     "nombre": "Red de túneles de servicio",
     "tipo": "mantenimiento",
     "puntos": "15 [PV]",
@@ -2593,15 +2629,15 @@ window.modulos = [
     "puntos_ingenieros": -8,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": -1,
-    "bono": "1 [DP][MN] + [QD][ES] [=][QU]",
-    "disco_soporte": 1,
-    "efecto": "[QD] Retira uno de tus discos de una celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
+    "discos": -2,
+    "bono": "2 [DP][MN] +2 [QD][ES] [=][QU]",
+    "disco_soporte": 2,
+    "efecto": "[QD] Retira 2 de tus discos de celdas de [ES] Estructura de un cuadrante para colocar un disco en cada una de las dos celdas de [MN] Mantenimiento del área de soporte de ese cuadrante, coloca el ingeniero de la utima etapa juntoa a cualquiera de ellos.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Fe": 2,
-          "Ti": 2
+          "Fe": 4,
+          "Ti": 4
         },
         "o": {
           "IE": 1
@@ -2609,13 +2645,13 @@ window.modulos = [
       },
       {
         "m": {
-          "Fe": 1,
-          "Cu": 2
+          "Fe": 2,
+          "Cu": 5
         },
         "o": {
-          "ES": 1,
-          "AE": 2,
-          "Tr": 2
+          "ES": 2,
+          "AE": 1,
+          "Tr": 1
         }
       }
     ],
@@ -2623,22 +2659,23 @@ window.modulos = [
   },
   {
     "id": "P073",
+    "revisada": 1,
     "nombre": "Brigada de propulsión iónica",
     "tipo": "mantenimiento",
-    "puntos": "10 [PV]",
-    "puntos_carta": 10,
+    "puntos": "5 [PV]",
+    "puntos_carta": 5,
     "puntos_capas": 0,
     "puntos_ingenieros": -12,
     "puntos_otros": 6,
     "copias": 3,
-    "discos": -1,
-    "bono": "1 [DP][MN] + [QD][FV] \n +2 [PI] [SI][ES][=][QU]",
-    "disco_soporte": 1,
-    "efecto": "[QD] Retira uno de tus discos de una celda de [FV] Fotovoltaica para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\nLuego gana 2 [PI] por cada celda de [ES] Estructura con un disco en el mimso cuadrante. \nConsulta la pérdida de puntos por personal anclado.",
+    "discos": -2,
+    "bono": "2 [DP][MN] +2 [QD][FV] \n +2 [PI] [SI][ES][=][QU]",
+    "disco_soporte": 2,
+    "efecto": "[QD] Retira 2 de tus discos de celdas de [FV] Fotovoltaica de un cuadrante para colocar un disco en cada una de las dos celdas de [MN] Mantenimiento del área de soporte de ese cuadrante, coloca los ingenieros de la utima etapa junto a cualquiera de ellos.\nLuego gana 2 [PI] por cada celda de [ES] Estructura con un disco en ese cuadrantes.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Fe": 2,
+          "Fe": 4,
           "Ti": 2,
           "Al": 1,
           "Cu": 2,
@@ -2655,6 +2692,7 @@ window.modulos = [
   },
   {
     "id": "P074",
+    "revisada": 1,
     "nombre": "Gimnasio y spa de gravedad cero",
     "tipo": "mantenimiento",
     "puntos": "2 [PV] [/] [AI]",
@@ -2664,9 +2702,9 @@ window.modulos = [
     "puntos_otros": 20,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DH][MN]",
+    "bono": "2 [DH][MN]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en una celda libre de [MN] Mantenimiento sin cobrar bonos de colocación.\n[FJ] Gana 2 [PV] por [AI] ingeniero anclado de cualquier jugador.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación.\n[FJ] Gana 2 [PV] por [AI] ingeniero anclado de cualquier jugador.",
     "etapas": [
       {
         "m": {
@@ -2699,23 +2737,24 @@ window.modulos = [
   },
   {
     "id": "P075",
+    "revisada": 1,
     "nombre": "Jardines bioclimáticos inteligentes",
     "tipo": "mantenimiento",
-    "puntos": "20 [PV]",
-    "puntos_carta": 20,
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 20,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DH][MN] - 5 [AI]",
+    "bono": "2 [DH][MN] [=][QU] - 5 [AI]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en una celda libre de [MN] Mantenimiento sin cobrar bonos de colocación.\nLuego retira hasta 5 [AI] ingenieros anclados de cualquier número de celdas y devuélvelos a la reserva de ingenieros correspondiente.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación.\nLuego retira hasta 5 [AI] ingenieros anclados de cualquier número de celdas y devuélvelos a la reserva de ingenieros correspondiente.",
     "etapas": [
       {
         "m": {
-          "Ti": 4,
-          "Al": 5,
+          "Ti": 2,
+          "Al": 2,
           "Si": 4
         },
         "o": {
@@ -2726,11 +2765,10 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 4,
-          "Nd": 2,
-          "Si": 2,
-          "Er": 1,
-          "Ti": 2
+          "Cu": 2,
+          "Nd": 1,
+          "Si": 1,
+          "Er": 1
         },
         "o": {
           "IE": 1,
@@ -2744,6 +2782,7 @@ window.modulos = [
   },
   {
     "id": "P076",
+    "revisada": 1,
     "nombre": "Aditivo de nanobots microactuadores",
     "tipo": "mantenimiento",
     "puntos": "10 [PV]",
@@ -2752,16 +2791,16 @@ window.modulos = [
     "puntos_ingenieros": -4,
     "puntos_otros": 9,
     "copias": 1,
-    "discos": -1,
-    "bono": "1 [DP][MN] + [QD][ES] \n +3[PI] [/] [SI][RF] [=][QU]",
-    "disco_soporte": 1,
-    "efecto": "[QD] Retira uno de tus discos de una celda de [ES] Estructura para colocar un disco en una celda libre de [MN] Mantenimiento en el área de soporte del mismo cuadrante.\nLuego gana 3[PI] por cada celda de [RF] Refrigeración con un disco \nConsulta la pérdida de puntos por personal anclado.",
+    "discos": -2,
+    "bono": "2 [DP][MN] +2 [QD][ES] [=][QU]\n +3[PI] [/] [SI][RF] [=][QU]",
+    "disco_soporte": 2,
+    "efecto": "[QD] Retira 2 de tus discos de celdas de [ES] Estructura de un cuadrante para colocar un disco en las 2 celdas libres de [MN] Mantenimiento del área de soporte de ese cuadrante.\nLuego gana 3[PI] por cada celda de [RF] Refrigeración con un disco \nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Si": 2,
+          "Si": 3,
           "Cu": 2,
-          "Nd": 1
+          "Nd": 2
         },
         "o": {
           "IE": 1 
@@ -2769,9 +2808,9 @@ window.modulos = [
       },
       {
         "m": {
-          "Al": 2,
-          "Si": 2,
-          "Ce": 2
+          "Al": 3,
+          "Si": 3,
+          "Ce": 3
         },
         "o": {
           "ES": 1,
@@ -2784,43 +2823,44 @@ window.modulos = [
   },
   {
     "id": "P077",
+    "revisada": 1,
     "nombre": "Núcleo de control multifísico",
     "tipo": "mantenimiento",
-    "puntos": "20 [PV]",
-    "puntos_carta": 20,
+    "puntos": "0 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
     "discos": -3,
-    "bono": "[QD][ES]+[QD][TS]+[QD][RF]\n1 [DP][MN]",
-    "disco_soporte": 1,
-    "efecto": "[QD] Retira uno de tus discos de cada una de las capas [ES] Estructura, [TS] Transmisión y [RF] Refrigeración de un mismo sector para colocar un disco en una celda libre de [MN] Mantenimiento del mismo cuadrante.",
+    "bono": "1[QD][ES]+1[QD][TS]+1[QD][RF][=][SC]\n 2[DP][MN] [=][QU]",
+    "disco_soporte": 2,
+    "efecto": "[QD] Retira uno de tus discos de cada una de las capas [ES] Estructura, [TS] Transmisión y [RF] Refrigeración de un sector, para colocar un disco en 2 celdas libres de [MN] Mantenimiento del área de soporte de ese cuadrante.",
     "etapas": [
       {
         "m": {
-          "Cu": 2,
           "Gd": 1,
-          "Fe": 1
+          "Al": 1,
+          "Fe": 3
         },
         "o": {
           "IS": 1,
-          "IE": 2,
+          "IE": 1,
           "En": 2
         }
       },
       {
         "m": {
           "Ti": 3,
+          "Cu": 2,
           "Al": 1
         },
         "o": {
           "ES": 1,
           "TS": 1,
           "RF": 1,
-          "IE": 1,
           "Tr": 1,
-          "En": 2
+          "En": 1
         }
       }
     ],
@@ -2828,24 +2868,25 @@ window.modulos = [
   },
   {
     "id": "P078",
+    "revisada": 1,
     "nombre": "Anticipación y blindaje contra llamaradas solares",
     "tipo": "mantenimiento",
-    "puntos": "10 [PV]",
-    "puntos_carta": 10,
+    "puntos": "20 [PV]",
+    "puntos_carta": 20,
     "puntos_capas": 0,
     "puntos_ingenieros": -8,
     "puntos_otros": -2,
     "copias": 1,
-    "discos": 2,
-    "bono": "2 [DP][MN] 2[DS][ES] [=]2[QU]",
-    "disco_soporte": 2,
-    "efecto": "Coloca 1 disco en 2 celdas libres de [MN] Mantenimiento y 1 disco en 2 celdas libres de [ES] Estructura de dos cuadrantes, 2 discos en cada cuadrante. Si el mapa tiene más de 3 cuadrantes, estos no pueden ser adyacentes.\nConsulta la pérdida de puntos por personal anclado.",
+    "discos": 4,
+    "bono": "4 [DP][MN] 4[DS][ES] [=]2[QU]",
+    "disco_soporte": 4,
+    "efecto": "Coloca un disco en 4 celdas libres de [MN] Mantenimiento y un disco en 4 celdas libres de [ES] Estructura de dos cuadrantes, 2 de cada tipo en cada cuadrante. Si el mapa tiene más de 3 cuadrantes, estos no pueden ser adyacentes.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Gd": 1,
-          "Cu": 2,
-          "Si": 4
+          "Gd": 3,
+          "Cu": 6,
+          "Si": 11
         },
         "o": {
           "IQ": 2,
@@ -2855,9 +2896,9 @@ window.modulos = [
       },
       {
         "m": {
-          "Ti": 3,
-          "Al": 1,
-          "Nd": 1
+          "Ti": 8,
+          "Al": 3,
+          "Nd": 3
         },
         "o": {
           "AM": 1,
@@ -2871,6 +2912,7 @@ window.modulos = [
   },
   {
     "id": "P079",
+    "revisada": 1,
     "nombre": "Detección y ablación láser de micrometeoritos",
     "tipo": "mantenimiento",
     "puntos": "20 [PV]",
@@ -2880,15 +2922,15 @@ window.modulos = [
     "puntos_otros": 0,
     "copias": 1,
     "discos": 4,
-    "bono": "1 [DP][MN] 4 [DS][MO] [=] 2 [QU]",
-    "disco_soporte": 1,
-    "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un área de soporte y un disco en 4 celdas libres de [MO] Microondas de ese cuadrante y otro cuadrante, por lo menos una en cada uno. \nConsulta la pérdida de puntos por personal anclado.",
+    "bono": "2 [DP][MN]  [=][QU] \n 4 [DS][MO] [=][QU]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento de un área de soporte y un disco en 4 celdas libres de [MO] Microondas de otro cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Si": 5,
-          "Cu": 4,
-          "Nd": 2
+          "Si": 10,
+          "Cu": 7,
+          "Nd": 4
         },
         "o": {
           "IM": 1,
@@ -2898,8 +2940,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Ti": 1,
-          "Al": 3,
+          "Ti": 2,
+          "Al": 6,
           "Er": 2
         },
         "o": {
@@ -2914,6 +2956,7 @@ window.modulos = [
   },
   {
     "id": "P080",
+    "revisada": 1,
     "nombre": "Plataforma de reparaciones sobre rieles",
     "tipo": "mantenimiento",
     "puntos": "15 [PV]",
@@ -2923,15 +2966,15 @@ window.modulos = [
     "puntos_otros": -2,
     "copias": 1,
     "discos": 0,
-    "bono": "2 [DP][MN] [=][QU] \n -1 [PI] [ES][QU]",
-    "disco_soporte": 2,
-    "efecto": "Coloca un disco en cada una de las 2 celdas libres de [MN] Mantenimiento de una misma área de soporte y los ingenieros de la última etapa junto a cualquiera de ellos.\nLuego pierde 1 [PI] por cada celda sin disco de [ES] Estructura en ese cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
+    "bono": "4 [DP][MN] [=] 2 [QU] \n -1 [PI] [ES][QU]",
+    "disco_soporte": 4,
+    "efecto": "Coloca un disco en 4 celdas libres de [MN] Mantenimiento de dos áreas de soporte, 2 en cada una, y los ingenieros de la última etapa junto a cualquiera de ellos.\nLuego pierde 1 [PI] por cada celda sin disco de [ES] Estructura en esos dos cuadrantes.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Fe": 8,
-          "Al": 2,
-          "Ti": 1
+          "Fe": 19,
+          "Al": 5,
+          "Ti": 3
         },
         "o": {
           "IE": 2,
@@ -2940,9 +2983,9 @@ window.modulos = [
       },
       {
         "m": {
-          "Fe": 3,
-          "Cu": 6,
-          "Nd": 1
+          "Fe": 7,
+          "Cu": 14,
+          "Nd": 2
         },
         "o": {
           "Tr": 2,
@@ -2956,6 +2999,7 @@ window.modulos = [
 
   {
     "id": "P082",
+    "revisada": 1,
     "nombre": "Ascensores de mantenimiento radial",
     "tipo": "mantenimiento",
     "puntos": "3 [PV]",
@@ -2965,17 +3009,17 @@ window.modulos = [
     "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
-    "bono": "2 [DP][MN]",
-    "disco_soporte": 2,
-    "efecto": "coloca un disco en 2 celdas libres de [MN] Mantenimiento en el área de soporte de dos cuadrantes distintos. Coloca los ingenieros de la última etapa junto a cualquiera de ellos. Si el mapa tiene 3 cuadrantes o más, ambos cuadrantes no pueden ser adyacentes.\nConsulta la pérdida de puntos por personal anclado.",
+    "bono": "3 [DP][MN] [=] 3[QU]",
+    "disco_soporte": 3,
+    "efecto": "Coloca un disco en 3 celdas libres de [MN] Mantenimiento. Coloca los ingenieros de la última etapa junto a cualquiera de ellos. Si el mapa tiene 3 cuadrantes o más, debe ser en 3 cuadrantes distintos.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Fe": 4,
-          "Al": 3,
-          "Cu": 3,
-          "Ti": 2,
-          "Si": 3
+          "Fe": 8,
+          "Al": 8,
+          "Cu": 5,
+          "Ti": 5,
+          "Si": 5
         },
         "o": {
           "En": 3,
@@ -2988,7 +3032,7 @@ window.modulos = [
   },
   {
     "id": "P083",
-    "nombre": "Centro de mantenimiento tradicional",
+    "revisada": 1,
     "tipo": "mantenimiento",
     "puntos": "7 [PV]",
     "puntos_carta": 7,
@@ -2997,16 +3041,16 @@ window.modulos = [
     "puntos_otros": 0,
     "copias": 5,
     "discos": 0,
-    "bono": "1 [DP][MN]",
-    "disco_soporte": 1,
-    "efecto": "Coloca 1 disco en una celda libre de [MN] Mantenimiento de un área de soporte, junto con los ingenieros anclados de la última etapa.\nConsulta la pérdida de puntos por personal anclado.",
+    "bono": "2 [DP][MN]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento de una o más áreas de soporte. Coloca los ingenieros de la última etapa junto a cualquiera de los discos colocados.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Fe": 4,
-          "Ti": 2,
-          "Si": 2,
-          "Al": 1
+          "Fe": 14,
+          "Ti": 6,
+          "Si": 6,
+          "Al": 4
         },
         "o": {
           "AE": 1,

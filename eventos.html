@@ -42,7 +42,7 @@
         .sheet {
             display: grid;
             grid-template-columns: repeat(4,41mm);
-            gap: 5mm;
+            gap: 0mm;
             justify-content: center
         }
 
@@ -445,7 +445,7 @@
                 vertical-align: top;
                 width: 41mm;
                 height: 63mm;
-                margin: 1.5mm .75mm;
+                margin: 0;
                 font-size: 16px;
                 text-align: left;
                 break-inside: avoid;
@@ -456,7 +456,7 @@
         }
     
         /* Mini USA: 41 × 63 mm. Cartas sin tablero de mercado. */
-        .sheet{grid-template-columns:repeat(4,41mm);gap:3mm}
+        .sheet{grid-template-columns:repeat(4,41mm);gap:0mm}
         .card{width:41mm;height:63mm;padding:2.2mm;border-radius:1.8mm}
         .heading{min-height:9mm;gap:1mm;padding-bottom:1mm}
         .heading img{width:5mm;height:5mm}
@@ -487,7 +487,7 @@
         .overflow-details{width:100%;font-size:12px;line-height:1.4}
         .overflow-details summary{cursor:pointer}
         .overflow-details ul{margin:6px 0;padding-left:20px}
-        @media print{.sheet{grid-template-columns:repeat(4,41mm);gap:3mm}}
+        @media print{.sheet{grid-template-columns:repeat(4,41mm);gap:0mm}}
         @media screen and (max-width:760px){.sheet{grid-template-columns:repeat(3,41mm)}}
         @media screen and (max-width:510px){.sheet{grid-template-columns:repeat(2,41mm)}}
 </style>
@@ -531,9 +531,7 @@
             { id: 'S02', subsidy: true },
             { id: 'E05', title: 'Producción estable', up: ['Fe', 'Cu', 'Si'], down: ['Ti', 'Al', 'C'], effect: 'Cada jugador aumenta en 1 [PE] su producción de energía por cada sector con todas sus capas ocupadas por discos, en el que tenga al menos un disco propio.' },
             { id: 'E06', title: 'Nivelar los proyectos', up: ['Ti', 'Al', 'C'], down: ['Fe', 'Cu', 'Si'], effect: 'El jugador con menos [PI] gana $10.' },
-            { id: 'S03', subsidy: true },
             { id: 'E08', title: 'Sabotaje', up: ['Gd', 'Ce', 'HCl'], down: ['Nd', 'Er', 'H₂SO₄'], effect: 'El jugador con más [PI] quita un disco [QD] a su elección y devuelve los ingenieros de esa celda a las reservas correspondientes. Pierde puntos por quita de discos normalmente. En caso de empate, ninguno lo hace.' },
-            { id: 'S04', subsidy: true },
             { id: "E09", title: "Reconocimiento público", up: ["Fe", "Al", "Ce"], down: ["Cu", "Ti", "Nd"], effect: "El jugador con más discos en la capa de microondas [MO] gana 2 [PI] y $5." },
             { id: "E10", title: "Priorizar la precisión", up: ["Cu", "Ti", "Nd"], down: ["Fe", "Al", "Ce"], effect: "El jugador con más discos en las áreas de soporte de la esfera gana 2 [PI] y $5." },
             { id: "E12", title: "Crisis de microprocesadores", up: ["C", "Er", "H₂SO₄"], down: ["Si", "Gd", "HCl"], effect: "Cada jugador puede entregar 5 Si y 1 Ce para ganar $20." },

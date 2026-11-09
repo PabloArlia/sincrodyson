@@ -10,7 +10,7 @@ body{margin:0;padding:18px;background:#e8e9e7;color:#20282d;font-family:Arial,He
 .toolbar{max-width:760px;margin:0 auto 18px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .toolbar h1{font-size:14pt;margin:0}.toolbar p{font-size:10pt;margin:5px 0 0}
 button{padding:9px 14px;border:1px solid #20282d;border-radius:5px;background:white;font:inherit;cursor:pointer}
-.sheet{display:grid;grid-template-columns:repeat(3,64mm);column-gap:1mm;row-gap:0;justify-content:center;align-items:start}
+.sheet{display:grid;grid-template-columns:repeat(3,64mm);column-gap:1mm;row-gap:0;justify-content:center;align-items:start;padding-top:5mm}
 .card{width:64mm;height:120mm;padding:2mm;border:1px solid #222;border-radius:2mm;background:white;display:flex;flex-direction:column;gap:1mm;break-inside:avoid;page-break-inside:avoid;font-size:8pt;line-height:1.15}
 .card-header{display:flex;align-items:center;justify-content:space-between;gap:2mm;border-bottom:1px solid #222;padding-bottom:1.3mm;flex:none}
 .eyebrow{font-size:6pt;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5mm;color:#555}
@@ -68,16 +68,16 @@ p{margin:0}strong{font-weight:800}
  <article class="card bonuses-card">
   <header class="card-header"><div><div class="eyebrow">Syncrodyson · Ayuda de juego</div><h2>Bonos de colocación</h2></div><img class="header-icon" src="./iconos/DS-disco.svg" alt=""></header>
   <p class="placement-rule">Resuelve <strong>un disco por vez</strong>.<br>El disco recién colocado <strong>también cuenta</strong>.</p>
-  <section class="bonus-section"><h3>Colocar en una celda</h3>
+  <section class="bonus-section"><h3>Colocar en una celda de la esfera</h3>
    <div class="bonus-title"><img src="./iconos/esfera-sector.svg" alt="">Sector</div>
-   <div class="bonus-line"><span class="amount">+1 <img src="./iconos/PV-punto-victoria.svg" alt="PV"></span><p><strong>Quien coloca</strong>, por cada disco del sector, de cualquier jugador.</p></div>
+   <div class="bonus-line"><span class="amount">+1<img src="./iconos/PI-puntos-inmediatos.svg" alt="PI"></span><p><strong>Quien coloca</strong>, por cada disco del sector, de cualquier jugador.</p></div>
    <div class="bonus-line"><span class="amount">+$2</span><p><strong>Cada jugador</strong>, por cada disco propio en ese sector.</p></div>
    <div class="bonus-line"><span class="amount">+$3</span><p><strong>Cada jugador</strong>, por cada disco propio en el soporte de ese cuadrante.</p></div>
    <p class="bonus-warning"><strong>Acarreo:</strong> después de cobrar, si la celda de Estructura de ese sector está vacía, quien colocó paga <strong>$5</strong> al banco.</p>
   </section>
   <section class="bonus-section"><h3>Colocar en un área de soporte</h3>
-   <div class="bonus-title"><img src="./iconos/esfera-cuadrante.svg" alt="">Cuadrante completo</div>
-   <div class="bonus-line"><span class="amount">+1 <img src="./iconos/PV-punto-victoria.svg" alt="PV"></span><p><strong>Quien coloca</strong>, por cada <strong>2 discos</strong> del cuadrante, <strong>redondeando hacia arriba</strong>.</p></div>
+   <div class="bonus-title"><img src="./iconos/esfera-cuadrante.svg" alt="">Cuadrante</div>
+   <div class="bonus-line"><span class="amount">+1 <img src="./iconos/PI-puntos-inmediatos.svg" alt="PV"></span><p><strong>Quien coloca</strong>, por cada <strong>2 discos</strong> del cuadrante, <strong>redondeando hacia arriba</strong>.</p></div>
    <div class="bonus-line"><span class="amount">+$1</span><p><strong>Cada jugador</strong>, por cada disco propio en todo el cuadrante.</p></div>
    <p style="margin-top:1.5mm;font-size:7.5pt">Cuenta sectores y soporte, con discos de todos los jugadores para los PV.</p>
 

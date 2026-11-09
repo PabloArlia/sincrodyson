@@ -450,7 +450,7 @@
 
         @page {
             size: A2 landscape;
-            margin: 0
+            margin: 20mm
         }
 
         @media print {
@@ -464,11 +464,15 @@
             }
 
             .print-page {
+                width: 554mm;
+                height: 380mm;
                 margin: 0;
+                padding-top: 10mm;
                 break-inside: avoid
             }
 
             .poster {
+                zoom: .88;
                 box-shadow: none;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact

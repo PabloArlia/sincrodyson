@@ -49,7 +49,8 @@ function diagnosticoBalance(m,b){
   `Puntos por discos de soporte: ${numero(b.soporte)} (${m.disco_soporte||0} × ${supuestosBalance.puntosSoporte})`,
   `Puntos base: ${numero(b.base)}`,
   `Coeficiente: ${numero(b.coef)}`,
-  ...(m.balance_pendiente?.length?['','Revisar:',...m.balance_pendiente]:[])
+  ...(m.balance_pendiente?.length?['','Revisar:',...m.balance_pendiente]:[]),
+  ...(m.nota_duplicacion?['',m.nota_duplicacion]:[])
  ].join('\n');
 }
 function activarDiagnosticoBalance(){

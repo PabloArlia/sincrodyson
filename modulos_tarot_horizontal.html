@@ -3,9 +3,10 @@
 body{font-family:Arial,sans-serif;background:#f3f3f3;color:#111;margin:0;padding:16px}
 .toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
 button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
-.sheet{display:grid;grid-template-columns:repeat(2,120mm);gap:1mm;justify-content:center}
+.sheet{display:grid;grid-template-columns:repeat(2,120mm);gap:0mm;justify-content:center}
+.print-page{display:contents}
 .card{width:120mm;height:64mm;background:white;border:1px solid #222;border-radius:2mm;padding:1.6mm;display:flex;flex-direction:column;gap:1mm;overflow:hidden;break-inside:avoid}
-.card.coef-fuera-rango{border-color:#d00000}.card.inicial .name{text-decoration:underline;text-underline-offset:2px}
+.card.coef-fuera-rango{border-color:#d00000}.card.sin-revisar{border-color:#e0b000}.card.inicial .name{text-decoration:underline;text-underline-offset:2px}
 .heading{display:flex;gap:1.5mm;flex-shrink:0;align-items:center}
 .heading-content{flex:1;min-width:0;display:flex;flex-direction:column;gap:.5mm}
 .heading-row{display:flex;justify-content:space-between;align-items:center;gap:1.5mm}
@@ -38,13 +39,13 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .footer-effect .inline-icon{display:inline-block;vertical-align:middle;line-height:0}.footer-effect .inline-icon img{width:3mm;height:3mm;object-fit:contain}.footer-effect .inline-icon img.separator-bar{width:1.4mm}
 .destino{position:relative;flex:0 0 7mm;width:7mm;height:7mm;border:1px solid #333;border-radius:1mm;display:grid;place-items:center}.destino img{width:5mm;height:5mm;object-fit:contain}.destino small{position:absolute;right:.2mm;bottom:.2mm;background:white;font-size:10pt}
 
-@page{size:A4 landscape;margin:8mm}
+@page{size:A4 landscape;margin:5mm}
 @media print{
  html,body{margin:0;padding:0;background:white}.toolbar{display:none}
  .sheet{display:block;width:100%;text-align:center;font-size:0}
- .sheet>.card{display:inline-flex;vertical-align:top;margin:0 0 1mm;width:120mm;height:64mm;text-align:left;font-size:16px;break-inside:avoid;page-break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}
- .sheet>.card:nth-child(odd){margin-right:1mm}
- .sheet>.card:nth-child(6n){break-after:page;page-break-after:always}
+ .print-page{display:grid;grid-template-columns:repeat(2,120mm);grid-auto-rows:64mm;gap:0;justify-content:center;align-content:start;height:198mm;padding-top:6mm;break-inside:avoid;page-break-inside:avoid;break-after:page;page-break-after:always}
+ .print-page:last-child{break-after:auto;page-break-after:auto}
+ .print-page>.card{margin:0;width:120mm;height:64mm;text-align:left;font-size:16px;break-inside:avoid;page-break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
 .balance-tooltip{position:fixed;z-index:1000;width:360px;max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);overflow:auto;padding:14px 16px;border:1px solid #78877e;border-radius:8px;background:#fff;color:#17221b;box-shadow:0 6px 24px #0003;font:12px/1.45 Arial,sans-serif;white-space:pre-line;pointer-events:none}.balance-tooltip[hidden]{display:none}@media print{.balance-tooltip{display:none!important}}
 .cards-summary{position:fixed;top:70px;right:12px;z-index:50;width:152px;max-height:calc(100vh - 82px);overflow:auto;padding:6px 8px;background:#fff;border:1px solid #aab5ad;border-radius:6px;box-shadow:0 3px 12px #0002;font:12px/1.2 Arial,sans-serif}.summary-row{display:flex;align-items:center;gap:3px;padding:3px 0;white-space:nowrap}.summary-icon,.summary-icon img{display:block;width:19px;height:19px;object-fit:contain}.summary-total{border-top:1px solid #c8d0ca;margin-top:3px;padding-top:6px;font-weight:bold}@media print{.cards-summary{display:none!important}}
@@ -86,6 +87,7 @@ const catalogoIconos={
  QU:{nombre:'Cuadrante',archivo:'esfera-cuadrante.svg'},
  SC:{nombre:'Sector',archivo:'esfera-sector.svg'},
  '=':{nombre:'Igual',archivo:'igual.svg'},
+ '=<':{nombre:'Hasta: máximo de cuadrantes distintos',archivo:'menor-igual.svg'},
  '!=':{nombre:'Distinto',archivo:'distinto.svg'},
  '/':{nombre:'Por',archivo:'separador-barra.svg'},
  NO:{nombre:'Celda sin disco',archivo:'NO-sin-disco.svg'},
@@ -147,7 +149,7 @@ function imagenIcono(id){
 const rocket=imagenIcono('Tr');
 const energia=imagenIcono('En');
 function renderBono(bono){
- const partes=String(bono??'').split(/(\[(?:[A-Za-z]{2}|\/|!?=)\])/g);
+ const partes=String(bono??'').split(/(\[(?:[A-Za-z]{2}|\/|=<|!?=)\])/g);
  const etiqueta=partes.map(p=>Object.hasOwn(catalogoIconos,p.slice(1,-1))&&p.startsWith('[')?catalogoIconos[p.slice(1,-1)].nombre:p).join(' ');
  const contenido=partes.map(p=>{
   const id=p.startsWith('[')&&p.endsWith(']')?p.slice(1,-1):'';
@@ -156,7 +158,7 @@ function renderBono(bono){
  return contenido?`<span class="card-bonus" title="${escapeHTML(etiqueta)}" aria-label="${escapeHTML(etiqueta)}"><span class="bonus-content">${contenido}</span></span>`:'';
 }
 function renderEfecto(texto){
- return String(texto??'').split(/(\[(?:[A-Za-z]{2}|\/|!?=)\])/g).map(parte=>{
+ return String(texto??'').split(/(\[(?:[A-Za-z]{2}|\/|=<|!?=)\])/g).map(parte=>{
   const id=parte.startsWith('[')&&parte.endsWith(']')?parte.slice(1,-1):'';
   if(!Object.hasOwn(catalogoIconos,id))return escapeHTML(parte).replace(/\\n|\r\n?|\n/g,'<br>');
   const nombre=escapeHTML(catalogoIconos[id].nombre);
@@ -183,11 +185,11 @@ function render(m){
  const balance=balanceModulo(m),costo=balance.costo;
  const insignia=renderBono(m.bono);
  const coef=Number.isFinite(balance.coef)?balance.coef.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
- const fueraRango=!Number.isFinite(balance.coef)||balance.coef<(m.inicial?12:7)||balance.coef>(m.inicial?13:9);
- return `<article class="card${m.etapas.length>2?' many-stages':''}${m.inicial?' inicial':''}${fueraRango?' coef-fuera-rango':''}" data-card-id="${escapeHTML(m.id)}" tabindex="0" data-balance="${escapeHTML(diagnosticoBalance(m,balance))}"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div class="heading-content"><div class="heading-row"><div class="name">${escapeHTML(m.nombre)}</div><div class="card-score"><div class="score-row">${renderBono(puntos)}${iconoDestino(m.destino||'completados')}</div></div></div><div class="heading-row"><div class="heading-meta"><div class="type"><span class="card-id">${escapeHTML(m.id)}</span>${escapeHTML(m.tipo==='recursoshumanos'?'RR. HH.':m.tipo==='control_sensores'?'control/sensores':m.tipo.replaceAll('_',' '))}</div><div class="card-cost"><strong>$${costo}</strong> / $${coef}/VP</div></div>${insignia?`<div class="heading-bonus">${insignia}</div>`:''}</div></div></header>
+ const fueraRango=!Number.isFinite(balance.coef)||balance.coef<(m.inicial?10:7)||balance.coef>(m.inicial?11:9);
+ return `<article class="card${m.etapas.length>2?' many-stages':''}${m.inicial?' inicial':''}${fueraRango?' coef-fuera-rango':''}${m.revisada===0?' sin-revisar':''}" data-card-id="${escapeHTML(m.id)}" tabindex="0" data-balance="${escapeHTML(diagnosticoBalance(m,balance))}"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div class="heading-content"><div class="heading-row"><div class="name">${escapeHTML(m.nombre)}</div><div class="card-score"><div class="score-row">${renderBono(puntos)}${iconoDestino(m.destino||'completados')}</div></div></div><div class="heading-row"><div class="heading-meta"><div class="type"><span class="card-id">${escapeHTML(m.id)}</span>${escapeHTML(m.tipo==='recursoshumanos'?'RR. HH.':m.tipo==='control_sensores'?'control/sensores':m.tipo.replaceAll('_',' '))}</div><div class="card-cost"><strong>$${costo}</strong> / $${coef}/VP</div></div>${insignia?`<div class="heading-bonus">${insignia}</div>`:''}</div></div></header>
  <section class="stages" style="--stage-count:${m.etapas.length}">${m.etapas.map((e,i)=>`<div class="stage"><div class="stage-title">ETAPA ${i+1}</div><div class="items">${Object.entries(e.m||{}).map(([id,n])=>tokens(id,n)).join('')}</div><div class="crew-line">${Object.entries(e.o||{}).filter(([id])=>id!=='En').map(([id,n])=>operationTokens(id,n)).join('')}${e.o?.En?operationTokens('En',e.o.En):''}</div></div>`).join('')}</section>
  <footer class="footer"><div class="footer-effect-wrap"><div class="footer-effect"><strong>Al completar:</strong> ${renderEfecto(m.efecto||'Sin efecto adicional')}</div></div></footer></article>`;
 }
-function draw(){const sheet=document.getElementById('sheet');if(!Array.isArray(window.modulos)){sheet.innerHTML='<p>No se cargó modulos_tarot.js. Guardá ambos archivos juntos.</p>';return;}const filtradas=window.modulos.filter(m=>!document.getElementById('hide-single-stage').checked||m.etapas.length!==1);const cartas=document.getElementById('show-copies').checked?filtradas.flatMap(m=>Array.from({length:m.copias??1},()=>m)):filtradas;sheet.innerHTML=cartas.map(render).join('');document.getElementById('cards-summary').innerHTML=renderResumenCartas(filtradas)}
+function draw(){const sheet=document.getElementById('sheet');if(!Array.isArray(window.modulos)){sheet.innerHTML='<p>No se cargó modulos_tarot.js. Guardá ambos archivos juntos.</p>';return;}const filtradas=window.modulos.filter(m=>!document.getElementById('hide-single-stage').checked||m.etapas.length!==1);const cartas=document.getElementById('show-copies').checked?filtradas.flatMap(m=>Array.from({length:m.copias??1},()=>m)):filtradas;const paginas=[];for(let i=0;i<cartas.length;i+=6){paginas.push(`<section class="print-page">${cartas.slice(i,i+6).map(render).join('')}</section>`)}sheet.innerHTML=paginas.join('');document.getElementById('cards-summary').innerHTML=renderResumenCartas(filtradas)}
 document.getElementById('colors').addEventListener('change',draw);document.getElementById('show-copies').addEventListener('change',draw);document.getElementById('hide-single-stage').addEventListener('change',draw);draw();activarDiagnosticoBalance();
 </script></body></html>
