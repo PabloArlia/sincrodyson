@@ -46,7 +46,7 @@ final class Game
         return $value;
     }
 
-    public static function create(string $code, string $name, string $token, int $cash = 4000, bool $stockMarket = false): array
+    public static function create(string $code, string $name, string $token, int $cash = 6000, bool $stockMarket = false): array
     {
         $player = self::player($name, $token, $cash);
         $catalog = Market::catalog();
