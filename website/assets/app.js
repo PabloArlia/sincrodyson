@@ -147,7 +147,7 @@
   function person(id) { return game.players.find(p => p.id === id); }
   const isHost = () => game.host === game.me;
   function navigationMenu() {
-    return `<details id="game-menu" class="game-menu"><summary class="btn menu-summary"><span aria-hidden="true">☰</span> Menú</summary><div class="game-menu-panel"><nav aria-label="Secciones de la partida"><button class="game-menu-item ${tab==='market'?'active':''}" data-tab="market" ${tab==='market'?'aria-current="page"':''}>Mercado</button><button class="game-menu-item ${tab==='account'?'active':''}" data-tab="account" ${tab==='account'?'aria-current="page"':''}>Caja y deudas</button><button class="game-menu-item ${tab==='activity'?'active':''}" data-tab="activity" ${tab==='activity'?'aria-current="page"':''}>Registro público</button></nav><div class="game-menu-code"><span class="eyebrow">Código de partida</span><strong class="room-code">${esc(game.code)}</strong></div><button class="game-menu-item" data-action="share">Invitar jugadores · QR y enlace</button><div class="game-menu-divider"></div><button class="game-menu-item" data-action="refresh">Actualizar ahora</button><button class="game-menu-item" data-action="leave">Cambiar de partida</button></div></details>`;
+    return `<details id="game-menu" class="game-menu"><summary class="btn menu-summary"><span aria-hidden="true">☰</span> Menú</summary><div class="game-menu-panel"><nav aria-label="Secciones de la partida"><button class="game-menu-item ${tab==='market'?'active':''}" data-tab="market" ${tab==='market'?'aria-current="page"':''}>Mercado</button><button class="game-menu-item ${tab==='account'?'active':''}" data-tab="account" ${tab==='account'?'aria-current="page"':''}>Caja y deudas</button><button class="game-menu-item ${tab==='activity'?'active':''}" data-tab="activity" ${tab==='activity'?'aria-current="page"':''}>Registro público</button></nav><div class="game-menu-code"><span class="eyebrow">Código de partida</span><strong class="room-code">${esc(game.code)}</strong></div><button class="game-menu-item" data-action="share">Invitar jugadores · QR y enlace</button><div class="game-menu-divider"></div><button class="game-menu-item" data-action="rename">Cambiar mi nombre</button><button class="game-menu-item" data-action="refresh">Actualizar ahora</button><button class="game-menu-item" data-action="leave">Cambiar de partida</button></div></details>`;
   }
   function gameView() {
     const p = me();
@@ -328,19 +328,22 @@
       return `<div class="small text-secondary">${info.direction}: ${Math.abs(qty)} ${esc(name)} \u00b7 ${info.total}</div>`;
     }).join('');
   }
+  function settlementDirection(receives) {
+    return `<span class="settlement-direction ${receives?'receives':'delivers'}" role="img" aria-label="${receives?'Recibe del banco':'Entrega al banco'}"><svg viewBox="0 0 32 40" aria-hidden="true" focusable="false"><path d="M10 3h12v18h8L16 37 2 21h8Z" fill="currentColor"/></svg></span>`;
+  }
   function fixedSettlementRows(orders) {
     return Object.entries(orders||{}).map(([id,qty])=>{
       const info=fixedTradeInfo(id,qty), engineer=id!=='project';
       const name=engineer?'Ingeniero '+game.engineerTypes[id]:'Cartas de proyecto';
       const rules=game.settlement.fixedRules||game.tradeRules;
       const unitAmount=rules[info.operation].unitAmount;
-      return `<div class="trade-row"><div class="settlement-resource">${resourceIcon(id)}<div><strong>${esc(info.direction)} ${Math.abs(qty)} ${esc(name)}</strong><div class="text-secondary small">${money(Math.abs(unitAmount))} por unidad &middot; ${info.amount<0?'paga':info.amount>0?'cobra':'sin movimiento de dinero'}${info.amount?' '+money(Math.abs(info.amount)):''}</div></div></div></div>`;
+      return `<div class="trade-row"><div class="settlement-resource">${settlementDirection(qty>0)}${resourceIcon(id)}<div><strong>${esc(info.direction)} ${Math.abs(qty)} ${esc(name)}</strong><div class="text-secondary small">${money(Math.abs(unitAmount))} por unidad &middot; ${info.amount<0?'paga':info.amount>0?'cobra':'sin movimiento de dinero'}${info.amount?' '+money(Math.abs(info.amount)):''}</div>${engineer&&qty>0?`<p class="contract-reminder">Entrega ${qty} ${qty===1?'ficha de contratación':'fichas de contratación'} <img src="assets/icons/CN-ficha-contratacion.svg" alt="CN"></p>`:''}</div></div></div>`;
     }).join('');
   }
   function settlement() {
     const s=game.settlement, id=s.order[s.index], p=person(id), can=id===game.me||isHost();
     const total=Object.entries(p.orders).reduce((a,[rid,q])=>a-q*s.prices[rid],0)+Object.entries(p.fixedOrders||{}).reduce((a,[id,q])=>a+fixedTradeInfo(id,q).amount,0);
-    return `<form id="settle-form" class="card liquidation mb-4"><div class="card-header"><div><h2 class="card-title">Liquidaci&#243;n ${esc(p.name)}</h2></div></div><div class="card-body"><p class="text-secondary small">Entregá las ventas al banco y tomá las compras. Las unidades que no puedas entregar quedan como deuda; el cobro de la venta se mantiene.</p>${Object.entries(p.orders).length?Object.entries(p.orders).map(([rid,q])=>`<div class="trade-row"><div class="settlement-resource">${resourceIcon(rid)}<div><strong>${q>0?'Recibe':'Entrega'} ${Math.abs(q)} ${esc(game.catalog[rid].name)}</strong><div class="text-secondary small">${money(s.prices[rid])} por unidad · ${q>0?'paga':'cobra'} ${money(Math.abs(q)*s.prices[rid])}</div></div></div>${q<0&&can?`<div class="debt-input"><label class="form-label small" for="missing-${rid}">No entrega</label><input id="missing-${rid}" name="missing-${rid}" type="number" min="0" max="${-q}" step="1" value="0" class="form-control" inputmode="numeric"></div>`:''}</div>`).join(''):Object.keys(p.fixedOrders||{}).length?'':'<p>Sin compras ni ventas en esta ronda.</p>'}${fixedSettlementRows(p.fixedOrders)}<div class="d-flex justify-content-between align-items-center mt-3"><div><div class="text-secondary small">Movimiento de caja</div><strong class="fs-2 ${total<0?'money-negative':'money-positive'}">${total>=0?'Cobra':'Paga'} ${money(Math.abs(total))}</strong></div><div class="text-end"><div class="text-secondary small">Saldo después</div><strong class="fs-2">${money(p.cash+total)}</strong></div></div>${can?`<button class="btn btn-primary w-100 mt-4" ${busy?'disabled':''}>Confirmar entregas y liquidación${id!==game.me?' como anfitrión':''}</button>`:`<div class="alert alert-info mt-3 mb-0">Esperando la confirmación de ${esc(p.name)} o del anfitrión.</div>`}</div></form>`;
+    return `<form id="settle-form" class="card liquidation mb-4"><div class="card-header"><div><h2 class="card-title">Liquidaci&#243;n ${esc(p.name)}</h2></div></div><div class="card-body"><p class="text-secondary small">Entregá las ventas al banco y tomá las compras. Las unidades que no puedas entregar quedan como deuda; el cobro de la venta se mantiene.</p>${Object.entries(p.orders).length?Object.entries(p.orders).map(([rid,q])=>`<div class="trade-row"><div class="settlement-resource">${settlementDirection(q>0)}${resourceIcon(rid)}<div><strong>${q>0?'Recibe':'Entrega'} ${Math.abs(q)} ${esc(game.catalog[rid].name)}</strong><div class="text-secondary small">${money(s.prices[rid])} por unidad · ${q>0?'paga':'cobra'} ${money(Math.abs(q)*s.prices[rid])}</div></div></div>${q<0&&can?`<div class="debt-input"><label class="form-label small" for="missing-${rid}">No entrega</label><input id="missing-${rid}" name="missing-${rid}" type="number" min="0" max="${-q}" step="1" value="0" class="form-control" inputmode="numeric"></div>`:''}</div>`).join(''):Object.keys(p.fixedOrders||{}).length?'':'<p>Sin compras ni ventas en esta ronda.</p>'}${fixedSettlementRows(p.fixedOrders)}<div class="d-flex justify-content-between align-items-center mt-3"><div><div class="text-secondary small">Movimiento de caja</div><strong class="fs-2 ${total<0?'money-negative':'money-positive'}">${total>=0?'Cobra':'Paga'} ${money(Math.abs(total))}</strong></div><div class="text-end"><div class="text-secondary small">Saldo después</div><strong class="fs-2">${money(p.cash+total)}</strong></div></div>${can?`<button class="btn btn-primary w-100 mt-4" ${busy?'disabled':''}>Confirmar entregas y liquidación${id!==game.me?' como anfitrión':''}</button>`:`<div class="alert alert-info mt-3 mb-0">Esperando la confirmación de ${esc(p.name)} o del anfitrión.</div>`}</div></form>`;
   }
   function execution() {
     return `<div class="card mb-4"><div class="card-body"><div class="eyebrow mb-2">${game.phase==='finished'?'Registro final':'Mercado liquidado'}</div><h2>${game.phase==='finished'?'La partida terminó':'Ahora se ejecutan los proyectos'}</h2><p class="text-secondary">${game.phase==='execution'?'Registrá acá los cobros y pagos a la reserva o las transferencias a otros jugadores.':'Consultá los saldos y movimientos en Caja y deudas y en el Registro público.'}</p><div class="d-flex flex-wrap gap-2">${game.settlement.order.map((id,i)=>`<span class="badge bg-blue-lt">${i+1}. ${esc(person(id).name)}</span>`).join('')}</div>${isHost()&&game.phase==='execution'?`<button class="btn btn-primary mt-3" data-command="maintenance" ${busy?'disabled':''}>Ir a Mantenimiento</button>`:''}</div></div>${game.phase==='execution'?cashForm():''}`;
@@ -361,12 +364,21 @@
       return `<button type="button" class="maintenance-circle ${position<=selected?'uncovered':'covered'} ${position===selected?'selected':''}" data-maintenance-track="${kind}" data-value="${position}" aria-pressed="${position===selected}" aria-label="${esc(title)}: ${esc(kind==='support'?value+' ingenieros':label)}" title="${esc(kind==='support'?value+' ingenieros':label)}" ${disabled?'disabled':''}>${kind==='support'&&value>0?'<img class="track-engineer" src="assets/icons/II-ingeniero.svg" alt="">':''}<span class="track-value">${esc(label)}</span><img class="track-cover" src="assets/icons/${icon}" alt=""></button>`;
     }).join('')}</div></fieldset>`;
   }
+  function maintenancePvResults() {
+    const results=game.stock?.round.maintenance?.results;
+    if(!results) return '';
+    return `<section class="card mb-3" aria-label="Ajustes de puntos por expectativas"><div class="card-body"><h2 class="card-title">Puntos después de evaluar las expectativas</h2><p>Aplicá estos ajustes al puntaje del tablero antes de resolver los eventos.</p><div class="maintenance-pv-grid">${game.players.map(player=>{
+      const result=results[player.id],delta=result.pvDelta;
+      const status={missed:'No cumplió las expectativas',unpaid:'No pudo pagar los dividendos',met:'Cumplió las expectativas',exceeded:'Superó las expectativas',exempt:'Sin expectativa esta ronda'}[result.status];
+      return `<article class="maintenance-pv-result" data-pv-player="${esc(player.id)}"><h3>${esc(player.name)}</h3><p>${status}</p><div class="maintenance-pv-change ${delta<0?'money-negative':delta>0?'money-positive':''}">${delta<0?'Pierde '+Math.abs(delta):delta>0?'Gana '+delta:'Sin ajuste de'} PV</div><div class="maintenance-pv-final">Queda en <strong>${result.finalPv} PV</strong></div><p class="small text-secondary mb-0">Puntaje declarado: ${result.declaredPv} PV · Objetivo: ${result.requiredPv} PV · Obtuvo: ${result.gainedPv} PV</p></article>`;
+    }).join('')}</div></div></section>`;
+  }
   function maintenance() {
     const rules=game.maintenanceRules,choice=maintenanceChoice();
     const result=game.maintenance.results[game.me],complete=Object.keys(game.maintenance.results).length===game.players.length&&(!game.stock||!!game.stock.round.maintenance);
     const disabled=busy||!!readLocal(pendingKey);
     const supportValues=Array.from({length:15},(_,i)=>i);
-    return `${result?`<div class="card mb-3"><div class="card-body"><h2 class="card-title">Mantenimiento registrado</h2><strong class="fs-2 ${result.amount<0?'money-negative':'money-positive'}">${signed(result.amount)}</strong></div></div>`:`<form id="maintenance-form" class="card mb-3"><div class="card-body">${game.stock?`<label class="form-label" for="maintenance-pv">Puntaje actual del tablero (PV)</label><input id="maintenance-pv" name="pv" type="number" min="-1000000" max="1000000" step="1" inputmode="numeric" class="form-control mb-2" value="${esc(choice.pv??'')}" required ${disabled?'disabled':''}><p class="small text-secondary mb-3">Incluí las penalizaciones por deudas y los ajustes bursátiles anteriores. No incluyas el premio o penalización bursátil de esta ronda. Puntaje al comenzar: ${game.stock.round.basePv[game.me]} PV.</p>`:''}${game.stock?maintenanceTrack('support','Soporte externo','SP-soporte-externo.svg',supportValues,choice.support,disabled):''}${maintenanceTrack('mines','Yacimientos','YA-yacimientos.svg',rules.mines,choice.mines,disabled)}${maintenanceTrack('barracks','Barracas · contratos','CN-ficha-contratacion.svg',rules.barracks,choice.barracks,disabled)}${!game.stock?maintenanceTrack('support','Soporte externo · ingenieros','SP-soporte-externo.svg',supportValues,choice.support,disabled):''}<button type="button" class="btn btn-sm mb-3" data-action="more-support" ${disabled?'disabled':''}>Más ingenieros</button><div class="d-flex justify-content-between align-items-center mb-3"><span>Total</span><strong id="maintenance-total" class="fs-2">${signed(maintenanceAmount(choice))}</strong></div><button class="btn btn-primary w-100" ${disabled?'disabled':''}>Confirmar mantenimiento</button></div></form>`}${isHost()?`<div class="d-flex flex-wrap gap-2"><button class="btn btn-primary" data-command="next" ${!complete||disabled?'disabled':''}>Abrir ronda ${game.round+1}</button><button class="btn" data-action="finish" ${!complete||disabled?'disabled':''}>Finalizar partida</button></div>`:''}`;
+    return `${maintenancePvResults()}${result?`<div class="card mb-3"><div class="card-body"><h2 class="card-title">Mantenimiento registrado</h2><strong class="fs-2 ${result.amount<0?'money-negative':'money-positive'}">${signed(result.amount)}</strong></div></div>`:`<form id="maintenance-form" class="card mb-3"><div class="card-body">${game.stock?`<label class="form-label" for="maintenance-pv">Puntaje actual del tablero (PV)</label><input id="maintenance-pv" name="pv" type="number" min="-1000000" max="1000000" step="1" inputmode="numeric" class="form-control mb-2" value="${esc(choice.pv??'')}" required ${disabled?'disabled':''}><p class="small text-secondary mb-3">Incluí las penalizaciones por deudas y los ajustes bursátiles anteriores. No incluyas el premio o penalización bursátil de esta ronda. Puntaje al comenzar: ${game.stock.round.basePv[game.me]} PV.</p>`:''}${game.stock?maintenanceTrack('support','Soporte externo','SP-soporte-externo.svg',supportValues,choice.support,disabled):''}${maintenanceTrack('mines','Yacimientos','YA-yacimientos.svg',rules.mines,choice.mines,disabled)}${maintenanceTrack('barracks','Barracas · contratos','CN-ficha-contratacion.svg',rules.barracks,choice.barracks,disabled)}${!game.stock?maintenanceTrack('support','Soporte externo · ingenieros','SP-soporte-externo.svg',supportValues,choice.support,disabled):''}<button type="button" class="btn btn-sm mb-3" data-action="more-support" ${disabled?'disabled':''}>Más ingenieros</button><div class="d-flex justify-content-between align-items-center mb-3"><span>Total</span><strong id="maintenance-total" class="fs-2">${signed(maintenanceAmount(choice))}</strong></div><button class="btn btn-primary w-100" ${disabled?'disabled':''}>Confirmar mantenimiento</button></div></form>`}<section class="card mb-3 maintenance-events"><div class="card-body"><h2 class="card-title">Eventos de la ronda</h2><p class="maintenance-event-count">Sacá ${game.players.length+1} eventos</p><p>${game.players.length} jugadores + 1 evento. Resuélvanlos uno por uno y registren los cobros y pagos de cada jugador.</p>${game.stock&&!game.stock.round.maintenance?'<p class="text-secondary mb-0">Primero todos deben confirmar el mantenimiento para calcular los ajustes de PV y los dividendos. Después resuelvan los eventos.</p>':''}</div></section>${cashForm(true)}${isHost()?`<div class="d-flex flex-wrap gap-2"><button class="btn btn-primary" data-command="next" ${!complete||disabled?'disabled':''}>Abrir ronda ${game.round+1}</button><button class="btn" data-action="finish" ${!complete||disabled?'disabled':''}>Finalizar partida</button></div>`:''}`;
   }
   function updateMaintenanceChoice() {
     const form=$('#maintenance-form');
@@ -384,10 +396,10 @@
     }
     $('#maintenance-total').textContent=signed(maintenanceAmount(choice));
   }
-  function cashForm() {
-    const p=me(), allowed=['lobby','planning','execution','maintenance'].includes(game.phase)&&!(game.stock&&game.phase==='maintenance');
+  function cashForm(events=false) {
+    const p=me(), allowed=['lobby','planning','execution','maintenance'].includes(game.phase)&&!(game.stock&&game.phase==='maintenance'&&!game.stock.round.maintenance);
     const others=game.players.filter(x=>x.id!==p.id);
-    return `<form id="cash-form" class="card mb-4"><div class="card-header"><h2 class="card-title">Registrar dinero del tablero</h2></div><div class="card-body"><p class="text-secondary small">Ingresos, contratación, proyectos, eventos o correcciones. Todo queda visible en el registro público.</p><label class="form-label" for="cash-kind">Movimiento</label><select id="cash-kind" name="kind" class="form-select mb-3" ${allowed?'':'disabled'}><option value="income">Cobro de la reserva</option><option value="expense">Pago a la reserva</option>${others.map(x=>`<option value="transfer:${esc(x.id)}">Transferir a ${esc(x.name)}</option>`).join('')}</select><label class="form-label" for="cash-amount">Importe ($)</label><input id="cash-amount" name="amount" type="number" min="0.01" max="1000000" step="0.01" inputmode="decimal" class="form-control mb-3" required ${allowed?'':'disabled'}><button class="btn btn-primary w-100" ${!allowed||busy||readLocal(pendingKey)?'disabled':''}>Registrar movimiento</button>${!allowed?`<p class="small text-secondary mt-2 mb-0">${game.stock&&game.phase==='maintenance'?'La caja se reabre en la próxima ronda, después de resolver los dividendos.':'La caja se habilita fuera de la liquidación y antes de finalizar la partida.'}</p>`:''}</div></form>`;
+    return `<form id="cash-form" class="card mb-4"><div class="card-header"><h2 class="card-title">${events?'Dinero por eventos':'Registrar dinero del tablero'}</h2></div><div class="card-body"><p class="text-secondary small">Ingresos, contratación, proyectos, eventos o correcciones. Todo queda visible en el registro público.</p><label class="form-label" for="cash-kind">Movimiento</label><select id="cash-kind" name="kind" class="form-select mb-3" ${allowed?'':'disabled'}><option value="${events?'event-income':'income'}">${events?'Ganar dinero por un evento':'Cobro de la reserva'}</option><option value="${events?'event-expense':'expense'}">${events?'Perder dinero por un evento':'Pago a la reserva'}</option>${others.map(x=>`<option value="transfer:${esc(x.id)}">Transferir a ${esc(x.name)}</option>`).join('')}</select><label class="form-label" for="cash-amount">Importe ($)</label><input id="cash-amount" name="amount" type="number" min="0.01" max="1000000" step="0.01" inputmode="decimal" class="form-control mb-3" required ${allowed?'':'disabled'}><button class="btn btn-primary w-100" ${!allowed||busy||readLocal(pendingKey)?'disabled':''}>Registrar movimiento</button>${!allowed?`<p class="small text-secondary mt-2 mb-0">${game.stock&&game.phase==='maintenance'?'La caja se habilita cuando todos confirman el mantenimiento y se resuelven los dividendos.':'La caja se habilita fuera de la liquidación y antes de finalizar la partida.'}</p>`:''}</div></form>`;
   }
   function account() {
     const p=me();
@@ -459,7 +471,19 @@
     e.preventDefault(); if(busy) return;
     const f=e.target, values=Object.fromEntries(new FormData(f));
     if(!f.reportValidity()) return;
-    if(f.id==='create-form'||f.id==='join-form') {
+    if(f.id==='rename-form') {
+      const name=values.name.trim();
+      if(!name) return notify('Ingresá un nombre.',true);
+      const button=f.querySelector('[type=submit]');
+      button.disabled=true;
+      try {
+        await act('rename',{name});
+        if(me().name===name&&!readLocal(pendingKey)) {
+          $('#rename-dialog').close();
+          notify('Nombre actualizado.');
+        }
+      } finally { button.disabled=false; }
+    } else if(f.id==='create-form'||f.id==='join-form') {
       const data={name:values.name}; const action=f.id==='create-form'?'create':'join';
       if(action==='create') { data.cash=Math.round(Number(values.cash)*100); data.stockMarket=values.stockMarket==='on'; } else data.code=values.code.toUpperCase().trim();
       await act(action,data,random());
@@ -474,8 +498,8 @@
       const transfer=values.kind.startsWith('transfer:');
       const recipient=transfer?person(values.kind.slice('transfer:'.length)):null;
       if(transfer&&(!recipient||recipient.id===game.me)) return notify('Elegí otro jugador para transferir.',true);
-      await act(transfer?'transfer':'cash',{amount:values.kind==='expense'?-amount:amount,
-        reason:transfer?'Transferencia entre jugadores':values.kind==='income'?'Cobro de la reserva':'Pago a la reserva',to:recipient?.id});
+      await act(transfer?'transfer':'cash',{amount:['expense','event-expense'].includes(values.kind)?-amount:amount,
+        reason:transfer?'Transferencia entre jugadores':values.kind==='event-income'?'Cobro por evento':values.kind==='event-expense'?'Pago por evento':values.kind==='income'?'Cobro de la reserva':'Pago a la reserva',to:recipient?.id});
     } else if(f.classList.contains('repay-form')) {
       await act('repay',{units:{[f.dataset.resource]:Number(values.qty)}});
     }
@@ -519,6 +543,11 @@
       case 'pass': case 'save-plan': { const plan=collectOrders(); if(plan!==null) await act(b.dataset.action==='pass'?'pass':'plan',plan); break; }
       case 'refresh': await poll(true); break;
       case 'share': showShare(); break;
+      case 'rename':
+        if(busy||readLocal(pendingKey)) return notify('Primero resolvé la acción pendiente.',true);
+        $('#player-name').value=me().name;
+        $('#rename-dialog').showModal();
+        $('#player-name').focus();$('#player-name').select();break;
       case 'copy-invite': await copy($('#invite-url').value); break;
       case 'close-dialog': b.closest('dialog').close(); break;
       case 'finish': await act('finish'); break;

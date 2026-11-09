@@ -38,7 +38,7 @@ Las fichas de contrato se colocan en su área del tablero personal, ocupando los
 
 Los yacimientos se mantienen ocultos hasta que su dueño los revele. Cada jugador puede consultar sus propios yacimientos en cualquier momento.
 
-Para terminar la preparación, revelen del mazo de eventos una carta por cada jugador y resuélvanlas una por una, siguiendo las mismas reglas de resolución de eventos y subvenciones de Mantenimiento. Los reclamos planetarios y los eventos de reconocimiento quedan disponibles en el cuadrante indicado para que puedan reclamarse desde la primera ronda. Las subvenciones se cobran y reducen la meta de fin de partida de la forma habitual. Esta revelación inicial no reemplaza la revelación de eventos durante el Mantenimiento de la primera ronda.
+Para terminar la preparación, revelen del mazo de eventos una carta por cada jugador y resuélvanlas una por una, siguiendo las mismas reglas de resolución de eventos y subvenciones de Mantenimiento. Los reclamos planetarios y los eventos de reconocimiento quedan disponibles en el cuadrante indicado para que puedan reclamarse desde la primera ronda. Si aparece una carta de subvención entre los eventos iniciales, descártenla y saquen otra, sin cobrarla ni reducir la meta de fin de partida. Esta revelación inicial no reemplaza la revelación de eventos durante el Mantenimiento de la primera ronda.
 
 Una vez resueltas estas cartas, comienza la Planificación de la primera ronda.
 

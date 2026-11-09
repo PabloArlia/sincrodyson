@@ -16,12 +16,15 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .die{width:18.4mm;height:18.4mm;border:0;display:grid;place-items:center;color:#111}
 .die svg{width:18.4mm;height:18.4mm;display:block}.die rect{fill:#fff;stroke:#111;stroke-width:1.5}.die circle{fill:#111}
 .caption{font-size:9pt;font-weight:800;letter-spacing:.04em;margin-bottom:6mm;text-align:center}
+.print-page{display:contents}
 @page{size:A4 portrait;margin:8mm}
 @media print{
  html,body{margin:0;padding:0;background:#fff}
  .toolbar{display:none}
  .sheet{display:block;width:100%;margin:0;padding:0;text-align:center;font-size:0}
- .sheet>.card{display:inline-flex;position:relative;top:4mm;vertical-align:top;width:41mm;height:63mm;margin:0;font-size:16px;text-align:left;break-inside:avoid;page-break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .print-page{display:grid;grid-template-columns:repeat(4,41mm);grid-auto-rows:63mm;gap:0;justify-content:center;align-content:start;padding-top:4mm;break-inside:avoid;page-break-inside:avoid;break-after:page;page-break-after:always}
+ .print-page:last-child{break-after:auto;page-break-after:auto}
+ .print-page>.card{display:inline-flex;position:relative;top:0;vertical-align:top;width:41mm;height:63mm;margin:0;font-size:16px;text-align:left;break-inside:avoid;page-break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 @media screen and (max-width:760px){.sheet{grid-template-columns:repeat(3,41mm)}}
 @media screen and (max-width:510px){.sheet{grid-template-columns:repeat(2,41mm)}}
@@ -30,25 +33,25 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 <body>
 <div class="toolbar">
  <button onclick="window.print()">Imprimir reversos</button>
- <small>52 reversos · Mini USA 41 × 63 mm · misma posición y orden de impresión que eventos.html. Para impresión a doble cara, comprobar orientación y ajuste de la impresora.</small>
+ <small>16 reversos · Mini USA 41 × 63 mm · 4 filas de 4 cartas. Para impresión a doble cara, comprobar orientación y ajuste de la impresora.</small>
 </div>
 <main class="sheet" id="sheet" aria-label="Reversos de las cartas de evento"></main>
 <script>
-// 52 cartas: 12 subvenciones, 24 eventos y 16 planetarias.
-// Se asigna a cada reverso un resultado fijo de dado 1–4, 13 copias de cada uno.
-// El orden de los reversos coincide con el orden de eventos.html.
+// 16 reversos para las primeras 16 cartas de eventos.html.
+// Se asigna a cada reverso un resultado fijo de dado 1–4, 4 copias de cada uno.
 const ids=[
- ...Array.from({length:12},(_,i)=>'S'+String(i+1).padStart(2,'0')),
- ...Array.from({length:24},(_,i)=>'E'+String(i+1).padStart(2,'0')),
- ...Array.from({length:16},(_,i)=>'P'+String(i+1).padStart(2,'0'))
+ 'S01','S02','S05','S06',
+ 'E01','E02','E03','E04','E05','E06','E09','E10','E12',
+ 'E15','E16','E17'
 ];
-document.getElementById('sheet').innerHTML=ids.map((id,i)=>{
+const backs=ids.map((id,i)=>{
  const number=(i%4)+1;
  const quadrant=['Alpha','Beta','Gamma','Delta'][number-1];
  const pips={1:[[0,0]],2:[[-7,-7],[7,7]],3:[[-7,-7],[0,0],[7,7]],4:[[-7,-7],[7,-7],[-7,7],[7,7]]}[number];
  const dieSvg=`<svg viewBox="-17 -17 34 34" role="img" aria-label="Dado ${number}"><rect x="-15" y="-15" width="30" height="30" rx="4"/>${pips.map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.4"/>`).join('')}</svg>`;
  return `<article class="card" aria-label="Reverso ${id}, cuadrante ${quadrant}, dado ${number}"><div class="brand">SYNCRODYSON</div><div class="die" role="img" aria-label="Dado: ${number}">${dieSvg}</div><div class="caption">${quadrant}</div></article>`;
-}).join('');
+});
+document.getElementById('sheet').innerHTML=Array.from({length:Math.ceil(backs.length/16)},(_,i)=>'<section class="print-page">'+backs.slice(i*16,i*16+16).join('')+'</section>').join('');
 </script>
 </body>
 </html>

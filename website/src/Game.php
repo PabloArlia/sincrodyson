@@ -142,6 +142,15 @@ final class Game
         $p = &$s['players'][$actor];
         $host = $s['host'] === $p['id'];
         switch ($action) {
+            case 'rename':
+                $name = self::name($data['name'] ?? '');
+                foreach ($s['players'] as $other) {
+                    if ($other['id'] !== $p['id'] && mb_strtolower($other['name']) === mb_strtolower($name)) {
+                        throw new GameError('Ese nombre ya está en la sala.');
+                    }
+                }
+                $p['name'] = $name;
+                break;
             case 'start':
                 self::phase($s, 'lobby');
                 if (!$host) throw new GameError('Solo el anfitrión puede iniciar.', 403);
@@ -219,7 +228,7 @@ final class Game
             case 'cash':
             case 'transfer':
                 self::phase($s, 'lobby', 'planning', 'execution', 'maintenance');
-                if (StockMarket::enabled($s) && $s['phase'] === 'maintenance') throw new GameError('La caja se reabre al terminar el mantenimiento bursátil.', 409);
+                if (StockMarket::enabled($s) && $s['phase'] === 'maintenance' && $s['stock']['round']['maintenance'] === null) throw new GameError('La caja se reabre al terminar el mantenimiento bursátil.', 409);
                 $amount = self::integer($data['amount'] ?? null, -100000000, 100000000);
                 if (!$amount) throw new GameError('El importe no puede ser cero.');
                 $reason = self::name($data['reason'] ?? '');

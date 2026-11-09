@@ -29,7 +29,7 @@ function settle(array &$s): void {
 }
 function maintain(array &$s, array $pv): void {
     Game::command($s, 0, 'maintenance', []);
-    foreach ($s['players'] as $actor => $p) Game::command($s, $actor, 'maintain', ['mines' => 3, 'barracks' => 0, 'support' => 0, 'pv' => $pv[$actor]]);
+    foreach ($s['players'] as $actor => $p) Game::command($s, $actor, 'maintain', ['mines' => array_search(0, Game::maintenanceRules()['mines'], true), 'barracks' => 0, 'support' => 0, 'pv' => $pv[$actor]]);
 }
 function inventory(array $s): void {
     foreach ($s['stock']['companies'] as $id => $company) {
@@ -55,6 +55,18 @@ foreach ($legacy['players'] as $i => $p) {
 }
 maintain($legacy, [0, 0]); maintain($enabled, [0, 0]);
 eq($enabled['phase'], $legacy['phase'], 'Mismas fases');
+
+// Renaming only changes the authenticated player's name, including during play.
+$s = fresh(); $before = $s;
+Game::command($s, 1, 'rename', ['name' => '  Nuevo nombre  ', 'player' => $s['players'][0]['id']]);
+eq($s['players'][1]['name'], 'Nuevo nombre', 'Jugador puede cambiar su propio nombre');
+$expected = $before; $expected['players'][1]['name'] = 'Nuevo nombre';
+eq($s, $expected, 'Cambiar nombre conserva identidad, fondos y órdenes sin modificar a otro jugador');
+foreach (['', '   ', str_repeat('a', 41), 'EMPRESA 1'] as $invalid) {
+    rejected(function() use (&$s, $invalid) { Game::command($s, 1, 'rename', ['name' => $invalid]); }, 'Rechaza nombre vacío, largo o duplicado');
+}
+Game::command($s, 1, 'rename', ['name' => 'NUEVO NOMBRE']);
+eq($s['players'][1]['name'], 'NUEVO NOMBRE', 'Permite corregir mayúsculas del propio nombre');
 
 // Boundaries, secrecy, treasury, one price for all, and real-time market effects.
 $s = fresh(); [$a, $b] = array_column($s['players'], 'id');
@@ -132,15 +144,20 @@ $s['stock']['holdings'][$b][$a] = 10; $s['stock']['companies'][$b]['available'] 
 StockMarket::credit($s, 0, 131999 - $s['players'][0]['cashUnits']);
 Game::command($s, 0, 'maintenance', []);
 rejected(function() use (&$s) { Game::command($s, 0, 'cash', ['amount' => 100, 'reason' => 'Tarde']); }, 'Caja bloqueada durante evaluación');
-Game::command($s, 0, 'maintain', ['mines' => 3, 'barracks' => 0, 'support' => 0, 'pv' => 6]);
-rejected(function() use (&$s) { Game::command($s, 0, 'maintain', ['mines' => 3, 'barracks' => 0, 'support' => 0, 'pv' => 6]); }, 'No repite mantenimiento individual');
-Game::command($s, 1, 'maintain', ['mines' => 3, 'barracks' => 0, 'support' => 0, 'pv' => 5]);
+Game::command($s, 0, 'maintain', ['mines' => array_search(0, Game::maintenanceRules()['mines'], true), 'barracks' => 0, 'support' => 0, 'pv' => 6]);
+rejected(function() use (&$s) { Game::command($s, 0, 'maintain', ['mines' => array_search(0, Game::maintenanceRules()['mines'], true), 'barracks' => 0, 'support' => 0, 'pv' => 6]); }, 'No repite mantenimiento individual');
+Game::command($s, 1, 'maintain', ['mines' => array_search(0, Game::maintenanceRules()['mines'], true), 'barracks' => 0, 'support' => 0, 'pv' => 5]);
 $r = $s['stock']['round']['maintenance']['results'];
 eq($r[$a]['status'], 'unpaid', 'Falta medio centavo: impaga');
 eq($r[$a]['paidUnits'], 0, 'No paga parcialmente');
 eq($r[$a]['pvDelta'], -2, 'Penalización ceil(3/2)');
 eq($r[$b]['status'], 'missed', 'Incumple objetivo PV');
 eq($s['players'][0]['cashUnits'], 131999, 'Impago no genera deuda');
+Game::command($s, 0, 'cash', ['amount' => 1000, 'reason' => 'Cobro por evento']);
+eq($s['players'][0]['cashUnits'], 331999, 'Evento permite cobrar después de evaluar expectativas');
+Game::command($s, 1, 'cash', ['amount' => -700, 'reason' => 'Pago por evento']);
+eq($s['stock']['round']['maintenance']['results'], $r, 'Los eventos no recalculan expectativas ni dividendos');
+eq(end($s['ledger'])['reason'], 'Pago por evento', 'El evento queda identificado en el registro');
 
 $s = fresh(); [$a, $b] = array_column($s['players'], 'id');
 closeMarket($s); settle($s); maintain($s, [3, 3]); Game::command($s, 0, 'next', []);
@@ -173,7 +190,7 @@ rejected(fn() => $store->mutate($code, $token, 'pass-stock-000002', 'pass', $pla
 eq($store->read($code), $saved, 'Rechazos hacen rollback completo');
 $store->mutate($code, $token, 'settle-stock-001', 'settle', ['round' => 1, 'player' => $id]);
 $store->mutate($code, $token, 'maint-stock-0001', 'maintenance', ['round' => 1]);
-$entry = ['round' => 1, 'mines' => 3, 'barracks' => 0, 'support' => 0, 'pv' => 3];
+$entry = ['round' => 1, 'mines' => array_search(0, Game::maintenanceRules()['mines'], true), 'barracks' => 0, 'support' => 0, 'pv' => 3];
 $store->mutate($code, $token, 'maintain-stock01', 'maintain', $entry); $saved = $store->read($code);
 $store->mutate($code, $token, 'maintain-stock01', 'maintain', $entry);
 eq($store->read($code), $saved, 'Reintento no duplica cierre ni dividendos');
