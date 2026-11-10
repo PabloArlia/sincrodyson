@@ -38,17 +38,25 @@ p{margin:0}strong{font-weight:800}
 .support-capacity span{display:flex;align-items:center;gap:.5mm}
 .support-capacity img{width:4mm;height:4mm;object-fit:contain}
 .placement-rule{font-size:8pt;text-align:center;border-bottom:1px solid #aaa;padding-bottom:1mm}
+.penalties-card{font-size:7.5pt;line-height:1.15;gap:2mm}
+.penalties-card table{width:100%;border-collapse:collapse;text-align:center;font-size:7.5pt}
+.penalties-card th,.penalties-card td{border:1px solid #aaa;padding:1mm}
+.penalties-card section+section{border-top:1px solid #aaa;padding-top:1.5mm}
+.help-page{display:contents}
 @page{size:A4 portrait;margin:8mm}
 @media print{
  html,body{margin:0;padding:0;background:white}
  .toolbar{display:none}
  .sheet{column-gap:1mm;row-gap:0;justify-content:center}
+ .sheet{display:block;padding-top:0}
+ .help-page{display:grid;grid-template-columns:repeat(3,64mm);grid-auto-rows:120mm;column-gap:1mm;row-gap:0;justify-content:center;padding-top:5mm;break-inside:avoid;break-after:page}
+ .help-page:last-child{break-after:auto}
  .card{print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
 </style>
 </head>
 <body>
-<header class="toolbar"><div><h1>Cartas de ayuda · Syncrodyson</h1><p>64 × 120 mm · 3 fases arriba y 3 bonos abajo · imprimir al 100 %.</p></div><button onclick="window.print()">Imprimir / guardar PDF</button></header>
+<header class="toolbar"><div><h1>Cartas de ayuda · Syncrodyson</h1><p>64 × 120 mm · 3 copias de fases, bonos y penalizaciones · imprimir al 100 %.</p></div><button onclick="window.print()">Imprimir / guardar PDF</button></header>
 <main class="sheet">
  <article class="card phases-card">
   <header class="card-header"><div><div class="eyebrow">Syncrodyson · Ayuda de juego</div><h2>Fases de la ronda</h2></div><img class="header-icon" src="./iconos/RE-repetible.svg" alt=""></header>
@@ -84,15 +92,31 @@ p{margin:0}strong{font-weight:800}
   </section>
   <footer class="card-note"><strong>Capacidad:</strong> 1 disco por celda.</footer>
  </article>
+ <article class="card penalties-card">
+  <header class="card-header"><div><div class="eyebrow">Syncrodyson · Ayuda de juego</div><h2>Personal y penalizaciones</h2></div><img class="header-icon" src="./iconos/AI-ingeniero-anclado.svg" alt="AI"></header>
+  <section><h3>Personal anclado · fin de partida</h3><p>Cuenta el total de ingenieros anclados entre todos los jugadores para determinar la penalización por ingeniero.</p>
+   <table aria-label="Penalización por personal anclado"><thead><tr><th>Total anclado en la mesa</th><th>PV por ingeniero</th></tr></thead><tbody><tr><td>1–2</td><td>−1 PV</td></tr><tr><td>3–5</td><td>−2 PV</td></tr><tr><td>6–7</td><td>−3 PV</td></tr><tr><td>8–9</td><td>−4 PV</td></tr><tr><td>10 o más</td><td>−5 PV</td></tr></tbody></table>
+   <p>Cada jugador pierde PV por los ingenieros anclados junto a sus discos.</p>
+  </section>
+  <section><h3>Quitar discos</h3><p>Quien quita pierde <strong>1 PV por cada celda con disco que quede en el sector de origen</strong>.</p></section>
+  <section><h3>No colocación de discos</h3><p>Por cada disco que debas colocar y no puedas, pierde <strong>2 PV</strong>, aunque no diera bono de colocación. Puedes completar o descartar la carta sin recuperar recursos.</p><p>Si el proyecto no coloca ningún disco, los ingenieros que debían quedar anclados vuelven a tus barracas. Pierde además <strong>3 PV por cada uno</strong>.</p></section>
+  <section><h3>Pausa de emergencia</h3><p>Puedes no activar un proyecto con todos sus requisitos completos: pierde <strong>1 PV</strong> y salta esa activación.</p></section>
+ </article>
 </main>
 <script>
 const sheet=document.querySelector('.sheet');
 const fases=sheet.querySelector('.phases-card');
 const bonos=sheet.querySelector('.bonuses-card');
-sheet.replaceChildren(
+const penalizaciones=sheet.querySelector('.penalties-card');
+const cards=[
  ...Array.from({length:3},()=>fases.cloneNode(true)),
- ...Array.from({length:3},()=>bonos.cloneNode(true))
-);
+ ...Array.from({length:3},()=>bonos.cloneNode(true)),
+ ...Array.from({length:3},()=>penalizaciones.cloneNode(true))
+];
+sheet.replaceChildren(...Array.from({length:Math.ceil(cards.length/6)},(_,i)=>{
+ const page=document.createElement('section');page.className='help-page';
+ page.append(...cards.slice(i*6,i*6+6));return page;
+}));
 </script>
 </body>
 </html>
