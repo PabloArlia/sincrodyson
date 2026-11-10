@@ -202,9 +202,9 @@ Cuando el mazo de yacimientos se agota, la acción deja de estar disponible. El 
 
 ## 3. Ejecución
 
-Durante esta fase se activan los tres espacios de proyectos o refinerías del área de juego de cada jugador, de izquierda a derecha.
+En orden de turno, cada jugador resuelve todos sus proyectos y refinerías que tengan asignados todos los recursos e ingenieros obligatorios de su etapa actual, en el orden que quiera.
 
-Primero todos resuelven su espacio 1, siguiendo el orden ascendente de las fichas. Después todos resuelven el espacio 2 y, por último, el espacio 3, siempre en el mismo orden.
+Cada jugador termina de resolver sus activaciones antes de que comience el siguiente. En cada activación, activa la refinería o avanza una etapa del proyecto; si lo completa, resuelve su efecto y aplica su destino antes de continuar con otra carta.
 
 ### Activar una refinería
 
@@ -221,8 +221,6 @@ Si el contador llega a cero, el yacimiento se descarta al final de esa acción. 
 Un proyecto avanza al activarse si tiene asignados todos los recursos e ingenieros obligatorios de su etapa actual. El jugador descarta los recursos utilizados, mueve los ingenieros a las barracas, salvo los que deban quedar anclados, y baja el cubo de etapa a la siguiente etapa.
 
 Si no hay una etapa siguiente, el proyecto se completa. El jugador resuelve su efecto «Al completar» y determina el destino de la carta según las reglas siguientes.
-
-***PAUSA DE EMERGENCIA***, un jugador puede no activar un poryecto con todos los recursos en su etapa actual. Pierde 1PV y esa activacion se salta.
 
 Los PV impresos en los proyectos completados se cuentan al final de la partida, no al completarlos.
 
@@ -252,7 +250,7 @@ Si un proyecto con ingenieros anclados en su última etapa no coloca ningún dis
 
 Si un proyecto completado indica colocar uno o más discos en la esfera de Dyson, el jugador coloca los discos indicados. Transporte (Tr) es un recurso y se utiliza según los requisitos de los proyectos; no se paga un costo monetario de transporte al colocar discos.
 
-Los discos indicados se colocan uno por uno. Cada colocación se resuelve por completo, incluidos sus bonos y pagos, antes de colocar el siguiente disco. El disco recién colocado siempre cuenta para los bonos.
+Los discos indicados se colocan uno por uno. Cada colocación se resuelve por completo, incluidos sus bonos y pagos, antes de colocar el siguiente disco. Al colocar en un sector, el disco recién colocado también cuenta para el bono de ese sector.
 
 #### Colocar discos en las celdas
 
@@ -260,11 +258,9 @@ Cada celda es la posición de una capa dentro de un sector y admite un único di
 
 Después de colocar un disco en una celda:
 
-- El jugador que lo colocó gana 1 PV por cada disco presente en ese sector, de cualquier jugador.
-- Cada jugador cobra $2 por cada disco propio presente en ese sector.
-- Cada jugador cobra $3 por cada disco propio presente en el área de soporte del cuadrante correspondiente.
-
-Una vez cobrados los bonos, se comprueba la capa de estructura de ese sector. Si está vacía, el jugador que acaba de colocar el disco paga $5 al banco por acarreo. Registra el pago en la caja de la aplicación; si no tiene dinero suficiente, su saldo queda en descubierto.
+- El jugador que lo colocó gana 1 [PI] por cada [DS] disco en el [SC] sector, de cualquier jugador, incluido el recién colocado.
+- Cada [OP] oponente con 1 [DS] disco o más en ese sector gana 1 [PI].
+- Si es el primer [DS] disco del [SC] sector, el jugador que lo colocó gana 2 [PI] adicionales.
 
 #### Colocar discos en las áreas de soporte
 
@@ -274,12 +270,13 @@ Si no se puede colocar un disco, consulta [No colocación de discos](#no-colocac
 
 Después de colocar un disco en un área de soporte:
 
-- El jugador que lo colocó gana 1 PV por cada dos discos presentes en todo el cuadrante, redondeando hacia arriba. Se cuentan los discos de todos los jugadores, tanto en los sectores como en el área de soporte.
-- Cada jugador cobra $1 por cada disco propio presente en todo ese cuadrante, contando los sectores y el área de soporte.
+El jugador que lo colocó gana únicamente 1 [PI] por cada 2 [DS] discos presentes en los [SC] sectores de ese [QU] cuadrante, redondeando hacia arriba. Se cuentan los discos de todos los jugadores en esos sectores; los discos del área de soporte no cuentan para este bono.
 
 #### Quitar discos `[QD]`
 
-Cuando un efecto obliga a quitar un disco `[QD]`, el jugador debe retirar un disco suyo que cumpla con el requerimiento indicado; no puede elegir conservarlo. Después de retirarlo, pierde 1 PV por cada celda que todavía tenga un disco en el mismo sector del que lo quitó, contando los discos de todos los jugadores.
+Cuando un efecto obliga a quitar un disco `[QD]`, el jugador debe retirar un disco suyo que cumpla con el requerimiento indicado; no puede elegir conservarlo. Después de retirarlo, pierde 1 [PI] por cada [SI] celda con disco [AD] adyacente a la celda de origen, contando los discos de cualquier jugador.
+
+Una celda es adyacente a la celda de origen si comparte un borde con ella, aun si está en otro sector o en otro cuadrante. Esto incluye las celdas de las capas inmediatamente contiguas en el mismo sector y las de la misma capa en los sectores inmediatamente contiguos. Las celdas que solo se tocan en una esquina o en un punto no son adyacentes. Cuenta las celdas con disco después de retirar el disco de origen; cada una resta 1 [PI].
 
 Si hay ingenieros anclados en la celda de la que se retira el disco, deben trasladarse a otra celda que contenga un disco del mismo jugador que era dueño del disco retirado. Si no existe ninguna celda que cumpla esta condición, los ingenieros se devuelven a la reserva general.
 
@@ -289,15 +286,15 @@ Si el efecto exige quitar un disco para colocar otro y no es posible retirar el 
 
 #### No colocación de discos
 
-***PAUSA DE EMERGENCIA***, un jugador puede no activar un poryecto con todos los recursos en su etapa actual. Pierde 1PV y esa activacion se salta.
+Por cada disco que deba colocar y no pueda, por cualquier razón, el jugador pierde 2 [PI]. Esta penalización se aplica tanto a los discos de los sectores [DS] como a los del área de soporte [DP], incluso si la carta indica colocarlos sin cobrar bonos [DH]. Si solo puede colocar parte de los discos indicados, resuelve normalmente los que sí coloca y pierde 2 [PI] por cada disco que no pudo colocar. Puede colocar la carta en su mazo de proyectos completados o descartarla, pero no recupera ninguno de los recursos utilizados.
 
-Por cada disco que deba colocar y no pueda, por cualquier razón, el jugador pierde 2 PV. Puede colocar la carta en su mazo de proyectos completados o descartarla, pero no recupera ninguno de los recursos utilizados.
+Si un proyecto con ingenieros anclados [AI] en su última etapa no coloca ningún disco, los ingenieros que debían quedar anclados no pueden colocarse y vuelven a las barracas del jugador. Además de la penalización por los discos no colocados, el jugador pierde 3 [PI] por cada uno de esos ingenieros. Si el proyecto coloca al menos un disco, los ingenieros pueden quedar anclados junto a cualquier disco colocado por ese proyecto, como se explica en «Ingenieros anclados».
 
-Si un proyecto con ingenieros anclados en su última etapa no coloca ningún disco, los ingenieros asignados vuelven a las barracas del jugador. Además de la penalización por los discos no colocados, el jugador pierde 3 PV por cada uno de esos ingenieros.
+**Ejemplo:** un proyecto debe colocar un disco en 3 celdas libres y dejar 2 ingenieros anclados. Si no puede colocar ningún disco, pierde 6 [PI] por los 3 discos y 6 [PI] por los 2 ingenieros: 12 [PI] en total. Los ingenieros vuelven a sus barracas y los recursos utilizados no se recuperan. Si puede colocar un disco, pierde 4 [PI] por los otros 2 discos; ambos ingenieros quedan anclados junto al disco colocado, sin penalización por ingenieros no colocados.
 
 ## 4. Mantenimiento
 
-La fase de Mantenimiento se resuelve en este orden: ingresos de Soporte externo, ingresos y costos de mantenimiento, revelación de un evento por jugador, resolución de las cartas reveladas y comprobación del fin de partida. El anfitrión abre la fase en la aplicación al terminar la Ejecución; cada jugador confirma allí sus valores de mantenimiento, que se registran una sola vez por ronda. Si la partida continúa, se realiza el draft de proyectos, se descarta la energía sobrante de la ronda, se genera la energía para la siguiente y se resuelven las compras de energía y de Transporte por despacho urgente.
+La fase de Mantenimiento se resuelve en este orden: ingresos de Soporte externo, ingresos y costos de mantenimiento, revelación de un evento por jugador, resolución de las cartas reveladas y comprobación del fin de partida. El anfitrión abre la fase en la aplicación al terminar la Ejecución; cada jugador confirma allí sus valores de mantenimiento, que se registran una sola vez por ronda. Si la partida continúa, se realiza el draft de proyectos, se descarta la energía sobrante de la ronda y se genera la energía para la siguiente.
 
 ### Soporte externo
 
@@ -307,12 +304,12 @@ Los ingenieros que ya estaban en las barracas no generan ingresos.
 
 ### Ingresos y costos de mantenimiento
 
-Cada jugador resuelve los valores descubiertos de su tablero antes de generar o comprar energía nueva. El total incluye licencias, contratos y Soporte externo y se registra una sola vez. Si los valores mostrados en la aplicación no coinciden con el tablero y las reglas vigentes, registra en la caja la diferencia con un motivo que identifique la corrección:
+Cada jugador resuelve los valores descubiertos de su tablero antes de generar energía nueva. El total incluye licencias, contratos y Soporte externo y se registra una sola vez. Si los valores mostrados en la aplicación no coinciden con el tablero y las reglas vigentes, registra en la caja la diferencia con un motivo que identifique la corrección:
 
 - **Licencias de excavación:** aplica el valor más alto descubierto, respetando su signo. Un valor positivo es un ingreso que cobra del banco; un valor negativo es un costo que paga al banco; con $0 no cobra ni paga. Los valores impresos en el tablero, en su orden, son +$6, +$3, $0, −$5, −$10 y −$15. Si no hay ningún valor descubierto, no hay ingreso ni costo por licencias.
 - **Contratos:** paga el costo más alto descubierto. Los valores impresos en el tablero, en su orden, son $0, $2, $4, $6, $8, $10, $13, $15, $18, $20, $23, $25, $30 y $33.
 
-La energía no tiene un costo de mantenimiento por casillas descubiertas: el tablero actual utiliza un marcador de producción y la energía sobrante se descarta al final de la ronda. La compra opcional de energía se resuelve más adelante, por $3 la unidad.
+La energía no tiene un costo de mantenimiento por casillas descubiertas: el tablero actual utiliza un marcador de producción y la energía sobrante se descarta al final de la ronda.
 
 ### Revelar un evento por jugador
 
@@ -336,19 +333,7 @@ Si la partida continúa, cada jugador roba cuatro cartas de proyecto y se realiz
 
 Después del draft, cada jugador descarta toda la energía que le haya sobrado de la ronda. Luego recibe la energía gratuita indicada por sus generadores en el tablero, disponible para la ronda siguiente.
 
-### Compra de energía
-
-Cada jugador puede comprar energía adicional por $3 la unidad. Esta posibilidad es independiente de las compras de energía realizadas en Mercado.
-
-La energía que sobra al final de una ronda se descarta antes de recibir la energía para la siguiente. La energía generada o comprada durante Mantenimiento queda disponible para la ronda siguiente y se asigna a proyectos durante Planificación.
-
-### Compra de Transporte por despacho urgente
-
-Después de generar energía y resolver la compra opcional de energía, los jugadores pueden comprar Transporte mediante despacho urgente. Esta compra se realiza después de conocer las cartas obtenidas en el draft.
-
-El despacho urgente cuesta $15 por cada unidad de Transporte (+1 Tr = $15).
-
-Una vez terminadas estas compras, comienza la Planificación de la siguiente ronda.
+La energía generada durante Mantenimiento queda disponible para la ronda siguiente y se asigna a proyectos durante Planificación.
 
 ## Fin de partida y puntuación
 

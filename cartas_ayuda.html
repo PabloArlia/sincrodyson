@@ -10,22 +10,30 @@ body{margin:0;padding:18px;background:#e8e9e7;color:#20282d;font-family:Arial,He
 .toolbar{max-width:760px;margin:0 auto 18px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .toolbar h1{font-size:14pt;margin:0}.toolbar p{font-size:10pt;margin:5px 0 0}
 button{padding:9px 14px;border:1px solid #20282d;border-radius:5px;background:white;font:inherit;cursor:pointer}
-.sheet{display:grid;grid-template-columns:repeat(3,64mm);column-gap:1mm;row-gap:0;justify-content:center;align-items:start;padding-top:5mm}
+.sheet{display:grid;grid-template-columns:repeat(3,64mm);column-gap:0;row-gap:0;justify-content:center;align-items:start;padding-top:5mm}
 .card{width:64mm;height:120mm;padding:2mm;border:1px solid #222;border-radius:2mm;background:white;display:flex;flex-direction:column;gap:1mm;break-inside:avoid;page-break-inside:avoid;font-size:8pt;line-height:1.15}
 .card-header{display:flex;align-items:center;justify-content:space-between;gap:2mm;border-bottom:1px solid #222;padding-bottom:1.3mm;flex:none}
-.eyebrow{font-size:6pt;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5mm;color:#555}
 h2{font-size:12pt;line-height:1.05;margin:0;text-transform:uppercase}
 .header-icon{width:7mm;height:7mm;object-fit:contain;flex:none}
 h3{font-size:8pt;margin:0 0 .7mm;text-transform:uppercase;display:flex;align-items:center;gap:1mm}
 .step{display:inline-grid;place-items:center;width:4mm;height:4mm;border:1px solid #222;border-radius:50%;font-size:8pt;flex:none}
 p{margin:0}strong{font-weight:800}
 .phase{flex:none}.phase p{margin-left:0}
-.phases-card{font-size:7.5pt;line-height:1.12}
+.phases-card{font-size:7pt;line-height:1.1;gap:.8mm}
+.phases-card h2{font-size:10pt}
+.phases-card .header-icon{width:5mm;height:5mm}
+.phases-card .step{width:3.5mm;height:3.5mm;font-size:7pt}
+.phases-card h3{font-size:7.5pt}
 .maintenance{font-size:7pt;line-height:1.12}
 .maintenance ol{padding-left:5mm;margin:0;display:flex;flex-direction:column;gap:.4mm}
 .maintenance li{padding-left:0}
 .card-note{margin-top:auto;border-top:1px solid #aaa;padding-top:1mm;font-size:6.5pt;line-height:1.1}
-.bonuses-card{font-size:7.5pt;line-height:1.12}
+.bonuses-card{font-size:7pt;line-height:1.1;gap:.7mm}
+.bonuses-card h2{font-size:10pt}
+.bonuses-card .header-icon{width:5mm;height:5mm}
+.bonuses-card .bonus-section{padding:1.5mm 1.2mm 1mm}
+.bonuses-card .bonus-title{margin-bottom:.5mm}
+.bonuses-card .bonus-title img{width:5mm;height:5mm}
 .bonus-section{position:relative;border:1px solid #999;border-radius:1mm;padding:2mm 1.5mm 1.5mm;margin-top:1mm}
 .bonus-section h3{position:absolute;top:-1.4mm;left:1mm;background:white;padding:0 .7mm;font-size:7pt;line-height:1}
 .bonus-title{display:flex;align-items:center;gap:1mm;font-size:10pt;font-weight:800;margin-bottom:1.5mm}
@@ -33,85 +41,79 @@ p{margin:0}strong{font-weight:800}
 .bonus-line{display:grid;grid-template-columns:12mm minmax(0,1fr);align-items:center;gap:1mm;margin-top:1mm}
 .amount{display:flex;align-items:center;justify-content:center;gap:.5mm;font-size:11pt;font-weight:800;white-space:nowrap}
 .amount img{width:4mm;height:4mm;object-fit:contain}
-.bonus-warning{margin-top:2mm;padding-top:1.5mm;border-top:1px dashed #999;font-size:7.5pt}
+.inline-icon{width:3.5mm;height:3.5mm;object-fit:contain;vertical-align:middle}
 .support-capacity{display:flex;justify-content:center;gap:2mm;margin-top:2mm;font-size:7pt}
 .support-capacity span{display:flex;align-items:center;gap:.5mm}
 .support-capacity img{width:4mm;height:4mm;object-fit:contain}
 .placement-rule{font-size:8pt;text-align:center;border-bottom:1px solid #aaa;padding-bottom:1mm}
-.penalties-card{font-size:7.5pt;line-height:1.15;gap:2mm}
-.penalties-card table{width:100%;border-collapse:collapse;text-align:center;font-size:7.5pt}
-.penalties-card th,.penalties-card td{border:1px solid #aaa;padding:1mm}
-.penalties-card section+section{border-top:1px solid #aaa;padding-top:1.5mm}
+.anchored-reference{margin-top:auto;border-top:1px solid #aaa;padding-top:1mm}
+.anchored-reference table{width:100%;border-collapse:collapse;text-align:center;font-size:7.5pt;margin:.7mm 0}
+.anchored-reference th,.anchored-reference td{border:1px solid #aaa;padding:.4mm}
+.anchored-reference p{font-size:7pt;line-height:1.1}
 .help-page{display:contents}
 @page{size:A4 portrait;margin:8mm}
 @media print{
  html,body{margin:0;padding:0;background:white}
  .toolbar{display:none}
- .sheet{column-gap:1mm;row-gap:0;justify-content:center}
+ .sheet{column-gap:0;row-gap:0;justify-content:center}
  .sheet{display:block;padding-top:0}
- .help-page{display:grid;grid-template-columns:repeat(3,64mm);grid-auto-rows:120mm;column-gap:1mm;row-gap:0;justify-content:center;padding-top:5mm;break-inside:avoid;break-after:page}
+ .help-page{display:grid;grid-template-columns:repeat(3,64mm);grid-auto-rows:120mm;column-gap:0;row-gap:0;justify-content:center;padding-top:5mm;break-inside:avoid;break-after:page}
  .help-page:last-child{break-after:auto}
  .card{print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
 </style>
 </head>
 <body>
-<header class="toolbar"><div><h1>Cartas de ayuda · Syncrodyson</h1><p>64 × 120 mm · 3 copias de fases, bonos y penalizaciones · imprimir al 100 %.</p></div><button onclick="window.print()">Imprimir / guardar PDF</button></header>
+<header class="toolbar"><div><h1>Cartas de ayuda · Syncrodyson</h1><p>64 × 120 mm · 3 copias de fases y bonos · imprimir al 100 %.</p></div><button onclick="window.print()">Imprimir / guardar PDF</button></header>
 <main class="sheet">
  <article class="card phases-card">
-  <header class="card-header"><div><div class="eyebrow">Syncrodyson · Ayuda de juego</div><h2>Fases de la ronda</h2></div><img class="header-icon" src="./iconos/RE-repetible.svg" alt=""></header>
+  <header class="card-header"><div><h2>Fases de la ronda</h2></div><img class="header-icon" src="./iconos/RE-repetible.svg" alt=""></header>
   <section class="phase"><h3><span class="step">1</span> Planificaci&#243;n &#183; simult&#225;nea</h3><p>Asigna licencias y componentes a proyectos y Soporte externo.</p></section>
   <section class="phase"><h3><span class="step">2</span> Mercado</h3><p>Resuelve operaciones.</p></section>
-  <section class="phase"><h3><span class="step">3</span> Ejecuci&#243;n</h3><p>Espacios <strong>1, 2 y 3</strong>; en cada uno, todos por orden. Con requisitos completos, activa la refiner&#237;a o avanza una etapa. Al completar, aplica efecto y destino.</p></section>
+  <section class="phase"><h3><span class="step">3</span> Ejecuci&#243;n</h3><p>Por <strong>orden de turno</strong>, resuelve <strong>todos tus proyectos con recursos completos</strong>, en el orden que quieras.</p></section>
   <section class="phase maintenance"><h3><span class="step">4</span> Mantenimiento · en este orden</h3><ol>
-   <li><strong>Préstamos:</strong> $1 por conservar cada uno o $6 por cancelarlo.</li>
-   <li><strong>Soporte externo y mantenimiento:</strong> cobra +$1 por ingeniero en Soporte externo; luego vuelve a barracas. Paga el mayor costo descubierto en licencias + el mayor en contratos.</li>
-   <li><strong>Comprueba el final:</strong> si alguien alcanza la meta, termina y puntúen.</li>
+   <li><strong>Carga en la app</strong> Soporte externo, licencias y contratos.</li>
+   <li>Si alguien <strong>alcanza la meta</strong>, termina y puntúen.</li>
    <li><strong>Revela un evento por jugador.</strong></li>
-   <li>Si continúa: devuelve las fichas de orden y haz <strong>draft de 4 proyectos</strong>, pasando a la derecha.</li>
+   <li>Cada jugador recibe <strong>2 cartas de proyecto</strong>.</li>
    <li><strong>Descarta la energía sobrante.</strong> Genera energía para la siguiente ronda.</li>
   </ol></section>
-  <footer class="card-note">Puedes comprar energía de emergencia y Transporte urgente en cualquier momento.</footer>
+  <section class="anchored-reference"><h3><img class="inline-icon" src="./iconos/AI-ingeniero-anclado.svg" alt="AI"> Anclados · fin de partida</h3>
+   <p>El total de AI de todos determina la penalización.</p>
+   <table aria-label="Penalización por personal anclado"><thead><tr><th>Total AI en la mesa</th><th>PV por AI</th></tr></thead><tbody><tr><td>1–2</td><td>−1 PV</td></tr><tr><td>3–5</td><td>−2 PV</td></tr><tr><td>6–7</td><td>−3 PV</td></tr><tr><td>8–9</td><td>−4 PV</td></tr><tr><td>10 o más</td><td>−5 PV</td></tr></tbody></table>
+   <p>Cada jugador pierde esos PV por cada AI junto a sus discos.</p>
+  </section>
  </article>
  <article class="card bonuses-card">
-  <header class="card-header"><div><div class="eyebrow">Syncrodyson · Ayuda de juego</div><h2>Bonos de colocación</h2></div><img class="header-icon" src="./iconos/DS-disco.svg" alt=""></header>
-  <p class="placement-rule">Resuelve <strong>un disco por vez</strong>.<br>El disco recién colocado <strong>también cuenta</strong>.</p>
+  <header class="card-header"><div><h2>Bonos de colocación</h2></div><img class="header-icon" src="./iconos/DS-disco.svg" alt=""></header>
+  <p class="placement-rule">Resuelve <strong>un disco por vez</strong>.<br>el disco recién colocado <strong>también cuenta</strong>.</p>
   <section class="bonus-section"><h3>Colocar en una celda de la esfera</h3>
    <div class="bonus-title"><img src="./iconos/esfera-sector.svg" alt="">Sector</div>
-   <div class="bonus-line"><span class="amount">+1<img src="./iconos/PI-puntos-inmediatos.svg" alt="PI"></span><p><strong>Quien coloca</strong>, por cada disco del sector, de cualquier jugador.</p></div>
-   <div class="bonus-line"><span class="amount">+$2</span><p><strong>Cada jugador</strong>, por cada disco propio en ese sector.</p></div>
-   <div class="bonus-line"><span class="amount">+$3</span><p><strong>Cada jugador</strong>, por cada disco propio en el soporte de ese cuadrante.</p></div>
-   <p class="bonus-warning"><strong>Acarreo:</strong> después de cobrar, si la celda de Estructura de ese sector está vacía, quien colocó paga <strong>$5</strong> al banco.</p>
+   <div class="bonus-line"><span class="amount">+1<img src="./iconos/PI-puntos-inmediatos.svg" alt="PI"></span><p><strong>Quien coloca</strong>, por cada disco en el sector, de cualquier jugador.</p></div>
+   <div class="bonus-line"><span class="amount">+1<img src="./iconos/PI-puntos-inmediatos.svg" alt="PI"></span><p><strong>Cada oponente</strong> con algún disco en el sector más cerca del Sol que el colocado.</p></div>
+   <div class="bonus-line"><span class="amount">+2<img src="./iconos/PI-puntos-inmediatos.svg" alt="PI"></span><p><strong>Adicionales a quien coloca</strong>, si es el <strong>primer disco del sector</strong>.</p></div>
   </section>
   <section class="bonus-section"><h3>Colocar en un área de soporte</h3>
    <div class="bonus-title"><img src="./iconos/esfera-cuadrante.svg" alt="">Cuadrante</div>
-   <div class="bonus-line"><span class="amount">+1 <img src="./iconos/PI-puntos-inmediatos.svg" alt="PV"></span><p><strong>Quien coloca</strong>, por cada <strong>2 discos</strong> del cuadrante, <strong>redondeando hacia arriba</strong>.</p></div>
-   <div class="bonus-line"><span class="amount">+$1</span><p><strong>Cada jugador</strong>, por cada disco propio en todo el cuadrante.</p></div>
-   <p style="margin-top:1.5mm;font-size:7.5pt">Cuenta sectores y soporte, con discos de todos los jugadores para los PV.</p>
+   <div class="bonus-line"><span class="amount">+1 <img src="./iconos/PI-puntos-inmediatos.svg" alt="PI"></span><p><strong>Solo quien coloca</strong>, por cada <strong>2 discos en los sectores del cuadrante</strong>, <strong>redondeando hacia arriba</strong>.</p></div>
+   <p style="margin-top:1.5mm;font-size:7.5pt">Cuenta discos de todos los jugadores, solo en sectores.</p>
 
   </section>
-  <footer class="card-note"><strong>Capacidad:</strong> 1 disco por celda.</footer>
- </article>
- <article class="card penalties-card">
-  <header class="card-header"><div><div class="eyebrow">Syncrodyson · Ayuda de juego</div><h2>Personal y penalizaciones</h2></div><img class="header-icon" src="./iconos/AI-ingeniero-anclado.svg" alt="AI"></header>
-  <section><h3>Personal anclado · fin de partida</h3><p>Cuenta el total de ingenieros anclados entre todos los jugadores para determinar la penalización por ingeniero.</p>
-   <table aria-label="Penalización por personal anclado"><thead><tr><th>Total anclado en la mesa</th><th>PV por ingeniero</th></tr></thead><tbody><tr><td>1–2</td><td>−1 PV</td></tr><tr><td>3–5</td><td>−2 PV</td></tr><tr><td>6–7</td><td>−3 PV</td></tr><tr><td>8–9</td><td>−4 PV</td></tr><tr><td>10 o más</td><td>−5 PV</td></tr></tbody></table>
-   <p>Cada jugador pierde PV por los ingenieros anclados junto a sus discos.</p>
+  <section class="bonus-section"><h3>Quitar discos</h3><div class="bonus-line"><span class="amount">−1<img src="./iconos/PI-puntos-inmediatos.svg" alt="PI"></span><p>por cada <img class="inline-icon" src="./iconos/SI-con-disco.svg" alt="SI"> celda con disco <img class="inline-icon" src="./iconos/AD-adyacente.svg" alt="AD"> adyacente.</p></div></section>
+  <section class="bonus-section"><h3>No colocación de discos</h3>
+   <div class="bonus-line"><span class="amount">−2<img src="./iconos/PI-puntos-inmediatos.svg" alt="PI"></span><p>por cada <img class="inline-icon" src="./iconos/DS-disco.svg" alt="DS"> y <img class="inline-icon" src="./iconos/DP-disco-soporte.svg" alt="DP"> que no puedas colocar.</p></div>
+   <div class="bonus-line"><span class="amount">−3<img src="./iconos/PI-puntos-inmediatos.svg" alt="PI"></span><p>por cada <img class="inline-icon" src="./iconos/AI-ingeniero-anclado.svg" alt="AI"> que no puedas colocar.</p></div>
   </section>
-  <section><h3>Quitar discos</h3><p>Quien quita pierde <strong>1 PV por cada celda con disco que quede en el sector de origen</strong>.</p></section>
-  <section><h3>No colocación de discos</h3><p>Por cada disco que debas colocar y no puedas, pierde <strong>2 PV</strong>, aunque no diera bono de colocación. Puedes completar o descartar la carta sin recuperar recursos.</p><p>Si el proyecto no coloca ningún disco, los ingenieros que debían quedar anclados vuelven a tus barracas. Pierde además <strong>3 PV por cada uno</strong>.</p></section>
-  <section><h3>Pausa de emergencia</h3><p>Puedes no activar un proyecto con todos sus requisitos completos: pierde <strong>1 PV</strong> y salta esa activación.</p></section>
+  <footer class="card-note"><strong>Capacidad:</strong> 1 disco por celda.</footer>
  </article>
 </main>
 <script>
 const sheet=document.querySelector('.sheet');
 const fases=sheet.querySelector('.phases-card');
 const bonos=sheet.querySelector('.bonuses-card');
-const penalizaciones=sheet.querySelector('.penalties-card');
 const cards=[
  ...Array.from({length:3},()=>fases.cloneNode(true)),
- ...Array.from({length:3},()=>bonos.cloneNode(true)),
- ...Array.from({length:3},()=>penalizaciones.cloneNode(true))
+ ...Array.from({length:3},()=>bonos.cloneNode(true))
 ];
 sheet.replaceChildren(...Array.from({length:Math.ceil(cards.length/6)},(_,i)=>{
  const page=document.createElement('section');page.className='help-page';

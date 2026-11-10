@@ -476,6 +476,7 @@
         .subsidy-text .end-rule{font-size:6.5pt;line-height:1.15;padding-top:1mm}
         .subsidy-text .formula{font-size:8pt}
         .subsidy .card-foot{flex:none;margin-top:0}
+        .support-subsidy .heading{height:9mm;min-height:9mm;flex-basis:9mm}
         .quadrant-instruction{font-size:6pt;font-weight:700;line-height:1.15;display:block;margin:0 0 2mm}
         .card[hidden]{display:none!important}
         .overflow-details{width:100%;font-size:12px;line-height:1.4}
@@ -483,7 +484,7 @@
         .overflow-details ul{margin:6px 0;padding-left:20px}
         .print-page{display:contents}
         @media print{
-            .print-page{display:grid;grid-template-columns:repeat(4,41mm);grid-auto-rows:63mm;gap:0;justify-content:center;align-content:start;padding-top:4mm;break-inside:avoid;page-break-inside:avoid;break-after:page;page-break-after:always}
+            .print-page{display:grid;width:100%;height:281mm;grid-template-columns:repeat(4,41mm);grid-auto-rows:63mm;gap:0;justify-content:center;align-content:center;padding:0;break-inside:avoid;page-break-inside:avoid;break-after:page;page-break-after:always}
             .print-page:last-child{break-after:auto;page-break-after:auto}
         }
         @media screen and (max-width:760px){.sheet{grid-template-columns:repeat(3,41mm)}}
@@ -532,7 +533,7 @@
             { id: "E10", title: "Priorizar la precisión", up: ["Cu", "Ti", "Nd"], down: ["Fe", "Al", "Ce"], effect: "El jugador con más discos en las áreas de soporte de la esfera gana 2 [PI] y $5." },
             { id: "E12", title: "Crisis de microprocesadores", up: ["C", "Er", "H₂SO₄"], down: ["Si", "Gd", "HCl"], effect: "Cada jugador puede entregar 5 Si y 1 Ce para ganar $20." },
             { id: "E15", title: "Revisión del personal anclado", up: ["Ti", "Nd", "Ce"], down: ["C", "Gd", "Er"], effect: "Cada jugador pierde [PI] según la tabla de penalización por ingenieros anclados, calculada en este momento como si fuera el fin de al partida." },
-            { id: "E16", title: "Lluvia de voluntarios", up: ["C", "Gd", "Er"], down: ["Ti", "Nd", "Ce"], effect: "Cada jugador puede devolver a la reserva hasta 2 ingenieros anclados [AI] de sectores o áreas de soporte." },
+            { id: "E16", title: "Lluvia de voluntarios", up: ["C", "Gd", "Er"], down: ["Ti", "Nd", "Ce"], effect: "Coloca esta carta en el cuadrante indicado en su reverso del mazo. Cuando vayas a colocar un ingeniero anclado [AI] en este cuadrante, colócalo en esta carta en su lugar. De uno en uno. Cuando haya 4 ingenieros en esta carta, descártala inmediatamente y devuelve los 4 ingenieros a sus reservas." },
             { id: 'E17', title: 'Gran meteorito', catastrophe: true, effect: [
                 'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
                 'Retira todos los discos [QD] de las cinco capas del sector elegido.',
@@ -561,7 +562,7 @@
                 'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
                 'Cada jugador cobra $3 del banco por cada disco propio en el sector elegido. Cuenta todas las capas de ese sector.'
             ] },
-            ...Array.from({ length: 2 }, (_, i) => ({ id: `S${String(i + 5).padStart(2, '0')}`, subsidy: true }))
+            ...Array.from({ length: 2 }, (_, i) => ({ id: `S${String(i + 5).padStart(2, '0')}`, subsidy: true, supportSubsidy: true }))
         ];
 
         function icon(file) { return `<img src="./iconos/${file}.svg" alt="">` }
@@ -607,7 +608,14 @@
         function render(card) {
 
             if (card.standalone || card.catastrophe) return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="standalone-text" aria-label="Efecto del evento">${card.effect.map(paragraph => `<p>${renderEffect(paragraph)}</p>`).join('')}</section>${footer(card)}</article>`;
-            if (card.subsidy) return `<article class="card subsidy" aria-label="${card.id} · Subvención"><header class="heading"><div><h2>Subvención</h2></div></header><div class="subsidy-art">${coin()}</div><div class="subsidy-text"><div class="formula" aria-hidden="true">$10 + $2 / ${icon('DS-disco')}</div><p>Cada jugador cobra <strong>$10 + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong></p><p class="initial-rule">Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.</p></div>${footer(card)}</article>`;
+            if (card.subsidy) {
+                const title = card.supportSubsidy ? 'Subvención de soporte' : 'Subvención';
+                const formula = card.supportSubsidy ? '$3 / sector completo' : `$10 + $2 / ${icon('DS-disco')}`;
+                const payment = card.supportSubsidy
+                    ? 'Cada jugador cobra <strong>$3 por cada sector completo</strong> en los cuadrantes donde tenga al menos un disco en un área de soporte.'
+                    : 'Cada jugador cobra <strong>$10 + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).';
+                return `<article class="card subsidy${card.supportSubsidy ? ' support-subsidy' : ''}" aria-label="${card.id} · ${title}"><header class="heading"><div><h2>${title}</h2></div></header>${card.supportSubsidy ? '' : `<div class="subsidy-art">${coin()}</div>`}<div class="subsidy-text"><div class="formula" aria-hidden="true">${formula}</div><p>${payment}</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong></p><p class="initial-rule">Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.</p></div>${footer(card)}</article>`;
+            }
             return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${renderEffect(card.effect)}</p></section>${footer(card)}</article>`;
         }
         const orderedCards = [...cards.filter(c => c.subsidy), ...cards.filter(c => !c.subsidy)];

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Syncrodyson · La pifié</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;background:#f3f3f3;color:#202723;margin:0;padding:16px}
+.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 auto 16px;max-width:164mm}
+.toolbar h1{font-size:14pt;margin:0}
+.toolbar small{font-size:12px;line-height:1.4}
+button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
+.sheet{display:grid;grid-template-columns:repeat(4,41mm);gap:0;justify-content:center}
+.print-page{display:contents}
+.card{width:41mm;height:63mm;background:white;border:1px solid #222;border-radius:1.8mm;padding:2.2mm;display:flex;flex-direction:column;break-inside:avoid;page-break-inside:avoid}
+.heading{display:flex;align-items:center;min-height:9mm;border-bottom:1px solid #888;padding-bottom:1mm;flex-shrink:0}
+h2{font-size:10pt;line-height:1.12;margin:0}
+.effect{font-size:7pt;line-height:1.2;padding-top:1mm}
+p{margin:0 0 1.5mm}
+p:last-child{margin-bottom:0}
+.icon{width:3.5mm;height:3.5mm;object-fit:contain;vertical-align:middle}
+.penalty{border-top:1px solid #aaa;padding-top:1mm}
+@page{size:A4 portrait;margin:8mm}
+@media print{
+ html,body{margin:0;padding:0;background:white}
+ .toolbar{display:none}
+ .sheet{display:block;width:100%;margin:0;padding:0}
+ .print-page{display:grid;width:100%;height:281mm;grid-template-columns:repeat(4,41mm);grid-auto-rows:63mm;gap:0;justify-content:center;align-content:center;padding:0;break-inside:avoid;page-break-inside:avoid;break-after:page;page-break-after:always}
+ .print-page:last-child{break-after:auto;page-break-after:auto}
+ .card{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+@media screen and (max-width:760px){.sheet{grid-template-columns:repeat(3,41mm)}}
+@media screen and (max-width:510px){.sheet{grid-template-columns:repeat(2,41mm)}}
+</style>
+</head>
+<body>
+<header class="toolbar"><h1>La pifié</h1><small>16 cartas · 41 × 63 mm · imprimir al 100 %.</small><button type="button" onclick="window.print()">Imprimir / guardar PDF</button></header>
+<main class="sheet" aria-label="Cartas La pifié"></main>
+<template id="card-template">
+ <article class="card">
+  <header class="heading"><h2>La pifié</h2></header>
+  <section class="effect">
+   <p>Durante la fase de <strong>ejecución</strong>, puedes colocar hasta <strong>5 recursos</strong> en esta carta para asignar otros iguales a un proyecto.</p>
+   <p>Incluso <img class="icon" src="./iconos/En-energia.svg" alt="En"> <img class="icon" src="./iconos/Tr-transporte.svg" alt="Tr">, pero no <img class="icon" src="./iconos/II-ingeniero.svg" alt="II">.</p>
+   <p>Durante la fase de <strong>mercado</strong>, puedes descartar un recurso de esta carta para quitar un recurso del mismo tipo de ella.</p>
+   <p class="penalty">Si queda al menos un recurso en esta carta al final de tu fase de mercado, <strong>pierdes 5 <img class="icon" src="./iconos/PI-puntos-inmediatos.svg" alt="PI"></strong>.</p>
+  </section>
+ </article>
+</template>
+<script>
+const page=document.createElement('section');
+page.className='print-page';
+const template=document.getElementById('card-template');
+for(let i=0;i<16;i++)page.append(template.content.cloneNode(true));
+document.querySelector('.sheet').append(page);
+</script>
+</body>
+</html>
