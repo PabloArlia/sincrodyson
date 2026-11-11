@@ -287,6 +287,14 @@
             margin: 2mm 0 0
         }
 
+        .initial-rule {
+            margin: 1mm 0 0;
+            font-size: 5.5pt;
+            line-height: 1.05;
+            text-align: center;
+            flex: none
+        }
+
         .event-effect img {
             width: 4mm;
             height: 4mm;
@@ -527,12 +535,12 @@
             { id: 'E03', title: 'Reconocimiento público', up: ['Ti', 'Er', 'HCl'], down: ['Fe', 'Si', 'Nd'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Transmisión [TS] de ese cuadrante reclama esta carta y gana 5 [PI].' },
             { id: 'E04', title: 'Reconocimiento público', up: ['C', 'Ce', 'H₂SO₄'], down: ['Cu', 'Al', 'Gd'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Refrigeración [RF] de ese cuadrante reclama esta carta y gana 5 [PI].' },
             { id: 'S02', subsidy: true },
-            { id: 'E05', title: 'Producción estable', up: ['Fe', 'Cu', 'Si'], down: ['Ti', 'Al', 'C'], effect: 'Cada jugador aumenta en 1 [PE] su producción de energía por cada sector con todas sus capas ocupadas por discos, en el que tenga al menos un disco propio.' },
-            { id: 'E06', title: 'Nivelar los proyectos', up: ['Ti', 'Al', 'C'], down: ['Fe', 'Cu', 'Si'], effect: 'El jugador con menos [PI] gana $10.' },
-            { id: "E09", title: "Reconocimiento público", up: ["Fe", "Al", "Ce"], down: ["Cu", "Ti", "Nd"], effect: "El jugador con más discos en la capa de microondas [MO] gana 2 [PI] y $5." },
-            { id: "E10", title: "Priorizar la precisión", up: ["Cu", "Ti", "Nd"], down: ["Fe", "Al", "Ce"], effect: "El jugador con más discos en las áreas de soporte de la esfera gana 2 [PI] y $5." },
-            { id: "E12", title: "Crisis de microprocesadores", up: ["C", "Er", "H₂SO₄"], down: ["Si", "Gd", "HCl"], effect: "Cada jugador puede entregar 5 Si y 1 Ce para ganar $20." },
-            { id: "E15", title: "Revisión del personal anclado", up: ["Ti", "Nd", "Ce"], down: ["C", "Gd", "Er"], effect: "Cada jugador pierde [PI] según la tabla de penalización por ingenieros anclados, calculada en este momento como si fuera el fin de al partida." },
+            { id: 'E05', title: 'Producción estable', up: ['Fe', 'Cu', 'Si'], down: ['Ti', 'Al', 'C'], effect: 'Cada jugador aumenta en 1 [PE] su producción de energía por cada sector con todas sus capas ocupadas por discos, en el que tenga al menos un disco propio. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.' },
+            { id: 'E06', title: 'Nivelar los proyectos', up: ['Ti', 'Al', 'C'], down: ['Fe', 'Cu', 'Si'], effect: 'El jugador con menos [PI] gana $10. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.' },
+            { id: "E09", title: "Reconocimiento público", up: ["Fe", "Al", "Ce"], down: ["Cu", "Ti", "Nd"], effect: "El jugador con más discos en la capa de microondas [MO] gana 2 [PI] y $5. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra." },
+            { id: "E10", title: "Priorizar la precisión", up: ["Cu", "Ti", "Nd"], down: ["Fe", "Al", "Ce"], effect: "El jugador con más discos en las áreas de soporte de la esfera gana 2 [PI] y $5. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra." },
+            { id: "E12", title: "Crisis de microprocesadores", up: ["C", "Er", "H₂SO₄"], down: ["Si", "Gd", "HCl"], effect: "Cada jugador puede entregar 5 Si y 1 Ce para ganar $20. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra." },
+            { id: "E15", title: "Revisión del personal anclado", up: ["Ti", "Nd", "Ce"], down: ["C", "Gd", "Er"], effect: "Cada jugador pierde [PI] según la tabla de penalización por ingenieros anclados, calculada en este momento como si fuera el fin de al partida. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra." },
             { id: "E16", title: "Lluvia de voluntarios", up: ["C", "Gd", "Er"], down: ["Ti", "Nd", "Ce"], effect: "Coloca esta carta en el cuadrante indicado en su reverso del mazo. Cuando vayas a colocar un ingeniero anclado [AI] en este cuadrante, colócalo en esta carta en su lugar. De uno en uno. Cuando haya 4 ingenieros en esta carta, descártala inmediatamente y devuelve los 4 ingenieros a sus reservas." },
             { id: 'E17', title: 'Gran meteorito', catastrophe: true, effect: [
                 'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
@@ -558,9 +566,9 @@
                 'Si la celda está vacía, el jugador con menos [PI] puede colocar allí un disco propio sin pagar recursos. Si hay empate, tiene la opción quien tenga la ficha de orden más baja.',
                 'Resuelve la colocación con sus bonos y pagos habituales. Si la celda ya contiene un disco, no ocurre nada.'
             ] },
-            { id: 'E22', title: 'Inspección excepcional', standalone: true, effect: [
-                'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
-                'Cada jugador cobra $3 del banco por cada disco propio en el sector elegido. Cuenta todas las capas de ese sector.'
+            { id: 'E22', title: 'Posición clave', standalone: true, effect: [
+                'Coloca esta carta en el cuadrante indicado en su reverso del mazo.',
+                'El primer jugador que ancle personal en este cuadrante gana 5 [PI].'
             ] },
             ...Array.from({ length: 2 }, (_, i) => ({ id: `S${String(i + 5).padStart(2, '0')}`, subsidy: true, supportSubsidy: true }))
         ];
@@ -614,9 +622,14 @@
                 const payment = card.supportSubsidy
                     ? 'Cada jugador cobra <strong>$3 por cada sector completo</strong> en los cuadrantes donde tenga al menos un disco en un área de soporte.'
                     : 'Cada jugador cobra <strong>$10 + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).';
-                return `<article class="card subsidy${card.supportSubsidy ? ' support-subsidy' : ''}" aria-label="${card.id} · ${title}"><header class="heading"><div><h2>${title}</h2></div></header>${card.supportSubsidy ? '' : `<div class="subsidy-art">${coin()}</div>`}<div class="subsidy-text"><div class="formula" aria-hidden="true">${formula}</div><p>${payment}</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong></p><p class="initial-rule">Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.</p></div>${footer(card)}</article>`;
+                const initialNote = ['S01', 'S02', 'S05', 'S06'].includes(card.id) ? '<p class="initial-rule">Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.</p>' : '';
+                return `<article class="card subsidy${card.supportSubsidy ? ' support-subsidy' : ''}" aria-label="${card.id} · ${title}"><header class="heading"><div><h2>${title}</h2></div></header>${card.supportSubsidy ? '' : `<div class="subsidy-art">${coin()}</div>`}<div class="subsidy-text"><div class="formula" aria-hidden="true">${formula}</div><p>${payment}</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong></p></div>${initialNote}${footer(card)}</article>`;
             }
-            return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${renderEffect(card.effect)}</p></section>${footer(card)}</article>`;
+            const initialWarning = 'Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.';
+            const hasInitialWarning = typeof card.effect === 'string' && card.effect.endsWith(initialWarning);
+            const effect = hasInitialWarning ? card.effect.slice(0, -initialWarning.length).trimEnd() : card.effect;
+            const initialNote = hasInitialWarning ? `<p class="initial-rule">${initialWarning}</p>` : '';
+            return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${renderEffect(effect)}</p></section>${initialNote}${footer(card)}</article>`;
         }
         const orderedCards = [...cards.filter(c => c.subsidy), ...cards.filter(c => !c.subsidy)];
         document.getElementById('sheet').innerHTML = orderedCards.map(render).join('');
