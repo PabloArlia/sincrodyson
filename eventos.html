@@ -251,6 +251,14 @@
                 effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Entre quienes tengan discos en este cuadrante, el jugador con más PI debe quitar un disco propio de ese cuadrante a su elección, sin perder PI por la quita.\nLuego, descarta esta carta.'
             },
             {
+                id: 'E28', title: 'Donaciones',
+                effect: [
+                    '[TJ] Todos los jugadores eligen cualquier cantidad de recursos de sus reservas y los esconden en su mano cerrada [MA]. Cuando todos hayan elegido, revelan sus recursos al mismo tiempo.',
+                    'El jugador que haya aportado menos recursos pierde 5 [PI]. Si hay empate en la menor cantidad, todos los jugadores empatados pierden 5 puntos inmediatos.',
+                    '[DR] Después, cada jugador entrega los recursos de su mano al jugador de su derecha. Para este evento, todos los recursos cuentan por igual, sin importar su tipo.'
+                ]
+            },
+            {
                 id: 'E25', title: 'Sector operativo',
                 effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [SC] 5 [PI] El primer jugador que complete un sector de ese cuadrante gana 5 Puntos inmediatos.\nLuego, descarta esta carta.'
             },
@@ -295,6 +303,9 @@
             TS: ['TS-transmision', 'Transmisión'],
             RF: ['RF-refrigeracion', 'Refrigeración'],
             MO: ['MO-microondas', 'Microondas'],
+            MA: ['MA-mano', 'Mano cerrada'],
+            DR: ['DR-pasar-derecha', 'Pasar a la derecha'],
+            TJ: ['TJ-todos-los-jugadores', 'Todos los jugadores'],
             AI: ['AI-ingeniero-anclado', 'Ingeniero anclado']
         };
         function quadrantDie() {
