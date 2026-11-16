@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <title>Neodimio</title>
+  <rect x="4" y="4" width="32" height="32" rx="3" fill="#e345ad" stroke="#222" stroke-width="1.5"/>
+  <text x="20" y="26" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#fff">Nd</text>
+</svg>

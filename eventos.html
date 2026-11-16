@@ -98,9 +98,27 @@
             font-size: 6pt;
             font-weight: 700;
             line-height: 1.15;
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 1.5mm;
             margin: 0 0 2mm;
         }
+        .quadrant-die { width: 4.5mm; height: 4.5mm; flex-shrink: 0; }
+        .effect-overview { display: flex; align-items: center; justify-content: center; gap: 1.2mm; margin: 2mm 0; }
+        .effect-overview img { width: 10mm; height: 10mm; }
+        .effect-reward { display: inline-flex; align-items: center; gap: .5mm; font-size: 13pt; font-weight: 700; white-space: nowrap; }
+        .event-timing { display: flex; align-items: center; gap: 1mm; font-size: 6pt; font-weight: 700; }
+        .event-timing img { width: 4.5mm; height: 4.5mm; }
+        .card:has(.event-timing) .event-half { padding-top: 1mm; }
+        .card:has(.event-timing) .event-effect { font-size: 6.5pt; line-height: 1.15; margin-top: 1mm; }
+        .card:has(.event-timing) .effect-overview { margin: 1mm 0; }
+        .support-formula { display: flex; align-items: center; justify-content: center; gap: 1mm; margin: 1mm 0; font-size: 12pt; font-weight: 700; }
+        .support-formula .formula-term { display: flex; flex-direction: column; align-items: center; width: 9mm; gap: .4mm; font-size: 4.5pt; line-height: 1.1; text-align: center; font-weight: 400; }
+        .support-formula img { width: 8mm; height: 8mm; }
+        .action-overview .formula-term { width: 15mm; font-size: 5pt; }
+        .action-overview img { width: 9mm; height: 9mm; }
+        .card:has(.action-overview) .event-half { padding-top: 1mm; }
+        .card:has(.action-overview) .event-effect { font-size: 6.5pt; line-height: 1.15; margin-top: 1mm; }
         .card-foot {
             display: flex;
             justify-content: space-between;
@@ -175,18 +193,88 @@
     <main class="sheet" id="sheet" aria-label="Cartas de evento"></main>
     <script>
         const cards = [
-            { id: 'E01', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Estructura [ES] de ese cuadrante reclama esta carta y gana 5 [PI].' },
-            { id: 'E02', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Fotovoltaica [FV] de ese cuadrante reclama esta carta y gana 5 [PI].' },
-            { id: 'E03', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Transmisión [TS] de ese cuadrante reclama esta carta y gana 5 [PI].' },
-            { id: 'E04', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Refrigeración [RF] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E01', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [1d] [ES] 3 [PI] El primer jugador que coloque un disco en la capa Estructura de ese cuadrante descarta esta carta y gana 3 Puntos inmediatos.' },
+            { id: 'E02', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [1d] [FV] 3 [PI] El primer jugador que coloque un disco en la capa Fotovoltaica de ese cuadrante descarta esta carta y gana 3 Puntos inmediatos.' },
+            { id: 'E03', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [1d] [TS] 3 [PI] El primer jugador que coloque un disco en la capa Transmisión de ese cuadrante descarta esta carta y gana 3 Puntos inmediatos.' },
+            { id: 'E04', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [1d] [RF] 3 [PI] El primer jugador que coloque un disco en la capa Refrigeración de ese cuadrante descarta esta carta y gana 3 Puntos inmediatos.' },
+            { id: 'E06', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [1d] [MO] 3 [PI] El primer jugador que coloque un disco en la capa Microondas de ese cuadrante descarta esta carta y gana 3 Puntos inmediatos.' },
             { id: 'E05', title: 'Producción estable', effect: 'Cada jugador aumenta en 1 [PE] su producción de energía por cada sector con todas sus capas ocupadas por discos, en el que tenga al menos un disco propio. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.' },
-            { id: "E16", title: "Lluvia de voluntarios", effect: "Coloca esta carta en el cuadrante indicado en su reverso del mazo. Cuando vayas a colocar un ingeniero anclado [AI] en este cuadrante, colócalo en esta carta en su lugar. De uno en uno. Cuando haya 4 ingenieros en esta carta, descártala inmediatamente y devuelve los 4 ingenieros a sus reservas." }
+            { id: "E16", title: "Lluvia de voluntarios", effect: "Coloca esta carta en el cuadrante indicado en el reverso del mazo. Cuando vayas a colocar un ingeniero anclado [AI] en este cuadrante, colócalo en esta carta en su lugar. De uno en uno. Cuando haya 4 ingenieros en esta carta, descártala inmediatamente y devuelve los 4 ingenieros a sus reservas." },
+            ...[
+                ['E07', 'ES', 'Estructura'],
+                ['E08', 'FV', 'Fotovoltaica'],
+                ['E09', 'TS', 'Transmisión'],
+                ['E10', 'RF', 'Refrigeración'],
+                ['E11', 'MO', 'Microondas']
+            ].map(([id, layer, name]) => ({
+                id, title: `Foco en la capa ${name}`,
+                effect: `Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] [MD] [${layer}] 4 [PI] En la fase de mantenimiento, el jugador con más discos en la capa ${name} de ese cuadrante gana 4 Puntos inmediatos.\nLuego, descarta esta carta.`
+            })),
+            {
+                id: 'E12', title: 'Soporte a la expansión', formula: true,
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador gana tantos Puntos inmediatos como la cantidad de sectores completos multiplicada por sus discos en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E13', title: 'Recolección de asteroides', formula: 'TI',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe tantas unidades de titanio como la cantidad de sectores completos multiplicada por sus discos en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E14', title: 'Lluvia de micrometeoritos',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] [DX] -1 [PI] Cada jugador pierde 1 Punto inmediato por cada sector de ese cuadrante cuya capa Microondas esté vacía y cuyo disco más exterior sea suyo.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E15', title: 'Asteroide de neodimio', formula: 'ND', perDisk: true,
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe 1 unidad de neodimio por cada disco propio en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E17', title: 'Alineado con la Tierra',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] [MD] [DP] 4 [PI] En la fase de mantenimiento, el jugador con más discos en el área de soporte de ese cuadrante gana 4 Puntos inmediatos.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E18', title: 'Rescate de materiales', formula: 'AL', perDisk: 'DS',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe 1 unidad de aluminio por cada disco propio en ese cuadrante. Cuenta los discos de sus sectores y de su área de soporte.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E19', title: 'Posición clave',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [AI] 3 [PI] El primer jugador que ancle un ingeniero en ese cuadrante gana 3 Puntos inmediatos.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E20', title: 'Revisión del personal anclado', formula: 'PI', perDisk: 'AI', amount: -1,
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] En la fase de mantenimiento, cada jugador pierde 1 Punto inmediato por cada ingeniero propio anclado en ese cuadrante.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E21', title: 'Convoy de construcción', actionOverview: { rank: 'Menos PI', icon: 'DS', action: 'Coloca 1 disco' },
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] El jugador con menos Puntos inmediatos debe colocar un disco en 1 celda libre del sector con menos discos de ese cuadrante. Gana los bonos normalmente.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E22', title: 'Sabotaje', actionOverview: { rank: 'Más PI', icon: 'QD', action: 'Quita 1 disco' },
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. El jugador con más Puntos inmediatos entre quienes tengan discos en ese cuadrante debe quitar un disco propio a elección de ese cuadrante, sin perder Puntos inmediatos por la quita.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E23', title: 'Asignación de transporte', formula: 'TR', perDisk: true,
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe 1 Tr por cada disco propio en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E24', title: 'Llamarada solar', formula: 'PI', perDisk: 'FV',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador gana 1 Punto inmediato por cada disco propio en la capa Fotovoltaica de este cuadrante.\nLuego, descarta esta carta.'
+            }
         ];
 
         function icon(file) { return `<img src="./iconos/${file}.svg" alt="">` }
         const effectIcons = {
+            '1D': ['1d-primer-disco', 'El primer disco colocado'],
+            FM: ['FM-fase-mantenimiento', 'Fase de mantenimiento'],
+            MD: ['MD-mayoria-discos', 'Mayoría de discos'],
+            SC: ['SC-sector-completo', 'Sector completo: todas sus capas ocupadas por discos'],
+            DP: ['DP-disco-soporte', 'Discos propios en el área de soporte de este cuadrante'],
+            DS: ['DS-disco', 'Discos propios en los sectores y el área de soporte de este cuadrante'],
+            DX: ['DX-disco-exterior', 'El disco más exterior de un sector'],
             QD: ['QD-quitar-disco', 'Quitar disco'],
             PI: ['PI-puntos-inmediatos', 'Puntos inmediatos'],
+            TI: ['Ti-titanio', 'Titanio'],
+            TR: ['Tr-transporte', 'Transporte'],
+            ND: ['Nd-neodimio', 'Neodimio'],
+            AL: ['Al-aluminio', 'Aluminio'],
             PE: ['PE-produccion-energia', 'Producción de energía'],
             ES: ['ES-estructura', 'Estructura'],
             FV: ['FV-fotovoltaico', 'Fotovoltaica'],
@@ -195,22 +283,47 @@
             MO: ['MO-microondas', 'Microondas'],
             AI: ['AI-ingeniero-anclado', 'Ingeniero anclado']
         };
-        function renderEffect(text) {
-            const common = "Coloca esta carta en el cuadrante indicado en su reverso del mazo.";
-            if (text.startsWith(common)) return '<span class="quadrant-instruction">' + common + '</span>' + renderEffect(text.slice(common.length).trimStart());
-            return text.split(/(\[[A-Z]{2}\])/gi).map(part => {
+        function quadrantDie() {
+            return '<svg class="quadrant-die" viewBox="-17 -17 34 34" role="img" aria-label="Consulta el dado del reverso del mazo"><rect x="-15" y="-15" width="30" height="30" rx="4" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#111">?</text></svg>';
+        }
+        function renderEffect(text, dieNumber = 1, overviewHtml = '') {
+            const common = "Coloca esta carta en el cuadrante indicado en el reverso del mazo.";
+            if (text.startsWith(common)) return '<span class="quadrant-instruction">' + quadrantDie(dieNumber) + '<span>' + common + '</span></span>' + renderEffect(text.slice(common.length).trimStart(), dieNumber, overviewHtml);
+            if (text.startsWith('[FM] ')) return '<span class="event-timing">' + renderEffect('[FM]', dieNumber) + 'Fase de mantenimiento</span>' + overviewHtml + renderEffect(text.slice(5), dieNumber);
+            if (overviewHtml) return overviewHtml + renderEffect(text, dieNumber);
+            const overview = text.match(/^((?:\[1d\]|\[MD\])\s+\[[A-Z]{2}\]|\[DX\]|\[AI\])\s+(-?\d+)\s+(\[PI\])\s+/i);
+            if (overview) return '<span class="effect-overview">' + renderEffect(overview[1], dieNumber) + '<span class="effect-reward">' + overview[2] + renderEffect(overview[3], dieNumber) + '</span></span>' + renderEffect(text.slice(overview[0].length), dieNumber);
+            return text.split(/(\[[A-Z0-9]{2}\])/gi).map(part => {
                 const entry = effectIcons[part.slice(1, -1).toUpperCase()];
                 return part.startsWith('[') && entry ? `<img src="./iconos/${entry[0]}.svg" alt="${entry[1]}" title="${entry[1]}">` : part.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-            }).join('');
+            }).join('').replace(/\n/g, '<br>');
         }
         function footer(card) { return `<footer class="card-foot"><span>SYNCRODYSON</span><span>${card.id}</span></footer>` }
-        function render(card) {
-            if (Array.isArray(card.effect)) return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="standalone-text" aria-label="Efecto del evento">${card.effect.map(paragraph => `<p>${renderEffect(paragraph)}</p>`).join('')}</section>${footer(card)}</article>`;
+        function renderActionOverview({ rank, icon, action }) {
+            return '<span class="support-formula action-overview" role="group" aria-label="' + rank + ': ' + action + '">'
+                + '<span class="formula-term">' + renderEffect('[PI]') + rank + '</span>'
+                + '<span class="formula-term">' + renderEffect(`[${icon}]`) + action + '</span></span>';
+        }
+        function supportFormula(reward = 'PI', perDisk = false, amount = 1) {
+            const label = effectIcons[reward][1];
+            const source = typeof perDisk === 'string' ? perDisk : 'DP';
+            if (perDisk) return `<span class="support-formula" role="group" aria-label="${effectIcons[source][1]}: ${amount} ${label}">`
+                + renderEffect(`[${source}]`) + '<span>=</span><span class="effect-reward">' + amount + renderEffect(`[${reward}]`) + '</span></span>';
+            return `<span class="support-formula" role="group" aria-label="Sectores completos por discos propios en el área de soporte, igual a ${label}">`
+                + '<span class="formula-term">' + renderEffect('[SC]') + 'Sectores completos</span><span>×</span>'
+                + '<span class="formula-term">' + renderEffect('[DP]') + 'Discos propios</span><span>=</span>'
+                + '<span class="formula-term">' + renderEffect(`[${reward}]`) + label + '</span></span>';
+        }
+        function render(card, index) {
+            const dieNumber = (index % 4) + 1;
+            if (Array.isArray(card.effect)) return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="standalone-text" aria-label="Efecto del evento">${card.effect.map(paragraph => `<p>${renderEffect(paragraph, dieNumber)}</p>`).join('')}</section>${footer(card)}</article>`;
             const initialWarning = 'Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.';
             const hasInitialWarning = typeof card.effect === 'string' && card.effect.endsWith(initialWarning);
             const effect = hasInitialWarning ? card.effect.slice(0, -initialWarning.length).trimEnd() : card.effect;
+            const renderedEffect = renderEffect(effect, dieNumber, card.actionOverview ? renderActionOverview(card.actionOverview) : '');
+            const effectWithFormula = card.formula ? renderedEffect.replace('Fase de mantenimiento</span>', 'Fase de mantenimiento</span>' + supportFormula(typeof card.formula === 'string' ? card.formula : 'PI', card.perDisk, card.amount)) : renderedEffect;
             const initialNote = hasInitialWarning ? `<p class="initial-rule">${initialWarning}</p>` : '';
-            return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${renderEffect(effect)}</p></section>${initialNote}${footer(card)}</article>`;
+            return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${effectWithFormula}</p></section>${initialNote}${footer(card)}</article>`;
         }
         document.getElementById('sheet').innerHTML = cards.map(render).join('');
         function exceedsCardSize(card) {

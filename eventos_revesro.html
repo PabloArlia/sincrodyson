@@ -33,15 +33,15 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 <body>
 <div class="toolbar">
  <button onclick="window.print()">Imprimir reversos</button>
- <small>10 reversos · Mini USA 41 × 63 mm · 4 filas de 4 cartas. Para impresión a doble cara, comprobar orientación y ajuste de la impresora.</small>
+ <small>24 reversos · Mini USA 41 × 63 mm · 4 cartas por fila. Para impresión a doble cara, comprobar orientación y ajuste de la impresora.</small>
 </div>
 <main class="sheet" id="sheet" aria-label="Reversos de las cartas de evento"></main>
 <script>
 // Un reverso por cada carta de eventos.html, en el mismo orden.
 // Se asignan los cuadrantes de forma cíclica con resultados de dado 1–4.
 const ids=[
- 'E01','E02','E03','E04','E05',
- 'E16','E17','E18','E19','E20'
+ 'E01','E02','E03','E04','E06','E05','E16','E07','E08','E09','E10','E11','E12','E13','E14','E15',
+ 'E17','E18','E19','E20','E21','E22','E23','E24'
 ];
 const backs=ids.map((id,i)=>{
  const number=(i%4)+1;

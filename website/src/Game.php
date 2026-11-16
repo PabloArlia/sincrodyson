@@ -27,9 +27,9 @@ final class Game
 
     public static function maintenanceRules(): array
     {
-        return ['mines' => [600, 300, 0, -500, -1000, -1500],
+        return ['mines' => [-100, -300, -600, -1000, -1500, -2000],
             'discs' => range(1000, 4200, 200),
-            'barracks' => [0, 200, 400, 600, 800, 1000, 1300, 1500, 1800, 2000, 2300, 2500, 3000, 3300, 3500],
+            'barracks' => [200, 400, 600, 800, 1000, 1300, 1500, 1800, 2000, 2300, 2500, 3000],
             'supportPerEngineer' => 100];
     }
 

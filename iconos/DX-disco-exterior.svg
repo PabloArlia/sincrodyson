@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" stroke="#222" stroke-width="1.5" stroke-linejoin="round">
+  <title>El disco más exterior de un sector</title>
+  <path d="M13 3h14l10 34H3Z" fill="#fff"/>
+  <path d="M11 10h18M9 17h22M7 24h26M5 31h30"/>
+  <ellipse cx="20" cy="13.5" rx="5" ry="2.2" fill="#222"/>
+  <ellipse cx="20" cy="27.5" rx="3" ry="1.8" fill="#aaa" stroke="none"/>
+  <path d="M34 19V5m-4 4 4-4 4 4" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

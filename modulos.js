@@ -1471,8 +1471,8 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 5,
-    "bono": "1-5 [DS][FV] [=][QU]",
+    "discos": 4,
+    "bono": "1-4 [DS][FV] [=][QU]",
     "disco_soporte": 0,
     "efecto": "Coloca un disco en cada celda libre de [FV] Fotovoltaica de un cuadrante.",
     "etapas": [
@@ -1490,7 +1490,7 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 5,
+          "Cu": 3,
           "Si": 5
         },
         "o": {
@@ -1556,39 +1556,35 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 1,
-    "discos": 9,
-    "bono": "1-10 [DS][FV] [=<]2[QU][AD]",
+    "discos": 7,
+    "bono": "1-8 [DS][FV] [=<]2[QU][AD]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en cada celda libre de [FV] Fotovoltaica de dos cuadrantes adyacentes.",
+    "efecto": "Coloca un disco en cada celda libre de [FV] Fotovoltaica de hasta dos cuadrantes adyacentes.",
     "etapas": [
       {
         "m": {
+          "Ti": 2,
           "Si": 5,
-          "Nd": 1
+          "Nd": 1,
+          "Ce": 1
         },
         "o": {
           "IQ": 2,
+          "IM": 1,
           "En": 2
         }
       },
       {
         "m": {
+          "Si": 5,
+          "Cu": 2,
           "Al": 2,
           "Nd": 1
         },
         "o": {
           "IQ": 1,
           "IM": 1,
-          "En": 2
-        }
-      },
-      {
-        "m": {
-          "Si": 5,
-          "Cu": 2
-        },
-        "o": {
-          "IM": 1,
+          "En": 2,
           "Tr": 2
         }
       }
@@ -1691,9 +1687,9 @@ window.modulos = [
     "puntos_otros": 0,
     "copias": 1,
     "discos": 6,
-    "bono": "6 [DS][TS] + 4 [DH][TS] [=] 2 [QU]",
+    "bono": "6 [DS][TS] + 4 [DH][RF] [=] 2 [QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 6 celdas libres de [TS] Transmisión con beneficios normales de colocación. Después, coloca un disco en otras 4 celdas libres de [TS] Transmisión de los mismos dos cuadrantes sin cobrar bonos de colocación.\nLos discos sin bono restan puntos si no puedes colocarlos.",
+    "efecto": "Coloca un disco en 6 celdas libres de [TS] Transmisión de dos cuadrantes distintos con beneficios normales de colocación. Después, coloca un disco en otras 4 celdas libres de [RF] Refrigeración de los mismos dos cuadrantes sin cobrar bonos de colocación.\nLos discos sin bono restan puntos si no puedes colocarlos.",
     "etapas": [
       {
         "m": {
@@ -1781,9 +1777,9 @@ window.modulos = [
     "puntos_otros": 0,
     "copias": 1,
     "discos": 8,
-    "bono": "8 [DS][RF] [=<]2[QU]",
+    "bono": "8 [DS][RF] [=<]3[QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 8 celdas libres de [RF] Refrigeración de hasta 2 cuadrantes.",
+    "efecto": "Coloca un disco en 8 celdas libres de [RF] Refrigeración de hasta 3 cuadrantes.",
     "etapas": [
       {
         "m": {
@@ -1909,21 +1905,21 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 3,
-    "discos": 8,
-    "bono": "8 [DS][MO] [=][QU] [AD] [QU]",
+    "discos": 7,
+    "bono": "7 [DS][MO] [=][QU] [AD] [QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 8 celdas libres de [MO] Microondas en dos cuadrantes adyacentes.",
+    "efecto": "Coloca un disco en 7 celdas libres de [MO] Microondas en dos cuadrantes adyacentes.",
     "etapas": [
       {
         "m": {
-          "Al": 6,
+          "Al": 3,
           "Cu": 3,
-          "Si": 6
+          "Si": 3
         },
         "o": {
           "IM": 1,
           "IS": 1,
-          "En": 3
+          "En": 2
         }
       },
       {
@@ -1951,8 +1947,8 @@ window.modulos = [
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
     "copias": 2,
-    "discos": 10,
-    "bono": "2-10 [DS][MO] [=] 2 [QU][AD]",
+    "discos": 8,
+    "bono": "1-8 [DS][MO] [=] 2 [QU][AD]",
     "disco_soporte": 0,
     "efecto": "Coloca un disco en todas las celdas libres de [MO] Microondas de dos cuadrantes distintos adyacentes",
     "etapas": [
@@ -1960,7 +1956,7 @@ window.modulos = [
         "m": {
           "Si": 9,
           "Cu": 6,
-          "Er": 2
+          "Er": 1
         },
         "o": {
           "IQ": 1,
@@ -2922,9 +2918,9 @@ window.modulos = [
     "puntos_otros": 0,
     "copias": 1,
     "discos": 4,
-    "bono": "2 [DP][MN]  [=][QU] \n 4 [DS][MO] [=][QU]",
+    "bono": "2 [DP][MN]  [=][QU] \n 1-4 [DS][MO] [=][QU]",
     "disco_soporte": 2,
-    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento de un área de soporte y un disco en 4 celdas libres de [MO] Microondas de otro cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento de un área de soporte y un disco en cada celda libre de [MO] Microondas de otro cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {

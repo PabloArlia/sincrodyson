@@ -43,6 +43,9 @@ p{margin:0}strong{font-weight:800}
 .market-values th,.market-values td{border:1px solid #aaa;padding:.7mm .5mm;text-align:right}
 .market-values th:first-child,.market-values td:first-child{text-align:left}
 .market-values thead{background:#f0f2ef}
+.resource-icon{display:inline-grid;place-items:center;width:4mm;height:4mm;margin-right:.7mm;border:1px solid #222;border-radius:.5mm;background:var(--resource-color,#fff);color:var(--resource-ink,#222);font-size:5.5pt;font-weight:700;line-height:1;vertical-align:middle}
+.resource-icon.chemical{width:6mm;font-size:4.5pt}
+.market-values .resource-image{width:4mm;height:4mm;margin-right:.7mm;object-fit:contain;vertical-align:middle}
 .bonus-section{position:relative;border:1px solid #999;border-radius:1mm;padding:2mm 1.5mm 1.5mm;margin-top:1mm}
 .bonus-section h3{position:absolute;top:-1.4mm;left:1mm;background:white;padding:0 .7mm;font-size:7pt;line-height:1}
 .bonus-title{display:flex;align-items:center;gap:1mm;font-size:10pt;font-weight:800;margin-bottom:1.5mm}
@@ -81,15 +84,15 @@ p{margin:0}strong{font-weight:800}
   <section class="phase"><h3><span class="step">1</span> Planificaci&#243;n &#183; simult&#225;nea</h3><p>Asigna licencias y componentes a proyectos y Soporte externo.</p></section>
   <section class="phase"><h3><span class="step">2</span> Refinerías · simultánea</h3><p>Cada jugador activa sus refinerías.</p></section>
   <section class="phase"><h3><span class="step">3</span> Mercado</h3><p>Resuelve las operaciones indicadas por la app.</p></section>
-  <section class="phase"><h3><span class="step">4</span> Verificación de futuros</h3><p>Cada jugador pierde <strong>1 punto por cada recurso en futuros</strong>.</p></section>
-  <section class="phase"><h3><span class="step">5</span> Ejecuci&#243;n</h3><p>Por <strong>orden de turno</strong>, cada jugador resuelve <strong>todos sus proyectos con recursos completos</strong>, en el orden que quiera.</p></section>
-  <section class="phase maintenance"><h3><span class="step">6</span> Mantenimiento · en este orden</h3><ol>
+  <section class="phase"><h3><span class="step">4</span> Ejecuci&#243;n</h3><p>Por <strong>orden de turno</strong>, cada jugador resuelve <strong>todos sus proyectos con recursos completos</strong>, en el orden que quiera.</p></section>
+  <section class="phase maintenance"><h3><span class="step">5</span> Mantenimiento · en este orden</h3><ol>
+   <li><strong>Descarta la energía sobrante.</strong> Genera energía para la siguiente ronda.</li>
    <li><strong>Carga en la app</strong> Soporte externo, subvención, licencias y contratos.</li>
    <li><strong>Verifica la meta.</strong></li>
+   <li><strong>Resuelve los eventos con efectos en mantenimiento.</strong></li>
    <li><strong>Revela un evento por jugador.</strong></li>
    <li>Cada jugador recibe <strong>2 cartas de proyecto</strong>.</li>
    <li><strong>Disminuye en 5 la meta.</strong></li>
-   <li><strong>Descarta la energía sobrante.</strong> Genera energía para la siguiente ronda.</li>
   </ol></section>
   <section class="anchored-reference"><h3><img class="inline-icon" src="./iconos/AI-ingeniero-anclado.svg" alt="AI"> Anclados · fin de partida</h3>
    <p>El total de AI de todos determina la penalización.</p>
@@ -137,20 +140,20 @@ p{margin:0}strong{font-weight:800}
   <table class="market-values" aria-label="Precios mínimos, de referencia y máximos por recurso">
    <thead><tr><th scope="col">Recurso</th><th scope="col">Mín.</th><th scope="col">Ref.</th><th scope="col">Máx.</th></tr></thead>
    <tbody>
-    <tr><td>Fe · Hierro</td><td>1</td><td>1</td><td>2</td></tr>
-    <tr><td>Cu · Cobre</td><td>2</td><td>3</td><td>5</td></tr>
-    <tr><td>Si · Silicio</td><td>1</td><td>2</td><td>3</td></tr>
-    <tr><td>Ti · Titanio</td><td>3</td><td>6</td><td>10</td></tr>
-    <tr><td>Al · Aluminio</td><td>2</td><td>3</td><td>6</td></tr>
-    <tr><td>C · Carbono</td><td>1</td><td>1</td><td>2</td></tr>
-    <tr><td>Nd · Neodimio</td><td>5</td><td>9</td><td>15</td></tr>
-    <tr><td>Gd · Gadolinio</td><td>3</td><td>6</td><td>10</td></tr>
-    <tr><td>Er · Erbio</td><td>3</td><td>6</td><td>10</td></tr>
-    <tr><td>Ce · Cerio</td><td>3</td><td>6</td><td>10</td></tr>
-    <tr><td>H₂SO₄ · Ác. sulfúrico</td><td>2</td><td>3</td><td>5</td></tr>
-    <tr><td>HCl · Ác. clorhídrico</td><td>2</td><td>3</td><td>5</td></tr>
-    <tr><td>Tr · Transporte</td><td>4</td><td>7</td><td>15</td></tr>
-    <tr><td>En · Energía</td><td>1</td><td>2</td><td>4</td></tr>
+    <tr><td><span class="resource-icon" style="--resource-color:#d84242;--resource-ink:#fff">Fe</span>Hierro</td><td>1</td><td>1</td><td>2</td></tr>
+    <tr><td><span class="resource-icon" style="--resource-color:#3977dc;--resource-ink:#fff">Cu</span>Cobre</td><td>2</td><td>3</td><td>5</td></tr>
+    <tr><td><span class="resource-icon" style="--resource-color:#f0d54d">Si</span>Silicio</td><td>1</td><td>2</td><td>3</td></tr>
+    <tr><td><span class="resource-icon" style="--resource-color:#58a85c;--resource-ink:#fff">Ti</span>Titanio</td><td>3</td><td>6</td><td>10</td></tr>
+    <tr><td><span class="resource-icon" style="--resource-color:#292929;--resource-ink:#fff">Al</span>Aluminio</td><td>2</td><td>3</td><td>6</td></tr>
+    <tr><td><span class="resource-icon">C</span>Carbono</td><td>1</td><td>1</td><td>2</td></tr>
+    <tr><td><span class="resource-icon" style="--resource-color:#e345ad;--resource-ink:#fff">Nd</span>Neodimio</td><td>5</td><td>9</td><td>15</td></tr>
+    <tr><td><span class="resource-icon" style="--resource-color:#42c5c1">Gd</span>Gadolinio</td><td>3</td><td>6</td><td>10</td></tr>
+    <tr><td><span class="resource-icon" style="--resource-color:#ec933c;--resource-ink:#fff">Er</span>Erbio</td><td>3</td><td>6</td><td>10</td></tr>
+    <tr><td><span class="resource-icon" style="--resource-color:#94623d;--resource-ink:#fff">Ce</span>Cerio</td><td>3</td><td>6</td><td>10</td></tr>
+    <tr><td><span class="resource-icon chemical">H₂SO₄</span>Ác. sulfúrico</td><td>2</td><td>3</td><td>5</td></tr>
+    <tr><td><span class="resource-icon chemical">HCl</span>Ác. clorhídrico</td><td>2</td><td>3</td><td>5</td></tr>
+    <tr><td><img class="resource-image" src="./iconos/Tr-transporte.svg" alt="Tr">Transporte</td><td>4</td><td>7</td><td>15</td></tr>
+    <tr><td><img class="resource-image" src="./iconos/En-energia.svg" alt="En">Energía</td><td>1</td><td>2</td><td>4</td></tr>
    </tbody>
   </table>
   <p>Durante la ejecución puedes comprar recursos de emergencia a su <strong>precio máximo</strong>.</p>

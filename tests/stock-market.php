@@ -27,10 +27,10 @@ function closeMarket(array &$s, array $stocks = [], array $resources = [], array
 function settle(array &$s): void {
     while ($s['phase'] === 'settlement') Game::command($s, 0, 'settle', []);
 }
-// These stock fixtures offset the $10 disc income with $10 in barracks costs.
+// These stock fixtures offset $10 discs + $1 support with $1 mines + $10 barracks.
 function maintain(array &$s, array $pv): void {
     Game::command($s, 0, 'maintenance', []);
-    foreach ($s['players'] as $actor => $p) Game::command($s, $actor, 'maintain', ['mines' => array_search(0, Game::maintenanceRules()['mines'], true), 'barracks' => 5, 'support' => 0, 'discs' => 0, 'pv' => $pv[$actor]]);
+    foreach ($s['players'] as $actor => $p) Game::command($s, $actor, 'maintain', ['mines' => 0, 'barracks' => 4, 'support' => 1, 'discs' => 0, 'pv' => $pv[$actor]]);
 }
 function inventory(array $s): void {
     foreach ($s['stock']['companies'] as $id => $company) {
@@ -41,7 +41,8 @@ function inventory(array $s): void {
 }
 
 // Maintenance tracks match the printed board and reject invalid positions.
-eq(Game::maintenanceRules()['mines'], [600, 300, 0, -500, -1000, -1500], 'Seis posiciones de yacimientos');
+eq(Game::maintenanceRules()['mines'], [-100, -300, -600, -1000, -1500, -2000], 'Seis posiciones de yacimientos');
+eq(Game::maintenanceRules()['barracks'], [200, 400, 600, 800, 1000, 1300, 1500, 1800, 2000, 2300, 2500, 3000], 'Doce posiciones de barracas desde $2 hasta $30');
 eq(Game::maintenanceRules()['discs'], range(1000, 4200, 200), 'Diecisiete ingresos de discos');
 foreach ([false, true] as $withStocks) {
     foreach (range(0, 16) as $discPosition) {
@@ -57,7 +58,7 @@ foreach ([false, true] as $withStocks) {
         $income = 1000 + 200 * $discPosition;
         $result = $m['maintenance']['results'][$m['players'][0]['id']];
         eq($result['discsIncome'], $income, 'Ingreso de discos');
-        eq($result['amount'], $income - 1500 - 600 + 200, 'Total incluye discos y sexto yacimiento');
+        eq($result['amount'], $income - 2000 - 800 + 200, 'Total incluye discos y sexto yacimiento');
         eq((int) $m['players'][0]['cash'], $beforeCash + $result['amount'], 'El total se aplica al saldo');
         eq($m['players'][0]['maintenanceChoice']['discs'], $discPosition, 'Recuerda la selección confirmada');
         $beforeRepeat = $m;
@@ -220,9 +221,9 @@ $s['stock']['holdings'][$b][$a] = 10; $s['stock']['companies'][$b]['available'] 
 StockMarket::credit($s, 0, 131999 - $s['players'][0]['cashUnits']);
 Game::command($s, 0, 'maintenance', []);
 rejected(function() use (&$s) { Game::command($s, 0, 'cash', ['amount' => 100, 'reason' => 'Tarde']); }, 'Caja bloqueada durante evaluación');
-Game::command($s, 0, 'maintain', ['mines' => array_search(0, Game::maintenanceRules()['mines'], true), 'barracks' => 5, 'support' => 0, 'discs' => 0, 'pv' => 6]);
-rejected(function() use (&$s) { Game::command($s, 0, 'maintain', ['mines' => array_search(0, Game::maintenanceRules()['mines'], true), 'barracks' => 5, 'support' => 0, 'discs' => 0, 'pv' => 6]); }, 'No repite mantenimiento individual');
-Game::command($s, 1, 'maintain', ['mines' => array_search(0, Game::maintenanceRules()['mines'], true), 'barracks' => 5, 'support' => 0, 'discs' => 0, 'pv' => 5]);
+Game::command($s, 0, 'maintain', ['mines' => 0, 'barracks' => 4, 'support' => 1, 'discs' => 0, 'pv' => 6]);
+rejected(function() use (&$s) { Game::command($s, 0, 'maintain', ['mines' => 0, 'barracks' => 4, 'support' => 1, 'discs' => 0, 'pv' => 6]); }, 'No repite mantenimiento individual');
+Game::command($s, 1, 'maintain', ['mines' => 0, 'barracks' => 4, 'support' => 1, 'discs' => 0, 'pv' => 5]);
 $r = $s['stock']['round']['maintenance']['results'];
 eq($r[$a]['status'], 'unpaid', 'Falta medio centavo: impaga');
 eq($r[$a]['paidUnits'], 0, 'No paga parcialmente');
@@ -266,7 +267,7 @@ rejected(fn() => $store->mutate($code, $token, 'pass-stock-000002', 'pass', $pla
 eq($store->read($code), $saved, 'Rechazos hacen rollback completo');
 $store->mutate($code, $token, 'settle-stock-001', 'settle', ['round' => 1, 'player' => $id]);
 $store->mutate($code, $token, 'maint-stock-0001', 'maintenance', ['round' => 1]);
-$entry = ['round' => 1, 'mines' => array_search(0, Game::maintenanceRules()['mines'], true), 'barracks' => 5, 'support' => 0, 'discs' => 0, 'pv' => 3];
+$entry = ['round' => 1, 'mines' => 0, 'barracks' => 4, 'support' => 1, 'discs' => 0, 'pv' => 3];
 $store->mutate($code, $token, 'maintain-stock01', 'maintain', $entry); $saved = $store->read($code);
 $store->mutate($code, $token, 'maintain-stock01', 'maintain', $entry);
 eq($store->read($code), $saved, 'Reintento no duplica cierre ni dividendos');
