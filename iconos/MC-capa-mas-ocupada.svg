@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" stroke="#222" stroke-width="1.2" stroke-linejoin="round">
+  <title>Capa con más discos de cualquier jugador</title>
+  <rect x="2" y="2" width="36" height="36" rx="2" fill="#fff"/>
+  <path d="M2 9h36M2 16h36M2 24h36M2 31h36" stroke="#999"/>
+  <rect x="2" y="16" width="36" height="8" fill="#ddd" stroke-width="2"/>
+  <g fill="#aaa" stroke="none">
+    <ellipse cx="8" cy="5.5" rx="2.8" ry="1.8"/>
+    <ellipse cx="8" cy="12.5" rx="2.8" ry="1.8"/>
+    <ellipse cx="16" cy="12.5" rx="2.8" ry="1.8"/>
+    <ellipse cx="8" cy="27.5" rx="2.8" ry="1.8"/>
+    <ellipse cx="16" cy="27.5" rx="2.8" ry="1.8"/>
+    <ellipse cx="8" cy="34.5" rx="2.8" ry="1.8"/>
+  </g>
+  <g fill="#222" stroke="none">
+    <ellipse cx="8" cy="20" rx="2.8" ry="1.8"/>
+    <ellipse cx="16" cy="20" rx="2.8" ry="1.8"/>
+    <ellipse cx="24" cy="20" rx="2.8" ry="1.8"/>
+    <ellipse cx="32" cy="20" rx="2.8" ry="1.8"/>
+  </g>
+</svg>

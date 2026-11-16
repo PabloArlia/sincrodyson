@@ -263,8 +263,8 @@
                 effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe 1 Tr por cada disco propio en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
             },
             {
-                id: 'E27', title: 'Pegoneo',
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] [MD] 1 [PI] Cada jugador gana 1 Punto inmediato por cada disco propio en la capa con más discos de ese cuadrante.\nLuego, descarta esta carta. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.'
+                id: 'E27', title: 'Pegoneo', formula: 'PI', perDisk: 'MC',
+                effect: 'Cada jugador gana 1 Punto inmediato por cada disco propio en la capa con más discos de la esfera.\nLuego, descarta esta carta. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.'
             },
             {
                 id: 'E24', title: 'Llamarada solar', formula: 'PI', perDisk: 'FV',
@@ -277,6 +277,7 @@
             '1D': ['1d-primer-disco', 'El primer disco colocado'],
             FM: ['FM-fase-mantenimiento', 'Fase de mantenimiento'],
             MD: ['MD-mayoria-discos', 'Mayoría de discos'],
+            MC: ['MC-capa-mas-ocupada', 'Capa con más discos de cualquier jugador'],
             SC: ['SC-sector-completo', 'Sector completo: todas sus capas ocupadas por discos'],
             SE: ['esfera-sector', 'Sector'],
             DP: ['DP-disco-soporte', 'Discos propios en el área de soporte de este cuadrante'],
@@ -320,6 +321,9 @@
         function supportFormula(reward = 'PI', perDisk = false, amount = 1) {
             const label = effectIcons[reward][1];
             const source = typeof perDisk === 'string' ? perDisk : 'DP';
+            if (source === 'MC') return '<span class="support-formula" role="group" aria-label="Cada disco propio en la capa con más discos de la esfera da 1 Punto inmediato">'
+                + renderEffect('[DS] [MC]')
+                + '<span>=</span><span class="effect-reward">1' + renderEffect('[PI]') + '</span></span>';
             if (perDisk) return `<span class="support-formula" role="group" aria-label="${effectIcons[source][1]}: ${amount} ${label}">`
                 + renderEffect(`[${source}]`) + '<span>=</span><span class="effect-reward">' + amount + renderEffect(`[${reward}]`) + '</span></span>';
             return `<span class="support-formula" role="group" aria-label="Sectores completos por discos propios en el área de soporte, igual a ${label}">`
@@ -334,7 +338,12 @@
             const hasInitialWarning = typeof card.effect === 'string' && card.effect.endsWith(initialWarning);
             const effect = hasInitialWarning ? card.effect.slice(0, -initialWarning.length).trimEnd() : card.effect;
             const renderedEffect = renderEffect(effect, dieNumber, card.actionOverview ? renderActionOverview(card.actionOverview) : '');
-            const effectWithFormula = card.formula ? renderedEffect.replace('Fase de mantenimiento</span>', 'Fase de mantenimiento</span>' + supportFormula(typeof card.formula === 'string' ? card.formula : 'PI', card.perDisk, card.amount)) : renderedEffect;
+            let effectWithFormula = renderedEffect;
+            if (card.formula) {
+                const formula = supportFormula(typeof card.formula === 'string' ? card.formula : 'PI', card.perDisk, card.amount);
+                const timing = 'Fase de mantenimiento</span>';
+                effectWithFormula = renderedEffect.includes(timing) ? renderedEffect.replace(timing, timing + formula) : formula + renderedEffect;
+            }
             const initialNote = hasInitialWarning ? `<p class="initial-rule">${initialWarning}</p>` : '';
             return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${effectWithFormula}</p></section>${initialNote}${footer(card)}</article>`;
         }
