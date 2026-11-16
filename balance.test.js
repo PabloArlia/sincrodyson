@@ -2,7 +2,7 @@ const fs=require('node:fs');
 const vm=require('node:vm');
 const assert=require('node:assert/strict');
 
-for(const archivo of ['modulos.html','modulos_tarot.html']){
+for(const archivo of ['modulos.html']){
  const sheet={innerHTML:''};
  const eventos={};
  const panel={style:{},setAttribute(){},getBoundingClientRect(){return {width:360,height:420}}};

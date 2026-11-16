@@ -6,447 +6,148 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Syncrodyson · Eventos</title>
     <style>
-        * {
-            box-sizing: border-box
-        }
-
+        * { box-sizing: border-box; }
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: #f3f3f3;
             color: #202723;
             margin: 0;
-            padding: 16px
+            padding: 16px;
         }
-
         .toolbar {
             display: flex;
             gap: 12px;
             align-items: center;
             flex-wrap: wrap;
             margin: 0 auto 16px;
-            max-width: 133mm
+            max-width: 133mm;
         }
-
         button {
             background: white;
             border: 1px solid #333;
             padding: 8px 12px;
-            cursor: pointer
+            cursor: pointer;
         }
-
-        .toolbar small {
-            font-size: 12px;
-            line-height: 1.4
-        }
-
+        .toolbar small { font-size: 12px; line-height: 1.4; }
         .sheet {
             display: grid;
-            grid-template-columns: repeat(4,41mm);
-            gap: 0mm;
-            justify-content: center
+            grid-template-columns: repeat(4, 41mm);
+            gap: 0;
+            justify-content: center;
         }
-
         .card {
             width: 41mm;
             height: 63mm;
             background: white;
             border: 1px solid #222;
-            border-radius: 2mm;
-            padding: 2mm;
+            border-radius: 1.8mm;
+            padding: 2.2mm;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            break-inside: avoid
+            break-inside: avoid;
         }
-
+        .card[hidden] { display: none !important; }
         .heading {
             display: flex;
             align-items: center;
-            gap: 1.5mm;
-            border-bottom: 1px solid #888;
-            padding-bottom: 1.5mm;
-            min-height: 10mm;
-            flex-shrink: 0
-        }
-
-        .heading img {
-            width: 7mm;
-            height: 7mm;
-            object-fit: contain
-        }
-
-        h2 {
-            font-size: 9pt;
-            line-height: 1.1;
-            margin: 0
-        }
-
-        .type {
-            font-size: 5.5pt;
-            letter-spacing: .07em;
-            text-transform: uppercase;
-            margin-top: .7mm
-        }
-
-        .market-half {
-            padding: 1.5mm 0 2mm
-        }
-
-        h3 {
-            font-size: 7pt;
-            margin: 0 0 1.2mm
-        }
-
-        .market {
-            display: grid;
-            gap: 1mm
-        }
-
-        .panel {
-            border: .25mm solid #59645f;
-            border-radius: .8mm;
-            padding: .7mm;
-            min-width: 0
-        }
-
-        .panel-title {
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 4.1pt;
-            letter-spacing: .02em;
-            margin-bottom: .7mm;
-            white-space: nowrap
-        }
-
-        .basic-grid {
-            display: grid;
-            grid-template-columns: repeat(6, minmax(0, 1fr))
-        }
-
-        .lower-grid {
-            display: grid;
-            grid-template-columns: 4fr 1.15fr 2fr;
-            gap: .8mm
-        }
-
-        .rare-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr))
-        }
-
-        .reagent-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr))
-        }
-
-        .resource {
-            min-width: 0;
-            padding: 0 .45mm;
-            border-right: .15mm solid #d0d2ce
-        }
-
-        .resource:last-child {
-            border-right: 0
-        }
-
-        .resource-title {
-            height: 4mm;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: .2mm;
-            font-size: 4.8pt;
-            font-weight: bold;
-            white-space: nowrap
-        }
-
-        .resource-title svg,
-        .resource-title img {
-            width: 2.8mm;
-            height: 2.8mm;
-            object-fit: contain;
-            flex-shrink: 0
-        }
-
-        .resource-title.chemical {
-            font-size: 4pt
-        }
-
-        .price-row {
-            height: 2.1mm;
-            display: flex;
-            gap: .25mm;
-            align-items: center;
-            padding: 0 .15mm;
-            border-bottom: .1mm solid #e3e6e3
-        }
-
-        .price {
-            font-size: 3.8pt;
-            font-weight: bold;
-            min-width: 2.2mm
-        }
-
-        .slots {
-            display: flex;
-            flex: 1;
-            gap: .22mm
-        }
-
-        .slot {
-            display: block;
-            flex: 1;
-            height: 1.45mm;
-            border: .12mm solid #78837d;
-            border-radius: .3mm;
-            background: #fff
-        }
-
-        .price-row.up {
-            background: #bce8c2;
-            color: #184e29
-        }
-
-        .price-row.down {
-            background: #f3c3bf;
-            color: #7a2520
-        }
-
-        .price-row.up .slot {
-            background: #83cf91;
-            border-color: #387a46
-        }
-
-        .price-row.down .slot {
-            background: #eb9991;
-            border-color: #a0463d
-        }
-
-        .legend {
-            display: flex;
-            justify-content: space-between;
             gap: 1mm;
-            font-size: 5.2pt;
-            margin-top: 1.2mm
+            border-bottom: 1px solid #888;
+            padding-bottom: 1mm;
+            min-height: 9mm;
+            flex-shrink: 0;
         }
-
-        .legend span {
-            display: flex;
-            align-items: center;
-            gap: .6mm
-        }
-
-        .swatch {
-            width: 2mm;
-            height: 2mm;
-            border: 1px solid;
-            display: inline-grid;
-            place-items: center;
-            font-size: 4pt;
-            font-style: normal
-        }
-
-        .swatch.up {
-            background: #bce8c2;
-            border-color: #387a46
-        }
-
-        .swatch.down {
-            background: #f3c3bf;
-            border-color: #a0463d
-        }
-
+        .heading img { width: 5mm; height: 5mm; object-fit: contain; }
+        h2 { font-size: 8pt; line-height: 1.12; margin: 0; }
         .event-half {
-            border-top: 1px solid #555;
             padding-top: 2mm;
             flex: 1;
             display: flex;
             flex-direction: column;
-            min-height: 0
+            min-height: 0;
         }
-
-        .event-label {
-            display: flex;
-            align-items: center;
-            gap: 1mm
+        .event-effect { font-size: 7.5pt; line-height: 1.28; margin: 2mm 0 0; }
+        .event-effect img {
+            width: 4mm;
+            height: 4mm;
+            object-fit: contain;
+            vertical-align: middle;
         }
-
-        .event-label img {
-            width: 5mm;
-            height: 5mm
-        }
-
-        .event-label h3 {
-            margin: 0;
-            font-size: 8pt
-        }
-
-        .event-effect {
-            font-size: 8pt;
-            line-height: 1.3;
-            margin: 2mm 0 0
-        }
-
         .initial-rule {
             margin: 1mm 0 0;
             font-size: 5.5pt;
             line-height: 1.05;
             text-align: center;
-            flex: none
+            flex: none;
         }
-
-        .event-effect img {
-            width: 4mm;
-            height: 4mm;
-            object-fit: contain;
-            vertical-align: middle
-        }
-
         .standalone-text {
             flex: 1;
             min-height: 0;
-            font-size: 8pt;
-            line-height: 1.2
+            font-size: 7pt;
+            line-height: 1.2;
+            overflow: hidden;
         }
-
-        .standalone-text p {
-            margin: 2mm 0 0
-        }
-
+        .standalone-text p { margin: 1.2mm 0; }
         .standalone-text img {
             width: 3.5mm;
             height: 3.5mm;
             object-fit: contain;
-            vertical-align: middle
+            vertical-align: middle;
         }
-
-        .pending {
-            border: .25mm dashed #a2aaa4;
-            border-radius: 1mm;
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2mm;
-            margin: 1.5mm 0;
-            font-size: 8pt;
-            color: #657068
+        .quadrant-instruction {
+            font-size: 6pt;
+            font-weight: 700;
+            line-height: 1.15;
+            display: block;
+            margin: 0 0 2mm;
         }
-
-        .pending img {
-            width: 7mm;
-            height: 7mm;
-            opacity: .55
-        }
-
         .card-foot {
             display: flex;
             justify-content: space-between;
             font-size: 5pt;
             letter-spacing: .06em;
             color: #59645f;
-            margin-top: 1mm
+            margin-top: 1mm;
         }
-
-        .subsidy .heading {
-            border-bottom: 0
+        .overflow-details { width: 100%; font-size: 12px; line-height: 1.4; }
+        .overflow-details summary { cursor: pointer; }
+        .overflow-details ul { margin: 6px 0; padding-left: 20px; }
+        .print-page { display: contents; }
+        @page { size: A4 portrait; margin: 8mm; }
+        @media screen and (max-width: 760px) {
+            .sheet { grid-template-columns: repeat(3, 41mm); }
         }
-
-        .subsidy-art {
-            flex: 1;
-            display: grid;
-            place-items: center;
-            border-bottom: 1px solid #555;
-            margin-bottom: 3mm
+        @media screen and (max-width: 510px) {
+            .sheet { grid-template-columns: repeat(2, 41mm); }
         }
-
-        .big-coin {
-            width: 34mm;
-            height: 34mm
-        }
-
-        .subsidy-art .big-coin {
-            width: 24mm;
-            height: 24mm
-        }
-
-        .subsidy-text {
-            text-align: center;
-            min-height: 29mm;
-            padding: 0 2mm;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2mm
-        }
-
-        .formula {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1mm;
-            font-size: 12pt;
-            font-weight: 800
-        }
-
-        .formula img,
-        .formula .big-coin {
-            width: 6mm;
-            height: 6mm;
-            object-fit: contain
-        }
-
-        .subsidy-text p {
-            font-size: 9pt;
-            line-height: 1.2;
-            margin: 0
-        }
-
-        .subsidy-text .end-rule {
-            font-size: 8pt;
-            border-top: 1px solid #aaa;
-            padding-top: 1.5mm
-        }
-
-        @page{size:A4 portrait;margin:8mm}
-
-        @media screen and (max-width:760px) {
-            .sheet {
-                grid-template-columns: repeat(2,41mm)
-            }
-        }
-
-        @media screen and (max-width:510px) {
-            .sheet {
-                grid-template-columns: 41mm
-            }
-        }
-
-        /* Bloques de 16 cartas: cuatro columnas y cuatro filas por hoja A4. */
         @media print {
-
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                background: white
-            }
-
-            .toolbar {
-                display: none
-            }
-
+            html, body { margin: 0; padding: 0; background: white; }
+            .toolbar { display: none; }
             .sheet {
                 display: block;
                 width: 100%;
                 margin: 0;
                 padding: 0;
                 text-align: center;
-                font-size: 0
+                font-size: 0;
             }
-
-            .print-page>.card {
+            .print-page {
+                display: grid;
+                width: 100%;
+                height: 281mm;
+                grid-template-columns: repeat(4, 41mm);
+                grid-auto-rows: 63mm;
+                gap: 0;
+                justify-content: center;
+                align-content: center;
+                padding: 0;
+                break-inside: avoid;
+                page-break-inside: avoid;
+                break-after: page;
+                page-break-after: always;
+            }
+            .print-page:last-child { break-after: auto; page-break-after: auto; }
+            .print-page > .card {
                 display: inline-flex;
                 position: relative;
                 top: 0;
@@ -459,45 +160,10 @@
                 break-inside: avoid;
                 page-break-inside: avoid;
                 -webkit-print-color-adjust: exact;
-                print-color-adjust: exact
+                print-color-adjust: exact;
             }
         }
-    
-        /* Mini USA: 41 × 63 mm. Cartas sin tablero de mercado. */
-        .sheet{grid-template-columns:repeat(4,41mm);gap:0mm}
-        .card{width:41mm;height:63mm;padding:2.2mm;border-radius:1.8mm}
-        .heading{min-height:9mm;gap:1mm;padding-bottom:1mm}
-        .heading img{width:5mm;height:5mm}
-        h2{font-size:8pt;line-height:1.12}
-        .type{font-size:5pt}
-        .event-half{border:0;padding-top:2mm}
-        .event-label h3{font-size:8pt}
-        .event-effect{font-size:7.5pt;line-height:1.28}
-        .standalone-text{font-size:7pt;line-height:1.2;overflow:hidden}
-        .standalone-text p{margin:1.2mm 0}
-        .subsidy{gap:1mm}
-        .subsidy .heading{height:6mm;min-height:6mm;flex:0 0 6mm;padding:0;justify-content:center}
-        .subsidy-art{height:12mm;min-height:12mm;flex:0 0 12mm;margin:0;border:0}
-        .subsidy .big-coin{width:12mm;height:12mm;display:block}
-        .subsidy-text{flex:1;min-height:0;gap:1mm;padding:0;justify-content:center}
-        .subsidy-text p{font-size:7pt;line-height:1.15}
-        .subsidy-text .end-rule{font-size:6.5pt;line-height:1.15;padding-top:1mm}
-        .subsidy-text .formula{font-size:8pt}
-        .subsidy .card-foot{flex:none;margin-top:0}
-        .support-subsidy .heading{height:9mm;min-height:9mm;flex-basis:9mm}
-        .quadrant-instruction{font-size:6pt;font-weight:700;line-height:1.15;display:block;margin:0 0 2mm}
-        .card[hidden]{display:none!important}
-        .overflow-details{width:100%;font-size:12px;line-height:1.4}
-        .overflow-details summary{cursor:pointer}
-        .overflow-details ul{margin:6px 0;padding-left:20px}
-        .print-page{display:contents}
-        @media print{
-            .print-page{display:grid;width:100%;height:281mm;grid-template-columns:repeat(4,41mm);grid-auto-rows:63mm;gap:0;justify-content:center;align-content:center;padding:0;break-inside:avoid;page-break-inside:avoid;break-after:page;page-break-after:always}
-            .print-page:last-child{break-after:auto;page-break-after:auto}
-        }
-        @media screen and (max-width:760px){.sheet{grid-template-columns:repeat(3,41mm)}}
-        @media screen and (max-width:510px){.sheet{grid-template-columns:repeat(2,41mm)}}
-</style>
+    </style>
 </head>
 
 <body>
@@ -506,77 +172,19 @@
         <small>Cartas de 41 × 63 mm · <span id="summary"></span><br>Eventos con efectos e iconos.</small>
         <details class="overflow-details" id="overflow-details" hidden><summary id="overflow-summary"></summary><ul id="overflow-list"></ul></details>
     </div>
-    <main class="sheet" id="sheet" aria-label="Cartas de evento y subvención"></main>
+    <main class="sheet" id="sheet" aria-label="Cartas de evento"></main>
     <script>
-        // Doce materiales: seis se ajustan en cada carta. El transporte es una referencia.
-        const basics = [
-            { id: 'Fe', name: 'Hierro', color: '#111', prices: [2, 1, 1, 1, 1] },
-            { id: 'Cu', name: 'Cobre', color: '#3977dc', prices: [5, 4, 3, 2, 2] },
-            { id: 'Si', name: 'Silicio', color: '#f0d54d', prices: [3, 3, 2, 2, 1] },
-            { id: 'Ti', name: 'Titanio', color: '#58a85c', prices: [9, 8, 6, 5, 3] },
-            { id: 'Al', name: 'Aluminio', color: '#292929', prices: [5, 4, 3, 2, 2] },
-            { id: 'C', name: 'Carbono', color: '#fff', prices: [2, 1, 1, 1, 1] }
-        ];
-        const rares = [
-            { id: 'Nd', name: 'Neodimio', color: '#e345ad', prices: [14, 12, 9, 7, 5] },
-            { id: 'Gd', name: 'Gadolinio', color: '#42c5c1', prices: [9, 8, 6, 5, 3] },
-            { id: 'Er', name: 'Erbio', color: '#ec933c', prices: [9, 8, 6, 5, 3] },
-            { id: 'Ce', name: 'Cerio', color: '#94623d', prices: [9, 8, 6, 5, 3] }
-        ];
-        const reagents = [
-            { id: 'H₂SO₄', name: 'Ácido sulfúrico', prices: [5, 4, 3, 2, 2] },
-            { id: 'HCl', name: 'Ácido clorhídrico', prices: [5, 4, 3, 2, 2] }
-        ];
-        // Cada ajuste de mercado marca tres materiales al alza y tres a la baja.
         const cards = [
-            { id: 'E01', title: 'Reconocimiento público', up: ['Fe', 'Si', 'Nd'], down: ['Ti', 'Er', 'HCl'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Estructura [ES] de ese cuadrante reclama esta carta y gana 5 [PI].' },
-            { id: 'E02', title: 'Reconocimiento público', up: ['Cu', 'Al', 'Gd'], down: ['C', 'Ce', 'H₂SO₄'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Fotovoltaica [FV] de ese cuadrante reclama esta carta y gana 5 [PI].' },
-            { id: 'S01', subsidy: true },
-            { id: 'E03', title: 'Reconocimiento público', up: ['Ti', 'Er', 'HCl'], down: ['Fe', 'Si', 'Nd'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Transmisión [TS] de ese cuadrante reclama esta carta y gana 5 [PI].' },
-            { id: 'E04', title: 'Reconocimiento público', up: ['C', 'Ce', 'H₂SO₄'], down: ['Cu', 'Al', 'Gd'], effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Refrigeración [RF] de ese cuadrante reclama esta carta y gana 5 [PI].' },
-            { id: 'S02', subsidy: true },
-            { id: 'E05', title: 'Producción estable', up: ['Fe', 'Cu', 'Si'], down: ['Ti', 'Al', 'C'], effect: 'Cada jugador aumenta en 1 [PE] su producción de energía por cada sector con todas sus capas ocupadas por discos, en el que tenga al menos un disco propio. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.' },
-            { id: 'E06', title: 'Nivelar los proyectos', up: ['Ti', 'Al', 'C'], down: ['Fe', 'Cu', 'Si'], effect: 'El jugador con menos [PI] gana $10. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.' },
-            { id: "E09", title: "Reconocimiento público", up: ["Fe", "Al", "Ce"], down: ["Cu", "Ti", "Nd"], effect: "El jugador con más discos en la capa de microondas [MO] gana 2 [PI] y $5. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra." },
-            { id: "E10", title: "Priorizar la precisión", up: ["Cu", "Ti", "Nd"], down: ["Fe", "Al", "Ce"], effect: "El jugador con más discos en las áreas de soporte de la esfera gana 2 [PI] y $5. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra." },
-            { id: "E12", title: "Crisis de microprocesadores", up: ["C", "Er", "H₂SO₄"], down: ["Si", "Gd", "HCl"], effect: "Cada jugador puede entregar 5 Si y 1 Ce para ganar $20. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra." },
-            { id: "E15", title: "Revisión del personal anclado", up: ["Ti", "Nd", "Ce"], down: ["C", "Gd", "Er"], effect: "Cada jugador pierde [PI] según la tabla de penalización por ingenieros anclados, calculada en este momento como si fuera el fin de al partida. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra." },
-            { id: "E16", title: "Lluvia de voluntarios", up: ["C", "Gd", "Er"], down: ["Ti", "Nd", "Ce"], effect: "Coloca esta carta en el cuadrante indicado en su reverso del mazo. Cuando vayas a colocar un ingeniero anclado [AI] en este cuadrante, colócalo en esta carta en su lugar. De uno en uno. Cuando haya 4 ingenieros en esta carta, descártala inmediatamente y devuelve los 4 ingenieros a sus reservas." },
-            { id: 'E17', title: 'Gran meteorito', catastrophe: true, effect: [
-                'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
-                'Retira todos los discos [QD] de las cinco capas del sector elegido.',
-                'Cada jugador gana 3 [PI] por cada disco propio retirado.',
-                'Si una celda pierde su disco y tiene ingenieros anclados [AI], devuelve esos ingenieros a las barracas de su dueño. Esta excepción reemplaza la regla de traslado o devolución a la reserva del manual.'
-            ] },
-            { id: 'E18', title: 'Llamarada solar', catastrophe: true, effect: [
-                'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
-                'Retira [QD] el disco de la celda fotovoltaica [FV] de ese sector y los de las dos celdas fotovoltaicas adyacentes, una a cada lado. Las adyacentes pueden estar en otro cuadrante.',
-                'Cada jugador gana 3 [PI] por cada disco propio retirado.',
-                'Si una celda pierde su disco y tiene ingenieros anclados [AI], devuelve esos ingenieros a las barracas de su dueño. Esta excepción reemplaza la regla de traslado o devolución a la reserva del manual.'
-            ] },
-            { id: 'E19', title: 'Malfunción', catastrophe: true, effect: [
-                'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
-                'Arroja otro dado para la capa: 1 Estructura [ES], 2 Fotovoltaica [FV], 3 Transmisión [TS], 4 Refrigeración [RF] o 5 Microondas [MO]. Con un 6, el evento termina sin efecto.',
-                'Retira el disco [QD] de la celda elegida. Su dueño gana 3 [PI]. Si la celda está vacía, no ocurre nada.',
-                'Los ingenieros anclados [AI] en esa celda vuelven a las barracas de su dueño. Esta excepción reemplaza la regla de traslado o devolución a la reserva del manual.'
-            ] },
-            { id: 'E20', title: 'Donaciones privadas para la construcción', standalone: true, effect: [
-                'Usa el cuadrante indicado en el reverso de esta carta. Arroja un dado para elegir uno de sus sectores según los dados del mapa. Si la tirada no corresponde a un sector, el evento termina sin efecto.',
-                'Arroja otro dado para la capa: 1 Estructura [ES], 2 Fotovoltaica [FV], 3 Transmisión [TS], 4 Refrigeración [RF] o 5 Microondas [MO]. Con un 6, el evento termina sin efecto.',
-                'Si la celda está vacía, el jugador con menos [PI] puede colocar allí un disco propio sin pagar recursos. Si hay empate, tiene la opción quien tenga la ficha de orden más baja.',
-                'Resuelve la colocación con sus bonos y pagos habituales. Si la celda ya contiene un disco, no ocurre nada.'
-            ] },
-            { id: 'E22', title: 'Posición clave', standalone: true, effect: [
-                'Coloca esta carta en el cuadrante indicado en su reverso del mazo.',
-                'El primer jugador que ancle personal en este cuadrante gana 5 [PI].'
-            ] },
-            ...Array.from({ length: 2 }, (_, i) => ({ id: `S${String(i + 5).padStart(2, '0')}`, subsidy: true, supportSubsidy: true }))
+            { id: 'E01', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Estructura [ES] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E02', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Fotovoltaica [FV] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E03', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Transmisión [TS] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E04', title: 'Reconocimiento público', effect: 'Coloca esta carta en el cuadrante indicado en su reverso del mazo. El primer jugador que coloque un disco en la capa Refrigeración [RF] de ese cuadrante reclama esta carta y gana 5 [PI].' },
+            { id: 'E05', title: 'Producción estable', effect: 'Cada jugador aumenta en 1 [PE] su producción de energía por cada sector con todas sus capas ocupadas por discos, en el que tenga al menos un disco propio. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.' },
+            { id: "E16", title: "Lluvia de voluntarios", effect: "Coloca esta carta en el cuadrante indicado en su reverso del mazo. Cuando vayas a colocar un ingeniero anclado [AI] en este cuadrante, colócalo en esta carta en su lugar. De uno en uno. Cuando haya 4 ingenieros en esta carta, descártala inmediatamente y devuelve los 4 ingenieros a sus reservas." }
         ];
 
         function icon(file) { return `<img src="./iconos/${file}.svg" alt="">` }
         const effectIcons = {
-            EN: ['En-energia', 'Energía'],
-            DS: ['DS-disco', 'Disco'],
             QD: ['QD-quitar-disco', 'Quitar disco'],
             PI: ['PI-puntos-inmediatos', 'Puntos inmediatos'],
             PE: ['PE-produccion-energia', 'Producción de energía'],
@@ -585,7 +193,6 @@
             TS: ['TS-transmision', 'Transmisión'],
             RF: ['RF-refrigeracion', 'Refrigeración'],
             MO: ['MO-microondas', 'Microondas'],
-            CP: ['CP-carta-proyecto', 'Carta de proyecto'],
             AI: ['AI-ingeniero-anclado', 'Ingeniero anclado']
         };
         function renderEffect(text) {
@@ -596,43 +203,16 @@
                 return part.startsWith('[') && entry ? `<img src="./iconos/${entry[0]}.svg" alt="${entry[1]}" title="${entry[1]}">` : part.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
             }).join('');
         }
-        function mineral(color) { return `<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7 14 27 5l8 9-8 15-21 5Z" fill="${color}" stroke="#222" stroke-width="2"/><path d="m7 14 20 3 8-3M27 17v12" fill="none" stroke="#222" stroke-width="2"/></svg>` }
-        function resource(item, count, card) {
-            const up = card.up.includes(item.id), down = card.down.includes(item.id);
-            const label = up ? ' · dos filas superiores en verde' : down ? ' · dos filas inferiores en rojo' : '';
-            const drawing = item.color ? mineral(item.color) : icon(item.id === 'Tr' ? 'Tr-transporte' : 'RQ-reactivos');
-            return `<div class="resource" aria-label="${item.name}${label}" title="${item.name}${label}"><div class="resource-title${item.id === 'H₂SO₄' ? ' chemical' : ''}">${drawing}<span>${item.id}</span></div>${item.prices.map((price, i) => `<div class="price-row${up && i < 2 ? ' up' : down && i > 2 ? ' down' : ''}"><span class="price">$${price}</span><span class="slots">${'<i class="slot"></i>'.repeat(count)}</span></div>`).join('')}</div>`;
-        }
-        function market(card) {
-            return `<div class="market">
- <section class="panel"><div class="panel-title">Recursos básicos</div><div class="basic-grid">${basics.map(r => resource(r, 4, card)).join('')}</div></section>
- <div class="lower-grid">
-  <section class="panel"><div class="panel-title">Tierras raras</div><div class="rare-grid">${rares.map(r => resource(r, 2, card)).join('')}</div></section>
-  <section class="panel"><div class="panel-title">Transp.</div>${resource({ id: 'Tr', name: 'Transporte', prices: [11, 9, 7, 5, 4] }, 3, card)}</section>
-  <section class="panel"><div class="panel-title">Reactivos</div><div class="reagent-grid">${reagents.map(r => resource(r, 2, card)).join('')}</div></section>
- </div></div>`}
         function footer(card) { return `<footer class="card-foot"><span>SYNCRODYSON</span><span>${card.id}</span></footer>` }
-        function coin() { return `<svg class="big-coin" viewBox="0 0 120 120" role="img" aria-label="Gran moneda"><circle cx="60" cy="60" r="55" fill="#efd27c" stroke="#453c22" stroke-width="3"/><circle cx="60" cy="60" r="46" fill="#fae8ac" stroke="#9b7c32" stroke-width="2"/><path d="M78 36H52c-20 0-20 24 0 24h16c20 0 20 24 0 24H42M60 25v70" fill="none" stroke="#453c22" stroke-width="7" stroke-linecap="round"/></svg>` }
         function render(card) {
-
-            if (card.standalone || card.catastrophe) return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="standalone-text" aria-label="Efecto del evento">${card.effect.map(paragraph => `<p>${renderEffect(paragraph)}</p>`).join('')}</section>${footer(card)}</article>`;
-            if (card.subsidy) {
-                const title = card.supportSubsidy ? 'Subvención de soporte' : 'Subvención';
-                const formula = card.supportSubsidy ? '$3 / sector completo' : `$10 + $2 / ${icon('DS-disco')}`;
-                const payment = card.supportSubsidy
-                    ? 'Cada jugador cobra <strong>$3 por cada sector completo</strong> en los cuadrantes donde tenga al menos un disco en un área de soporte.'
-                    : 'Cada jugador cobra <strong>$10 + $2 por cada disco propio en la esfera</strong> (sector o área de soporte).';
-                const initialNote = ['S01', 'S02', 'S05', 'S06'].includes(card.id) ? '<p class="initial-rule">Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.</p>' : '';
-                return `<article class="card subsidy${card.supportSubsidy ? ' support-subsidy' : ''}" aria-label="${card.id} · ${title}"><header class="heading"><div><h2>${title}</h2></div></header>${card.supportSubsidy ? '' : `<div class="subsidy-art">${coin()}</div>`}<div class="subsidy-text"><div class="formula" aria-hidden="true">${formula}</div><p>${payment}</p><p class="end-rule">Después del cobro, <strong>reduce en 5 PV la meta de fin de partida</strong></p></div>${initialNote}${footer(card)}</article>`;
-            }
+            if (Array.isArray(card.effect)) return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="standalone-text" aria-label="Efecto del evento">${card.effect.map(paragraph => `<p>${renderEffect(paragraph)}</p>`).join('')}</section>${footer(card)}</article>`;
             const initialWarning = 'Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.';
             const hasInitialWarning = typeof card.effect === 'string' && card.effect.endsWith(initialWarning);
             const effect = hasInitialWarning ? card.effect.slice(0, -initialWarning.length).trimEnd() : card.effect;
             const initialNote = hasInitialWarning ? `<p class="initial-rule">${initialWarning}</p>` : '';
             return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${renderEffect(effect)}</p></section>${initialNote}${footer(card)}</article>`;
         }
-        const orderedCards = [...cards.filter(c => c.subsidy), ...cards.filter(c => !c.subsidy)];
-        document.getElementById('sheet').innerHTML = orderedCards.map(render).join('');
+        document.getElementById('sheet').innerHTML = cards.map(render).join('');
         function exceedsCardSize(card) {
             const rect = card.getBoundingClientRect(), style = getComputedStyle(card), tolerance = 1;
             const bottom = rect.bottom - parseFloat(style.borderBottomWidth) - parseFloat(style.paddingBottom);
@@ -655,7 +235,7 @@
             oversized.forEach(card => { card.hidden = true; });
             const visible = elements.filter(card => !card.hidden);
             const hiddenOversized = oversized.filter(card => card.hidden);
-            document.getElementById('summary').textContent = `${visible.length} cartas visibles: ${visible.filter(card => !card.classList.contains('subsidy')).length} de evento y ${visible.filter(card => card.classList.contains('subsidy')).length} de subvención`;
+            document.getElementById('summary').textContent = `${visible.length} cartas de evento visibles`;
             document.getElementById('overflow-details').hidden = hiddenOversized.length === 0;
             document.getElementById('overflow-summary').textContent = `${hiddenOversized.length} cartas ocultas porque exceden los 41 × 63 mm`;
             document.getElementById('overflow-list').replaceChildren(...hiddenOversized.map(card => {

@@ -7,19 +7,19 @@ final class Market
     public static function catalog(): array
     {
         $rows = [
-            ['Fe', 'Hierro', 'Básicos', 1, 1, 2, '#a8b5c9'],
-            ['Cu', 'Cobre', 'Básicos', 2, 3, 5, '#5d9cf5'],
-            ['Si', 'Silicio', 'Básicos', 1, 2, 3, '#f1c75b'],
-            ['Ti', 'Titanio', 'Básicos', 3, 6, 9, '#58c79b'],
-            ['Al', 'Aluminio', 'Básicos', 2, 3, 5, '#b9c3d5'],
-            ['C', 'Carbono', 'Básicos', 1, 1, 2, '#e6eaf0'],
-            ['Nd', 'Neodimio', 'Tierras raras', 5, 9, 14, '#de7ebe'],
-            ['Gd', 'Gadolinio', 'Tierras raras', 3, 6, 9, '#57cec7'],
-            ['Er', 'Erbio', 'Tierras raras', 3, 6, 9, '#f7a65e'],
-            ['Ce', 'Cerio', 'Tierras raras', 3, 6, 9, '#c5946f'],
+            ['Fe', 'Hierro', 'Básicos', 1, 1, 2, '#d84242'],
+            ['Cu', 'Cobre', 'Básicos', 2, 3, 5, '#2490e5'],
+            ['Si', 'Silicio', 'Básicos', 1, 2, 3, '#ffc233'],
+            ['Ti', 'Titanio', 'Básicos', 3, 6, 10, '#28a85a'],
+            ['Al', 'Aluminio', 'Básicos', 2, 3, 6, '#292929'],
+            ['C', 'Carbono', 'Básicos', 1, 1, 2, '#fff'],
+            ['Nd', 'Neodimio', 'Tierras raras', 5, 9, 15, '#e72e98'],
+            ['Gd', 'Gadolinio', 'Tierras raras', 3, 6, 10, '#28b8b0'],
+            ['Er', 'Erbio', 'Tierras raras', 3, 6, 10, '#ef8c32'],
+            ['Ce', 'Cerio', 'Tierras raras', 3, 6, 10, '#b47745'],
             ['H2SO4', 'Ácido sulfúrico', 'Reactivos', 2, 3, 5, '#b89ef7'],
             ['HCl', 'Ácido clorhídrico', 'Reactivos', 2, 3, 5, '#8eafff'],
-            ['Tr', 'Transporte', 'Servicios', 4, 7, 11, '#72a9fa'],
+            ['Tr', 'Transporte', 'Servicios', 4, 7, 15, '#72a9fa'],
             // Energy has no trading band on the old board: provisional tuning.
             ['En', 'Energía', 'Servicios', 1, 2, 4, '#f5d56a'],
         ];

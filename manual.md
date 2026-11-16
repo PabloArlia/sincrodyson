@@ -71,14 +71,16 @@ No existe un límite general de cartas en mano ni de cantidades acumuladas. Sí 
 
 ## Desarrollo de la partida
 
-La partida se desarrolla en rondas. Cada ronda consta de cuatro fases, que se resuelven en este orden:
+La partida se desarrolla en rondas. Cada ronda sigue esta secuencia:
 
 1. Planificación.
-2. Mercado.
-3. Ejecución.
-4. Mantenimiento.
+2. Refinerías.
+3. Mercado.
+4. Verificación de futuros.
+5. Ejecución.
+6. Mantenimiento.
 
-Planificación se realiza simultáneamente. El orden en que los jugadores confirman su pase en la aplicación determina el orden de liquidación de Mercado y de Ejecución. Las fichas numeradas pueden utilizarse para representar en la mesa ese orden.
+Durante Planificación, todos los jugadores actúan simultáneamente. Después activan sus refinerías, también de forma simultánea entre jugadores. El orden en que los jugadores confirman su pase en la aplicación determina el orden de liquidación de Mercado y de Ejecución. Las fichas numeradas pueden utilizarse para representar en la mesa ese orden.
 
 ## 1. Planificación
 
@@ -118,7 +120,23 @@ Mientras no se haya cerrado el mercado, puede retirar su pase para modificar las
 
 El último pase cierra el mercado automáticamente. Desde ese momento las órdenes son obligatorias y ya no se pueden modificar. El orden de pase se utiliza tanto para liquidar el mercado como para ejecutar proyectos y resolver los desempates que dependan del orden.
 
-## 2. Mercado
+## 2. Refinerías · simultánea
+
+Después de Planificación y antes de Mercado, cada jugador activa sus refinerías que tengan asignados todos los recursos e ingenieros obligatorios.
+
+### Activar una refinería
+
+Una refinería puede activarse cuando tiene asignados todos los recursos e ingenieros obligatorios que necesita. Los reactivos son optativos. Para activarla, el jugador utiliza un yacimiento que tenga asignada la cantidad de licencias exigida por su carta. Toma de la reserva general los recursos básicos indicados en ese yacimiento y los coloca en su almacén.
+
+Si la refinería tiene asignado el reactivo indicado en la carta del yacimiento, lo descarta y obtiene además la tierra rara correspondiente, que también coloca en el almacén.
+
+Después descarta la energía utilizada, traslada los ingenieros a las barracas y reduce en uno el contador de vetas del yacimiento.
+
+Si el contador llega a cero, el yacimiento se descarta al final de esa acción. Sus licencias regresan a la reserva personal del jugador.
+
+## 3. Mercado
+
+Resuelvan las operaciones indicadas por la aplicación. Al terminar, realicen la verificación de futuros.
 
 ### Cierre y precio de las operaciones
 
@@ -138,18 +156,6 @@ La aplicación liquida un jugador por vez, según el orden de pase. El jugador a
 - La energía comprada puede asignarse a proyectos o mantenerse disponible durante la ronda. Toda la sobrante se descarta al final de la ronda.
 
 Las operaciones comprometidas no se cancelan por falta de dinero. El saldo puede quedar negativo. Si un jugador no entrega todos los recursos vendidos, declara las unidades faltantes al confirmar la liquidación. Cobra la venta completa y esas unidades quedan como deuda de recursos. El agente externo cubre igualmente las compras de los demás jugadores.
-
-### Deudas y penalizaciones
-
-Al terminar la última liquidación de cada Mercado, la aplicación calcula para cada jugador:
-
-**Valor de deuda = saldo negativo en valor absoluto + recursos pendientes valorados a su precio máximo.**
-
-Por cada $5 completos de ese valor, el jugador pierde 1 PV. Se redondea hacia abajo: una deuda valorada en $14,99 resta 2 PV. La penalización se aplica una vez por ronda y vuelve a aplicarse después de cada Mercado mientras persista la deuda.
-
-Los ingresos reducen automáticamente el descubierto monetario. Para saldar recursos pendientes, el jugador entrega físicamente las unidades a la reserva y registra la devolución en la aplicación durante Planificación, Ejecución o Mantenimiento. Esa devolución no mueve dinero ni precios. Un saldo positivo no cancela automáticamente recursos pendientes, y saldar una deuda no devuelve los PV perdidos.
-
-El mercado web reemplaza los préstamos de $5, sus intereses y la prohibición de comprar con préstamos. No se utilizan esas reglas anteriores.
 
 ### Compra y venta de proyectos
 
@@ -200,21 +206,21 @@ Si quedan cartas, entrega una al jugador que tenga menos yacimientos entre quien
 Cuando el mazo de yacimientos se agota, la acción deja de estar disponible. El descarte de yacimientos no se vuelve a mezclar.
 
 
-## 3. Ejecución
+## 4. Verificación de futuros
 
-En orden de turno, cada jugador resuelve todos sus proyectos y refinerías que tengan asignados todos los recursos e ingenieros obligatorios de su etapa actual, en el orden que quiera.
+Después de Mercado, cada jugador pierde 1 PV por cada unidad de recurso pendiente de entrega en futuros. Se suman las unidades de todos los tipos de recurso. La penalización vuelve a aplicarse en esta fase de cada ronda mientras sigan pendientes.
 
-Cada jugador termina de resolver sus activaciones antes de que comience el siguiente. En cada activación, activa la refinería o avanza una etapa del proyecto; si lo completa, resuelve su efecto y aplica su destino antes de continuar con otra carta.
+Por el descubierto monetario, el jugador pierde 1 PV por cada $5 completos de saldo negativo, redondeando hacia abajo. Los recursos en futuros se penalizan por unidad, según la regla anterior, sin convertirlos en dinero. Registren las penalizaciones una sola vez; si la aplicación muestra un cálculo distinto, apliquen la diferencia al marcador de PV.
 
-### Activar una refinería
+Los ingresos reducen automáticamente el descubierto monetario. Para saldar recursos pendientes, el jugador entrega físicamente las unidades a la reserva y registra la devolución en la aplicación durante Planificación, Ejecución o Mantenimiento. Esa devolución no mueve dinero ni precios. Un saldo positivo no cancela automáticamente recursos pendientes, y saldar una deuda no devuelve los PV perdidos.
 
-Una refinería puede activarse cuando tiene asignados todos los recursos e ingenieros obligatorios que necesita. Los reactivos son optativos. Para activarla, el jugador utiliza un yacimiento que tenga asignada la cantidad de licencias exigida por su carta. Toma de la reserva general los recursos básicos indicados en ese yacimiento y los coloca en su almacén.
+El mercado web reemplaza los préstamos de $5, sus intereses y la prohibición de comprar con préstamos. No se utilizan esas reglas anteriores.
 
-Si la refinería tiene asignado el reactivo indicado en la carta del yacimiento, lo descarta y obtiene además la tierra rara correspondiente, que también coloca en el almacén.
+## 5. Ejecución
 
-Después descarta la energía utilizada, traslada los ingenieros a las barracas y reduce en uno el contador de vetas del yacimiento.
+En orden de turno, cada jugador resuelve todos sus proyectos que tengan asignados todos los recursos e ingenieros obligatorios de su etapa actual, en el orden que quiera.
 
-Si el contador llega a cero, el yacimiento se descarta al final de esa acción. Sus licencias regresan a la reserva personal del jugador.
+Cada jugador termina de resolver sus activaciones antes de que comience el siguiente. En cada activación, avanza una etapa del proyecto; si lo completa, resuelve su efecto y aplica su destino antes de continuar con otra carta.
 
 ### Avanzar y completar proyectos
 
@@ -260,7 +266,6 @@ Después de colocar un disco en una celda:
 
 - El jugador que lo colocó gana 1 [PI] por cada [DS] disco en el [SC] sector, de cualquier jugador, incluido el recién colocado.
 - Cada [OP] oponente con 1 [DS] disco o más en ese sector gana 1 [PI].
-- Si es el primer [DS] disco del [SC] sector, el jugador que lo colocó gana 2 [PI] adicionales.
 
 #### Colocar discos en las áreas de soporte
 
@@ -270,7 +275,7 @@ Si no se puede colocar un disco, consulta [No colocación de discos](#no-colocac
 
 Después de colocar un disco en un área de soporte:
 
-El jugador que lo colocó gana únicamente 1 [PI] por cada 2 [DS] discos presentes en los [SC] sectores de ese [QU] cuadrante, redondeando hacia arriba. Se cuentan los discos de todos los jugadores en esos sectores; los discos del área de soporte no cuentan para este bono.
+El jugador que lo colocó gana 1 [PI] por cada 2 discos presentes en ese [QU] cuadrante, redondeando hacia arriba. Se cuentan los discos de todos los jugadores en los [SC] sectores y en el área de soporte, incluido el recién colocado.
 
 #### Quitar discos `[QD]`
 
@@ -292,9 +297,16 @@ Si un proyecto con ingenieros anclados [AI] en su última etapa no coloca ningú
 
 **Ejemplo:** un proyecto debe colocar un disco en 3 celdas libres y dejar 2 ingenieros anclados. Si no puede colocar ningún disco, pierde 6 [PI] por los 3 discos y 6 [PI] por los 2 ingenieros: 12 [PI] en total. Los ingenieros vuelven a sus barracas y los recursos utilizados no se recuperan. Si puede colocar un disco, pierde 4 [PI] por los otros 2 discos; ambos ingenieros quedan anclados junto al disco colocado, sin penalización por ingenieros no colocados.
 
-## 4. Mantenimiento
+## 6. Mantenimiento
 
-La fase de Mantenimiento se resuelve en este orden: ingresos de Soporte externo, ingresos y costos de mantenimiento, revelación de un evento por jugador, resolución de las cartas reveladas y comprobación del fin de partida. El anfitrión abre la fase en la aplicación al terminar la Ejecución; cada jugador confirma allí sus valores de mantenimiento, que se registran una sola vez por ronda. Si la partida continúa, se realiza el draft de proyectos, se descarta la energía sobrante de la ronda y se genera la energía para la siguiente.
+El anfitrión abre la fase en la aplicación al terminar la Ejecución. Mantenimiento se resuelve en este orden:
+
+1. Cargar en la aplicación Soporte externo, subvención, licencias y contratos, una sola vez por ronda.
+2. Verificar la meta: si alguien la alcanza o supera, terminar la partida y realizar la puntuación final.
+3. Revelar y resolver un evento por jugador.
+4. Repartir 2 cartas de proyecto a cada jugador.
+5. Disminuir en 5 PV la meta de fin de partida.
+6. Descartar la energía sobrante y generar energía para la siguiente ronda.
 
 ### Soporte externo
 
@@ -304,12 +316,16 @@ Los ingenieros que ya estaban en las barracas no generan ingresos.
 
 ### Ingresos y costos de mantenimiento
 
-Cada jugador resuelve los valores descubiertos de su tablero antes de generar energía nueva. El total incluye licencias, contratos y Soporte externo y se registra una sola vez. Si los valores mostrados en la aplicación no coinciden con el tablero y las reglas vigentes, registra en la caja la diferencia con un motivo que identifique la corrección:
+Cada jugador resuelve los valores descubiertos de su tablero antes de generar energía nueva. El total incluye Soporte externo, subvención, licencias y contratos y se registra una sola vez. Si los valores mostrados en la aplicación no coinciden con el tablero y las reglas vigentes, registra en la caja la diferencia con un motivo que identifique la corrección:
 
 - **Licencias de excavación:** aplica el valor más alto descubierto, respetando su signo. Un valor positivo es un ingreso que cobra del banco; un valor negativo es un costo que paga al banco; con $0 no cobra ni paga. Los valores impresos en el tablero, en su orden, son +$6, +$3, $0, −$5, −$10 y −$15. Si no hay ningún valor descubierto, no hay ingreso ni costo por licencias.
 - **Contratos:** paga el costo más alto descubierto. Los valores impresos en el tablero, en su orden, son $0, $2, $4, $6, $8, $10, $13, $15, $18, $20, $23, $25, $30 y $33.
 
 La energía no tiene un costo de mantenimiento por casillas descubiertas: el tablero actual utiliza un marcador de producción y la energía sobrante se descarta al final de la ronda.
+
+### Comprobación del fin de partida
+
+Después de cargar los valores de mantenimiento y antes de revelar eventos, se comprueba si algún jugador alcanza o supera la meta vigente indicada por el marcador de fin de partida. Si al menos uno la alcanza, la partida termina inmediatamente y se pasa a la puntuación final. Se conserva el orden de pase de la ronda para resolver posibles empates. No se realizan los pasos restantes de la fase.
 
 ### Revelar un evento por jugador
 
@@ -317,27 +333,25 @@ Revelen del mazo una carta por cada jugador de la partida. Este paso reemplaza l
 
 ### Resolver las cartas reveladas
 
-Resuelvan las cartas reveladas una por una y registren sus cobros y pagos mediante la caja. Los precios de recursos los calcula exclusivamente el mercado web; no se aplican los antiguos movimientos de stock o filas de precio impresos en los eventos. Si es una subvención, cada jugador cobra $10 + $2 por cada carta de subvención que haya salido, incluida la actual, + $2 por cada disco propio en la esfera (sector o área de soporte). Después de pagar la subvención, reduzcan en 5 PV la meta de fin de partida moviendo su indicador.
+Resuelvan las cartas reveladas una por una y registren sus cobros y pagos mediante la caja. Los precios de recursos los calcula exclusivamente el mercado web; no se aplican los antiguos movimientos de stock o filas de precio impresos en los eventos. Si es una subvención, cada jugador cobra $10 + $2 por cada carta de subvención que haya salido, incluida la actual, + $2 por cada disco propio en la esfera (sector o área de soporte). Las cartas de subvención no reducen la meta de fin de partida. Mantengan las subvenciones resueltas visibles para contar sus monedas.
 
-La meta comienza en 60 PV y se reduce de forma acumulativa: tras una subvención es 55 PV; tras seis, 30 PV; tras las doce, 0 PV. La reducción no resta PV a los jugadores ni termina la partida hasta la comprobación siguiente. Mantengan las subvenciones resueltas visibles para contar sus monedas.
+### Reparto de proyectos
 
-### Comprobación del fin de partida
+Si la partida continúa, cada jugador recibe 2 cartas del mazo de proyectos. No se realiza un draft.
 
-Antes de abrir la siguiente ronda en la aplicación, se comprueba si algún jugador alcanza o supera la meta vigente indicada por el marcador de fin de partida. Si al menos uno la alcanza, la partida termina inmediatamente y se pasa a la puntuación final. Se conserva el orden de pase de la ronda para resolver posibles empates. No se realizan los pasos restantes de la fase.
+### Reducir la meta de fin de partida
 
-### Draft de proyectos
-
-Si la partida continúa, cada jugador roba cuatro cartas de proyecto y se realiza un nuevo draft: se elige una carta y se pasan las restantes a la derecha hasta elegirlas todas. Después de completar los pasos restantes de Mantenimiento, el anfitrión abre la ronda siguiente en la aplicación; el nuevo orden se determinará al pasar durante Planificación.
+Después del reparto de proyectos, disminuyan en 5 PV la meta, moviendo su indicador. La meta comienza en 60 PV: tras la primera reducción queda en 55 PV; tras seis, en 30 PV; tras doce, en 0 PV. Esta reducción se realiza una vez por ronda y reemplaza la reducción por cartas de subvención. No resta PV a los jugadores ni termina la partida hasta la comprobación del siguiente Mantenimiento.
 
 ### Generación de energía
 
-Después del draft, cada jugador descarta toda la energía que le haya sobrado de la ronda. Luego recibe la energía gratuita indicada por sus generadores en el tablero, disponible para la ronda siguiente.
+Después de reducir la meta, cada jugador descarta toda la energía que le haya sobrado de la ronda. Luego recibe la energía gratuita indicada por sus generadores en el tablero, disponible para la ronda siguiente. Al completar este paso, el anfitrión abre la ronda siguiente en la aplicación; el nuevo orden se determinará al pasar durante Planificación.
 
 La energía generada durante Mantenimiento queda disponible para la ronda siguiente y se asigna a proyectos durante Planificación.
 
 ## Fin de partida y puntuación
 
-La partida termina durante la comprobación de fin de partida de Mantenimiento si uno o más jugadores alcanzan o superan la meta vigente: 60 PV menos 5 PV por cada subvención resuelta. Alcanzar esa meta activa el final, pero el ganador se determina después de realizar la puntuación final.
+La partida termina durante la comprobación de fin de partida de Mantenimiento si uno o más jugadores alcanzan o superan la meta vigente: 60 PV menos 5 PV por cada reducción realizada al final de los Mantenimientos anteriores. Alcanzar esa meta activa el final, pero el ganador se determina después de realizar la puntuación final.
 
 Cada jugador suma a sus PV acumulados:
 

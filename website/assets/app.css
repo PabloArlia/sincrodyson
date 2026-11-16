@@ -30,9 +30,15 @@ body { min-width:320px; font-feature-settings:"tnum"; }
 .player-line:last-child { border-bottom:0; }
 .player-line .avatar { width:2rem; height:2rem; flex:none; }
 .sticky-panel { position:sticky; top:1rem; }
-.phase-steps { display:flex; gap:.5rem; flex-wrap:wrap; }
-.phase-step { font-size:.72rem; color:#8495ab; padding:.35rem .6rem; border:1px solid var(--tblr-border-color); border-radius:5px; }
-.phase-step.active { color:#9dc7ff; background:#206bc41c; border-color:#206bc477; }
+.phase-card { min-width:0; }
+.phase-card > .phase-steps { min-width:0; container-type:inline-size; }
+.phase-tabs.nav { flex-wrap:nowrap; }
+.phase-tabs .nav-item { flex:1 1 0; min-width:0; }
+.phase-tabs .nav-item:last-child { flex-grow:1.5; }
+.phase-tabs .nav-link { justify-content:center; padding-inline:.2rem; font-size:clamp(.6rem,2.6cqw,.8rem); white-space:nowrap; }
+.phase-pane > .card:first-child { border:0; border-radius:0; }
+.phase-pane > .stock-panel:first-child { padding:1rem; }
+.phase-pane > .card:last-child { margin-bottom:0!important; }
 .top-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.5rem; }
 .stat-value { font-size:1.5rem; font-weight:650; }
 .notice { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); z-index:2000; padding:1rem 1.25rem; border-radius:8px; background:#254a36; border:1px solid #39885b; color:#e0ffeb; box-shadow:0 8px 30px #0006; max-width:calc(100% - 2rem); }
@@ -79,7 +85,8 @@ button:disabled { cursor:default; }
 .maintenance-track-title { display:flex; align-items:center; gap:.6rem; font-size:.9rem; font-weight:600; float:none; width:auto; margin-bottom:.65rem; }
 .maintenance-track-title img { width:28px; height:28px; object-fit:contain; filter:grayscale(1) invert(.85); }
 .maintenance-circles { display:flex; gap:7px; overflow-x:auto; padding:5px 3px 10px; overscroll-behavior-x:contain; }
-.maintenance-circle { position:relative; width:46px; height:46px; flex:0 0 46px; display:grid; place-items:center; border:2px solid #607087; border-radius:50%; font:inherit; font-size:.8rem; font-weight:700; cursor:pointer; }
+.maintenance-circle { position:relative; width:46px; height:46px; flex:0 0 46px; display:grid; place-items:center; padding:0; border:2px solid #607087; border-radius:50%; font:inherit; font-size:.8rem; font-weight:700; cursor:pointer; }
+.maintenance-circle .track-value { white-space:nowrap; }
 .maintenance-circle.uncovered { background:#e9edf3; color:#182433; border-color:#b6c1d0; }
 .maintenance-circle.covered { background:#354359; color:#aebbcf; border-color:#4e5f77; }
 .maintenance-circle.selected { outline:3px solid #68a8ff; outline-offset:2px; }
@@ -99,6 +106,14 @@ button:disabled { cursor:default; }
   .maintenance-circles { flex-wrap:wrap; overflow-x:visible; overscroll-behavior-x:auto; }
 }
 .market-table-card { overflow:hidden; }
+.closing-prices { display:block; margin-top:1rem; }
+.closing-prices > summary { cursor:pointer; list-style:none; border-bottom:0; }
+.closing-prices > summary::-webkit-details-marker { display:none; }
+.closing-prices > summary::after { content:'+'; margin-left:auto; font-size:1.25rem; }
+.closing-prices[open] > summary { border-bottom:1px solid var(--tblr-border-color); }
+.closing-prices[open] > summary::after { content:'−'; }
+.closing-prices .market-table-card { border:0; border-radius:0; }
+.closing-prices-body > p:last-child { padding:0 .75rem; }
 .market-table { width:100%; table-layout:fixed; }
 .market-resource-col { width:25%; }
 .market-price-col { width:20%; }
@@ -106,6 +121,10 @@ button:disabled { cursor:default; }
 .market-order-col { width:32%; }
 .market-table th,.market-table td { padding:.8rem .65rem; white-space:normal; }
 .market-table thead th { font-size:.7rem; letter-spacing:.04em; }
+.emergency-orders .order-direction { display:none; }
+.emergency-orders .signed-order { display:block; }
+.emergency-buy { display:flex; flex-direction:column; gap:.15rem; padding:.35rem .2rem; white-space:nowrap; }
+.phase-card[data-phase="planning"] .market-table thead th { --tblr-table-bg:var(--tblr-card-bg); background-color:var(--tblr-card-bg); }
 .market-table tbody th { font-weight:400; }
 .market-symbol { display:block; color:var(--resource-color); font-weight:700; font-size:.9rem; }
 .market-resource-name { display:block; font-size:.85rem; overflow-wrap:anywhere; margin-top:.2rem; }

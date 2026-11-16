@@ -27,9 +27,28 @@ final class Game
 
     public static function maintenanceRules(): array
     {
-        return ['mines' => [600, 300, 0, -500, -1000],
+        return ['mines' => [600, 300, 0, -500, -1000, -1500],
+            'discs' => range(1000, 4200, 200),
             'barracks' => [0, 200, 400, 600, 800, 1000, 1300, 1500, 1800, 2000, 2300, 2500, 3000, 3300, 3500],
             'supportPerEngineer' => 100];
+    }
+
+    private static function emergencyPrices(array $s): array
+    {
+        $prices = array_column($s['catalog'], 'max', 'id');
+        foreach (self::engineerTypes() as $id => $name) $prices[$id] = 700;
+        $prices['project'] = -self::tradeRules()['project-buy']['unitAmount'];
+        return $prices;
+    }
+
+    private static function updateCatalog(array &$s): void
+    {
+        foreach (Market::catalog() as $id => $resource) {
+            if (isset($s['catalog'][$id])) {
+                $s['catalog'][$id]['color'] = $resource['color'];
+                $s['catalog'][$id]['max'] = $resource['max'];
+            }
+        }
     }
 
     public static function name(mixed $name): string
@@ -139,6 +158,7 @@ final class Game
 
     public static function command(array &$s, int $actor, string $action, array $data): void
     {
+        self::updateCatalog($s);
         $p = &$s['players'][$actor];
         $host = $s['host'] === $p['id'];
         switch ($action) {
@@ -225,6 +245,17 @@ final class Game
                 }
                 self::log($s, $p['id'], 0, 'Entrega de recursos pendientes', ['units' => $units]);
                 break;
+            case 'emergency-buy':
+                self::phase($s, 'execution');
+                $item = $data['item'] ?? null;
+                $prices = self::emergencyPrices($s);
+                if (!is_string($item) || !isset($prices[$item])) throw new GameError('Recurso, proyecto o ingeniero desconocido.');
+                $price = $prices[$item];
+                $name = $s['catalog'][$item]['name'] ?? ($item === 'project' ? 'Carta de proyecto' : 'Ingeniero ' . self::engineerTypes()[$item]);
+                self::cashChange($s, $actor, -$price);
+                self::log($s, $p['id'], -$price, 'Compra de emergencia: ' . $name,
+                    ['emergency' => ['item' => $item, 'qty' => 1, 'unitPrice' => $price]]);
+                break;
             case 'cash':
             case 'transfer':
                 self::phase($s, 'lobby', 'planning', 'execution', 'maintenance');
@@ -258,12 +289,14 @@ final class Game
                 $mines = self::integer($data['mines'] ?? null, 0, count($rules['mines']) - 1);
                 $barracks = self::integer($data['barracks'] ?? null, 0, count($rules['barracks']) - 1);
                 $support = self::integer($data['support'] ?? null, 0, 14);
+                $discs = self::integer($data['discs'] ?? 0, 0, count($rules['discs']) - 1);
                 $pv = StockMarket::enabled($s) ? self::integer($data['pv'] ?? null, -1000000, 1000000) : null;
-                $amount = $rules['mines'][$mines] - $rules['barracks'][$barracks] + $support * $rules['supportPerEngineer'];
+                $amount = $rules['mines'][$mines] - $rules['barracks'][$barracks] + $support * $rules['supportPerEngineer'] + $rules['discs'][$discs];
                 self::cashChange($s, $actor, $amount);
-                $p['maintenanceChoice'] = compact('mines', 'barracks', 'support');
+                $p['maintenanceChoice'] = compact('mines', 'barracks', 'support', 'discs');
                 $result = ['amount' => $amount, 'balance' => $p['cash'],
                     'mines' => $rules['mines'][$mines], 'barracks' => $rules['barracks'][$barracks],
+                    'discs' => $discs, 'discsIncome' => $rules['discs'][$discs],
                     'support' => $support, 'supportIncome' => $support * $rules['supportPerEngineer']];
                 if (StockMarket::enabled($s)) $result['pv'] = $pv;
                 $s['maintenance']['results'][$p['id']] = $result;
@@ -311,8 +344,10 @@ final class Game
 
     public static function view(array $s, int $actor): array
     {
+        self::updateCatalog($s);
         $s['maintenanceRules'] = self::maintenanceRules();
         $s['tradeRules'] = self::tradeRules();
+        $s['emergencyPrices'] = self::emergencyPrices($s);
         $s['engineerTypes'] = self::engineerTypes();
         $s['me'] = $s['players'][$actor]['id'];
         foreach ($s['players'] as $i => &$p) {
