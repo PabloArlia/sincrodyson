@@ -99,7 +99,7 @@ window.modulos = [
         "m": {
           "Fe": 5,
           "Al": 5,
-          "Si": 7
+          "Si": 2
         },
         "o": {
           "En": 2,
@@ -110,7 +110,8 @@ window.modulos = [
         "m": {
           "Cu": 3,
           "Ti": 2,
-          "C": 5
+          "C": 5,
+          "Si": 4
         },
         "o": {
           "En": 1,
@@ -172,13 +173,12 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 8,
-          "Ti": 4,
-          "C": 5,
-          "Si": 5
+          "Al": 7,
+          "Ti": 5,
+          "C": 3
         },
         "o": {
-          "IM": 1,
+          "IM": 2,
           "En": 2,
           "Tr": 2
         }
@@ -205,10 +205,10 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 8,
-          "Cu": 5,
-          "Ti": 1,
-          "Si": 8
+          "Al": 4,
+          "Cu": 4,
+          "Ti": 5,
+          "Si": 2
         },
         "o": {
           "IM": 1,
@@ -237,7 +237,7 @@ window.modulos = [
     "efecto": "Coloca un disco en 2 celdas libres de [MO] Microondas del mismo quadrante.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
-        "m": {"Fe": 8, "C": 8, "Ti": 2},
+        "m": {"Fe": 8, "C": 2, "Ti": 3},
         "o": {"IE": 1, "En": 2, "Tr": 1}
       }
     ],
@@ -292,15 +292,15 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 10,
-          "Al": 7,
-          "Fe": 10,
-          "Si": 5
+          "Cu": 5,
+          "Al": 5,
+          "Fe": 2,
+          "Si": 3
         },
         "o": {
           "IM": 2,
-          "En": 1,
-          "Tr": 1
+          "En": 4,
+          "Tr": 4
         }
       }
     ],
@@ -357,7 +357,7 @@ window.modulos = [
     "efecto": "Coloca un disco en 4 celdas libres de [FV] fotovoltaico de hasta 2 cuadrantes distintos adyacenetes.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
-        "m": {"Nd": 2, "Fe": 5, "Cu": 5, "Si": 8},
+        "m": {"Nd": 2, "Ti": 1, "Cu": 2, "Si": 10},
         "o": {"IQ": 1, "IM": 1, "En": 2, "Tr": 3}
       }
     ],
@@ -413,14 +413,14 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 12,
-          "Al": 2,
-          "C": 3
+          "Fe": 10,
+          "Al": 1,
+          "C": 1
         },
         "o": {
           "IE": 1,
           "En": 1,
-          "Tr": 2
+          "Tr": 3
         }
       }
     ],
@@ -792,10 +792,10 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 7,
+          "Fe": 5,
           "Al": 3,
-          "Ti": 1,
-          "Si": 4,
+          "Ti": 2,
+          "Si": 2,
           "Nd": 1
         },
         "o": {
@@ -1218,21 +1218,20 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "C": 22,
-          "Fe": 4
+          "C": 20
         },
         "o": {
-          "IQ": 2,
+          "IQ": 3,
           "En": 4
         }
       },
       {
         "m": {
-          "C": 15,
-          "Fe": 2
+          "C": 10,
+          "Fe": 5
         },
         "o": {
-          "IQ": 2,
+          "IQ": 3,
           "En": 3,
           "Tr": 1
         }
@@ -1437,9 +1436,9 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Si": 11,
-          "C": 12,
-          "Al": 6
+          "Si": 7,
+          "C": 7,
+          "Er": 1
         },
         "o": {
           "IQ": 2,
@@ -1448,11 +1447,12 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 6,
+          "Cu": 5,
+          "Al": 5,
           "Si": 4
         },
         "o": {
-          "IM": 1,
+          "IM": 2,
           "En": 2,
           "Tr": 2
         }
@@ -1613,16 +1613,16 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 5,
+          "Cu": 4,
           "Gd": 2,
           "Al": 4,
-          "Si": 5
+          "Si": 3
         },
         "o": {
           "IQ": 1,
           "IM": 1,
-          "En": 3,
-          "Tr": 2
+          "En": 5,
+          "Tr": 3
         }
       }
     ],
@@ -1646,9 +1646,9 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Ti": 1,
+          "Ti": 2,
           "Ce": 1,
-          "Si": 8,
+          "Si": 2,
           "Cu": 1,
           "Al": 5
         },
@@ -1740,8 +1740,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "C": 18,
-          "Si": 6,
+          "C": 15,
+          "Si": 5,
           "Ce": 2
         },
         "o": {
@@ -1753,7 +1753,7 @@ window.modulos = [
       {
         "m": {
           "C": 15,
-          "Al": 3
+          "Al": 5
         },
         "o": {
           "IQ": 1,
@@ -1825,18 +1825,18 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 12,
-          "Cu": 7,
-          "Si": 7
+          "Fe": 10,
+          "Cu": 5,
+          "Si": 5
         },
         "o": {
           "IM": 2,
-          "En": 3
+          "En": 4
         }
       },
       {
         "m": {
-          "Ti": 4,
+          "Ti": 5,
           "Al": 7,
           "Ce": 2
         },
@@ -1867,13 +1867,13 @@ window.modulos = [
   "etapas": [
     {
       "m": {
-        "Si": 6,
-        "Al": 7,
-        "Fe": 9
+        "Si": 5,
+        "Al": 5,
+        "Fe": 5
       },
       "o": {
         "IM": 1,
-        "En": 2
+        "En": 3
       }
     },
     {
@@ -1885,7 +1885,7 @@ window.modulos = [
       "o": {
         "IS": 1,
         "En": 1,
-        "Tr": 2
+        "Tr": 3
       }
     }
   ],
@@ -1954,9 +1954,9 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Si": 9,
-          "Cu": 6,
-          "Er": 1
+          "Si": 5,
+          "Cu": 5,
+          "Er": 2
         },
         "o": {
           "IQ": 1,
@@ -2040,15 +2040,26 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 8,
-          "Si": 8,
-          "Cu": 11,
-          "C": 15
+          "Fe": 2,
+          "Si": 5,
+          "Cu": 2,
+          "C": 5
         },
         "o": {
           "IM": 1,
-          "En": 2,
-          "Tr": 2
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Si": 3,
+          "Cu": 2,
+          "C": 5
+        },
+        "o": {
+          "IM": 1,
+          "En": 1,
+          "Tr": 1
         }
       }
     ],
@@ -2113,15 +2124,15 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Si": 8,
-          "Al": 7,
+          "Si": 5,
+          "Al": 5,
           "Ce": 3
         },
         "o": {
           "IQ": 1,
           "IS": 1,
-          "En": 1,
-          "Tr": 1
+          "En": 2,
+          "Tr": 2
         }
       }
     ],
@@ -2471,8 +2482,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 10,
-          "Cu": 6,
+          "Fe": 5,
+          "Cu": 5,
           "Er": 2
         },
         "o": {
@@ -2482,7 +2493,7 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 2,
+          "Cu": 5,
           "Al": 2
         },
         "o": {
@@ -2880,21 +2891,21 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Gd": 3,
+          "Gd": 4,
           "Cu": 6,
-          "Si": 11
+          "Al": 5
         },
         "o": {
           "IQ": 2,
           "IS": 1,
-          "En": 2
+          "En": 4
         }
       },
       {
         "m": {
-          "Ti": 8,
-          "Al": 3,
-          "Nd": 3
+          "Ti": 6,
+          "Al": 5,
+          "Nd": 4
         },
         "o": {
           "AM": 1,
@@ -2924,8 +2935,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Si": 10,
-          "Cu": 7,
+          "Si": 5,
+          "Cu": 6,
           "Nd": 4
         },
         "o": {
@@ -2936,7 +2947,7 @@ window.modulos = [
       },
       {
         "m": {
-          "Ti": 2,
+          "Ti": 3,
           "Al": 6,
           "Er": 2
         },
@@ -2968,25 +2979,25 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 19,
+          "Fe": 10,
           "Al": 5,
-          "Ti": 3
+          "Ti": 5
         },
         "o": {
           "IE": 2,
-          "En": 2
+          "En": 3
         }
       },
       {
         "m": {
-          "Fe": 7,
-          "Cu": 14,
+          "Fe": 5,
+          "Cu": 5,
           "Nd": 2
         },
         "o": {
-          "Tr": 2,
+          "Tr": 3,
           "AE": 2,
-          "En": 2 
+          "En": 1 
         }
       }
     ],
@@ -3011,47 +3022,15 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 8,
-          "Al": 8,
+          "Fe": 10,
+          "Al": 5,
           "Cu": 5,
-          "Ti": 5,
-          "Si": 5
+          "Ti": 5
         },
         "o": {
           "En": 3,
-          "Tr": 2,
+          "Tr": 4,
           "AE": 2
-        }
-      }
-    ],
-    "destino": "completados"
-  },
-  {
-    "id": "P083",
-    "revisada": 1,
-    "tipo": "mantenimiento",
-    "puntos": "7 [PV]",
-    "puntos_carta": 7,
-    "puntos_capas": 0,
-    "puntos_ingenieros": -8,
-    "puntos_otros": 0,
-    "copias": 5,
-    "discos": 0,
-    "bono": "2 [DP][MN]",
-    "disco_soporte": 2,
-    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento de una o más áreas de soporte. Coloca los ingenieros de la última etapa junto a cualquiera de los discos colocados.\nConsulta la pérdida de puntos por personal anclado.",
-    "etapas": [
-      {
-        "m": {
-          "Fe": 14,
-          "Ti": 6,
-          "Si": 6,
-          "Al": 4
-        },
-        "o": {
-          "AE": 1,
-          "AM": 1,
-          "Tr": 2
         }
       }
     ],
