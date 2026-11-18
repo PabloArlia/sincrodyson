@@ -1,0 +1,217 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Syncrodyson — proyectos</title><style>
+*{box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f3f3f3;color:#111;margin:0;padding:16px}
+.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
+.sheet{display:grid;grid-template-columns:repeat(2,120mm);gap:0mm;justify-content:center}
+.print-page{display:contents}
+.card{width:120mm;height:64mm;background:white;border:1px solid #222;border-radius:2mm;padding:1.6mm;display:flex;flex-direction:column;gap:1mm;overflow:hidden;break-inside:avoid}
+.card.coef-fuera-rango{border-color:#d00000}.card.sin-revisar{border-color:#e0b000}.card.inicial .name{text-decoration:underline;text-underline-offset:2px}
+.heading{display:flex;gap:1.5mm;flex-shrink:0;align-items:center}
+.heading-content{flex:1;min-width:0;display:flex;flex-direction:column;gap:.5mm}
+.heading-row{display:flex;justify-content:space-between;align-items:center;gap:1.5mm}
+.heading-meta{flex:1;min-width:0;display:flex;align-items:center;gap:2mm}
+.module-icon{flex:0 0 11mm;width:11mm;height:10mm;border:1px solid #222;border-radius:1mm;display:grid;place-items:center}
+.module-icon img,.module-icon svg{width:9mm;height:8mm;object-fit:contain}
+.name{flex:1;min-width:0;font-size:12pt;font-weight:800;line-height:1.05}
+.type{font-size:10pt;text-transform:uppercase}.card-id{font-weight:bold;margin-right:1mm}
+.score-row{display:flex;justify-content:flex-end;align-items:center;gap:1mm}
+.card-score{flex-shrink:0;font-size:14pt;font-weight:800;white-space:nowrap;text-align:right}
+.heading-bonus{max-width:60%;text-align:right;font-size:10pt;font-weight:800;white-space:normal}
+.heading-bonus .card-bonus,.heading-bonus .bonus-content{justify-content:flex-end}
+.card-bonus{height:5mm;overflow:visible;background:white;display:inline-flex;align-items:flex-start;justify-content:center;max-width:100%;position:relative;z-index:1}
+.bonus-content{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5mm;max-width:100%;background:white;flex-shrink:1}
+.card-bonus img{width:5mm;height:5mm;object-fit:contain}.card-bonus .bonus-break{flex-basis:100%;height:0}
+.card-bonus img.separator-bar{width:2mm}
+.stages{flex:1;min-height:0;display:grid;grid-template-columns:repeat(var(--stage-count),minmax(0,1fr));gap:1mm}
+.stage{position:relative;border:1px solid #777;border-radius:1mm;padding:2mm 1mm 1mm;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:.6mm}
+.stage-title{position:absolute;top:-.75mm;left:.7mm;padding:0 .5mm;background:white;font-size:6.5pt;font-weight:bold;line-height:1;color:#555}
+.items,.crew-line,.energy-line{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5mm}
+.energy-line{margin-bottom:auto}
+.resource-line{display:inline-flex;flex:0 0 auto}.resource-name{display:none}
+.coin{margin:0.2mm;width:10mm;height:10mm;flex:0 0 10mm;border-radius:50%;border:1px solid #222;display:inline-flex;align-items:center;justify-content:center;background:var(--c,#fff);color:var(--ink,#111);font-size:9pt;font-weight:800;white-space:nowrap}
+.opgroup,.opicons{display:inline-flex;align-items:center;gap:.3mm}.opicons{flex-wrap:wrap;justify-content:center}
+.opgroup{max-width:100%}.opicon{display:inline-flex;height:10mm;flex:0 0 auto}.opicon img,.opicon svg{width:auto;height:100%;display:block}.opicon.energy{height:8mm}
+.crew-line:empty,.energy-line:empty,.items:empty{display:none}
+.footer{border-top:1px solid #333;margin-top:1mm;padding-top:1.5mm;flex-shrink:0;position:relative}
+.initial-rule{margin:1mm 0 0;font-size:7pt;font-weight:bold;text-align:center}
+.card-cost{font-size:8pt;line-height:1.2;white-space:nowrap}
+.footer-effect{font-size:8pt;line-height:1.12;overflow-wrap:anywhere;text-align:center}.footer-effect strong{position:absolute;top:-.75mm;left:.7mm;padding:0 .5mm;background:white;font-size:6.5pt;line-height:1;font-weight:bold;text-transform:uppercase;color:#555}
+.footer-effect .inline-icon{display:inline-block;vertical-align:middle;line-height:0}.footer-effect .inline-icon img{width:3mm;height:3mm;object-fit:contain}.footer-effect .inline-icon img.separator-bar{width:1.4mm}
+.destino{position:relative;flex:0 0 7mm;width:7mm;height:7mm;border:1px solid #333;border-radius:1mm;display:grid;place-items:center}.destino img{width:5mm;height:5mm;object-fit:contain}.destino small{position:absolute;right:.2mm;bottom:.2mm;background:white;font-size:10pt}
+
+@page{size:A4 landscape;margin:5mm}
+@media print{
+ html,body{margin:0;padding:0;background:white}.toolbar{display:none}
+ .sheet{display:block;width:100%;text-align:center;font-size:0}
+ .print-page{display:grid;grid-template-columns:repeat(2,120mm);grid-auto-rows:64mm;gap:0;justify-content:center;align-content:start;height:198mm;padding-top:6mm;break-inside:avoid;page-break-inside:avoid;break-after:page;page-break-after:always}
+ .print-page:last-child{break-after:auto;page-break-after:auto}
+ .print-page>.card{margin:0;width:120mm;height:64mm;text-align:left;font-size:16px;break-inside:avoid;page-break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+.balance-tooltip{position:fixed;z-index:1000;width:360px;max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);overflow:auto;padding:14px 16px;border:1px solid #78877e;border-radius:8px;background:#fff;color:#17221b;box-shadow:0 6px 24px #0003;font:12px/1.45 Arial,sans-serif;white-space:pre-line;pointer-events:none}.balance-tooltip[hidden]{display:none}@media print{.balance-tooltip{display:none!important}}
+.cards-summary{position:fixed;top:70px;right:12px;z-index:50;width:152px;max-height:calc(100vh - 82px);overflow:auto;padding:6px 8px;background:#fff;border:1px solid #aab5ad;border-radius:6px;box-shadow:0 3px 12px #0002;font:12px/1.2 Arial,sans-serif}.summary-row{display:flex;align-items:center;gap:3px;padding:3px 0;white-space:nowrap}.summary-icon,.summary-icon img{display:block;width:19px;height:19px;object-fit:contain}.summary-total{border-top:1px solid #c8d0ca;margin-top:3px;padding-top:6px;font-weight:bold}@media print{.cards-summary{display:none!important}}
+ .icono-hibrido{position:relative;display:inline-block;width:100%;height:100%;min-width:24px;min-height:24px;overflow:hidden;vertical-align:middle}.icono-hibrido img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain}.icono-hibrido img:first-child{clip-path:inset(0 50% 0 0)}.icono-hibrido img:nth-child(2){clip-path:inset(0 0 0 50%)}.icono-hibrido:after{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid currentColor;transform:translateX(-.5px)}
+.card-body{display:flex;gap:1mm;flex:1;min-height:0}.card-main{display:flex;flex-direction:column;gap:1mm;flex:1;min-width:0;min-height:0}.tech-column{flex:0 0 10mm;width:10mm;border-left:1px solid #bbb;padding-left:.7mm;display:flex;flex-direction:column;justify-content:space-between;gap:.5mm}.tech-group{display:flex;flex-direction:column;align-items:center;gap:.4mm}.tech-label{font-size:5pt;font-weight:bold;text-transform:uppercase;text-align:center}.tech-icon{width:8mm;min-height:5.5mm;display:grid;place-items:center;border:1px solid #b00020;border-radius:1mm;font-size:6pt;font-weight:bold;background:#fff;color:#111}.tech-icon.reward{border-color:#52845a;background:#bde8c2}.tech-icon.token{border-color:#26733a;background:#79c989}.tech-empty{font-size:6pt;color:#777}.tech-legend{font-size:12px;line-height:1.4;max-width:1100px}.tech-legend b{white-space:nowrap}@media print{.tech-legend{display:none}}
+</style></head><body><div class="toolbar"><button onclick="window.print()">Imprimir / guardar PDF</button><label><input id="colors" type="checkbox" checked> has</label><label><input id="show-copies" type="checkbox"> Mostrar copias</label><label><input id="hide-single-stage" type="checkbox"> Ocultar cartas de una sola etapa</label><small>Cartas de 64 × 120 mm · datos editables en <code>modulos_tecnica.js</code></small></div>
+    <div class="tech-legend"><b>Requiere (borde rojo) / otorga (verde):</b> FAB Fabricación · MAT Materiales avanzados · NANO Nanotecnología · BIO Biotecnología · MAG Electromagnetismo · FOT Fotónica · IA Inteligencia artificial · NUC Nuclear · MIN Procesamiento mineral · TER Ingeniería térmica · SEN Sensores y control · HAB Habitabilidad · CUA Cuántica · PROP Propulsión · <b>+1 T</b> ficha de Técnica al completar. Las tecnologías verdes solo cuentan mientras conserves la carta.</div><aside class="cards-summary" id="cards-summary" aria-label="Cantidad de cartas por tipo"></aside><main class="sheet" id="sheet"></main><script src="./modulos_tecnica.js"></script><script src="./balance.js"></script>
+<script>
+// Ajuste de balance de esta variante, sin cambiar los costos de juego.
+const balanceBaseTecnica=balanceModulo;
+const diagnosticoBaseTecnica=diagnosticoBalance;
+balanceModulo=function(m){
+ const b=balanceBaseTecnica(m);
+ const requisito=(m.tecnica_requiere||[]).length*5;
+ const recompensa=((m.tecnica_otorga||[]).length+(m.tecnica_tokens||0))*5;
+ const costoOriginal=b.costo;
+ b.costo=costoOriginal+requisito-recompensa;
+ b.costoAjustado=b.costo*b.factor;
+ b.coef=b.base?b.costoAjustado/b.base:null;
+ b.tecnica={costoOriginal,requisito,recompensa};
+ return b;
+};
+diagnosticoBalance=function(m,b){
+ const detalle=`Costo original: ${b.tecnica.costoOriginal}\nRequisitos de experiencia: +${b.tecnica.requisito}\nExperiencia y fichas de T\u00e9cnica otorgadas: -${b.tecnica.recompensa}\n`;
+ return diagnosticoBaseTecnica(m,b).replace('Costo total:',detalle+'Costo total ajustado:');
+};
+const recursos={Fe:['Hierro','#d84242'],Cu:['Cobre','#3977dc'],Si:['Silicio','#f0d54d'],Ti:['Titanio','#58a85c'],Al:['Aluminio','#292929'],C:['Carbono','#fff'],Nd:['Neodimio','#e345ad'],Gd:['Gadolinio','#42c5c1'],Er:['Erbio','#ec933c'],Ce:['Cerio','#94623d']};
+const precios={Fe:1,Cu:3,Si:2,Ti:6,Al:3,C:1,Nd:8,Gd:8,Er:12,Ce:7,Tr:7};
+const operativos={II:'Ingeniero genérico',IQ:'Ingeniero químico',IE:'Ingeniero estructural',IM:'Ingeniero electromecánico',IS:'Ingeniero en sistemas',En:'Energía',Tr:'Transporte'};
+const tiposIcono={
+ "sensores": "SN",
+ "control": "CO",
+ "control_sensores": "CS",
+ "mantenimiento": "MN",
+ "estructura": "ES",
+ "fotovoltaico": "FV",
+ "transmision": "TS",
+ "refrigeracion": "RF",
+ "microondas": "MO",
+ "generador": "PE",
+ "economia": "EC",
+ "recursoshumanos": "RH",
+ "produccion": "PR",
+ "mejora_soporte_externo": "MS"
+};
+function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function tokens(id,n){
+ let color=recursos[id]?.[1]||'#fff';
+ if(!document.getElementById('colors').checked)color='#fff';
+ const ink=['Al','Ce','Nd','Cu','Ti','Er'].includes(id)&&document.getElementById('colors').checked?'#fff':'#111';
+ return `<span class="resource-line"><span class="coin" style="--c:${color};--ink:${ink}" title="${n} ${escapeHTML(recursos[id]?.[0]||id)}">${n} ${id}</span></span>`;
+}
+const destinosIcono={completados:'CM',mano:'MA',mejora:'MS',especial:'DE',derecha:'DR',etapa:'RE'};
+const catalogoIconos={
+ OP:{nombre:'Oponente',archivo:'OP-oponente.svg'},
+ AD:{nombre:'Adyacente',archivo:'AD-adyacente.svg'},
+ SI:{nombre:'Celda con disco',archivo:'SI-con-disco.svg'},
+ QU:{nombre:'Cuadrante',archivo:'esfera-cuadrante.svg'},
+ SC:{nombre:'Sector',archivo:'esfera-sector.svg'},
+ '=':{nombre:'Igual',archivo:'igual.svg'},
+ '=<':{nombre:'Hasta: máximo de cuadrantes distintos',archivo:'menor-igual.svg'},
+ '!=':{nombre:'Distinto',archivo:'distinto.svg'},
+ '/':{nombre:'Por',archivo:'separador-barra.svg'},
+ NO:{nombre:'Celda sin disco',archivo:'NO-sin-disco.svg'},
+ QD:{nombre:'Quitar disco',archivo:'QD-quitar-disco.svg'},
+ FJ:{nombre:'Fin del juego',archivo:'FJ-fin-juego.svg'},
+ SN:{nombre:'Sensores',archivo:'SN-sensores.svg'},
+ CO:{nombre:'Control',archivo:'CO-control.svg'},
+ MN:{nombre:'Mantenimiento',archivo:'MN-mantenimiento.svg'},
+ LE:{nombre:'Licencias de excavación',archivo:'LE-licencias-excavacion.svg'},
+ YA:{nombre:'Yacimientos',archivo:'YA-yacimientos.svg'},
+ RQ:{nombre:'Reactivos químicos',archivo:'RQ-reactivos.svg'},
+ RR:{nombre:'Tierra rara',archivo:'RR-tierra-rara.svg'},
+ ME:{nombre:'Mercado',archivo:'ME-mercado.svg'},
+ TJ:{nombre:'Todos los jugadores',archivo:'TJ-todos-los-jugadores.svg'},
+ CN:{nombre:'Ficha de contratación',archivo:'CN-ficha-contratacion.svg'},
+ CP:{nombre:'Carta de proyecto',archivo:'CP-carta-proyecto.svg'},
+ SP:{nombre:'Soporte externo',archivo:'SP-soporte-externo.svg'},
+ PE:{nombre:'Producción de energía',archivo:'PE-produccion-energia.svg'},
+ CM:{nombre:'Proyecto completado',archivo:'CM-completado.svg'},
+ MA:{nombre:'Vuelve a la mano',archivo:'MA-mano.svg'},
+ MS:{nombre:'Mejora de soporte externo',archivo:'MS-mejora-soporte-externo.svg'},
+ DR:{nombre:'Pasar a la mano del jugador de la derecha',archivo:'DR-pasar-derecha.svg'},
+ DE:{nombre:'Destino especial',archivo:'DE-destino-especial.svg'},
+ Fe:{nombre:'Hierro',archivo:'Fe-hierro.svg'},
+ PV:{nombre:'Puntos de victoria',archivo:'PV-punto-victoria.svg'},
+ PI:{nombre:'Puntos inmediatos',archivo:'PI-puntos-inmediatos.svg'},
+ DS:{nombre:'Discos',archivo:'DS-disco.svg'},
+ DP:{nombre:'Disco de soporte',archivo:'DP-disco-soporte.svg'},
+ AI:{nombre:'Ingeniero anclado',archivo:'AI-ingeniero-anclado.svg'},
+ AQ:{nombre:'Ingeniero químico anclado',archivo:'AQ-ingeniero-quimico-anclado.svg'},
+ AM:{nombre:'Ingeniero electromecánico anclado',archivo:'AM-ingeniero-electromecanico-anclado.svg'},
+ AE:{nombre:'Ingeniero estructural anclado',archivo:'AE-ingeniero-estructural-anclado.svg'},
+ AS:{nombre:'Ingeniero en sistemas anclado',archivo:'AS-ingeniero-sistemas-anclado.svg'},
+ DH:{nombre:'Disco hueco',archivo:'DH-disco-hueco.svg'},
+ En:{nombre:'Energía',archivo:'En-energia.svg'},
+ II:{nombre:'Ingeniero genérico',archivo:'II-ingeniero.svg'},
+ IQ:{nombre:'Ingeniero químico',archivo:'IQ-ingeniero-quimico.svg'},
+ IE:{nombre:'Ingeniero estructural',archivo:'IE-ingeniero-estructural.svg'},
+ IM:{nombre:'Ingeniero electromecánico',archivo:'IM-ingeniero-electromecanico.svg'},
+ IS:{nombre:'Ingeniero en sistemas',archivo:'IS-ingeniero-sistemas.svg'},
+ Di:{nombre:'Dinero',archivo:'Di-dinero.svg'},
+ RE:{nombre:'Repetible',archivo:'RE-repetible.svg'},
+ Tr:{nombre:'Transporte',archivo:'Tr-transporte.svg'},
+ ES:{nombre:"estructura",archivo:"ES-estructura.svg"},
+ FV:{nombre:"fotovoltaico",archivo:"FV-fotovoltaico.svg"},
+ TS:{nombre:'Transmisión',archivo:'TS-transmision.svg'},
+ RF:{nombre:"refrigeracion",archivo:"RF-refrigeracion.svg"},
+ MO:{nombre:"microondas",archivo:"MO-microondas.svg"},
+ EC:{nombre:"economia",archivo:"EC-economia.svg"},
+ RH:{nombre:'Recursos humanos',archivo:'RH-recursos-humanos.svg'},
+ PR:{nombre:"produccion",archivo:"PR-produccion.svg"}
+};
+function imagenIcono(id){
+ if(id==='CS')return '<span class="icono-hibrido" title="Control / Sensores" aria-label="Control / Sensores"><img src="./iconos/CO-control.svg" alt=""><img src="./iconos/SN-sensores.svg" alt=""></span>';
+ if(!Object.hasOwn(catalogoIconos,id))return '';
+ const variante=['II','IQ','IE','IM','IS','AI','AQ','AM','AE','AS'].includes(id)&&!document.getElementById('colors').checked?'#sin-color':'';
+ return `<img${id==='/'?' class="separator-bar"':''} src="./iconos/${catalogoIconos[id].archivo}${variante}" alt="" aria-hidden="true">`;
+}
+const rocket=imagenIcono('Tr');
+const energia=imagenIcono('En');
+function renderBono(bono){
+ const partes=String(bono??'').split(/(\[(?:[A-Za-z]{2}|\/|=<|!?=)\])/g);
+ const etiqueta=partes.map(p=>Object.hasOwn(catalogoIconos,p.slice(1,-1))&&p.startsWith('[')?catalogoIconos[p.slice(1,-1)].nombre:p).join(' ');
+ const contenido=partes.map(p=>{
+  const id=p.startsWith('[')&&p.endsWith(']')?p.slice(1,-1):'';
+  return Object.hasOwn(catalogoIconos,id)?imagenIcono(id):escapeHTML(p).replace(/\\n|\r\n?|\n/g,'<span class="bonus-break" aria-hidden="true"></span>');
+ }).join('');
+ return contenido?`<span class="card-bonus" title="${escapeHTML(etiqueta)}" aria-label="${escapeHTML(etiqueta)}"><span class="bonus-content">${contenido}</span></span>`:'';
+}
+function renderEfecto(texto){
+ return String(texto??'').split(/(\[(?:[A-Za-z]{2}|\/|=<|!?=)\])/g).map(parte=>{
+  const id=parte.startsWith('[')&&parte.endsWith(']')?parte.slice(1,-1):'';
+  if(!Object.hasOwn(catalogoIconos,id))return escapeHTML(parte).replace(/\\n|\r\n?|\n/g,'<br>');
+  const nombre=escapeHTML(catalogoIconos[id].nombre);
+  return `<span class="inline-icon" role="img" title="${nombre}" aria-label="${nombre}">${imagenIcono(id)}</span>`;
+ }).join('');
+}
+function operationTokens(id,n){
+ if(id==='txt')return `<span class="opgroup">${renderBono(n)}</span>`;
+ const drawing=id==='Tr'?rocket:imagenIcono(id);
+ const klass=id==='Tr'?'rocket':'meeple';
+ if(id==='En')return `<span class="opgroup" title="${escapeHTML(operativos[id])}: ${n}" aria-label="${escapeHTML(operativos[id])}: ${n}"><span class="opicons">${Array.from({length:n},()=>`<span class="opicon energy">${energia}</span>`).join('')}</span></span>`;
+ const nombre=escapeHTML(operativos[id]||catalogoIconos[id]?.nombre||id);
+ return `<span class="opgroup" title="${nombre}: ${n}" aria-label="${nombre}: ${n}"><span class="opicons">${Array.from({length:n},()=>`<span class="opicon ${klass}">${drawing}</span>`).join('')}</span></span>`;
+}
+function costoModulo(m){return m.etapas.reduce((total,e)=>total+Object.entries(e.m||{}).reduce((s,[id,n])=>s+n*(precios[id]||0),0)+Object.entries(e.o||{}).filter(([id])=>id!=='txt').reduce((s,[id,n])=>s+n*costoOperativo(id),0),0);}
+function iconoDestino(d){
+ const title=d==='completados'?'Proyecto completado':d==='mano'?'Vuelve a la mano':d==='mejora'?'Mejora de soporte externo':d==='derecha'?'Pasa al jugador de la derecha':d==='especial'?'Destino especial o condicional':d?.startsWith('etapa:')?'Vuelve a la etapa '+d.split(':')[1]:'Proyecto completado';
+ const id=d?.startsWith('etapa:')?destinosIcono.etapa:(Object.hasOwn(destinosIcono,d)?destinosIcono[d]:destinosIcono.completados);
+ const numero=d?.startsWith('etapa:')?`<small>${escapeHTML(d.split(':')[1])}</small>`:'';
+ return `<span class="destino" title="${escapeHTML(title)}" aria-label="${escapeHTML(title)}">${imagenIcono(id)}${numero}</span>`;
+}
+function render(m){
+ const puntos=typeof m.puntos==='number'?`${m.puntos} [PV]`:String(m.puntos??'0 [PV]');
+ const balance=balanceModulo(m),costo=balance.costo;
+ const insignia=renderBono(m.bono);
+ const coef=Number.isFinite(balance.coef)?balance.coef.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
+ const fueraRango=!Number.isFinite(balance.coef)||balance.coef<(m.inicial?10:7)||balance.coef>(m.inicial?11:9);
+ return `<article class="card${m.etapas.length>2?' many-stages':''}${m.inicial?' inicial':''}${fueraRango?' coef-fuera-rango':''}${m.revisada===0?' sin-revisar':''}" data-card-id="${escapeHTML(m.id)}" tabindex="0" data-balance="${escapeHTML(diagnosticoBalance(m,balance))}"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div class="heading-content"><div class="heading-row"><div class="name">${escapeHTML(m.nombre)}</div><div class="card-score"><div class="score-row">${renderBono(puntos)}${iconoDestino(m.destino||'completados')}</div></div></div><div class="heading-row"><div class="heading-meta"><div class="type"><span class="card-id">${escapeHTML(m.id)}</span>${escapeHTML(m.tipo==='recursoshumanos'?'RR. HH.':m.tipo==='control_sensores'?'control/sensores':m.tipo.replaceAll('_',' '))}</div><div class="card-cost"><strong>$${costo}</strong> / $${coef}/VP</div></div>${insignia?`<div class="heading-bonus">${insignia}</div>`:''}</div></div></header>
+ <div class="card-body"><div class="card-main"><section class="stages" style="--stage-count:${m.etapas.length}">${m.etapas.map((e,i)=>`<div class="stage"><div class="stage-title">ETAPA ${i+1}</div><div class="items">${Object.entries(e.m||{}).map(([id,n])=>tokens(id,n)).join('')}</div><div class="crew-line">${Object.entries(e.o||{}).filter(([id])=>id!=='En').map(([id,n])=>operationTokens(id,n)).join('')}${e.o?.En?operationTokens('En',e.o.En):''}</div></div>`).join('')}</section>
+ <footer class="footer"><div class="footer-effect-wrap"><div class="footer-effect"><strong>Al completar:</strong> ${renderEfecto(m.efecto||'Sin efecto adicional')}</div></div>${m.inicial?'<p class="initial-rule">Carta inicial · No se puede vender.</p>':''}</footer></div>${renderTecnica(m)}</div></article>`;
+}
+const nombresTecnica={FAB:'Fabricación',MAT:'Materiales avanzados',NANO:'Nanotecnología',BIO:'Biotecnología',MAG:'Electromagnetismo',FOT:'Fotónica',IA:'Inteligencia artificial',FIN:'Finanzas',NUC:'Tecnología nuclear',MIN:'Procesamiento mineral',TER:'Ingeniería térmica',SEN:'Sensores y control',HAB:'Habitabilidad',CUA:'Cuántica',PROP:'Propulsión'};
+function renderTecnica(m){const icon=(id,clase)=>`<span class="tech-icon ${clase}" title="${escapeHTML(nombresTecnica[id]||id)}" aria-label="${escapeHTML(nombresTecnica[id]||id)}">${escapeHTML(id)}</span>`;return `<aside class="tech-column" aria-label="Experiencia técnica"><div class="tech-group"><span class="tech-label">Requiere</span>${(m.tecnica_requiere||[]).map(id=>icon(id,'')).join('')||'<span class="tech-empty">&mdash;</span>'}</div><div class="tech-group"><span class="tech-label">Otorga</span>${(m.tecnica_otorga||[]).map(id=>icon(id,'reward')).join('')}<span class="tech-icon token" title="Gana 1 ficha de Técnica al completar">+${m.tecnica_tokens} T</span></div></aside>`; }
+function draw(){const sheet=document.getElementById('sheet');if(!Array.isArray(window.modulos)){sheet.innerHTML='<p>No se cargó modulos_tecnica.js. Guardá ambos archivos juntos.</p>';return;}const filtradas=window.modulos.filter(m=>!document.getElementById('hide-single-stage').checked||m.etapas.length!==1);const cartas=document.getElementById('show-copies').checked?filtradas.flatMap(m=>Array.from({length:m.copias??1},()=>m)):filtradas;const paginas=[];for(let i=0;i<cartas.length;i+=6){paginas.push(`<section class="print-page">${cartas.slice(i,i+6).map(render).join('')}</section>`)}sheet.innerHTML=paginas.join('');document.getElementById('cards-summary').innerHTML=renderResumenCartas(filtradas)}
+document.getElementById('colors').addEventListener('change',draw);document.getElementById('show-copies').addEventListener('change',draw);document.getElementById('hide-single-stage').addEventListener('change',draw);draw();activarDiagnosticoBalance();
+</script></body></html>
