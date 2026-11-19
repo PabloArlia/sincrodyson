@@ -753,7 +753,7 @@ window.modulos = [
   {
     "id": "P045",
     "revisada": 1,
-    "tecnica_requiere": ["IA",""],
+    "tecnica_requiere": ["IA","ROB"],
     "tecnica_otorga": ["IA"],
     "tecnica_tokens": 1,
 
