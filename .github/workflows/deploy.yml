@@ -15,6 +15,7 @@ jobs:
       - name: Descargar repositorio
         uses: actions/checkout@v4
 
+      
       - name: Configurar SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -24,7 +25,21 @@ jobs:
           mkdir -p ~/.ssh
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
+          if [ -z "$SSH_HOST" ] || [ -z "$SSH_PORT" ]; then
+            echo "ERROR: SSH_HOST o SSH_PORT está vacío"
+            exit 1
+          fi
+
+          echo "Obteniendo clave pública del servidor..."
+          ssh-keyscan -T 15 -p "$SSH_PORT" -H "$SSH_HOST" \
+            > ~/.ssh/known_hosts
+
+          if [ ! -s ~/.ssh/known_hosts ]; then
+            echo "ERROR: No se pudo obtener la clave SSH del servidor"
+            exit 1
+          fi
+
 
       - name: Sincronizar archivos
         env:
