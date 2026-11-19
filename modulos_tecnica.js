@@ -36,7 +36,7 @@ window.modulos = [
   // Proyectos iniciales: circulan obligatoriamente hacia la derecha.
   {
     "id": "P064",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["IA"],
     "tecnica_otorga": ["INI"],
     "tecnica_tokens": 1,
@@ -83,11 +83,10 @@ window.modulos = [
   },
   {
     "id": "P081",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["IA","PROP"],
     "tecnica_otorga": ["INI"],
     "tecnica_tokens": 2,
-
     "nombre": "Drones de inspección autónoma",
     "tipo": "mantenimiento",
     "inicial": true,
@@ -106,7 +105,7 @@ window.modulos = [
         "m": {
           "Fe": 5,
           "Al": 5,
-          "Si": 7
+          "Si": 2
         },
         "o": {
           "En": 2,
@@ -117,7 +116,8 @@ window.modulos = [
         "m": {
           "Cu": 3,
           "Ti": 2,
-          "C": 5
+          "C": 5,
+          "Si": 4
         },
         "o": {
           "En": 1,
@@ -130,11 +130,10 @@ window.modulos = [
   },
   {
     "id": "P019",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": ["INI"],
     "tecnica_tokens": 1,
-
     "nombre": "Red de alto voltaje de cobre",
     "tipo": "transmision",
     "inicial": true,
@@ -151,13 +150,13 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 3,
+          "Fe": 5,
           "Cu": 5,
           "Si": 2
         },
         "o": {
-          "IM": 1,
-          "En": 1,
+          "IM": 2,
+          "En": 3,
           "Tr": 2
         }
       }
@@ -166,11 +165,10 @@ window.modulos = [
   },
   {
     "id": "P020",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": ["INI"],
     "tecnica_tokens": 1,
-
     "nombre": "Red de alto voltaje ultraligera",
     "tipo": "transmision",
     "inicial": true,
@@ -187,15 +185,14 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 8,
-          "Ti": 4,
-          "C": 5,
-          "Si": 5
+          "Al": 7,
+          "Ti": 5,
+          "C": 3
         },
         "o": {
-          "IM": 1,
+          "IM": 2,
           "En": 2,
-          "Tr": 2
+          "Tr": 4
         }
       }
     ],
@@ -203,11 +200,10 @@ window.modulos = [
   },
   {
     "id": "P029",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": ["INI"],
     "tecnica_tokens": 1,
-
     "nombre": "Antena parabólica de microondas",
     "tipo": "microondas",
     "inicial": true,
@@ -224,15 +220,15 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 8,
-          "Cu": 5,
-          "Ti": 1,
-          "Si": 8
+          "Al": 4,
+          "Cu": 4,
+          "Ti": 5,
+          "Si": 2
         },
         "o": {
           "IM": 1,
-          "En": 2,
-          "Tr": 2
+          "En": 4,
+          "Tr": 3
         }
       }
     ],
@@ -240,11 +236,10 @@ window.modulos = [
   },
   {
     "id": "I05",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": ["INI"],
     "tecnica_tokens": 1,
-
     "nombre": "Blindaje compuesto",
     "tipo": "microondas",
     "inicial": true,
@@ -260,15 +255,19 @@ window.modulos = [
     "efecto": "Coloca un disco en 2 celdas libres de [MO] Microondas del mismo quadrante.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
-        "m": {"Fe": 8, "C": 8, "Ti": 2},
-        "o": {"IE": 1, "En": 2, "Tr": 1}
+        "m": {
+          "Fe": 10,
+          "C": 1,
+          "Ti": 3
+        },
+        "o": {"IE": 1, "En": 2, "Tr": 2}
       }
     ],
     "destino": "derecha"
   },
   {
     "id": "P024",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": ["INI"],
     "tecnica_tokens": 1,
@@ -294,7 +293,7 @@ window.modulos = [
         },
         "o": {
           "IM": 1,
-          "Tr": 1
+          "Tr": 2
         }
       }
     ],
@@ -302,8 +301,8 @@ window.modulos = [
   },
   {
     "id": "P025",
-    "revisada": 0,
-    "tecnica_requiere": [],
+    "revisada": 1,
+    "tecnica_requiere": ["FAB"],
     "tecnica_otorga": ["INI"],
     "tecnica_tokens": 1,
 
@@ -323,15 +322,15 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 10,
-          "Al": 7,
-          "Fe": 10,
-          "Si": 5
+          "Cu": 5,
+          "Al": 5,
+          "Fe": 2,
+          "Ti": 3
         },
         "o": {
           "IM": 2,
-          "En": 1,
-          "Tr": 1
+          "En": 4,
+          "Tr": 3
         }
       }
     ],
@@ -339,7 +338,7 @@ window.modulos = [
   },
   {
     "id": "P013",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": ["INI"],
     "tecnica_tokens": 1,
@@ -367,8 +366,8 @@ window.modulos = [
         },
         "o": {
           "IM": 1,
-          "En": 1,
-          "Tr": 1
+          "En": 2,
+          "Tr": 2
         }
       }
     ],
@@ -376,7 +375,7 @@ window.modulos = [
   },
   {
     "id": "I04",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": ["INI"],
     "tecnica_tokens": 1,
@@ -396,16 +395,21 @@ window.modulos = [
     "efecto": "Coloca un disco en 4 celdas libres de [FV] fotovoltaico de hasta 2 cuadrantes distintos adyacenetes.\nLuego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
-        "m": {"Nd": 2, "Fe": 5, "Cu": 5, "Si": 8},
-        "o": {"IQ": 1, "IM": 1, "En": 2, "Tr": 3}
+        "m": {
+          "Nd": 2,
+          "Ti": 1,
+          "Cu": 2,
+          "Si": 10
+        },
+        "o": {"IQ": 1, "IM": 1, "En": 4, "Tr": 4}
       }
     ],
     "destino": "derecha"
   },
   {
     "id": "P008",
-    "revisada": 0,
-    "tecnica_requiere": [],
+    "revisada": 1,
+    "tecnica_requiere": ["FAB"],
     "tecnica_otorga": ["INI"],
     "tecnica_tokens": 1,
 
@@ -439,7 +443,7 @@ window.modulos = [
   },
   {
     "id": "P009",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": ["INI"],
     "tecnica_tokens": 1,
@@ -460,14 +464,14 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 12,
+          "Fe": 10,
           "Al": 2,
-          "C": 3
+          "C": 1
         },
         "o": {
-          "IE": 1,
-          "En": 1,
-          "Tr": 2
+          "IE": 2,
+          "En": 3,
+          "Tr": 3
         }
       }
     ],
@@ -479,17 +483,10 @@ window.modulos = [
 
 
 
-
-
-
-
-
-
-
   // Economía
   {
     "id": "P006",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["FIN"],
     "tecnica_otorga": ["FIN"],
     "tecnica_tokens": 1,
@@ -531,7 +528,7 @@ window.modulos = [
   },
   {
     "id": "P047",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": ["FIN"],
     "tecnica_tokens": 1,
@@ -547,13 +544,13 @@ window.modulos = [
     "discos": 0,
     "bono": "[TJ] [RR]=15[Di] \n +1 [PI][/]2[RR]",
     "disco_soporte": 0,
-    "efecto": "Cada jugador (incluso tu) puede vender hasta 3 [RR] tierras raras a $15 cada una, independientemente del tipo. \nGanas 1 [PI] por cada 2 [RR] vendidas entre todos los jugadores, redondeando hacia abajo. \nPuedes volver a colocar el cubo en la etapa 1.",
-    "destino": "etapa:1",
+    "efecto": "Cada jugador (incluso tu) puede vender hasta 3 [RR] tierras raras a $15 cada una, independientemente del tipo. \nGanas 1 [PI] por cada 2 [RR] vendidas entre todos los jugadores, redondeando hacia abajo. \nPuedes volver a colocar el cubo en la etapa 2.",
+    "destino": "etapa:2",
     "etapas": [
       {
         "m": {
           "Cu": 2,
-          "Al": 2,
+          "Al": 5,
           "Ce": 1
         },
         "o": {
@@ -572,7 +569,7 @@ window.modulos = [
   },
   {
     "id": "P048",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": ["FIN"],
     "tecnica_tokens": 1,
@@ -583,7 +580,7 @@ window.modulos = [
     "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
-    "puntos_otros": 7,
+    "puntos_otros": 5,
     "copias": 1,
     "discos": 0,
     "bono": "+10 [Di] [RE]",
@@ -617,11 +614,10 @@ window.modulos = [
   // Recursos humanos
   {
     "id": "P041",
-    "revisada": 0,
-    "tecnica_requiere": [],
+    "revisada": 1,
+    "tecnica_requiere": ["IA"],
     "tecnica_otorga": [],
     "tecnica_tokens": 1,
-
     "nombre": "Reemplazo por asistente robótico autónomo",
     "tipo": "recursoshumanos",
     "puntos": "1 [PV]",
@@ -653,11 +649,10 @@ window.modulos = [
   },
   {
     "id": "P042",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
-    "tecnica_otorga": ["HAB"],
-    "tecnica_tokens": 1,
-
+    "tecnica_otorga": [],
+    "tecnica_tokens": 0,
     "nombre": "Pasantía",
     "tipo": "recursoshumanos",
     "puntos": "0 [PV]",
@@ -682,11 +677,10 @@ window.modulos = [
   },
   {
     "id": "P043",
-    "revisada": 0,
-    "tecnica_requiere": [],
+    "revisada": 1,
+    "tecnica_requiere": ["IA"],
     "tecnica_otorga": ["IA"],
     "tecnica_tokens": 1,
-
     "nombre": "Programador de IA",
     "tipo": "recursoshumanos",
     "puntos": "0 [PV]",
@@ -726,8 +720,8 @@ window.modulos = [
   },
   {
     "id": "P044",
-    "revisada": 0,
-    "tecnica_requiere": [],
+    "revisada": 1,
+    "tecnica_requiere": ["FIN"],
     "tecnica_otorga": ["FIN"],
     "tecnica_tokens": 1,
 
@@ -737,7 +731,7 @@ window.modulos = [
     "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
-    "puntos_otros": 2,
+    "puntos_otros": 1,
     "copias": 1,
     "discos": 0,
     "bono": "[TJ] +1[CN]",
@@ -758,8 +752,8 @@ window.modulos = [
   },
   {
     "id": "P045",
-    "revisada": 0,
-    "tecnica_requiere": [],
+    "revisada": 1,
+    "tecnica_requiere": ["IA",""],
     "tecnica_otorga": ["IA"],
     "tecnica_tokens": 1,
 
@@ -928,10 +922,11 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 3,
+          "Fe": 3,
+          "Cu": 2,
           "Al": 2,
           "Ti": 1,
-          "Nd": 1,
+          "Nd": 1
         },
         "o": {
           "IM": 1,
@@ -1211,8 +1206,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "C": 22,
-          "Fe": 4
+          "C": 20
         },
         "o": {
           "IQ": 2,
@@ -1221,8 +1215,8 @@ window.modulos = [
       },
       {
         "m": {
-          "C": 15,
-          "Fe": 2
+          "C": 10,
+          "Fe": 5
         },
         "o": {
           "IQ": 2,
@@ -1493,10 +1487,10 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 5,
+          "Cu": 4,
           "Gd": 2,
           "Al": 4,
-          "Si": 5
+          "Si": 3
         },
         "o": {
           "IQ": 1,
@@ -1530,10 +1524,11 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Ti": 1,
+          "Ti": 2,
           "Ce": 1,
-          "Si": 8,
-          "Al": 6
+          "Si": 2,
+          "Cu": 1,
+          "Al": 5
         },
         "o": {
           "IQ": 2,
@@ -1631,8 +1626,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "C": 18,
-          "Si": 6,
+          "C": 15,
+          "Si": 5,
           "Ce": 2
         },
         "o": {
@@ -1644,7 +1639,7 @@ window.modulos = [
       {
         "m": {
           "C": 15,
-          "Al": 3
+          "Al": 5
         },
         "o": {
           "IQ": 1,
@@ -1724,9 +1719,9 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 12,
-          "Cu": 7,
-          "Si": 7
+          "Fe": 10,
+          "Cu": 5,
+          "Si": 5
         },
         "o": {
           "IM": 2,
@@ -1735,7 +1730,7 @@ window.modulos = [
       },
       {
         "m": {
-          "Ti": 4,
+          "Ti": 5,
           "Al": 7,
           "Ce": 2
         },
@@ -1770,10 +1765,10 @@ window.modulos = [
   "etapas": [
     {
       "m": {
-        "Si": 6,
-        "Al": 7,
-        "Fe": 9
-      },
+          "Si": 5,
+          "Al": 5,
+          "Fe": 5
+        },
       "o": {
         "IM": 1,
         "En": 2
@@ -1781,10 +1776,10 @@ window.modulos = [
     },
     {
       "m": {
-        "Fe": 3,
-        "Cu": 3,
-        "Nd": 3
-      },
+          "Fe": 3,
+          "Cu": 3,
+          "Nd": 3
+        },
       "o": {
         "IS": 1,
         "En": 1,
@@ -1910,15 +1905,26 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 8,
-          "Si": 8,
-          "Cu": 11,
-          "C": 15
+          "Fe": 2,
+          "Si": 5,
+          "Cu": 2,
+          "C": 5
         },
         "o": {
           "IM": 1,
-          "En": 2,
-          "Tr": 2
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Si": 3,
+          "Cu": 2,
+          "C": 5
+        },
+        "o": {
+          "IM": 1,
+          "En": 1,
+          "Tr": 1
         }
       }
     ],
@@ -1991,8 +1997,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Si": 8,
-          "Al": 7,
+          "Si": 5,
+          "Al": 5,
           "Ce": 3
         },
         "o": {
@@ -2338,8 +2344,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 10,
-          "Cu": 6,
+          "Fe": 5,
+          "Cu": 5,
           "Er": 2
         },
         "o": {
@@ -2349,7 +2355,7 @@ window.modulos = [
       },
       {
         "m": {
-          "Cu": 2,
+          "Cu": 5,
           "Al": 2
         },
         "o": {
@@ -2466,8 +2472,17 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 5,
-          "Cu": 2
+          "Fe": 4,
+          "Ti": 4
+        },
+        "o": {
+          "IE": 1
+        }
+      },
+      {
+        "m": {
+          "Fe": 2,
+          "Cu": 5
         },
         "o": {
           "ES": 2,
@@ -2631,9 +2646,9 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 19,
+          "Fe": 10,
           "Al": 5,
-          "Ti": 3
+          "Ti": 5
         },
         "o": {
           "IE": 2,
@@ -2642,8 +2657,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Fe": 7,
-          "Cu": 14,
+          "Fe": 5,
+          "Cu": 5,
           "Nd": 2
         },
         "o": {
@@ -2678,11 +2693,10 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 8,
-          "Al": 8,
+          "Fe": 10,
+          "Al": 5,
           "Cu": 5,
-          "Ti": 5,
-          "Si": 5
+          "Ti": 5
         },
         "o": {
           "En": 3,

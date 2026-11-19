@@ -1,5 +1,7 @@
 // Supuestos de balance; no modifican las reglas ni los puntos impresos.
 const supuestosBalance={puntosDisco:3,puntosSoporte:9,costoIngenieroAnclado:4,costoIngeniero:4,costoEnergia:2,costoTransporte:7,factorEtapa:1.5};
+const recursosBasicos=['Fe','Cu','Si','Ti','Al','C'];
+function recursosBasicosEtapa(etapa){return recursosBasicos.reduce((total,id)=>total+(Number(etapa.m?.[id])||0),0);}
 const codigosIngenieros=['II','IQ','IE','IM','IS','AE','AM','AQ','AS','AI','EE','EM','EQ','SX','EI'];
 function costoOperativo(id){
  if(id==='En')return supuestosBalance.costoEnergia;
@@ -33,6 +35,7 @@ function diagnosticoBalance(m,b){
  const numero=n=>Number.isFinite(n)?n.toLocaleString('es-AR',{maximumFractionDigits:2}):'Pendiente';
  return [
   `${m.id} · ${m.nombre}`,
+  ...m.etapas.map((etapa,i)=>`Recursos básicos de la etapa ${i+1}: ${numero(recursosBasicosEtapa(etapa))}`),
   `Costo de materiales: $${numero(b.materiales)}`,
   `Costo de ingenieros: $${numero(b.costosOperativos.ingenieros)}`,
   `Costo de energía: $${numero(b.costosOperativos.energia)}`,
