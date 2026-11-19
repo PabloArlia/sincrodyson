@@ -30,7 +30,7 @@ jobs:
           echo "Puerto configurado: $SSH_PORT"
 
           echo "Probando conexión TCP..."
-          if timeout 15 bash -c \
+          if timeout 45 bash -c \
             'echo > /dev/tcp/$1/$2' _ "$SSH_HOST" "$SSH_PORT"; then
             echo "Conexión TCP exitosa"
           else
