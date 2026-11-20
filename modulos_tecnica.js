@@ -764,7 +764,7 @@ window.modulos = [
     "revisada": 1,
     "tecnica_requiere": ["FIN"],
     "tecnica_otorga": ["FIN"],
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 0,
 
     "nombre": "Desregulación de sueldos",
     "tipo": "recursoshumanos",
