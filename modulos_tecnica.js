@@ -2476,9 +2476,9 @@ window.modulos = [
   {
     "id": "P056",
     "descripcion": "Centro que usa registros históricos para detectar y corregir errores de calibración.",
-    "revisada": 0,
-    "tecnica_requiere": [],
-    "tecnica_otorga": ["SEN"],
+    "revisada": 1,
+    "tecnica_requiere": ["DAT", "PRE"],
+    "tecnica_otorga": ["PRE"],
     "tecnica_tokens": 1,
 
     "nombre": "Centro de calibración retroactiva",
