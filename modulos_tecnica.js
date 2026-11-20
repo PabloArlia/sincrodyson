@@ -719,7 +719,7 @@ window.modulos = [
     "descripcion": "Especialista que desarrolla y ajusta la IA que opera los sistemas de la esfera.",
     "revisada": 1,
     "tecnica_requiere": ["IA", "DAT"],
-    "tecnica_otorga": ["IA"],
+    "tecnica_otorga": ["IA", "DAT"],
     "tecnica_tokens": 1,
     "nombre": "Programador de IA",
     "tipo": "recursoshumanos",
