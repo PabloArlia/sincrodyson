@@ -2441,9 +2441,9 @@ window.modulos = [
   {
     "id": "P055",
     "descripcion": "Centro que ajusta los controles a partir de los datos de operación de la esfera.",
-    "revisada": 0,
-    "tecnica_requiere": ["DAT"],
-    "tecnica_otorga": ["SEN"],
+    "revisada": 1,
+    "tecnica_requiere": ["DAT", "IA"],
+    "tecnica_otorga": ["IA"],
     "tecnica_tokens": 1,
 
     "nombre": "Centro de control por mejora permanente",
