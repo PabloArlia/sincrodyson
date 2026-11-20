@@ -6,7 +6,7 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .sheet{display:grid;grid-template-columns:repeat(2,120mm);gap:0mm;justify-content:center}
 .print-page{display:contents}
 .card{width:120mm;height:64mm;background:white;border:1px solid #222;border-radius:2mm;padding:1.6mm;display:flex;flex-direction:column;gap:1mm;overflow:hidden;break-inside:avoid}
-.card.recursos-excedidos{box-shadow:inset 0 0 0 2px #a020c0}.card.coef-fuera-rango{border-color:#d00000}.card.sin-revisar{border-color:#e0b000}.card.inicial .name{text-decoration:underline;text-underline-offset:2px}
+.card.recursos-excedidos{box-shadow:inset 0 0 0 2px #a020c0}.card.sin-revisar{border-color:#e0b000}.card.coef-fuera-rango{border-color:#d00000}.card.inicial .name{text-decoration:underline;text-underline-offset:2px}
 .card.borde-negro{border-color:#000;box-shadow:none}
 .heading{display:flex;gap:1.5mm;flex-shrink:0;align-items:center}
 .heading-content{flex:1;min-width:0;display:flex;flex-direction:column;gap:.5mm}
@@ -20,8 +20,8 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .card-score{flex-shrink:0;font-size:14pt;font-weight:800;white-space:nowrap;text-align:right}
 .heading-bonus{max-width:60%;text-align:right;font-size:10pt;font-weight:800;white-space:normal}
 .heading-bonus .card-bonus,.heading-bonus .bonus-content{justify-content:flex-end}
-.card-bonus{height:5mm;overflow:visible;background:white;display:inline-flex;align-items:flex-start;justify-content:center;max-width:100%;position:relative;z-index:1}
-.bonus-content{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5mm;max-width:100%;background:white;flex-shrink:1}
+.card-bonus{height:5mm;overflow:visible;background:rgba(255,255,255,0.8);display:inline-flex;align-items:flex-start;justify-content:center;max-width:100%;position:relative;z-index:1}
+.bonus-content{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5mm;max-width:100%;flex-shrink:1}
 .card-bonus img{width:5mm;height:5mm;object-fit:contain}.card-bonus .bonus-break{flex-basis:100%;height:0}
 .card-bonus img.separator-bar{width:2mm}
 .stages{flex:1;min-height:0;display:grid;grid-template-columns:repeat(var(--stage-count),minmax(0,1fr));gap:1mm}
@@ -127,6 +127,7 @@ const catalogoIconos={
  ME:{nombre:'Mercado',archivo:'ME-mercado.svg'},
  TJ:{nombre:'Todos los jugadores',archivo:'TJ-todos-los-jugadores.svg'},
  CN:{nombre:'Ficha de contratación',archivo:'CN-ficha-contratacion.svg'},
+ FT:{nombre:'Ficha de Técnica',archivo:'FT-ficha-tecnica.svg'},
  CP:{nombre:'Carta de proyecto',archivo:'CP-carta-proyecto.svg'},
  SP:{nombre:'Soporte externo',archivo:'SP-soporte-externo.svg'},
  PE:{nombre:'Producción de energía',archivo:'PE-produccion-energia.svg'},
@@ -205,18 +206,22 @@ function iconoDestino(d){
  return `<span class="destino" title="${escapeHTML(title)}" aria-label="${escapeHTML(title)}">${imagenIcono(id)}${numero}</span>`;
 }
 function render(m){
+ const avisoAnclados='Consulta la pérdida de puntos por personal anclado.';
+ const lineasEfecto=(m.efecto||'').split(/\\n|\r\n?|\n/);
+ const muestraAviso=lineasEfecto.some(linea=>linea.trim()===avisoAnclados);
+ const efecto=lineasEfecto.filter(linea=>linea.trim()!==avisoAnclados).join('\n').trim();
  const puntos=typeof m.puntos==='number'?`${m.puntos} [PV]`:String(m.puntos??'0 [PV]');
  const balance=balanceModulo(m),costo=balance.costo;
  const insignia=renderBono(m.bono);
  const coef=Number.isFinite(balance.coef)?balance.coef.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
  const fueraRango=!Number.isFinite(balance.coef)||balance.coef<(m.inicial?10:7)||balance.coef>(m.inicial?11:9);
  const excedeRecursos=m.etapas.some(e=>recursosBasicosEtapa(e)>15);
- const clasesBorde=m.ignorar_15el===true
+ const clasesBorde=balance.base===0||m.ignorar_15el===true
   ?' borde-negro'
   :`${excedeRecursos?' recursos-excedidos':''}${fueraRango?' coef-fuera-rango':''}${m.revisada===0?' sin-revisar':''}`;
  return `<article class="card${m.etapas.length>2?' many-stages':''}${m.inicial?' inicial':''}${clasesBorde}" data-card-id="${escapeHTML(m.id)}" tabindex="0" data-balance="${escapeHTML(diagnosticoBalance(m,balance))}"><header class="heading"><div class="module-icon">${imagenIcono(tiposIcono[m.tipo]||'PR')}</div><div class="heading-content"><div class="heading-row"><div class="name">${escapeHTML(m.nombre)}</div><div class="card-score"><div class="score-row">${renderBono(puntos)}${iconoDestino(m.destino||'completados')}</div></div></div><div class="heading-row"><div class="heading-meta"><div class="type"><span class="card-id">${escapeHTML(m.id)}</span>${escapeHTML(m.tipo==='recursoshumanos'?'RR. HH.':m.tipo==='control_sensores'?'control/sensores':m.tipo.replaceAll('_',' '))}</div><div class="card-cost"><strong>$${costo}</strong> / $${coef}/VP</div></div>${insignia?`<div class="heading-bonus">${insignia}</div>`:''}</div></div></header>
  <div class="card-body"><div class="card-main"><section class="stages" style="--stage-count:${m.etapas.length}">${m.etapas.map((e,i)=>`<div class="stage"><div class="stage-title">ETAPA ${i+1}</div><div class="items">${Object.entries(e.m||{}).map(([id,n])=>tokens(id,n)).join('')}</div><div class="crew-line">${Object.entries(e.o||{}).filter(([id])=>id!=='En').map(([id,n])=>operationTokens(id,n)).join('')}${e.o?.En?operationTokens('En',e.o.En):''}</div></div>`).join('')}</section>
- <footer class="footer"><div class="footer-effect-wrap"><div class="footer-effect"><strong>Al completar:</strong> ${renderEfecto(m.efecto||'Sin efecto adicional')}</div></div>${m.inicial?'<p class="initial-rule">Carta inicial · No se puede vender.</p>':''}</footer></div>${renderTecnica(m)}</div></article>`;
+ <footer class="footer"><div class="footer-effect-wrap"><div class="footer-effect"><strong>Al completar:</strong> ${renderEfecto(efecto||'Sin efecto adicional')}</div></div>${muestraAviso?`<p class="initial-rule">${avisoAnclados}</p>`:''}${m.inicial?'<p class="initial-rule">Carta inicial · No se puede vender.</p>':''}</footer></div>${renderTecnica(m)}</div></article>`;
 }
 const tecnicas=window.tecnicas??[];
 const tecnicasPorId=new Map(tecnicas.map(tecnica=>[tecnica.id,tecnica]));
@@ -232,11 +237,13 @@ function insigniaTecnica(id,clase=''){
  return `<span class="tech-icon ${clase}" role="img" title="${nombre}" aria-label="${nombre}">${simboloTecnica(tecnica?.icono)}<span>${escapeHTML(id)}</span></span>`;
 }
 function renderTecnica(m){
+ const fichas=m.tecnica_tokens??0;
+ const unidad=fichas===1?'ficha':'fichas';
  const requisitos=(m.tecnica_requiere||[]).map(id=>insigniaTecnica(id)).join('');
  const recompensas=(m.tecnica_otorga||[]).map(id=>insigniaTecnica(id,'reward')).join('');
  return `<aside class="tech-column" aria-label="Experiencia técnica">
   <div class="tech-group"><span class="tech-label">Requiere</span>${requisitos||'<span class="tech-empty">&mdash;</span>'}</div>
-  <div class="tech-group"><span class="tech-label">Otorga</span>${recompensas}<span class="tech-icon token" title="Gana 1 ficha de Técnica al completar">+${m.tecnica_tokens} T</span></div>
+  <div class="tech-group"><span class="tech-label">Otorga</span>${recompensas}<span class="tech-icon token" title="Gana ${fichas} ${unidad} de Técnica al completar">+${fichas} T</span></div>
  </aside>`;
 }
 function draw(){const sheet=document.getElementById('sheet');const conjunto=document.getElementById('module-set').value;const fuentes=conjunto==='ambos'?[modulosTecnica,megamodulosTecnica]:[conjunto==='mega'?megamodulosTecnica:modulosTecnica];if(fuentes.some(fuente=>!Array.isArray(fuente))){sheet.innerHTML='<p>No se pudieron cargar los archivos de módulos de técnica.</p>';document.getElementById('cards-summary').innerHTML='';return;}const filtradas=fuentes.flat().filter(m=>!document.getElementById('hide-single-stage').checked||m.etapas.length!==1);const cartas=document.getElementById('show-copies').checked?filtradas.flatMap(m=>Array.from({length:m.copias??1},()=>m)):filtradas;const paginas=[];for(let i=0;i<cartas.length;i+=6){paginas.push(`<section class="print-page">${cartas.slice(i,i+6).map(render).join('')}</section>`)}sheet.innerHTML=paginas.join('');document.getElementById('cards-summary').innerHTML=renderResumenCartas(filtradas)}

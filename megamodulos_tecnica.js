@@ -18,7 +18,7 @@ window.modulos = [
     "discos": 0,
     "bono": "[TJ] +3 [En] [=] +1 [PI] [OP]",
     "disco_soporte": 0,
-    "efecto": "Todos los jugadores obtienen 3 [En] energía, no pueden negarse. Ganas 1 [PI] por cada oponente hasta un maximo de 4 [PI]. \nPuedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Todos los jugadores obtienen 3 [En] energía, no pueden negarse. Ganas 1 [PI] por cada oponente hasta un maximo de 4 [PI]. \nPuedes volver a colocar el cubo en la etapa 2.\nObten 1 [FT] ficha de técnica.",
     "destino": "etapa:2",
     "etapas": [
       {
@@ -56,6 +56,192 @@ window.modulos = [
     ]
   },
   {
+    "id": "P033",
+    "descripcion": "Lentes o espejos enfocan luz solar sobre celdas fotovoltaicas de alto rendimiento.",
+    "revisada": 1,
+    "tecnica_requiere": ["FOT"],
+    "tecnica_otorga": ["FOT"],
+    "tecnica_tokens": 1,
+    "nombre": "Sistema fotovoltaico de concentración",
+    "tipo": "fotovoltaico",
+    "puntos": "15 [PV]",
+    "puntos_carta": 15,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 4,
+    "bono": "1-4 [DS][FV] [=][QU]",
+    "disco_soporte": 0,
+    "efecto": "Coloca un disco en cada celda libre de [FV] Fotovoltaica de un cuadrante.\nObten 1 [FT] ficha de técnica.",
+    "etapas": [
+      {
+        "m": {
+          "Al": 7,
+          "Ti": 1,
+          "Si": 4
+        },
+        "o": {
+          "IE": 1,
+          "IM": 1,
+          "En": 3
+        }
+      },
+      {
+        "m": {
+          "Cu": 3,
+          "Si": 5
+        },
+        "o": {
+          "IE": 1,
+          "IM": 1,
+          "En": 2,
+          "Tr": 2
+        }
+      }
+    ],
+    "destino": "completados"
+  },
+  {
+    "id": "P034",
+    "descripcion": "Capas semiconductoras aprovechan distintas partes del espectro solar en una misma celda.",
+    "revisada": 1,
+    "tecnica_requiere": ["FOT","MAT","MIN"],
+    "tecnica_otorga": ["FOT"],
+    "tecnica_tokens": 1,
+    "nombre": "Células solares multiunión",
+    "tipo": "fotovoltaico",
+    "puntos": "15 [PV]",
+    "puntos_carta": 15,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 3,
+    "discos": 4,
+    "bono": "4 [DS][FV][AD] [=][QU]",
+    "disco_soporte": 0,
+    "efecto": "Coloca un disco en 4 celdas libres de [FV] Fotovoltaica adyacentes de un cuadrante.\nObten 1 [FT] ficha de técnica.",
+    "etapas": [
+      {
+        "m": {
+          "Si": 5,
+          "Cu": 2,
+          "Gd": 1
+        },
+        "o": {
+          "IM": 1,
+          "IQ": 1,
+          "En": 3
+        }
+      },
+      {
+        "m": {
+          "Ti": 2,
+          "Al": 4
+        },
+        "o": {
+          "IM": 1,
+          "En": 3,
+          "Tr": 2
+        }
+      }
+    ],
+    "destino": "completados"
+  },
+  {
+    "id": "P054",
+    "descripcion": "Centro que coordina energía, transporte y mantenimiento entre sectores.",
+    "revisada": 1,
+    "tecnica_requiere": ["DAT","PRE","HAB"],
+    "tecnica_otorga": ["HAB"],
+    "tecnica_tokens": 2,
+
+    "nombre": "Centro de coordinación integral",
+    "tipo": "control",
+    "puntos": "1 [PV] [/] [DP]",
+    "puntos_carta": 10,
+    "puntos_capas": 0,
+    "puntos_ingenieros": -4,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 0,
+    "bono": "2 [DP][CO]",
+    "disco_soporte": 2,
+    "efecto": "Coloca un disco en 2 celdas libres de [CO] Control de dos áreas de soporte distintas. Coloca el ingeniero de la última etapa junto a cualquiera de los discos colocados. \nConsulta la pérdida de puntos por personal anclado. \n[FJ] Gana 1 [PV] por cada [DP] disco de cualquier jugador en cualquier área de soporte.\nObten 2 [FT] fichas de técnica.",
+    "etapas": [
+      {
+        "m": {
+          "Fe": 5,
+          "Cu": 5,
+          "Er": 2
+        },
+        "o": {
+          "IE": 1,
+          "En": 2
+        }
+      },
+      {
+        "m": {
+          "Cu": 5,
+          "Al": 2
+        },
+        "o": {
+          "AE": 1,
+          "En": 2,
+          "Tr": 2
+        }
+      }
+    ],
+    "destino": "completados"
+  },
+  {
+    "id": "P061",
+    "descripcion": "Taller móvil que lleva repuestos y herramientas por rieles hasta las zonas dañadas.",
+    "revisada": 1,
+    "tecnica_requiere": ["HAB", "PRE", "ELE"],
+    "tecnica_otorga": ["FAB"],
+    "tecnica_tokens": 1,
+
+    "nombre": "Plataforma de reparaciones sobre rieles",
+    "tipo": "mantenimiento",
+    "puntos": "15 [PV]",
+    "puntos_carta": 15,
+    "puntos_capas": 0,
+    "puntos_ingenieros": -8,
+    "puntos_otros": -2,
+    "copias": 1,
+    "discos": 0,
+    "bono": "4 [DP][MN] [=] 2 [QU] \n -1 [PI] [ES][QU]",
+    "disco_soporte": 4,
+    "efecto": "Coloca un disco en 4 celdas libres de [MN] Mantenimiento de dos áreas de soporte, 2 en cada una, y los ingenieros de la última etapa junto a cualquiera de ellos.\nLuego pierde 1 [PI] por cada celda sin disco de [ES] Estructura en esos dos cuadrantes.\nConsulta la pérdida de puntos por personal anclado.\nObten 1 [FT] ficha de técnica.",
+    "etapas": [
+      {
+        "m": {
+          "Fe": 5,
+          "Al": 5,
+          "Ti": 5
+        },
+        "o": {
+          "IE": 2,
+          "En": 2
+        }
+      },
+      {
+        "m": {
+          "Fe": 5,
+          "Cu": 5,
+          "Nd": 3
+        },
+        "o": {
+          "Tr": 2,
+          "AE": 2,
+          "En": 2 
+        }
+      }
+    ],
+    "destino": "completados"
+  },
+  {
     "id": "P054",
     "descripcion": "Estación planetaria que impulsa vehículos equipados con velas mediante haces láser.",
     "revisada": 0,
@@ -74,7 +260,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+6 [Tr] [RE]",
     "disco_soporte": 0,
-    "efecto": "Obtén 6 [Tr] Transporte de la reserva. \nPuedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Obtén 6 [Tr] Transporte de la reserva. \nPuedes volver a colocar el cubo en la etapa 2.\nObten 1 [FT] ficha de técnica.",
     "destino": "etapa:2",
     "etapas": [
       {
@@ -118,7 +304,7 @@ window.modulos = [
     "discos": 8,
     "bono": "8 [DS][ES]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 8 celdas libres de [ES] Estructura.",
+    "efecto": "Coloca un disco en 8 celdas libres de [ES] Estructura.\nObten 1 [FT] ficha de técnica.",
     "etapas": [
       {
         "m": {
@@ -173,7 +359,7 @@ window.modulos = [
     "discos": 8,
     "bono": "8 [DS][FV] [=<]3[QU][AD]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 8 celdas libres de [FV] Fotovoltaica de hasta 3 cuadrantes adyacentes.",
+    "efecto": "Coloca un disco en 8 celdas libres de [FV] Fotovoltaica de hasta 3 cuadrantes adyacentes.\nObten 1 [FT] ficha de técnica.",
     "etapas": [
       {
         "m": {
@@ -219,7 +405,7 @@ window.modulos = [
     "discos": 7,
     "bono": "1-8 [DS][FV] [=<]2[QU][AD]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en cada celda libre de [FV] Fotovoltaica de hasta dos cuadrantes adyacentes.",
+    "efecto": "Coloca un disco en cada celda libre de [FV] Fotovoltaica de hasta dos cuadrantes adyacentes.\nObten 1 [FT] ficha de técnica.",
     "etapas": [
       {
         "m": {
@@ -270,7 +456,7 @@ window.modulos = [
     "discos": 3,
     "bono": "1 [DP][CO] + 3 [DS][MO] [=] [QU]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soportey un disco en 3 celdas libres de [MO] Microondas del mismo cuadrante.",
+    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soportey un disco en 3 celdas libres de [MO] Microondas del mismo cuadrante.\nObten 1 [FT] ficha de técnica.",
     "etapas": [
       {
         "m": {
@@ -320,7 +506,7 @@ window.modulos = [
     "discos": 0,
     "bono": "2 [DH][MN] [=][QU] - 5 [AI]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación.\nLuego retira hasta 5 [AI] ingenieros anclados de cualquier número de celdas y devuélvelos a la reserva de ingenieros correspondiente.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación.\nLuego retira hasta 5 [AI] ingenieros anclados de cualquier número de celdas y devuélvelos a la reserva de ingenieros correspondiente.\nObten 1 [FT] ficha de técnica.",
     "etapas": [
       {
         "m": {
@@ -370,7 +556,7 @@ window.modulos = [
     "discos": 0,
     "bono": "2 [DP][SN]",
     "disco_soporte": 2,
-    "efecto": "Coloca un disco en 2 celdas libres de [SN] Sensores de dos áreas de soporte distintas. Coloca el ingeniero de la última etapa junto a cualquiera de los discos colocados. \nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco en 2 celdas libres de [SN] Sensores de dos áreas de soporte distintas. Coloca el ingeniero de la última etapa junto a cualquiera de los discos colocados. \nConsulta la pérdida de puntos por personal anclado.\nObten 1 [FT] ficha de técnica.",
     "etapas": [
       {
         "m": {
@@ -418,7 +604,7 @@ window.modulos = [
     "discos": 4,
     "bono": "4 [DP][MN] 4[DS][ES] [=]2[QU]",
     "disco_soporte": 4,
-    "efecto": "Coloca un disco en 4 celdas libres de [MN] Mantenimiento y un disco en 4 celdas libres de [ES] Estructura de dos cuadrantes, 2 de cada tipo en cada cuadrante. Si el mapa tiene más de 3 cuadrantes, estos no pueden ser adyacentes.\nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco en 4 celdas libres de [MN] Mantenimiento y un disco en 4 celdas libres de [ES] Estructura de dos cuadrantes, 2 de cada tipo en cada cuadrante. Si el mapa tiene más de 3 cuadrantes, estos no pueden ser adyacentes.\nConsulta la pérdida de puntos por personal anclado.\nObten 1 [FT] ficha de técnica.",
     "etapas": [
       {
         "m": {
@@ -467,7 +653,7 @@ window.modulos = [
     "discos": 4,
     "bono": "2 [DP][MN]  [=][QU] \n 1-4 [DS][MO] [=][QU]",
     "disco_soporte": 2,
-    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento de un área de soporte y un disco en cada celda libre de [MO] Microondas de otro cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento de un área de soporte y un disco en cada celda libre de [MO] Microondas de otro cuadrante.\nConsulta la pérdida de puntos por personal anclado.\nObten 1 [FT] ficha de técnica.",
     "etapas": [
       {
         "m": {
@@ -516,7 +702,7 @@ window.modulos = [
     "discos": 0,
     "bono": "2 [DH][MN]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación.\n[FJ] Gana 2 [PV] por [AI] ingeniero anclado de cualquier jugador.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación.\n[FJ] Gana 2 [PV] por [AI] ingeniero anclado de cualquier jugador.\nObten 1 [FT] ficha de técnica.",
     "etapas": [
       {
         "m": {
@@ -548,6 +734,53 @@ window.modulos = [
     "destino": "completados"
   },
   {
+    "id": "P040",
+    "descripcion": "Un motor Stirling transforma calor solar concentrado en movimiento para generar electricidad.",
+    "revisada": 1,
+    "tecnica_requiere": ["FOT","FAB"],
+    "tecnica_otorga": ["TER"],
+    "tecnica_tokens": 1,
+    "nombre": "Motor Stirling de concentración solar",
+    "tipo": "refrigeracion",
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 2,
+    "discos": 12,
+    "bono": "4 [DS][FV] [AD] 4 [DS][RF] [AD] 4 [DS][TS]",
+    "disco_soporte": 0,
+    "efecto": "Coloca un disco en 4 celdas libres de [FV] Fotovoltaica, un disco en 4 celdas libres de [RF] Refrigeración y un disco en 4 celdas libres de [TS] Transmisión; cada disco debe ser adyacente a otro disco colocado por este proyecto.\nObten 1 [FT] ficha de técnica.",
+    "etapas": [
+      {
+        "m": {
+          "Fe": 5,
+          "Cu": 5,
+          "Si": 5
+        },
+        "o": {
+          "IM": 2,
+          "En": 3
+        }
+      },
+      {
+        "m": {
+          "Ti": 5,
+          "Al": 7,
+          "Ce": 2
+        },
+        "o": {
+          "IE": 1,
+          "IM": 1,
+          "En": 3,
+          "Tr": 3
+        }
+      }
+    ],
+    "destino": "completados"
+  },
+  {
     "id": "P031",
     "descripcion": "Óptica de precisión mantiene el haz láser concentrado hasta un receptor lejano.",
     "revisada": 0,
@@ -566,7 +799,7 @@ window.modulos = [
     "discos": 8,
     "bono": "1-8 [DS][MO] [=] 2 [QU][AD]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en todas las celdas libres de [MO] Microondas de dos cuadrantes distintos adyacentes",
+    "efecto": "Coloca un disco en todas las celdas libres de [MO] Microondas de dos cuadrantes distintos adyacentes\nObten 1 [FT] ficha de técnica.",
     "etapas": [
       {
         "m": {
@@ -617,7 +850,7 @@ window.modulos = [
     "discos": 0,
     "bono": "-4 [AI] [RE] [=] [OP] +7 [Di]",
     "disco_soporte": 0,
-    "efecto": "[QD] Retira uno de tus discos de una celda de [ES] Estructura o [FV] Fotovoltaico y devuelve hasta 4 [AI] ingenieros anclados a la reserva. \nOtros jugadores pueden ofrecete $7 para que quites sus ingenieros (si aceptas es vinculante).\nPuedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "[QD] Retira uno de tus discos de una celda de [ES] Estructura o [FV] Fotovoltaico y devuelve hasta 4 [AI] ingenieros anclados a la reserva. \nOtros jugadores pueden ofrecete $7 para que quites sus ingenieros (si aceptas es vinculante).\nPuedes volver a colocar el cubo en la etapa 2.\nObten 1 [FT] ficha de técnica.",
     "etapas": [
       {
         "m": {

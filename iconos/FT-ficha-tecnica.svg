@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" stroke-width="1.7" stroke-linejoin="round">
+  <title>Ficha de Técnica</title>
+  <path d="M11 4h18l8 8v16l-8 8H11l-8-8V12Z" fill="#79c989" stroke="#26733a"/>
+  <path d="M11 12h18v5h-6v12h-6V17h-6Z" fill="#222"/>
+</svg>

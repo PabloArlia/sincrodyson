@@ -3009,7 +3009,7 @@ window.modulos = [
     "revisada": 1,
     "nombre": "Ascensores de mantenimiento radial",
     "tipo": "mantenimiento",
-    "puntos": "3 [PV]",
+    "puntos": "3 [PI]",
     "puntos_carta": 3,
     "puntos_capas": 0,
     "puntos_ingenieros": -8,
