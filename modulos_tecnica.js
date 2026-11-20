@@ -607,7 +607,7 @@ window.modulos = [
     "id": "P048",
     "descripcion": "Alojamiento orbital para visitantes de las instalaciones de la esfera.",
     "revisada": 1,
-    "tecnica_requiere": [],
+    "tecnica_requiere": ["HAB"],
     "tecnica_otorga": ["FIN"],
     "tecnica_tokens": 1,
 
