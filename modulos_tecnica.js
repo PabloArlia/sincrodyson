@@ -2078,7 +2078,7 @@ window.modulos = [
     "id": "P047",
     "descripcion": "Sensores detectan micrometeoritos o registran sus impactos en el revestimiento.",
     "revisada": 0,
-    "tecnica_requiere": ["ELE","FAB"],
+    "tecnica_requiere": ["ELE","FAB","MIN"],
     "tecnica_otorga": ["ELE"],
     "tecnica_tokens": 1,
 
@@ -2204,7 +2204,7 @@ window.modulos = [
     "id": "P050",
     "descripcion": "Relojes atómicos dan una referencia común de tiempo a estaciones distantes.",
     "revisada": 0,
-    "tecnica_requiere": ["CUA","PRE"],
+    "tecnica_requiere": ["CUA","PRE","MIN"],
     "tecnica_otorga": ["CUA"],
     "tecnica_tokens": 1,
 
