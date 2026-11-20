@@ -1805,7 +1805,7 @@ window.modulos = [
   "descripcion": "Membranas delgadas que ajustan su forma en respuesta a cambios del entorno.",
     "revisada": 0,
     "tecnica_requiere": ["MIN", "BIO"],
-    "tecnica_otorga": [],
+    "tecnica_otorga": ["MIN"],
     "tecnica_tokens": 1,
 
   "nombre": "Micromembranas adaptativas",
