@@ -2527,7 +2527,7 @@ window.modulos = [
     "id": "P057",
     "descripcion": "Pasadizos internos que dan acceso a los equipos para inspección y reparación.",
     "revisada": 1,
-    "tecnica_requiere": ["FAB"],
+    "tecnica_requiere": ["FAB", "HAB"],
     "tecnica_otorga": ["FAB"],
     "tecnica_tokens": 1,
 
