@@ -1710,7 +1710,7 @@ window.modulos = [
     "id": "P039",
     "descripcion": "Láminas de grafeno reparten el calor sobre las superficies que lo irradian al espacio.",
     "revisada": 0,
-    "tecnica_requiere": ["NANO"],
+    "tecnica_requiere": ["NANO","MAT"],
     "tecnica_otorga": ["NANO","MAT"],
     "tecnica_tokens": 1,
 
