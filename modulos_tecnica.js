@@ -2256,7 +2256,7 @@ window.modulos = [
     "id": "P051",
     "descripcion": "Estación que sigue la posición de sectores, vehículos y cargas en órbita.",
     "revisada": 0,
-    "tecnica_requiere": ["DAT","ELE"],
+    "tecnica_requiere": ["DAT","ELE","HAB"],
     "tecnica_otorga": ["DAT"],
     "tecnica_tokens": 1,
 
@@ -2302,7 +2302,7 @@ window.modulos = [
     "id": "P052",
     "descripcion": "Centro que ajusta la generación y el reparto de electricidad según la demanda.",
     "revisada": 0,
-    "tecnica_requiere": ["DAT"],
+    "tecnica_requiere": ["DAT","HAB"],
     "tecnica_otorga": ["SEN"],
     "tecnica_tokens": 1,
 
@@ -2349,7 +2349,7 @@ window.modulos = [
     "id": "P053",
     "descripcion": "Centro que analiza datos de equipos para prever fallas y programar reparaciones.",
     "revisada": 1,
-    "tecnica_requiere": ["DAT", "ELE"],
+    "tecnica_requiere": ["DAT","ELE","HAB"],
     "tecnica_otorga": ["DAT"],
     "tecnica_tokens": 1,
 
@@ -2396,7 +2396,7 @@ window.modulos = [
     "id": "P054",
     "descripcion": "Centro que coordina energía, transporte y mantenimiento entre sectores.",
     "revisada": 1,
-    "tecnica_requiere": ["DAT", "PRE"],
+    "tecnica_requiere": ["DAT","PRE","HAB"],
     "tecnica_otorga": [],
     "tecnica_tokens": 1,
 
@@ -2442,7 +2442,7 @@ window.modulos = [
     "id": "P055",
     "descripcion": "Centro que ajusta los controles a partir de los datos de operación de la esfera.",
     "revisada": 1,
-    "tecnica_requiere": ["DAT", "IA"],
+    "tecnica_requiere": ["DAT","IA","HAB"],
     "tecnica_otorga": ["IA"],
     "tecnica_tokens": 1,
 
