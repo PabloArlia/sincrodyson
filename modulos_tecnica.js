@@ -873,7 +873,7 @@ window.modulos = [
     "id": "P050",
     "descripcion": "Resinas de intercambio iónico separan tierras raras recuperadas de la escoria.",
     "revisada": 1,
-    "tecnica_requiere": [],
+    "tecnica_requiere": ["MAT"],
     "tecnica_otorga": ["MAT"],
     "tecnica_tokens": 1,
     "nombre": "Refinería de escoria por intercambio iónico",
