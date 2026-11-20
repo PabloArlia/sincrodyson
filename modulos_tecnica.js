@@ -2350,7 +2350,7 @@ window.modulos = [
     "descripcion": "Centro que analiza datos de equipos para prever fallas y programar reparaciones.",
     "revisada": 1,
     "tecnica_requiere": ["DAT","ELE","HAB"],
-    "tecnica_otorga": ["DAT"],
+    "tecnica_otorga": ["DAT","HAB"],
     "tecnica_tokens": 1,
 
     "nombre": "Centro de mantenimiento predictivo",
@@ -2397,7 +2397,7 @@ window.modulos = [
     "descripcion": "Centro que coordina energía, transporte y mantenimiento entre sectores.",
     "revisada": 1,
     "tecnica_requiere": ["DAT","PRE","HAB"],
-    "tecnica_otorga": [],
+    "tecnica_otorga": ["HAB"],
     "tecnica_tokens": 1,
 
     "nombre": "Centro de coordinación integral",
@@ -2443,7 +2443,7 @@ window.modulos = [
     "descripcion": "Centro que ajusta los controles a partir de los datos de operación de la esfera.",
     "revisada": 1,
     "tecnica_requiere": ["DAT","IA","HAB"],
-    "tecnica_otorga": ["IA"],
+    "tecnica_otorga": ["IA","HAB"],
     "tecnica_tokens": 1,
 
     "nombre": "Centro de control por mejora permanente",
