@@ -1520,7 +1520,7 @@ window.modulos = [
     "id": "P035",
     "descripcion": "Conductores criogénicos transmiten corriente eléctrica sin resistencia.",
     "revisada": 0,
-    "tecnica_requiere": [],
+    "tecnica_requiere": ["MAG","TER"],
     "tecnica_otorga": ["MAG"],
     "tecnica_tokens": 1,
 
