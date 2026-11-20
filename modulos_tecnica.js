@@ -1469,7 +1469,7 @@ window.modulos = [
     "id": "P034",
     "descripcion": "Capas semiconductoras aprovechan distintas partes del espectro solar en una misma celda.",
     "revisada": 0,
-    "tecnica_requiere": ["FOT"],
+    "tecnica_requiere": ["FOT","MAT"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
 
