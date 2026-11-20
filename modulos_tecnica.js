@@ -2752,9 +2752,9 @@ window.modulos = [
   {
     "id": "P062",
     "descripcion": "Ascensores que trasladan técnicos y herramientas entre las capas de la esfera.",
-    "revisada": 0,
-    "tecnica_requiere": [],
-    "tecnica_otorga": ["FAB"],
+    "revisada": 1,
+    "tecnica_requiere": ["FAB", "HAB", "MAG"],
+    "tecnica_otorga": ["PRE"],
     "tecnica_tokens": 1,
 
     "nombre": "Ascensores de mantenimiento radial",
