@@ -1421,7 +1421,7 @@ window.modulos = [
     "id": "P033",
     "descripcion": "Lentes o espejos enfocan luz solar sobre celdas fotovoltaicas de alto rendimiento.",
     "revisada": 0,
-    "tecnica_requiere": [],
+    "tecnica_requiere": ["FOT"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
 
