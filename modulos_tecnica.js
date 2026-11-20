@@ -1376,7 +1376,7 @@ window.modulos = [
     "id": "P032",
     "descripcion": "Celdas hechas de un solo cristal de silicio convierten luz solar en electricidad.",
     "revisada": 0,
-    "tecnica_requiere": ["FAB","PRE"],
+    "tecnica_requiere": ["FAB","PRE","MIN"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
 
@@ -1469,7 +1469,7 @@ window.modulos = [
     "id": "P034",
     "descripcion": "Capas semiconductoras aprovechan distintas partes del espectro solar en una misma celda.",
     "revisada": 0,
-    "tecnica_requiere": ["FOT","MAT"],
+    "tecnica_requiere": ["FOT","MAT","MIN"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
 
