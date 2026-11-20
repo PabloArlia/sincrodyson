@@ -1854,7 +1854,7 @@ window.modulos = [
     "id": "P042",
     "descripcion": "Antenas sincronizadas orientan un haz de microondas ajustando la fase de sus señales.",
     "revisada": 0,
-    "tecnica_requiere": [],
+    "tecnica_requiere": ["MAG","ELE"],
     "tecnica_otorga": ["MAG"],
     "tecnica_tokens": 1,
 
