@@ -1323,11 +1323,10 @@ window.modulos = [
   {
     "id": "P031",
     "descripcion": "Aleaciones metálicas amorfas forman piezas resistentes a la deformación.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["MAT","TER"],
     "tecnica_otorga": ["MAT","FAB"],
     "tecnica_tokens": 1,
-
     "nombre": "Estructura de vidrio metálico",
     "tipo": "estructura",
     "puntos": "5 [PV]",
@@ -1375,15 +1374,14 @@ window.modulos = [
   {
     "id": "P032",
     "descripcion": "Celdas hechas de un solo cristal de silicio convierten luz solar en electricidad.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["FAB","PRE","MIN"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
-
     "nombre": "Paneles de silicio monocristalino",
     "tipo": "fotovoltaico",
-    "puntos": "12 [PV]",
-    "puntos_carta": 12,
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
@@ -1395,8 +1393,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Si": 8,
-          "Al": 5
+          "Si": 5,
+          "Al": 3
         },
         "o": {
           "IQ": 1,
@@ -1420,11 +1418,10 @@ window.modulos = [
   {
     "id": "P033",
     "descripcion": "Lentes o espejos enfocan luz solar sobre celdas fotovoltaicas de alto rendimiento.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["FOT"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
-
     "nombre": "Sistema fotovoltaico de concentración",
     "tipo": "fotovoltaico",
     "puntos": "15 [PV]",
@@ -1468,11 +1465,10 @@ window.modulos = [
   {
     "id": "P034",
     "descripcion": "Capas semiconductoras aprovechan distintas partes del espectro solar en una misma celda.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["FOT","MAT","MIN"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
-
     "nombre": "Células solares multiunión",
     "tipo": "fotovoltaico",
     "puntos": "15 [PV]",
@@ -1519,11 +1515,10 @@ window.modulos = [
   {
     "id": "P035",
     "descripcion": "Conductores criogénicos transmiten corriente eléctrica sin resistencia.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["MAG","TER"],
     "tecnica_otorga": ["MAG"],
     "tecnica_tokens": 1,
-
     "nombre": "Red superconductora criogénica",
     "tipo": "transmision",
     "puntos": "10 [PV]",
@@ -1539,9 +1534,9 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 4,
+          "Cu": 5,
           "Gd": 2,
-          "Al": 4,
+          "Al": 5,
           "Si": 3
         },
         "o": {
@@ -1557,11 +1552,10 @@ window.modulos = [
   {
     "id": "P036",
     "descripcion": "Hidruros sometidos a presiones extremas actúan como conductores superconductores.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["MAG","MAT","CUA"],
     "tecnica_otorga": ["CUA"],
     "tecnica_tokens": 1,
-
     "nombre": "Superconductores de hidruros a alta presión",
     "tipo": "transmision",
     "puntos": "10 [PV]",
@@ -1579,7 +1573,6 @@ window.modulos = [
         "m": {
           "Ti": 2,
           "Ce": 1,
-          "Si": 2,
           "Cu": 1,
           "Al": 5
         },
@@ -1609,11 +1602,10 @@ window.modulos = [
   {
     "id": "P037",
     "descripcion": "Un láser de alta potencia envía energía a un receptor óptico distante.",
-    "revisada": 0,
+    "revisada":1,
     "tecnica_requiere": ["FOT", "CUA"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
-
     "nombre": "Transmisor láser de alta potencia",
     "tipo": "transmision",
     "puntos": "10 [PV]",
@@ -1661,11 +1653,11 @@ window.modulos = [
   {
     "id": "P038",
     "descripcion": "Nanotubos alineados conducen calor hacia las superficies que lo irradian al espacio.",
-    "revisada": 0,
+    "revisada": 1,
+    "ignorar_15el": true,
     "tecnica_requiere": ["NANO","TER"],
     "tecnica_otorga": ["NANO","MAT"],
     "tecnica_tokens": 1,
-
     "nombre": "Radiadores de nanotubos de carbono alineados",
     "tipo": "refrigeracion",
     "puntos": "10 [PV]",
@@ -1709,11 +1701,11 @@ window.modulos = [
   {
     "id": "P039",
     "descripcion": "Láminas de grafeno reparten el calor sobre las superficies que lo irradian al espacio.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["NANO","MAT"],
     "tecnica_otorga": ["NANO","MAT"],
     "tecnica_tokens": 1,
-
+    "ignorar_15el": true,
     "nombre": "Radiadores de grafeno multicapa",
     "tipo": "refrigeracion",
     "puntos": "10 [PV]",
@@ -1756,11 +1748,10 @@ window.modulos = [
   {
     "id": "P040",
     "descripcion": "Un motor Stirling transforma calor solar concentrado en movimiento para generar electricidad.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["FOT","FAB"],
     "tecnica_otorga": ["TER"],
     "tecnica_tokens": 1,
-
     "nombre": "Motor Stirling de concentración solar",
     "tipo": "refrigeracion",
     "puntos": "10 [PV]",
@@ -1776,7 +1767,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 10,
+          "Fe": 5,
           "Cu": 5,
           "Si": 5
         },
@@ -1801,13 +1792,12 @@ window.modulos = [
     ],
     "destino": "completados"
   },{
-  "id": "P041",
-  "descripcion": "Membranas delgadas que ajustan su forma en respuesta a cambios del entorno.",
-    "revisada": 0,
+    "id": "P041",
+    "descripcion": "Membranas delgadas que ajustan su forma en respuesta a cambios del entorno.",
+    "revisada": 1,
     "tecnica_requiere": ["MIN", "BIO"],
     "tecnica_otorga": ["MIN"],
     "tecnica_tokens": 1,
-
   "nombre": "Micromembranas adaptativas",
   "tipo": "refrigeracion",
   "puntos": "0 [PV]",
@@ -1834,7 +1824,7 @@ window.modulos = [
     },
     {
       "m": {
-          "Fe": 3,
+          "Fe": 5,
           "Cu": 3,
           "Nd": 3
         },
@@ -1853,11 +1843,10 @@ window.modulos = [
   {
     "id": "P042",
     "descripcion": "Antenas sincronizadas orientan un haz de microondas ajustando la fase de sus señales.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["MAG","ELE","MIN"],
     "tecnica_otorga": ["MAG"],
     "tecnica_tokens": 1,
-
     "nombre": "Matriz de antenas en fase",
     "tipo": "microondas",
     "puntos": "0 [PV]",
@@ -1873,9 +1862,9 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 3,
-          "Cu": 3,
-          "Si": 3
+          "Al": 2,
+          "Cu": 2,
+          "Si": 2
         },
         "o": {
           "IM": 1,
@@ -1901,7 +1890,7 @@ window.modulos = [
   "nombre": "Fábrica de blindaje exterior",
     "id": "P043",
     "descripcion": "Planta que fabrica paneles para proteger la cara exterior de la esfera.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["FAB","FAB"],
     "tecnica_otorga": ["FAB"],
     "tecnica_tokens": 1,
@@ -1921,7 +1910,7 @@ window.modulos = [
     {
       "m": {
         "Fe": 5,
-        "Ti": 3
+        "Ti": 2
       },
       "o": {
         "IE": 1,
@@ -1946,11 +1935,10 @@ window.modulos = [
   {
     "id": "P044",
     "descripcion": "Fibras ópticas detectan deformaciones de la estructura mediante cambios en la luz.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["FOT","MAT","MIN"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
-
     "nombre": "Extensómetros de fibra óptica",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -1967,8 +1955,8 @@ window.modulos = [
       {
         "m": {
           "Fe": 2,
-          "Si": 5,
-          "Cu": 2,
+          "Si": 2,
+          "Cu": 1,
           "C": 5
         },
         "o": {
@@ -1979,7 +1967,7 @@ window.modulos = [
       {
         "m": {
           "Si": 3,
-          "Cu": 2,
+          "Cu": 1,
           "C": 5
         },
         "o": {
@@ -1994,11 +1982,10 @@ window.modulos = [
   {
     "id": "P045",
     "descripcion": "Cámaras infrarrojas revelan zonas de sobrecalentamiento a distancia.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["FOT","TER","ELE"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 2,
-
     "nombre": "Termografía infrarroja",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -2016,7 +2003,7 @@ window.modulos = [
         "m": {
           "Si": 3,
           "Cu": 2,
-          "Nd": 3
+          "Nd": 2
         },
         "o": {
           "IM": 1,
@@ -2040,7 +2027,7 @@ window.modulos = [
   {
     "id": "P046",
     "descripcion": "Instrumentos registran la dosis de radiación que acumulan equipos y personas.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["NUC","ELE"],
     "tecnica_otorga": ["NUC"],
     "tecnica_tokens": 1,
@@ -2077,11 +2064,10 @@ window.modulos = [
   {
     "id": "P047",
     "descripcion": "Sensores detectan micrometeoritos o registran sus impactos en el revestimiento.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["ELE","FAB","MIN"],
     "tecnica_otorga": ["ELE"],
-    "tecnica_tokens": 1,
-
+    "tecnica_tokens": 2,
     "nombre": "Detectores de micrometeoritos",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -2115,11 +2101,10 @@ window.modulos = [
   {
     "id": "P048",
     "descripcion": "Haces láser comparan distancias para detectar desplazamientos diminutos en la estructura.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["FOT","PRE","CUA"],
     "tecnica_otorga": ["FOT"],
-    "tecnica_tokens": 1,
-
+    "tecnica_tokens": 3,
     "nombre": "Red de interferometría láser",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -2136,7 +2121,7 @@ window.modulos = [
       {
         "m": {
           "Si": 2,
-          "Cu": 2,
+          "Cu": 1,
           "Er": 1
         },
         "o": {
@@ -2152,11 +2137,10 @@ window.modulos = [
   {
     "id": "P049",
     "descripcion": "Equipos que registran variaciones de tensión y frecuencia en la red eléctrica.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["ELE","PRE","MIN"],
     "tecnica_otorga": ["ELE"],
-    "tecnica_tokens": 1,
-
+    "tecnica_tokens": 3,
     "nombre": "Monitores de calidad eléctrica",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -2175,7 +2159,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Cu": 2,
+          "Cu": 1,
           "Al": 2,
           "Si": 1,
           "Ce": 1
@@ -2203,11 +2187,10 @@ window.modulos = [
   {
     "id": "P050",
     "descripcion": "Relojes atómicos dan una referencia común de tiempo a estaciones distantes.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["CUA","PRE","MIN"],
     "tecnica_otorga": ["CUA"],
-    "tecnica_tokens": 1,
-
+    "tecnica_tokens": 3,
     "nombre": "Red de relojes atómicos de sincronización",
     "tipo": "sensores",
     "puntos": "0 [PV]",
@@ -2255,11 +2238,10 @@ window.modulos = [
   {
     "id": "P051",
     "descripcion": "Estación que sigue la posición de sectores, vehículos y cargas en órbita.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["DAT","ELE","HAB"],
     "tecnica_otorga": ["DAT"],
-    "tecnica_tokens": 1,
-
+    "tecnica_tokens": 2,
     "nombre": "Centro de supervisión orbital",
     "tipo": "control",
     "puntos": "0 [PV]",
@@ -2285,7 +2267,6 @@ window.modulos = [
       },
       {
         "m": {
-          "Al": 1,
           "Cu": 1,
           "Si": 3
         },
@@ -2301,11 +2282,10 @@ window.modulos = [
   {
     "id": "P052",
     "descripcion": "Centro que ajusta la generación y el reparto de electricidad según la demanda.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["DAT","HAB"],
     "tecnica_otorga": ["SEN"],
     "tecnica_tokens": 1,
-
     "nombre": "Centro de regulación de potencia",
     "tipo": "control",
     "puntos": "10 [PV]",
@@ -2321,7 +2301,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 3,
+          "Al": 2,
           "Gd": 1,
           "Fe": 3
         },
@@ -2333,7 +2313,7 @@ window.modulos = [
       {
         "m": {
           "Ti": 2,
-          "Cu": 5,
+          "Cu": 2,
           "Nd": 1
         },
         "o": {
@@ -2352,7 +2332,6 @@ window.modulos = [
     "tecnica_requiere": ["DAT","ELE","HAB"],
     "tecnica_otorga": ["DAT","HAB"],
     "tecnica_tokens": 1,
-
     "nombre": "Centro de mantenimiento predictivo",
     "tipo": "control",
     "puntos": "15 [PV]",
@@ -2398,7 +2377,7 @@ window.modulos = [
     "revisada": 1,
     "tecnica_requiere": ["DAT","PRE","HAB"],
     "tecnica_otorga": ["HAB"],
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 2,
 
     "nombre": "Centro de coordinación integral",
     "tipo": "control",
@@ -2462,7 +2441,7 @@ window.modulos = [
       {
         "m": {
           "Al": 2,
-          "Fe": 4
+          "Fe": 2
         },
         "o": {
           "AS": 1,
@@ -2480,7 +2459,6 @@ window.modulos = [
     "tecnica_requiere": ["DAT", "PRE"],
     "tecnica_otorga": ["PRE"],
     "tecnica_tokens": 1,
-
     "nombre": "Centro de calibración retroactiva",
     "tipo": "control",
     "puntos": "5 [PV]",
@@ -2508,7 +2486,6 @@ window.modulos = [
       },
       {
         "m": {
-          "Si": 3,
           "Ce": 1
         },
         "o": {
@@ -2529,8 +2506,7 @@ window.modulos = [
     "revisada": 1,
     "tecnica_requiere": ["FAB", "HAB"],
     "tecnica_otorga": ["FAB"],
-    "tecnica_tokens": 1,
-
+    "tecnica_tokens": 3,
     "nombre": "Red de túneles de servicio",
     "tipo": "mantenimiento",
     "puntos": "0 [PV]",
@@ -2546,17 +2522,9 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 4,
-          "Ti": 4
-        },
-        "o": {
-          "IE": 1
-        }
-      },
-      {
-        "m": {
           "Fe": 2,
-          "Cu": 5
+          "Ti": 1,
+          "Cu": 2
         },
         "o": {
           "ES": 2,
@@ -2724,7 +2692,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 10,
+          "Fe": 5,
           "Al": 5,
           "Ti": 5
         },
@@ -2737,7 +2705,7 @@ window.modulos = [
         "m": {
           "Fe": 5,
           "Cu": 5,
-          "Nd": 2
+          "Nd": 3
         },
         "o": {
           "Tr": 2,
@@ -2755,8 +2723,7 @@ window.modulos = [
     "revisada": 1,
     "tecnica_requiere": ["FAB", "HAB", "MAG"],
     "tecnica_otorga": ["PRE"],
-    "tecnica_tokens": 1,
-
+    "tecnica_tokens": 0,
     "nombre": "Ascensores de mantenimiento radial",
     "tipo": "mantenimiento",
     "puntos": "3 [PV]",
@@ -2772,14 +2739,14 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 10,
-          "Al": 5,
-          "Cu": 5,
-          "Ti": 5
+          "Fe": 3,
+          "Al": 3,
+          "Cu": 3,
+          "Ti": 6
         },
         "o": {
-          "En": 3,
-          "Tr": 2,
+          "En": 4,
+          "Tr": 3,
           "AE": 2
         }
       }
