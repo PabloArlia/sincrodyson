@@ -1,3 +1,24 @@
+window.tecnicas = [
+  { id: 'FAB', nombre: 'Fabricación', icono: '🏭' },
+  { id: 'MAT', nombre: 'Materiales avanzados', icono: '💎' },
+  { id: 'NANO', nombre: 'Nanotecnología', icono: '🔬' },
+  { id: 'BIO', nombre: 'Biotecnología', icono: '🧬' },
+  { id: 'MAG', nombre: 'Electromagnetismo', icono: '🧲' },
+  { id: 'FOT', nombre: 'Fotónica', icono: '💡' },
+  { id: 'IA', nombre: 'Inteligencia artificial', icono: '🧠' },
+  { id: 'NUC', nombre: 'Tecnología nuclear', icono: '☢️' },
+  { id: 'TER', nombre: 'Ingeniería térmica', icono: '🌡️' },
+  { id: 'SEN', nombre: 'Sensores y control', icono: '📡' },
+  { id: 'HAB', nombre: 'Habitabilidad', icono: '🏠' },
+  { id: 'CUA', nombre: 'Cuántica', icono: '⚛️' },
+  { id: 'PROP', nombre: 'Propulsión', icono: '🚀' },
+  { id: 'FIN', nombre: 'Finanzas', icono: '💰' },
+  { id: 'INI', nombre: 'Inicial', icono: '🚩' },
+  { id: 'MIN', nombre: 'Miniaturización', icono: '🤖' },
+  { id: 'ELE', nombre: 'Electrónica', icono: '🤖' },
+  { id: 'PRE', nombre: 'Precision', icono: '🤖' },
+];
+
 // Syncrodyson — datos de proyectos. Las recetas nuevas no acordadas se identifican en nota_balance.
 // bono: texto e iconos entre corchetes, p. ej. "3 [DS]", "+3 [En]", "+18 [Di][RE]".
 // Duplicación: materiales ajustados al incremento proporcional de PV totales, manteniendo
@@ -753,10 +774,9 @@ window.modulos = [
   {
     "id": "P045",
     "revisada": 1,
-    "tecnica_requiere": ["IA","ROB"],
-    "tecnica_otorga": ["IA"],
+    "tecnica_requiere": ["IA","MIN","ELE"],
+    "tecnica_otorga": ["IA","MIN"],
     "tecnica_tokens": 1,
-
     "nombre": "Robots multipropósito",
     "tipo": "recursoshumanos",
     "puntos": "7 [PV]",
@@ -776,7 +796,7 @@ window.modulos = [
           "Ti": 1,
           "Al": 2,
           "Fe": 2,
-          "Si": 3
+          "Si": 1
         },
         "o": {
           "IE": 1,
@@ -800,15 +820,14 @@ window.modulos = [
 
   {
     "id": "P091",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": [],
-    "tecnica_tokens": 1,
-
+    "tecnica_tokens": 3,
     "nombre": "Incubadora de proyectos",
     "tipo": "produccion",
-    "puntos": "1 [PV]",
-    "puntos_carta": 1,
+    "puntos": "0 [PV]",
+    "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
@@ -830,11 +849,10 @@ window.modulos = [
   },
   {
     "id": "P050",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
-    "tecnica_otorga": [],
+    "tecnica_otorga": ["MAT"],
     "tecnica_tokens": 1,
-
     "nombre": "Refinería de escoria por intercambio iónico",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -852,7 +870,7 @@ window.modulos = [
       {
         "m": {
           "Ti": 2,
-          "Cu": 2,
+          "Cu": 4,
           "Si": 2,
           "Nd": 1
         },
@@ -872,11 +890,10 @@ window.modulos = [
   },
   {
     "id": "P051",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": [],
     "tecnica_tokens": 1,
-
     "nombre": "Laboratorio móvil",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -901,11 +918,10 @@ window.modulos = [
   },
   {
     "id": "P053",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["MAG"],
-    "tecnica_otorga": [],
+    "tecnica_otorga": ["PROP"],
     "tecnica_tokens": 1,
-
     "nombre": "Catapulta electromagnética",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -922,8 +938,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 3,
-          "Cu": 2,
+          "Cu": 3,
           "Al": 2,
           "Ti": 1,
           "Nd": 1
@@ -947,11 +962,10 @@ window.modulos = [
   },
   {
     "id": "P055",
-    "revisada": 0,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [],
+    "revisada": 1,
+    "tecnica_requiere": ["PROP","MAT"],
+    "tecnica_otorga": ["PROP"],
     "tecnica_tokens": 1,
-
     "nombre": "Gancho orbital",
     "tipo": "produccion",
     "puntos": "0 [PV]",
@@ -968,7 +982,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Ti": 3,
+          "Ti": 2,
           "Fe": 5,
           "C": 5
         },
@@ -995,7 +1009,7 @@ window.modulos = [
   // Generadores
   {
     "id": "P032",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": [],
     "tecnica_tokens": 1,
@@ -1006,7 +1020,7 @@ window.modulos = [
     "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
-    "puntos_otros": 3,
+    "puntos_otros": 2,
     "copias": 4,
     "discos": 0,
     "bono": "+2 [PE]",
@@ -1029,8 +1043,8 @@ window.modulos = [
   },
   {
     "id": "P033",
-    "revisada": 0,
-    "tecnica_requiere": [],
+    "revisada": 1,
+    "tecnica_requiere": ["MAT"],
     "tecnica_otorga": ["NUC"],
     "tecnica_tokens": 1,
 
@@ -1064,8 +1078,8 @@ window.modulos = [
   },
   {
     "id": "P034",
-    "revisada": 0,
-    "tecnica_requiere": [],
+    "revisada": 1,
+    "tecnica_requiere": ["TER"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
 
@@ -1086,7 +1100,8 @@ window.modulos = [
       {
         "m": {
           "Cu": 1,
-          "Si": 1
+          "Si": 1,
+          "Ce": 1
         },
         "o": {
           "IM": 1,
@@ -1107,7 +1122,7 @@ window.modulos = [
   },
   {
     "id": "P035",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": [],
     "tecnica_otorga": ["TER"],
     "tecnica_tokens": 1,
@@ -1155,10 +1170,10 @@ window.modulos = [
   // Estructura
   {
     "id": "P092",
-    "revisada": 0,
-    "tecnica_requiere": ["BIO"],
-    "tecnica_otorga": [],
-    "tecnica_tokens": 1,
+    "revisada": 1,
+    "tecnica_requiere": ["BIO","BIO"],
+    "tecnica_otorga": ["BIO"],
+    "tecnica_tokens": 2,
 
     "nombre": "Micelio estructural",
     "tipo": "estructura",
@@ -1174,7 +1189,7 @@ window.modulos = [
     "efecto": "Si hay 4 o más [AI] ingenieros anclados en la esfera, coloca un disco en 1 celda libre de [ES] Estructura.\Puedes volver a colocar el cubo en la etapa 2.",
     "etapas": [
       {
-        "m": { "Ti": 2, "C": 4, "Si": 2, "Al":2  },
+        "m": { "Ti": 1, "C": 5, "Si": 2, "Al":1  },
         "o": { "IE": 1, "IQ": 1, "Tr": 2, "En": 2 }
       },
       {
@@ -1187,10 +1202,10 @@ window.modulos = [
   {
     "id": "P007",
     "revisada": 0,
+    "ignorar_15el": true,
     "tecnica_requiere": [],
     "tecnica_otorga": ["FAB"],
     "tecnica_tokens": 1,
-
     "nombre": "Estructura de fibra de carbono",
     "tipo": "estructura",
     "puntos": "9 [PV]",
@@ -1206,7 +1221,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "C": 20
+          "C": 20,
+          "Ti": 1
         },
         "o": {
           "IQ": 2,
@@ -1216,7 +1232,7 @@ window.modulos = [
       {
         "m": {
           "C": 10,
-          "Fe": 5
+          "Ti": 1
         },
         "o": {
           "IQ": 2,
@@ -1227,13 +1243,11 @@ window.modulos = [
     ],
     "destino": "completados"
   },
-
-
   {
     "id": "P010",
-    "revisada": 0,
-    "tecnica_requiere": [],
-    "tecnica_otorga": ["FAB"],
+    "revisada": 1,
+    "tecnica_requiere": ["MAT","PRE"],
+    "tecnica_otorga": ["FAB","PRE"],
     "tecnica_tokens": 1,
 
     "nombre": "Estructura alveolar de aluminio",
@@ -1251,7 +1265,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 8,
+          "Al": 10,
           "Si": 4
         },
         "o": {
