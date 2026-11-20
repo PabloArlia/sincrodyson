@@ -1236,7 +1236,7 @@ window.modulos = [
     "revisada": 0,
     "ignorar_15el": true,
     "tecnica_requiere": ["MAT", "FAB"],
-    "tecnica_otorga": ["FAB"],
+    "tecnica_otorga": ["MAT"],
     "tecnica_tokens": 1,
     "nombre": "Estructura de fibra de carbono",
     "tipo": "estructura",
@@ -2610,7 +2610,7 @@ window.modulos = [
     "descripcion": "Aditivo ficticio con actuadores diminutos que compensan microdeformaciones en los materiales.",
     "revisada": 1,
     "tecnica_requiere": ["NANO", "NANO", "MAT"],
-    "tecnica_otorga": ["NANO"],
+    "tecnica_otorga": ["NANO","MAT"],
     "tecnica_tokens": 1,
 
     "nombre": "Aditivo de nanobots microactuadores",
