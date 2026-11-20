@@ -57,7 +57,7 @@ window.tecnicas = [
 window.modulos = [
   // Proyectos iniciales: circulan obligatoriamente hacia la derecha.
   {
-    "id": "P064",
+    "id": "P001",
     "descripcion": "IA que coordina equipos de la esfera y responde automáticamente a fallas.",
     "revisada": 1,
     "tecnica_requiere": ["IA", "DAT"],
@@ -105,7 +105,7 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P081",
+    "id": "P002",
     "descripcion": "Drones con cámaras y sensores que recorren la estructura en busca de daños.",
     "revisada": 1,
     "tecnica_requiere": ["IA","PROP"],
@@ -153,7 +153,7 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P019",
+    "id": "P003",
     "descripcion": "Conductores de cobre que distribuyen electricidad a alta tensión por la esfera.",
     "revisada": 1,
     "tecnica_requiere": [],
@@ -189,7 +189,7 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P020",
+    "id": "P004",
     "descripcion": "Conductores livianos que reducen la masa del tendido de alta tensión.",
     "revisada": 1,
     "tecnica_requiere": [],
@@ -225,7 +225,7 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P029",
+    "id": "P005",
     "descripcion": "Un reflector parabólico concentra microondas y las dirige hacia un receptor.",
     "revisada": 1,
     "tecnica_requiere": [],
@@ -294,7 +294,7 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P024",
+    "id": "P006",
     "descripcion": "Superficies de aluminio que dispersan el calor y lo irradian al espacio.",
     "revisada": 1,
     "tecnica_requiere": [],
@@ -329,7 +329,7 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P025",
+    "id": "P007",
     "descripcion": "Tubos sellados donde un fluido se evapora y condensa para transportar calor.",
     "revisada": 1,
     "tecnica_requiere": ["FAB"],
@@ -367,7 +367,7 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P013",
+    "id": "P008",
     "descripcion": "Capas semiconductoras delgadas que convierten luz solar en electricidad.",
     "revisada": 1,
     "tecnica_requiere": [],
@@ -439,7 +439,7 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P008",
+    "id": "P009",
     "descripcion": "Armazón de titanio que combina resistencia mecánica y bajo peso.",
     "revisada": 1,
     "tecnica_requiere": ["FAB"],
@@ -475,7 +475,7 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P009",
+    "id": "P010",
     "descripcion": "Vigas y uniones de acero reforzado que soportan las cargas de la esfera.",
     "revisada": 1,
     "tecnica_requiere": [],
@@ -519,7 +519,7 @@ window.modulos = [
 
   // Economía
   {
-    "id": "P006",
+    "id": "P011",
     "descripcion": "Sistema que registra transacciones en un libro contable compartido y verificable.",
     "revisada": 1,
     "tecnica_requiere": ["DAT"],
@@ -562,7 +562,7 @@ window.modulos = [
     "destino": "etapa:2"
   },
   {
-    "id": "P047",
+    "id": "P012",
     "descripcion": "Alianza comercial que reúne a proveedores y compradores de tierras raras.",
     "revisada": 1,
     "tecnica_requiere": [],
@@ -604,7 +604,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P048",
+    "id": "P013",
     "descripcion": "Alojamiento orbital para visitantes de las instalaciones de la esfera.",
     "revisada": 1,
     "tecnica_requiere": ["HAB"],
@@ -650,7 +650,7 @@ window.modulos = [
 
   // Recursos humanos
   {
-    "id": "P041",
+    "id": "P014",
     "descripcion": "Un robot autónomo asume tareas rutinarias del personal técnico.",
     "revisada": 1,
     "tecnica_requiere": ["IA"],
@@ -686,7 +686,7 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P042",
+    "id": "P015",
     "descripcion": "Formación práctica que incorpora personal a los equipos técnicos.",
     "revisada": 1,
     "tecnica_requiere": [],
@@ -715,7 +715,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P043",
+    "id": "P016",
     "descripcion": "Especialista que desarrolla y ajusta la IA que opera los sistemas de la esfera.",
     "revisada": 1,
     "tecnica_requiere": ["IA", "DAT"],
@@ -759,7 +759,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P044",
+    "id": "P017",
     "descripcion": "Reforma laboral que permite a los operadores negociar sus propias escalas salariales.",
     "revisada": 1,
     "tecnica_requiere": ["FIN"],
@@ -792,7 +792,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P045",
+    "id": "P018",
     "descripcion": "Robots con herramientas intercambiables para inspección, montaje y reparación.",
     "revisada": 1,
     "tecnica_requiere": ["IA","MIN","ELE"],
@@ -840,7 +840,7 @@ window.modulos = [
   },
 
   {
-    "id": "P091",
+    "id": "P019",
     "descripcion": "Programa que apoya equipos para llevar proyectos experimentales a la práctica.",
     "revisada": 1,
     "tecnica_requiere": [],
@@ -870,7 +870,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P050",
+    "id": "P020",
     "descripcion": "Resinas de intercambio iónico separan tierras raras recuperadas de la escoria.",
     "revisada": 1,
     "tecnica_requiere": ["MAT"],
@@ -912,7 +912,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P051",
+    "id": "P021",
     "descripcion": "Unidad portátil que analiza muestras y prepara reactivos en el lugar.",
     "revisada": 1,
     "tecnica_requiere": [],
@@ -941,7 +941,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P053",
+    "id": "P022",
     "descripcion": "Una pista electromagnética acelera y lanza cargamentos sin un cohete.",
     "revisada": 1,
     "tecnica_requiere": ["MAG"],
@@ -986,7 +986,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P055",
+    "id": "P023",
     "descripcion": "Un cable orbital giratorio recoge y transfiere cargas entre trayectorias.",
     "revisada": 1,
     "tecnica_requiere": ["PROP","MAT"],
@@ -1034,7 +1034,7 @@ window.modulos = [
 
   // Generadores
   {
-    "id": "P032",
+    "id": "P024",
     "descripcion": "Paneles que alimentan los equipos locales con electricidad de origen solar.",
     "revisada": 1,
     "tecnica_requiere": [],
@@ -1069,7 +1069,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P033",
+    "id": "P025",
     "descripcion": "Termopares convierten en electricidad el calor de la desintegración radiactiva.",
     "revisada": 1,
     "tecnica_requiere": ["MAT"],
@@ -1105,7 +1105,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P034",
+    "id": "P026",
     "descripcion": "Espejos concentran luz solar en un motor Stirling que acciona un generador.",
     "revisada": 1,
     "tecnica_requiere": ["TER"],
@@ -1150,7 +1150,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P035",
+    "id": "P027",
     "descripcion": "El calor solar expande un gas comprimido que mueve una turbina y genera electricidad.",
     "revisada": 1,
     "tecnica_requiere": [],
@@ -1199,7 +1199,7 @@ window.modulos = [
 
   // Estructura
   {
-    "id": "P092",
+    "id": "P028",
     "descripcion": "Un compuesto de fibras fúngicas forma piezas livianas para la estructura.",
     "revisada": 1,
     "tecnica_requiere": ["BIO","BIO"],
@@ -1231,7 +1231,7 @@ window.modulos = [
     "destino": "etapa:2"
   },
   {
-    "id": "P007",
+    "id": "P029",
     "descripcion": "Un compuesto de fibra de carbono aporta rigidez con poca masa.",
     "revisada": 0,
     "ignorar_15el": true,
@@ -1276,7 +1276,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P010",
+    "id": "P030",
     "descripcion": "Un núcleo en forma de panal da rigidez a paneles livianos de aluminio.",
     "revisada": 1,
     "tecnica_requiere": ["MAT","PRE"],
@@ -1321,7 +1321,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P011",
+    "id": "P031",
     "descripcion": "Aleaciones metálicas amorfas forman piezas resistentes a la deformación.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -1373,7 +1373,7 @@ window.modulos = [
   // Fotovoltaica
 
   {
-    "id": "P014",
+    "id": "P032",
     "descripcion": "Celdas hechas de un solo cristal de silicio convierten luz solar en electricidad.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -1418,7 +1418,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P016",
+    "id": "P033",
     "descripcion": "Lentes o espejos enfocan luz solar sobre celdas fotovoltaicas de alto rendimiento.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -1466,7 +1466,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P017",
+    "id": "P034",
     "descripcion": "Capas semiconductoras aprovechan distintas partes del espectro solar en una misma celda.",
     "revisada": 0,
     "tecnica_requiere": ["FOT"],
@@ -1517,7 +1517,7 @@ window.modulos = [
 
 
   {
-    "id": "P021",
+    "id": "P035",
     "descripcion": "Conductores criogénicos transmiten corriente eléctrica sin resistencia.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -1555,7 +1555,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P022",
+    "id": "P036",
     "descripcion": "Hidruros sometidos a presiones extremas actúan como conductores superconductores.",
     "revisada": 0,
     "tecnica_requiere": ["MAG"],
@@ -1607,7 +1607,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P023",
+    "id": "P037",
     "descripcion": "Un láser de alta potencia envía energía a un receptor óptico distante.",
     "revisada": 0,
     "tecnica_requiere": ["FOT"],
@@ -1659,7 +1659,7 @@ window.modulos = [
 
 
   {
-    "id": "P026",
+    "id": "P038",
     "descripcion": "Nanotubos alineados conducen calor hacia las superficies que lo irradian al espacio.",
     "revisada": 0,
     "tecnica_requiere": ["NANO"],
@@ -1707,7 +1707,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P027",
+    "id": "P039",
     "descripcion": "Láminas de grafeno reparten el calor sobre las superficies que lo irradian al espacio.",
     "revisada": 0,
     "tecnica_requiere": ["NANO"],
@@ -1754,7 +1754,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P028",
+    "id": "P040",
     "descripcion": "Un motor Stirling transforma calor solar concentrado en movimiento para generar electricidad.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -1801,7 +1801,7 @@ window.modulos = [
     ],
     "destino": "completados"
   },{
-  "id": "P085",
+  "id": "P041",
   "descripcion": "Membranas delgadas que ajustan su forma en respuesta a cambios del entorno.",
     "revisada": 0,
     "tecnica_requiere": ["MAT"],
@@ -1851,7 +1851,7 @@ window.modulos = [
   // Microondas
 
   {
-    "id": "P030",
+    "id": "P042",
     "descripcion": "Antenas sincronizadas orientan un haz de microondas ajustando la fase de sus señales.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -1899,7 +1899,7 @@ window.modulos = [
   },
   {
   "nombre": "Fábrica de blindaje exterior",
-    "id": "P089",
+    "id": "P043",
     "descripcion": "Planta que fabrica paneles para proteger la cara exterior de la esfera.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -1944,7 +1944,7 @@ window.modulos = [
 
   // Sensores
   {
-    "id": "P056",
+    "id": "P044",
     "descripcion": "Fibras ópticas detectan deformaciones de la estructura mediante cambios en la luz.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -1992,7 +1992,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P057",
+    "id": "P045",
     "descripcion": "Cámaras infrarrojas revelan zonas de sobrecalentamiento a distancia.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -2038,7 +2038,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P058",
+    "id": "P046",
     "descripcion": "Instrumentos registran la dosis de radiación que acumulan equipos y personas.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -2075,7 +2075,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P059",
+    "id": "P047",
     "descripcion": "Sensores detectan micrometeoritos o registran sus impactos en el revestimiento.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -2113,7 +2113,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P061",
+    "id": "P048",
     "descripcion": "Haces láser comparan distancias para detectar desplazamientos diminutos en la estructura.",
     "revisada": 0,
     "tecnica_requiere": ["FOT"],
@@ -2150,7 +2150,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P062",
+    "id": "P049",
     "descripcion": "Equipos que registran variaciones de tensión y frecuencia en la red eléctrica.",
     "revisada": 0,
     "tecnica_requiere": ["DAT"],
@@ -2201,7 +2201,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P063",
+    "id": "P050",
     "descripcion": "Relojes atómicos dan una referencia común de tiempo a estaciones distantes.",
     "revisada": 0,
     "tecnica_requiere": ["CUA", "DAT"],
@@ -2253,7 +2253,7 @@ window.modulos = [
   // Control
 
   {
-    "id": "P065",
+    "id": "P051",
     "descripcion": "Estación que sigue la posición de sectores, vehículos y cargas en órbita.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -2299,7 +2299,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P066",
+    "id": "P052",
     "descripcion": "Centro que ajusta la generación y el reparto de electricidad según la demanda.",
     "revisada": 0,
     "tecnica_requiere": ["DAT"],
@@ -2346,7 +2346,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P067",
+    "id": "P053",
     "descripcion": "Centro que analiza datos de equipos para prever fallas y programar reparaciones.",
     "revisada": 0,
     "tecnica_requiere": ["DAT"],
@@ -2393,7 +2393,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P068",
+    "id": "P054",
     "descripcion": "Centro que coordina energía, transporte y mantenimiento entre sectores.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -2439,7 +2439,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P070",
+    "id": "P055",
     "descripcion": "Centro que ajusta los controles a partir de los datos de operación de la esfera.",
     "revisada": 0,
     "tecnica_requiere": ["DAT"],
@@ -2474,7 +2474,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P071",
+    "id": "P056",
     "descripcion": "Centro que usa registros históricos para detectar y corregir errores de calibración.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -2524,7 +2524,7 @@ window.modulos = [
 
   // Mantenimiento
   {
-    "id": "P072",
+    "id": "P057",
     "descripcion": "Pasadizos internos que dan acceso a los equipos para inspección y reparación.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -2568,7 +2568,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P073",
+    "id": "P058",
     "descripcion": "Brigada que se desplaza entre sectores en vehículos de propulsión iónica.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -2606,7 +2606,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P076",
+    "id": "P059",
     "descripcion": "Aditivo ficticio con actuadores diminutos que compensan microdeformaciones en los materiales.",
     "revisada": 0,
     "tecnica_requiere": ["NANO"],
@@ -2652,7 +2652,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P077",
+    "id": "P060",
     "descripcion": "Sistema que coordina la respuesta estructural, térmica y eléctrica de la esfera.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -2702,7 +2702,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P080",
+    "id": "P061",
     "descripcion": "Taller móvil que lleva repuestos y herramientas por rieles hasta las zonas dañadas.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -2750,7 +2750,7 @@ window.modulos = [
   },
 
   {
-    "id": "P082",
+    "id": "P062",
     "descripcion": "Ascensores que trasladan técnicos y herramientas entre las capas de la esfera.",
     "revisada": 0,
     "tecnica_requiere": [],
