@@ -2608,9 +2608,9 @@ window.modulos = [
   {
     "id": "P059",
     "descripcion": "Aditivo ficticio con actuadores diminutos que compensan microdeformaciones en los materiales.",
-    "revisada": 0,
-    "tecnica_requiere": ["NANO"],
-    "tecnica_otorga": ["NANO","IA"],
+    "revisada": 1,
+    "tecnica_requiere": ["NANO", "NANO", "MAT"],
+    "tecnica_otorga": ["NANO"],
     "tecnica_tokens": 1,
 
     "nombre": "Aditivo de nanobots microactuadores",
