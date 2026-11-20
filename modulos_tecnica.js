@@ -2256,8 +2256,8 @@ window.modulos = [
     "id": "P051",
     "descripcion": "Estación que sigue la posición de sectores, vehículos y cargas en órbita.",
     "revisada": 0,
-    "tecnica_requiere": [],
-    "tecnica_otorga": ["SEN"],
+    "tecnica_requiere": ["DAT","ELE"],
+    "tecnica_otorga": ["DAT"],
     "tecnica_tokens": 1,
 
     "nombre": "Centro de supervisión orbital",
