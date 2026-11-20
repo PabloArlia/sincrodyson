@@ -1235,7 +1235,7 @@ window.modulos = [
     "descripcion": "Un compuesto de fibra de carbono aporta rigidez con poca masa.",
     "revisada": 0,
     "ignorar_15el": true,
-    "tecnica_requiere": [],
+    "tecnica_requiere": ["MAT", "FAB"],
     "tecnica_otorga": ["FAB"],
     "tecnica_tokens": 1,
     "nombre": "Estructura de fibra de carbono",
