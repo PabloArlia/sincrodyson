@@ -1947,7 +1947,7 @@ window.modulos = [
     "id": "P044",
     "descripcion": "Fibras ópticas detectan deformaciones de la estructura mediante cambios en la luz.",
     "revisada": 0,
-    "tecnica_requiere": [],
+    "tecnica_requiere": ["FOT","MAT"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
 
