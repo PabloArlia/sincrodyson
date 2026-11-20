@@ -1804,7 +1804,7 @@ window.modulos = [
   "id": "P041",
   "descripcion": "Membranas delgadas que ajustan su forma en respuesta a cambios del entorno.",
     "revisada": 0,
-    "tecnica_requiere": ["MAT", "MIN", "BIO"],
+    "tecnica_requiere": ["MIN", "BIO"],
     "tecnica_otorga": [],
     "tecnica_tokens": 1,
 
