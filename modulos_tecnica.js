@@ -1662,7 +1662,7 @@ window.modulos = [
     "id": "P038",
     "descripcion": "Nanotubos alineados conducen calor hacia las superficies que lo irradian al espacio.",
     "revisada": 0,
-    "tecnica_requiere": ["NANO"],
+    "tecnica_requiere": ["NANO","TER"],
     "tecnica_otorga": ["NANO","MAT"],
     "tecnica_tokens": 1,
 
