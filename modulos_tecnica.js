@@ -1610,7 +1610,7 @@ window.modulos = [
     "id": "P037",
     "descripcion": "Un láser de alta potencia envía energía a un receptor óptico distante.",
     "revisada": 0,
-    "tecnica_requiere": ["FOT"],
+    "tecnica_requiere": ["FOT","FOT"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
 
