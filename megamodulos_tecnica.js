@@ -1,6 +1,7 @@
 window.modulos = [
 {
     "id": "P049",
+    "descripcion": "Reactor que aprovecha el calor de la fusión de núcleos ligeros para generar electricidad.",
     "revisada": 0,
     "tecnica_requiere": ["NUC"],
     "tecnica_otorga": [],
@@ -56,6 +57,7 @@ window.modulos = [
   },
   {
     "id": "P054",
+    "descripcion": "Estación planetaria que impulsa vehículos equipados con velas mediante haces láser.",
     "revisada": 0,
     "tecnica_requiere": ["FOT","PROP"],
     "tecnica_otorga": [],
@@ -99,6 +101,7 @@ window.modulos = [
   },
   {
     "id": "P012",
+    "descripcion": "Entramado de nanotubos de carbono diseñado para soportar cargas con muy poca masa.",
     "revisada": 0,
     "tecnica_requiere": ["NANO"],
     "tecnica_otorga": ["NANO","MAT"],
@@ -153,6 +156,7 @@ window.modulos = [
   },
   {
     "id": "P015",
+    "descripcion": "Celdas de película delgada que usan perovskitas para absorber la luz solar.",
     "revisada": 0,
     "tecnica_requiere": [],
     "tecnica_otorga": ["FOT"],
@@ -198,6 +202,7 @@ window.modulos = [
   },
   {
     "id": "P018",
+    "descripcion": "Celdas de arseniuro de galio que convierten luz solar en electricidad con alta eficiencia.",
     "revisada": 0,
     "tecnica_requiere": ["FOT"],
     "tecnica_otorga": ["FOT"],
@@ -248,6 +253,7 @@ window.modulos = [
   },
   {
     "id": "P069",
+    "descripcion": "Sistema ficticio de mando remoto inspirado en la transferencia de estados cuánticos.",
     "revisada": 0,
     "tecnica_requiere": ["CUA"],
     "tecnica_otorga": ["CUA","SEN"],
@@ -297,6 +303,7 @@ window.modulos = [
   },
   {
     "id": "P075",
+    "descripcion": "Jardines que regulan luz, temperatura y riego para sostener su propio microclima.",
     "revisada": 0,
     "tecnica_requiere": [],
     "tecnica_otorga": ["BIO","IA"],
@@ -346,6 +353,7 @@ window.modulos = [
   },
   {
     "id": "P060",
+    "descripcion": "Instrumentos que miden la densidad, energía y composición de las partículas solares.",
     "revisada": 0,
     "tecnica_requiere": [],
     "tecnica_otorga": ["SEN"],
@@ -393,6 +401,7 @@ window.modulos = [
   },
   {
     "id": "P078",
+    "descripcion": "Sensores detectan actividad solar y activan la protección de sectores expuestos.",
     "revisada": 0,
     "tecnica_requiere": [],
     "tecnica_otorga": ["MAT"],
@@ -441,6 +450,7 @@ window.modulos = [
   },
   {
     "id": "P079",
+    "descripcion": "Sensores rastrean micrometeoritos y un láser vaporiza parte de su superficie para desviarlos.",
     "revisada": 0,
     "tecnica_requiere": ["FOT"],
     "tecnica_otorga": ["FOT"],
@@ -489,6 +499,7 @@ window.modulos = [
   },
   {
     "id": "P074",
+    "descripcion": "Instalación con equipos adaptados al ejercicio y al descanso en microgravedad.",
     "revisada": 0,
     "tecnica_requiere": [],
     "tecnica_otorga": ["HAB"],
@@ -538,6 +549,7 @@ window.modulos = [
   },
   {
     "id": "P031",
+    "descripcion": "Óptica de precisión mantiene el haz láser concentrado hasta un receptor lejano.",
     "revisada": 0,
     "tecnica_requiere": ["FOT"],
     "tecnica_otorga": ["FOT"],
@@ -588,6 +600,7 @@ window.modulos = [
   },
   {
     "id": "P084",
+    "descripcion": "Complejo residencial con servicios de alta gama dentro de la esfera.",
     "revisada": 0,
     "tecnica_requiere": [],
     "tecnica_otorga": [],
