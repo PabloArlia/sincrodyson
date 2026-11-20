@@ -2348,9 +2348,9 @@ window.modulos = [
   {
     "id": "P053",
     "descripcion": "Centro que analiza datos de equipos para prever fallas y programar reparaciones.",
-    "revisada": 0,
-    "tecnica_requiere": ["DAT"],
-    "tecnica_otorga": ["IA"],
+    "revisada": 1,
+    "tecnica_requiere": ["DAT", "ELE"],
+    "tecnica_otorga": ["DAT"],
     "tecnica_tokens": 1,
 
     "nombre": "Centro de mantenimiento predictivo",
