@@ -1558,7 +1558,7 @@ window.modulos = [
     "id": "P036",
     "descripcion": "Hidruros sometidos a presiones extremas actúan como conductores superconductores.",
     "revisada": 0,
-    "tecnica_requiere": ["MAG"],
+    "tecnica_requiere": ["MAG","MAT"],
     "tecnica_otorga": ["MAG"],
     "tecnica_tokens": 1,
 
