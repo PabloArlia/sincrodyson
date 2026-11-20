@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Un lugar para la humanidad · Eventos</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f3f3;
+            color: #202723;
+            margin: 0;
+            padding: 16px;
+        }
+        .toolbar {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0 auto 16px;
+            max-width: 133mm;
+        }
+        button {
+            background: white;
+            border: 1px solid #333;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .toolbar small { font-size: 12px; line-height: 1.4; }
+        .sheet {
+            display: grid;
+            grid-template-columns: repeat(4, 41mm);
+            gap: 0;
+            justify-content: center;
+        }
+        .card {
+            width: 41mm;
+            height: 63mm;
+            background: white;
+            border: 1px solid #222;
+            border-radius: 1.8mm;
+            padding: 2.2mm;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            break-inside: avoid;
+        }
+        .heading {
+            display: flex;
+            align-items: center;
+            gap: 1mm;
+            border-bottom: 1px solid #888;
+            padding-bottom: 1mm;
+            min-height: 9mm;
+            flex-shrink: 0;
+        }
+        .heading img { width: 5mm; height: 5mm; object-fit: contain; }
+        h2 { font-size: 8pt; line-height: 1.12; margin: 0; }
+        .event-half {
+            padding-top: 2mm;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+        .event-effect { font-size: 7.5pt; line-height: 1.28; margin: 2mm 0 0; }
+        .event-effect img {
+            width: 4mm;
+            height: 4mm;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+        .initial-rule {
+            margin: 1mm 0 0;
+            font-size: 5.5pt;
+            line-height: 1.05;
+            text-align: center;
+            flex: none;
+        }
+        .standalone-text {
+            flex: 1;
+            min-height: 0;
+            font-size: 7pt;
+            line-height: 1.2;
+            overflow: hidden;
+        }
+        .standalone-text p { margin: 1.2mm 0; }
+        .standalone-text img {
+            width: 3.5mm;
+            height: 3.5mm;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+        .quadrant-instruction {
+            font-size: 6pt;
+            font-weight: 700;
+            line-height: 1.15;
+            display: flex;
+            align-items: center;
+            gap: 1.5mm;
+            margin: 0 0 2mm;
+        }
+        .quadrant-die { width: 4.5mm; height: 4.5mm; flex-shrink: 0; }
+        .effect-overview { display: flex; align-items: center; justify-content: center; gap: 1.2mm; margin: 2mm 0; }
+        .effect-overview img { width: 10mm; height: 10mm; }
+        .effect-reward { display: inline-flex; align-items: center; gap: .5mm; font-size: 13pt; font-weight: 700; white-space: nowrap; }
+        .event-timing { display: flex; align-items: center; gap: 1mm; font-size: 6pt; font-weight: 700; }
+        .event-timing img { width: 4.5mm; height: 4.5mm; }
+        .card:has(.event-timing) .event-half { padding-top: 1mm; }
+        .card:has(.event-timing) .event-effect { font-size: 6.5pt; line-height: 1.15; margin-top: 1mm; }
+        .card:has(.event-timing) .effect-overview { margin: 1mm 0; }
+        .support-formula { display: flex; align-items: center; justify-content: center; gap: 1mm; margin: 1mm 0; font-size: 12pt; font-weight: 700; }
+        .support-formula .formula-term { display: flex; flex-direction: column; align-items: center; width: 9mm; gap: .4mm; font-size: 4.5pt; line-height: 1.1; text-align: center; font-weight: 400; }
+        .support-formula img { width: 8mm; height: 8mm; }
+        .action-overview .formula-term { width: 15mm; font-size: 5pt; }
+        .action-overview img { width: 9mm; height: 9mm; }
+        .card:has(.action-overview) .event-half { padding-top: 1mm; }
+        .card:has(.action-overview) .event-effect { font-size: 6.5pt; line-height: 1.15; margin-top: 1mm; }
+        .card-foot {
+            display: flex;
+            justify-content: space-between;
+            font-size: 5pt;
+            letter-spacing: .06em;
+            color: #59645f;
+            margin-top: 1mm;
+        }
+        .overflow-details { width: 100%; font-size: 12px; line-height: 1.4; }
+        .overflow-details summary { cursor: pointer; }
+        .overflow-details ul { margin: 6px 0; padding-left: 20px; }
+        .print-page, .event-row { display: contents; }
+        .planet-pair { display: flex; gap: 2mm; margin: 2mm 0; }
+        .planet-token { display: grid; flex: 1; justify-items: center; gap: .5mm; padding: .7mm; border: 1px solid #777; border-radius: 1mm; background: #f2eafa; font-size: 7pt; font-weight: bold; }
+        .planet-token svg { width: 8mm; height: 8mm; fill: none; stroke: #222; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+        .planet-layer { display: flex; align-items: center; gap: 1mm; margin-top: 1mm; font-size: 7.5pt; font-weight: bold; }
+        .planet-layer img { width: 5mm; height: 5mm; }
+        .planet-rule { margin: 0 0 1mm; font-size: 7pt; line-height: 1.15; }
+        .planet-event .card-foot { margin-top: auto; }
+        .card.compact .event-effect, .card.compact .standalone-text { font-size: 6.25pt; line-height: 1.12; }
+        .card.compact .standalone-text img, .card.compact .event-effect > img { width: 3mm; height: 3mm; }
+        .card.compact .standalone-text p { margin: .8mm 0; }
+        .event-back { align-items: center; justify-content: space-evenly; }
+        .event-back .brand { font-size: 7pt; letter-spacing: .13em; }
+        .event-back svg { width: 18mm; height: 18mm; }
+        .event-back strong { font-size: 11pt; }
+        @page { size: A4 portrait; margin: 8mm; }
+        @media screen and (max-width: 760px) {
+            .sheet { grid-template-columns: repeat(3, 41mm); }
+        }
+        @media screen and (max-width: 510px) {
+            .sheet { grid-template-columns: repeat(2, 41mm); }
+        }
+        @media print {
+            html, body { margin: 0; padding: 0; background: white; }
+            .toolbar { display: none; }
+            .sheet {
+                display: block;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                font-size: 0;
+            }
+            .print-page {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 280.8mm;
+                break-inside: avoid;
+                break-after: page;
+            }
+            .event-row { display: flex; justify-content: center; }
+            .print-page:last-child { break-after: auto; page-break-after: auto; }
+            .event-row > .card {
+                display: inline-flex;
+                position: relative;
+                top: 0;
+                vertical-align: top;
+                width: 41mm;
+                height: 63mm;
+                margin: 0;
+                font-size: 16px;
+                text-align: left;
+                break-inside: avoid;
+                page-break-inside: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toolbar">
+        <button type="button" onclick="window.print()">Imprimir / guardar PDF</button>
+        <a href="planetas.html">Tableros de planeta</a> · <a href="cartas-planetas.html">Cartas de planeta</a>
+        <a id="side-link" href="?reversos">Reversos de eventos</a>
+        <small><span id="summary"></span> · 41 × 63 mm · A4 al 100 %</small>
+        <details class="overflow-details" id="overflow-details" hidden><summary id="overflow-summary"></summary><ul id="overflow-list"></ul></details>
+    </div>
+    <main class="sheet" id="sheet" aria-label="Cartas de evento"></main>
+    <script src="../V2/planetas.js"></script>
+    <script>
+        const cards = [
+            { id: 'E05', title: 'Producción estable', effect: 'Cada jugador aumenta en 1 [PE] su producción de energía por cada sector con todas sus capas ocupadas por discos, en el que tenga al menos un disco propio. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.' },
+            { id: "E16", title: "Lluvia de voluntarios", effect: "Coloca esta carta en el cuadrante indicado en el reverso del mazo. Cuando vayas a colocar un ingeniero anclado [AI] en este cuadrante, colócalo en esta carta en su lugar. De uno en uno. Cuando haya 4 ingenieros en esta carta, descártala inmediatamente y devuelve los 4 ingenieros a sus reservas." },
+            ...[
+                ['E07', 'ES', 'Estructura'],
+                ['E08', 'FV', 'Fotovoltaica'],
+                ['E09', 'TS', 'Transmisión'],
+                ['E10', 'RF', 'Refrigeración'],
+                ['E11', 'MO', 'Microondas']
+            ].map(([id, layer, name]) => ({
+                id, title: `Foco en la capa ${name}`,
+                effect: `Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] [MD] [${layer}] 4 [PI] En la fase de mantenimiento, el jugador con más discos en la capa ${name} de ese cuadrante gana 4 Puntos inmediatos.\nLuego, descarta esta carta.`
+            })),
+            {
+                id: 'E12', title: 'Soporte a la expansión', formula: true,
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador gana tantos Puntos inmediatos como la cantidad de sectores completos multiplicada por sus discos en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E13', title: 'Recolección de asteroides', formula: 'TI',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe tantas unidades de titanio como la cantidad de sectores completos multiplicada por sus discos en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E14', title: 'Lluvia de micrometeoritos',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] [DX] -1 [PI] Cada jugador pierde 1 Punto inmediato por cada sector de ese cuadrante cuya capa Microondas esté vacía y cuyo disco más exterior sea suyo.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E15', title: 'Asteroide de neodimio', formula: 'ND', perDisk: true,
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe 1 unidad de neodimio por cada disco propio en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E17', title: 'Alineado con la Tierra',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] [MD] [DP] 4 [PI] En la fase de mantenimiento, el jugador con más discos en el área de soporte de ese cuadrante gana 4 Puntos inmediatos.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E18', title: 'Rescate de materiales', formula: 'AL', perDisk: 'DS',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe 1 unidad de aluminio por cada disco propio en ese cuadrante. Cuenta los discos de sus sectores y de su área de soporte.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E19', title: 'Posición clave',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [AI] 3 [PI] El primer jugador que ancle un ingeniero en ese cuadrante gana 3 Puntos inmediatos.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E20', title: 'Revisión del personal anclado', formula: 'PI', perDisk: 'AI', amount: -1,
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] En la fase de mantenimiento, cada jugador pierde 1 Punto inmediato por cada ingeniero propio anclado en ese cuadrante.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E21', title: 'Convoy de construcción', actionOverview: { rank: 'Menos PI', icon: 'DS', action: 'Coloca 1 disco' },
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] El jugador con menos Puntos inmediatos debe colocar un disco en 1 celda libre del sector con menos discos de ese cuadrante. Gana los bonos normalmente.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E22', title: 'Sabotaje', actionOverview: { rank: 'Más PI', icon: 'QD', action: 'Quita 1 disco' },
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Entre quienes tengan discos en este cuadrante, el jugador con más PI debe quitar un disco propio de ese cuadrante a su elección, sin perder PI por la quita.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E28', title: 'Donaciones',
+                effect: [
+                    '[TJ] Todos los jugadores eligen cualquier cantidad de recursos de sus reservas y los esconden en su mano cerrada [MA]. Cuando todos hayan elegido, revelan sus recursos al mismo tiempo.',
+                    'El jugador que haya aportado menos recursos pierde 5 [PI]. Si hay empate en la menor cantidad, todos los jugadores empatados pierden 5 puntos inmediatos.',
+                    '[DR] Después, cada jugador entrega los recursos de su mano al jugador de su derecha. Para este evento, todos los recursos cuentan por igual, sin importar su tipo.'
+                ]
+            },
+            {
+                id: 'E25', title: 'Sector operativo',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [SC] 5 [PI] El primer jugador que complete un sector de ese cuadrante gana 5 Puntos inmediatos.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E26', title: 'Medir el progreso',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] [MD] [SE] 2 [PI] En cada sector de ese cuadrante, el jugador con más discos gana 2 Puntos inmediatos. Si hay empate en el primer lugar, nadie gana esos puntos por ese sector.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E23', title: 'Asignación de transporte', formula: 'TR', perDisk: true,
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe 1 Tr por cada disco propio en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
+            },
+            {
+                id: 'E27', title: 'Pegoneo', formula: 'PI', perDisk: 'MC',
+                effect: 'Cada jugador gana 1 Punto inmediato por cada disco propio en la capa con más discos de la esfera.\nLuego, descarta esta carta. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.'
+            },
+            {
+                id: 'E24', title: 'Llamarada solar', formula: 'PI', perDisk: 'FV',
+                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador gana 1 Punto inmediato por cada disco propio en la capa Fotovoltaica de este cuadrante.\nLuego, descarta esta carta.'
+            }
+        ];
+
+        const planetCards = [["Estructura","Zeus","Hera"],["Estructura","Poseidón","Atenea"],["Estructura","Apolo","Hestia"],["Fotovoltaica","Hades","Artemisa"],["Fotovoltaica","Zeus","Hades"],["Fotovoltaica","Hera","Artemisa"],["Fotovoltaica","Poseidón","Atenea"],["Microondas","Zeus","Atenea"],["Microondas","Hera","Apolo"],["Microondas","Poseidón","Hestia"],["Refrigeración","Hades","Apolo"],["Refrigeración","Artemisa","Hestia"],["Refrigeración","Zeus","Poseidón"],["Transmisión","Hera","Hestia"],["Transmisión","Atenea","Hades"],["Transmisión","Apolo","Artemisa"]].map(([layer, planet1, planet2], i) => ({id:'P'+String(i+1).padStart(2,'0'),planet:true,layer,planets:[planet1,planet2]}));
+        const iconosCapasPlanetarias = {
+            'Estructura': 'ES-estructura',
+            'Fotovoltaica': 'FV-fotovoltaico',
+            'Transmisión': 'TS-transmision',
+            'Refrigeración': 'RF-refrigeracion',
+            'Microondas': 'MO-microondas'
+        };
+        function renderClaim(card) {
+            const pair = card.planets.map(name => {
+                const symbol = planetas.find(planet => planet.nombre === name).simbolo;
+                return `<div class="planet-token"><svg viewBox="0 0 40 40" aria-hidden="true">${symbol}</svg><span>${name}</span></div>`;
+            }).join('');
+            const quadrant = 'Coloca esta carta en el cuadrante indicado en el reverso del mazo.';
+            return `<article class="card planet-event" aria-label="${card.id} · ${card.layer} · ${card.planets.join(' y ')}">
+                <header class="heading">${icon('EV-evento')}<h2>Reclamo planetario</h2></header>
+                <div class="planet-layer">${icon(iconosCapasPlanetarias[card.layer])}${card.layer}</div>
+                <div class="planet-pair">${pair}</div>
+                <p class="planet-rule quadrant-instruction">${quadrantDie()}<span>${quadrant}</span></p>
+                <p class="planet-rule">El primer jugador que coloque un disco en esta capa y cuadrante reclama la carta y sus dos símbolos.</p>
+                ${footer(card)}
+            </article>`;
+        }
+        function icon(file) { return `<img src="../iconos/${file}.svg" alt="">` }
+        const effectIcons = {
+            '1D': ['1d-primer-disco', 'El primer disco colocado'],
+            FM: ['FM-fase-mantenimiento', 'Fase de mantenimiento'],
+            MD: ['MD-mayoria-discos', 'Mayoría de discos'],
+            MC: ['MC-capa-mas-ocupada', 'Capa con más discos de cualquier jugador'],
+            SC: ['SC-sector-completo', 'Sector completo: todas sus capas ocupadas por discos'],
+            SE: ['esfera-sector', 'Sector'],
+            DP: ['DP-disco-soporte', 'Discos propios en el área de soporte de este cuadrante'],
+            DS: ['DS-disco', 'Discos propios en los sectores y el área de soporte de este cuadrante'],
+            DX: ['DX-disco-exterior', 'El disco más exterior de un sector'],
+            QD: ['QD-quitar-disco', 'Quitar disco'],
+            PI: ['PI-puntos-inmediatos', 'Puntos inmediatos'],
+            TI: ['Ti-titanio', 'Titanio'],
+            TR: ['Tr-transporte', 'Transporte'],
+            ND: ['Nd-neodimio', 'Neodimio'],
+            AL: ['Al-aluminio', 'Aluminio'],
+            PE: ['PE-produccion-energia', 'Producción de energía'],
+            ES: ['ES-estructura', 'Estructura'],
+            FV: ['FV-fotovoltaico', 'Fotovoltaica'],
+            TS: ['TS-transmision', 'Transmisión'],
+            RF: ['RF-refrigeracion', 'Refrigeración'],
+            MO: ['MO-microondas', 'Microondas'],
+            MA: ['MA-mano', 'Mano cerrada'],
+            DR: ['DR-pasar-derecha', 'Pasar a la derecha'],
+            TJ: ['TJ-todos-los-jugadores', 'Todos los jugadores'],
+            AI: ['AI-ingeniero-anclado', 'Ingeniero anclado']
+        };
+        function quadrantDie() {
+            return '<svg class="quadrant-die" viewBox="-17 -17 34 34" role="img" aria-label="Consulta el dado del reverso del mazo"><rect x="-15" y="-15" width="30" height="30" rx="4" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#111">?</text></svg>';
+        }
+        function renderEffect(text, dieNumber = 1, overviewHtml = '') {
+            const common = "Coloca esta carta en el cuadrante indicado en el reverso del mazo.";
+            if (text.startsWith(common)) return '<span class="quadrant-instruction">' + quadrantDie(dieNumber) + '<span>' + common + '</span></span>' + renderEffect(text.slice(common.length).trimStart(), dieNumber, overviewHtml);
+            if (text.startsWith('[FM] ')) return '<span class="event-timing">' + renderEffect('[FM]', dieNumber) + 'Fase de mantenimiento</span>' + overviewHtml + renderEffect(text.slice(5), dieNumber);
+            if (overviewHtml) return overviewHtml + renderEffect(text, dieNumber);
+            const overview = text.match(/^((?:\[1d\]|\[MD\])\s+\[[A-Z]{2}\]|\[DX\]|\[AI\]|\[SC\])\s+(-?\d+)\s+(\[PI\])\s+/i);
+            if (overview) return '<span class="effect-overview">' + renderEffect(overview[1], dieNumber) + '<span class="effect-reward">' + overview[2] + renderEffect(overview[3], dieNumber) + '</span></span>' + renderEffect(text.slice(overview[0].length), dieNumber);
+            return text.split(/(\[[A-Z0-9]{2}\])/gi).map(part => {
+                const entry = effectIcons[part.slice(1, -1).toUpperCase()];
+                return part.startsWith('[') && entry ? `<img src="../iconos/${entry[0]}.svg" alt="${entry[1]}" title="${entry[1]}">` : part.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+            }).join('').replace(/\n/g, '<br>');
+        }
+        function footer(card) { return `<footer class="card-foot"><span>SYNCRODYSON</span><span>${card.id}</span></footer>` }
+        function renderActionOverview({ rank, icon, action }) {
+            return '<span class="support-formula action-overview" role="group" aria-label="' + rank + ': ' + action + '">'
+                + '<span class="formula-term">' + renderEffect('[PI]') + rank + '</span>'
+                + '<span class="formula-term">' + renderEffect(`[${icon}]`) + action + '</span></span>';
+        }
+        function supportFormula(reward = 'PI', perDisk = false, amount = 1) {
+            const label = effectIcons[reward][1];
+            const source = typeof perDisk === 'string' ? perDisk : 'DP';
+            if (source === 'MC') return '<span class="support-formula" role="group" aria-label="Cada disco propio en la capa con más discos de la esfera da 1 Punto inmediato">'
+                + renderEffect('[DS] [MC]')
+                + '<span>=</span><span class="effect-reward">1' + renderEffect('[PI]') + '</span></span>';
+            if (perDisk) return `<span class="support-formula" role="group" aria-label="${effectIcons[source][1]}: ${amount} ${label}">`
+                + renderEffect(`[${source}]`) + '<span>=</span><span class="effect-reward">' + amount + renderEffect(`[${reward}]`) + '</span></span>';
+            return `<span class="support-formula" role="group" aria-label="Sectores completos por discos propios en el área de soporte, igual a ${label}">`
+                + '<span class="formula-term">' + renderEffect('[SC]') + 'Sectores completos</span><span>×</span>'
+                + '<span class="formula-term">' + renderEffect('[DP]') + 'Discos propios</span><span>=</span>'
+                + '<span class="formula-term">' + renderEffect(`[${reward}]`) + label + '</span></span>';
+        }
+        function render(card, index) {
+            if (card.planet) return renderClaim(card);
+            const dieNumber = (index % 4) + 1;
+            if (Array.isArray(card.effect)) return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="standalone-text" aria-label="Efecto del evento">${card.effect.map(paragraph => `<p>${renderEffect(paragraph, dieNumber)}</p>`).join('')}</section>${footer(card)}</article>`;
+            const initialWarning = 'Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.';
+            const hasInitialWarning = typeof card.effect === 'string' && card.effect.endsWith(initialWarning);
+            const effect = hasInitialWarning ? card.effect.slice(0, -initialWarning.length).trimEnd() : card.effect;
+            const renderedEffect = renderEffect(effect, dieNumber, card.actionOverview ? renderActionOverview(card.actionOverview) : '');
+            let effectWithFormula = renderedEffect;
+            if (card.formula) {
+                const formula = supportFormula(typeof card.formula === 'string' ? card.formula : 'PI', card.perDisk, card.amount);
+                const timing = 'Fase de mantenimiento</span>';
+                effectWithFormula = renderedEffect.includes(timing) ? renderedEffect.replace(timing, timing + formula) : formula + renderedEffect;
+            }
+            const initialNote = hasInitialWarning ? `<p class="initial-rule">${initialWarning}</p>` : '';
+            return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${effectWithFormula}</p></section>${initialNote}${footer(card)}</article>`;
+        }
+        const deck = [...cards, ...planetCards];
+        const sheet = document.getElementById('sheet');
+        const showBacks = new URLSearchParams(location.search).has('reversos');
+        const quadrants = ['Alpha', 'Beta', 'Gamma', 'Delta'];
+        const pipPatterns = [[[0, 0]], [[-7, -7], [7, 7]], [[-7, -7], [0, 0], [7, 7]], [[-7, -7], [7, -7], [-7, 7], [7, 7]]];
+        function renderBack(index) {
+            const quadrant = index % quadrants.length;
+            const pips = pipPatterns[quadrant].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.4"/>`).join('');
+            return `<article class="card event-back">
+                <strong class="brand">SYNCRODYSON</strong>
+                <svg viewBox="-17 -17 34 34" role="img" aria-label="Dado ${quadrant + 1}">
+                    <rect x="-15" y="-15" width="30" height="30" rx="4" fill="white" stroke="#222" stroke-width="1.5"/>
+                    ${pips}
+                </svg>
+                <strong>${quadrants[quadrant]}</strong>
+            </article>`;
+        }
+        for (let start = 0; start < deck.length; start += 16) {
+            const page = document.createElement('section');
+            page.className = 'print-page';
+            const end = Math.min(start + 16, deck.length);
+            for (let index = start; index < end; index += 4) {
+                const row = document.createElement('div');
+                row.className = 'event-row';
+                const batch = deck.slice(index, Math.min(index + 4, end));
+                row.innerHTML = showBacks
+                    ? batch.map((_, column) => renderBack(index + column)).reverse().join('')
+                    : batch.map((card, column) => render(card, index + column)).join('');
+                page.append(row);
+            }
+            sheet.append(page);
+        }
+        const sideLink = document.getElementById('side-link');
+        if (showBacks) {
+            sideLink.href = 'eventos.html';
+            sideLink.textContent = 'Frentes de eventos';
+            sheet.setAttribute('aria-label', 'Reversos de los eventos');
+        }
+        document.getElementById('summary').textContent = showBacks
+            ? `${deck.length} reversos · Doble cara por borde largo`
+            : `${cards.length} eventos + ${planetCards.length} reclamos planetarios`;
+        function exceedsCardSize(card) {
+            const rect = card.getBoundingClientRect(), style = getComputedStyle(card), tolerance = 1;
+            const bottom = rect.bottom - parseFloat(style.borderBottomWidth) - parseFloat(style.paddingBottom);
+            const right = rect.right - parseFloat(style.borderRightWidth) - parseFloat(style.paddingRight);
+            const left = rect.left + parseFloat(style.borderLeftWidth) + parseFloat(style.paddingLeft);
+            if (card.scrollHeight > card.clientHeight + tolerance || card.scrollWidth > card.clientWidth + tolerance) return true;
+            return [...card.querySelectorAll('*')].some(element => {
+                if (!(element instanceof HTMLElement)) return false;
+                const bounds = element.getBoundingClientRect();
+                if (!bounds.width || !bounds.height) return false;
+                return bounds.bottom > bottom + tolerance || bounds.right > right + tolerance || bounds.left < left - tolerance
+                    || (element.clientHeight > 0 && element.scrollHeight > element.clientHeight + tolerance)
+                    || (element.clientWidth > 0 && element.scrollWidth > element.clientWidth + tolerance);
+            });
+        }
+        function checkCardSize() {
+            const elements = [...sheet.querySelectorAll('.card')];
+            elements.filter(exceedsCardSize).forEach(card => card.classList.add('compact'));
+            const oversized = elements.filter(exceedsCardSize);
+            document.getElementById('overflow-details').hidden = oversized.length === 0;
+            document.getElementById('overflow-summary').textContent = `${oversized.length} cartas exceden los 41 × 63 mm`;
+            document.getElementById('overflow-list').replaceChildren(...oversized.map(card => {
+                const item = document.createElement('li');
+                item.textContent = card.getAttribute('aria-label');
+                return item;
+            }));
+            document.documentElement.dataset.overflowCount = oversized.length;
+        }
+        // Medir con las fuentes y los iconos cargados también detecta texto recortado por overflow:hidden.
+        Promise.all([
+            document.fonts.ready,
+            ...[...document.querySelectorAll('#sheet img')].map(img => img.decode().catch(() => {}))
+        ]).then(checkCardSize);
+    </script>
+</body>
+
+</html>
