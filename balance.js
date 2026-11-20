@@ -35,6 +35,7 @@ function diagnosticoBalance(m,b){
  const numero=n=>Number.isFinite(n)?n.toLocaleString('es-AR',{maximumFractionDigits:2}):'Pendiente';
  return [
   `${m.id} · ${m.nombre}`,
+  ...(m.descripcion ? [m.descripcion, ''] : []),
   ...m.etapas.map((etapa,i)=>`Recursos básicos de la etapa ${i+1}: ${numero(recursosBasicosEtapa(etapa))}`),
   `Costo de materiales: $${numero(b.materiales)}`,
   `Costo de ingenieros: $${numero(b.costosOperativos.ingenieros)}`,
