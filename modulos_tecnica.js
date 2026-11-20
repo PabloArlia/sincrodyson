@@ -1558,8 +1558,8 @@ window.modulos = [
     "id": "P036",
     "descripcion": "Hidruros sometidos a presiones extremas actúan como conductores superconductores.",
     "revisada": 0,
-    "tecnica_requiere": ["MAG","MAT"],
-    "tecnica_otorga": ["MAG"],
+    "tecnica_requiere": ["MAG","MAT","CUA"],
+    "tecnica_otorga": ["CUA"],
     "tecnica_tokens": 1,
 
     "nombre": "Superconductores de hidruros a alta presión",
@@ -2116,7 +2116,7 @@ window.modulos = [
     "id": "P048",
     "descripcion": "Haces láser comparan distancias para detectar desplazamientos diminutos en la estructura.",
     "revisada": 0,
-    "tecnica_requiere": ["FOT","PRE"],
+    "tecnica_requiere": ["FOT","PRE","CUA"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
 
