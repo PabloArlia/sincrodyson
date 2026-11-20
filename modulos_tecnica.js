@@ -522,7 +522,7 @@ window.modulos = [
     "id": "P006",
     "descripcion": "Sistema que registra transacciones en un libro contable compartido y verificable.",
     "revisada": 1,
-    "tecnica_requiere": ["FIN", "DAT"],
+    "tecnica_requiere": ["DAT"],
     "tecnica_otorga": ["FIN"],
     "tecnica_tokens": 1,
 
