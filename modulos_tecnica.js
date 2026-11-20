@@ -2153,8 +2153,8 @@ window.modulos = [
     "id": "P049",
     "descripcion": "Equipos que registran variaciones de tensión y frecuencia en la red eléctrica.",
     "revisada": 0,
-    "tecnica_requiere": ["DAT"],
-    "tecnica_otorga": ["SEN"],
+    "tecnica_requiere": ["ELE","PRE"],
+    "tecnica_otorga": ["ELE"],
     "tecnica_tokens": 1,
 
     "nombre": "Monitores de calidad eléctrica",
