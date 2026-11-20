@@ -247,5 +247,22 @@ function renderTecnica(m){
  </aside>`;
 }
 function draw(){const sheet=document.getElementById('sheet');const conjunto=document.getElementById('module-set').value;const fuentes=conjunto==='ambos'?[modulosTecnica,megamodulosTecnica]:[conjunto==='mega'?megamodulosTecnica:modulosTecnica];if(fuentes.some(fuente=>!Array.isArray(fuente))){sheet.innerHTML='<p>No se pudieron cargar los archivos de módulos de técnica.</p>';document.getElementById('cards-summary').innerHTML='';return;}const filtradas=fuentes.flat().filter(m=>!document.getElementById('hide-single-stage').checked||m.etapas.length!==1);const cartas=document.getElementById('show-copies').checked?filtradas.flatMap(m=>Array.from({length:m.copias??1},()=>m)):filtradas;const paginas=[];for(let i=0;i<cartas.length;i+=6){paginas.push(`<section class="print-page">${cartas.slice(i,i+6).map(render).join('')}</section>`)}sheet.innerHTML=paginas.join('');document.getElementById('cards-summary').innerHTML=renderResumenCartas(filtradas)}
-document.getElementById('module-set').addEventListener('change',draw);document.getElementById('colors').addEventListener('change',draw);document.getElementById('show-copies').addEventListener('change',draw);document.getElementById('hide-single-stage').addEventListener('change',draw);draw();activarDiagnosticoBalance();
+const selectorConjunto=document.getElementById('module-set');
+const claveConjunto='sincrodyson.tecnica.module-set';
+try{
+ const conjuntoGuardado=localStorage.getItem(claveConjunto);
+ if(Array.from(selectorConjunto.options).some(opcion=>opcion.value===conjuntoGuardado)){
+  selectorConjunto.value=conjuntoGuardado;
+ }
+}catch{ /* El selector sigue disponible si el navegador bloquea el almacenamiento. */ }
+selectorConjunto.addEventListener('change',()=>{
+ try{
+  localStorage.setItem(claveConjunto,selectorConjunto.value);
+ }catch{ /* La selección se puede aplicar durante esta visita. */ }
+ draw();
+});
+document.getElementById('colors').addEventListener('change',draw);
+document.getElementById('show-copies').addEventListener('change',draw);
+document.getElementById('hide-single-stage').addEventListener('change',draw);
+draw();activarDiagnosticoBalance();
 </script></body></html>
