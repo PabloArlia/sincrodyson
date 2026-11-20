@@ -1854,7 +1854,7 @@ window.modulos = [
     "id": "P042",
     "descripcion": "Antenas sincronizadas orientan un haz de microondas ajustando la fase de sus señales.",
     "revisada": 0,
-    "tecnica_requiere": ["MAG","ELE"],
+    "tecnica_requiere": ["MAG","ELE","MIN"],
     "tecnica_otorga": ["MAG"],
     "tecnica_tokens": 1,
 
@@ -1947,7 +1947,7 @@ window.modulos = [
     "id": "P044",
     "descripcion": "Fibras ópticas detectan deformaciones de la estructura mediante cambios en la luz.",
     "revisada": 0,
-    "tecnica_requiere": ["FOT","MAT"],
+    "tecnica_requiere": ["FOT","MAT","MIN"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
 
@@ -2153,7 +2153,7 @@ window.modulos = [
     "id": "P049",
     "descripcion": "Equipos que registran variaciones de tensión y frecuencia en la red eléctrica.",
     "revisada": 0,
-    "tecnica_requiere": ["ELE","PRE"],
+    "tecnica_requiere": ["ELE","PRE","MIN"],
     "tecnica_otorga": ["ELE"],
     "tecnica_tokens": 1,
 
