@@ -1995,9 +1995,9 @@ window.modulos = [
     "id": "P045",
     "descripcion": "Cámaras infrarrojas revelan zonas de sobrecalentamiento a distancia.",
     "revisada": 0,
-    "tecnica_requiere": [],
+    "tecnica_requiere": ["FOT","TER","ELE"],
     "tecnica_otorga": ["FOT"],
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 2,
 
     "nombre": "Termografía infrarroja",
     "tipo": "sensores",
