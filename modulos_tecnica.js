@@ -1902,8 +1902,8 @@ window.modulos = [
     "id": "P043",
     "descripcion": "Planta que fabrica paneles para proteger la cara exterior de la esfera.",
     "revisada": 0,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [],
+    "tecnica_requiere": ["FAB","FAB"],
+    "tecnica_otorga": ["FAB"],
     "tecnica_tokens": 1,
 
   "tipo": "microondas",
