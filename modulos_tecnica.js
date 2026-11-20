@@ -2704,8 +2704,8 @@ window.modulos = [
   {
     "id": "P061",
     "descripcion": "Taller móvil que lleva repuestos y herramientas por rieles hasta las zonas dañadas.",
-    "revisada": 0,
-    "tecnica_requiere": [],
+    "revisada": 1,
+    "tecnica_requiere": ["HAB", "PRE", "ELE"],
     "tecnica_otorga": ["FAB"],
     "tecnica_tokens": 1,
 
