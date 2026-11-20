@@ -1376,7 +1376,7 @@ window.modulos = [
     "id": "P032",
     "descripcion": "Celdas hechas de un solo cristal de silicio convierten luz solar en electricidad.",
     "revisada": 0,
-    "tecnica_requiere": [],
+    "tecnica_requiere": ["FAB","PRE"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
 
