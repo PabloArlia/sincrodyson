@@ -1324,7 +1324,7 @@ window.modulos = [
     "id": "P031",
     "descripcion": "Aleaciones metálicas amorfas forman piezas resistentes a la deformación.",
     "revisada": 0,
-    "tecnica_requiere": [],
+    "tecnica_requiere": ["MAT","TER"],
     "tecnica_otorga": ["MAT","FAB"],
     "tecnica_tokens": 1,
 
