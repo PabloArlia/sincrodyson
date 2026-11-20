@@ -2395,9 +2395,9 @@ window.modulos = [
   {
     "id": "P054",
     "descripcion": "Centro que coordina energía, transporte y mantenimiento entre sectores.",
-    "revisada": 0,
-    "tecnica_requiere": [],
-    "tecnica_otorga": ["SEN"],
+    "revisada": 1,
+    "tecnica_requiere": ["DAT", "PRE"],
+    "tecnica_otorga": [],
     "tecnica_tokens": 1,
 
     "nombre": "Centro de coordinación integral",
