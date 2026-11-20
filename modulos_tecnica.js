@@ -2204,7 +2204,7 @@ window.modulos = [
     "id": "P050",
     "descripcion": "Relojes atómicos dan una referencia común de tiempo a estaciones distantes.",
     "revisada": 0,
-    "tecnica_requiere": ["CUA", "DAT"],
+    "tecnica_requiere": ["CUA","PRE"],
     "tecnica_otorga": ["CUA"],
     "tecnica_tokens": 1,
 
