@@ -2570,8 +2570,8 @@ window.modulos = [
   {
     "id": "P058",
     "descripcion": "Brigada que se desplaza entre sectores en vehículos de propulsión iónica.",
-    "revisada": 0,
-    "tecnica_requiere": [],
+    "revisada": 1,
+    "tecnica_requiere": ["PROP", "ELE"],
     "tecnica_otorga": ["PROP"],
     "tecnica_tokens": 1,
 
