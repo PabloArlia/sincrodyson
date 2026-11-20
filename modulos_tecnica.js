@@ -2116,7 +2116,7 @@ window.modulos = [
     "id": "P048",
     "descripcion": "Haces láser comparan distancias para detectar desplazamientos diminutos en la estructura.",
     "revisada": 0,
-    "tecnica_requiere": ["FOT"],
+    "tecnica_requiere": ["FOT","PRE"],
     "tecnica_otorga": ["FOT"],
     "tecnica_tokens": 1,
 
