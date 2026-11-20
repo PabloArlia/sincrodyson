@@ -1757,7 +1757,7 @@ window.modulos = [
     "id": "P040",
     "descripcion": "Un motor Stirling transforma calor solar concentrado en movimiento para generar electricidad.",
     "revisada": 0,
-    "tecnica_requiere": [],
+    "tecnica_requiere": ["FOT","FAB"],
     "tecnica_otorga": ["TER"],
     "tecnica_tokens": 1,
 
