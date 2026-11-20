@@ -2041,7 +2041,7 @@ window.modulos = [
     "id": "P046",
     "descripcion": "Instrumentos registran la dosis de radiación que acumulan equipos y personas.",
     "revisada": 0,
-    "tecnica_requiere": [],
+    "tecnica_requiere": ["NUC","ELE"],
     "tecnica_otorga": ["NUC"],
     "tecnica_tokens": 1,
 
