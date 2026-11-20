@@ -2654,9 +2654,9 @@ window.modulos = [
   {
     "id": "P060",
     "descripcion": "Sistema que coordina la respuesta estructural, térmica y eléctrica de la esfera.",
-    "revisada": 0,
-    "tecnica_requiere": [],
-    "tecnica_otorga": ["SEN"],
+    "revisada": 1,
+    "tecnica_requiere": ["MAT", "TER", "ELE"],
+    "tecnica_otorga": ["ELE"],
     "tecnica_tokens": 1,
 
     "nombre": "Núcleo de control multifísico",
