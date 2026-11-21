@@ -628,8 +628,8 @@ window.modulos = [
   {
     "id": "P113",
     "descripcion": "Sensores rastrean micrometeoritos y un láser vaporiza parte de su superficie para desviarlos.",
-    "revisada": 0,
-    "tecnica_requiere": ["FOT"],
+    "revisada": 1,
+    "tecnica_requiere": ["FOT", "PRE", "DAT", "HAB"],
     "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
 
