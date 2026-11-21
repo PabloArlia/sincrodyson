@@ -774,8 +774,8 @@ window.modulos = [
   {
     "id": "P116",
     "descripcion": "Óptica de precisión mantiene el haz láser concentrado hasta un receptor lejano.",
-    "revisada": 0,
-    "tecnica_requiere": ["FOT"],
+    "revisada": 1,
+    "tecnica_requiere": ["FOT", "PRE", "TER"],
     "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
 
