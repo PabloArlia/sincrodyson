@@ -431,8 +431,8 @@ window.modulos = [
   {
     "id": "P109",
     "descripcion": "Sistema ficticio de mando remoto inspirado en la transferencia de estados cuánticos.",
-    "revisada": 0,
-    "tecnica_requiere": ["CUA"],
+    "revisada": 1,
+    "tecnica_requiere": ["CUA", "MAG", "FOT", "ELE"],
     "tecnica_otorga": ["MEG","CUA"],
     "tecnica_tokens": 1,
 
