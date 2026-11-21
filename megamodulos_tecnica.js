@@ -481,9 +481,9 @@ window.modulos = [
   {
     "id": "P110",
     "descripcion": "Jardines que regulan luz, temperatura y riego para sostener su propio microclima.",
-    "revisada": 0,
-    "tecnica_requiere": [],
-    "tecnica_otorga": ["HAB","MEG"],
+    "revisada": 1,
+    "tecnica_requiere": ["BIO", "HAB", "TER"],
+    "tecnica_otorga": ["MEG", "BIO"],
     "tecnica_tokens": 1,
 
     "nombre": "Jardines bioclimáticos inteligentes",
