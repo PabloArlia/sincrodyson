@@ -4,26 +4,26 @@ window.modulos = [
     "descripcion": "Reactor que aprovecha el calor de la fusión de núcleos ligeros para generar electricidad.",
     "revisada": 1,
     "tecnica_requiere": ["NUC","MAT","TER","PRE","MAG"],
-    "tecnica_otorga": ["NUC"],
-    "tecnica_tokens": 1,
+    "tecnica_otorga": ["MEG"],
+    "tecnica_tokens": "?",
     "nombre": "Centro de fusión nuclear",
     "tipo": "generador",
-    "puntos": "[FJ] 40 [PV]",
-    "puntos_carta": 40,
+    "puntos": "[FJ] 20 [PV]",
+    "puntos_carta": 20,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
-    "puntos_otros": 16,
+    "puntos_otros": 20,
     "copias": 1,
     "discos": 0,
-    "bono": "[TJ] [PE][=<]9 [=] +3 [PE] +1 [PI]",
+    "bono": "[TJ] [PE][=<]9 [=] +3 [PE] +2 [PI]",
     "disco_soporte": 0,
-    "efecto": "Todos los jugadores con 9 [PE] o menos aumenta en 3 sus [PE], no pueden negarse. Ganas 2 [PI] y 1 [FT] ficha de técnica por cada jugador que lo haya echo.\nPuedes volver a colocar el cubo en la etapa 3.\n[FJ] Al final de la partida, obtén 40 [PV] puntos de victoria.",
+    "efecto": "Todos los jugadores con 9 [PE] o menos aumentan en 3 sus [PE] producción de energía, no pueden negarse. Ganas 2 [PI] y 1 [FT] ficha de técnica por cada jugador que lo haya echo.\nPuedes volver a colocar el cubo en la etapa 3.\n[FJ] Al final de la partida, obtén 20 [PV] puntos de victoria.",
     "destino": "etapa:3",
     "etapas": [
       {
         "m": {
-          "Cu": 5,
-          "Fe": 5
+          "Cu": 3,
+          "Fe": 3
         },
         "o": {
           "IQ": 1,
@@ -33,8 +33,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Nd": 3,
-          "Ti": 2
+          "Ti": 2,
+          "Gd": 1
         },
         "o": {
           "IE": 1,
@@ -44,12 +44,12 @@ window.modulos = [
       },
       {
         "m": {
-          "Al": 4,
-          "Gd": 1
+          "Al": 2,
+          "Nd": 1
         },
         "o": {
           "IS": 1,
-          "En": 2
+          "En": 1
         }
       }
     ]
@@ -59,7 +59,7 @@ window.modulos = [
     "descripcion": "Lentes o espejos enfocan luz solar sobre celdas fotovoltaicas de alto rendimiento.",
     "revisada": 1,
     "tecnica_requiere": ["FOT","FOT","TER","MAT"],
-    "tecnica_otorga": ["FOT","FOT"],
+    "tecnica_otorga": ["MEG","FOT"],
     "tecnica_tokens": 1,
     "nombre": "Sistema fotovoltaico de concentración",
     "tipo": "fotovoltaico",
@@ -106,7 +106,7 @@ window.modulos = [
     "descripcion": "Capas semiconductoras aprovechan distintas partes del espectro solar en una misma celda.",
     "revisada": 1,
     "tecnica_requiere": ["FOT","MAT","MIN","PRE"],
-    "tecnica_otorga": ["FOT","PRE"],
+    "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
     "nombre": "Células solares multiunión",
     "tipo": "fotovoltaico",
@@ -152,7 +152,7 @@ window.modulos = [
     "descripcion": "Centro que coordina energía, transporte y mantenimiento entre sectores.",
     "revisada": 1,
     "tecnica_requiere": ["DAT","PRE","HAB","ELE"],
-    "tecnica_otorga": ["DAT"],
+    "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 2,
     "nombre": "Centro de coordinación integral",
     "tipo": "control",
@@ -197,7 +197,7 @@ window.modulos = [
     "descripcion": "Taller móvil que lleva repuestos y herramientas por rieles hasta las zonas dañadas.",
     "revisada": 1,
     "tecnica_requiere": ["HAB", "PRE", "ELE"],
-    "tecnica_otorga": ["FAB"],
+    "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 0,
     "nombre": "Plataforma de reparaciones sobre rieles",
     "tipo": "mantenimiento",
@@ -241,11 +241,10 @@ window.modulos = [
   {
     "id": "P054",
     "descripcion": "Estación planetaria que impulsa vehículos equipados con velas mediante haces láser.",
-    "revisada": 0,
+    "revisada": 1,
     "tecnica_requiere": ["FOT","PRE","PRE","PROP"],
-    "tecnica_otorga": ["PROP","PROP"],
+    "tecnica_otorga": ["MEG","PROP"],
     "tecnica_tokens": 1,
-
     "nombre": "Estación planetaria de propulsión por láser dirigido",
     "tipo": "produccion",
     "puntos": "+1 [PV] [/] [Tr] [=<] 10",
@@ -285,13 +284,13 @@ window.modulos = [
     "id": "P012",
     "descripcion": "Entramado de nanotubos de carbono diseñado para soportar cargas con muy poca masa.",
     "revisada": 1,
-    "tecnica_requiere": ["NANO"],
-    "tecnica_otorga": ["NANO","MAT"],
+    "tecnica_requiere": ["NANO","PRE"],
+    "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
     "nombre": "Estructura de nanotubos de carbono",
     "tipo": "estructura",
-    "puntos": "5 [PV]",
-    "puntos_carta": 5,
+    "puntos": "10 [PV]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
@@ -299,7 +298,7 @@ window.modulos = [
     "discos": 8,
     "bono": "8 [DS][ES]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 8 celdas libres de [ES] Estructura.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 5 [PV] puntos de victoria.",
+    "efecto": "Coloca un disco en 8 celdas libres de [ES] Estructura.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 10 [PV] puntos de victoria.",
     "etapas": [
       {
         "m": {
@@ -337,11 +336,10 @@ window.modulos = [
   {
     "id": "P015",
     "descripcion": "Celdas de película delgada que usan perovskitas para absorber la luz solar.",
-    "revisada": 0,
-    "tecnica_requiere": [],
-    "tecnica_otorga": ["FOT"],
+    "revisada": 1,
+    "tecnica_requiere": ["FOT","MAT","NANO"],
+    "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
-
     "nombre": "Células solares de perovskita",
     "tipo": "fotovoltaico",
     "puntos": "10 [PV]",
@@ -357,9 +355,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Si": 11,
-          "C": 12,
-          "Al": 6
+          "Si": 10,
+          "C": 5
         },
         "o": {
           "IQ": 2,
@@ -368,8 +365,9 @@ window.modulos = [
       },
       {
         "m": {
+          "Al": 6,
           "Cu": 6,
-          "Si": 4
+          "Si": 2
         },
         "o": {
           "IM": 1,
@@ -385,9 +383,8 @@ window.modulos = [
     "descripcion": "Celdas de arseniuro de galio que convierten luz solar en electricidad con alta eficiencia.",
     "revisada": 0,
     "tecnica_requiere": ["FOT"],
-    "tecnica_otorga": ["FOT"],
+    "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
-
     "nombre": "Células solares de arseniuro de galio",
     "tipo": "fotovoltaico",
     "puntos": "10 [PV]",
@@ -436,7 +433,7 @@ window.modulos = [
     "descripcion": "Sistema ficticio de mando remoto inspirado en la transferencia de estados cuánticos.",
     "revisada": 0,
     "tecnica_requiere": ["CUA"],
-    "tecnica_otorga": ["CUA","SEN"],
+    "tecnica_otorga": ["MEG","CUA"],
     "tecnica_tokens": 1,
 
     "nombre": "Control remoto por teletransportación cuántica",
@@ -486,7 +483,7 @@ window.modulos = [
     "descripcion": "Jardines que regulan luz, temperatura y riego para sostener su propio microclima.",
     "revisada": 0,
     "tecnica_requiere": [],
-    "tecnica_otorga": ["BIO","IA"],
+    "tecnica_otorga": ["HAB","MEG"],
     "tecnica_tokens": 1,
 
     "nombre": "Jardines bioclimáticos inteligentes",
@@ -536,7 +533,7 @@ window.modulos = [
     "descripcion": "Instrumentos que miden la densidad, energía y composición de las partículas solares.",
     "revisada": 0,
     "tecnica_requiere": [],
-    "tecnica_otorga": ["SEN"],
+    "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
 
     "nombre": "Analizadores de plasma solar",
@@ -584,7 +581,7 @@ window.modulos = [
     "descripcion": "Sensores detectan actividad solar y activan la protección de sectores expuestos.",
     "revisada": 0,
     "tecnica_requiere": [],
-    "tecnica_otorga": ["MAT"],
+    "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
 
     "nombre": "Anticipación y blindaje contra llamaradas solares",
@@ -633,7 +630,7 @@ window.modulos = [
     "descripcion": "Sensores rastrean micrometeoritos y un láser vaporiza parte de su superficie para desviarlos.",
     "revisada": 0,
     "tecnica_requiere": ["FOT"],
-    "tecnica_otorga": ["FOT"],
+    "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
 
     "nombre": "Detección y ablación láser de micrometeoritos",
@@ -682,7 +679,7 @@ window.modulos = [
     "descripcion": "Instalación con equipos adaptados al ejercicio y al descanso en microgravedad.",
     "revisada": 0,
     "tecnica_requiere": [],
-    "tecnica_otorga": ["HAB"],
+    "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
 
     "nombre": "Gimnasio y spa de gravedad cero",
@@ -732,7 +729,7 @@ window.modulos = [
     "descripcion": "Un motor Stirling transforma calor solar concentrado en movimiento para generar electricidad.",
     "revisada": 1,
     "tecnica_requiere": ["FOT","FAB"],
-    "tecnica_otorga": ["TER"],
+    "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
     "nombre": "Motor Stirling de concentración solar",
     "tipo": "refrigeracion",
@@ -779,7 +776,7 @@ window.modulos = [
     "descripcion": "Óptica de precisión mantiene el haz láser concentrado hasta un receptor lejano.",
     "revisada": 0,
     "tecnica_requiere": ["FOT"],
-    "tecnica_otorga": ["FOT"],
+    "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
 
     "nombre": "Transmisor láser de haz estrecho",

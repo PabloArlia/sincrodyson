@@ -18,6 +18,7 @@ window.tecnicas = [
   { id: 'MIN', nombre: 'Miniaturización', icono: '🤖' },
   { id: 'ELE', nombre: 'Electrónica', icono: '🤖' },
   { id: 'PRE', nombre: 'Precision', icono: '🤖' },
+  { id: 'MEG', nombre: 'Megaproyecto', icono: '🤖' },
 ];
 
 // Syncrodyson — datos de proyectos. Las recetas nuevas no acordadas se identifican en nota_balance.
