@@ -381,8 +381,8 @@ window.modulos = [
   {
     "id": "P108",
     "descripcion": "Celdas de arseniuro de galio que convierten luz solar en electricidad con alta eficiencia.",
-    "revisada": 0,
-    "tecnica_requiere": ["FOT"],
+    "revisada": 1,
+    "tecnica_requiere": ["FOT", "MAT", "PRE"],
     "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
     "nombre": "Células solares de arseniuro de galio",
