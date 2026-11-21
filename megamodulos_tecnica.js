@@ -826,7 +826,7 @@ window.modulos = [
     "id": "P117",
     "descripcion": "Complejo residencial con servicios de alta gama dentro de la esfera.",
     "revisada": 1,
-    "tecnica_requiere": ["HAB", "HAB", "HAB"],
+    "tecnica_requiere": ["HAB", "HAB", "HAB", "BIO"],
     "tecnica_otorga": ["MEG", "HAB"],
     "tecnica_tokens": 1,
 
