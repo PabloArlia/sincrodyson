@@ -277,7 +277,15 @@
             {
                 id: 'E24', title: 'Llamarada solar', formula: 'PI', perDisk: 'FV',
                 effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador gana 1 Punto inmediato por cada disco propio en la capa Fotovoltaica de este cuadrante.\nLuego, descarta esta carta.'
-            }
+            },
+            ...Array.from({ length: 4 }, (_, index) => ({
+                id: `E${29 + index}`, title: 'Subasta de mega proyecto',
+                effect: [
+                    'Revela 1 carta de Mega proyecto.',
+                    '[TJ] Cada jugador coloca cualquier cantidad de fichas de técnica [FT] en su mano cerrada [MA] y las revela al mismo tiempo.',
+                    'Quien ofrezca más se queda con la carta y paga su oferta a la reserva; los demás recuperan sus fichas. Si hay empate, gana quien esté primero en el orden de turno entre los empatados.'
+                ]
+            }))
         ];
 
         function icon(file) { return `<img src="./iconos/${file}.svg" alt="">` }
@@ -303,6 +311,7 @@
             TS: ['TS-transmision', 'Transmisión'],
             RF: ['RF-refrigeracion', 'Refrigeración'],
             MO: ['MO-microondas', 'Microondas'],
+            FT: ['FT-ficha-tecnica', 'Ficha de técnica'],
             MA: ['MA-mano', 'Mano cerrada'],
             DR: ['DR-pasar-derecha', 'Pasar a la derecha'],
             TJ: ['TJ-todos-los-jugadores', 'Todos los jugadores'],
