@@ -1,6 +1,6 @@
 window.modulos = [
 {
-    "id": "P049",
+    "id": "P100",
     "descripcion": "Reactor que aprovecha el calor de la fusión de núcleos ligeros para generar electricidad.",
     "revisada": 1,
     "tecnica_requiere": ["NUC","MAT","TER","PRE","MAG"],
@@ -55,7 +55,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P033",
+    "id": "P101",
     "descripcion": "Lentes o espejos enfocan luz solar sobre celdas fotovoltaicas de alto rendimiento.",
     "revisada": 1,
     "tecnica_requiere": ["FOT","FOT","TER","MAT"],
@@ -102,7 +102,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P034",
+    "id": "P102",
     "descripcion": "Capas semiconductoras aprovechan distintas partes del espectro solar en una misma celda.",
     "revisada": 1,
     "tecnica_requiere": ["FOT","MAT","MIN","PRE"],
@@ -148,7 +148,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P054",
+    "id": "P103",
     "descripcion": "Centro que coordina energía, transporte y mantenimiento entre sectores.",
     "revisada": 1,
     "tecnica_requiere": ["DAT","PRE","HAB","ELE"],
@@ -193,7 +193,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P061",
+    "id": "P104",
     "descripcion": "Taller móvil que lleva repuestos y herramientas por rieles hasta las zonas dañadas.",
     "revisada": 1,
     "tecnica_requiere": ["HAB", "PRE", "ELE"],
@@ -239,7 +239,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P054",
+    "id": "P105",
     "descripcion": "Estación planetaria que impulsa vehículos equipados con velas mediante haces láser.",
     "revisada": 1,
     "tecnica_requiere": ["FOT","PRE","PRE","PROP"],
@@ -281,7 +281,7 @@ window.modulos = [
     ]
   },
   {
-    "id": "P012",
+    "id": "P106",
     "descripcion": "Entramado de nanotubos de carbono diseñado para soportar cargas con muy poca masa.",
     "revisada": 1,
     "tecnica_requiere": ["NANO","PRE"],
@@ -334,7 +334,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P015",
+    "id": "P107",
     "descripcion": "Celdas de película delgada que usan perovskitas para absorber la luz solar.",
     "revisada": 1,
     "tecnica_requiere": ["FOT","MAT","NANO"],
@@ -379,7 +379,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P018",
+    "id": "P108",
     "descripcion": "Celdas de arseniuro de galio que convierten luz solar en electricidad con alta eficiencia.",
     "revisada": 0,
     "tecnica_requiere": ["FOT"],
@@ -429,7 +429,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P069",
+    "id": "P109",
     "descripcion": "Sistema ficticio de mando remoto inspirado en la transferencia de estados cuánticos.",
     "revisada": 0,
     "tecnica_requiere": ["CUA"],
@@ -479,7 +479,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P075",
+    "id": "P110",
     "descripcion": "Jardines que regulan luz, temperatura y riego para sostener su propio microclima.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -529,7 +529,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P060",
+    "id": "P111",
     "descripcion": "Instrumentos que miden la densidad, energía y composición de las partículas solares.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -577,7 +577,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P078",
+    "id": "P112",
     "descripcion": "Sensores detectan actividad solar y activan la protección de sectores expuestos.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -626,7 +626,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P079",
+    "id": "P113",
     "descripcion": "Sensores rastrean micrometeoritos y un láser vaporiza parte de su superficie para desviarlos.",
     "revisada": 0,
     "tecnica_requiere": ["FOT"],
@@ -675,7 +675,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P074",
+    "id": "P114",
     "descripcion": "Instalación con equipos adaptados al ejercicio y al descanso en microgravedad.",
     "revisada": 0,
     "tecnica_requiere": [],
@@ -725,7 +725,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P040",
+    "id": "P115",
     "descripcion": "Un motor Stirling transforma calor solar concentrado en movimiento para generar electricidad.",
     "revisada": 1,
     "tecnica_requiere": ["FOT","FAB"],
@@ -772,7 +772,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P031",
+    "id": "P116",
     "descripcion": "Óptica de precisión mantiene el haz láser concentrado hasta un receptor lejano.",
     "revisada": 0,
     "tecnica_requiere": ["FOT"],
@@ -823,7 +823,7 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P084",
+    "id": "P117",
     "descripcion": "Complejo residencial con servicios de alta gama dentro de la esfera.",
     "revisada": 0,
     "tecnica_requiere": [],
