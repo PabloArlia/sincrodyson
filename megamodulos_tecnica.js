@@ -677,9 +677,9 @@ window.modulos = [
   {
     "id": "P114",
     "descripcion": "Instalación con equipos adaptados al ejercicio y al descanso en microgravedad.",
-    "revisada": 0,
-    "tecnica_requiere": [],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 1,
+    "tecnica_requiere": ["HAB", "HAB"],
+    "tecnica_otorga": ["MEG", "HAB"],
     "tecnica_tokens": 1,
 
     "nombre": "Gimnasio y spa de gravedad cero",
