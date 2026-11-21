@@ -579,8 +579,8 @@ window.modulos = [
   {
     "id": "P112",
     "descripcion": "Sensores detectan actividad solar y activan la protección de sectores expuestos.",
-    "revisada": 0,
-    "tecnica_requiere": [],
+    "revisada": 1,
+    "tecnica_requiere": ["MAT", "MAG", "PRE", "HAB"],
     "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
 
