@@ -531,8 +531,8 @@ window.modulos = [
   {
     "id": "P111",
     "descripcion": "Instrumentos que miden la densidad, energía y composición de las partículas solares.",
-    "revisada": 0,
-    "tecnica_requiere": [],
+    "revisada": 1,
+    "tecnica_requiere": ["MAG", "PRE", "FOT"],
     "tecnica_otorga": ["MEG"],
     "tecnica_tokens": 1,
 
