@@ -56,6 +56,17 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .tech-symbol{font-family:"Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif}
 .tech-icon{align-content:center;line-height:1}.tech-icon .tech-symbol{font-size:7.5pt}.tech-icon .tech-count{font-size:4.8pt;white-space:nowrap}
 .tech-legend-item{display:inline-block}
+
+@media screen and (max-width:700px){
+ body{padding:12px}
+ .toolbar{gap:8px}
+ .sheet{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;justify-items:center}
+ .print-page{display:contents}
+ .card{zoom:var(--mobile-card-zoom,.8)}
+ .cards-summary{position:static;width:100%;max-height:none;margin:10px 0;display:flex;flex-wrap:wrap;gap:4px;box-shadow:none}
+ .summary-row{padding:3px 5px}
+ .tech-legend{font-size:11px}
+}
 </style></head><body><div class="toolbar"><button onclick="window.print()">Imprimir / guardar PDF</button><label>Conjunto: <select id="module-set"><option value="modulos">Módulos</option><option value="mega">Megamódulos</option><option value="ambos">Ambos</option></select></label><label><input id="colors" type="checkbox" checked> has</label><label><input id="show-copies" type="checkbox"> Mostrar copias</label><label><input id="hide-single-stage" type="checkbox"> Ocultar cartas de una sola etapa</label><small>Cartas de 64 × 120 mm · datos editables en <code>modulos_tecnica.js</code> y <code>megamodulos_tecnica.js</code></small></div>
     <div class="tech-legend">Borde interior violeta: alguna etapa supera 15 recursos básicos (Fe, Cu, Si, Ti, Al y C). <b>Requiere (borde rojo) / otorga (verde):</b> <span id="tech-legend-items"></span> · <b>+1 T</b> ficha de Técnica al completar. Las tecnologías verdes solo cuentan mientras conserves la carta.</div><aside class="cards-summary" id="cards-summary" aria-label="Cantidad de cartas por tipo"></aside><main class="sheet" id="sheet"></main><script src="./modulos_tecnica.js"></script><script>const modulosTecnica=window.modulos;window.modulos=undefined;</script><script src="./megamodulos_tecnica.js"></script><script>const megamodulosTecnica=window.modulos;</script><script src="./balance.js"></script>
 <script>
@@ -268,5 +279,5 @@ selectorConjunto.addEventListener('change',()=>{
 document.getElementById('colors').addEventListener('change',draw);
 document.getElementById('show-copies').addEventListener('change',draw);
 document.getElementById('hide-single-stage').addEventListener('change',draw);
-draw();activarDiagnosticoBalance();
+function ajustarEscalaCartaMobile(){document.documentElement.style.setProperty('--mobile-card-zoom',Math.min(.95,Math.max(.6,(document.documentElement.clientWidth-24)/453)));}\najustarEscalaCartaMobile();window.addEventListener('resize',ajustarEscalaCartaMobile);\ndraw();activarDiagnosticoBalance();
 </script></body></html>
