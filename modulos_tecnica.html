@@ -54,18 +54,18 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
  .icono-hibrido{position:relative;display:inline-block;width:100%;height:100%;min-width:24px;min-height:24px;overflow:hidden;vertical-align:middle}.icono-hibrido img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain}.icono-hibrido img:first-child{clip-path:inset(0 50% 0 0)}.icono-hibrido img:nth-child(2){clip-path:inset(0 0 0 50%)}.icono-hibrido:after{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid currentColor;transform:translateX(-.5px)}
 .card-body{display:flex;gap:1mm;flex:1;min-height:0}.card-main{display:flex;flex-direction:column;gap:1mm;flex:1;min-width:0;min-height:0}.tech-column{flex:0 0 10mm;width:10mm;border-left:1px solid #bbb;padding-left:.7mm;display:flex;flex-direction:column;justify-content:space-between;gap:.5mm}.tech-group{display:flex;flex-direction:column;align-items:center;gap:.4mm}.tech-label{font-size:5pt;font-weight:bold;text-transform:uppercase;text-align:center}.tech-icon{width:8mm;min-height:5.5mm;display:grid;place-items:center;border:1px solid #b00020;border-radius:1mm;font-size:6pt;font-weight:bold;background:#fff;color:#111}.tech-icon.reward{border-color:#52845a;background:#bde8c2}.tech-icon.token{border-color:#26733a;background:#79c989}.tech-empty{font-size:6pt;color:#777}.tech-legend{font-size:12px;line-height:1.4;max-width:1100px}.tech-legend b{white-space:nowrap}@media print{.tech-legend{display:none}}
 .tech-symbol{font-family:"Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif}
-.tech-icon{align-content:center;line-height:1}.tech-icon .tech-symbol{font-size:7.5pt}
+.tech-icon{align-content:center;line-height:1}.tech-icon .tech-symbol{font-size:7.5pt}.tech-icon .tech-count{font-size:4.8pt;white-space:nowrap}
 .tech-legend-item{display:inline-block}
 </style></head><body><div class="toolbar"><button onclick="window.print()">Imprimir / guardar PDF</button><label>Conjunto: <select id="module-set"><option value="modulos">Módulos</option><option value="mega">Megamódulos</option><option value="ambos">Ambos</option></select></label><label><input id="colors" type="checkbox" checked> has</label><label><input id="show-copies" type="checkbox"> Mostrar copias</label><label><input id="hide-single-stage" type="checkbox"> Ocultar cartas de una sola etapa</label><small>Cartas de 64 × 120 mm · datos editables en <code>modulos_tecnica.js</code> y <code>megamodulos_tecnica.js</code></small></div>
-    <div class="tech-legend">Borde interior violeta: alguna etapa supera 15 recursos básicos (Fe, Cu, Si, Ti, Al y C). <b>Requiere (borde rojo) / otorga (verde):</b> <span id="tech-legend-items"></span> · <b>+1 T</b> ficha de Técnica al completar. Las tecnologías verdes solo cuentan mientras conserves la carta.</div><aside class="cards-summary" id="cards-summary" aria-label="Cantidad de cartas por tipo"></aside><main class="sheet" id="sheet"></main><script src="./modulos_tecnica.js"></script><script>const modulosTecnica=window.modulos;window.modulos=undefined;</script><script src="./megamodulos_tecnica.js"></script><script>const megamodulosTecnica=window.modulos;</script><script src="./balance.js"></script>
+    <div class="tech-legend">Borde interior violeta: alguna etapa supera 15 recursos básicos (Fe, Cu, Si, Ti, Al y C). <b>Requiere (borde rojo) / otorga (verde):</b> <span id="tech-legend-items"></span> · <b>+1 T</b> ficha de Técnica al completar. Las tecnologías verdes solo cuentan mientras conserves la carta.</div><aside class="cards-summary" id="cards-summary" aria-label="Cantidad de cartas por tipo"></aside><main class="sheet" id="sheet"></main><script src="./modulos_tecnica.js"></script><script>const modulosTecnica=window.modulos;window.modulos=undefined;</script><script src="./megamodulos_tecnica.js"></script><script>const megamodulosTecnica=window.modulos;</script><script src="../balance.js"></script>
 <script>
 // Ajuste de balance de esta variante, sin cambiar los costos de juego.
 const balanceBaseTecnica=balanceModulo;
 const diagnosticoBaseTecnica=diagnosticoBalance;
 balanceModulo=function(m){
  const b=balanceBaseTecnica(m);
- const requisito=(m.tecnica_requiere||[]).length*5;
- const recompensa=((m.tecnica_otorga||[]).length+(m.tecnica_tokens||0))*5;
+ const requisito=Object.values(m.tecnica_requiere||{}).reduce((total,cantidad)=>total+cantidad,0)*5;
+ const recompensa=(Object.values(m.tecnica_otorga||{}).reduce((total,cantidad)=>total+cantidad,0)+(m.tecnica_tokens||0))*5;
  const costoOriginal=b.costo;
  b.costo=costoOriginal+requisito-recompensa;
  b.costoAjustado=b.costo*b.factor;
@@ -166,7 +166,7 @@ const catalogoIconos={
  PR:{nombre:"produccion",archivo:"PR-produccion.svg"}
 };
 function imagenIcono(id){
- if(id==='CS')return '<span class="icono-hibrido" title="Control / Sensores" aria-label="Control / Sensores"><img src="./iconos/CO-control.svg" alt=""><img src="./iconos/SN-sensores.svg" alt=""></span>';
+ if(id==='CS')return '<span class="icono-hibrido" title="Control / Sensores" aria-label="Control / Sensores"><img src="../iconos/CO-control.svg" alt=""><img src="./iconos/SN-sensores.svg" alt=""></span>';
  if(!Object.hasOwn(catalogoIconos,id))return '';
  const variante=['II','IQ','IE','IM','IS','AI','AQ','AM','AE','AS'].includes(id)&&!document.getElementById('colors').checked?'#sin-color':'';
  return `<img${id==='/'?' class="separator-bar"':''} src="./iconos/${catalogoIconos[id].archivo}${variante}" alt="" aria-hidden="true">`;
@@ -213,7 +213,7 @@ function render(m){
  const efecto=lineasEfecto.filter(linea=>linea.trim()!==avisoAnclados).join('\n').trim();
  const consultas=[];
  if(muestraAviso)consultas.push(reglaAnclados);
- if(m.tecnica_otorga?.includes('MEG'))consultas.push('la técnica comodín Megaproyecto');
+ if(Object.hasOwn(m.tecnica_otorga||{},'MEG'))consultas.push('la técnica comodín Megaproyecto');
  const puntos=typeof m.puntos==='number'?`${m.puntos} [PV]`:String(m.puntos??'0 [PV]');
  const balance=balanceModulo(m),costo=balance.costo;
  const insignia=renderBono(m.bono);
@@ -235,16 +235,16 @@ function simboloTecnica(icono){
 document.getElementById('tech-legend-items').innerHTML=tecnicas.map(({id,nombre,icono})=>
  `<span class="tech-legend-item">${simboloTecnica(icono)} <b>${escapeHTML(id)}</b> ${escapeHTML(nombre)}</span>`
 ).join(' · ');
-function insigniaTecnica(id,clase=''){
+function insigniaTecnica(id,cantidad,clase=''){
  const tecnica=tecnicasPorId.get(id);
  const nombre=escapeHTML(tecnica?.nombre??id);
- return `<span class="tech-icon ${clase}" role="img" title="${nombre}" aria-label="${nombre}">${simboloTecnica(tecnica?.icono)}<span>${escapeHTML(id)}</span></span>`;
+ return `<span class="tech-icon ${clase}" role="img" title="${cantidad} ${nombre}" aria-label="${cantidad} ${nombre}"><span class="tech-count">${cantidad} ${escapeHTML(id)}</span>${simboloTecnica(tecnica?.icono)}</span>`;
 }
 function renderTecnica(m){
  const fichas=m.tecnica_tokens??0;
  const unidad=fichas===1?'ficha':'fichas';
- const requisitos=(m.tecnica_requiere||[]).map(id=>insigniaTecnica(id)).join('');
- const recompensas=(m.tecnica_otorga||[]).map(id=>insigniaTecnica(id,'reward')).join('');
+ const requisitos=Object.entries(m.tecnica_requiere||{}).map(([id,cantidad])=>insigniaTecnica(id,cantidad)).join('');
+ const recompensas=Object.entries(m.tecnica_otorga||{}).map(([id,cantidad])=>insigniaTecnica(id,cantidad,'reward')).join('');
  return `<aside class="tech-column" aria-label="Experiencia técnica">
   <div class="tech-group"><span class="tech-label">Requiere</span>${requisitos||'<span class="tech-empty">&mdash;</span>'}</div>
   <div class="tech-group"><span class="tech-label">Otorga</span>${recompensas}<span class="tech-icon token" title="Gana ${fichas} ${unidad} de Técnica al completar">+${fichas} T</span></div>
