@@ -1043,7 +1043,7 @@ window.modulos = [
     "descripcion": "Un cable orbital giratorio recoge y transfiere cargas entre trayectorias.",
     "revisada": 0,
     "tecnica_requiere": {
-      "PROP": 1,
+      "PROP": 3,
       "MAT": 1
     },
     "tecnica_otorga": {
