@@ -177,7 +177,7 @@ window.modulos = [
       "DAT": 1,
       "PRE": 2,
       "HAB": 1,
-      "IA": 2
+      "ELE": 2
     },
     "tecnica_otorga": {
       "MEG": 1
