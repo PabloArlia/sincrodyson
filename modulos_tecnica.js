@@ -1131,7 +1131,8 @@ window.modulos = [
     "revisada": 0,
     "tecnica_requiere": {
       "NUC": 1,
-      "MAT": 1
+      "MAT": 1,
+      "TER": 2
     },
     "tecnica_otorga": {
       "NUC": 1
