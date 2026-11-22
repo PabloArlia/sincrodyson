@@ -175,9 +175,9 @@ window.modulos = [
     "revisada": 0,
     "tecnica_requiere": {
       "DAT": 1,
-      "PRE": 1,
+      "PRE": 2,
       "HAB": 1,
-      "ELE": 1
+      "IA": 2
     },
     "tecnica_otorga": {
       "MEG": 1
@@ -227,8 +227,8 @@ window.modulos = [
     "revisada": 0,
     "tecnica_requiere": {
       "HAB": 1,
-      "PRE": 1,
-      "ELE": 1
+      "PRE": 3,
+      "ELE": 3
     },
     "tecnica_otorga": {
       "MEG": 1
