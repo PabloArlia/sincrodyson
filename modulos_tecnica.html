@@ -76,7 +76,7 @@ const diagnosticoBaseTecnica=diagnosticoBalance;
 balanceModulo=function(m){
  const b=balanceBaseTecnica(m);
  const requisito=Object.values(m.tecnica_requiere||{}).reduce((total,cantidad)=>total+cantidad,0)*2;
- const recompensa=(Object.values(m.tecnica_otorga||{}).reduce((total,cantidad)=>total+cantidad,0)+(m.tecnica_tokens||0))*2;
+ const recompensa=Object.values(m.tecnica_otorga||{}).reduce((total,cantidad)=>total+cantidad,0)*2+(m.tecnica_tokens||0)*3;
  const costoOriginal=b.costo;
  b.costo=costoOriginal+requisito-recompensa;
  b.costoAjustado=b.costo*b.factor;
