@@ -4,11 +4,11 @@ window.modulos = [
     "descripcion": "Reactor que aprovecha el calor de la fusión de núcleos ligeros para generar electricidad.",
     "revisada": 0,
     "tecnica_requiere": {
-      "NUC": 1,
+      "NUC": 2,
       "MAT": 1,
-      "TER": 1,
-      "PRE": 1,
-      "MAG": 1
+      "TER": 2,
+      "PRE": 2,
+      "MAG": 3
     },
     "tecnica_otorga": {
       "MEG": 1
