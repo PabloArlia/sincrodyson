@@ -1094,7 +1094,7 @@ window.modulos = [
     "descripcion": "Paneles que alimentan los equipos locales con electricidad de origen solar.",
     "revisada": 0,
     "tecnica_requiere": {
-      "FOTO": 1
+      "FOT": 1
     },
     "tecnica_otorga": {},
     "tecnica_tokens": 1,
@@ -1131,8 +1131,7 @@ window.modulos = [
     "revisada": 0,
     "tecnica_requiere": {
       "NUC": 1,
-      "MAT": 1,
-      "TER": 2
+      "MAT": 1
     },
     "tecnica_otorga": {
       "NUC": 1
@@ -1170,7 +1169,7 @@ window.modulos = [
     "descripcion": "Espejos concentran luz solar en un motor Stirling que acciona un generador.",
     "revisada": 0,
     "tecnica_requiere": {
-      "TER": 1
+      "TER": 2
     },
     "tecnica_otorga": {
       "FOT": 1
