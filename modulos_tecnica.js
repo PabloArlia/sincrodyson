@@ -1867,7 +1867,7 @@ window.modulos = [
     "descripcion": "Planta que fabrica paneles para proteger la cara exterior de la esfera.",
     "revisada": 0,
     "tecnica_requiere": {
-      "FAB": 2
+      "FAB": 4
     },
     "tecnica_otorga": {
       "FAB": 1
