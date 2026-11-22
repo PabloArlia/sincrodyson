@@ -1,10 +1,18 @@
 window.modulos = [
-{
+  {
     "id": "P100",
     "descripcion": "Reactor que aprovecha el calor de la fusión de núcleos ligeros para generar electricidad.",
-    "revisada": 1,
-    "tecnica_requiere": ["NUC","MAT","TER","PRE","MAG"],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "NUC": 1,
+      "MAT": 1,
+      "TER": 1,
+      "PRE": 1,
+      "MAG": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1
+    },
     "tecnica_tokens": "?",
     "nombre": "Centro de fusión nuclear",
     "tipo": "generador",
@@ -57,9 +65,16 @@ window.modulos = [
   {
     "id": "P101",
     "descripcion": "Lentes o espejos enfocan luz solar sobre celdas fotovoltaicas de alto rendimiento.",
-    "revisada": 1,
-    "tecnica_requiere": ["FOT","FOT","TER","MAT"],
-    "tecnica_otorga": ["MEG","FOT"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FOT": 2,
+      "TER": 1,
+      "MAT": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1,
+      "FOT": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Sistema fotovoltaico de concentración",
     "tipo": "fotovoltaico",
@@ -104,9 +119,16 @@ window.modulos = [
   {
     "id": "P102",
     "descripcion": "Capas semiconductoras aprovechan distintas partes del espectro solar en una misma celda.",
-    "revisada": 1,
-    "tecnica_requiere": ["FOT","MAT","MIN","PRE"],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FOT": 1,
+      "MAT": 1,
+      "MIN": 1,
+      "PRE": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Células solares multiunión",
     "tipo": "fotovoltaico",
@@ -150,9 +172,16 @@ window.modulos = [
   {
     "id": "P103",
     "descripcion": "Centro que coordina energía, transporte y mantenimiento entre sectores.",
-    "revisada": 1,
-    "tecnica_requiere": ["DAT","PRE","HAB","ELE"],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "DAT": 1,
+      "PRE": 1,
+      "HAB": 1,
+      "ELE": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1
+    },
     "tecnica_tokens": 2,
     "nombre": "Centro de coordinación integral",
     "tipo": "control",
@@ -195,9 +224,15 @@ window.modulos = [
   {
     "id": "P104",
     "descripcion": "Taller móvil que lleva repuestos y herramientas por rieles hasta las zonas dañadas.",
-    "revisada": 1,
-    "tecnica_requiere": ["HAB", "PRE", "ELE"],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "HAB": 1,
+      "PRE": 1,
+      "ELE": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1
+    },
     "tecnica_tokens": 0,
     "nombre": "Plataforma de reparaciones sobre rieles",
     "tipo": "mantenimiento",
@@ -232,7 +267,7 @@ window.modulos = [
         "o": {
           "Tr": 2,
           "AE": 2,
-          "En": 2 
+          "En": 2
         }
       }
     ],
@@ -241,9 +276,16 @@ window.modulos = [
   {
     "id": "P105",
     "descripcion": "Estación planetaria que impulsa vehículos equipados con velas mediante haces láser.",
-    "revisada": 1,
-    "tecnica_requiere": ["FOT","PRE","PRE","PROP"],
-    "tecnica_otorga": ["MEG","PROP"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FOT": 1,
+      "PRE": 2,
+      "PROP": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1,
+      "PROP": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Estación planetaria de propulsión por láser dirigido",
     "tipo": "produccion",
@@ -283,9 +325,14 @@ window.modulos = [
   {
     "id": "P106",
     "descripcion": "Entramado de nanotubos de carbono diseñado para soportar cargas con muy poca masa.",
-    "revisada": 1,
-    "tecnica_requiere": ["NANO","PRE"],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "NANO": 1,
+      "PRE": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Estructura de nanotubos de carbono",
     "tipo": "estructura",
@@ -336,9 +383,15 @@ window.modulos = [
   {
     "id": "P107",
     "descripcion": "Celdas de película delgada que usan perovskitas para absorber la luz solar.",
-    "revisada": 1,
-    "tecnica_requiere": ["FOT","MAT","NANO"],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FOT": 1,
+      "MAT": 1,
+      "NANO": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Células solares de perovskita",
     "tipo": "fotovoltaico",
@@ -381,9 +434,15 @@ window.modulos = [
   {
     "id": "P108",
     "descripcion": "Celdas de arseniuro de galio que convierten luz solar en electricidad con alta eficiencia.",
-    "revisada": 1,
-    "tecnica_requiere": ["FOT", "MAT", "PRE"],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FOT": 1,
+      "MAT": 1,
+      "PRE": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Células solares de arseniuro de galio",
     "tipo": "fotovoltaico",
@@ -431,11 +490,18 @@ window.modulos = [
   {
     "id": "P109",
     "descripcion": "Sistema ficticio de mando remoto inspirado en la transferencia de estados cuánticos.",
-    "revisada": 1,
-    "tecnica_requiere": ["CUA", "MAG", "FOT", "ELE"],
-    "tecnica_otorga": ["MEG","CUA"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "CUA": 1,
+      "MAG": 1,
+      "FOT": 1,
+      "ELE": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1,
+      "CUA": 1
+    },
     "tecnica_tokens": 1,
-
     "nombre": "Control remoto por teletransportación cuántica",
     "tipo": "control",
     "puntos": "10 [PV]",
@@ -481,11 +547,17 @@ window.modulos = [
   {
     "id": "P110",
     "descripcion": "Jardines que regulan luz, temperatura y riego para sostener su propio microclima.",
-    "revisada": 1,
-    "tecnica_requiere": ["BIO", "HAB", "TER"],
-    "tecnica_otorga": ["MEG", "BIO"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "BIO": 1,
+      "HAB": 1,
+      "TER": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1,
+      "BIO": 1
+    },
     "tecnica_tokens": 1,
-
     "nombre": "Jardines bioclimáticos inteligentes",
     "tipo": "mantenimiento",
     "puntos": "10 [PV]",
@@ -531,11 +603,16 @@ window.modulos = [
   {
     "id": "P111",
     "descripcion": "Instrumentos que miden la densidad, energía y composición de las partículas solares.",
-    "revisada": 1,
-    "tecnica_requiere": ["MAG", "PRE", "FOT"],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "MAG": 1,
+      "PRE": 1,
+      "FOT": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1
+    },
     "tecnica_tokens": 1,
-
     "nombre": "Analizadores de plasma solar",
     "tipo": "sensores",
     "puntos": "10 [PV]",
@@ -579,11 +656,17 @@ window.modulos = [
   {
     "id": "P112",
     "descripcion": "Sensores detectan actividad solar y activan la protección de sectores expuestos.",
-    "revisada": 1,
-    "tecnica_requiere": ["MAT", "MAG", "PRE", "HAB"],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "MAT": 1,
+      "MAG": 1,
+      "PRE": 1,
+      "HAB": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1
+    },
     "tecnica_tokens": 1,
-
     "nombre": "Anticipación y blindaje contra llamaradas solares",
     "tipo": "mantenimiento",
     "puntos": "20 [PV]",
@@ -628,11 +711,17 @@ window.modulos = [
   {
     "id": "P113",
     "descripcion": "Sensores rastrean micrometeoritos y un láser vaporiza parte de su superficie para desviarlos.",
-    "revisada": 1,
-    "tecnica_requiere": ["FOT", "PRE", "DAT", "HAB"],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FOT": 1,
+      "PRE": 1,
+      "DAT": 1,
+      "HAB": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1
+    },
     "tecnica_tokens": 1,
-
     "nombre": "Detección y ablación láser de micrometeoritos",
     "tipo": "mantenimiento",
     "puntos": "20 [PV]",
@@ -677,11 +766,15 @@ window.modulos = [
   {
     "id": "P114",
     "descripcion": "Instalación con equipos adaptados al ejercicio y al descanso en microgravedad.",
-    "revisada": 1,
-    "tecnica_requiere": ["HAB", "HAB"],
-    "tecnica_otorga": ["MEG", "HAB"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "HAB": 2
+    },
+    "tecnica_otorga": {
+      "MEG": 1,
+      "HAB": 1
+    },
     "tecnica_tokens": 1,
-
     "nombre": "Gimnasio y spa de gravedad cero",
     "tipo": "mantenimiento",
     "puntos": "2 [PV] [/] [AI]",
@@ -727,9 +820,15 @@ window.modulos = [
   {
     "id": "P115",
     "descripcion": "Un motor Stirling transforma calor solar concentrado en movimiento para generar electricidad.",
-    "revisada": 1,
-    "tecnica_requiere": ["FOT", "FAB", "TER"],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FOT": 1,
+      "FAB": 1,
+      "TER": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Motor Stirling de concentración solar",
     "tipo": "refrigeracion",
@@ -774,11 +873,16 @@ window.modulos = [
   {
     "id": "P116",
     "descripcion": "Óptica de precisión mantiene el haz láser concentrado hasta un receptor lejano.",
-    "revisada": 1,
-    "tecnica_requiere": ["FOT", "PRE", "TER"],
-    "tecnica_otorga": ["MEG"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FOT": 1,
+      "PRE": 1,
+      "TER": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1
+    },
     "tecnica_tokens": 1,
-
     "nombre": "Transmisor láser de haz estrecho",
     "tipo": "microondas",
     "puntos": "20 [PV]",
@@ -825,11 +929,16 @@ window.modulos = [
   {
     "id": "P117",
     "descripcion": "Complejo residencial con servicios de alta gama dentro de la esfera.",
-    "revisada": 1,
-    "tecnica_requiere": ["HAB", "HAB", "HAB", "BIO"],
-    "tecnica_otorga": ["MEG", "HAB"],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "HAB": 3,
+      "BIO": 1
+    },
+    "tecnica_otorga": {
+      "MEG": 1,
+      "HAB": 1
+    },
     "tecnica_tokens": 1,
-
     "nombre": "Urbanización de lujo interna",
     "tipo": "recursoshumanos",
     "puntos": "0 [PV]",
