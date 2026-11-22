@@ -645,8 +645,8 @@ window.modulos = [
     "tecnica_tokens": 0,
     "nombre": "Hotel solar",
     "tipo": "economia",
-    "puntos": "0 [PI]",
-    "puntos_carta": 0,
+    "puntos": "1 [PV]",
+    "puntos_carta": 1,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 6,
@@ -654,7 +654,7 @@ window.modulos = [
     "discos": 0,
     "bono": "+10 [Di] [RE]",
     "disco_soporte": 0,
-    "efecto": "Cobra del banco $10. \nPuedes volver a colocar el cubo en la etapa 2.",
+    "efecto": "Cobra del banco $10. \nPuedes volver a colocar el cubo en la etapa 2.\\nAl final del juego, gana 1 punto de victoria.",
     "destino": "etapa:2",
     "etapas": [
       {
