@@ -279,5 +279,7 @@ selectorConjunto.addEventListener('change',()=>{
 document.getElementById('colors').addEventListener('change',draw);
 document.getElementById('show-copies').addEventListener('change',draw);
 document.getElementById('hide-single-stage').addEventListener('change',draw);
-function ajustarEscalaCartaMobile(){document.documentElement.style.setProperty('--mobile-card-zoom',Math.min(.95,Math.max(.6,(document.documentElement.clientWidth-24)/453)));}\najustarEscalaCartaMobile();window.addEventListener('resize',ajustarEscalaCartaMobile);\ndraw();activarDiagnosticoBalance();
+function ajustarEscalaCartaMobile(){document.documentElement.style.setProperty('--mobile-card-zoom',Math.min(.95,Math.max(.6,(document.documentElement.clientWidth-24)/453)));}
+ajustarEscalaCartaMobile();window.addEventListener('resize',ajustarEscalaCartaMobile);
+draw();activarDiagnosticoBalance();
 </script></body></html>
