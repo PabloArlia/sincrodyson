@@ -748,8 +748,9 @@ window.modulos = [
     "descripcion": "Especialista que desarrolla y ajusta la IA que opera los sistemas de la esfera.",
     "revisada": 0,
     "tecnica_requiere": {
+      "ELE": 1,
       "IA": 1,
-      "DAT": 1
+      "DAT": 2
     },
     "tecnica_otorga": {
       "IA": 1,
