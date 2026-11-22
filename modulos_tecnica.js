@@ -2058,7 +2058,7 @@ window.modulos = [
     "descripcion": "Sensores detectan micrometeoritos o registran sus impactos en el revestimiento.",
     "revisada": 0,
     "tecnica_requiere": {
-      "ELE": 1,
+      "ELE": 2,
       "FAB": 1,
       "MIN": 1
     },
