@@ -1458,7 +1458,7 @@ window.modulos = [
     "revisada": 0,
     "tecnica_requiere": {
       "FAB": 1,
-      "PRE": 1,
+      "PRE": 2,
       "MIN": 1
     },
     "tecnica_otorga": {
@@ -1507,8 +1507,8 @@ window.modulos = [
     "descripcion": "Conductores criogénicos transmiten corriente eléctrica sin resistencia.",
     "revisada": 0,
     "tecnica_requiere": {
-      "MAG": 1,
-      "TER": 1
+      "MAG": 2,
+      "TER": 2
     },
     "tecnica_otorga": {
       "MAG": 1
