@@ -377,8 +377,7 @@ window.modulos = [
         "m": {
           "Cu": 5,
           "Al": 5,
-          "Fe": 2,
-          "Ti": 3
+          "Ti": 4
         },
         "o": {
           "IM": 2,
