@@ -57,7 +57,7 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .tech-icon{align-content:center;line-height:1}.tech-icon .tech-symbol{font-size:7.5pt}.tech-icon .tech-count{font-size:4.8pt;white-space:nowrap}
 .tech-legend-item{display:inline-block}
 </style></head><body><div class="toolbar"><button onclick="window.print()">Imprimir / guardar PDF</button><label>Conjunto: <select id="module-set"><option value="modulos">Módulos</option><option value="mega">Megamódulos</option><option value="ambos">Ambos</option></select></label><label><input id="colors" type="checkbox" checked> has</label><label><input id="show-copies" type="checkbox"> Mostrar copias</label><label><input id="hide-single-stage" type="checkbox"> Ocultar cartas de una sola etapa</label><small>Cartas de 64 × 120 mm · datos editables en <code>modulos_tecnica.js</code> y <code>megamodulos_tecnica.js</code></small></div>
-    <div class="tech-legend">Borde interior violeta: alguna etapa supera 15 recursos básicos (Fe, Cu, Si, Ti, Al y C). <b>Requiere (borde rojo) / otorga (verde):</b> <span id="tech-legend-items"></span> · <b>+1 T</b> ficha de Técnica al completar. Las tecnologías verdes solo cuentan mientras conserves la carta.</div><aside class="cards-summary" id="cards-summary" aria-label="Cantidad de cartas por tipo"></aside><main class="sheet" id="sheet"></main><script src="./modulos_tecnica.js"></script><script>const modulosTecnica=window.modulos;window.modulos=undefined;</script><script src="./megamodulos_tecnica.js"></script><script>const megamodulosTecnica=window.modulos;</script><script src="../balance.js"></script>
+    <div class="tech-legend">Borde interior violeta: alguna etapa supera 15 recursos básicos (Fe, Cu, Si, Ti, Al y C). <b>Requiere (borde rojo) / otorga (verde):</b> <span id="tech-legend-items"></span> · <b>+1 T</b> ficha de Técnica al completar. Las tecnologías verdes solo cuentan mientras conserves la carta.</div><aside class="cards-summary" id="cards-summary" aria-label="Cantidad de cartas por tipo"></aside><main class="sheet" id="sheet"></main><script src="./modulos_tecnica.js"></script><script>const modulosTecnica=window.modulos;window.modulos=undefined;</script><script src="./megamodulos_tecnica.js"></script><script>const megamodulosTecnica=window.modulos;</script><script src="./balance.js"></script>
 <script>
 // Ajuste de balance de esta variante, sin cambiar los costos de juego.
 const balanceBaseTecnica=balanceModulo;
@@ -166,7 +166,7 @@ const catalogoIconos={
  PR:{nombre:"produccion",archivo:"PR-produccion.svg"}
 };
 function imagenIcono(id){
- if(id==='CS')return '<span class="icono-hibrido" title="Control / Sensores" aria-label="Control / Sensores"><img src="../iconos/CO-control.svg" alt=""><img src="./iconos/SN-sensores.svg" alt=""></span>';
+ if(id==='CS')return '<span class="icono-hibrido" title="Control / Sensores" aria-label="Control / Sensores"><img src="./iconos/CO-control.svg" alt=""><img src="./iconos/SN-sensores.svg" alt=""></span>';
  if(!Object.hasOwn(catalogoIconos,id))return '';
  const variante=['II','IQ','IE','IM','IS','AI','AQ','AM','AE','AS'].includes(id)&&!document.getElementById('colors').checked?'#sin-color':'';
  return `<img${id==='/'?' class="separator-bar"':''} src="./iconos/${catalogoIconos[id].archivo}${variante}" alt="" aria-hidden="true">`;
