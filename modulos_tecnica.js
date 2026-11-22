@@ -994,7 +994,7 @@ window.modulos = [
     "descripcion": "Una pista electromagnética acelera y lanza cargamentos sin un cohete.",
     "revisada": 0,
     "tecnica_requiere": {
-      "MAG": 1
+      "MAG": 4
     },
     "tecnica_otorga": {
       "PROP": 1
