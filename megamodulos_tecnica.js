@@ -67,7 +67,7 @@ window.modulos = [
     "descripcion": "Lentes o espejos enfocan luz solar sobre celdas fotovoltaicas de alto rendimiento.",
     "revisada": 0,
     "tecnica_requiere": {
-      "FOT": 2,
+      "FOT": 3,
       "TER": 1,
       "MAT": 1
     },
@@ -121,7 +121,7 @@ window.modulos = [
     "descripcion": "Capas semiconductoras aprovechan distintas partes del espectro solar en una misma celda.",
     "revisada": 0,
     "tecnica_requiere": {
-      "FOT": 1,
+      "FOT": 2,
       "MAT": 1,
       "MIN": 1,
       "PRE": 1
