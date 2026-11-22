@@ -86,7 +86,7 @@ window.modulos = [
           "Nd": 1,
           "Fe": 6,
           "Si": 5,
-          "Cu": 2
+          "Cu": 3
         },
         "o": {
           "IS": 1,
@@ -138,7 +138,7 @@ window.modulos = [
         "m": {
           "Fe": 5,
           "Al": 5,
-          "Si": 2
+          "Si": 4
         },
         "o": {
           "En": 2,
