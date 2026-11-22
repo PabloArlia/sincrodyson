@@ -1604,7 +1604,7 @@ window.modulos = [
     "descripcion": "Un láser de alta potencia envía energía a un receptor óptico distante.",
     "revisada": 0,
     "tecnica_requiere": {
-      "FOT": 1,
+      "FOT": 3,
       "CUA": 1
     },
     "tecnica_otorga": {
