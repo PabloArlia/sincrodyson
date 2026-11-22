@@ -919,7 +919,7 @@ window.modulos = [
     "descripcion": "Resinas de intercambio iónico separan tierras raras recuperadas de la escoria.",
     "revisada": 0,
     "tecnica_requiere": {
-      "MAT": 1
+      "MAT": 2
     },
     "tecnica_otorga": {
       "MAT": 1
