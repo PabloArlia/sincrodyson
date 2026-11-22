@@ -837,7 +837,8 @@ window.modulos = [
     "tecnica_requiere": {
       "IA": 3,
       "MIN": 1,
-      "ELE": 1
+      "ELE": 1,
+      "BIO": 3
     },
     "tecnica_otorga": {
       "IA": 1,
@@ -1304,7 +1305,7 @@ window.modulos = [
     "ignorar_15el": true,
     "tecnica_requiere": {
       "MAT": 1,
-      "FAB": 1
+      "FAB": 2
     },
     "tecnica_otorga": {
       "MAT": 1
@@ -1353,7 +1354,7 @@ window.modulos = [
     "revisada": 0,
     "tecnica_requiere": {
       "MAT": 1,
-      "PRE": 1
+      "PRE": 2
     },
     "tecnica_otorga": {
       "FAB": 1,
