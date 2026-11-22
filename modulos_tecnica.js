@@ -66,7 +66,7 @@ window.modulos = [
     "tecnica_otorga": {
       "INI": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 3,
     "nombre": "Control autónomo por IA",
     "tipo": "control_sensores",
     "inicial": true,
@@ -79,7 +79,7 @@ window.modulos = [
     "discos": 0,
     "bono": "2 [DP][CO] [/] 2[DP][SN] [/] 1[DP][CO]+1[DP][SN]",
     "disco_soporte": 2,
-    "efecto": "Coloca un disco en 2 celdas libres de [CO] Control o [SN] Sensores de una o varias áreas de soporte.\nObtén 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [CO] Control o [SN] Sensores de una o varias áreas de soporte.\nObtén 3 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -119,7 +119,7 @@ window.modulos = [
     "tecnica_otorga": {
       "INI": 1
     },
-    "tecnica_tokens": 2,
+    "tecnica_tokens": 3,
     "nombre": "Drones de inspección autónoma",
     "tipo": "mantenimiento",
     "inicial": true,
@@ -132,7 +132,7 @@ window.modulos = [
     "discos": 0,
     "bono": "2 [DP][MN]",
     "disco_soporte": 2,
-    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento de una o varias áreas de soporte.\nObtén 2 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento de una o varias áreas de soporte.\nObtén 3 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -169,7 +169,7 @@ window.modulos = [
     "tecnica_otorga": {
       "INI": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 2,
     "nombre": "Red de alto voltaje de cobre",
     "tipo": "transmision",
     "inicial": true,
@@ -182,7 +182,7 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][TS] [=]1[QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [TS] Transmisión del mismo cuadrante.\nObtén 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [TS] Transmisión del mismo cuadrante.\nObtén 2 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -207,7 +207,7 @@ window.modulos = [
     "tecnica_otorga": {
       "INI": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 2,
     "nombre": "Red de alto voltaje ultraligera",
     "tipo": "transmision",
     "inicial": true,
@@ -220,7 +220,7 @@ window.modulos = [
     "discos": 4,
     "bono": "4 [DS][TS] [=<]2[QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 4 celdas libres de [TS] Transmisión de hasta 2 cuadrantes distintos.\nObtén 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 4 celdas libres de [TS] Transmisión de hasta 2 cuadrantes distintos.\nObtén 2 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -245,7 +245,7 @@ window.modulos = [
     "tecnica_otorga": {
       "INI": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 2,
     "nombre": "Antena parabólica de microondas",
     "tipo": "microondas",
     "inicial": true,
@@ -258,7 +258,7 @@ window.modulos = [
     "discos": 4,
     "bono": "4 [DS][MO][AD]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 4 celdas libres y adyacentes de [MO] Microondas.\nObtén 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 4 celdas libres y adyacentes de [MO] Microondas.\nObtén 2 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -284,7 +284,7 @@ window.modulos = [
     "tecnica_otorga": {
       "INI": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 2,
     "nombre": "Blindaje compuesto",
     "tipo": "microondas",
     "inicial": true,
@@ -297,7 +297,7 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][MO] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [MO] Microondas del mismo cuadrante.\nObtén 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MO] Microondas del mismo cuadrante.\nObtén 2 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -322,7 +322,7 @@ window.modulos = [
     "tecnica_otorga": {
       "INI": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 2,
     "nombre": "Radiadores térmicos de aluminio",
     "tipo": "refrigeracion",
     "inicial": true,
@@ -335,7 +335,7 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][RF] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [RF] Refrigeración del mismo cuadrante.\nObtén 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [RF] Refrigeración del mismo cuadrante.\nObtén 2 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -358,7 +358,7 @@ window.modulos = [
     "tecnica_otorga": {
       "INI": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 2,
     "nombre": "Red de tubos de calor",
     "tipo": "refrigeracion",
     "inicial": true,
@@ -371,7 +371,7 @@ window.modulos = [
     "discos": 4,
     "bono": "4 [DS][RF]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 4 celdas libres de [RF] Refrigeración.\nObtén 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 4 celdas libres de [RF] Refrigeración.\nObtén 2 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -397,7 +397,7 @@ window.modulos = [
     "tecnica_otorga": {
       "INI": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 2,
     "nombre": "Paneles fotovoltaicos de película delgada",
     "tipo": "fotovoltaica",
     "inicial": true,
@@ -410,7 +410,7 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][FV] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [FV] Fotovoltaica de un cuadrante.\nObtén 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [FV] Fotovoltaica de un cuadrante.\nObtén 2 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -436,7 +436,7 @@ window.modulos = [
     "tecnica_otorga": {
       "INI": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 2,
     "nombre": "Celdas solares de silicio",
     "tipo": "fotovoltaico",
     "inicial": true,
@@ -449,7 +449,7 @@ window.modulos = [
     "discos": 4,
     "bono": "4 [DS][FV] [=<]2[QU][AD]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 4 celdas libres de [FV] Fotovoltaica de hasta 2 cuadrantes distintos adyacentes.\nObtén 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 4 celdas libres de [FV] Fotovoltaica de hasta 2 cuadrantes distintos adyacentes.\nObtén 2 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -476,7 +476,7 @@ window.modulos = [
     "tecnica_otorga": {
       "INI": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 2,
     "nombre": "Estructura de titanio",
     "tipo": "estructura",
     "inicial": true,
@@ -489,7 +489,7 @@ window.modulos = [
     "discos": 4,
     "bono": "4 [DS][ES]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 4 celdas libres de [ES] Estructura.\nObtén 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 4 celdas libres de [ES] Estructura.\nObtén 2 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
@@ -513,7 +513,7 @@ window.modulos = [
     "tecnica_otorga": {
       "INI": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 2,
     "nombre": "Estructura de acero reforzado",
     "tipo": "estructura",
     "inicial": true,
@@ -526,7 +526,7 @@ window.modulos = [
     "discos": 2,
     "bono": "2 [DS][ES][AD] [=][QU]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [ES] Estructura adyacentes de un mismo cuadrante.\nObtén 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Coloca un disco en 2 celdas libres de [ES] Estructura adyacentes de un mismo cuadrante.\nObtén 2 [FT] fichas de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
