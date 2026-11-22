@@ -1093,7 +1093,9 @@ window.modulos = [
     "id": "P026",
     "descripcion": "Paneles que alimentan los equipos locales con electricidad de origen solar.",
     "revisada": 0,
-    "tecnica_requiere": {},
+    "tecnica_requiere": {
+      "FOTO": 1
+    },
     "tecnica_otorga": {},
     "tecnica_tokens": 1,
     "nombre": "Paneles solares",
@@ -1128,6 +1130,7 @@ window.modulos = [
     "descripcion": "Termopares convierten en electricidad el calor de la desintegración radiactiva.",
     "revisada": 0,
     "tecnica_requiere": {
+      "NUC": 1,
       "MAT": 1
     },
     "tecnica_otorga": {
