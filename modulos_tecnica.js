@@ -835,7 +835,7 @@ window.modulos = [
     "descripcion": "Robots con herramientas intercambiables para inspección, montaje y reparación.",
     "revisada": 0,
     "tecnica_requiere": {
-      "IA": 1,
+      "IA": 3,
       "MIN": 1,
       "ELE": 1
     },
