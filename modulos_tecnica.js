@@ -1816,7 +1816,7 @@ window.modulos = [
     "tecnica_requiere": {
       "MAG": 1,
       "ELE": 1,
-      "MIN": 1
+      "MIN": 2
     },
     "tecnica_otorga": {
       "MAG": 1
