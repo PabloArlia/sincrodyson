@@ -60,13 +60,10 @@ window.modulos = [
     "id": "P001",
     "descripcion": "IA que coordina equipos de la esfera y responde automáticamente a fallas.",
     "revisada": 1,
-    "tecnica_requiere": [
-      "IA",
-      "DAT"
-    ],
-    "tecnica_otorga": [
-      "INI"
-    ],
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "INI": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Control autónomo por IA",
     "tipo": "control_sensores",
@@ -113,13 +110,10 @@ window.modulos = [
     "id": "P002",
     "descripcion": "Drones con cámaras y sensores que recorren la estructura en busca de daños.",
     "revisada": 1,
-    "tecnica_requiere": [
-      "IA",
-      "PROP"
-    ],
-    "tecnica_otorga": [
-      "INI"
-    ],
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "INI": 1
+    },
     "tecnica_tokens": 2,
     "nombre": "Drones de inspección autónoma",
     "tipo": "mantenimiento",
@@ -166,10 +160,10 @@ window.modulos = [
     "id": "P003",
     "descripcion": "Conductores de cobre que distribuyen electricidad a alta tensión por la esfera.",
     "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [
-      "INI"
-    ],
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "INI": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Red de alto voltaje de cobre",
     "tipo": "transmision",
@@ -204,10 +198,10 @@ window.modulos = [
     "id": "P004",
     "descripcion": "Conductores livianos que reducen la masa del tendido de alta tensión.",
     "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [
-      "INI"
-    ],
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "INI": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Red de alto voltaje ultraligera",
     "tipo": "transmision",
@@ -242,10 +236,10 @@ window.modulos = [
     "id": "P005",
     "descripcion": "Un reflector parabólico concentra microondas y las dirige hacia un receptor.",
     "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [
-      "INI"
-    ],
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "INI": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Antena parabólica de microondas",
     "tipo": "microondas",
@@ -278,13 +272,13 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P033",
+    "id": "P006",
     "descripcion": "Capas de distintos materiales que absorben impactos y protegen la estructura.",
     "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [
-      "INI"
-    ],
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "INI": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Blindaje compuesto",
     "tipo": "microondas",
@@ -316,13 +310,13 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P033",
+    "id": "P007",
     "descripcion": "Superficies de aluminio que dispersan el calor y lo irradian al espacio.",
     "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [
-      "INI"
-    ],
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "INI": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Radiadores térmicos de aluminio",
     "tipo": "refrigeracion",
@@ -352,15 +346,13 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P033",
+    "id": "P008",
     "descripcion": "Tubos sellados donde un fluido se evapora y condensa para transportar calor.",
     "revisada": 1,
-    "tecnica_requiere": [
-      "FAB"
-    ],
-    "tecnica_otorga": [
-      "INI"
-    ],
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "INI": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Red de tubos de calor",
     "tipo": "refrigeracion",
@@ -393,13 +385,13 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P033",
+    "id": "P009",
     "descripcion": "Capas semiconductoras delgadas que convierten luz solar en electricidad.",
     "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [
-      "INI"
-    ],
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "INI": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Paneles fotovoltaicos de película delgada",
     "tipo": "fotovoltaica",
@@ -432,13 +424,13 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P034",
+    "id": "P010",
     "descripcion": "Celdas de silicio que convierten directamente la luz solar en corriente eléctrica.",
     "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [
-      "INI"
-    ],
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "INI": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Celdas solares de silicio",
     "tipo": "fotovoltaico",
@@ -472,15 +464,13 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P033",
+    "id": "P011",
     "descripcion": "Armazón de titanio que combina resistencia mecánica y bajo peso.",
     "revisada": 1,
-    "tecnica_requiere": [
-      "FAB"
-    ],
-    "tecnica_otorga": [
-      "INI"
-    ],
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "INI": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Estructura de titanio",
     "tipo": "estructura",
@@ -511,13 +501,13 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P034",
+    "id": "P012",
     "descripcion": "Vigas y uniones de acero reforzado que soportan las cargas de la esfera.",
     "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [
-      "INI"
-    ],
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "INI": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Estructura de acero reforzado",
     "tipo": "estructura",
@@ -549,15 +539,15 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P033",
+    "id": "P013",
     "descripcion": "Sistema que registra transacciones en un libro contable compartido y verificable.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "DAT"
-    ],
-    "tecnica_otorga": [
-      "FIN"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "DAT": 1
+    },
+    "tecnica_otorga": {
+      "FIN": 1
+    },
     "tecnica_tokens": 0,
     "nombre": "Centro de blockchain",
     "tipo": "economia",
@@ -595,13 +585,13 @@ window.modulos = [
     "destino": "etapa:2"
   },
   {
-    "id": "P034",
+    "id": "P014",
     "descripcion": "Alianza comercial que reúne a proveedores y compradores de tierras raras.",
-    "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [
-      "FIN"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "FIN": 1
+    },
     "tecnica_tokens": 0,
     "nombre": "Consorcio de minerales estratégicos",
     "tipo": "economia",
@@ -638,15 +628,15 @@ window.modulos = [
     ]
   },
   {
-    "id": "P033",
+    "id": "P015",
     "descripcion": "Alojamiento orbital para visitantes de las instalaciones de la esfera.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "HAB"
-    ],
-    "tecnica_otorga": [
-      "FIN"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "HAB": 1
+    },
+    "tecnica_otorga": {
+      "FIN": 1
+    },
     "tecnica_tokens": 0,
     "nombre": "Hotel solar",
     "tipo": "economia",
@@ -683,13 +673,13 @@ window.modulos = [
     ]
   },
   {
-    "id": "P034",
+    "id": "P016",
     "descripcion": "Un robot autónomo asume tareas rutinarias del personal técnico.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "IA"
-    ],
-    "tecnica_otorga": [],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "IA": 1
+    },
+    "tecnica_otorga": {},
     "tecnica_tokens": 1,
     "nombre": "Reemplazo por asistente robótico autónomo",
     "tipo": "recursoshumanos",
@@ -720,11 +710,11 @@ window.modulos = [
     "destino": "derecha"
   },
   {
-    "id": "P033",
+    "id": "P017",
     "descripcion": "Formación práctica que incorpora personal a los equipos técnicos.",
-    "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [],
+    "revisada": 0,
+    "tecnica_requiere": {},
+    "tecnica_otorga": {},
     "tecnica_tokens": 0,
     "nombre": "Pasantía",
     "tipo": "recursoshumanos",
@@ -749,17 +739,17 @@ window.modulos = [
     ]
   },
   {
-    "id": "P034",
+    "id": "P018",
     "descripcion": "Especialista que desarrolla y ajusta la IA que opera los sistemas de la esfera.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "IA",
-      "DAT"
-    ],
-    "tecnica_otorga": [
-      "IA",
-      "DAT"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "IA": 1,
+      "DAT": 1
+    },
+    "tecnica_otorga": {
+      "IA": 1,
+      "DAT": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Programador de IA",
     "tipo": "recursoshumanos",
@@ -799,15 +789,15 @@ window.modulos = [
     ]
   },
   {
-    "id": "P033",
+    "id": "P019",
     "descripcion": "Reforma laboral que permite a los operadores negociar sus propias escalas salariales.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "FIN"
-    ],
-    "tecnica_otorga": [
-      "FIN"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FIN": 1
+    },
+    "tecnica_otorga": {
+      "FIN": 1
+    },
     "tecnica_tokens": 0,
     "nombre": "Desregulación de sueldos",
     "tipo": "recursoshumanos",
@@ -835,18 +825,18 @@ window.modulos = [
     ]
   },
   {
-    "id": "P034",
+    "id": "P020",
     "descripcion": "Robots con herramientas intercambiables para inspección, montaje y reparación.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "IA",
-      "MIN",
-      "ELE"
-    ],
-    "tecnica_otorga": [
-      "IA",
-      "MIN"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "IA": 1,
+      "MIN": 1,
+      "ELE": 1
+    },
+    "tecnica_otorga": {
+      "IA": 1,
+      "MIN": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Robots multipropósito",
     "tipo": "recursoshumanos",
@@ -889,11 +879,11 @@ window.modulos = [
     ]
   },
   {
-    "id": "P033",
+    "id": "P021",
     "descripcion": "Programa que apoya equipos para llevar proyectos experimentales a la práctica.",
-    "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [],
+    "revisada": 0,
+    "tecnica_requiere": {},
+    "tecnica_otorga": {},
     "tecnica_tokens": 3,
     "nombre": "Incubadora de proyectos",
     "tipo": "produccion",
@@ -919,15 +909,15 @@ window.modulos = [
     ]
   },
   {
-    "id": "P034",
+    "id": "P022",
     "descripcion": "Resinas de intercambio iónico separan tierras raras recuperadas de la escoria.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "MAT"
-    ],
-    "tecnica_otorga": [
-      "MAT"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "MAT": 1
+    },
+    "tecnica_otorga": {
+      "MAT": 1
+    },
     "tecnica_tokens": 0,
     "nombre": "Refinería de escoria por intercambio iónico",
     "tipo": "produccion",
@@ -965,11 +955,11 @@ window.modulos = [
     ]
   },
   {
-    "id": "P033",
+    "id": "P023",
     "descripcion": "Unidad portátil que analiza muestras y prepara reactivos en el lugar.",
-    "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [],
+    "revisada": 0,
+    "tecnica_requiere": {},
+    "tecnica_otorga": {},
     "tecnica_tokens": 1,
     "nombre": "Laboratorio móvil",
     "tipo": "produccion",
@@ -994,15 +984,15 @@ window.modulos = [
     ]
   },
   {
-    "id": "P034",
+    "id": "P024",
     "descripcion": "Una pista electromagnética acelera y lanza cargamentos sin un cohete.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "MAG"
-    ],
-    "tecnica_otorga": [
-      "PROP"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "MAG": 1
+    },
+    "tecnica_otorga": {
+      "PROP": 1
+    },
     "tecnica_tokens": 0,
     "nombre": "Catapulta electromagnética",
     "tipo": "produccion",
@@ -1043,16 +1033,16 @@ window.modulos = [
     ]
   },
   {
-    "id": "P033",
+    "id": "P025",
     "descripcion": "Un cable orbital giratorio recoge y transfiere cargas entre trayectorias.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "PROP",
-      "MAT"
-    ],
-    "tecnica_otorga": [
-      "PROP"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "PROP": 1,
+      "MAT": 1
+    },
+    "tecnica_otorga": {
+      "PROP": 1
+    },
     "tecnica_tokens": 0,
     "nombre": "Gancho orbital",
     "tipo": "produccion",
@@ -1094,11 +1084,11 @@ window.modulos = [
     ]
   },
   {
-    "id": "P034",
+    "id": "P026",
     "descripcion": "Paneles que alimentan los equipos locales con electricidad de origen solar.",
-    "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [],
+    "revisada": 0,
+    "tecnica_requiere": {},
+    "tecnica_otorga": {},
     "tecnica_tokens": 1,
     "nombre": "Paneles solares",
     "tipo": "generador",
@@ -1128,15 +1118,15 @@ window.modulos = [
     ]
   },
   {
-    "id": "P033",
+    "id": "P027",
     "descripcion": "Termopares convierten en electricidad el calor de la desintegración radiactiva.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "MAT"
-    ],
-    "tecnica_otorga": [
-      "NUC"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "MAT": 1
+    },
+    "tecnica_otorga": {
+      "NUC": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Generador de radioisótopos (RTG)",
     "tipo": "generador",
@@ -1166,15 +1156,15 @@ window.modulos = [
     ]
   },
   {
-    "id": "P034",
+    "id": "P028",
     "descripcion": "Espejos concentran luz solar en un motor Stirling que acciona un generador.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "TER"
-    ],
-    "tecnica_otorga": [
-      "FOT"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "TER": 1
+    },
+    "tecnica_otorga": {
+      "FOT": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Concentrador solar Stirling",
     "tipo": "generador",
@@ -1214,13 +1204,13 @@ window.modulos = [
     ]
   },
   {
-    "id": "P033",
+    "id": "P029",
     "descripcion": "El calor solar expande un gas comprimido que mueve una turbina y genera electricidad.",
-    "revisada": 1,
-    "tecnica_requiere": [],
-    "tecnica_otorga": [
-      "TER"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {},
+    "tecnica_otorga": {
+      "TER": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Central solar de ciclo Brayton",
     "tipo": "generador",
@@ -1251,16 +1241,15 @@ window.modulos = [
     ]
   },
   {
-    "id": "P034",
+    "id": "P030",
     "descripcion": "Un compuesto de fibras fúngicas forma piezas livianas para la estructura.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "BIO",
-      "BIO"
-    ],
-    "tecnica_otorga": [
-      "BIO"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "BIO": 2
+    },
+    "tecnica_otorga": {
+      "BIO": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Micelio estructural",
     "tipo": "estructura",
@@ -1300,17 +1289,17 @@ window.modulos = [
     "destino": "etapa:2"
   },
   {
-    "id": "P033",
+    "id": "P031",
     "descripcion": "Un compuesto de fibra de carbono aporta rigidez con poca masa.",
     "revisada": 0,
     "ignorar_15el": true,
-    "tecnica_requiere": [
-      "MAT",
-      "FAB"
-    ],
-    "tecnica_otorga": [
-      "MAT"
-    ],
+    "tecnica_requiere": {
+      "MAT": 1,
+      "FAB": 1
+    },
+    "tecnica_otorga": {
+      "MAT": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Estructura de fibra de carbono",
     "tipo": "estructura",
@@ -1350,17 +1339,17 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P034",
+    "id": "P032",
     "descripcion": "Un núcleo en forma de panal da rigidez a paneles livianos de aluminio.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "MAT",
-      "PRE"
-    ],
-    "tecnica_otorga": [
-      "FAB",
-      "PRE"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "MAT": 1,
+      "PRE": 1
+    },
+    "tecnica_otorga": {
+      "FAB": 1,
+      "PRE": 1
+    },
     "tecnica_tokens": 0,
     "nombre": "Estructura alveolar de aluminio",
     "tipo": "estructura",
@@ -1402,15 +1391,15 @@ window.modulos = [
   {
     "id": "P033",
     "descripcion": "Aleaciones metálicas amorfas forman piezas resistentes a la deformación.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "MAT",
-      "TER"
-    ],
-    "tecnica_otorga": [
-      "MAT",
-      "FAB"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "MAT": 1,
+      "TER": 1
+    },
+    "tecnica_otorga": {
+      "MAT": 1,
+      "FAB": 1
+    },
     "tecnica_tokens": 2,
     "nombre": "Estructura de vidrio metálico",
     "tipo": "estructura",
@@ -1456,15 +1445,15 @@ window.modulos = [
   {
     "id": "P034",
     "descripcion": "Celdas hechas de un solo cristal de silicio convierten luz solar en electricidad.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "FAB",
-      "PRE",
-      "MIN"
-    ],
-    "tecnica_otorga": [
-      "FOT"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FAB": 1,
+      "PRE": 1,
+      "MIN": 1
+    },
+    "tecnica_otorga": {
+      "FOT": 1
+    },
     "tecnica_tokens": 2,
     "nombre": "Paneles de silicio monocristalino",
     "tipo": "fotovoltaico",
@@ -1506,14 +1495,14 @@ window.modulos = [
   {
     "id": "P035",
     "descripcion": "Conductores criogénicos transmiten corriente eléctrica sin resistencia.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "MAG",
-      "TER"
-    ],
-    "tecnica_otorga": [
-      "MAG"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "MAG": 1,
+      "TER": 1
+    },
+    "tecnica_otorga": {
+      "MAG": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Red superconductora criogénica",
     "tipo": "transmision",
@@ -1548,15 +1537,15 @@ window.modulos = [
   {
     "id": "P036",
     "descripcion": "Hidruros sometidos a presiones extremas actúan como conductores superconductores.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "MAG",
-      "MAT",
-      "CUA"
-    ],
-    "tecnica_otorga": [
-      "CUA"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "MAG": 1,
+      "MAT": 1,
+      "CUA": 1
+    },
+    "tecnica_otorga": {
+      "CUA": 1
+    },
     "tecnica_tokens": 2,
     "nombre": "Superconductores de hidruros a alta presión",
     "tipo": "transmision",
@@ -1603,14 +1592,14 @@ window.modulos = [
   {
     "id": "P037",
     "descripcion": "Un láser de alta potencia envía energía a un receptor óptico distante.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "FOT",
-      "CUA"
-    ],
-    "tecnica_otorga": [
-      "FOT"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FOT": 1,
+      "CUA": 1
+    },
+    "tecnica_otorga": {
+      "FOT": 1
+    },
     "tecnica_tokens": 4,
     "nombre": "Transmisor láser de alta potencia",
     "tipo": "transmision",
@@ -1655,16 +1644,16 @@ window.modulos = [
   {
     "id": "P038",
     "descripcion": "Nanotubos alineados conducen calor hacia las superficies que lo irradian al espacio.",
-    "revisada": 1,
+    "revisada": 0,
     "ignorar_15el": true,
-    "tecnica_requiere": [
-      "NANO",
-      "TER"
-    ],
-    "tecnica_otorga": [
-      "NANO",
-      "MAT"
-    ],
+    "tecnica_requiere": {
+      "NANO": 1,
+      "TER": 1
+    },
+    "tecnica_otorga": {
+      "NANO": 1,
+      "MAT": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Radiadores de nanotubos de carbono alineados",
     "tipo": "refrigeracion",
@@ -1709,15 +1698,15 @@ window.modulos = [
   {
     "id": "P039",
     "descripcion": "Láminas de grafeno reparten el calor sobre las superficies que lo irradian al espacio.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "NANO",
-      "MAT"
-    ],
-    "tecnica_otorga": [
-      "NANO",
-      "MAT"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "NANO": 1,
+      "MAT": 1
+    },
+    "tecnica_otorga": {
+      "NANO": 1,
+      "MAT": 1
+    },
     "tecnica_tokens": 1,
     "ignorar_15el": true,
     "nombre": "Radiadores de grafeno multicapa",
@@ -1762,14 +1751,14 @@ window.modulos = [
   {
     "id": "P040",
     "descripcion": "Membranas delgadas que ajustan su forma en respuesta a cambios del entorno.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "MIN",
-      "BIO"
-    ],
-    "tecnica_otorga": [
-      "MIN"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "MIN": 1,
+      "BIO": 1
+    },
+    "tecnica_otorga": {
+      "MIN": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Micromembranas adaptativas",
     "tipo": "refrigeracion",
@@ -1811,17 +1800,17 @@ window.modulos = [
     "destino": "etapa:2"
   },
   {
-    "id": "P040",
+    "id": "P041",
     "descripcion": "Antenas sincronizadas orientan un haz de microondas ajustando la fase de sus señales.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "MAG",
-      "ELE",
-      "MIN"
-    ],
-    "tecnica_otorga": [
-      "MAG"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "MAG": 1,
+      "ELE": 1,
+      "MIN": 1
+    },
+    "tecnica_otorga": {
+      "MAG": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Matriz de antenas en fase",
     "tipo": "microondas",
@@ -1864,16 +1853,15 @@ window.modulos = [
   },
   {
     "nombre": "Fábrica de blindaje exterior",
-    "id": "P041",
+    "id": "P042",
     "descripcion": "Planta que fabrica paneles para proteger la cara exterior de la esfera.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "FAB",
-      "FAB"
-    ],
-    "tecnica_otorga": [
-      "FAB"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FAB": 2
+    },
+    "tecnica_otorga": {
+      "FAB": 1
+    },
     "tecnica_tokens": 1,
     "tipo": "microondas",
     "puntos": "0 [PI]",
@@ -1911,17 +1899,17 @@ window.modulos = [
     "destino": "etapa:2"
   },
   {
-    "id": "P042",
+    "id": "P043",
     "descripcion": "Fibras ópticas detectan deformaciones de la estructura mediante cambios en la luz.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "FOT",
-      "MAT",
-      "MIN"
-    ],
-    "tecnica_otorga": [
-      "FOT"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FOT": 1,
+      "MAT": 1,
+      "MIN": 1
+    },
+    "tecnica_otorga": {
+      "FOT": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Extensómetros de fibra óptica",
     "tipo": "sensores",
@@ -1964,17 +1952,17 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P043",
+    "id": "P044",
     "descripcion": "Cámaras infrarrojas revelan zonas de sobrecalentamiento a distancia.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "FOT",
-      "TER",
-      "ELE"
-    ],
-    "tecnica_otorga": [
-      "FOT"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FOT": 1,
+      "TER": 1,
+      "ELE": 1
+    },
+    "tecnica_otorga": {
+      "FOT": 1
+    },
     "tecnica_tokens": 2,
     "nombre": "Termografía infrarroja",
     "tipo": "sensores",
@@ -2015,16 +2003,16 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P044",
+    "id": "P045",
     "descripcion": "Instrumentos registran la dosis de radiación que acumulan equipos y personas.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "NUC",
-      "ELE"
-    ],
-    "tecnica_otorga": [
-      "NUC"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "NUC": 1,
+      "ELE": 1
+    },
+    "tecnica_otorga": {
+      "NUC": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Dosímetros de radiación",
     "tipo": "sensores",
@@ -2056,17 +2044,17 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P045",
+    "id": "P046",
     "descripcion": "Sensores detectan micrometeoritos o registran sus impactos en el revestimiento.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "ELE",
-      "FAB",
-      "MIN"
-    ],
-    "tecnica_otorga": [
-      "ELE"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "ELE": 1,
+      "FAB": 1,
+      "MIN": 1
+    },
+    "tecnica_otorga": {
+      "ELE": 1
+    },
     "tecnica_tokens": 2,
     "nombre": "Detectores de micrometeoritos",
     "tipo": "sensores",
@@ -2099,17 +2087,17 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P046",
+    "id": "P047",
     "descripcion": "Haces láser comparan distancias para detectar desplazamientos diminutos en la estructura.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "FOT",
-      "PRE",
-      "CUA"
-    ],
-    "tecnica_otorga": [
-      "FOT"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FOT": 1,
+      "PRE": 1,
+      "CUA": 1
+    },
+    "tecnica_otorga": {
+      "FOT": 1
+    },
     "tecnica_tokens": 3,
     "nombre": "Red de interferometría láser",
     "tipo": "sensores",
@@ -2141,17 +2129,17 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P047",
+    "id": "P048",
     "descripcion": "Equipos que registran variaciones de tensión y frecuencia en la red eléctrica.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "ELE",
-      "PRE",
-      "MIN"
-    ],
-    "tecnica_otorga": [
-      "ELE"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "ELE": 1,
+      "PRE": 1,
+      "MIN": 1
+    },
+    "tecnica_otorga": {
+      "ELE": 1
+    },
     "tecnica_tokens": 3,
     "nombre": "Monitores de calidad eléctrica",
     "tipo": "sensores",
@@ -2197,17 +2185,17 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P048",
+    "id": "P049",
     "descripcion": "Relojes atómicos dan una referencia común de tiempo a estaciones distantes.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "CUA",
-      "PRE",
-      "MIN"
-    ],
-    "tecnica_otorga": [
-      "CUA"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "CUA": 1,
+      "PRE": 1,
+      "MIN": 1
+    },
+    "tecnica_otorga": {
+      "CUA": 1
+    },
     "tecnica_tokens": 3,
     "nombre": "Red de relojes atómicos de sincronización",
     "tipo": "sensores",
@@ -2251,17 +2239,17 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P049",
+    "id": "P050",
     "descripcion": "Estación que sigue la posición de sectores, vehículos y cargas en órbita.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "DAT",
-      "ELE",
-      "HAB"
-    ],
-    "tecnica_otorga": [
-      "DAT"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "DAT": 1,
+      "ELE": 1,
+      "HAB": 1
+    },
+    "tecnica_otorga": {
+      "DAT": 1
+    },
     "tecnica_tokens": 2,
     "nombre": "Centro de supervisión orbital",
     "tipo": "control",
@@ -2301,14 +2289,14 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P050",
+    "id": "P051",
     "descripcion": "Centro que ajusta la generación y el reparto de electricidad según la demanda.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "DAT",
-      "HAB"
-    ],
-    "tecnica_otorga": [],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "DAT": 1,
+      "HAB": 1
+    },
+    "tecnica_otorga": {},
     "tecnica_tokens": 2,
     "nombre": "Centro de regulación de potencia",
     "tipo": "control",
@@ -2348,18 +2336,18 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P051",
+    "id": "P052",
     "descripcion": "Centro que analiza datos de equipos para prever fallas y programar reparaciones.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "DAT",
-      "ELE",
-      "HAB"
-    ],
-    "tecnica_otorga": [
-      "DAT",
-      "HAB"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "DAT": 1,
+      "ELE": 1,
+      "HAB": 1
+    },
+    "tecnica_otorga": {
+      "DAT": 1,
+      "HAB": 1
+    },
     "tecnica_tokens": 4,
     "nombre": "Centro de mantenimiento predictivo",
     "tipo": "control",
@@ -2400,18 +2388,18 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P052",
+    "id": "P053",
     "descripcion": "Centro que ajusta los controles a partir de los datos de operación de la esfera.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "DAT",
-      "IA",
-      "HAB"
-    ],
-    "tecnica_otorga": [
-      "IA",
-      "HAB"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "DAT": 1,
+      "IA": 1,
+      "HAB": 1
+    },
+    "tecnica_otorga": {
+      "IA": 1,
+      "HAB": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Centro de control por mejora permanente",
     "tipo": "control",
@@ -2443,14 +2431,14 @@ window.modulos = [
   {
     "id": "P054",
     "descripcion": "Centro que usa registros históricos para detectar y corregir errores de calibración.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "DAT",
-      "PRE"
-    ],
-    "tecnica_otorga": [
-      "PRE"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "DAT": 1,
+      "PRE": 1
+    },
+    "tecnica_otorga": {
+      "PRE": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Centro de calibración retroactiva",
     "tipo": "control",
@@ -2492,16 +2480,16 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P053",
+    "id": "P055",
     "descripcion": "Pasadizos internos que dan acceso a los equipos para inspección y reparación.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "FAB",
-      "HAB"
-    ],
-    "tecnica_otorga": [
-      "FAB"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FAB": 1,
+      "HAB": 1
+    },
+    "tecnica_otorga": {
+      "FAB": 1
+    },
     "tecnica_tokens": 3,
     "nombre": "Red de túneles de servicio",
     "tipo": "mantenimiento",
@@ -2532,16 +2520,16 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P054",
+    "id": "P056",
     "descripcion": "Brigada que se desplaza entre sectores en vehículos de propulsión iónica.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "PROP",
-      "ELE"
-    ],
-    "tecnica_otorga": [
-      "PROP"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "PROP": 1,
+      "ELE": 1
+    },
+    "tecnica_otorga": {
+      "PROP": 1
+    },
     "tecnica_tokens": 0,
     "nombre": "Brigada de propulsión iónica",
     "tipo": "mantenimiento",
@@ -2574,18 +2562,17 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P055",
+    "id": "P057",
     "descripcion": "Aditivo ficticio con actuadores diminutos que compensan microdeformaciones en los materiales.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "NANO",
-      "NANO",
-      "MAT"
-    ],
-    "tecnica_otorga": [
-      "NANO",
-      "MAT"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "NANO": 2,
+      "MAT": 1
+    },
+    "tecnica_otorga": {
+      "NANO": 1,
+      "MAT": 1
+    },
     "tecnica_tokens": 4,
     "nombre": "Aditivo de nanobots microactuadores",
     "tipo": "mantenimiento",
@@ -2626,17 +2613,17 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P056",
+    "id": "P058",
     "descripcion": "Sistema que coordina la respuesta estructural, térmica y eléctrica de la esfera.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "MAT",
-      "TER",
-      "ELE"
-    ],
-    "tecnica_otorga": [
-      "ELE"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "MAT": 1,
+      "TER": 1,
+      "ELE": 1
+    },
+    "tecnica_otorga": {
+      "ELE": 1
+    },
     "tecnica_tokens": 1,
     "nombre": "Núcleo de control multifísico",
     "tipo": "mantenimiento",
@@ -2681,17 +2668,17 @@ window.modulos = [
     "destino": "completados"
   },
   {
-    "id": "P057",
+    "id": "P059",
     "descripcion": "Ascensores que trasladan técnicos y herramientas entre las capas de la esfera.",
-    "revisada": 1,
-    "tecnica_requiere": [
-      "FAB",
-      "HAB",
-      "MAG"
-    ],
-    "tecnica_otorga": [
-      "PRE"
-    ],
+    "revisada": 0,
+    "tecnica_requiere": {
+      "FAB": 1,
+      "HAB": 1,
+      "MAG": 1
+    },
+    "tecnica_otorga": {
+      "PRE": 1
+    },
     "tecnica_tokens": 0,
     "nombre": "Ascensores de mantenimiento radial",
     "tipo": "mantenimiento",
