@@ -1657,8 +1657,8 @@ window.modulos = [
     "revisada": 0,
     "ignorar_15el": true,
     "tecnica_requiere": {
-      "NANO": 1,
-      "TER": 1
+      "NANO": 2,
+      "TER": 2
     },
     "tecnica_otorga": {
       "NANO": 1,
@@ -1710,7 +1710,7 @@ window.modulos = [
     "descripcion": "Láminas de grafeno reparten el calor sobre las superficies que lo irradian al espacio.",
     "revisada": 0,
     "tecnica_requiere": {
-      "NANO": 1,
+      "NANO": 2,
       "MAT": 1
     },
     "tecnica_otorga": {
@@ -1763,8 +1763,8 @@ window.modulos = [
     "descripcion": "Membranas delgadas que ajustan su forma en respuesta a cambios del entorno.",
     "revisada": 0,
     "tecnica_requiere": {
-      "MIN": 1,
-      "BIO": 1
+      "MIN": 2,
+      "BIO": 2
     },
     "tecnica_otorga": {
       "MIN": 1
