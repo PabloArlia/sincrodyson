@@ -113,7 +113,8 @@ window.modulos = [
     "descripcion": "Drones con cámaras y sensores que recorren la estructura en busca de daños.",
     "revisada": 1,
     "tecnica_requiere": {
-      "IA": 1
+      "IA": 1,
+      "PROP": 1
     },
     "tecnica_otorga": {
       "INI": 1
