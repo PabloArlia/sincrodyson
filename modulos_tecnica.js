@@ -1913,7 +1913,7 @@ window.modulos = [
     "descripcion": "Fibras ópticas detectan deformaciones de la estructura mediante cambios en la luz.",
     "revisada": 0,
     "tecnica_requiere": {
-      "FOT": 1,
+      "FOT": 3,
       "MAT": 1,
       "MIN": 1
     },
