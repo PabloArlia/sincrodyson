@@ -117,7 +117,8 @@ window.modulos = [
     "tecnica_requiere": {
       "0": "IA",
       "1": "PROP",
-      "IA": 1
+      "IA": 1,
+      "PROP": 1
     },
     "tecnica_otorga": [
       "INI"
