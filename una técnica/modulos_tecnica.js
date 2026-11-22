@@ -60,10 +60,11 @@ window.modulos = [
     "id": "P001",
     "descripcion": "IA que coordina equipos de la esfera y responde automáticamente a fallas.",
     "revisada": 1,
-    "tecnica_requiere": [
-      "IA",
-      "DAT"
-    ],
+    "tecnica_requiere": {
+      "0": "IA",
+      "1": "DAT",
+      "IA": 1
+    },
     "tecnica_otorga": [
       "INI"
     ],
@@ -113,10 +114,11 @@ window.modulos = [
     "id": "P002",
     "descripcion": "Drones con cámaras y sensores que recorren la estructura en busca de daños.",
     "revisada": 1,
-    "tecnica_requiere": [
-      "IA",
-      "PROP"
-    ],
+    "tecnica_requiere": {
+      "0": "IA",
+      "1": "PROP",
+      "IA": 1
+    },
     "tecnica_otorga": [
       "INI"
     ],
