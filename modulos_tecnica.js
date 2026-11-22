@@ -688,16 +688,16 @@ window.modulos = [
     "tecnica_tokens": 1,
     "nombre": "Reemplazo por asistente robótico autónomo",
     "tipo": "recursoshumanos",
-    "puntos": "1 [PI]",
+    "puntos": "2 [PI]",
     "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": 4,
-    "puntos_otros": 1,
+    "puntos_otros": 2,
     "copias": 4,
     "discos": 0,
-    "bono": "-1 [AI] [=] +1 [II] +1 [PI]",
+    "bono": "-1 [AI] [=] +1 [II] +2 [PI]",
     "disco_soporte": 0,
-    "efecto": "Retira un [AI] ingeniero anclado de cualquier celda y colócalo en tus barracas.\nObtén 1 [PI] punto y 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
+    "efecto": "Retira un [AI] ingeniero anclado de cualquier celda y colócalo en tus barracas.\nObtén 2 [PI] puntos y 1 [FT] ficha de técnica, luego debes darle esta carta al jugador a tu derecha.",
     "etapas": [
       {
         "m": {
