@@ -637,7 +637,7 @@ window.modulos = [
     "descripcion": "Alojamiento orbital para visitantes de las instalaciones de la esfera.",
     "revisada": 0,
     "tecnica_requiere": {
-      "HAB": 1
+      "HAB": 3
     },
     "tecnica_otorga": {
       "FIN": 1
