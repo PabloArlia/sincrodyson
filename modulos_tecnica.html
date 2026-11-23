@@ -78,16 +78,18 @@ const diagnosticoBaseTecnica=diagnosticoBalance;
 balanceModulo=function(m){
  const b=balanceBaseTecnica(m);
  const requisito=Object.values(m.tecnica_requiere||{}).reduce((total,cantidad)=>total+cantidad,0)*2;
- const recompensa=Object.values(m.tecnica_otorga||{}).reduce((total,cantidad)=>total+cantidad,0)*2+(m.tecnica_tokens||0)*3;
+ const fichasTecnicaBalance=Number.isFinite(m.tecnica_tokens_balance)?m.tecnica_tokens_balance:(typeof m.tecnica_tokens==='number'?m.tecnica_tokens:0);
+ const recompensa=Object.values(m.tecnica_otorga||{}).reduce((total,cantidad)=>total+cantidad,0)*2+fichasTecnicaBalance*3;
  const costoOriginal=b.costo;
  b.costo=costoOriginal+requisito-recompensa;
  b.costoAjustado=b.costo*b.factor;
  b.coef=b.base?b.costoAjustado/b.base:null;
- b.tecnica={costoOriginal,requisito,recompensa};
+ b.tecnica={costoOriginal,requisito,recompensa,fichasTecnicaBalance};
  return b;
 };
 diagnosticoBalance=function(m,b){
- const detalle=`Costo original: ${b.tecnica.costoOriginal}\nRequisitos de experiencia: +${b.tecnica.requisito}\nExperiencia y fichas de T\u00e9cnica otorgadas: -${b.tecnica.recompensa}\n`;
+ const notaFichas=m.tecnica_tokens_balance!==undefined&&m.tecnica_tokens!==m.tecnica_tokens_balance?'Estimación de fichas T usada para balance: '+b.tecnica.fichasTecnicaBalance+' (la carta muestra "'+m.tecnica_tokens+'").\\n':'';
+ const detalle='Costo original: '+b.tecnica.costoOriginal+'\\nRequisitos de experiencia: +'+b.tecnica.requisito+'\\nBonificaciones técnicas otorgadas: -'+b.tecnica.recompensa+'\\n'+notaFichas;
  return diagnosticoBaseTecnica(m,b).replace('Costo total:',detalle+'Costo total ajustado:');
 };
 const recursos={Fe:['Hierro','#d84242'],Cu:['Cobre','#3977dc'],Si:['Silicio','#f0d54d'],Ti:['Titanio','#58a85c'],Al:['Aluminio','#292929'],C:['Carbono','#fff'],Nd:['Neodimio','#e345ad'],Gd:['Gadolinio','#42c5c1'],Er:['Erbio','#ec933c'],Ce:['Cerio','#94623d']};
