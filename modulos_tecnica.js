@@ -2649,7 +2649,6 @@ window.modulos = [
       {
         "m": {
           "Gd": 1,
-          "Al": 1,
           "Fe": 3
         },
         "o": {
