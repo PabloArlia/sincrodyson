@@ -2649,7 +2649,7 @@ window.modulos = [
       {
         "m": {
           "Gd": 1,
-          "Fe": 3
+          "Fe": 6
         },
         "o": {
           "IS": 1,
