@@ -2322,7 +2322,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Al": 2,
+          "Al": 3,
           "Gd": 1
         },
         "o": {
