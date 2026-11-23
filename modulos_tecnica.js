@@ -701,7 +701,7 @@ window.modulos = [
       {
         "m": {
           "Si": 2,
-          "Cu": 1,
+          "Cu": 3,
           "Nd": 1
         },
         "o": {
