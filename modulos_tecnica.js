@@ -2515,9 +2515,8 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Fe": 3,
-          "Ti": 1,
-          "Cu": 2
+          "Fe": 6,
+          "Cu": 1
         },
         "o": {
           "ES": 1,
