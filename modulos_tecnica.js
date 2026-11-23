@@ -2709,7 +2709,7 @@ window.modulos = [
         },
         "o": {
           "En": 4,
-          "Tr": 3,
+          "Tr": 4,
           "AE": 2
         }
       }
