@@ -88,8 +88,8 @@ balanceModulo=function(m){
  return b;
 };
 diagnosticoBalance=function(m,b){
- const notaFichas=m.tecnica_tokens_balance!==undefined&&m.tecnica_tokens!==m.tecnica_tokens_balance?'Estimación de fichas T usada para balance: '+b.tecnica.fichasTecnicaBalance+' (la carta muestra "'+m.tecnica_tokens+'").\\n':'';
- const detalle='Costo original: '+b.tecnica.costoOriginal+'\\nRequisitos de experiencia: +'+b.tecnica.requisito+'\\nBonificaciones técnicas otorgadas: -'+b.tecnica.recompensa+'\\n'+notaFichas;
+ const notaFichas=m.tecnica_tokens_balance!==undefined&&m.tecnica_tokens!==m.tecnica_tokens_balance?'Estimación de fichas T usada para balance: '+b.tecnica.fichasTecnicaBalance+' (la carta muestra "'+m.tecnica_tokens+'").\n':'';
+ const detalle='Costo original: '+b.tecnica.costoOriginal+'\nRequisitos de experiencia: +'+b.tecnica.requisito+'\nBonificaciones técnicas otorgadas: -'+b.tecnica.recompensa+'\n'+notaFichas;
  return diagnosticoBaseTecnica(m,b).replace('Costo total:',detalle+'Costo total ajustado:');
 };
 const recursos={Fe:['Hierro','#d84242'],Cu:['Cobre','#3977dc'],Si:['Silicio','#f0d54d'],Ti:['Titanio','#58a85c'],Al:['Aluminio','#292929'],C:['Carbono','#fff'],Nd:['Neodimio','#e345ad'],Gd:['Gadolinio','#42c5c1'],Er:['Erbio','#ec933c'],Ce:['Cerio','#94623d']};
