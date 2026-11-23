@@ -14,6 +14,7 @@ window.modulos = [
       "MEG": 1
     },
     "tecnica_tokens": "?",
+    "tecnica_tokens_balance": 6,
     "nombre": "Centro de fusión nuclear",
     "tipo": "generador",
     "puntos": "[FJ] 20 [PV]",
