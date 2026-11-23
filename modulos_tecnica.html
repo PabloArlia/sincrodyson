@@ -49,6 +49,7 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
  .print-page:last-child{break-after:auto;page-break-after:auto}
  .print-page>.card{margin:0;width:120mm;height:64mm;text-align:left;font-size:16px;break-inside:avoid;page-break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
+.price-lab{margin:0 0 14px;padding:10px;background:#fff;border:1px solid #aab5ad;border-radius:6px}.price-lab summary{cursor:pointer;font-weight:bold}.resource-prices{display:flex;flex-wrap:wrap;gap:8px 12px;margin:10px 0}.resource-prices label{display:flex;align-items:center;gap:5px;font-size:13px}.resource-prices input{width:68px;padding:4px}.price-lab>small{display:block;color:#555;margin-top:8px}@media print{.price-lab{display:none!important}}
 .balance-tooltip{position:fixed;z-index:1000;width:360px;max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);overflow:auto;padding:14px 16px;border:1px solid #78877e;border-radius:8px;background:#fff;color:#17221b;box-shadow:0 6px 24px #0003;font:12px/1.45 Arial,sans-serif;white-space:pre-line;pointer-events:none}.balance-tooltip[hidden]{display:none}@media print{.balance-tooltip{display:none!important}}
 .cards-summary{position:fixed;top:70px;right:12px;z-index:50;width:152px;max-height:calc(100vh - 82px);overflow:auto;padding:6px 8px;background:#fff;border:1px solid #aab5ad;border-radius:6px;box-shadow:0 3px 12px #0002;font:12px/1.2 Arial,sans-serif}.summary-row{display:flex;align-items:center;gap:3px;padding:3px 0;white-space:nowrap}.summary-icon,.summary-icon img{display:block;width:19px;height:19px;object-fit:contain}.summary-total{border-top:1px solid #c8d0ca;margin-top:3px;padding-top:6px;font-weight:bold}@media print{.cards-summary{display:none!important}}
  .icono-hibrido{position:relative;display:inline-block;width:100%;height:100%;min-width:24px;min-height:24px;overflow:hidden;vertical-align:middle}.icono-hibrido img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain}.icono-hibrido img:first-child{clip-path:inset(0 50% 0 0)}.icono-hibrido img:nth-child(2){clip-path:inset(0 0 0 50%)}.icono-hibrido:after{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid currentColor;transform:translateX(-.5px)}
@@ -68,6 +69,7 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
  .tech-legend{font-size:11px}
 }
 </style></head><body><div class="toolbar"><button onclick="window.print()">Imprimir / guardar PDF</button><label>Conjunto: <select id="module-set"><option value="modulos">Módulos</option><option value="mega">Megamódulos</option><option value="ambos">Ambos</option></select></label><label><input id="colors" type="checkbox" checked> has</label><label><input id="show-copies" type="checkbox"> Mostrar copias</label><label><input id="hide-single-stage" type="checkbox"> Ocultar cartas de una sola etapa</label><small>Cartas de 64 × 120 mm · datos editables en <code>modulos_tecnica.js</code> y <code>megamodulos_tecnica.js</code></small></div>
+    <details class="price-lab"><summary>Probar valores de recursos</summary><div id="resource-prices" class="resource-prices"></div><button id="reset-resource-prices" type="button">Restablecer valores iniciales</button><small>Los cambios son temporales y solo afectan el cálculo en esta página.</small></details>
     <div class="tech-legend">Borde interior violeta: alguna etapa supera 15 recursos básicos (Fe, Cu, Si, Ti, Al y C). <b>Requiere (borde rojo) / otorga (verde):</b> <span id="tech-legend-items"></span> · <b>+1 T</b> ficha de Técnica al completar. Las tecnologías verdes solo cuentan mientras conserves la carta.</div><aside class="cards-summary" id="cards-summary" aria-label="Cantidad de cartas por tipo"></aside><main class="sheet" id="sheet"></main><script src="./modulos_tecnica.js"></script><script>const modulosTecnica=window.modulos;window.modulos=undefined;</script><script src="./megamodulos_tecnica.js"></script><script>const megamodulosTecnica=window.modulos;</script><script src="./balance.js"></script>
 <script>
 // Ajuste de balance de esta variante, sin cambiar los costos de juego.
@@ -90,6 +92,26 @@ diagnosticoBalance=function(m,b){
 };
 const recursos={Fe:['Hierro','#d84242'],Cu:['Cobre','#3977dc'],Si:['Silicio','#f0d54d'],Ti:['Titanio','#58a85c'],Al:['Aluminio','#292929'],C:['Carbono','#fff'],Nd:['Neodimio','#e345ad'],Gd:['Gadolinio','#42c5c1'],Er:['Erbio','#ec933c'],Ce:['Cerio','#94623d']};
 const precios={Fe:1,Cu:3,Si:2,Ti:6,Al:3,C:1,Nd:8,Gd:8,Er:12,Ce:7,Tr:7};
+const preciosBase={...precios};
+function inicializarEditorPrecios(){
+ const contenedor=document.getElementById('resource-prices');
+ for(const id of Object.keys(precios)){
+  const nombre=recursos[id]?.[0]||(id==='Tr'?'Transporte':id);
+  const label=document.createElement('label');
+  label.innerHTML=`<span>${escapeHTML(nombre)} (${escapeHTML(id)})</span>`;
+  const input=document.createElement('input');
+  input.type='number';input.min='0';input.step='0.1';input.value=precios[id];input.dataset.resource=id;
+  input.setAttribute('aria-label',`Valor de ${nombre}`);
+  input.addEventListener('input',()=>{precios[id]=Number(input.value)||0;draw()});
+  label.append(input);contenedor.append(label);
+ }
+ document.getElementById('reset-resource-prices').addEventListener('click',()=>{
+  for(const input of contenedor.querySelectorAll('input')){
+   const id=input.dataset.resource;precios[id]=preciosBase[id];input.value=preciosBase[id];
+  }
+  draw();
+ });
+}
 const operativos={II:'Ingeniero genérico',IQ:'Ingeniero químico',IE:'Ingeniero estructural',IM:'Ingeniero electromecánico',IS:'Ingeniero en sistemas',En:'Energía',Tr:'Transporte'};
 const tiposIcono={
  "sensores": "SN",
@@ -262,6 +284,7 @@ function renderTecnica(m){
  </aside>`;
 }
 function draw(){const sheet=document.getElementById('sheet');const conjunto=document.getElementById('module-set').value;const fuentes=conjunto==='ambos'?[modulosTecnica,megamodulosTecnica]:[conjunto==='mega'?megamodulosTecnica:modulosTecnica];if(fuentes.some(fuente=>!Array.isArray(fuente))){sheet.innerHTML='<p>No se pudieron cargar los archivos de módulos de técnica.</p>';document.getElementById('cards-summary').innerHTML='';return;}const filtradas=fuentes.flat().filter(m=>!document.getElementById('hide-single-stage').checked||m.etapas.length!==1);const cartas=document.getElementById('show-copies').checked?filtradas.flatMap(m=>Array.from({length:m.copias??1},()=>m)):filtradas;const paginas=[];for(let i=0;i<cartas.length;i+=6){paginas.push(`<section class="print-page">${cartas.slice(i,i+6).map(render).join('')}</section>`)}sheet.innerHTML=paginas.join('');document.getElementById('cards-summary').innerHTML=renderResumenCartas(filtradas)}
+inicializarEditorPrecios();
 const selectorConjunto=document.getElementById('module-set');
 const claveConjunto='sincrodyson.tecnica.module-set';
 try{
