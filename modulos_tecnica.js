@@ -2381,7 +2381,7 @@ window.modulos = [
         "o": {
           "IM": 1,
           "IQ": 1,
-          "En": 3
+          "En": 2
         }
       },
       {
@@ -2389,7 +2389,7 @@ window.modulos = [
         "o": {
           "AM": 1,
           "AS": 1,
-          "En": 4,
+          "En": 2,
           "Tr": 2
         }
       }
