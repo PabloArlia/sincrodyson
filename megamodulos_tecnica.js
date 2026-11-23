@@ -361,7 +361,7 @@ window.modulos = [
       {
         "m": {
           "C": 5,
-          "Al": 2
+          "Al": 3
         },
         "o": {
           "IQ": 1,
