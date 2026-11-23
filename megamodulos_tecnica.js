@@ -42,8 +42,8 @@ window.modulos = [
       },
       {
         "m": {
-          "Ti": 2,
-          "Gd": 1
+          "Ti": 3,
+          "Gd": 2
         },
         "o": {
           "IE": 1,
