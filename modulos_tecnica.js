@@ -2032,7 +2032,7 @@ window.modulos = [
     "puntos_otros": -5,
     "copias": 1,
     "discos": 0,
-    "bono": "2 [DP][SN] \n -5[PI] [/] [NO][MN] [=][QU]",
+    "bono": "2 [DP][SN] [y] -5[PI] [/] [NO][MN] [=][QU]",
     "disco_soporte": 2,
     "efecto": "Coloca un disco en 2 celdas libres de [SN] Sensores de dos áreas de soporte distintas. \nLuego, pierde 5 [PI] por cada celda de [MN] Mantenimiento sin disco en cada cuadrante donde colocaste un disco de soporte.\nObtén 1 [FT] ficha de técnica.",
     "etapas": [
@@ -2074,7 +2074,7 @@ window.modulos = [
     "puntos_otros": -2,
     "copias": 2,
     "discos": 0,
-    "bono": "1 [DP][SN] \n -1[PI][/][NO][MO] [=][QU]",
+    "bono": "1 [DP][SN] [y] -1[PI][/][NO][MO] [=][QU]",
     "disco_soporte": 1,
     "efecto": "Coloca un disco en 1 celda libre de [SN] Sensores de un área de soporte. \nLuego pierde 1 [PI] por cada celda de [MO] Microondas sin disco en cada cuadrante donde colocaste un disco de soporte.\nObtén 2 [FT] fichas de técnica.",
     "etapas": [
@@ -2117,7 +2117,7 @@ window.modulos = [
     "puntos_otros": -2,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][SN] [=] -1 [PI] [NO][SN]",
+    "bono": "1 [DP][SN] [y] -1 [PI] [NO][SN]",
     "disco_soporte": 1,
     "efecto": "Coloca un disco en 1 celda libre de [SN] Sensores de un área de soporte. \nLuego, pierde 1 [PI] por cada celda de [SN] Sensores que no tenga un disco.\nObtén 3 [FT] fichas de técnica.",
     "etapas": [
@@ -2269,7 +2269,7 @@ window.modulos = [
     "puntos_otros": 6,
     "copias": 1,
     "discos": 0,
-    "bono": "1 [DP][CO] \n +3 [PI] [/][SI][SN]",
+    "bono": "1 [DP][CO] [y] +3 [PI] [/][SI][SN]",
     "disco_soporte": 1,
     "efecto": "Coloca un disco en 1 celda libre de [CO] Control de un área de soporte. Coloca el ingeniero de la última etapa junto al disco colocado. \nLuego gana 3 [PI] por cada celda de [SN] Sensores con un disco de cualquier jugador. \nConsulta la pérdida de puntos por personal anclado.\nObtén 2 [FT] fichas de técnica.",
     "etapas": [
@@ -2464,6 +2464,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
+          "Ce": 1,
           "Al": 2,
           "Nd": 1,
           "Fe": 2
@@ -2476,7 +2477,6 @@ window.modulos = [
       },
       {
         "m": {
-          "Ce": 1
         },
         "o": {
           "MO": 2,
@@ -2511,7 +2511,7 @@ window.modulos = [
     "discos": -2,
     "bono": "2 [DP][MN] +2 [QD][ES] [=][QU]",
     "disco_soporte": 2,
-    "efecto": "[QD] Retira 2 de tus discos de celdas de [ES] Estructura de un cuadrante para colocar un disco en cada una de las dos celdas de [MN] Mantenimiento del área de soporte de ese cuadrante, coloca los ingenieros de la última etapa junto a cualquiera de ellos.\nConsulta la pérdida de puntos por personal anclado.\nObtén 3 [FT] fichas de técnica.",
+    "efecto": "[QD] Retira 2 de tus discos de celdas de [ES] Estructura de un cuadrante para colocar un disco en cada una de las dos celdas de [MN] Mantenimiento del área de soporte de ese cuadrante, coloca los ingenieros de la última etapa junto a cualquiera de ellos. Luego obtén 3 [FT] fichas de técnica.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2541,7 +2541,7 @@ window.modulos = [
     "tecnica_tokens": 0,
     "nombre": "Brigada de propulsión iónica",
     "tipo": "mantenimiento",
-    "puntos": "+2 [PI][/] [SI][ES][=][QU]",
+    "puntos": "2 [PI][/] [SI][ES][=][QU]",
     "puntos_carta": 0,
     "puntos_capas": 0,
     "puntos_ingenieros": -8,
@@ -2550,7 +2550,7 @@ window.modulos = [
     "discos": -2,
     "bono": "2 [DP][MN] +2 [QD][FV] \n ",
     "disco_soporte": 2,
-    "efecto": "[QD] Retira 2 de tus discos de celdas de [FV] Fotovoltaica de un cuadrante para colocar un disco en ambas celdas de [MN] Mantenimiento del área de soporte de ese cuadrante, coloca los ingenieros de la última etapa junto a cualquiera de ellos.\nLuego gana 2 [PI] por cada celda de [ES] Estructura con un disco en ese cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
+    "efecto": "[QD] Retira 2 de tus discos de celdas de [FV] Fotovoltaica de un cuadrante para colocar un disco en ambas celdas de [MN] Mantenimiento del área de soporte de ese cuadrante, coloca los ingenieros de la última etapa junto a cualquiera de ellos. Luego gana 2 [PI] por cada celda de [ES] Estructura con un disco en ese cuadrante.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -2561,7 +2561,7 @@ window.modulos = [
           "Ce": 1
         },
         "o": {
-          "FV": 1,
+          "FV": 2,
           "AE": 2,
           "Tr": 1
         }

@@ -17,8 +17,8 @@ window.modulos = [
     "tecnica_tokens_balance": 6,
     "nombre": "Centro de fusión nuclear",
     "tipo": "generador",
-    "puntos": "[FJ] 20 [PV]",
-    "puntos_carta": 20,
+    "puntos": "25 [PV]",
+    "puntos_carta": 25,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 20,
@@ -26,7 +26,7 @@ window.modulos = [
     "discos": 0,
     "bono": "[TJ] [PE][=<]9 [=] +3 [PE] +2 [PI]",
     "disco_soporte": 0,
-    "efecto": "Todos los jugadores con 9 [PE] o menos aumentan en 3 sus [PE] producción de energía, no pueden negarse. Ganas 2 [PI] y 1 [FT] ficha de técnica por cada jugador que lo haya echo.\nPuedes volver a colocar el cubo en la etapa 3.\n[FJ] Al final de la partida, obtén 20 [PV] puntos de victoria.",
+    "efecto": "Todos los jugadores con 9 [PE] o menos aumentan en 3 sus [PE] producción de energía, no pueden negarse. Ganas 2 [PI] y 1 [FT] ficha de técnica por cada jugador que lo haya echo. Puedes volver a colocar el cubo en la etapa 3.\n[FJ] Al final de la partida, obtén 20 [PV] puntos de victoria.",
     "destino": "etapa:3",
     "etapas": [
       {
@@ -105,7 +105,7 @@ window.modulos = [
       {
         "m": {
           "Cu": 5,
-          "Si": 10
+          "Si": 5
         },
         "o": {
           "IE": 1,
@@ -146,7 +146,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Si": 5,
+          "Si": 2,
           "Cu": 2,
           "Gd": 1
         },
@@ -201,7 +201,7 @@ window.modulos = [
         "m": {
           "Fe": 2,
           "Cu": 2,
-          "Er": 2
+          "Er": 1
         },
         "o": {
           "IE": 1,
@@ -251,8 +251,8 @@ window.modulos = [
       {
         "m": {
           "Fe": 5,
-          "Al": 5,
-          "Ti": 4
+          "Al": 3,
+          "Ti": 3
         },
         "o": {
           "IE": 2,
@@ -288,10 +288,10 @@ window.modulos = [
       "PROP": 1
     },
     "tecnica_tokens": 1,
-    "nombre": "Estación planetaria de propulsión por láser dirigido",
+    "nombre": "Estación de propulsión por láser dirigido",
     "tipo": "produccion",
     "puntos": "+1 [PV] [/] [Tr] [=<] 10",
-    "puntos_carta": 0,
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 20,
@@ -304,7 +304,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Ti": 2,
+          "Ti": 5,
           "Cu": 3,
           "Er": 1,
           "Nd": 1
@@ -318,7 +318,7 @@ window.modulos = [
         "m": {},
         "o": {
           "IS": 2,
-          "En": 4
+          "En": 5
         }
       }
     ]
@@ -361,7 +361,7 @@ window.modulos = [
       {
         "m": {
           "C": 5,
-          "Al": 3
+          "Al": 1
         },
         "o": {
           "IQ": 1,
@@ -409,7 +409,7 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Si": 10,
+          "Si": 5,
           "C": 5
         },
         "o": {
@@ -447,8 +447,8 @@ window.modulos = [
     "tecnica_tokens": 1,
     "nombre": "Células solares de arseniuro de galio",
     "tipo": "fotovoltaico",
-    "puntos": "10 [PV]",
-    "puntos_carta": 10,
+    "puntos": "15 [PV]",
+    "puntos_carta": 15,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
@@ -493,7 +493,7 @@ window.modulos = [
     "descripcion": "Sistema ficticio de mando remoto inspirado en la transferencia de estados cuánticos.",
     "revisada": 1,
     "tecnica_requiere": {
-      "CUA": 1,
+      "CUA": 2,
       "MAG": 1,
       "FOT": 1,
       "ELE": 1
@@ -505,8 +505,8 @@ window.modulos = [
     "tecnica_tokens": 1,
     "nombre": "Control remoto por teletransportación cuántica",
     "tipo": "control",
-    "puntos": "10 [PV]",
-    "puntos_carta": 10,
+    "puntos": "17 [PV]",
+    "puntos_carta": 17,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
@@ -514,7 +514,7 @@ window.modulos = [
     "discos": 3,
     "bono": "1 [DP][CO] + 3 [DS][MO] [=] [QU]",
     "disco_soporte": 1,
-    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soportey un disco en 3 celdas libres de [MO] Microondas del mismo cuadrante.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 10 [PV] puntos de victoria.",
+    "efecto": "Coloca un disco en una celda libre de [CO] Control de un área de soporte y un disco en 3 celdas libres de [MO] Microondas del mismo cuadrante.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 10 [PV] puntos de victoria.",
     "etapas": [
       {
         "m": {
@@ -538,8 +538,7 @@ window.modulos = [
         "o": {
           "IQ": 1,
           "IE": 1,
-          "En": 4,
-          "Tr": 2
+          "Tr": 3
         }
       }
     ],
@@ -558,25 +557,25 @@ window.modulos = [
       "MEG": 1,
       "BIO": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 0,
     "nombre": "Jardines bioclimáticos inteligentes",
     "tipo": "mantenimiento",
-    "puntos": "10 [PV]",
-    "puntos_carta": 10,
+    "puntos": "3 [PV] [/] [AI]",
+    "puntos_carta": 30,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
-    "puntos_otros": 20,
+    "puntos_otros": 10,
     "copias": 1,
     "discos": 0,
-    "bono": "2 [DH][MN] [=][QU] - 5 [AI]",
+    "bono": "2 [DH][MN] [=][QU] - 3 [AI]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación.\nLuego retira hasta 5 [AI] ingenieros anclados de cualquier número de celdas y devuélvelos a la reserva de ingenieros correspondiente.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 10 [PV] puntos de victoria.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación. Luego retira hasta 3 [AI] ingenieros anclados de cualquier número de celdas y devuélvelos a la reserva de ingenieros correspondiente.\n[FJ] Al final de la partida, obtén 3 [PV] por cada [AI] ingeniero anclado de cualquier jugador.",
     "etapas": [
       {
         "m": {
           "Ti": 2,
           "Al": 2,
-          "Si": 4
+          "Si": 2
         },
         "o": {
           "IE": 1,
@@ -594,8 +593,61 @@ window.modulos = [
         "o": {
           "IE": 1,
           "IQ": 1,
-          "En": 4,
           "Tr": 3
+        }
+      }
+    ],
+    "destino": "completados"
+  },
+  {
+    "id": "P114",
+    "descripcion": "Instalación con equipos adaptados al ejercicio y al descanso en microgravedad.",
+    "revisada": 1,
+    "tecnica_requiere": {
+      "HAB": 2
+    },
+    "tecnica_otorga": {
+      "MEG": 1,
+      "HAB": 1
+    },
+    "tecnica_tokens": 1,
+    "nombre": "Gimnasio y spa de gravedad cero",
+    "tipo": "mantenimiento",
+    "puntos": "2 [PV] [/] [AI]",
+    "puntos_carta": 20,
+    "puntos_capas": 0,
+    "puntos_ingenieros": 0,
+    "puntos_otros": 0,
+    "copias": 1,
+    "discos": 0,
+    "bono": "2 [DH][MN]",
+    "disco_soporte": 0,
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 2 [PV] por cada [AI] ingeniero anclado de cualquier jugador.",
+    "etapas": [
+      {
+        "m": {
+          "Ti": 1,
+          "Al": 2,
+          "Fe": 3,
+          "Cu": 2
+        },
+        "o": {
+          "IE": 1,
+          "IS": 1,
+          "En": 1
+        }
+      },
+      {
+        "m": {
+          "Ti": 1,
+          "Al": 2,
+          "Cu": 2,
+          "Si": 2
+        },
+        "o": {
+          "IE": 1,
+          "En": 1,
+          "Tr": 2
         }
       }
     ],
@@ -759,60 +811,6 @@ window.modulos = [
           "AS": 1,
           "Tr": 2,
           "En": 2
-        }
-      }
-    ],
-    "destino": "completados"
-  },
-  {
-    "id": "P114",
-    "descripcion": "Instalación con equipos adaptados al ejercicio y al descanso en microgravedad.",
-    "revisada": 1,
-    "tecnica_requiere": {
-      "HAB": 2
-    },
-    "tecnica_otorga": {
-      "MEG": 1,
-      "HAB": 1
-    },
-    "tecnica_tokens": 1,
-    "nombre": "Gimnasio y spa de gravedad cero",
-    "tipo": "mantenimiento",
-    "puntos": "2 [PV] [/] [AI]",
-    "puntos_carta": 0,
-    "puntos_capas": 0,
-    "puntos_ingenieros": 0,
-    "puntos_otros": 20,
-    "copias": 1,
-    "discos": 0,
-    "bono": "2 [DH][MN]",
-    "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 2 [PV] por cada [AI] ingeniero anclado de cualquier jugador.",
-    "etapas": [
-      {
-        "m": {
-          "Ti": 1,
-          "Al": 2,
-          "Fe": 3,
-          "Cu": 2
-        },
-        "o": {
-          "IE": 1,
-          "IS": 1,
-          "En": 1
-        }
-      },
-      {
-        "m": {
-          "Ti": 1,
-          "Al": 2,
-          "Cu": 2,
-          "Si": 2
-        },
-        "o": {
-          "IE": 1,
-          "En": 1,
-          "Tr": 2
         }
       }
     ],
