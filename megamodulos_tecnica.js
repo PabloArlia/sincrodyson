@@ -558,22 +558,22 @@ window.modulos = [
       "BIO": 1
     },
     "tecnica_tokens": 0,
-    "nombre": "Jardines bioclimáticos inteligentes",
+    "nombre": "Jardines bioclimáticos",
     "tipo": "mantenimiento",
-    "puntos": "3 [PV] [/] [AI]",
-    "puntos_carta": 30,
+    "puntos": "20 [PV]",
+    "puntos_carta": 20,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
-    "puntos_otros": 10,
+    "puntos_otros": 9,
     "copias": 1,
     "discos": 0,
     "bono": "2 [DH][MN] [=][QU] - 3 [AI]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación. Luego retira hasta 3 [AI] ingenieros anclados de cualquier número de celdas y devuélvelos a la reserva de ingenieros correspondiente.\n[FJ] Al final de la partida, obtén 3 [PV] por cada [AI] ingeniero anclado de cualquier jugador.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación. Luego puedes retirar hasta 3 [AI] ingenieros anclados de cualquier número de celdas con discos de tu color dle mimso cuadrante y devuélvelos a la reserva de ingenieros correspondiente.\n[FJ] Al final de la partida, obtén 20 [PV] puntos de victoria.",
     "etapas": [
       {
         "m": {
-          "Ti": 2,
+          "Ti": 1,
           "Al": 2,
           "Si": 2
         },
@@ -593,7 +593,7 @@ window.modulos = [
         "o": {
           "IE": 1,
           "IQ": 1,
-          "Tr": 3
+          "Tr": 2
         }
       }
     ],
@@ -613,8 +613,8 @@ window.modulos = [
     "tecnica_tokens": 1,
     "nombre": "Gimnasio y spa de gravedad cero",
     "tipo": "mantenimiento",
-    "puntos": "2 [PV] [/] [AI]",
-    "puntos_carta": 20,
+    "puntos": "1 [PV] [/] [AI]",
+    "puntos_carta": 10,
     "puntos_capas": 0,
     "puntos_ingenieros": 0,
     "puntos_otros": 0,
@@ -622,31 +622,19 @@ window.modulos = [
     "discos": 0,
     "bono": "2 [DH][MN]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 2 [PV] por cada [AI] ingeniero anclado de cualquier jugador.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento sin cobrar bonos de colocación.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 1 [PV] por cada [AI] ingeniero anclado de cualquier jugador.",
     "etapas": [
       {
         "m": {
           "Ti": 1,
           "Al": 2,
           "Fe": 3,
-          "Cu": 2
-        },
-        "o": {
-          "IE": 1,
-          "IS": 1,
-          "En": 1
-        }
-      },
-      {
-        "m": {
-          "Ti": 1,
-          "Al": 2,
           "Cu": 2,
           "Si": 2
         },
         "o": {
           "IE": 1,
-          "En": 1,
+          "En": 2,
           "Tr": 2
         }
       }
@@ -668,8 +656,8 @@ window.modulos = [
     "tecnica_tokens": 1,
     "nombre": "Analizadores de plasma solar",
     "tipo": "sensores",
-    "puntos": "10 [PV]",
-    "puntos_carta": 10,
+    "puntos": "18 [PV]",
+    "puntos_carta": 18,
     "puntos_capas": 0,
     "puntos_ingenieros": -4,
     "puntos_otros": 0,
@@ -677,7 +665,7 @@ window.modulos = [
     "discos": 0,
     "bono": "2 [DP][SN]",
     "disco_soporte": 2,
-    "efecto": "Coloca un disco en 2 celdas libres de [SN] Sensores de dos áreas de soporte distintas. Coloca el ingeniero de la última etapa junto a cualquiera de los discos colocados. \nConsulta la pérdida de puntos por personal anclado.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 10 [PV] puntos de victoria.",
+    "efecto": "Coloca un disco en 2 celdas libres de [SN] Sensores de dos áreas de soporte distintas. Coloca el ingeniero de la última etapa junto a cualquiera de los discos colocados. Luego obten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 10 [PV] puntos de victoria.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
@@ -722,22 +710,22 @@ window.modulos = [
     "tecnica_tokens": 1,
     "nombre": "Anticipación y blindaje contra llamaradas solares",
     "tipo": "mantenimiento",
-    "puntos": "20 [PV]",
-    "puntos_carta": 20,
+    "puntos": "15 [PV]",
+    "puntos_carta": 15,
     "puntos_capas": 0,
     "puntos_ingenieros": -8,
     "puntos_otros": -2,
     "copias": 1,
     "discos": 4,
-    "bono": "4 [DP][MN] 4[DS][ES] [=]2[QU]",
+    "bono": "4 [DP][MN] 4[DS][ES] [=]2-6[QU]",
     "disco_soporte": 4,
-    "efecto": "Coloca un disco en 4 celdas libres de [MN] Mantenimiento y un disco en 4 celdas libres de [ES] Estructura de dos cuadrantes, 2 de cada tipo en cada cuadrante. Si el mapa tiene más de 3 cuadrantes, estos no pueden ser adyacentes.\nConsulta la pérdida de puntos por personal anclado.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 20 [PV] puntos de victoria.",
+    "efecto": "Coloca un disco en 4 celdas libres de [MN] Mantenimiento y 4 celdas libres de [ES] Estructura, Debes colocar por lo menos 1 disco en cada cuadrante.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 20 [PV] puntos de victoria.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
           "Gd": 3,
-          "Cu": 6,
-          "Si": 11
+          "Cu": 5,
+          "Si": 5
         },
         "o": {
           "IQ": 2,
@@ -747,15 +735,15 @@ window.modulos = [
       },
       {
         "m": {
-          "Ti": 8,
+          "Ti": 5,
           "Al": 3,
           "Nd": 3
         },
         "o": {
           "AM": 1,
           "AS": 1,
-          "Tr": 2,
-          "En": 2
+          "Tr": 1,
+          "En": 1
         }
       }
     ],
@@ -777,21 +765,21 @@ window.modulos = [
     "tecnica_tokens": 1,
     "nombre": "Detección y ablación láser de micrometeoritos",
     "tipo": "mantenimiento",
-    "puntos": "20 [PV]",
-    "puntos_carta": 20,
+    "puntos": "30 [PV]",
+    "puntos_carta": 30,
     "puntos_capas": 0,
     "puntos_ingenieros": -8,
     "puntos_otros": 0,
     "copias": 1,
     "discos": 4,
-    "bono": "2 [DP][MN]  [=][QU] \n 1-4 [DS][MO] [=][QU]",
+    "bono": "2 [DP][MN]  [=][QU] [y] 1-4 [DS][MO] [=][QU]",
     "disco_soporte": 2,
-    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento de un área de soporte y un disco en cada celda libre de [MO] Microondas de otro cuadrante.\nConsulta la pérdida de puntos por personal anclado.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 20 [PV] puntos de victoria.",
+    "efecto": "Coloca un disco en 2 celdas libres de [MN] Mantenimiento de un área de soporte y un disco en cada celda libre de [MO] Microondas de otro cuadrante.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 20 [PV] puntos de victoria.\nConsulta la pérdida de puntos por personal anclado.",
     "etapas": [
       {
         "m": {
-          "Si": 10,
-          "Cu": 7,
+          "Si": 5,
+          "Cu": 5,
           "Nd": 4
         },
         "o": {
@@ -809,8 +797,8 @@ window.modulos = [
         "o": {
           "AM": 1,
           "AS": 1,
-          "Tr": 2,
-          "En": 2
+          "Tr": 1,
+          "En": 1
         }
       }
     ],
@@ -829,7 +817,7 @@ window.modulos = [
       "MEG": 1
     },
     "tecnica_tokens": 1,
-    "nombre": "Motor Stirling de concentración solar",
+    "nombre": "Generador Stirling de concentración solar",
     "tipo": "refrigeracion",
     "puntos": "10 [PV]",
     "puntos_carta": 10,
@@ -840,7 +828,7 @@ window.modulos = [
     "discos": 12,
     "bono": "4 [DS][FV] [AD] 4 [DS][RF] [AD] 4 [DS][TS]",
     "disco_soporte": 0,
-    "efecto": "Coloca un disco en 4 celdas libres de [FV] Fotovoltaica, un disco en 4 celdas libres de [RF] Refrigeración y un disco en 4 celdas libres de [TS] Transmisión; cada disco debe ser adyacente a otro disco colocado por este proyecto.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 10 [PV] puntos de victoria.",
+    "efecto": "Coloca un disco en 4 celdas libres de [FV] Fotovoltaica, en 4 celdas libres de [RF] Refrigeración y en 4 celdas libres de [TS] Transmisión; cada disco debe ser adyacente a otro disco colocado por este proyecto.\nObten 1 [FT] ficha de técnica.\n[FJ] Al final de la partida, obtén 10 [PV] puntos de victoria.",
     "etapas": [
       {
         "m": {
@@ -862,8 +850,8 @@ window.modulos = [
         "o": {
           "IE": 1,
           "IM": 1,
-          "En": 3,
-          "Tr": 3
+          "En": 1,
+          "Tr": 2
         }
       }
     ],
@@ -897,29 +885,28 @@ window.modulos = [
     "etapas": [
       {
         "m": {
-          "Si": 9,
-          "Cu": 6,
+          "Si": 5,
+          "Cu": 5,
           "Er": 1
         },
         "o": {
           "IQ": 1,
           "IE": 1,
           "IS": 1,
-          "IM": 1,
-          "En": 4
+          "En": 2
         }
       },
       {
         "m": {
           "Ti": 3,
-          "Al": 6,
+          "Al": 5,
           "Nd": 2
         },
         "o": {
           "IE": 1,
           "IM": 1,
-          "En": 4,
-          "Tr": 3
+          "En": 2,
+          "Tr": 2
         }
       }
     ],
@@ -937,25 +924,24 @@ window.modulos = [
       "MEG": 1,
       "HAB": 1
     },
-    "tecnica_tokens": 1,
+    "tecnica_tokens": 0,
     "nombre": "Urbanización de lujo interna",
     "tipo": "recursoshumanos",
     "puntos": "0 [PV]",
     "puntos_carta": 0,
     "puntos_capas": -9,
-    "puntos_ingenieros": 24,
+    "puntos_ingenieros": 30,
     "puntos_otros": 0,
     "copias": 1,
     "discos": 0,
     "bono": "-4 [AI] [RE] [=] [OP] +7 [Di]",
     "disco_soporte": 0,
-    "efecto": "[QD] Retira uno de tus discos de una celda de [ES] Estructura o [FV] Fotovoltaico y devuelve hasta 4 [AI] ingenieros anclados a la reserva. \nOtros jugadores pueden ofrecete $7 para que quites sus ingenieros (si aceptas es vinculante).\nPuedes volver a colocar el cubo en la etapa 2.\nObten 1 [FT] ficha de técnica.",
+    "efecto": "[QD] Retira uno de tus discos de una celda de [ES] Estructura o [FV] Fotovoltaico y devuelve hasta 4 [AI] ingenieros anclados a la reserva. \nOtros jugadores pueden ofrecete $7 para que quites uno de sus ingenieros ($7 por ingeniero, uno por oponente por ronda, si aceptas es vinculante).\nPuedes volver a colocar el cubo en la etapa 2.",
     "etapas": [
       {
         "m": {
           "Fe": 7,
           "Al": 3,
-          "Ti": 1,
           "Si": 4,
           "Nd": 1
         },
