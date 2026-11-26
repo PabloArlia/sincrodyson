@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Un lugar para la humanidad ? Tablero de planetas</title>
+<style>
+@page { size: A4 portrait; margin: 8mm; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 16px; background: #f3f3f3; color: #20282d; font-family: Arial, Helvetica, sans-serif; }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; max-width: 194mm; margin: 0 auto 16px; }
+.toolbar button { padding: 8px 12px; background: white; border: 1px solid #333; cursor: pointer; }
+.toolbar a { color: inherit; }
+.toolbar small { font-size: 12px; }
+.sheet { display: grid; gap: 16px; justify-content: center; }
+.page { width: 194mm; height: 280mm; display: grid; grid-template-columns: repeat(2, 75mm); grid-template-rows: repeat(2, 138mm); justify-content: center; align-content: center; gap: 2mm 6mm; background: white; }
+.zona { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.planeta, .cartas { display: grid; place-items: center; border: 1px solid #333; color: #777; font-size: 9pt; font-weight: bold; letter-spacing: .06em; }
+.planeta { width: 75mm; height: 75mm; border-radius: 50%; }
+.transporte { position: absolute; left: calc(50% + 22mm); top: 90mm; display: flex; align-items: center; gap: 1mm; font-size: 10pt; font-weight: bold; white-space: nowrap; }
+.transporte img { width: 6mm; height: 6mm; }
+.cartas { width: 41mm; height: 63mm; border-radius: 1.8mm; }
+@media screen { .sheet { overflow-x: auto; } }
+@media print {
+  html, body { padding: 0; background: white; }
+  .toolbar { display: none; }
+  .sheet { display: block; }
+  .page { break-after: page; break-inside: avoid; }
+  .page:last-child { break-after: auto; }
+}
+</style>
+</head>
+<body>
+<header class="toolbar">
+<button type="button" onclick="window.print()">Imprimir / guardar PDF</button>
+<a href="planetas.html">Planetas</a> ? <a href="cartas-planetas.html">Cartas de planeta</a>
+<small>4 zonas ? planetas de ? 75 mm ? cartas de 41 ? 63 mm ? A4 al 100 %</small>
+</header>
+<main class="sheet" aria-label="Tablero para cuatro planetas">
+<div class="page">
+<section class="zona" aria-label="Zona de planeta 1">
+        <div class="planeta" aria-label="Espacio para un planeta de 75 milimetros"><span>PLANETA 1</span></div>
+        <div class="cartas" aria-label="Espacio para las cartas del planeta 1"><span>CARTAS</span></div>
+        <div class="transporte">+0 <img src="../iconos/Tr-transporte.svg" alt="Tr"></div>
+    </section>
+<section class="zona" aria-label="Zona de planeta 2">
+        <div class="planeta" aria-label="Espacio para un planeta de 75 milimetros"><span>PLANETA 2</span></div>
+        <div class="cartas" aria-label="Espacio para las cartas del planeta 2"><span>CARTAS</span></div>
+        <div class="transporte">+1 <img src="../iconos/Tr-transporte.svg" alt="Tr"></div>
+    </section>
+<section class="zona" aria-label="Zona de planeta 3">
+        <div class="planeta" aria-label="Espacio para un planeta de 75 milimetros"><span>PLANETA 3</span></div>
+        <div class="cartas" aria-label="Espacio para las cartas del planeta 3"><span>CARTAS</span></div>
+        <div class="transporte">+3 <img src="../iconos/Tr-transporte.svg" alt="Tr"></div>
+    </section>
+<section class="zona" aria-label="Zona de planeta 4">
+        <div class="planeta" aria-label="Espacio para un planeta de 75 milimetros"><span>PLANETA 4</span></div>
+        <div class="cartas" aria-label="Espacio para las cartas del planeta 4"><span>CARTAS</span></div>
+        <div class="transporte">+4 <img src="../iconos/Tr-transporte.svg" alt="Tr"></div>
+    </section>
+</div>
+</main>
+</body>
+</html>

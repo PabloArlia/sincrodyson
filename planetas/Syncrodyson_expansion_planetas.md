@@ -308,3 +308,29 @@ Orden desde la estrella, sin distancias ni tamaños a escala:
 | 8 | Hades | Fuera | 1 | 5 | 4 |
 
 La zona habitable indica condiciones potenciales para agua líquida, sin afirmar vida existente. Las distribuciones incorporan los últimos cambios aprobados en Hera y Artemisa. Las secciones de reglas aprobadas y aclaraciones definitivas prevalecen sobre propuestas y pendientes anteriores.
+
+## Hospitabilidad e influencia — símbolos
+
+**HP (hospitabilidad)** mide la compatibilidad de un planeta con la vida humana. El valor del planeta en puntos es igual a su HP final. Los modificadores de sus cartas afectan esa hospitabilidad.
+
+**IN (influencia)** mide el reclamo de un jugador sobre algo; en los planetas determina su posición en el reparto de puntos según las reglas de influencia anteriores. La cantidad de IN que aportan los discos y los símbolos de las cartas sigue pendiente.
+
+Los iconos están en `iconos/HP-hospitabilidad.svg` e `iconos/IN-influencia.svg`.
+
+Al final de la partida, en cada planeta, el jugador con más IN recibe tantos puntos de victoria como la HP final del planeta. El segundo recibe la mitad de ese premio, redondeada hacia arriba; cada jugador siguiente recibe la mitad del premio del puesto anterior, también redondeada hacia arriba. Los empates y los jugadores sin IN se resuelven según las reglas de puntuación por influencia anteriores.
+
+
+## Selección vigente de cartas planetarias
+
+Cada planeta tiene cinco cartas. Esta selección reemplaza las reservas de diez y las distribuciones anteriores. Los valores de HP son:
+
+- **Apolo:** +2, +1, -3, -2, 0.
+- **Atenea:** +2, +1, -2, -1, 0.
+- **Hestia:** +3, +2, +2, +1, -1.
+- **Poseidón:** +3, +2, +1, 0, -1.
+- **Zeus:** +3, +2, 0, -1, -2.
+- **Hera:** -2, -2, 0, 0, +1.
+- **Artemisa:** +2, +1, -1, 0, -1.
+- **Hades:** +2, 0, -1, -2, -3.
+
+Las cinco cartas de cada planeta figuran en `cartas-planetas.html`; sus valores también aparecen en `planetas.html`.

@@ -204,89 +204,6 @@
     <main class="sheet" id="sheet" aria-label="Cartas de evento"></main>
     <script src="../V2/planetas.js"></script>
     <script>
-        const cards = [
-            { id: 'E05', title: 'Producción estable', effect: 'Cada jugador aumenta en 1 [PE] su producción de energía por cada sector con todas sus capas ocupadas por discos, en el que tenga al menos un disco propio. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.' },
-            { id: "E16", title: "Lluvia de voluntarios", effect: "Coloca esta carta en el cuadrante indicado en el reverso del mazo. Cuando vayas a colocar un ingeniero anclado [AI] en este cuadrante, colócalo en esta carta en su lugar. De uno en uno. Cuando haya 4 ingenieros en esta carta, descártala inmediatamente y devuelve los 4 ingenieros a sus reservas." },
-            ...[
-                ['E07', 'ES', 'Estructura'],
-                ['E08', 'FV', 'Fotovoltaica'],
-                ['E09', 'TS', 'Transmisión'],
-                ['E10', 'RF', 'Refrigeración'],
-                ['E11', 'MO', 'Microondas']
-            ].map(([id, layer, name]) => ({
-                id, title: `Foco en la capa ${name}`,
-                effect: `Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] [MD] [${layer}] 4 [PI] En la fase de mantenimiento, el jugador con más discos en la capa ${name} de ese cuadrante gana 4 Puntos inmediatos.\nLuego, descarta esta carta.`
-            })),
-            {
-                id: 'E12', title: 'Soporte a la expansión', formula: true,
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador gana tantos Puntos inmediatos como la cantidad de sectores completos multiplicada por sus discos en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E13', title: 'Recolección de asteroides', formula: 'TI',
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe tantas unidades de titanio como la cantidad de sectores completos multiplicada por sus discos en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E14', title: 'Lluvia de micrometeoritos',
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] [DX] -1 [PI] Cada jugador pierde 1 Punto inmediato por cada sector de ese cuadrante cuya capa Microondas esté vacía y cuyo disco más exterior sea suyo.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E15', title: 'Asteroide de neodimio', formula: 'ND', perDisk: true,
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe 1 unidad de neodimio por cada disco propio en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E17', title: 'Alineado con la Tierra',
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] [MD] [DP] 4 [PI] En la fase de mantenimiento, el jugador con más discos en el área de soporte de ese cuadrante gana 4 Puntos inmediatos.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E18', title: 'Rescate de materiales', formula: 'AL', perDisk: 'DS',
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe 1 unidad de aluminio por cada disco propio en ese cuadrante. Cuenta los discos de sus sectores y de su área de soporte.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E19', title: 'Posición clave',
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [AI] 3 [PI] El primer jugador que ancle un ingeniero en ese cuadrante gana 3 Puntos inmediatos.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E20', title: 'Revisión del personal anclado', formula: 'PI', perDisk: 'AI', amount: -1,
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] En la fase de mantenimiento, cada jugador pierde 1 Punto inmediato por cada ingeniero propio anclado en ese cuadrante.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E21', title: 'Convoy de construcción', actionOverview: { rank: 'Menos PI', icon: 'DS', action: 'Coloca 1 disco' },
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] El jugador con menos Puntos inmediatos debe colocar un disco en 1 celda libre del sector con menos discos de ese cuadrante. Gana los bonos normalmente.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E22', title: 'Sabotaje', actionOverview: { rank: 'Más PI', icon: 'QD', action: 'Quita 1 disco' },
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Entre quienes tengan discos en este cuadrante, el jugador con más PI debe quitar un disco propio de ese cuadrante a su elección, sin perder PI por la quita.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E28', title: 'Donaciones',
-                effect: [
-                    '[TJ] Todos los jugadores eligen cualquier cantidad de recursos de sus reservas y los esconden en su mano cerrada [MA]. Cuando todos hayan elegido, revelan sus recursos al mismo tiempo.',
-                    'El jugador que haya aportado menos recursos pierde 5 [PI]. Si hay empate en la menor cantidad, todos los jugadores empatados pierden 5 puntos inmediatos.',
-                    '[DR] Después, cada jugador entrega los recursos de su mano al jugador de su derecha. Para este evento, todos los recursos cuentan por igual, sin importar su tipo.'
-                ]
-            },
-            {
-                id: 'E25', title: 'Sector operativo',
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [SC] 5 [PI] El primer jugador que complete un sector de ese cuadrante gana 5 Puntos inmediatos.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E26', title: 'Medir el progreso',
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] [MD] [SE] 2 [PI] En cada sector de ese cuadrante, el jugador con más discos gana 2 Puntos inmediatos. Si hay empate en el primer lugar, nadie gana esos puntos por ese sector.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E23', title: 'Asignación de transporte', formula: 'TR', perDisk: true,
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador recibe 1 Tr por cada disco propio en el área de soporte de este cuadrante.\nLuego, descarta esta carta.'
-            },
-            {
-                id: 'E27', title: 'Pegoneo', formula: 'PI', perDisk: 'MC',
-                effect: 'Cada jugador gana 1 Punto inmediato por cada disco propio en la capa con más discos de la esfera.\nLuego, descarta esta carta. Si aparece entre los eventos iniciales, descarta esta carta sin aplicar sus efectos y saca otra.'
-            },
-            {
-                id: 'E24', title: 'Llamarada solar', formula: 'PI', perDisk: 'FV',
-                effect: 'Coloca esta carta en el cuadrante indicado en el reverso del mazo. [FM] Cada jugador gana 1 Punto inmediato por cada disco propio en la capa Fotovoltaica de este cuadrante.\nLuego, descarta esta carta.'
-            }
-        ];
-
         const planetCards = [["Estructura","Zeus","Hera"],["Estructura","Poseidón","Atenea"],["Estructura","Apolo","Hestia"],["Fotovoltaica","Hades","Artemisa"],["Fotovoltaica","Zeus","Hades"],["Fotovoltaica","Hera","Artemisa"],["Fotovoltaica","Poseidón","Atenea"],["Microondas","Zeus","Atenea"],["Microondas","Hera","Apolo"],["Microondas","Poseidón","Hestia"],["Refrigeración","Hades","Apolo"],["Refrigeración","Artemisa","Hestia"],["Refrigeración","Zeus","Poseidón"],["Transmisión","Hera","Hestia"],["Transmisión","Atenea","Hades"],["Transmisión","Apolo","Artemisa"]].map(([layer, planet1, planet2], i) => ({id:'P'+String(i+1).padStart(2,'0'),planet:true,layer,planets:[planet1,planet2]}));
         const iconosCapasPlanetarias = {
             'Estructura': 'ES-estructura',
@@ -389,7 +306,7 @@
             const initialNote = hasInitialWarning ? `<p class="initial-rule">${initialWarning}</p>` : '';
             return `<article class="card standalone-event" aria-label="${card.id} · ${card.title}"><header class="heading">${icon('EV-evento')}<div><h2>${card.title}</h2></div></header><section class="event-half"><p class="event-effect">${effectWithFormula}</p></section>${initialNote}${footer(card)}</article>`;
         }
-        const deck = [...cards, ...planetCards];
+        const deck = planetCards;
         const sheet = document.getElementById('sheet');
         const showBacks = new URLSearchParams(location.search).has('reversos');
         const quadrants = ['Alpha', 'Beta', 'Gamma', 'Delta'];
@@ -429,7 +346,7 @@
         }
         document.getElementById('summary').textContent = showBacks
             ? `${deck.length} reversos · Doble cara por borde largo`
-            : `${cards.length} eventos + ${planetCards.length} reclamos planetarios`;
+            : `${planetCards.length} reclamos planetarios`;
         function exceedsCardSize(card) {
             const rect = card.getBoundingClientRect(), style = getComputedStyle(card), tolerance = 1;
             const bottom = rect.bottom - parseFloat(style.borderBottomWidth) - parseFloat(style.paddingBottom);
