@@ -71,7 +71,24 @@ foreach ([false, true] as $withStocks) {
 foreach (['Ti' => 1000, 'Al' => 600, 'Nd' => 1500, 'Gd' => 1000, 'Er' => 1000, 'Ce' => 1000, 'Tr' => 1500] as $item => $maximum) {
     eq(Market::catalog()[$item]['max'], $maximum, 'Nuevo precio máximo: ' . $item);
 }
-eq(Market::price(Market::catalog()['Ti'], 350, 10), 700, 'Ejemplo de titanio actualizado a máximo $10');
+$ti = Market::catalog()['Ti'];
+eq(Market::price($ti, 400, 0), 420, 'El titanio recorre el 10 % hacia la referencia con demanda neta cero');
+eq(Market::price($ti, 400, 10), 710, 'Ejemplo de titanio con 10 compras netas');
+eq(Market::price($ti, 400, -10), 360, 'Ejemplo de titanio con 10 ventas netas');
+$ft = Market::catalog()['FT'];
+eq([$ft['min'], $ft['nominal'], $ft['max'], $ft['liquidity']], [100, 300, 600, 10], 'Banda de precios y liquidez de FT');
+eq(Market::price($ft, 300, 10), 450, 'La demanda neta sube el precio de FT');
+eq(Market::price($ft, 300, -10), 200, 'La oferta neta baja el precio de FT');
+$oldGame = fresh(2, false);
+unset($oldGame['catalog']['FT'], $oldGame['history']['FT']);
+$ftHistory = Game::view($oldGame, 0)['history']['FT'];
+eq(count($ftHistory), 3, 'La partida guardada muestra un historial inicial de FT');
+closeMarket($oldGame, [], [['FT' => 14], ['FT' => -4]]);
+eq($oldGame['settlement']['flows']['FT'], ['buy' => 14, 'sell' => 4, 'external' => 10], 'El mercado calcula la demanda neta de FT');
+$ftPrice = Market::price($ft, end($ftHistory)['price'], 10);
+eq($oldGame['settlement']['prices']['FT'], $ftPrice, 'El cierre aplica la presión al precio de FT');
+settle($oldGame);
+eq(array_column($oldGame['players'], 'cash'), [4000 - 14 * $ftPrice, 4000 + 4 * $ftPrice], 'La liquidación cobra la compra y acredita la venta de FT');
 $oldLimits = fresh(1, false);
 closeMarket($oldLimits); settle($oldLimits);
 $oldLimits['catalog']['Tr']['max'] = 1100;

@@ -142,7 +142,7 @@ Resuelvan las operaciones indicadas por la aplicación. Al terminar, realicen la
 
 Cuando todos han pasado, la aplicación reúne las compras y ventas y calcula un único precio final para cada recurso. Todos los jugadores compran y venden ese recurso al mismo precio durante esa ronda, independientemente de su posición.
 
-El precio depende del cierre anterior y del desequilibrio entre compras y ventas. Una demanda neta lo empuja hacia arriba y una oferta neta lo empuja hacia abajo, dentro de sus límites. Además, el precio tiende a acercarse al valor nominal: sin operaciones recorre un 20 % de la distancia hacia ese valor. La aplicación redondea los precios a centavos y muestra el historial; el precio final se conoce al cerrar el mercado.
+Para calcular el precio, la aplicación parte del cierre anterior y recorre un 10 % de la distancia hacia el valor de referencia. Luego aplica la presión del mercado. La demanda neta empuja el precio hacia arriba y la oferta neta lo empuja hacia abajo, dentro de sus límites. Con demanda neta cero, el precio queda en el valor calculado tras el acercamiento. La aplicación redondea los precios a centavos y muestra el historial. El precio final se conoce al cerrar el mercado.
 
 Un agente externo compra o vende toda la diferencia entre las órdenes. No hay stock limitado de mercado ni reparto por escasez: las compras se cubren aunque los demás jugadores no vendan suficientes unidades.
 

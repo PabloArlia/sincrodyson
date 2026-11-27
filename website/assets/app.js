@@ -285,7 +285,7 @@
     return {operation,amount,direction,total};
   }
   function resourceIcon(id) {
-    const icons={IM:'IM-ingeniero-electromecanico.svg',IQ:'IQ-ingeniero-quimico.svg',IE:'IE-ingeniero-estructural.svg',IS:'IS-ingeniero-sistemas.svg',project:'CP-carta-proyecto.svg',En:'En-energia.svg',Tr:'Tr-transporte.svg',H2SO4:'RQ-reactivos.svg',HCl:'RQ-reactivos.svg'};
+    const icons={IM:'IM-ingeniero-electromecanico.svg',IQ:'IQ-ingeniero-quimico.svg',IE:'IE-ingeniero-estructural.svg',IS:'IS-ingeniero-sistemas.svg',project:'CP-carta-proyecto.svg',En:'En-energia.svg',Tr:'Tr-transporte.svg',H2SO4:'RQ-reactivos.svg',HCl:'RQ-reactivos.svg',FT:'FT-ficha-tecnica.svg'};
     const symbol=id==='project'?'CP':id==='H2SO4'?'H'+String.fromCharCode(8322)+'SO'+String.fromCharCode(8324):id;
     const icon=icons[id]?`<img class="market-resource-icon" src="assets/icons/${icons[id]}" alt="">`:`<span class="market-resource-token" style="--token-color:${game.catalog[id]?.color||'#fff'};--token-ink:${['Si','C'].includes(id)?'#222':'#fff'}" aria-hidden="true">${esc(symbol)}</span>`;
     return icon;

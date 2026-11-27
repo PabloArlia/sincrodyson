@@ -51,6 +51,7 @@ async function run(){
   await until(()=>cdp.eval("document.querySelector('.page-header').textContent.includes('Empresa UI')"),'restore test name');
   check(state.options.stockMarket&&Object.keys(state.stock.companies).length===2,'Opción persistida y una empresa por jugador');
   check(await cdp.eval("document.querySelectorAll('[data-stock-qty]').length===2"),'Un selector por empresa');
+  check(await cdp.eval("(()=>{const row=document.querySelector('[data-qty=FT]').closest('tr'),icon=row.querySelector('img');return row.textContent.includes('Fichas de Técnica')&&!!row.querySelector('.sparkline')&&icon.complete&&icon.naturalWidth>0})()"),'FT tiene selector de cantidad, icono e historial');
   const setQty=async(id,qty)=>cdp.eval(`(()=>{const input=document.getElementById(${JSON.stringify('stock-qty-'+id)});input.value=${qty};input.dispatchEvent(new Event('input',{bubbles:true}));})()`);
   check(await cdp.eval("document.querySelectorAll('.market-table .stock-trade-row').length===2"),'Acciones en la misma tabla de recursos');
   check(await cdp.eval("[...document.querySelectorAll('.stock-trade-row .sparkline')].every(chart=>chart.querySelectorAll('circle').length===3&&chart.querySelector('polyline').getAttribute('points').split(' ').map(point=>point.split(',')[1]).every((y,_,values)=>y===values[0]))"),'Tres valores iniciales iguales en los graficos bursatiles');
@@ -78,10 +79,10 @@ async function run(){
   await cdp.eval("document.querySelector('#settle-form').requestSubmit()");await until(()=>cdp.eval("!!document.querySelector('[data-command=maintenance]')"),'execution');
   check(await cdp.eval("!document.querySelector('#closing-prices').open"),'Al pasar a Ejecutar los precios vuelven a empezar cerrados');
   await cdp.eval("document.querySelector('#closing-prices summary').click()");
-  check(await cdp.eval("document.querySelector('#closing-prices thead th:last-child').textContent==='Compra de emergencia'&&document.querySelectorAll('[data-emergency-buy]').length===19"),'Columna de compra de emergencia para recursos, cuatro ingenieros y proyectos');
-  check(await cdp.eval("document.querySelector('#closing-prices thead th:nth-child(3)').textContent==='Comprado'&&document.querySelectorAll('[data-emergency-count]').length===19&&[...document.querySelectorAll('[data-emergency-count]')].every(count=>count.textContent==='0')&&!document.querySelector('#closing-prices .sparkline')"),'Contadores en cero reemplazan al historial durante Ejecutar');
+  check(await cdp.eval("document.querySelector('#closing-prices thead th:last-child').textContent==='Compra de emergencia'&&document.querySelectorAll('[data-emergency-buy]').length===20"),'Columna de compra de emergencia para recursos, cuatro ingenieros y proyectos');
+  check(await cdp.eval("document.querySelector('#closing-prices thead th:nth-child(3)').textContent==='Comprado'&&document.querySelectorAll('[data-emergency-count]').length===20&&[...document.querySelectorAll('[data-emergency-count]')].every(count=>count.textContent==='0')&&!document.querySelector('#closing-prices .sparkline')"),'Contadores en cero reemplazan al historial durante Ejecutar');
   let beforeEmergency=(await read()).players.find(p=>p.id===own).cash;
-  for(const [item,price] of [['Fe',200],['IM',700],['project',300]]) {
+  for(const [item,price] of [['Fe',200],['FT',600],['IM',700],['project',300]]) {
     await cdp.eval(`document.querySelector('[data-emergency-buy="${item}"]').click()`);
     await until(async()=>{const current=await read();return current.players.find(p=>p.id===own).cash===beforeEmergency-price;},'emergency purchase '+item);
     await until(()=>cdp.eval("!document.querySelector('[data-emergency-buy]').disabled"),'emergency ready');

@@ -22,6 +22,7 @@ final class Market
             ['Tr', 'Transporte', 'Servicios', 4, 7, 15, '#72a9fa'],
             // Energy has no trading band on the old board: provisional tuning.
             ['En', 'Energía', 'Servicios', 1, 2, 4, '#f5d56a'],
+            ['FT', 'Fichas de Técnica', 'Fichas', 1, 3, 6, '#79c989'],
         ];
         $out = [];
         foreach ($rows as [$id, $name, $group, $min, $nominal, $max, $color]) {
@@ -35,7 +36,7 @@ final class Market
 
     public static function price(array $resource, int $previous, int $imbalance): int
     {
-        $anchor = $previous + .2 * ($resource['nominal'] - $previous);
+        $anchor = $previous + .1 * ($resource['nominal'] - $previous);
         $pressure = $imbalance / ($resource['liquidity'] + abs($imbalance));
         $distance = $imbalance >= 0 ? $resource['max'] - $anchor : $anchor - $resource['min'];
         return max($resource['min'], min($resource['max'], (int) round($anchor + $pressure * $distance)));

@@ -40,7 +40,7 @@ p{margin:0}strong{font-weight:800}
 .market-card h3{font-size:7.5pt}
 .market-formula{margin-top:.5mm;text-align:center;font-weight:800}
 .market-values{width:100%;border-collapse:collapse;font-size:7pt}
-.market-values th,.market-values td{border:1px solid #aaa;padding:.7mm .5mm;text-align:right}
+.market-values th,.market-values td{border:1px solid #aaa;padding:.5mm;text-align:right}
 .market-values th:first-child,.market-values td:first-child{text-align:left}
 .market-values thead{background:#f0f2ef}
 .resource-icon{display:inline-grid;place-items:center;width:4mm;height:4mm;margin-right:.7mm;border:1px solid #222;border-radius:.5mm;background:var(--resource-color,#fff);color:var(--resource-ink,#222);font-size:5.5pt;font-weight:700;line-height:1;vertical-align:middle}
@@ -122,16 +122,16 @@ p{margin:0}strong{font-weight:800}
  </article>
  <article class="card market-card">
   <header class="card-header"><div><h2>Cómo cambia el precio</h2></div><img class="header-icon" src="./iconos/Tr-transporte.svg" alt=""></header>
-  <section><h3>1 · Vuelve hacia la referencia</h3><p>Para cada recurso, parte del <strong>último precio de cierre (P)</strong> y recorre el <strong>20 % de la distancia</strong> al valor de referencia (R). El resultado es la base (A).</p><p class="market-formula">A = P + 0,20 × (R − P)</p><p>Si P supera R, baja; si está por debajo, sube.</p></section>
+  <section><h3>1 · Vuelve hacia la referencia</h3><p>Para cada recurso, parte del <strong>último precio de cierre (P)</strong> y recorre el <strong>10 % de la distancia</strong> al valor de referencia (R). El resultado es la base (A).</p><p class="market-formula">A = P + 0,10 × (R − P)</p><p>Si P supera R, baja; si está por debajo, sube.</p></section>
   <section><h3>2 · Cuenta la demanda neta</h3><p><strong>D = unidades compradas − vendidas</strong>, sumando las órdenes de todos. Cuenta unidades, no jugadores ni dinero. Compras y ventas iguales se compensan.</p></section>
   <section><h3>3 · Aplica la presión</h3><p>Sea <strong>q = valor absoluto de D</strong>. La fracción de ajuste es <strong>q / (10 + q)</strong>. El 10 es fijo para todos los recursos.</p><p class="market-formula">D &gt; 0: precio = A + q/(10+q) × (máx. − A)<br>D &lt; 0: precio = A − q/(10+q) × (A − mín.)<br>D = 0: precio = A</p><p>Con 5 unidades netas recorre ⅓ de esa distancia; con 10, ½; con 20, ⅔. <strong>No es una cantidad fija de dinero por unidad.</strong></p></section>
   <section><h3>Ejemplo paso a paso · titanio</h3>
-   <p>Cierre anterior: <strong>$3,50</strong>. Referencia: <strong>$6</strong>. Mínimo: $3. Máximo: $10.</p>
-   <p><strong>1. Acercamiento:</strong> faltan $2,50 para la referencia. El 20 % es $0,50. La base pasa a <strong>$4</strong>.</p>
+   <p>Cierre anterior: <strong>$4</strong>. Referencia: <strong>$6</strong>. Mínimo: $3. Máximo: $10.</p>
+   <p><strong>1. Acercamiento:</strong> faltan $2 para la referencia. El 10 % es $0,20. La base pasa a <strong>$4,20</strong>.</p>
    <p><strong>2. Demanda:</strong> entre todos compran 14 unidades y venden 4. Quedan <strong>10 compras netas</strong>.</p>
-   <p><strong>3. Presión:</strong> 10 / (10 + 10) = <strong>½</strong>. Desde la base de $4 hasta el máximo de $10 hay $6. Sube la mitad: <strong>$3</strong>.</p>
-   <p><strong>Precio final: $4 + $3 = $7.</strong></p>
-   <p>Si fueran 10 ventas netas, bajaría la mitad de la distancia de $4 al mínimo de $3: quedaría en <strong>$3,50</strong>. Si compras y ventas se igualaran: <strong>$4</strong>.</p>
+   <p><strong>3. Presión:</strong> 10 / (10 + 10) = <strong>½</strong>. De $4,20 al máximo de $10 hay $5,80. Sube la mitad: <strong>$2,90</strong>.</p>
+   <p><strong>Precio final: $4,20 + $2,90 = $7,10.</strong></p>
+   <p>Con 10 ventas netas, baja la mitad de la distancia de $4,20 al mínimo de $3 y queda en <strong>$3,60</strong>. Con demanda neta cero queda en <strong>$4,20</strong>.</p>
   </section>
  </article>
  <article class="card market-card values-card">
@@ -154,6 +154,7 @@ p{margin:0}strong{font-weight:800}
     <tr><td><span class="resource-icon chemical">HCl</span>Ác. clorhídrico</td><td>2</td><td>3</td><td>5</td></tr>
     <tr><td><img class="resource-image" src="./iconos/Tr-transporte.svg" alt="Tr">Transporte</td><td>4</td><td>7</td><td>15</td></tr>
     <tr><td><img class="resource-image" src="./iconos/En-energia.svg" alt="En">Energía</td><td>1</td><td>2</td><td>4</td></tr>
+    <tr><td><img class="resource-image" src="./iconos/FT-ficha-tecnica.svg" alt="FT">Fichas de Técnica</td><td>1</td><td>3</td><td>6</td></tr>
    </tbody>
   </table>
   <p>Durante la ejecución puedes comprar recursos de emergencia a su <strong>precio máximo</strong>.</p>

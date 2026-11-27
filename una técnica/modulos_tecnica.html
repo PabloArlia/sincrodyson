@@ -52,19 +52,24 @@ button{background:white;border:1px solid #333;padding:8px 12px;cursor:pointer}
 .balance-tooltip{position:fixed;z-index:1000;width:360px;max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);overflow:auto;padding:14px 16px;border:1px solid #78877e;border-radius:8px;background:#fff;color:#17221b;box-shadow:0 6px 24px #0003;font:12px/1.45 Arial,sans-serif;white-space:pre-line;pointer-events:none}.balance-tooltip[hidden]{display:none}@media print{.balance-tooltip{display:none!important}}
 .cards-summary{position:fixed;top:70px;right:12px;z-index:50;width:152px;max-height:calc(100vh - 82px);overflow:auto;padding:6px 8px;background:#fff;border:1px solid #aab5ad;border-radius:6px;box-shadow:0 3px 12px #0002;font:12px/1.2 Arial,sans-serif}.summary-row{display:flex;align-items:center;gap:3px;padding:3px 0;white-space:nowrap}.summary-icon,.summary-icon img{display:block;width:19px;height:19px;object-fit:contain}.summary-total{border-top:1px solid #c8d0ca;margin-top:3px;padding-top:6px;font-weight:bold}@media print{.cards-summary{display:none!important}}
  .icono-hibrido{position:relative;display:inline-block;width:100%;height:100%;min-width:24px;min-height:24px;overflow:hidden;vertical-align:middle}.icono-hibrido img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain}.icono-hibrido img:first-child{clip-path:inset(0 50% 0 0)}.icono-hibrido img:nth-child(2){clip-path:inset(0 0 0 50%)}.icono-hibrido:after{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid currentColor;transform:translateX(-.5px)}
-.card-body{display:flex;gap:1mm;flex:1;min-height:0}.card-main{display:flex;flex-direction:column;gap:1mm;flex:1;min-width:0;min-height:0}.tech-column{flex:0 0 10mm;width:10mm;border-left:1px solid #bbb;padding-left:.7mm;display:flex;flex-direction:column;justify-content:space-between;gap:.5mm}.tech-group{display:flex;flex-direction:column;align-items:center;gap:.4mm}.tech-label{font-size:5pt;font-weight:bold;text-transform:uppercase;text-align:center}.tech-icon{width:8mm;min-height:5.5mm;display:grid;place-items:center;border:1px solid #b00020;border-radius:1mm;font-size:6pt;font-weight:bold;background:#fff;color:#111}.tech-icon.reward{border-color:#52845a;background:#bde8c2}.tech-icon.token{border-color:#26733a;background:#79c989}.tech-empty{font-size:6pt;color:#777}.tech-legend{font-size:12px;line-height:1.4;max-width:1100px}.tech-legend b{white-space:nowrap}@media print{.tech-legend{display:none}}
-.tech-symbol{font-family:"Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif}
-.tech-icon{align-content:center;line-height:1}.tech-icon .tech-symbol{font-size:7.5pt}
-.tech-legend-item{display:inline-block}
+.card-body{display:flex;gap:1mm;flex:1;min-height:0}.card-main{display:flex;flex-direction:column;gap:1mm;flex:1;min-width:0;min-height:0}.tech-column{flex:0 0 12mm;width:12mm;border-left:1px solid #bbb;padding-left:.7mm;display:flex;flex-direction:column;justify-content:space-between;gap:.5mm}.tech-group{display:flex;flex-direction:column;align-items:center;gap:.4mm}.tech-label{font-size:5pt;font-weight:bold;text-transform:uppercase;text-align:center}.tech-icon{width:8mm;min-height:5.5mm;display:grid;place-items:center;border:1px solid #b00020;border-radius:1mm;font-size:6pt;font-weight:bold;color:#111}.tech-icon.reward{border-color:#52845a}.tech-empty{font-size:6pt;color:#777}.tech-legend{font-size:12px;line-height:1.4;max-width:1100px}.tech-legend b{white-space:nowrap}@media print{.tech-legend{display:none}}
+.tech-icon{align-content:center;line-height:1}
+.tech-badge{grid-template-columns:minmax(0,1fr) 2.5mm;padding:0 .35mm}.tech-badge img{width:4mm;height:4mm}.tech-id{grid-column:2;grid-row:1;font-size:7pt;white-space:nowrap;transform:rotate(90deg) scaleX(.7)}
+.tech-entry{display:grid;grid-template-columns:2.4mm 8mm;align-items:center;gap:.4mm}.tech-entry .tech-badge{grid-column:2;grid-row:1}.tech-count{font-size:10pt;font-weight:bold;line-height:1;text-align:right}
+.tech-legend-item{display:inline-block}.tech-legend-item img{width:1.3em;height:1.3em;vertical-align:middle}
 </style></head><body><div class="toolbar"><button onclick="window.print()">Imprimir / guardar PDF</button><label>Conjunto: <select id="module-set"><option value="modulos">Módulos</option><option value="mega">Megamódulos</option><option value="ambos">Ambos</option></select></label><label><input id="colors" type="checkbox" checked> has</label><label><input id="show-copies" type="checkbox"> Mostrar copias</label><label><input id="hide-single-stage" type="checkbox"> Ocultar cartas de una sola etapa</label><small>Cartas de 64 × 120 mm · datos editables en <code>modulos_tecnica.js</code> y <code>megamodulos_tecnica.js</code></small></div>
-    <div class="tech-legend">Borde interior violeta: alguna etapa supera 15 recursos básicos (Fe, Cu, Si, Ti, Al y C). <b>Requiere (borde rojo) / otorga (verde):</b> <span id="tech-legend-items"></span> · <b>+1 T</b> ficha de Técnica al completar. Las tecnologías verdes solo cuentan mientras conserves la carta.</div><aside class="cards-summary" id="cards-summary" aria-label="Cantidad de cartas por tipo"></aside><main class="sheet" id="sheet"></main><script src="./modulos_tecnica.js"></script><script>const modulosTecnica=window.modulos;window.modulos=undefined;</script><script src="./megamodulos_tecnica.js"></script><script>const megamodulosTecnica=window.modulos;</script><script src="./balance.js"></script>
+    <div class="tech-legend">Borde interior violeta: alguna etapa supera 15 recursos básicos (Fe, Cu, Si, Ti, Al y C). <b>Requiere (borde rojo) / otorga (verde):</b> <span id="tech-legend-items"></span>. Las tecnologías con borde verde cuentan mientras conserves la carta.</div><aside class="cards-summary" id="cards-summary" aria-label="Cantidad de cartas por tipo"></aside><main class="sheet" id="sheet"></main><script src="./modulos_tecnica.js"></script><script>const modulosTecnica=window.modulos;window.modulos=undefined;</script><script src="./megamodulos_tecnica.js"></script><script>const megamodulosTecnica=window.modulos;</script><script src="../balance.js"></script>
 <script>
 // Ajuste de balance de esta variante, sin cambiar los costos de juego.
 const balanceBaseTecnica=balanceModulo;
 const diagnosticoBaseTecnica=diagnosticoBalance;
+function requisitosTecnica(m){
+ // Las entradas numeradas conservan la lista original en los requisitos mixtos.
+ return Object.values(m.tecnica_requiere??[]).filter(id=>typeof id==='string');
+}
 balanceModulo=function(m){
  const b=balanceBaseTecnica(m);
- const requisito=(m.tecnica_requiere||[]).length*5;
+ const requisito=requisitosTecnica(m).length*5;
  const recompensa=((m.tecnica_otorga||[]).length+(m.tecnica_tokens||0))*5;
  const costoOriginal=b.costo;
  b.costo=costoOriginal+requisito-recompensa;
@@ -166,10 +171,10 @@ const catalogoIconos={
  PR:{nombre:"produccion",archivo:"PR-produccion.svg"}
 };
 function imagenIcono(id){
- if(id==='CS')return '<span class="icono-hibrido" title="Control / Sensores" aria-label="Control / Sensores"><img src="./iconos/CO-control.svg" alt=""><img src="./iconos/SN-sensores.svg" alt=""></span>';
+ if(id==='CS')return '<span class="icono-hibrido" title="Control / Sensores" aria-label="Control / Sensores"><img src="../iconos/CO-control.svg" alt=""><img src="../iconos/SN-sensores.svg" alt=""></span>';
  if(!Object.hasOwn(catalogoIconos,id))return '';
  const variante=['II','IQ','IE','IM','IS','AI','AQ','AM','AE','AS'].includes(id)&&!document.getElementById('colors').checked?'#sin-color':'';
- return `<img${id==='/'?' class="separator-bar"':''} src="./iconos/${catalogoIconos[id].archivo}${variante}" alt="" aria-hidden="true">`;
+ return `<img${id==='/'?' class="separator-bar"':''} src="../iconos/${catalogoIconos[id].archivo}${variante}" alt="" aria-hidden="true">`;
 }
 const rocket=imagenIcono('Tr');
 const energia=imagenIcono('En');
@@ -229,25 +234,25 @@ function render(m){
 }
 const tecnicas=window.tecnicas??[];
 const tecnicasPorId=new Map(tecnicas.map(tecnica=>[tecnica.id,tecnica]));
-function simboloTecnica(icono){
- return icono?`<span class="tech-symbol" aria-hidden="true">${escapeHTML(icono)}</span>`:'';
+function iconoTecnica(id){
+ if(id==='FT')return imagenIcono(id);
+ return tecnicasPorId.has(id)?`<img src="../iconos/tecnicas/${encodeURIComponent(id)}.svg" alt="">`:'';
 }
-document.getElementById('tech-legend-items').innerHTML=tecnicas.map(({id,nombre,icono})=>
- `<span class="tech-legend-item">${simboloTecnica(icono)} <b>${escapeHTML(id)}</b> ${escapeHTML(nombre)}</span>`
+document.getElementById('tech-legend-items').innerHTML=[...tecnicas,{id:'FT',nombre:'Fichas de Técnica al completar'}].map(({id,nombre})=>
+ `<span class="tech-legend-item">${iconoTecnica(id)} <b>${escapeHTML(id)}</b> ${escapeHTML(nombre)}</span>`
 ).join(' · ');
-function insigniaTecnica(id,clase=''){
- const tecnica=tecnicasPorId.get(id);
- const nombre=escapeHTML(tecnica?.nombre??id);
- return `<span class="tech-icon ${clase}" role="img" title="${nombre}" aria-label="${nombre}">${simboloTecnica(tecnica?.icono)}<span>${escapeHTML(id)}</span></span>`;
+function insigniaTecnica(id,clase='',cantidad=null){
+ const nombre=id==='FT'?(cantidad===1?'ficha de Técnica':'fichas de Técnica'):escapeHTML(tecnicasPorId.get(id)?.nombre??id);
+ const etiqueta=cantidad===null?nombre:`${cantidad} ${nombre}`;
+ return `<span class="tech-entry" role="img" title="${etiqueta}" aria-label="${etiqueta}">${cantidad===null?'':`<span class="tech-count">${cantidad}</span>`}<span class="tech-icon tech-badge ${clase}">${iconoTecnica(id)}<span class="tech-id">${escapeHTML(id)}</span></span></span>`;
 }
 function renderTecnica(m){
  const fichas=m.tecnica_tokens??0;
- const unidad=fichas===1?'ficha':'fichas';
- const requisitos=(m.tecnica_requiere||[]).map(id=>insigniaTecnica(id)).join('');
+ const requisitos=requisitosTecnica(m).map(id=>insigniaTecnica(id)).join('');
  const recompensas=(m.tecnica_otorga||[]).map(id=>insigniaTecnica(id,'reward')).join('');
  return `<aside class="tech-column" aria-label="Experiencia técnica">
   <div class="tech-group"><span class="tech-label">Requiere</span>${requisitos||'<span class="tech-empty">&mdash;</span>'}</div>
-  <div class="tech-group"><span class="tech-label">Otorga</span>${recompensas}<span class="tech-icon token" title="Gana ${fichas} ${unidad} de Técnica al completar">+${fichas} T</span></div>
+  <div class="tech-group"><span class="tech-label">Otorga</span>${recompensas}${insigniaTecnica('FT','reward',fichas)}</div>
  </aside>`;
 }
 function draw(){const sheet=document.getElementById('sheet');const conjunto=document.getElementById('module-set').value;const fuentes=conjunto==='ambos'?[modulosTecnica,megamodulosTecnica]:[conjunto==='mega'?megamodulosTecnica:modulosTecnica];if(fuentes.some(fuente=>!Array.isArray(fuente))){sheet.innerHTML='<p>No se pudieron cargar los archivos de módulos de técnica.</p>';document.getElementById('cards-summary').innerHTML='';return;}const filtradas=fuentes.flat().filter(m=>!document.getElementById('hide-single-stage').checked||m.etapas.length!==1);const cartas=document.getElementById('show-copies').checked?filtradas.flatMap(m=>Array.from({length:m.copias??1},()=>m)):filtradas;const paginas=[];for(let i=0;i<cartas.length;i+=6){paginas.push(`<section class="print-page">${cartas.slice(i,i+6).map(render).join('')}</section>`)}sheet.innerHTML=paginas.join('');document.getElementById('cards-summary').innerHTML=renderResumenCartas(filtradas)}

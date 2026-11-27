@@ -44,10 +44,10 @@ final class Game
     private static function updateCatalog(array &$s): void
     {
         foreach (Market::catalog() as $id => $resource) {
-            if (isset($s['catalog'][$id])) {
-                $s['catalog'][$id]['color'] = $resource['color'];
-                $s['catalog'][$id]['max'] = $resource['max'];
-            }
+            $s['catalog'][$id] ??= $resource;
+            $s['catalog'][$id]['color'] = $resource['color'];
+            $s['catalog'][$id]['max'] = $resource['max'];
+            $s['history'][$id] ??= Market::warmup([$id => $resource], $s['seed'])[$id];
         }
     }
 
